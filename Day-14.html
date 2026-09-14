@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Warm-Up, Then the Exam</title>
+<style>
+:root{--bg:#f5f3fb;--card:#fff;--ink:#211c33;--muted:#6f6886;--brand:#6b4ef0;--brand-d:#5238c4;
+--brand-soft:#ece7fd;--good:#1f9d63;--good-soft:#e4f6ec;--bad:#d2453f;--bad-soft:#fae5e4;--line:#e7e3f2;
+--amber:#b6791f;--amber-soft:#fcf3e3;
+--p1:#7c5cbf;--p2:#2f7fd0;--p3:#1d8a6a;--p4:#c2820b;--p5:#c04a7e;--p6:#4a6fa5;}
+*{box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);margin:0;line-height:1.55;}
+.wrap{max-width:760px;margin:0 auto;padding:26px 22px 60px;}
+.home{display:inline-block;margin:0 0 12px;color:var(--brand);font-weight:700;font-size:13px;text-decoration:none;}
+.crumb{color:var(--brand);font-weight:600;font-size:13px;text-transform:uppercase;letter-spacing:.05em;}
+h1{font-size:28px;margin:8px 0 4px;letter-spacing:-.02em;}
+.lede{color:var(--muted);margin:0 0 14px;font-size:16px;}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px 24px;margin:18px 0;box-shadow:0 1px 3px rgba(40,20,90,.04);}
+.panel h3{margin:0 0 6px;font-size:18px;display:flex;align-items:center;gap:8px;}
+.panel h3 .scorechip{margin-left:auto;}
+.panel .note{color:var(--muted);font-size:14px;margin:0 0 14px;}
+.preq{background:var(--amber-soft);border:1px solid #f0deb8;border-radius:16px;padding:18px 20px;margin:18px 0;}
+.preq .tag{color:var(--amber);font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.06em;}
+.preq p{margin:8px 0 0;font-size:16px;} .preq .do{margin-top:10px;font-weight:600;color:var(--amber);}
+audio{width:100%;margin-top:6px;}
+.secaudio{background:var(--brand-soft);border:1px solid #d9d0fb;border-radius:12px;padding:10px 13px;margin:4px 0 14px;}
+.secaudio .salab{display:block;font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--brand-d);margin-bottom:7px;}
+.takeaway{font-size:14.5px;background:#fbfaff;border:1px dashed var(--line);border-radius:11px;padding:13px 16px;margin-top:14px;}
+.takeaway b{color:var(--brand);} .takeaway ul{margin:2px 0 0;padding-left:20px;} .takeaway li{margin:5px 0;}
+.takeaway .tk-gen{margin:10px 0 0;padding-top:10px;border-top:1px dashed var(--line);}
+.sub{font-size:15px;font-weight:800;color:var(--brand-d);margin:20px 0 6px;}
+.p{font-size:15px;margin:0 0 8px;}
+.partlab{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--brand);margin:0 0 6px;}
+.rule{background:var(--brand-soft);border-radius:11px;padding:12px 16px;font-weight:600;color:var(--brand-d);margin:16px 0;}
+.question{background:#f6f4fc;border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:10px;padding:14px 16px;font-size:15.5px;}
+.step{display:flex;gap:14px;padding:12px 0;border-top:1px solid var(--line);} .step:first-of-type{border-top:none;}
+.stepn{flex:0 0 28px;height:28px;border-radius:8px;background:var(--brand);color:#fff;font-weight:700;display:grid;place-items:center;font-size:14px;}
+.stepbody .lab{font-weight:600;}
+.math{font-family:"SF Mono",Menlo,Consolas,monospace;background:#f6f4fc;border:1px solid var(--line);border-radius:8px;padding:8px 12px;margin-top:6px;font-size:14.5px;display:inline-block;}
+.ans{background:var(--good-soft);border:1px solid #bfe6cf;border-radius:11px;padding:12px 16px;margin-top:16px;font-weight:600;color:var(--good);}
+.tryq{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:10px 0;} .tryq .q{font-weight:600;margin-bottom:8px;}
+.reveal-btn{background:var(--brand);color:#fff;border:none;border-radius:9px;padding:8px 14px;font-weight:600;cursor:pointer;font-size:14px;}
+.reveal{display:none;margin-top:10px;padding:11px 14px;border-radius:9px;background:#faf9fe;border:1px dashed var(--line);font-size:14px;} .reveal.show{display:block;}
+.dtable{width:100%;border-collapse:collapse;font-size:13.5px;margin:10px 0;}
+.dtable th,.dtable td{border:1px solid var(--line);padding:8px 8px;text-align:center;}
+.dtable th{background:var(--brand-soft);color:var(--brand-d);font-weight:700;} .dtable td.lab{text-align:left;font-weight:600;background:var(--brand-soft);color:var(--brand-d);}
+.dtable td.hlcell{background:var(--good-soft);font-weight:700;color:var(--good);}
+.dtable td.dim{color:var(--muted);}
+.datalab{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--brand-d);margin:20px 0 8px;}
+.given{color:var(--muted);font-size:13px;margin:2px 0 4px;}
+.svg-wrap{background:#fff;border:1px solid var(--line);border-radius:13px;padding:14px;margin:14px 0;text-align:center;}
+.svg-wrap svg{width:100%;height:auto;max-width:560px;}
+.cap{color:var(--muted);font-size:13px;margin-top:8px;}
+.qblock{padding:16px 0;border-top:1px solid var(--line);} .qblock:first-of-type{border-top:none;padding-top:4px;}
+.qnum{color:var(--brand);font-weight:700;font-size:12px;letter-spacing:.04em;text-transform:uppercase;}
+.examtag{display:inline-block;background:var(--good-soft);color:var(--good);border:1px solid #bfe6cf;border-radius:999px;padding:2px 9px;font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;margin-left:8px;vertical-align:middle;}
+.qtext{font-weight:600;margin:6px 0 12px;font-size:16px;}
+.qtext .dtable{font-weight:400;max-width:360px;}
+.opt{display:block;width:100%;text-align:left;background:#fff;border:1.5px solid var(--line);border-radius:11px;padding:11px 14px;margin:7px 0;font-size:15px;cursor:pointer;transition:.14s;color:var(--ink);}
+.opt:hover{border-color:var(--brand);background:var(--brand-soft);}
+.opt.correct{border-color:var(--good);background:var(--good-soft);} .opt.wrong{border-color:var(--bad);background:var(--bad-soft);}
+.opt .mark{float:right;font-weight:700;}
+.exp{margin-top:11px;padding:13px 15px;border-radius:11px;background:#faf9fe;border:1px dashed var(--line);font-size:14px;display:none;} .exp.show{display:block;} .exp b{color:var(--brand);}
+.scorechip{font-size:13px;color:var(--muted);font-weight:600;}
+.navrow{display:flex;justify-content:space-between;margin-top:22px;gap:10px;}
+.navbtn{text-decoration:none;font-weight:600;font-size:14px;padding:10px 16px;border-radius:11px;border:1px solid var(--line);color:var(--ink);background:#fff;}
+.navbtn.primary{background:var(--brand);color:#fff;border-color:var(--brand);}
+.tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.warnbox{background:var(--amber-soft);border:1px solid #f0deb8;border-radius:11px;padding:12px 16px;margin:14px 0;font-size:14.5px;}
+.warnbox b{color:var(--amber);}
+/* --- presentation chips. The hub styles .p as a chip; day pages use .p for prose,
+      so the chip rule is scoped to span.p. --- */
+span.p{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.04em;padding:2px 7px;border-radius:5px;color:#fff;margin-right:3px;white-space:nowrap;}
+span.p.P1{background:var(--p1)}span.p.P2{background:var(--p2)}span.p.P3{background:var(--p3)}
+span.p.P4{background:var(--p4)}span.p.P5{background:var(--p5)}span.p.P6{background:var(--p6)}
+.tags{margin:0 0 6px;}
+.traps{list-style:none;margin:6px 0 0;padding:0;counter-reset:tr;}
+.traps li{position:relative;padding:9px 0 9px 34px;border-top:1px dashed var(--line);font-size:14.5px;}
+.traps li:first-child{border-top:none;}
+.traps li::before{counter-increment:tr;content:counter(tr);position:absolute;left:0;top:9px;width:22px;height:22px;border-radius:7px;
+  background:var(--amber-soft);border:1px solid #f0deb8;color:var(--amber);font-weight:800;font-size:11.5px;display:grid;place-items:center;}
+.traps li b{color:var(--brand-d);}
+.tactic{display:flex;gap:12px;padding:12px 0;border-top:1px solid var(--line);align-items:flex-start;}
+.tactic:first-of-type{border-top:none;}
+.tactic .tk{flex:0 0 78px;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--brand);padding-top:3px;}
+.tactic .tv{font-size:14.5px;}
+.calm{background:var(--good-soft);border:1px solid #bfe6cf;border-radius:14px;padding:20px 22px;margin:18px 0;font-size:15.5px;}
+.calm b{color:var(--good);}
+.calm p{margin:0 0 10px;} .calm p:last-child{margin-bottom:0;}
+@media print{
+  body{background:#fff;} .panel{box-shadow:none;border-color:#ccc;}
+  audio,.secaudio,.timer,.navrow,.home{display:none!important;}
+  .reveal,.exp{display:block!important;} .preq{border-color:#ccc;}
+  .qblock{break-inside:avoid;} .panel{break-inside:avoid;}
+}
+</style>
+</head><body><div class="wrap">
+<a class="home" href="index.html">&larr; All 14 days</a>
+<div class="crumb">Day 14 of 14 &middot; Exam day</div>
+<h1>Warm-up, then the exam</h1>
+<div class="tags"><span class="p P2">P2</span><span class="p P4">P4</span><span class="p P5">P5</span></div>
+<p class="lede">Thirty minutes this morning. Three warm-up questions, one read of the trap list, one read of the tactics. Then close the folder. The exam is at 16:00.</p>
+
+<div class="panel"><h3>&#127911; Before you start <span class="scorechip">under a minute</span></h3>
+<!-- SCRIPT Day-14-intro.mp3 | NOA=Heart TOM=Fenrir
+NOA: Good morning. Everything you are going to use today, you already have. This half hour is only about waking it up.
+TOM: So three questions, and then I stop.
+NOA: Three. A tree, a grid, and one mixing calculation. Not because they are hard, but because they are the ones your hand needs to remember doing.
+TOM: Like playing scales before a concert. Not learning anything new, just making sure the fingers move.
+NOA: That is exactly it. And if one of them feels stiff, that is not a signal. Stiff at breakfast is normal.
+TOM: What I should not do is go looking for the thing I never quite understood.
+NOA: Please do not. There is nothing waiting there but worry.
+TOM: Then read the traps once, read the habits once, and shut the folder.
+NOA: Shut it. Eat something. Take the calculator.
+-->
+<audio controls preload="none" src="Day-14-intro.mp3"></audio>
+<div class="takeaway"><ul>
+<li><b>Three warm-up questions.</b> A tree, a grid, one mixing calculation. Do them with a pen.</li>
+<li><b>Then the trap list</b>, once, not twice.</li>
+<li><b>Then the tactics for the room</b>: the two-pass plan and four habits.</li>
+<li><b>Then stop.</b> Nothing new goes in today.</li>
+</ul>
+<p class="tk-gen">One line for the whole day: <b>you are not learning this morning. You are warming up.</b></p></div></div>
+
+<!-- ============ WARM-UP 1 ============ -->
+<div class="panel"><h3><span class="p P2" style="margin-right:0">P2</span> Warm-up 1: one tree <span class="scorechip">~6 min</span></h3>
+<p class="p">First number in each ending is player 1's, second is player 2's. Solve it from the last node backwards. Read the question carefully.</p>
+
+<div class="svg-wrap">
+<svg viewBox="0 0 560 240" role="img" aria-label="A three-level game tree. Player one chooses A or B at the root. After A, player two chooses between an ending of five and two, or passing back to player one, who would then choose between eight and one, or three and six. After B, player two chooses between four and seven, or six and three. Working backwards, player one would take eight and one at the deep node, so player two prefers five and two; after B player two prefers four and seven; and player one at the root prefers A, ending at five and two.">
+  <g stroke="#c8c2dd" stroke-width="2" fill="none">
+    <line x1="48" y1="118" x2="175" y2="62"/><line x1="48" y1="118" x2="175" y2="178"/>
+    <line x1="175" y1="62" x2="320" y2="95"/>
+    <line x1="320" y1="95" x2="465" y2="72"/><line x1="320" y1="95" x2="465" y2="120"/>
+    <line x1="175" y1="178" x2="320" y2="208"/>
+  </g>
+  <g stroke="#1f9d63" stroke-width="3.2" fill="none">
+    <line x1="48" y1="118" x2="175" y2="62"/>
+    <line x1="175" y1="62" x2="320" y2="30"/>
+  </g>
+  <g stroke="#c8c2dd" stroke-width="2" fill="none">
+    <line x1="175" y1="178" x2="320" y2="152"/>
+  </g>
+  <circle cx="48" cy="118" r="14" fill="#6b4ef0"/>
+  <circle cx="175" cy="62" r="14" fill="#2f7fd0"/><circle cx="175" cy="178" r="14" fill="#2f7fd0"/>
+  <circle cx="320" cy="95" r="14" fill="#6b4ef0"/>
+  <g font-size="12" font-family="-apple-system,Segoe UI,Arial" font-weight="700" fill="#fff" text-anchor="middle">
+    <text x="48" y="123">1</text><text x="175" y="67">2</text><text x="175" y="183">2</text><text x="320" y="100">1</text>
+  </g>
+  <g font-size="11.5" font-family="-apple-system,Segoe UI,Arial" fill="#6f6886">
+    <text x="103" y="80" text-anchor="middle">A</text><text x="103" y="160" text-anchor="middle">B</text>
+    <text x="248" y="38" text-anchor="middle">a1</text><text x="252" y="88" text-anchor="middle">a2</text>
+    <text x="248" y="156" text-anchor="middle">b1</text><text x="248" y="205" text-anchor="middle">b2</text>
+    <text x="396" y="76" text-anchor="middle">x</text><text x="396" y="118" text-anchor="middle">y</text>
+  </g>
+  <g fill="#c8c2dd"><circle cx="465" cy="72" r="4"/><circle cx="465" cy="120" r="4"/><circle cx="320" cy="30" r="4"/><circle cx="320" cy="152" r="4"/><circle cx="320" cy="208" r="4"/></g>
+  <g font-size="13" font-family="-apple-system,Segoe UI,Arial" font-weight="700" fill="#211c33">
+    <text x="332" y="35" fill="#1f9d63">(5, 2)</text>
+    <text x="477" y="77">(8, 1)</text>
+    <text x="477" y="125">(3, 6)</text>
+    <text x="332" y="157">(4, 7)</text>
+    <text x="332" y="213">(6, 3)</text>
+  </g>
+</svg>
+<div class="cap">Purple nodes are player 1's, blue nodes are player 2's. Note that player 1 moves twice on the upper branch. Green is the answer path. Look at it only after you have solved it.</div>
+</div>
+
+<div class="tryq"><div class="q">What is <b>player 2's</b> payoff in the backward-induction equilibrium?</div>
+<button class="reveal-btn" onclick="this.nextElementSibling.classList.add('show');this.disabled=true;">Reveal answer</button>
+<div class="reveal"><b>Player 2 gets 2.</b><br><br><b>Deepest node first.</b> Player 1 chooses between (8, 1) and (3, 6). He reads his own number: 8 beats 3, so he plays <b>x</b> and that node is worth (8, 1).<br><br><b>Player 2's node after A.</b> His choices are a1, worth 2 to him, or a2, which now leads to that (8, 1). He compares 2 against 1 and takes <b>a1</b>. Branch A is worth (5, 2).<br><br><b>Player 2's node after B.</b> b1 gives him 7, b2 gives him 3. He takes <b>b1</b>. Branch B is worth (4, 7).<br><br><b>The root.</b> Player 1 compares his own numbers: A is worth 5, B is worth 4. He plays <b>A</b>. Final outcome <b>(5, 2)</b>, so player 2 gets <b>2</b>.<br><br><b>The trap.</b> 7 is player 2's best number in the whole tree, and he cannot get it, because player 1 never goes to that side. And if you were rushing you might have answered 5, which is player <i>1</i>'s payoff. Check which player is asked. That single habit is worth more marks than any formula.</div></div>
+</div>
+
+<!-- ============ WARM-UP 2 ============ -->
+<div class="panel"><h3><span class="p P4" style="margin-right:0">P4</span> Warm-up 2: one grid <span class="scorechip">~6 min</span></h3>
+<p class="p">First number is player 1's, second is player 2's. Do the full sweep: every column, then every row.</p>
+<div class="tscroll">
+<table class="dtable" style="max-width:420px">
+<tr><th></th><th>Left</th><th>Center</th><th>Right</th></tr>
+<tr><td class="lab">Up</td><td>3, &nbsp;5</td><td>7, &nbsp;2</td><td>4, &nbsp;4</td></tr>
+<tr><td class="lab">Middle</td><td>6, &nbsp;6</td><td>2, &nbsp;5</td><td>5, &nbsp;3</td></tr>
+<tr><td class="lab">Down</td><td>1, &nbsp;4</td><td>8, &nbsp;7</td><td>6, &nbsp;6</td></tr>
+</table></div>
+
+<div class="tryq"><div class="q">How many pure Nash equilibria are there? And what is the highest payoff player 1 can get in one?</div>
+<button class="reveal-btn" onclick="this.nextElementSibling.classList.add('show');this.disabled=true;">Reveal answer</button>
+<div class="reveal"><b>Two equilibria. Player 1's highest is 8.</b><br><br><b>Player 1, down each column</b> (first numbers): Left is 3, 6, 1 &rarr; <i>Middle</i>. Center is 7, 2, 8 &rarr; <i>Down</i>. Right is 4, 5, 6 &rarr; <i>Down</i>.<br><br><b>Player 2, across each row</b> (second numbers): Up is 5, 2, 4 &rarr; <i>Left</i>. Middle is 6, 5, 3 &rarr; <i>Left</i>. Down is 4, 7, 6 &rarr; <i>Center</i>.<br><br><b>Both marks:</b> (Middle, Left) = (6, 6) and (Down, Center) = (8, 7). Two of them.<br><br>(Down, Right) is the near miss: player 1 is happy there, but player 2 would slide across to Center. One player content is not an equilibrium.<br><br><b>Highest payoff for player 1 in a pure equilibrium: 8.</b> Not 7, which is the biggest number in his Up row and sits in no equilibrium at all.</div></div>
+</div>
+
+<!-- ============ WARM-UP 3 ============ -->
+<div class="panel"><h3><span class="p P5" style="margin-right:0">P5</span> Warm-up 3: one mixed equilibrium <span class="scorechip">~8 min</span></h3>
+<p class="p">Zero-sum: <b>one number per cell, and it is player 1's payoff</b>. Player 1 wants it high, player 2 wants it low.</p>
+<div class="tscroll">
+<table class="dtable" style="max-width:340px">
+<tr><th></th><th>Left</th><th>Right</th></tr>
+<tr><td class="lab">Top</td><td>9</td><td>3</td></tr>
+<tr><td class="lab">Bottom</td><td>2</td><td>6</td></tr>
+</table></div>
+<p class="given">Check for a stable cell first. Top's smallest is 3, and 3 is not the biggest in the Right column. Bottom's smallest is 2, and 2 is not the biggest in the Left column. There is no stable cell, so you have to mix.</p>
+
+<div class="tryq"><div class="q">Find both mixtures and the value of the game. Then: what is the probability that the outcome is <b>(Top, Right)</b>, to the nearest percentage point?</div>
+<button class="reveal-btn" onclick="this.nextElementSibling.classList.add('show');this.disabled=true;">Reveal answer</button>
+<div class="reveal"><b>Top 40% of the time; Left 30% of the time; value 4.8; P(Top, Right) = 28%.</b><br><br>
+<b>Player 1's mixture</b> (<i>p</i> for Top) must leave player 2 indifferent, so make the two columns equal:<br>
+<span class="math">Left: 9p + 2(1−p) = 2 + 7p</span> &nbsp;<span class="math">Right: 3p + 6(1−p) = 6 − 3p</span><br>
+2 + 7p = 6 &minus; 3p &rarr; 10p = 4 &rarr; <b>p = 0.4</b>.<br><br>
+<b>Player 2's mixture</b> (<i>q</i> for Left) must leave player 1 indifferent, so make the two rows equal:<br>
+<span class="math">Top: 9q + 3(1−q) = 3 + 6q</span> &nbsp;<span class="math">Bottom: 2q + 6(1−q) = 6 − 4q</span><br>
+3 + 6q = 6 &minus; 4q &rarr; 10q = 3 &rarr; <b>q = 0.3</b>.<br><br>
+<b>Value:</b> 2 + 7(0.4) = <b>4.8</b>. Check from the other side: 3 + 6(0.3) = 4.8. The two agreeing is your proof.<br><br>
+<b>The cell.</b> (Top, Right) is a mismatched pair: Top is player 1's, Right is player 2's. So it is 0.4 &times; 0.7 = 0.28 = <b>28%</b>.<br><br>
+<b>Everything else on the option list is a wrong turn you can name:</b> 40% is <i>p</i> on its own, 30% is <i>q</i> on its own, 12% is the matched cell (Top, Left), and 70% is just how often player 2 goes Right. An outcome needs both players to have moved, so you always multiply.</div></div>
+</div>
+
+<!-- ============ TRAP LIST ============ -->
+<div class="panel"><h3>&#9888;&#65039; The trap list: read once <span class="scorechip">~5 min</span></h3>
+<p class="note">Every one of these appears again and again across the six solved papers. Read the list slowly, once. Do not re-read it in the exam room.</p>
+<ol class="traps">
+<li><b>Which player is asked?</b> It changes from paper to paper: player 1, player 2, "Player A", "Player B", and sometimes a <i>name</i> like Rowana the row player, or John and Mary. A name feels friendly and hides the question. Turn it into "row player" or "column player" before you start, and underline it.</li>
+<li><b>In a tree question, every wrong option is a number that appears in the tree.</b> Usually one of them is a big number on a branch the other player will never let you reach. Solve the tree. Never pick the biggest number you can see.</li>
+<li><b>Counting equilibria: finish the sweep.</b> The options are always 0, 1, 2, 3, 4. One missed cell moves you exactly one option along, and the wrong answer still looks fine.</li>
+<li><b>"Highest payoff player 1 can get in a pure equilibrium"</b> always offers "the game has no pure equilibrium" as the last option. Check that before you use it. And read only equilibrium cells, not the whole grid.</li>
+<li><b>The probability of an outcome is p &times; q, never p.</b> Both single proportions are on the option list, waiting.</li>
+<li><b>The cell they name is often mismatched:</b> one player's row with the other player's column. Read that line twice. Multiplying the matched pair instead is the most expensive slip on the paper.</li>
+<li><b>Read the rounding instruction.</b> It genuinely changes between papers: nearest percentage point, two digits after the decimal point, one decimal place. And one paper gives no instruction at all.</li>
+<li><b>2/3-average: the mean of a uniform range is (min + max) &divide; 2, not 50.</b> With a mixed population, average the whole population first, <i>then</i> take two thirds. The un-averaged number is always offered.</li>
+<li><b>2/3-average: the equilibrium is 1.</b> The range 13 to 19 is what people play in the lab, not the theory. Read which one the question wants.</li>
+<li><b>Repeated games: read what the opponent forgives</b> before you choose. And "play tit-for-tat" has been offered and has never once been the answer.</li>
+<li><b>"Name the game" questions hide a non-matrix game in the options:</b> Dictator, Ultimatum. Those are sequential games. A payoff matrix cannot be either of them.</li>
+<li><b>Dominance questions: usually only one player has a dominant strategy.</b> The tempting wrong option adds a strategy for the other player too.</li>
+<li><b>"None of the other answers is correct" has never been the right answer</b> across the six solved papers. That is a low chance, but not zero. If you land on it, treat that as a prompt to check your arithmetic once more. If the other four really are wrong, choose it. Never use it as a shelter.</li>
+</ol>
+</div>
+
+<!-- ============ EXAM ROOM ============ -->
+<div class="panel"><h3>&#127919; In the room <span class="scorechip">~4 min</span></h3>
+<p class="note">14 questions, 90 minutes, closed book, calculator allowed, no formula sheet. Starts at 16:00.</p>
+
+<div class="rule">Two passes. Answer everything you can in about the first 50 minutes, then spend the remaining 40 on the three or four heavy ones you left behind.</div>
+
+<p class="p">The heavy questions are usually the pair of zero-sum calculations and one big counting grid. If you meet them on the first pass and they are slow, mark them and move on. A hard question is worth exactly the same as an easy one. Paying six minutes for one while three easy ones sit unread is a bad trade.</p>
+
+<div class="tactic"><div class="tk">Never blank</div><div class="tv">No paper states a penalty for a wrong answer. An empty box scores zero for certain. A guess never does. Before you hand it in, look for gaps. If you have ruled out even one option, your guess is already better than a coin.</div></div>
+
+<div class="tactic"><div class="tk">Rounding</div><div class="tv">Read the instruction in that specific question, every time. Nearest percentage point, one decimal place, two decimals, or nothing at all. It is not the same on every paper. It is not even the same in both halves of the coupled pair.</div></div>
+
+<div class="tactic"><div class="tk">Which player</div><div class="tv">Say the name to yourself before you write anything: "I want player 2's number." Then say it again when you pick the option. This costs two seconds and it is the single cheapest mark on the paper.</div></div>
+
+<div class="tactic"><div class="tk">Second pass</div><div class="tv">Come back to the heavy ones with the whole clock spent and the easy marks banked. You will read them differently. The panic that made them look hard on the first pass will be gone.</div></div>
+</div>
+
+<div class="calm">
+<p><b>That is everything.</b> You have sat four full papers under the clock. You can solve a tree backwards, sweep a grid, and run an indifference equation from the first line to the last. Not because you memorised them, but because you understood why each step is there.</p>
+<p>You will not feel ready. Nobody does at breakfast. Feeling ready is not what matters. Being able to do the work is, and that part is already done.</p>
+<p>Eat something. Take a calculator and a pen you like. Get there early enough that the walk is unhurried. Then close this and go.</p>
+<p><b>Good luck, Ifat. Go and enjoy it.</b></p>
+</div>
+
+<div class="navrow"><a class="navbtn" href="Day-13.html">&larr; Back</a><a class="navbtn primary" href="index.html">All 14 days &rarr;</a></div>
+</div>
+<!-- GoatCounter analytics -->
+<script data-goatcounter="https://game-theory.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<!-- Activity tracking: audio plays and finishes, quiz and mock completion. Sends counts to GoatCounter only. No personal data. -->
+<script>
+(function(){
+  function ev(path, title){
+    try{
+      if(!window.goatcounter || !window.goatcounter.count) return;
+      window.goatcounter.count({path: path, title: title, event: true});
+    }catch(e){}
+  }
+  var page = (location.pathname.split('/').pop() || 'index.html').replace(/\.html$/,'') || 'index';
+
+  // Audio: one count the first time a strip is played, one when it reaches the end.
+  Array.prototype.forEach.call(document.querySelectorAll('audio'), function(a){
+    var name = (a.getAttribute('src') || 'audio').replace(/\.mp3$/,'');
+    var started = false, finished = false;
+    a.addEventListener('play', function(){
+      if(started) return; started = true;
+      ev('audio-play/' + name, 'Audio started: ' + name);
+    });
+    a.addEventListener('ended', function(){
+      if(finished) return; finished = true;
+      ev('audio-done/' + name, 'Audio finished: ' + name);
+    });
+  });
+
+  // Learn-day quiz: one count when every question has been answered, with the score.
+  var qbody = document.getElementById('quizBody');
+  if(qbody){
+    var chip = document.getElementById('scoreChip');
+    var qsent = false;
+    qbody.addEventListener('click', function(){
+      if(qsent) return;
+      setTimeout(function(){
+        if(qsent) return;
+        var blocks = qbody.querySelectorAll('.qblock');
+        if(!blocks.length) return;
+        var done = 0;
+        Array.prototype.forEach.call(blocks, function(b){ if(b.dataset.done) done++; });
+        if(done !== blocks.length) return;
+        qsent = true;
+        var raw = chip ? chip.textContent.trim() : '';
+        var slug = raw.replace(/\s*\/\s*/, '-of-') || 'unknown';
+        ev('quiz-done/' + page + '/' + slug, 'Quiz finished: ' + page + ' ' + raw);
+      }, 0);
+    });
+  }
+
+  // Mock day: one count when the results panel opens, with the score.
+  var res = document.getElementById('results');
+  if(res && window.MutationObserver){
+    var msent = false;
+    var mo = new MutationObserver(function(){
+      if(msent || !res.classList.contains('show')) return;
+      msent = true; mo.disconnect();
+      var el = document.getElementById('resScore');
+      var raw = el ? el.textContent.trim() : '';
+      var slug = raw.replace(/\s*\/\s*/, '-of-') || 'unknown';
+      ev('mock-done/' + page + '/' + slug, 'Mock submitted: ' + page + ' ' + raw);
+    });
+    mo.observe(res, {attributes: true, attributeFilter: ['class']});
+  }
+})();
+</script>
+</body></html>

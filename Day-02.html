@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Name That Game: The Five Game Types</title>
+<style>
+:root{--bg:#f5f3fb;--card:#fff;--ink:#211c33;--muted:#6f6886;--brand:#6b4ef0;--brand-d:#5238c4;
+--brand-soft:#ece7fd;--good:#1f9d63;--good-soft:#e4f6ec;--bad:#d2453f;--bad-soft:#fae5e4;--line:#e7e3f2;
+--amber:#b6791f;--amber-soft:#fcf3e3;}
+*{box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);margin:0;line-height:1.55;}
+.wrap{max-width:760px;margin:0 auto;padding:26px 22px 60px;}
+.home{display:inline-block;margin:0 0 12px;color:var(--brand);font-weight:700;font-size:13px;text-decoration:none;}
+.crumb{color:var(--brand);font-weight:600;font-size:13px;text-transform:uppercase;letter-spacing:.05em;}
+h1{font-size:28px;margin:8px 0 4px;letter-spacing:-.02em;}
+.lede{color:var(--muted);margin:0 0 14px;font-size:16px;}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px 24px;margin:18px 0;box-shadow:0 1px 3px rgba(40,20,90,.04);}
+.panel h3{margin:0 0 6px;font-size:18px;display:flex;align-items:center;gap:8px;}
+.panel h3 .scorechip{margin-left:auto;}
+.panel .note{color:var(--muted);font-size:14px;margin:0 0 14px;}
+.preq{background:var(--amber-soft);border:1px solid #f0deb8;border-radius:16px;padding:18px 20px;margin:18px 0;}
+.preq .tag{color:var(--amber);font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.06em;}
+.preq p{margin:8px 0 0;font-size:16px;} .preq .do{margin-top:10px;font-weight:600;color:var(--amber);}
+audio{width:100%;margin-top:6px;}
+.secaudio{background:var(--brand-soft);border:1px solid #d9d0fb;border-radius:12px;padding:10px 13px;margin:4px 0 14px;}
+.secaudio .salab{display:block;font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--brand-d);margin-bottom:7px;}
+.takeaway{font-size:14.5px;background:#fbfaff;border:1px dashed var(--line);border-radius:11px;padding:13px 16px;margin-top:14px;}
+.takeaway b{color:var(--brand);} .takeaway ul{margin:2px 0 0;padding-left:20px;} .takeaway li{margin:5px 0;}
+.takeaway .tk-gen{margin:10px 0 0;padding-top:10px;border-top:1px dashed var(--line);}
+.sub{font-size:15px;font-weight:800;color:var(--brand-d);margin:20px 0 6px;}
+.p{font-size:15px;margin:0 0 8px;}
+.partlab{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--brand);margin:0 0 6px;}
+.rule{background:var(--brand-soft);border-radius:11px;padding:12px 16px;font-weight:600;color:var(--brand-d);margin:16px 0;}
+.question{background:#f6f4fc;border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:10px;padding:14px 16px;font-size:15.5px;}
+.step{display:flex;gap:14px;padding:12px 0;border-top:1px solid var(--line);} .step:first-of-type{border-top:none;}
+.stepn{flex:0 0 28px;height:28px;border-radius:8px;background:var(--brand);color:#fff;font-weight:700;display:grid;place-items:center;font-size:14px;}
+.stepbody .lab{font-weight:600;}
+.math{font-family:"SF Mono",Menlo,Consolas,monospace;background:#f6f4fc;border:1px solid var(--line);border-radius:8px;padding:8px 12px;margin-top:6px;font-size:14.5px;display:inline-block;}
+.ans{background:var(--good-soft);border:1px solid #bfe6cf;border-radius:11px;padding:12px 16px;margin-top:16px;font-weight:600;color:var(--good);}
+.tryq{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:10px 0;} .tryq .q{font-weight:600;margin-bottom:8px;}
+.reveal-btn{background:var(--brand);color:#fff;border:none;border-radius:9px;padding:8px 14px;font-weight:600;cursor:pointer;font-size:14px;}
+.reveal{display:none;margin-top:10px;padding:11px 14px;border-radius:9px;background:#faf9fe;border:1px dashed var(--line);font-size:14px;} .reveal.show{display:block;}
+.dtable{width:100%;border-collapse:collapse;font-size:13.5px;margin:10px 0;}
+.dtable th,.dtable td{border:1px solid var(--line);padding:8px 8px;text-align:center;}
+.dtable th{background:var(--brand-soft);color:var(--brand-d);font-weight:700;} .dtable td.lab{text-align:left;font-weight:600;background:var(--brand-soft);color:var(--brand-d);}
+.dtable td.hlcell{background:var(--good-soft);font-weight:700;color:var(--good);}
+.dtable td.dim{color:var(--muted);}
+.datalab{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--brand-d);margin:20px 0 8px;}
+.given{color:var(--muted);font-size:13px;margin:2px 0 4px;}
+.svg-wrap{background:#fff;border:1px solid var(--line);border-radius:13px;padding:14px;margin:14px 0;text-align:center;}
+.svg-wrap svg{width:100%;height:auto;max-width:560px;}
+.cap{color:var(--muted);font-size:13px;margin-top:8px;}
+.qblock{padding:16px 0;border-top:1px solid var(--line);} .qblock:first-of-type{border-top:none;padding-top:4px;}
+.qnum{color:var(--brand);font-weight:700;font-size:12px;letter-spacing:.04em;text-transform:uppercase;}
+.examtag{display:inline-block;background:var(--good-soft);color:var(--good);border:1px solid #bfe6cf;border-radius:999px;padding:2px 9px;font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;margin-left:8px;vertical-align:middle;}
+.qtext{font-weight:600;margin:6px 0 12px;font-size:16px;}
+.qtext .dtable{font-weight:400;max-width:360px;}
+.opt{display:block;width:100%;text-align:left;background:#fff;border:1.5px solid var(--line);border-radius:11px;padding:11px 14px;margin:7px 0;font-size:15px;cursor:pointer;transition:.14s;color:var(--ink);}
+.opt:hover{border-color:var(--brand);background:var(--brand-soft);}
+.opt.correct{border-color:var(--good);background:var(--good-soft);} .opt.wrong{border-color:var(--bad);background:var(--bad-soft);}
+.opt .mark{float:right;font-weight:700;}
+.exp{margin-top:11px;padding:13px 15px;border-radius:11px;background:#faf9fe;border:1px dashed var(--line);font-size:14px;display:none;} .exp.show{display:block;} .exp b{color:var(--brand);}
+.scorechip{font-size:13px;color:var(--muted);font-weight:600;}
+.navrow{display:flex;justify-content:space-between;margin-top:22px;gap:10px;}
+.navbtn{text-decoration:none;font-weight:600;font-size:14px;padding:10px 16px;border-radius:11px;border:1px solid var(--line);color:var(--ink);background:#fff;}
+.navbtn.primary{background:var(--brand);color:#fff;border-color:var(--brand);}
+.tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.warnbox{background:var(--amber-soft);border:1px solid #f0deb8;border-radius:11px;padding:12px 16px;margin:14px 0;font-size:14.5px;}
+.warnbox b{color:var(--amber);}
+@media print{
+  body{background:#fff;} .panel{box-shadow:none;border-color:#ccc;}
+  audio,.secaudio,.timer,.navrow,.home{display:none!important;}
+  .reveal,.exp{display:block!important;} .preq{border-color:#ccc;}
+  .qblock{break-inside:avoid;} .panel{break-inside:avoid;}
+}
+</style>
+<style>
+/* presentation chips: from index.html, scoped to spans so .p paragraphs are untouched */
+:root{--p1:#7c5cbf;--p2:#2f7fd0;--p3:#1d8a6a;--p4:#c2820b;--p5:#c04a7e;--p6:#4a6fa5;}
+span.p{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.04em;padding:2px 7px;border-radius:5px;color:#fff;margin-right:3px;white-space:nowrap;}
+.P1{background:var(--p1)}.P2{background:var(--p2)}.P3{background:var(--p3)}
+.P4{background:var(--p4)}.P5{background:var(--p5)}.P6{background:var(--p6)}
+.tags{margin:0 0 10px;}
+.trio{display:flex;flex-wrap:wrap;gap:12px;margin:12px 0;}
+.trio > div{flex:1 1 205px;min-width:196px;}
+.trio .tname{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--brand-d);margin-bottom:2px;}
+.trio .dtable{margin:4px 0 6px;font-size:12.5px;}
+.trio .dtable th,.trio .dtable td{padding:6px 4px;}
+.trio .tnote{font-size:12.5px;color:var(--muted);}
+</style>
+</head><body><div class="wrap">
+<a class="home" href="index.html">&larr; All 14 days</a>
+<div class="crumb">Day 2 of 14 &middot; Learn</div>
+<h1>Name that game: the five game types side by side</h1>
+<div class="tags"><span class="p P3">P3</span><span class="p P4">P4</span></div>
+<p class="lede">Your teacher splits these five games across two lectures. The exam puts them in one question and asks you to choose. Dominance and the prisoner's dilemma are about 13% of the paper. Counting equilibria on top of that is the biggest topic there is.</p>
+
+<div class="preq"><span class="tag">&#9208; Guess first</span>
+<p>Two friends want to spend the evening together. He would rather go bowling. She would rather see a film. Both would <i>much</i> rather be together than alone. So there are two sensible endings: both bowling, or both at the cinema.<br><br>Is one of those two endings better <b>for both of them</b>?</p>
+<p class="do">Take 20 seconds. Commit to an answer before you read on.</p></div>
+
+<div class="panel"><h3>&#127911; What tells the five games apart <span class="scorechip">~1 min</span></h3>
+<p class="note">A quick map of what you'll learn today. Each section below also has its own short audio. Everything you need is printed on the page, so this day works fine on paper. Print it and the hidden answers come out with it.</p>
+<!-- SCRIPT Day-02-intro.mp3 | NOA=Heart TOM=Fenrir
+NOA: Today is a sorting day. Five little games, and the whole skill is telling them apart quickly.
+TOM: Five feels like a lot to hold in my head at once.
+NOA: It is less than it sounds, because they come in three families. One family has a single stable outcome that everybody regrets. One family has a pair of stable outcomes and the only question is how those two are ranked. And one has nothing stable at all.
+TOM: So really I am asking two questions, not five.
+NOA: Exactly two. First: does each player have one choice that is best no matter what the other one does? If yes, you are in the first family, and there is one more thing to check before you name it.
+TOM: And if nobody has a choice like that?
+NOA: Then you count the stable outcomes. Two of them, and you ask whether both players agree about which one is nicer. If they agree, it is one game. If they disagree, it is another. And if there are none at all, that is the last one.
+TOM: Agree or disagree. That I can remember.
+NOA: Your teacher spreads these across two lectures. The exam puts them in a single question and asks you to choose. So today we lay them side by side and look at what actually differs.
+-->
+<audio controls preload="none" src="Day-02-intro.mp3"></audio>
+<div class="takeaway"><ul>
+<li><b>Dominant strategy</b>: a choice that gives you your best payoff <i>no matter what</i> the other player does. Strategic rule: if you have one, use it.</li>
+<li><b>Dominated strategy</b>: a choice that is always worse for you than some other choice of yours. Rule: never play it.</li>
+<li><b>Pure Nash equilibrium</b>: a cell where neither player wants to move. Counting these cells is the fastest way to sort a matrix.</li>
+<li><b>Pareto-ranked</b>: one outcome is better for <i>both</i> players than another. Not the same as "bigger total" and not the same as "better on average".</li>
+</ul>
+<p class="tk-gen">One line to hold onto: <b>first ask who has a dominant strategy; then count the stable cells; then ask whether the two players agree about which one is nicer.</b></p></div></div>
+
+<!-- ============ SECTION 1 ============ -->
+<div class="panel"><h3>Dominance, and why a prisoner's dilemma needs <i>two</i> ticks <span class="p P3" style="margin-left:auto">P3</span></h3>
+<div class="secaudio"><span class="salab">&#127911; Listen to this section</span><!-- SCRIPT Day-02-dominance.mp3 | NOA=Heart TOM=Fenrir
+NOA: Start with the simplest idea in the whole course. A dominant strategy is a choice that gives you your best payoff no matter what the other player does.
+TOM: So I do not need to guess what she will do. I just look down my own rows and one of them wins every time.
+NOA: That is it. And the rule that follows is short enough to tattoo on your hand. If you have a dominant strategy, use it. If a strategy is dominated, never play it.
+TOM: The mirror image. One is always better, so take it. One is always worse, so drop it.
+NOA: Now look at the table of the two mail-order clothes firms on the page. Each firm can print the higher price in its winter catalogue, or the lower one. Follow the lower row across, and compare it with the upper row, column by column.
+TOM: The lower price wins in both columns. For both firms. So both of them cut.
+NOA: And here is the sting. Look at the cell they land in, then look at the cell where they both kept the higher price. Both firms are worse off in the cell they chose for themselves.
+TOM: They each did the smart thing and together they did the stupid thing.
+NOA: That is the prisoner's dilemma, and notice it took two separate checks. Every player has a dominant strategy. And the cell those dominant strategies produce is worse for everybody than some other cell.
+TOM: So if only the first one holds, it is not a dilemma. It is just a game with an obvious answer.
+NOA: Exactly. The exam loves that gap. A matrix where dominance is clean and the outcome is already the best cell for both. It looks like the famous game. It is not the famous game.
+-->
+<audio controls preload="none" src="Day-02-dominance.mp3"></audio></div>
+
+<p class="p">A <b>dominant strategy</b> is a choice that gives you your best payoff whatever the other player does. You don't have to guess about him. You look down your own rows, and one of them wins in every column.</p>
+
+<p class="p">Its mirror is a <b>dominated strategy</b>: a choice that is always worse for you than some other choice of yours. Same logic, opposite sign.</p>
+
+<div class="rule">If you have a dominant strategy, <b>use it</b>. If a strategy is dominated, <b>never play it</b>. You don't need to predict your opponent to obey either rule.</div>
+
+<p class="p">Albert Tucker's story from 1950. Two criminals are arrested and held apart. On the small charge each gets one year. If one testifies against the other, the talker walks free and his partner gets twenty years. If both testify, both get five. Each prisoner only wants to shorten his own sentence.</p>
+
+<p class="p">Testifying is dominant for each of them. It shortens your sentence whatever your partner does. So both testify and both serve five years, when staying quiet would have cost each of them one year.</p>
+
+<p class="partlab">The exam's numbers</p>
+<p class="p">The course's numeric version from Presentation 3. Two rival mail-order clothes firms print a winter catalogue, and the price inside must be honoured all season. Each picks $80 (call it <i>cooperate</i>) or $70 (<i>defect</i>). Profits are in thousands.</p>
+<div class="tscroll">
+<table class="dtable">
+<tr><th></th><th>Firm 2: cooperate ($80)</th><th>Firm 2: defect ($70)</th></tr>
+<tr><td class="lab">Firm 1: cooperate ($80)</td><td>75,&nbsp; 75</td><td>20,&nbsp; 120</td></tr>
+<tr><td class="lab">Firm 1: defect ($70)</td><td>120,&nbsp; 20</td><td class="hlcell">70,&nbsp; 70 &nbsp;&#10003;</td></tr>
+</table></div>
+<div class="cap">The green cell is where both dominant strategies meet. It is the only stable cell in the matrix. Notice it pays each firm less than the cell above and to the left.</div>
+
+<p class="partlab">Worked example</p>
+<div class="question">Two rival mail-order clothes firms each print $80 (<i>cooperate</i>) or $70 (<i>defect</i>) in their winter catalogue. Profits in thousands, firm 1 first: if both cooperate, 75 each. If firm 1 cooperates and firm 2 defects, 20 to firm 1 and 120 to firm 2. The other way round, 120 to firm 1 and 20 to firm 2. If both defect, 70 each.<br><br>Is this a prisoner's dilemma? Check both conditions, in order.</div>
+
+<div class="step"><div class="stepn">1</div><div class="stepbody"><div class="lab">Does firm 1 have a dominant strategy?</div>
+Compare its two rows, column by column. If firm 2 cooperates: 120 beats 75. If firm 2 defects: 70 beats 20.
+<br><span class="math">defect wins in both columns → dominant</span></div></div>
+
+<div class="step"><div class="stepn">2</div><div class="stepbody"><div class="lab">Does firm 2 have a dominant strategy?</div>
+Same check across each row, reading the second number. If firm 1 cooperates: 120 beats 75. If firm 1 defects: 70 beats 20.
+<br><span class="math">defect wins for firm 2 too → first condition holds</span></div></div>
+
+<div class="step"><div class="stepn">3</div><div class="stepbody"><div class="lab">Where do the two dominant strategies land?</div>
+Bottom right. Both firms defect and each earns 70.</div></div>
+
+<div class="step"><div class="stepn">4</div><div class="stepbody"><div class="lab">Now the second condition: is some other cell better for <i>both</i>?</div>
+Look at the top-left cell: 75 each.
+<br><span class="math">75 &gt; 70 for firm 1 &nbsp;AND&nbsp; 75 &gt; 70 for firm 2</span>
+<br>Both firms would rather be there. The condition holds.</div></div>
+
+<div class="ans">&#10003; <b>Yes, this is a prisoner's dilemma.</b> Both conditions passed: every player has a dominant strategy, and the cell those strategies produce is worse for everybody than another cell. Miss the second check and you will call half the matrices on the exam a prisoner's dilemma.</div>
+
+<p class="partlab">The same shape, with a jackpot</p>
+<p class="p">The TV show <i>Golden Balls</i> ends with exactly this game for real money. Two contestants simultaneously choose <b>split</b> or <b>steal</b>. Split and split, they share. One steals, he takes everything. Both steal, both go home with nothing. For an average jackpot of $20,000, in thousands:</p>
+<div class="tscroll">
+<table class="dtable" style="max-width:420px">
+<tr><th></th><th>Split</th><th>Steal</th></tr>
+<tr><td class="lab">Split</td><td>10,&nbsp; 10</td><td>0,&nbsp; 20</td></tr>
+<tr><td class="lab">Steal</td><td>20,&nbsp; 0</td><td>0,&nbsp; 0</td></tr>
+</table></div>
+<p class="p">The course uses this as its high-stakes prisoner's dilemma, and the story is right. Personal incentive pulls both people to an outcome that is terrible for both. About half of contestants split anyway.</p>
+
+<div class="warnbox"><b>One honest detail worth seeing once.</b> Look at the bottom row. Steal gives 20 against split, but only 0 against steal, which is the same as splitting would give. So stealing is <i>weakly</i> dominant, not strictly dominant. That tie means this matrix has three stable cells rather than one. No past-paper matrix does this. Every prisoner's-dilemma question in the five papers has strict inequalities, so the two-tick test works cleanly. Notice the tie, then move on.</div>
+
+<div class="tryq"><div class="q">Two neighbouring shops each decide whether to advertise. Payoffs (shop 1 first, in thousands):
+<table class="dtable" style="max-width:360px;margin:10px 0"><tr><th></th><th>Advertise</th><th>Stay quiet</th></tr>
+<tr><td class="lab">Advertise</td><td>5,&nbsp; 5</td><td>3,&nbsp; 2</td></tr>
+<tr><td class="lab">Stay quiet</td><td>2,&nbsp; 3</td><td>1,&nbsp; 1</td></tr></table>
+Run both checks of the test on this matrix. Is it a prisoner's dilemma?</div>
+<button class="reveal-btn" onclick="this.nextElementSibling.classList.add('show');this.disabled=true;">Reveal answer</button>
+<div class="reveal"><b>No.</b> The first condition holds. Advertising beats staying quiet for shop 1 in both columns (5 &gt; 2 and 3 &gt; 1), and the same for shop 2. So both advertise and both get 5.<br><br>But now run the second check. Is there any cell where <i>both</i> shops do better than 5? Look: 3, 2, 1&hellip; nothing comes close. The dominant-strategy outcome is already the best cell in the matrix for both of them.<br><br>So this is a game with an obvious answer and a happy ending, not a dilemma. <b>Dominance alone is never enough.</b> That gap is exactly where the exam sets its trap.</div></div>
+
+<div class="tryq"><div class="q">Two suppliers feed the same assembly line, and each decides privately whether to deliver on time or quietly slip the shared deadline. Slipping saves you effort but delays the other one badly. Measured in <b>weeks of delay</b>: if both deliver, 2 weeks each. If one slips, the one who slipped waits 0 weeks and the one let down waits 12. If both slip, 6 weeks each.<br><br>Turn this into a payoff matrix yourself, then find the equilibrium and say which cell both suppliers would prefer.</div>
+<button class="reveal-btn" onclick="this.nextElementSibling.classList.add('show');this.disabled=true;">Reveal answer</button>
+<div class="reveal">First the sign. The story is told in <i>delay</i>, and more delay is worse. So each payoff is <b>minus</b> the weeks:
+<table class="dtable" style="max-width:360px;margin:10px 0"><tr><th></th><th>Deliver</th><th>Slip</th></tr>
+<tr><td class="lab">Deliver</td><td>&minus;2,&nbsp; &minus;2</td><td>&minus;12,&nbsp; 0</td></tr>
+<tr><td class="lab">Slip</td><td>0,&nbsp; &minus;12</td><td class="hlcell">&minus;6,&nbsp; &minus;6</td></tr></table>
+<b>Equilibrium: (slip, slip).</b> Slipping is dominant for each supplier: 0 beats &minus;2 in the left column, and &minus;6 beats &minus;12 in the right one.<br><br>And <b>(deliver, deliver)</b> gives &minus;2 each, which beats &minus;6 for both. Two conditions, two ticks: a prisoner's dilemma, with no prison in it.<br><br>The habit worth taking from this is the sign. When a story is told in costs (weeks late, money lost, years served), turn it into negative payoffs <i>before</i> you compare anything. If you do not, you will read every comparison backwards and find the wrong dominant strategy.</div></div>
+</div>
+
+<!-- ============ SECTION 2 ============ -->
+<div class="panel"><h3>Two equilibria: the only question is how they are ranked <span class="p P4" style="margin-left:auto">P4</span></h3>
+<div class="secaudio"><span class="salab">&#127911; Listen to this section</span><!-- SCRIPT Day-02-two-equilibria.mp3 | NOA=Heart TOM=Fenrir
+NOA: Now the family that costs people marks. Three different games, and all three have exactly two stable outcomes. If you only count, you cannot tell them apart.
+TOM: So counting is not enough. What is the second question?
+NOA: Whether the two players rank those outcomes the same way. Look at the three green-marked tables side by side on the page.
+TOM: The first one, the hunters. Both green cells are on the diagonal, and one of them is bigger for both of them.
+NOA: That is the stag hunt. The two hunters can chase the big animal together, or each catch a small one alone. Both agree the big animal is better. They just have to trust each other to show up.
+TOM: So they want the same thing. The only problem is nerve.
+NOA: Right. Now the middle table. The husband and the wife, one film each prefers, and both would rather be together than apart. Two stable outcomes again. But now?
+TOM: Now they point in opposite directions. He is happier in one green cell, she is happier in the other. Nobody is happier in both.
+NOA: That is the difference the marking scheme keeps testing. In the hunters' game the two equilibria are ranked. In the couple's game they are not. One outcome better for both, versus each player wanting a different one.
+TOM: And the third table? The single-lane bridge.
+NOA: Same disagreement as the couple, but the stable cells have moved off the diagonal. Somebody yields and somebody goes. That is chicken. And there is one more fingerprint. Look at the cell where both drivers yield. It is not stable, but add the two payoffs and it beats either equilibrium.
+TOM: So the polite outcome is the one nobody can hold. That is depressing.
+NOA: It is also the whole reason chicken is dangerous. Let me hand it back to you. What is the single question that splits the hunters from the couple?
+TOM: Do both players agree on which of the two stable outcomes is better. Agree, hunters. Disagree, couple or bridge.
+NOA: And bridge rather than couple when?
+TOM: When the green cells sit off the diagonal. When agreeing with each other is exactly what nobody does.
+-->
+<audio controls preload="none" src="Day-02-two-equilibria.mp3"></audio></div>
+
+<p class="p">Three of the five games have <b>exactly two pure equilibria</b>. So counting alone cannot separate them. You need one more question, and it is always the same one:</p>
+
+<div class="rule">Two pure equilibria? Ask: <b>is one of them better for both players?</b><br>Yes &rarr; stag hunt. No &rarr; battle of the sexes or chicken.</div>
+
+<p class="p">Here they are together. Green cells are the pure equilibria: the cells where neither player wants to move.</p>
+
+<div class="trio">
+<div><div class="tname">Stag hunt</div>
+<table class="dtable">
+<tr><th></th><th>Stag</th><th>Rabbit</th></tr>
+<tr><td class="lab">Stag</td><td class="hlcell">5,&nbsp;5</td><td>0,&nbsp;3</td></tr>
+<tr><td class="lab">Rabbit</td><td>3,&nbsp;0</td><td class="hlcell">3,&nbsp;3</td></tr>
+</table>
+<div class="tnote">Rousseau. Both hunters agree that <b>5,5 beats 3,3</b>. The two equilibria <i>are</i> ranked: one is better for both. The other one is just safer, because a rabbit pays 3 whatever your partner does.</div></div>
+
+<div><div class="tname">Battle of the sexes</div>
+<table class="dtable">
+<tr><th></th><th><i>300</i></th><th><i>Mind</i></th></tr>
+<tr><td class="lab"><i>300</i></td><td class="hlcell">4,&nbsp;3</td><td>0,&nbsp;0</td></tr>
+<tr><td class="lab"><i>Mind</i></td><td>0,&nbsp;0</td><td class="hlcell">3,&nbsp;4</td></tr>
+</table>
+<div class="tnote">Husband prefers <i>300</i>, wife prefers <i>A Beautiful Mind</i>, both prefer being together. He likes one green cell, she likes the other. <b>Not ranked.</b></div></div>
+
+<div><div class="tname">Chicken (hawk&ndash;dove)</div>
+<table class="dtable">
+<tr><th></th><th>Swerve</th><th>Straight</th></tr>
+<tr><td class="lab">Swerve</td><td>0,&nbsp;0</td><td class="hlcell">&minus;2,&nbsp;1</td></tr>
+<tr><td class="lab">Straight</td><td class="hlcell">1,&nbsp;&minus;2</td><td>&minus;5,&nbsp;&minus;5</td></tr>
+</table>
+<div class="tnote">Single-lane bridge. Also not ranked, but the green cells have moved <b>off the diagonal</b>. One yields, one goes.</div></div>
+</div>
+
+<p class="p">Read the three left to right and the pattern is clean. Stag hunt: the players <b>agree</b> which equilibrium they want, and coordinating is only a question of nerve. Battle of the sexes and chicken: the players <b>disagree</b>. Each is happier in a different equilibrium.</p>
+
+<p class="p">That answers the question at the top of this page. <b>No.</b> Neither evening is better for both friends. Bowling is better for him, the film is better for her, and both beat sitting apart. Your two friends are in a battle of the sexes, and the two endings are not ranked. If your first thought was "well, being together is better", that thought is right about the cells where the two of them fail to coordinate. It says nothing about how the two equilibria compare.</p>
+
+<p class="p">Then one last split, between the two disagreeing games. In battle of the sexes the equilibria are the two cells where the players choose the <b>same</b> action. In chicken they are the two cells where the players choose <b>different</b> actions. That is what the course means when it calls chicken's equilibria <i>asymmetric</i>.</p>
+
+<p class="p">Chicken has a third fingerprint worth knowing, because a question can be built on it. Add up both payoffs in each cell of the bridge. Either equilibrium totals &minus;1. But (swerve, swerve), which is <i>not</i> an equilibrium, totals 0. So the higher joint payoff sits in a cell that is not an equilibrium. The polite outcome is the one nobody can hold.</p>
+
+<div class="warnbox"><b>The difference the solutions keep correcting.</b> "Two pure equilibria" describes stag hunt, battle of the sexes <i>and</i> chicken. Only stag hunt's pair is <b>Pareto-ranked</b>: one equilibrium is better for both players at once. The 2025 C solution says it plainly: battle of the sexes has two equilibria "but neither is better for both players", and chicken's two "are not ranked in terms of Pareto efficiency". If a question says <i>Pareto better</i>, the answer is stag hunt every time.</div>
+
+<p class="partlab">Worked example</p>
+<div class="question">Two startups each choose whether to build on a new shared platform or stay on the old one. They only get the benefit of the new platform if both move. Payoffs (startup 1 first):
+<table class="dtable" style="max-width:400px;margin:10px 0"><tr><th></th><th>New platform</th><th>Old platform</th></tr>
+<tr><td class="lab">New platform</td><td>6,&nbsp; 6</td><td>1,&nbsp; 4</td></tr>
+<tr><td class="lab">Old platform</td><td>4,&nbsp; 1</td><td>4,&nbsp; 4</td></tr></table>
+Which of the five archetypes is this?</div>
+
+<div class="step"><div class="stepn">1</div><div class="stepbody"><div class="lab">Check for dominance first. It is one glance and it rules out the prisoner's dilemma.</div>
+Startup 1's rows: 6 beats 4 in the left column, but 1 loses to 4 in the right one. Neither row wins everywhere.
+<br><span class="math">no dominant strategy → not a prisoner's dilemma</span></div></div>
+
+<div class="step"><div class="stepn">2</div><div class="stepbody"><div class="lab">Mark startup 1's best reply in each column.</div>
+Left column: 6 &gt; 4, so <i>new</i>. Right column: 4 &gt; 1, so <i>old</i>.</div></div>
+
+<div class="step"><div class="stepn">3</div><div class="stepbody"><div class="lab">Mark startup 2's best reply in each row: read the second number.</div>
+Top row: 6 &gt; 4, so <i>new</i>. Bottom row: 4 &gt; 1, so <i>old</i>.</div></div>
+
+<div class="step"><div class="stepn">4</div><div class="stepbody"><div class="lab">Which cells are marked twice?</div>
+(new, new) and (old, old). Two pure equilibria, so it is stag hunt, battle of the sexes or chicken.</div></div>
+
+<div class="step"><div class="stepn">5</div><div class="stepbody"><div class="lab">Are the two ranked the same way for both players?</div>
+<span class="math">(6, 6) vs (4, 4) → 6 &gt; 4 for startup 1 AND 6 &gt; 4 for startup 2</span>
+<br>Both prefer the same one. They agree.</div></div>
+
+<div class="ans">&#10003; <b>Stag hunt.</b> Two pure equilibria, one Pareto better than the other. The old platform is the safe rabbit: it pays 4 whatever the other firm does. The new platform is the stag. It is better for everyone, but only if both jump.</div>
+
+<div class="tryq"><div class="q">Two neighbours are in a boundary dispute. Each can back down or escalate to a lawyer. Payoffs (neighbour 1 first):
+<table class="dtable" style="max-width:360px;margin:10px 0"><tr><th></th><th>Back down</th><th>Escalate</th></tr>
+<tr><td class="lab">Back down</td><td>0,&nbsp; 0</td><td>&minus;3,&nbsp; 2</td></tr>
+<tr><td class="lab">Escalate</td><td>2,&nbsp; &minus;3</td><td>&minus;8,&nbsp; &minus;8</td></tr></table>
+Which archetype, and what is the tell?</div>
+<button class="reveal-btn" onclick="this.nextElementSibling.classList.add('show');this.disabled=true;">Reveal answer</button>
+<div class="reveal"><b>Chicken.</b><br><br>Best replies: in the "back down" column neighbour 1 prefers 2 to 0 → escalate. In the "escalate" column he prefers &minus;3 to &minus;8 → back down. Same for neighbour 2 by symmetry. The two equilibria are <b>(escalate, back down)</b> and <b>(back down, escalate)</b>.<br><br>Three tells, all pointing the same way. The equilibria are <b>off the diagonal</b> (one yields, one pushes). Each neighbour prefers the one where <i>he</i> is the winner, so they are not Pareto-ranked. And (back down, back down) totals 0, beating either equilibrium's total of &minus;1.<br><br>It is not stag hunt, because nobody agrees on which equilibrium is better. It is not battle of the sexes, because there the two equilibria would sit on the diagonal.</div></div>
+
+<div class="tryq"><div class="q">Two departments must pick one shared software system, and they must pick the same one or the integration fails. Payoffs (department 1 first):
+<table class="dtable" style="max-width:360px;margin:10px 0"><tr><th></th><th>System A</th><th>System B</th></tr>
+<tr><td class="lab">System A</td><td>6,&nbsp; 4</td><td>1,&nbsp; 1</td></tr>
+<tr><td class="lab">System B</td><td>1,&nbsp; 1</td><td>4,&nbsp; 6</td></tr></table>
+Which archetype? And a harder follow-up: is the equilibrium at (A, A) Pareto better than the one at (B, B)?</div>
+<button class="reveal-btn" onclick="this.nextElementSibling.classList.add('show');this.disabled=true;">Reveal answer</button>
+<div class="reveal"><b>Battle of the sexes. And no, neither equilibrium is Pareto better.</b><br><br>Two pure equilibria, (A, A) and (B, B), both on the diagonal. Department 1 gets 6 at (A, A) and 4 at (B, B), so it prefers A. Department 2 gets 4 and 6, so it prefers B. Each prefers a different one.<br><br><b>Watch the follow-up trap.</b> The totals are equal, 10 in both equilibria, so it is tempting to say "they are the same". Pareto ranking has nothing to do with totals. It asks whether <i>both</i> players do better in one than in the other, and here one player always does worse. Not ranked.<br><br>If you answered stag hunt, check what you were comparing. Probably 6 against 4 for one department alone.</div></div>
+</div>
+
+<!-- ============ SECTION 3 ============ -->
+<div class="panel"><h3>No stable cell at all, and what "how many equilibria" really asks <span class="p P4" style="margin-left:auto">P4</span></h3>
+<div class="secaudio"><span class="salab">&#127911; Listen to this section</span><!-- SCRIPT Day-02-no-equilibrium.mp3 | NOA=Heart TOM=Fenrir
+NOA: Last shape. Sometimes you go around the whole matrix and there is no cell where both players are happy to stay.
+TOM: The pennies game. I pick a side, you pick a side, I win if they match and you win if they do not.
+NOA: Put your finger on any cell in the table on the page. Wherever you put it, one of us wants to move. And when that one moves, the other one wants to move too. It never settles.
+TOM: It is a chase. Like a cat and a mouse going round a table forever.
+NOA: A good picture. And it is why that game has no stable outcome in plain, fixed choices. The only stable thing is to choose at random.
+TOM: So the honest answer is that there is nothing to find?
+NOA: No, and this is the part I want you to be careful with, because two of your past papers word it differently and both of them are right. One says the pennies game has no pure equilibrium. Another says it has a unique equilibrium.
+TOM: That sounds like a contradiction.
+NOA: It sounds like one, and it is not. Pure means a fixed choice, always the same side. Mixed means choosing at random with settled proportions. Count only the pure ones and you get none. Count everything, pure and mixed together, and you get one.
+TOM: So the question is really asking me which basket to count.
+NOA: Yes. Read the words in the stem before you count anything. Pure equilibria, or all equilibria. That single word decides your answer.
+TOM: Let me say it back. If it asks how many pure ones, I only look for cells where neither player wants to move. If it asks how many altogether, I have to remember the random ones exist as well.
+NOA: And one fact makes that safe. Every finite game has at least one equilibrium somewhere. So if you count the pure ones and get none, you have not made a mistake. You have found the game that must be played at random.
+-->
+<audio controls preload="none" src="Day-02-no-equilibrium.mp3"></audio></div>
+
+<p class="p">The fifth game is the one with nothing to land on. <b>Matching pennies</b>: both players show a coin, player 1 wins a dollar if the two faces match, player 2 wins a dollar if they don't.</p>
+<div class="tscroll">
+<table class="dtable" style="max-width:420px">
+<tr><th></th><th>P2: heads</th><th>P2: tails</th></tr>
+<tr><td class="lab">P1: heads</td><td>1,&nbsp; &minus;1</td><td>&minus;1,&nbsp; 1</td></tr>
+<tr><td class="lab">P1: tails</td><td>&minus;1,&nbsp; 1</td><td>1,&nbsp; &minus;1</td></tr>
+</table></div>
+<div class="cap">No green cells. Put your finger anywhere: one player always wants to move, and once he moves the other wants to move too. The chase never closes.</div>
+
+<p class="p">So there is <b>no pure equilibrium</b>. But there is still an equilibrium: both players choosing heads or tails at random, half and half. Nash proved every finite game has at least one equilibrium, and sometimes that one is only available in mixed strategies.</p>
+
+<div class="warnbox"><b>A real disagreement between your past papers, and both sides are right.</b> The 2025 A solution lists matching pennies among the games with "a unique Nash equilibrium", and 2025 B asks directly for "the unique Nash equilibrium in the Matching Pennies game". But the 2025 C solution says matching pennies has "no pure Nash equilibria, only mixed ones". All of that is true at once, because they are counting different things: <b>pure count = 0, total count = 1.</b> This is exactly what a counting question tests, so read the stem before you count.</div>
+
+<div class="rule">Before you count anything, find the word. <b>"Pure"</b> &rarr; only cells where neither player wants to move, and zero is a valid answer. <b>"Pure or mixed"</b> &rarr; every game has at least one, so zero is never right.</div>
+
+<p class="partlab">Worked example</p>
+<div class="question">A taxpayer decides whether to report honestly or cheat; a tax office decides whether to audit her or skip her. Auditing costs the office effort. Payoffs (taxpayer first):
+<table class="dtable" style="max-width:400px;margin:10px 0"><tr><th></th><th>Audit</th><th>Skip</th></tr>
+<tr><td class="lab">Report honestly</td><td>0,&nbsp; &minus;1</td><td>0,&nbsp; 0</td></tr>
+<tr><td class="lab">Cheat</td><td>&minus;4,&nbsp; 4</td><td>4,&nbsp; &minus;4</td></tr></table>
+How many <b>pure</b> Nash equilibria does this game have?</div>
+
+<div class="step"><div class="stepn">1</div><div class="stepbody"><div class="lab">Taxpayer's best reply in each column (first number).</div>
+If the office audits: 0 beats &minus;4 → report honestly. If the office skips: 4 beats 0 → cheat.</div></div>
+
+<div class="step"><div class="stepn">2</div><div class="stepbody"><div class="lab">Office's best reply in each row (second number).</div>
+If she reports honestly: 0 beats &minus;1 → skip. If she cheats: 4 beats &minus;4 → audit.</div></div>
+
+<div class="step"><div class="stepn">3</div><div class="stepbody"><div class="lab">Look for a cell marked by both.</div>
+(honest, audit): she is happy, but the office would rather skip. (honest, skip): the office is happy, but she would rather cheat. (cheat, skip): she is happy, the office would rather audit. (cheat, audit): the office is happy, she would rather report honestly.
+<br><span class="math">every cell has someone who wants to move</span></div></div>
+
+<div class="step"><div class="stepn">4</div><div class="stepbody"><div class="lab">Say what that means, carefully.</div>
+No cell survives, so the pure count is <b>zero</b>. The chase pattern is the same as matching pennies even though the numbers are not symmetric.</div></div>
+
+<div class="ans">&#10003; <b>Zero pure equilibria.</b> If the question had said "how many Nash equilibria, pure or mixed", the answer would have been <b>one</b>: the mixed one, where she cheats sometimes and the office audits sometimes. Same game, different basket, different number.</div>
+
+<p class="partlab">The whole day in one path</p>
+<div class="svg-wrap">
+<svg viewBox="0 0 600 400" role="img" aria-label="A decision ladder with four questions. First: does every player have a dominant strategy, and is the cell they land in worse for both than another cell? Yes leads to prisoner's dilemma. If no, second question: count the stable cells. Are there none at all? Yes leads to matching pennies. Exactly one stable cell leads to a side branch: not one of the five, dominance without the dilemma. If there are two, third question: is one of them better for both players? Yes leads to stag hunt. If no, fourth question: do the two stable cells sit on the diagonal? Yes leads to battle of the sexes, no leads to chicken.">
+  <defs><marker id="ah" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto">
+    <path d="M0,0 L7,3 L0,6 z" fill="#6b4ef0"/></marker>
+    <marker id="aha" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto">
+    <path d="M0,0 L7,3 L0,6 z" fill="#b6791f"/></marker></defs>
+
+  <!-- Q1 -->
+  <rect x="12" y="12" width="284" height="48" rx="10" fill="#ece7fd" stroke="#d9d0fb"/>
+  <text x="154" y="32" text-anchor="middle" font-size="11" font-family="-apple-system,Segoe UI,Arial" fill="#5238c4" font-weight="700">Does every player have a dominant strategy,</text>
+  <text x="154" y="47" text-anchor="middle" font-size="11" font-family="-apple-system,Segoe UI,Arial" fill="#5238c4" font-weight="700">and is the cell they land in worse for both?</text>
+  <line x1="296" y1="36" x2="326" y2="36" stroke="#6b4ef0" stroke-width="1.6" marker-end="url(#ah)"/>
+  <text x="311" y="29" text-anchor="middle" font-size="9" font-family="-apple-system,Segoe UI,Arial" fill="#1f9d63" font-weight="700">YES</text>
+  <rect x="334" y="17" width="254" height="38" rx="10" fill="#e4f6ec" stroke="#bfe6cf"/>
+  <text x="461" y="41" text-anchor="middle" font-size="12.5" font-family="-apple-system,Segoe UI,Arial" fill="#1f9d63" font-weight="700">Prisoner's dilemma</text>
+  <line x1="154" y1="60" x2="154" y2="84" stroke="#c8c2dd" stroke-width="1.4" stroke-dasharray="4 3"/>
+  <text x="162" y="76" font-size="9" font-family="-apple-system,Segoe UI,Arial" fill="#6f6886" font-weight="700">NO</text>
+
+  <!-- Q2 -->
+  <rect x="12" y="84" width="284" height="48" rx="10" fill="#ece7fd" stroke="#d9d0fb"/>
+  <text x="154" y="104" text-anchor="middle" font-size="11" font-family="-apple-system,Segoe UI,Arial" fill="#5238c4" font-weight="700">Now count the stable cells.</text>
+  <text x="154" y="119" text-anchor="middle" font-size="11" font-family="-apple-system,Segoe UI,Arial" fill="#5238c4" font-weight="700">Are there none at all?</text>
+  <line x1="296" y1="108" x2="326" y2="108" stroke="#6b4ef0" stroke-width="1.6" marker-end="url(#ah)"/>
+  <text x="311" y="101" text-anchor="middle" font-size="9" font-family="-apple-system,Segoe UI,Arial" fill="#1f9d63" font-weight="700">YES</text>
+  <rect x="334" y="89" width="254" height="38" rx="10" fill="#e4f6ec" stroke="#bfe6cf"/>
+  <text x="461" y="113" text-anchor="middle" font-size="12.5" font-family="-apple-system,Segoe UI,Arial" fill="#1f9d63" font-weight="700">Matching pennies</text>
+  <line x1="154" y1="132" x2="154" y2="204" stroke="#c8c2dd" stroke-width="1.4" stroke-dasharray="4 3"/>
+  <text x="162" y="147" font-size="9" font-family="-apple-system,Segoe UI,Arial" fill="#6f6886" font-weight="700">NO, count them</text>
+
+  <!-- side branch: exactly one stable cell -->
+  <line x1="154" y1="160" x2="326" y2="160" stroke="#b6791f" stroke-width="1.4" stroke-dasharray="4 3" marker-end="url(#aha)"/>
+  <text x="243" y="153" text-anchor="middle" font-size="9" font-family="-apple-system,Segoe UI,Arial" fill="#b6791f" font-weight="700">EXACTLY ONE</text>
+  <rect x="334" y="138" width="254" height="44" rx="10" fill="#fcf3e3" stroke="#f0deb8"/>
+  <text x="461" y="156" text-anchor="middle" font-size="11.5" font-family="-apple-system,Segoe UI,Arial" fill="#b6791f" font-weight="700">Not one of the five:</text>
+  <text x="461" y="171" text-anchor="middle" font-size="11.5" font-family="-apple-system,Segoe UI,Arial" fill="#b6791f" font-weight="700">dominance without the dilemma</text>
+  <text x="162" y="197" font-size="9" font-family="-apple-system,Segoe UI,Arial" fill="#6f6886" font-weight="700">TWO</text>
+
+  <!-- Q3 -->
+  <rect x="12" y="204" width="284" height="48" rx="10" fill="#ece7fd" stroke="#d9d0fb"/>
+  <text x="154" y="224" text-anchor="middle" font-size="11" font-family="-apple-system,Segoe UI,Arial" fill="#5238c4" font-weight="700">Is one of the two better for</text>
+  <text x="154" y="239" text-anchor="middle" font-size="11" font-family="-apple-system,Segoe UI,Arial" fill="#5238c4" font-weight="700">BOTH players? (Pareto-ranked)</text>
+  <line x1="296" y1="228" x2="326" y2="228" stroke="#6b4ef0" stroke-width="1.6" marker-end="url(#ah)"/>
+  <text x="311" y="221" text-anchor="middle" font-size="9" font-family="-apple-system,Segoe UI,Arial" fill="#1f9d63" font-weight="700">YES</text>
+  <rect x="334" y="209" width="254" height="38" rx="10" fill="#e4f6ec" stroke="#bfe6cf"/>
+  <text x="461" y="233" text-anchor="middle" font-size="12.5" font-family="-apple-system,Segoe UI,Arial" fill="#1f9d63" font-weight="700">Stag hunt</text>
+  <line x1="154" y1="252" x2="154" y2="276" stroke="#c8c2dd" stroke-width="1.4" stroke-dasharray="4 3"/>
+  <text x="162" y="268" font-size="9" font-family="-apple-system,Segoe UI,Arial" fill="#6f6886" font-weight="700">NO, they disagree</text>
+
+  <!-- Q4 -->
+  <rect x="12" y="276" width="284" height="48" rx="10" fill="#ece7fd" stroke="#d9d0fb"/>
+  <text x="154" y="296" text-anchor="middle" font-size="11" font-family="-apple-system,Segoe UI,Arial" fill="#5238c4" font-weight="700">Do the two stable cells sit on the</text>
+  <text x="154" y="311" text-anchor="middle" font-size="11" font-family="-apple-system,Segoe UI,Arial" fill="#5238c4" font-weight="700">diagonal, both choosing the same action?</text>
+  <line x1="296" y1="300" x2="326" y2="300" stroke="#6b4ef0" stroke-width="1.6" marker-end="url(#ah)"/>
+  <text x="311" y="293" text-anchor="middle" font-size="9" font-family="-apple-system,Segoe UI,Arial" fill="#1f9d63" font-weight="700">YES</text>
+  <rect x="334" y="281" width="254" height="38" rx="10" fill="#e4f6ec" stroke="#bfe6cf"/>
+  <text x="461" y="305" text-anchor="middle" font-size="12.5" font-family="-apple-system,Segoe UI,Arial" fill="#1f9d63" font-weight="700">Battle of the sexes</text>
+
+  <line x1="154" y1="324" x2="154" y2="363" stroke="#c8c2dd" stroke-width="1.4" stroke-dasharray="4 3"/>
+  <line x1="154" y1="363" x2="326" y2="363" stroke="#6b4ef0" stroke-width="1.6" marker-end="url(#ah)"/>
+  <text x="164" y="340" font-size="9" font-family="-apple-system,Segoe UI,Arial" fill="#6f6886" font-weight="700">NO, off the diagonal</text>
+  <rect x="334" y="344" width="254" height="38" rx="10" fill="#e4f6ec" stroke="#bfe6cf"/>
+  <text x="461" y="368" text-anchor="middle" font-size="12.5" font-family="-apple-system,Segoe UI,Arial" fill="#1f9d63" font-weight="700">Chicken (hawk&ndash;dove)</text>
+</svg>
+<div class="cap">Four questions, in this order, name any of the five. They also tell you when a matrix is none of them. Check dominance first, because it is one glance and it settles the prisoner's dilemma before you count anything.</div>
+</div>
+
+<div class="tryq"><div class="q">Two players simultaneously choose left or right. If they choose the same direction, player 1 gets 5 and player 2 gets &minus;3. If they choose different directions, player 1 gets &minus;3 and player 2 gets 5.<br><br>How many pure equilibria does this game have, and what type of game is it?</div>
+<button class="reveal-btn" onclick="this.nextElementSibling.classList.add('show');this.disabled=true;">Reveal answer</button>
+<div class="reveal"><b>Zero pure equilibria. It is a zero-sum game</b>: matching pennies wearing different numbers.<br><br>Write it out:
+<table class="dtable" style="max-width:340px;margin:10px 0"><tr><th></th><th>Left</th><th>Right</th></tr>
+<tr><td class="lab">Left</td><td>5,&nbsp; &minus;3</td><td>&minus;3,&nbsp; 5</td></tr>
+<tr><td class="lab">Right</td><td>&minus;3,&nbsp; 5</td><td>5,&nbsp; &minus;3</td></tr></table>
+Player 1 wants to match. Player 2 wants to miss. Same endless chase, so no cell is stable.<br><br><b>This is a real past-final question</b> (2024 A), and the official answer is "it is a zero-sum game". Strictly speaking every cell sums to 2, not 0, so it is a <i>constant</i>-sum game. The official solution says so itself and still marks zero-sum correct, because a constant-sum game works the same way: one player's gain is exactly the other's loss. If you ever see this on a paper, pick zero-sum and do not argue.</div></div>
+
+<div class="tryq"><div class="q">Player 1 chooses a row, player 2 a column (player 1's payoff first):
+<table class="dtable" style="max-width:340px;margin:10px 0"><tr><th></th><th>Left</th><th>Right</th></tr>
+<tr><td class="lab">Top</td><td>2,&nbsp; &minus;2</td><td>&minus;1,&nbsp; 1</td></tr>
+<tr><td class="lab">Bottom</td><td>&minus;3,&nbsp; 3</td><td>&minus;2,&nbsp; 2</td></tr></table>
+It has the win-lose look of matching pennies. Does it also have no pure equilibrium?</div>
+<button class="reveal-btn" onclick="this.nextElementSibling.classList.add('show');this.disabled=true;">Reveal answer</button>
+<div class="reveal"><b>No. It has exactly one pure equilibrium: (Top, Right).</b><br><br>Player 1 has a dominant strategy. Top beats Bottom in both columns: 2 &gt; &minus;3 and &minus;1 &gt; &minus;2. So he always plays Top.<br><br>Knowing that, player 2 compares her two payoffs in the top row: 1 beats &minus;2, so she plays Right. Neither wants to move from that cell.<br><br><b>The lesson:</b> "zero-sum and win-lose" does not mean "no pure equilibrium". Check dominance before you assume you are in a chase. The same trap appears again on Day 6, where students start solving mixed-strategy equations for a game that was already settled.</div></div>
+</div>
+
+<!-- ============ QUIZ ============ -->
+<div class="panel"><h3>&#128221; Quiz yourself <span class="scorechip" id="scoreChip">0 / 6</span></h3>
+<p class="note">Pick an option. The answer and the explanation appear only after you choose. One question is tagged. That one is copied word for word from the 2024 B paper, which is not one of your timed mocks. The other five are fresh matrices, not the ones taught above.</p>
+<div id="quizBody"></div></div>
+
+<div class="navrow"><a class="navbtn" href="Day-01.html">&larr; Back</a><a class="navbtn primary" href="Day-03.html">Next &rarr;</a></div>
+</div>
+<script>
+function mat(rows, cols, cells){
+  var h = '<div class="tscroll"><table class="dtable" style="max-width:340px">';
+  h += '<tr><th></th><th>'+cols[0]+'</th><th>'+cols[1]+'</th></tr>';
+  h += '<tr><td class="lab">'+rows[0]+'</td><td>'+cells[0]+'</td><td>'+cells[1]+'</td></tr>';
+  h += '<tr><td class="lab">'+rows[1]+'</td><td>'+cells[2]+'</td><td>'+cells[3]+'</td></tr>';
+  return h+'</table></div>';
+}
+var MCHICK = mat(["Push on","Give way"],["Push on","Give way"],
+                 ["&minus;6,&nbsp; &minus;6","3,&nbsp; &minus;1","&minus;1,&nbsp; 3","2,&nbsp; 2"]);
+var MGUARD = mat(["Watch gate 1","Watch gate 2"],["Use gate 1","Use gate 2"],
+                 ["3,&nbsp; 1","1,&nbsp; 3","1,&nbsp; 3","3,&nbsp; 1"]);
+var MGARAGE = mat(["Keep the rate","Undercut"],["Keep the rate","Undercut"],
+                 ["6,&nbsp; 6","1,&nbsp; 8","8,&nbsp; 1","7,&nbsp; 7"]);
+var MAIR = mat(["Join","Stay out"],["Join","Stay out"],
+                 ["7,&nbsp; 9","0,&nbsp; 5","5,&nbsp; 0","4,&nbsp; 4"]);
+var MWEAK = mat(["Top","Bottom"],["Left","Right"],
+                 ["3,&nbsp; 2","5,&nbsp; 4","3,&nbsp; 5","2,&nbsp; 1"]);
+
+const QUIZ = [
+{"q":"Two garages on the same street each choose whether to keep their standard rate or undercut it. Payoffs, garage 1 first. Which <b>single</b> change to one cell would make this a prisoner's dilemma?"+MGARAGE,
+ "opts":["Change (undercut, undercut) from 7, 7 to 3, 3","Change (keep, keep) from 6, 6 to 9, 9","Change (keep, undercut) from 1, 8 to 1, 5","Change (undercut, keep) from 8, 1 to 5, 1","Change (undercut, undercut) from 7, 7 to 7, 3"],"correct":0,
+ "exp":"<b>Change (undercut, undercut) from 7, 7 to 3, 3.</b><br><br><b>The rule:</b> the two-tick test. A prisoner's dilemma needs both of these. <b>Tick 1:</b> every player has a strictly dominant strategy. <b>Tick 2:</b> the cell those dominant strategies produce is worse for <i>everybody</i> than some other cell.<br><br><b>The matrix as printed.</b><br><span class=\"math\">Garage 1, left column: undercut 8 &gt; keep 6</span><br><span class=\"math\">Garage 1, right column: undercut 7 &gt; keep 1</span><br>Undercut is dominant for garage 1, and by symmetry for garage 2. <b>Tick 1 passes.</b><br><span class=\"math\">Outcome (undercut, undercut) = 7, 7</span><br>Now tick 2. Is any cell better for both? (6, 6) is worse for both. (1, 8) and (8, 1) each help one and hurt the other. <b>Tick 2 fails.</b> So it is dominance with a happy ending, not a dilemma.<br><br><b>Testing the correct change: (undercut, undercut) becomes 3, 3.</b><br><span class=\"math\">Garage 1, left column: undercut 8 &gt; keep 6 &nbsp;&rarr;&nbsp; still dominant</span><br><span class=\"math\">Garage 1, right column: undercut 3 &gt; keep 1 &nbsp;&rarr;&nbsp; still dominant</span><br>Tick 1 still passes, for both garages.<br><span class=\"math\">Tick 2: 6 &gt; 3 for garage 1 AND 6 &gt; 3 for garage 2</span><br>Both would rather be at (keep, keep). <b>Tick 2 now passes.</b><br><br><b>Verification.</b> The new game has one equilibrium, (undercut, undercut) at 3, 3, and both garages prefer (keep, keep) at 6, 6. That is the prisoner's dilemma exactly.<br><br><b>The exact wrong calculation behind each distractor.</b><br>&bull; <b>(keep, keep) to 9, 9.</b> This looks right, because it creates a cell both garages prefer to 7, 7. But it breaks tick 1. Garage 1 now compares keep 9 against undercut 8 in the left column, and keep wins there. No dominant strategy. The game turns into a stag hunt with two equilibria, 9, 9 and 7, 7.<br>&bull; <b>(keep, undercut) to 1, 5.</b> Garage 2 now gets 6 from keeping and 5 from undercutting in the top row. Undercutting stops being dominant for garage 2. Tick 1 fails.<br>&bull; <b>(undercut, keep) to 5, 1.</b> The same failure, mirrored. Garage 1 now gets 6 from keeping and 5 from undercutting in the left column.<br>&bull; <b>(undercut, undercut) to 7, 3.</b> The closest miss. Both garages still have a dominant strategy, so tick 1 passes. But the outcome is 7, 3, and garage 1 already has its best number in that column. No cell pays both garages more. Tick 2 still fails. Lowering the equilibrium for one player is not enough. It has to fall below a cell that is better for <i>both</i>."},
+
+{"q":"Two airlines each decide whether to join a shared booking system. The system only pays off if both join. Payoffs, airline 1 first. This game has two pure Nash equilibria. What is <b>airline 2's</b> payoff in the one that <b>both</b> airlines prefer?"+MAIR,
+ "opts":["9","7","5","4","0"],"correct":0,
+ "exp":"<b>9.</b><br><br><b>The rule:</b> a pure Nash equilibrium is a cell where neither player wants to move. Find them by marking each player's best reply. Then rank the two, player by player.<br><br><b>Step 1. Airline 1's best reply in each column.</b> Read the first number.<br><span class=\"math\">Column join: 7 &gt; 5 &rarr; join</span><br><span class=\"math\">Column stay out: 4 &gt; 0 &rarr; stay out</span><br><br><b>Step 2. Airline 2's best reply in each row.</b> Read the second number.<br><span class=\"math\">Row join: 9 &gt; 5 &rarr; join</span><br><span class=\"math\">Row stay out: 4 &gt; 0 &rarr; stay out</span><br><br><b>Step 3. Which cells are marked twice?</b><br><span class=\"math\">(join, join) = 7, 9 &nbsp;and&nbsp; (stay out, stay out) = 4, 4</span><br><br><b>Step 4. Rank the two.</b><br><span class=\"math\">7 &gt; 4 for airline 1 AND 9 &gt; 4 for airline 2</span><br>Both prefer (join, join). The pair is Pareto-ranked, which makes this a stag hunt.<br><br><b>Verification.</b> Stand in the cell 7, 9. Airline 1 leaving gets 5, which is less than 7. Airline 2 leaving gets 5, which is less than 9. Neither moves, so the cell really is an equilibrium, and airline 2's payoff there is <b>9</b>.<br><br><b>The exact wrong calculation behind each distractor.</b><br>&bull; <b>7</b> is <i>airline 1's</i> payoff in the same cell. The right cell, the wrong half of the pair.<br>&bull; <b>4</b> is airline 2's payoff at the other equilibrium, (stay out, stay out). That cell is the safe one, not the preferred one. Staying out pays 4 or 5 whatever the other airline does, which is why it tempts.<br>&bull; <b>5</b> is airline 2's payoff at (join, stay out). That cell is not an equilibrium: airline 2 gains by joining, because 9 beats 5.<br>&bull; <b>0</b> is airline 2's payoff at (stay out, join), the cell where it joins alone.<br><br><b>One thing to notice.</b> The taught stag hunt has the same number for both players in each equilibrium. This one does not. Ranking is still checked one player at a time: one cell must be better for <i>each</i> of them."},
+
+{"q":"Player 1 chooses a row and player 2 chooses a column, at the same moment. Player 1's payoff is written first. How many <b>pure</b> Nash equilibria does this game have?"+MWEAK,
+ "opts":["0","1","2","3","4"],"correct":2,
+ "exp":"<b>2.</b><br><br><b>The rule:</b> a pure Nash equilibrium is a cell where neither player wants to move. Mark best replies. Watch for ties, because a tie means <i>both</i> choices are best replies and both stay on the board.<br><br><b>Step 1. Player 1's best reply in the left column.</b><br><span class=\"math\">Top = 3, Bottom = 3 &rarr; equal, so both are best replies</span><br><br><b>Step 2. Player 1's best reply in the right column.</b><br><span class=\"math\">Top = 5, Bottom = 2 &rarr; 5 &gt; 2, top</span><br>So top is never worse than bottom and sometimes better. Top is <b>weakly dominant</b>, not strictly dominant. Bottom is not strictly dominated, so it cannot be deleted.<br><br><b>Step 3. Player 2's best reply in the top row.</b><br><span class=\"math\">Left = 2, Right = 4 &rarr; 4 &gt; 2, right</span><br><br><b>Step 4. Player 2's best reply in the bottom row.</b><br><span class=\"math\">Left = 5, Right = 1 &rarr; 5 &gt; 1, left</span><br><br><b>Step 5. Cells marked by both players.</b><br><span class=\"math\">(top, right) = 5, 4 &nbsp;and&nbsp; (bottom, left) = 3, 5</span><br>Count = <b>2</b>.<br><br><b>Verification.</b> At (top, right): player 1 moving to bottom gets 2, less than 5. Player 2 moving to left gets 2, less than 4. It holds. At (bottom, left): player 1 moving to top still gets 3, so he gains nothing and has no reason to move. Player 2 moving to right gets 1, less than 5. It holds too.<br><br><b>The exact wrong calculation behind each distractor.</b><br>&bull; <b>1</b> comes from reading the 3 against 3 tie as a win for top, deleting bottom as dominated, and being left with only (top, right). That deletion is the mistake. Only <i>strictly</i> dominated strategies can be deleted safely.<br>&bull; <b>0</b> comes from seeing that player 2 wants right against top and left against bottom, and calling it a matching-pennies chase. The chase does not close, because player 1's tie in the left column lets him sit still at (bottom, left).<br>&bull; <b>3</b> comes from also counting (top, left), where player 1 is content because of the tie but player 2 is not: she gets 2 there and 4 by moving to right.<br>&bull; <b>4</b> comes from counting every cell where either player is content, instead of both.<br><br><b>The line to carry.</b> Strict dominance means <i>always</i> better. Weak dominance means never worse and sometimes better. A weakly dominated strategy can still sit inside a Nash equilibrium, and that is exactly how a matrix hides an extra stable cell."},
+
+{"src":"2024 B final","q":"Consider a two-player game where each player simultaneously chooses either action A or B. If both players choose A then both players get a payoff of 10. If both players choose B then both players get a payoff of 20. If one player chooses A and the opponent chooses B, then the player (who chose A) gets 25 and the opponent (who chose B) gets 7. What is true about this game?",
+ "opts":["It is a zero-sum game","It is a sequential game","It is a chicken game","It is a prisoner's dilemma game","None of the other answers is correct"],"correct":3,
+ "exp":"<b>It is a prisoner's dilemma game.</b> Build the matrix first. The question is only hard while it is words.<br><br><span class=\"math\">(A, A) = 10, 10 &nbsp;|&nbsp; (A, B) = 25, 7 &nbsp;|&nbsp; (B, A) = 7, 25 &nbsp;|&nbsp; (B, B) = 20, 20</span><br><br>Player 1 choosing A: gets 10 against A, 25 against B. Choosing B: gets 7 against A, 20 against B. So A beats B in both columns. <b>A is dominant</b>, for both players by symmetry.<br><br>Both play A and both get 10. Now the second check: (B, B) gives 20 to each. <b>Both would rather be there.</b> Two ticks, prisoner's dilemma.<br><br>Why the others fail. It is not zero-sum: the payoffs add to 20, 32, 32 and 40, so one player's gain is not the other's loss. It is not sequential: the stem says both choose simultaneously. It is not chicken: chicken has two pure equilibria off the diagonal, and this game has exactly one.<br><br><b>Naming trap:</b> here A is the tempting, selfish action even though it is listed first and sounds neutral. Do not let the letters do your thinking. The labels \"cooperate\" and \"defect\" will not always be handed to you."},
+
+{"q":"Two lorry drivers meet on a narrow mountain road. Each can push on or give way. Which type of game is this? (Driver 1's payoff first.)"+MCHICK,
+ "opts":["Chicken (hawk&ndash;dove)","Stag hunt","Battle of the Sexes","Prisoner's dilemma","Matching pennies"],"correct":0,
+ "exp":"<b>Chicken.</b> Work the ladder in order.<br><br><b>Dominance?</b> None. In the \"push on\" column driver 1 prefers &minus;1 to &minus;6 (give way); in the \"give way\" column he prefers 3 to 2 (push on). No row wins everywhere, so this is not a prisoner's dilemma.<br><br><b>Count.</b> Two pure equilibria: (push on, give way) and (give way, push on).<br><br><b>Ranked?</b> No. Driver 1 wants the first, driver 2 wants the second.<br><br><b>Diagonal?</b> No. The equilibria are the two cells where the drivers choose <i>different</i> actions. That is chicken, not battle of the sexes.<br><br><b>The confirming fingerprint:</b> (give way, give way) is not an equilibrium, but its total of 4 beats either equilibrium's total of 2. In chicken the highest joint payoff is a cell nobody can hold."},
+
+{"q":"A night guard chooses which of two gates to watch; a thief chooses which gate to use. How many <b>pure</b> Nash equilibria does this game have? (Guard's payoff first.)"+MGUARD,
+ "opts":["0","1","2","3","4"],"correct":0,
+ "exp":"<b>Zero.</b> The guard is paid to match the thief. The thief is paid to miss the guard.<br><br>Guard's best reply: if the thief uses gate 1, watch gate 1 (3 &gt; 1). If the thief uses gate 2, watch gate 2. Thief's best reply: whichever gate the guard is <i>not</i> watching. So every cell has someone who wants to move. It is the same endless chase as matching pennies.<br><br><b>Two things to notice.</b> First, every cell here adds to the same total, four. By the rule from the try-it above, an exam would call that zero-sum, and it still has no pure equilibrium. The chase pattern, not the arithmetic, is what matters.<br><br>Second, if the stem had said \"how many Nash equilibria, pure or mixed\", the answer would be <b>1</b>, not 0. Nash proved every finite game has at least one. Zero is only ever a valid answer to a question with the word <i>pure</i> in it."}
+];
+function shuffleItem(it){var c=it.opts[it.correct];for(var i=it.opts.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=it.opts[i];it.opts[i]=it.opts[j];it.opts[j]=t;}it.correct=it.opts.indexOf(c);}
+QUIZ.forEach(shuffleItem);
+const body=document.getElementById('quizBody');
+if(body){let score=0;
+QUIZ.forEach((item,qi)=>{
+  const block=document.createElement('div');block.className='qblock';
+  const tag=item.src?`<span class="examtag">${item.src}</span>`:'';
+  block.innerHTML=`<div class="qnum">Question ${qi+1}${tag}</div><div class="qtext">${item.q}</div>`;
+  const exp=document.createElement('div');exp.className='exp';exp.innerHTML=item.exp;
+  item.opts.forEach((opt,oi)=>{
+    const btn=document.createElement('button');btn.className='opt';
+    btn.innerHTML=`${String.fromCharCode(65+oi)}. ${opt}<span class="mark"></span>`;
+    btn.onclick=()=>{ if(block.dataset.done)return; block.dataset.done="1";
+      const btns=block.querySelectorAll('.opt');btns.forEach(x=>x.disabled=true);
+      btns[item.correct].classList.add('correct');btns[item.correct].querySelector('.mark').textContent='✓';
+      if(oi===item.correct){score++;}else{btn.classList.add('wrong');btn.querySelector('.mark').textContent='✗';}
+      document.getElementById('scoreChip').textContent=`${score} / ${QUIZ.length}`; exp.classList.add('show'); };
+    block.appendChild(btn); });
+  block.appendChild(exp);body.appendChild(block); });}
+</script><!-- GoatCounter analytics -->
+<script data-goatcounter="https://game-theory.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<!-- Activity tracking: audio plays and finishes, quiz and mock completion. Sends counts to GoatCounter only. No personal data. -->
+<script>
+(function(){
+  function ev(path, title){
+    try{
+      if(!window.goatcounter || !window.goatcounter.count) return;
+      window.goatcounter.count({path: path, title: title, event: true});
+    }catch(e){}
+  }
+  var page = (location.pathname.split('/').pop() || 'index.html').replace(/\.html$/,'') || 'index';
+
+  // Audio: one count the first time a strip is played, one when it reaches the end.
+  Array.prototype.forEach.call(document.querySelectorAll('audio'), function(a){
+    var name = (a.getAttribute('src') || 'audio').replace(/\.mp3$/,'');
+    var started = false, finished = false;
+    a.addEventListener('play', function(){
+      if(started) return; started = true;
+      ev('audio-play/' + name, 'Audio started: ' + name);
+    });
+    a.addEventListener('ended', function(){
+      if(finished) return; finished = true;
+      ev('audio-done/' + name, 'Audio finished: ' + name);
+    });
+  });
+
+  // Learn-day quiz: one count when every question has been answered, with the score.
+  var qbody = document.getElementById('quizBody');
+  if(qbody){
+    var chip = document.getElementById('scoreChip');
+    var qsent = false;
+    qbody.addEventListener('click', function(){
+      if(qsent) return;
+      setTimeout(function(){
+        if(qsent) return;
+        var blocks = qbody.querySelectorAll('.qblock');
+        if(!blocks.length) return;
+        var done = 0;
+        Array.prototype.forEach.call(blocks, function(b){ if(b.dataset.done) done++; });
+        if(done !== blocks.length) return;
+        qsent = true;
+        var raw = chip ? chip.textContent.trim() : '';
+        var slug = raw.replace(/\s*\/\s*/, '-of-') || 'unknown';
+        ev('quiz-done/' + page + '/' + slug, 'Quiz finished: ' + page + ' ' + raw);
+      }, 0);
+    });
+  }
+
+  // Mock day: one count when the results panel opens, with the score.
+  var res = document.getElementById('results');
+  if(res && window.MutationObserver){
+    var msent = false;
+    var mo = new MutationObserver(function(){
+      if(msent || !res.classList.contains('show')) return;
+      msent = true; mo.disconnect();
+      var el = document.getElementById('resScore');
+      var raw = el ? el.textContent.trim() : '';
+      var slug = raw.replace(/\s*\/\s*/, '-of-') || 'unknown';
+      ev('mock-done/' + page + '/' + slug, 'Mock submitted: ' + page + ' ' + raw);
+    });
+    mo.observe(res, {attributes: true, attributeFilter: ['class']});
+  }
+})();
+</script>
+</body></html>

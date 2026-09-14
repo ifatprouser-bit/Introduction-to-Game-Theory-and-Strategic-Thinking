@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mixed Strategies I: Making Your Opponent Indifferent</title>
+<style>
+:root{--bg:#f5f3fb;--card:#fff;--ink:#211c33;--muted:#6f6886;--brand:#6b4ef0;--brand-d:#5238c4;
+--brand-soft:#ece7fd;--good:#1f9d63;--good-soft:#e4f6ec;--bad:#d2453f;--bad-soft:#fae5e4;--line:#e7e3f2;
+--amber:#b6791f;--amber-soft:#fcf3e3;}
+*{box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);margin:0;line-height:1.55;}
+.wrap{max-width:760px;margin:0 auto;padding:26px 22px 60px;}
+.home{display:inline-block;margin:0 0 12px;color:var(--brand);font-weight:700;font-size:13px;text-decoration:none;}
+.crumb{color:var(--brand);font-weight:600;font-size:13px;text-transform:uppercase;letter-spacing:.05em;}
+h1{font-size:28px;margin:8px 0 4px;letter-spacing:-.02em;}
+.lede{color:var(--muted);margin:0 0 14px;font-size:16px;}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px 24px;margin:18px 0;box-shadow:0 1px 3px rgba(40,20,90,.04);}
+.panel h3{margin:0 0 6px;font-size:18px;display:flex;align-items:center;gap:8px;}
+.panel h3 .scorechip{margin-left:auto;}
+.panel .note{color:var(--muted);font-size:14px;margin:0 0 14px;}
+.preq{background:var(--amber-soft);border:1px solid #f0deb8;border-radius:16px;padding:18px 20px;margin:18px 0;}
+.preq .tag{color:var(--amber);font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.06em;}
+.preq p{margin:8px 0 0;font-size:16px;} .preq .do{margin-top:10px;font-weight:600;color:var(--amber);}
+audio{width:100%;margin-top:6px;}
+.secaudio{background:var(--brand-soft);border:1px solid #d9d0fb;border-radius:12px;padding:10px 13px;margin:4px 0 14px;}
+.secaudio .salab{display:block;font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--brand-d);margin-bottom:7px;}
+.takeaway{font-size:14.5px;background:#fbfaff;border:1px dashed var(--line);border-radius:11px;padding:13px 16px;margin-top:14px;}
+.takeaway b{color:var(--brand);} .takeaway ul{margin:2px 0 0;padding-left:20px;} .takeaway li{margin:5px 0;}
+.takeaway .tk-gen{margin:10px 0 0;padding-top:10px;border-top:1px dashed var(--line);}
+.sub{font-size:15px;font-weight:800;color:var(--brand-d);margin:20px 0 6px;}
+.p{font-size:15px;margin:0 0 8px;}
+.partlab{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--brand);margin:0 0 6px;}
+.rule{background:var(--brand-soft);border-radius:11px;padding:12px 16px;font-weight:600;color:var(--brand-d);margin:16px 0;}
+.question{background:#f6f4fc;border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:10px;padding:14px 16px;font-size:15.5px;}
+.step{display:flex;gap:14px;padding:12px 0;border-top:1px solid var(--line);} .step:first-of-type{border-top:none;}
+.stepn{flex:0 0 28px;height:28px;border-radius:8px;background:var(--brand);color:#fff;font-weight:700;display:grid;place-items:center;font-size:14px;}
+.stepbody .lab{font-weight:600;}
+.math{font-family:"SF Mono",Menlo,Consolas,monospace;background:#f6f4fc;border:1px solid var(--line);border-radius:8px;padding:8px 12px;margin-top:6px;font-size:14.5px;display:inline-block;}
+.ans{background:var(--good-soft);border:1px solid #bfe6cf;border-radius:11px;padding:12px 16px;margin-top:16px;font-weight:600;color:var(--good);}
+.tryq{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:10px 0;} .tryq .q{font-weight:600;margin-bottom:8px;}
+.reveal-btn{background:var(--brand);color:#fff;border:none;border-radius:9px;padding:8px 14px;font-weight:600;cursor:pointer;font-size:14px;}
+.reveal{display:none;margin-top:10px;padding:11px 14px;border-radius:9px;background:#faf9fe;border:1px dashed var(--line);font-size:14px;} .reveal.show{display:block;}
+.dtable{width:100%;border-collapse:collapse;font-size:13.5px;margin:10px 0;}
+.dtable th,.dtable td{border:1px solid var(--line);padding:8px 8px;text-align:center;}
+.dtable th{background:var(--brand-soft);color:var(--brand-d);font-weight:700;} .dtable td.lab{text-align:left;font-weight:600;background:var(--brand-soft);color:var(--brand-d);}
+.dtable td.hlcell{background:var(--good-soft);font-weight:700;color:var(--good);}
+.dtable td.dim{color:var(--muted);}
+.datalab{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--brand-d);margin:20px 0 8px;}
+.given{color:var(--muted);font-size:13px;margin:2px 0 4px;}
+.svg-wrap{background:#fff;border:1px solid var(--line);border-radius:13px;padding:14px;margin:14px 0;text-align:center;}
+.svg-wrap svg{width:100%;height:auto;max-width:560px;}
+.cap{color:var(--muted);font-size:13px;margin-top:8px;}
+.qblock{padding:16px 0;border-top:1px solid var(--line);} .qblock:first-of-type{border-top:none;padding-top:4px;}
+.qnum{color:var(--brand);font-weight:700;font-size:12px;letter-spacing:.04em;text-transform:uppercase;}
+.examtag{display:inline-block;background:var(--good-soft);color:var(--good);border:1px solid #bfe6cf;border-radius:999px;padding:2px 9px;font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;margin-left:8px;vertical-align:middle;}
+.qtext{font-weight:600;margin:6px 0 12px;font-size:16px;}
+.qtext .dtable{font-weight:400;max-width:360px;}
+.opt{display:block;width:100%;text-align:left;background:#fff;border:1.5px solid var(--line);border-radius:11px;padding:11px 14px;margin:7px 0;font-size:15px;cursor:pointer;transition:.14s;color:var(--ink);}
+.opt:hover{border-color:var(--brand);background:var(--brand-soft);}
+.opt.correct{border-color:var(--good);background:var(--good-soft);} .opt.wrong{border-color:var(--bad);background:var(--bad-soft);}
+.opt .mark{float:right;font-weight:700;}
+.exp{margin-top:11px;padding:13px 15px;border-radius:11px;background:#faf9fe;border:1px dashed var(--line);font-size:14px;display:none;} .exp.show{display:block;} .exp b{color:var(--brand);}
+.scorechip{font-size:13px;color:var(--muted);font-weight:600;}
+.navrow{display:flex;justify-content:space-between;margin-top:22px;gap:10px;}
+.navbtn{text-decoration:none;font-weight:600;font-size:14px;padding:10px 16px;border-radius:11px;border:1px solid var(--line);color:var(--ink);background:#fff;}
+.navbtn.primary{background:var(--brand);color:#fff;border-color:var(--brand);}
+.tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.warnbox{background:var(--amber-soft);border:1px solid #f0deb8;border-radius:11px;padding:12px 16px;margin:14px 0;font-size:14.5px;}
+.warnbox b{color:var(--amber);}
+@media print{
+  body{background:#fff;} .panel{box-shadow:none;border-color:#ccc;}
+  audio,.secaudio,.timer,.navrow,.home{display:none!important;}
+  .reveal,.exp{display:block!important;} .preq{border-color:#ccc;}
+  .qblock{break-inside:avoid;} .panel{break-inside:avoid;}
+}
+</style>
+</head><body><div class="wrap">
+<a class="home" href="index.html">&larr; All 14 days</a>
+<div class="crumb">Day 6 of 14 &middot; Learn</div>
+<h1>Mixed Strategies I: making your opponent indifferent</h1>
+<p class="lede">The one calculation the professor says outright you may need in the exam. About 21% of the marks live here.</p>
+
+<div class="preq"><span class="tag">&#9208; Guess first</span>
+<p>You're taking a penalty kick. You know your <b>right</b>-footed shot is stronger: you score more often with it. Should you take every penalty to the right?</p>
+<p class="do">Take 20 seconds. Commit to an answer before you read on.</p></div>
+
+<div class="panel"><h3>&#127911; Why you mix at all <span class="scorechip">~1 min</span></h3>
+<p class="note">A quick map of what you'll learn today. Each section below also has its own short audio.</p>
+<!-- SCRIPT Day-06-intro.mp3 | NOA=Heart TOM=Fenrir
+NOA: Before anything else, answer the penalty question at the top of the page. Your stronger foot scores more often. So should every kick go that way?
+TOM: My instinct says yes. Use the better foot.
+NOA: Hold that thought, because today is the day it breaks. This is the one calculation the professor says out loud that you may need in the exam, and it is the biggest single block of marks on the paper.
+TOM: So what do I actually learn?
+NOA: Three things, and they build. First, a kind of game where whatever you win, the other side loses. Those get written with just one number in each cell, and you will see why the second number was never telling you anything.
+TOM: And the second thing?
+NOA: The heart of it. When there is no safe move, you choose at random, in fixed proportions. And there is exactly one set of proportions worth using: the one that leaves your opponent with nothing to prefer.
+NOA: Third, a trap. Once you know the method it is tempting to reach for it every time. Some of these games are already settled and need no mixing at all. Spotting those takes seconds and saves you minutes.
+TOM: So the short version is that I am not mixing in order to win.
+NOA: You are mixing so you cannot be read. Hold onto that line and the rest of the day makes sense.
+-->
+<audio controls preload="none" src="Day-06-intro.mp3"></audio>
+<div class="takeaway"><ul>
+<li><b>Zero-sum game</b>: whatever one player gains, the other loses. It is written with <i>one</i> number per cell: player 1's payoff. Player 1 wants it high, player 2 wants it low.</li>
+<li><b>Mixed strategy</b>: instead of always choosing the same action, you choose at random, with fixed proportions.</li>
+<li><b>The indifference rule</b>: your best mixture is the one that gives your <i>opponent</i> the same average payoff whatever he does. Then he has nothing to use against you.</li>
+<li><b>Value of the game</b>: the payoff that comes out of the equilibrium. A <b>Nash equilibrium</b> is a pair of choices where neither player wants to change. In a zero-sum game the value is the same number in every Nash equilibrium.</li>
+</ul>
+<p class="tk-gen">One line to hold onto: <b>you don't mix to win. You mix so you can't be read.</b></p></div></div>
+
+<!-- ============ SECTION 1 ============ -->
+<div class="panel"><h3>Zero-sum, and why one number is enough</h3>
+<!-- SCRIPT Day-06-zerosum.mp3 | NOA=Heart TOM=Fenrir
+NOA: Some games are pure conflict. There is a fixed pie, and every crumb you take is a crumb the other person does not get. Poker between two people. A penalty kick. Rock paper scissors.
+TOM: Nothing to share and nothing to gain together.
+NOA: Nothing at all. The course calls these zero-sum games, because the two payoffs always add up to nothing. And that gives us a shortcut in how the grid is written.
+TOM: Which is why the cells on the page have only one number in them.
+NOA: Exactly. That single number is always player one's payoff. Player two's is the same number with a minus sign in front. Look at the two tables side by side on the page. The long one and the short one are the same game.
+TOM: So the second number never carried any information.
+NOA: It never did. It was always just the first one, flipped. And every zero-sum question on every past paper uses the short form, so when you see one number per cell, you know immediately what you are holding.
+TOM: What do the two players want from that one number?
+NOA: Opposite things. The player choosing rows wants it high. The player choosing columns wants that very same number low. One number, two goals pulling against each other.
+TOM: Take the poisoned goblets on the page. Whatever cell I point at, somebody wants to move.
+NOA: And that is the whole problem. There is no resting place. If your opponent could see your choice before he answered it, he would beat you every time. So the only way out is to stop being predictable.
+-->
+<div class="secaudio"><span class="salab">&#127911; Listen to this section</span><audio controls preload="none" src="Day-06-zerosum.mp3"></audio></div>
+
+<p class="p">Some games are pure conflict. There is a fixed pie and every crumb you take is a crumb the other person loses. Poker between two players. A penalty kick. Rock-paper-scissors. The course calls these <b>zero-sum games</b>.</p>
+
+<p class="p">Because the two payoffs always add to zero, writing both is a waste of ink. So the course uses a shorthand: <b>one number per cell, and that number is player 1's payoff.</b> Player 2's payoff is simply minus that number.</p>
+
+<p class="p">Every zero-sum question on every past exam uses this shorthand. If you see a matrix with a single number in each cell, this is what you're looking at.</p>
+
+<div class="rule">Player 1 (the rows) wants the number <b>high</b>. Player 2 (the columns) wants the same number <b>low</b>. One number, two opposite goals.</div>
+
+<p class="partlab">The two forms, side by side</p>
+<p class="p">Vizzini's battle of wits from <i>The Princess Bride</i>. Westley secretly poisons one goblet; Vizzini picks one to drink. Vizzini wants to guess right, Westley wants him to guess wrong. Written the long way:</p>
+<div class="tscroll">
+<table class="dtable">
+<tr><th></th><th>Westley poisons<br>his own goblet</th><th>Westley poisons<br>Vizzini's goblet</th></tr>
+<tr><td class="lab">Vizzini drinks<br>from his own</td><td>&minus;1, &nbsp;1</td><td>1, &nbsp;&minus;1</td></tr>
+<tr><td class="lab">Vizzini drinks<br>from Westley's</td><td>1, &nbsp;&minus;1</td><td>&minus;1, &nbsp;1</td></tr>
+</table></div>
+<p class="p">And the same game in one-number form, with only Vizzini's payoff:</p>
+<div class="tscroll">
+<table class="dtable">
+<tr><th></th><th>Poisons his own</th><th>Poisons Vizzini's</th></tr>
+<tr><td class="lab">Drinks from his own</td><td>&minus;1</td><td>1</td></tr>
+<tr><td class="lab">Drinks from Westley's</td><td>1</td><td>&minus;1</td></tr>
+</table></div>
+<div class="cap">The second number was never information. It was always the first one with a minus sign.</div>
+
+<p class="p">Now look for a stable pair of choices. There isn't one. Whatever cell you point at, one of the two players wants to move. That's the "endless circle of logic" Vizzini talks himself into. The only way out is to stop being predictable.</p>
+
+<div class="rule">You need randomness exactly when <b>it hurts you to let your opponent see your choice before he responds.</b></div>
+</div>
+
+<!-- ============ SECTION 2 ============ -->
+<div class="panel"><h3>The best mixture makes your opponent indifferent</h3>
+<!-- SCRIPT Day-06-indifference.mp3 | NOA=Heart TOM=Fenrir
+NOA: So you have to mix. But in what proportions? Most people say half and half, because it sounds fair.
+TOM: And fair is usually wrong here.
+NOA: Usually wrong. Think about what happens if your mixture leaves your opponent doing better on one side than the other. Even slightly better.
+TOM: Then he just goes to that side. Every time.
+NOA: Every time, and he never has to think again. You have handed him a free advantage that he keeps for the rest of the game. So the mixture you want is the one where both of his options come out the same for him.
+TOM: If both roads lead to the same place, he has no reason to pick either one.
+NOA: And no way to read you. That is the indifference rule, and it is the whole method. Set his two average payoffs equal to each other, and solve for your proportions.
+TOM: Notice whose payoffs those are. Mine or his?
+NOA: His. That catches people every single time. You are choosing your own mixture, but the equation you write is about what he gets. Your mixture is the thing you are solving for.
+TOM: Look at the two lines drawn on the page. Each one is what the kicker earns against one of the goalie's choices.
+NOA: And they cross once. Anywhere except that crossing, one line sits below the other, so the goalie simply picks whichever one is lower for you. Only at the meeting point does his choice stop mattering.
+TOM: The crossing is the answer.
+NOA: The crossing is the answer. And once you have it, put it back into either line and you get the payoff that comes out of the equilibrium. The course calls that the value of the game, and in a zero-sum game it is the same number however you get there.
+TOM: There is something strange in the worked example, though. The kicker keeps using his weaker foot.
+NOA: More than a third of the time, yes. Not because it is good. Because never using it would tell the goalie everything.
+TOM: And there is a stranger one underneath.
+NOA: The try-it problem. Getting better at defending one side can make the goalie use that side less. The slides say it in a line: becoming better at something may make you use it less often. That is the surprising result of the whole lecture, and it is exactly the sort of thing a concept question likes to ask.
+-->
+<div class="secaudio"><span class="salab">&#127911; Listen to this section</span><audio controls preload="none" src="Day-06-indifference.mp3"></audio></div>
+
+<p class="p">So you must mix. But in what proportions? Half and half? That feels fair, and it is usually wrong.</p>
+
+<p class="p">Here is the idea. Suppose your mixture gives your opponent a better average result when he goes left than when he goes right. Then he will always go left. You have handed him a free advantage. The only mixture he cannot exploit is the one where <b>he gets exactly the same average payoff whichever action he picks</b>. At that point he has no reason to prefer anything, and no way to read you.</p>
+
+<div class="rule">Find the mixture that makes the <b>opponent</b> indifferent. Set his two expected payoffs equal, and solve.</div>
+
+<p class="partlab">The exam's data</p>
+<p class="p">The penalty-kick game from Presentation 5. The numbers are the kicker's chance of scoring, in percent. The kicker (rows) wants it high; the goalie (columns) wants it low. Note the right side is stronger for this kicker.</p>
+<div class="tscroll">
+<table class="dtable">
+<tr><th></th><th>Goalie dives Left</th><th>Goalie dives Right</th></tr>
+<tr><td class="lab">Kicker goes Left &nbsp;<i>(x)</i></td><td>58</td><td>95</td></tr>
+<tr><td class="lab">Kicker goes Right &nbsp;<i>(1&minus;x)</i></td><td>93</td><td>70</td></tr>
+</table></div>
+<p class="given">First check there is no stable pure pair: whatever cell you pick, one player wants to move. So mixing is required.</p>
+
+<div class="svg-wrap">
+<svg viewBox="0 0 560 250" role="img" aria-label="Two straight lines crossing. One line shows the kicker's scoring chance when the goalie dives left, falling from ninety-three down to fifty-eight. The other shows the chance when the goalie dives right, rising from seventy up to ninety-five. They cross a little before forty percent, at a height of about eighty.">
+  <!-- axes -->
+  <line x1="70" y1="30" x2="70" y2="200" stroke="#c8c2dd" stroke-width="1.5"/>
+  <line x1="70" y1="200" x2="520" y2="200" stroke="#c8c2dd" stroke-width="1.5"/>
+  <!-- y ticks -->
+  <g font-size="10" fill="#6f6886" text-anchor="end" font-family="-apple-system,Segoe UI,Arial">
+    <line x1="66" y1="181.1" x2="70" y2="181.1" stroke="#c8c2dd"/><text x="62" y="184">60</text>
+    <line x1="66" y1="143.3" x2="70" y2="143.3" stroke="#c8c2dd"/><text x="62" y="146">70</text>
+    <line x1="66" y1="105.6" x2="70" y2="105.6" stroke="#c8c2dd"/><text x="62" y="109">80</text>
+    <line x1="66" y1="67.8" x2="70" y2="67.8" stroke="#c8c2dd"/><text x="62" y="71">90</text>
+    <line x1="66" y1="30" x2="70" y2="30" stroke="#c8c2dd"/><text x="62" y="33">100</text>
+  </g>
+  <!-- x ticks -->
+  <g font-size="10" fill="#6f6886" text-anchor="middle" font-family="-apple-system,Segoe UI,Arial">
+    <line x1="70" y1="200" x2="70" y2="204" stroke="#c8c2dd"/><text x="70" y="217">0%</text>
+    <line x1="180" y1="200" x2="180" y2="204" stroke="#c8c2dd"/><text x="180" y="217">25%</text>
+    <line x1="290" y1="200" x2="290" y2="204" stroke="#c8c2dd"/><text x="290" y="217">50%</text>
+    <line x1="400" y1="200" x2="400" y2="204" stroke="#c8c2dd"/><text x="400" y="217">75%</text>
+    <line x1="510" y1="200" x2="510" y2="204" stroke="#c8c2dd"/><text x="510" y="217">100%</text>
+  </g>
+  <!-- line: goalie dives LEFT  (93 - 35x) : (70,56.4) -> (510,188.7) -->
+  <line x1="70" y1="56.4" x2="510" y2="188.7" stroke="#6b4ef0" stroke-width="2.5"/>
+  <!-- line: goalie dives RIGHT (70 + 25x) : (70,143.3) -> (510,48.9) -->
+  <line x1="70" y1="143.3" x2="510" y2="48.9" stroke="#1f9d63" stroke-width="2.5"/>
+  <!-- crossing -->
+  <line x1="238.7" y1="107.1" x2="238.7" y2="200" stroke="#d2453f" stroke-width="1.3" stroke-dasharray="4 3"/>
+  <line x1="70" y1="107.1" x2="238.7" y2="107.1" stroke="#d2453f" stroke-width="1.3" stroke-dasharray="4 3"/>
+  <circle cx="238.7" cy="107.1" r="5" fill="#d2453f"/>
+  <!-- labels -->
+  <g font-size="11.5" font-family="-apple-system,Segoe UI,Arial" font-weight="600">
+    <text x="516" y="192" fill="#6b4ef0">goalie dives Left</text>
+    <text x="516" y="45" fill="#1f9d63">goalie dives Right</text>
+    <text x="246" y="98" fill="#d2453f">the crossing</text>
+  </g>
+  <g font-size="10.5" font-family="-apple-system,Segoe UI,Arial" fill="#6f6886">
+    <text x="238.7" y="232" text-anchor="middle" fill="#d2453f" font-weight="600">x here</text>
+    <text x="20" y="115" fill="#6f6886" transform="rotate(-90 20,115)" text-anchor="middle">kicker's chance of scoring</text>
+    <text x="290" y="245" text-anchor="middle">x = how often the kicker goes Left</text>
+  </g>
+</svg>
+<div class="cap">Two straight lines: the kicker's scoring chance against each of the goalie's two choices. Anywhere except the crossing, one line sits below the other. The goalie just picks that one. Only where they meet does the goalie's choice stop mattering.</div>
+</div>
+
+<p class="partlab">Worked example</p>
+<div class="question">Using the penalty-kick table above: what proportion <i>x</i> of his kicks should the kicker send to the left, and what scoring rate does that guarantee him?</div>
+
+<div class="step"><div class="stepn">1</div><div class="stepbody"><div class="lab">Write the kicker's payoff if the goalie dives Left.</div>
+He scores 58 whenever he kicked left (share <i>x</i>), and 93 whenever he kicked right (share 1&minus;<i>x</i>).
+<br><span class="math">58x + 93(1 − x) = 93 − 35x</span></div></div>
+
+<div class="step"><div class="stepn">2</div><div class="stepbody"><div class="lab">Write the kicker's payoff if the goalie dives Right.</div>
+Same idea, other column.
+<br><span class="math">95x + 70(1 − x) = 70 + 25x</span></div></div>
+
+<div class="step"><div class="stepn">3</div><div class="stepbody"><div class="lab">Set them equal: this is the indifference condition.</div>
+Now the goalie's choice makes no difference to the kicker's average.
+<br><span class="math">93 − 35x = 70 + 25x &nbsp;→&nbsp; 23 = 60x</span></div></div>
+
+<div class="step"><div class="stepn">4</div><div class="stepbody"><div class="lab">Solve, then put x back into either line to get the value.</div>
+<span class="math">x = 23/60 = 38.3%</span>
+<br><span class="math">93 − 35(0.383) = 79.6</span></div></div>
+
+<div class="ans">&#10003; The kicker goes left <b>38.3%</b> of the time, and that guarantees him a <b>79.6%</b> scoring rate, the value of the game. (Doing the same on the goalie's side gives 41.7% left.)</div>
+
+<div class="warnbox"><b>Notice what just happened.</b> The kicker's left foot is his <i>weaker</i> side: 58 against 93 when the goalie guesses right. And he still uses it more than a third of the time. Not because it's good, but because never using it would make him readable.</div>
+
+<div class="tryq"><div class="q">Suppose the goalie trains hard and gets better at defending his right. The bottom-right number falls from 70 to 60. The kicker now scores less often when they both go right. Everything else stays the same.<br><br>Will the goalie now dive <b>right</b> more often, since he's better at it?</div>
+<button class="reveal-btn" onclick="this.nextElementSibling.classList.add('show');this.disabled=true;">Reveal answer</button>
+<div class="reveal"><b>No, the opposite.</b> The goalie dives <b>left</b> more often, going from 41.7% to 50%.<br><br>Why: getting better at the right side makes the kicker avoid the right. The kicker shifts left, from 38.3% up to 47.1%. The goalie follows him there. The value of the game drops from 79.6 to 76.5, so the goalie is genuinely better off. He just gets there by using his improved side <i>less</i>.<br><br>The slides put it in one line: <i>becoming better at something may make you use it less often.</i> This is the surprising result of the whole lecture. It is exactly the kind of thing a concept question likes to ask.</div></div>
+</div>
+
+<!-- ============ SECTION 3 ============ -->
+<div class="panel"><h3>Careful: not every zero-sum game needs mixing</h3>
+<!-- SCRIPT Day-06-pure.mp3 | NOA=Heart TOM=Fenrir
+NOA: Here is the trap, and it arrives the moment you get good at the method. You see the words zero-sum, and your hand starts writing equations.
+TOM: And sometimes there is nothing to solve.
+NOA: Sometimes there is nothing to solve at all. Look at the second penalty table on the page. It is the same story, but now the kicker's weaker foot is not merely weaker. It is bad.
+TOM: Bad enough that kicking the other way wins in both columns.
+NOA: In both. So the kicker never chooses it, and there is no decision left for him to make. Knowing that, the goalie takes the smallest number available in that row, and the two of them settle. No mixing, no equations.
+TOM: How do I spot it quickly?
+NOA: There is a test that takes seconds. Find a cell that is the smallest in its row and at the same time the largest in its column. If such a cell exists, that cell is the equilibrium and the value of the game is simply the number sitting in it.
+TOM: And if no cell does both?
+NOA: Then nobody can stand still, and you mix. That is the fork in the road, and it is worth doing before you write a single equation. Check for a move that beats another move everywhere. If you find one, the game has already solved itself.
+TOM: Which is a minute saved in an exam where every question gets about six.
+NOA: And more than the minute. It is a wrong answer avoided, because a mixture calculated for a game that did not need one gives you a number that looks perfectly reasonable and is not the answer.
+-->
+<div class="secaudio"><span class="salab">&#127911; Listen to this section</span><audio controls preload="none" src="Day-06-pure.mp3"></audio></div>
+
+<p class="p">Here is the trap. Once you learn the indifference method, it is tempting to see "zero-sum" and immediately start writing equations. Sometimes there is nothing to solve.</p>
+
+<p class="p">Take the same penalty story, but now the kicker's left foot is genuinely bad. Not just weaker: bad. One number changes the whole game:</p>
+<div class="tscroll">
+<table class="dtable">
+<tr><th></th><th>Goalie dives Left</th><th>Goalie dives Right</th></tr>
+<tr><td class="lab">Kicker goes Left</td><td class="dim">38</td><td class="dim">65</td></tr>
+<tr><td class="lab">Kicker goes Right</td><td>93</td><td class="hlcell">70 &nbsp;&#10003;</td></tr>
+</table></div>
+<div class="cap">Kicking right beats kicking left in <i>both</i> columns: 93 &gt; 38 and 70 &gt; 65. So the kicker always kicks right. Knowing that, the goalie picks the smaller number in that row: 70. The green cell is a stable pair, and no mixing is needed.</div>
+
+<p class="p">The test is quick. Look at the highlighted number: it is the <b>smallest in its row</b> and the <b>largest in its column</b>. When such a cell exists, that cell is the equilibrium and the value of the game is just that number. When no such cell exists, as in the 58/95/93/70 version, you must mix.</p>
+
+<div class="rule">Before you write a single equation, check for dominance. If one row beats the other everywhere, the game is already solved.</div>
+
+<div class="tryq"><div class="q">A zero-sum game, one number per cell = player 1's payoff:<br><br>
+<table class="dtable" style="max-width:340px;margin:10px 0"><tr><th></th><th>Left</th><th>Right</th></tr>
+<tr><td class="lab">Top</td><td>4</td><td>7</td></tr>
+<tr><td class="lab">Down</td><td>2</td><td>5</td></tr></table>
+Does this game need a mixed strategy? What is player 1's payoff in equilibrium?</div>
+<button class="reveal-btn" onclick="this.nextElementSibling.classList.add('show');this.disabled=true;">Reveal answer</button>
+<div class="reveal"><b>No mixing. Player 1 gets 4.</b><br><br>Top beats Down in both columns (4 &gt; 2 and 7 &gt; 5), so player 1 always plays Top. Player 2 wants the number low, so facing Top she picks the smaller one: 4 rather than 7, which is Left.<br><br>Check the cell: 4 is the smallest in its row and the largest in its column. Stable. The equilibrium is (Top, Left) and the value is <b>4</b>.</div></div>
+</div>
+
+<!-- ============ QUIZ ============ -->
+<div class="panel"><h3>&#128221; Quiz yourself <span class="scorechip" id="scoreChip">0 / 6</span></h3>
+<p class="note">Pick an option. The answer and the explanation appear only after you choose. One question carries a tag: it is a real past-final question, word for word, from a paper you never sit as a mock. The other five are new. Their grids were built for this page, so they do not copy any exam you will sit later, and they do not repeat the examples above.</p>
+<div id="quizBody"></div></div>
+
+<div class="navrow"><a class="navbtn" href="Day-05.html">&larr; Back</a><a class="navbtn primary" href="Day-07.html">Next &rarr;</a></div>
+</div>
+<script>
+function mat(rows, cols, cells){
+  var h = '<div class="tscroll"><table class="dtable" style="max-width:340px">';
+  h += '<tr><th></th><th>'+cols[0]+'</th><th>'+cols[1]+'</th></tr>';
+  h += '<tr><td class="lab">'+rows[0]+'</td><td>'+cells[0]+'</td><td>'+cells[1]+'</td></tr>';
+  h += '<tr><td class="lab">'+rows[1]+'</td><td>'+cells[2]+'</td><td>'+cells[3]+'</td></tr>';
+  return h+'</table></div>';
+}
+var MDIAG = mat(["Top","Down"],["Left","Right"],[9,0,0,6]);
+var MFULL = mat(["Top","Down"],["Left","Right"],[9,3,5,9]);
+var MANTI = mat(["Top","Down"],["Left","Right"],[0,40,10,0]);
+var MPURE = mat(["Top","Down"],["Left","Right"],[6,8,3,5]);
+
+const QUIZ = [
+{"q":"A zero-sum game. There is one number per cell and it is player 1's payoff. Player 1 picks the row and wants the number high. Player 2 picks the column and wants it low. In the mixed equilibrium, how often does player 2 play Left? (Rounded to the nearest percentage point.)"+MDIAG,
+ "opts":["16%","24%","40%","50%","60%"],"correct":2,
+ "exp":"<b>40%.</b><br><br><b>The rule: the indifference condition.</b> Player 2's mixture is the one that makes <i>player 1</i> indifferent between his two rows.<br><br><b>The inputs.</b> Call q the chance that player 2 plays Left, so 1&minus;q is the chance she plays Right. From the grid: Top pays 9 against Left and 0 against Right. Down pays 0 against Left and 6 against Right.<br><br><b>1.</b> Player 1's payoff from Top: 9q + 0(1&minus;q) = 9q<br><b>2.</b> Player 1's payoff from Down: 0q + 6(1&minus;q) = 6 &minus; 6q<br><b>3.</b> Set them equal: 9q = 6 &minus; 6q<br><b>4.</b> Add 6q to both sides: 15q = 6<br><b>5.</b> Divide by 15: q = 0.4 = <b>40%</b><br><br><b>Check.</b> Put q = 0.4 back in. Top gives 9 &times; 0.4 = 3.6. Down gives 6 &times; 0.6 = 3.6. The same number, so player 1 really is indifferent. &#10003;<br><br><b>Where each wrong option comes from.</b><br>60%: 9 &divide; 15. You put the payoff from the same row on top. The number that goes on top is the one sitting in the <i>other</i> row, which is 6.<br>50%: assuming a mixture must be half and half. It almost never is.<br>16%: 0.4 &times; 0.4. That is P(Top, Left), an outcome cell. The question asked for one player's mixture, not for a cell.<br>24%: 0.4 &times; 0.6. That is P(Top, Right), the crossed cell. Same mistake as above."},
+
+{"q":"A zero-sum game (one number per cell = player 1's payoff). What is the probability that the outcome is (Top, Left) in the mixed equilibrium? (Round up to the closest percentage point.)"+MFULL,
+ "opts":["16%","24%","36%","40%","60%"],"correct":1,
+ "exp":"<b>24%.</b><br><br><b>The rule: the indifference condition, used twice, then P(row, column) = P(row) &times; P(column).</b> There are no zeros in this grid, so nothing cancels and there is no shortcut to reach for.<br><br><b>The inputs.</b> p is the chance of Top, q is the chance of Left. Top pays 9 against Left and 3 against Right. Down pays 5 against Left and 9 against Right.<br><br><b>First, is mixing needed?</b> Top's smallest number is 3, and 3 is not the biggest in the Right column (9 is). Down's smallest is 5, and 5 is not the biggest in the Left column (9 is). No cell is stable, so mix.<br><br><b>Find q</b>, the mixture that makes player 1 indifferent:<br><b>1.</b> Top: 9q + 3(1&minus;q) = 3 + 6q<br><b>2.</b> Down: 5q + 9(1&minus;q) = 9 &minus; 4q<br><b>3.</b> Equal: 3 + 6q = 9 &minus; 4q<br><b>4.</b> Add 4q: 3 + 10q = 9<br><b>5.</b> Subtract 3: 10q = 6<br><b>6.</b> q = 0.6<br><br><b>Find p</b>, the mixture that makes player 2 indifferent. She is indifferent when player 1's payoff is the same in both columns:<br><b>1.</b> Left column: 9p + 5(1&minus;p) = 5 + 4p<br><b>2.</b> Right column: 3p + 9(1&minus;p) = 9 &minus; 6p<br><b>3.</b> Equal: 5 + 4p = 9 &minus; 6p<br><b>4.</b> Add 6p: 5 + 10p = 9<br><b>5.</b> Subtract 5: 10p = 4<br><b>6.</b> p = 0.4<br><br><b>Multiply.</b> (Top, Left) is a matching cell, so P = p &times; q = 0.4 &times; 0.6 = 0.24 = <b>24%</b>.<br><br><b>Check.</b> Value from the rows: 3 + 6(0.6) = 6.6, and 9 &minus; 4(0.6) = 6.6. From the columns: 5 + 4(0.4) = 6.6, and 9 &minus; 6(0.4) = 6.6. All four agree, so p and q are right. &#10003;<br><br><b>Where each wrong option comes from.</b><br>40%: p on its own. That is how often Top is played, not how often (Top, Left) happens.<br>60%: q on its own, the Left column and no row.<br>16%: 0.4 &times; 0.4 = P(Top, Right). You read the row correctly and the column wrongly.<br>36%: 0.6 &times; 0.6 = P(Down, Left).<br><br><b>On the wording.</b> \"Round up to the closest percentage point\" is how the 2024 papers print it. It means ordinary rounding, to whichever whole number is nearer. Here it changes nothing: 0.24 is exactly 24%."},
+
+{"q":"A zero-sum game (one number per cell = player 1's payoff). What is the probability that the outcome is (Down, Left) in the mixed equilibrium? (Rounded to the nearest percentage point.)"+MANTI,
+ "opts":["4%","16%","20%","64%","80%"],"correct":3,
+ "exp":"<b>64%.</b><br><br><b>The rule: the indifference condition, used twice, then P(row, column) = P(row) &times; P(column).</b> Look at where the zeros are before you start. They sit on the anti-diagonal, from bottom-left to top-right. Any recipe built on the usual shape breaks here, so write both equations out.<br><br><b>The inputs.</b> p is the chance of Top, q is the chance of Left. Top pays 0 against Left and 40 against Right. Down pays 10 against Left and 0 against Right.<br><br><b>Find q</b>, the mixture that makes player 1 indifferent:<br><b>1.</b> Top: 0q + 40(1&minus;q) = 40 &minus; 40q<br><b>2.</b> Down: 10q + 0(1&minus;q) = 10q<br><b>3.</b> Equal: 40 &minus; 40q = 10q<br><b>4.</b> Add 40q: 40 = 50q<br><b>5.</b> q = 0.8, so Left is played 80% of the time<br><br><b>Find p</b>, the mixture that makes player 2 indifferent:<br><b>1.</b> Left column: 0p + 10(1&minus;p) = 10 &minus; 10p<br><b>2.</b> Right column: 40p + 0(1&minus;p) = 40p<br><b>3.</b> Equal: 10 &minus; 10p = 40p<br><b>4.</b> Add 10p: 10 = 50p<br><b>5.</b> p = 0.2, so Top is played 20% and <b>Down 80%</b><br><br><b>Stop and look.</b> p = 0.2 but q = 0.8. They are not equal. On the usual grid they always are, and that habit is exactly what this shape punishes.<br><br><b>Multiply.</b> (Down, Left) is a crossed cell: P = (1 &minus; p) &times; q = 0.8 &times; 0.8 = 0.64 = <b>64%</b>.<br><br><b>Check.</b> Value from Top: 40 &times; 0.2 = 8. From Down: 10 &times; 0.8 = 8. The same, so both mixtures are right. &#10003;<br><br><b>Where each wrong option comes from.</b><br>16%: the \"p equals q\" shortcut. Feed the two visible numbers 40 and 10 into the usual recipe and you get 10 &divide; 50 = 0.2 for both players, so (Down, Left) becomes 0.8 &times; 0.2 = 16%. This is the mistake the question is built to catch. 16% is also the true P(Top, Left), so it looks familiar twice over.<br>80%: P(Down) on its own, the row without the column.<br>20%: P(Top) on its own. The wrong row, and no multiplication either.<br>4%: 0.2 &times; 0.2 = P(Top, Right)."},
+
+{"src":"2025 A final","q":"What is the main difference between a zero-sum game and a general (non-zero-sum) game?",
+ "opts":["In zero-sum games, one player's gain is the other's loss","General games have no Nash equilibria","Zero-sum games require cooperation","General games are strictly competitive","None of the other answers is correct"],"correct":0,
+ "exp":"<b>In zero-sum games, one player's gain is the other's loss.</b> That is the definition, and it is why one number per cell is enough. Player 2's payoff is always player 1's payoff with a minus sign in front.<br><br><b>Why each other option is wrong.</b><br>\"General games have no Nash equilibria\": false. Nash proved that every finite game has at least one equilibrium, pure or mixed.<br>\"Zero-sum games require cooperation\": backwards. Zero-sum is the one setting where cooperation buys nothing, because no cell is better for both players.<br>\"General games are strictly competitive\": also backwards. \"Strictly competitive\" is another name for zero-sum.<br>\"None of the other answers is correct\": the first option is correct, so this one cannot be. Across six solved past papers this option has never once been the right answer. Low prior, not zero."},
+
+{"q":"You are solving a 2&times;2 zero-sum game that has no stable pure pair. You want p, the probability that player 1 plays Top. Which equation gives it?",
+ "opts":["Make player 2 indifferent: set player 1's payoff in the Left column equal to his payoff in the Right column","Make player 1 indifferent: set his payoff from Top equal to his payoff from Down","Set the two numbers on the main diagonal equal to each other","p is always 1/2, because a mixed strategy has to be unpredictable","Divide player 1's largest payoff by the sum of all four payoffs"],"correct":0,
+ "exp":"<b>Make player 2 indifferent.</b> This is the part that feels upside down, and it is worth saying out loud: <b>your own mixture is set by your opponent's indifference, not by your own.</b><br><br>Here is why. If your mixture gave player 2 a better average in one column, she would simply always pick that column, and you would be readable. The only mixture she cannot use against you is the one that leaves her nothing to choose between. In the one-number shorthand her payoff is minus player 1's, so making her indifferent is the same as making player 1's payoff equal in the two columns.<br><br><b>Why each other option is wrong.</b><br>\"Set his payoff from Top equal to his payoff from Down\": the right method for the wrong unknown. That equation gives q, player 2's mixture. Swapping the two is harmless on a main-diagonal grid, where p and q happen to be equal, and fatal on an anti-diagonal one, where they are not.<br>\"Set the two numbers on the main diagonal equal\": those are two fixed payoffs. There is no unknown in that equation, and it ignores half the grid.<br>\"p is always 1/2\": an even mixture is unpredictable, but it is usually still exploitable. In the three grids in this quiz p came out at 0.4, 0.4 and 0.2.<br>\"Divide the largest payoff by the sum of all four\": not a rule in this course, and it uses no indifference at all."},
+
+{"q":"A zero-sum game (one number per cell = player 1's payoff). What is player 1's payoff in the Nash equilibrium?"+MPURE,
+ "opts":["5","6","7","8","You cannot tell without solving for the mixed equilibrium"],"correct":1,
+ "exp":"<b>6, and there is nothing to solve.</b><br><br><b>The rule: check for a saddle point before you write any equation.</b> A saddle point is a cell that is the <i>smallest in its row</i> and the <i>largest in its column</i>. When one exists, that cell is the equilibrium and its number is the value of the game.<br><br><b>1.</b> Compare the rows. Top beats Down in both columns: 6 &gt; 3 and 8 &gt; 5. So Top is a dominant strategy for player 1, and he always plays Top.<br><b>2.</b> Player 2 knows this and wants the number low. In the Top row she picks 6 rather than 8, which means Left.<br><b>3.</b> Test the cell (Top, Left) = 6. Smallest in its row? The row is 6 and 8, so yes. Largest in its column? The column is 6 and 3, so yes. It is a saddle point.<br><br><b>Check.</b> Neither player wants to move. Player 1 switching to Down drops him from 6 to 3. Player 2 switching to Right raises player 1 from 6 to 8, which is worse for her. &#10003;<br><br><b>Where each wrong option comes from.</b><br>8: the biggest number in player 1's best row. It forgets that player 2 picks the column and wants the number small.<br>5: the smallest number in the grid, cell (Down, Right). Player 1 would have to choose Down to get there, and he never will.<br>7: the average of 6 and 8, which is what you get by assuming player 2 mixes half and half. She has no reason to mix here.<br>\"You cannot tell without solving for the mixed equilibrium\": the trap this question exists for. Try it and the algebra falls apart. Top pays 6q + 8(1&minus;q) = 8 &minus; 2q, and Down pays 3q + 5(1&minus;q) = 5 &minus; 2q, so Top is ahead by exactly 3 whatever q is. The two lines are parallel and never cross, so there is no indifference point to find. Zero-sum does not always mean you must mix."}
+];
+function shuffleItem(it){var c=it.opts[it.correct];for(var i=it.opts.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=it.opts[i];it.opts[i]=it.opts[j];it.opts[j]=t;}it.correct=it.opts.indexOf(c);}
+QUIZ.forEach(shuffleItem);
+const body=document.getElementById('quizBody');
+if(body){let score=0;
+QUIZ.forEach((item,qi)=>{
+  const block=document.createElement('div');block.className='qblock';
+  const tag=item.src?`<span class="examtag">${item.src}</span>`:'';
+  block.innerHTML=`<div class="qnum">Question ${qi+1}${tag}</div><div class="qtext">${item.q}</div>`;
+  const exp=document.createElement('div');exp.className='exp';exp.innerHTML=item.exp;
+  item.opts.forEach((opt,oi)=>{
+    const btn=document.createElement('button');btn.className='opt';
+    btn.innerHTML=`${String.fromCharCode(65+oi)}. ${opt}<span class="mark"></span>`;
+    btn.onclick=()=>{ if(block.dataset.done)return; block.dataset.done="1";
+      const btns=block.querySelectorAll('.opt');btns.forEach(x=>x.disabled=true);
+      btns[item.correct].classList.add('correct');btns[item.correct].querySelector('.mark').textContent='✓';
+      if(oi===item.correct){score++;}else{btn.classList.add('wrong');btn.querySelector('.mark').textContent='✗';}
+      document.getElementById('scoreChip').textContent=`${score} / ${QUIZ.length}`; exp.classList.add('show'); };
+    block.appendChild(btn); });
+  block.appendChild(exp);body.appendChild(block); });}
+</script><!-- GoatCounter analytics -->
+<script data-goatcounter="https://game-theory.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<!-- Activity tracking: audio plays and finishes, quiz and mock completion. Sends counts to GoatCounter only. No personal data. -->
+<script>
+(function(){
+  function ev(path, title){
+    try{
+      if(!window.goatcounter || !window.goatcounter.count) return;
+      window.goatcounter.count({path: path, title: title, event: true});
+    }catch(e){}
+  }
+  var page = (location.pathname.split('/').pop() || 'index.html').replace(/\.html$/,'') || 'index';
+
+  // Audio: one count the first time a strip is played, one when it reaches the end.
+  Array.prototype.forEach.call(document.querySelectorAll('audio'), function(a){
+    var name = (a.getAttribute('src') || 'audio').replace(/\.mp3$/,'');
+    var started = false, finished = false;
+    a.addEventListener('play', function(){
+      if(started) return; started = true;
+      ev('audio-play/' + name, 'Audio started: ' + name);
+    });
+    a.addEventListener('ended', function(){
+      if(finished) return; finished = true;
+      ev('audio-done/' + name, 'Audio finished: ' + name);
+    });
+  });
+
+  // Learn-day quiz: one count when every question has been answered, with the score.
+  var qbody = document.getElementById('quizBody');
+  if(qbody){
+    var chip = document.getElementById('scoreChip');
+    var qsent = false;
+    qbody.addEventListener('click', function(){
+      if(qsent) return;
+      setTimeout(function(){
+        if(qsent) return;
+        var blocks = qbody.querySelectorAll('.qblock');
+        if(!blocks.length) return;
+        var done = 0;
+        Array.prototype.forEach.call(blocks, function(b){ if(b.dataset.done) done++; });
+        if(done !== blocks.length) return;
+        qsent = true;
+        var raw = chip ? chip.textContent.trim() : '';
+        var slug = raw.replace(/\s*\/\s*/, '-of-') || 'unknown';
+        ev('quiz-done/' + page + '/' + slug, 'Quiz finished: ' + page + ' ' + raw);
+      }, 0);
+    });
+  }
+
+  // Mock day: one count when the results panel opens, with the score.
+  var res = document.getElementById('results');
+  if(res && window.MutationObserver){
+    var msent = false;
+    var mo = new MutationObserver(function(){
+      if(msent || !res.classList.contains('show')) return;
+      msent = true; mo.disconnect();
+      var el = document.getElementById('resScore');
+      var raw = el ? el.textContent.trim() : '';
+      var slug = raw.replace(/\s*\/\s*/, '-of-') || 'unknown';
+      ev('mock-done/' + page + '/' + slug, 'Mock submitted: ' + page + ' ' + raw);
+    });
+    mo.observe(res, {attributes: true, attributeFilter: ['class']});
+  }
+})();
+</script>
+</body></html>

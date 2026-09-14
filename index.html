@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Game Theory 14-Day Exam Prep</title>
+<style>
+:root{--bg:#f5f3fb;--card:#fff;--ink:#211c33;--muted:#6f6886;--brand:#6b4ef0;--brand-d:#5238c4;
+--brand-soft:#ece7fd;--good:#1f9d63;--good-soft:#e4f6ec;--bad:#d2453f;--line:#e7e3f2;
+--amber:#b6791f;--amber-soft:#fcf3e3;--mock:#b4471f;--mock-soft:#fdefe8;
+--p1:#7c5cbf;--p2:#2f7fd0;--p3:#1d8a6a;--p4:#c2820b;--p5:#c04a7e;--p6:#4a6fa5;}
+*{box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);margin:0;line-height:1.55;}
+.wrap{max-width:760px;margin:0 auto;padding:30px 22px 60px;}
+h1{font-size:29px;margin:6px 0 6px;letter-spacing:-.02em;}
+.lede{color:var(--muted);margin:0 0 6px;font-size:16px;}
+.sig{color:var(--muted);font-size:13px;margin:0 0 20px;}
+h2{font-size:17px;margin:30px 0 10px;letter-spacing:-.01em;}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px 22px;margin:16px 0;box-shadow:0 1px 3px rgba(40,20,90,.04);}
+.panel h3{margin:0 0 10px;font-size:17px;}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:9px;margin:0;}
+.fact{background:#fbfaff;border:1px dashed var(--line);border-radius:11px;padding:10px 13px;}
+.fact .k{font-size:10.5px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);font-weight:700;}
+.fact .v{font-size:16px;font-weight:700;margin-top:2px;}
+.note{color:var(--muted);font-size:14px;margin:12px 0 0;}
+.warnbox{background:var(--amber-soft);border:1px solid #f0deb8;border-radius:12px;padding:13px 16px;margin:16px 0;font-size:14.5px;}
+.warnbox b{color:var(--amber);}
+.p{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.04em;padding:2px 7px;border-radius:5px;color:#fff;margin-right:3px;white-space:nowrap;}
+.P1{background:var(--p1)}.P2{background:var(--p2)}.P3{background:var(--p3)}
+.P4{background:var(--p4)}.P5{background:var(--p5)}.P6{background:var(--p6)}
+.legend{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 14px;font-size:13px;color:var(--muted);}
+.legend div{display:flex;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:4px 9px;}
+a.day,div.day{display:grid;grid-template-columns:74px 1fr;gap:14px;align-items:start;
+  background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:9px 0;
+  text-decoration:none;color:var(--ink);transition:.14s;}
+a.day:hover{border-color:var(--brand);box-shadow:0 2px 10px rgba(107,78,240,.10);transform:translateY(-1px);}
+.day.mock{background:var(--mock-soft);border-color:#f2cdb9;}
+.day.soon{opacity:.62;}
+.dwhen .dn{font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:700;}
+.dwhen .dd{font-size:15px;font-weight:700;margin-top:1px;}
+.dwhen .dt{font-size:11px;color:var(--muted);margin-top:2px;}
+.dtitle{font-weight:700;font-size:16px;margin:0 0 5px;}
+.day.mock .dtitle{color:var(--mock);}
+.dsub{color:var(--muted);font-size:13.5px;margin:5px 0 0;}
+.pill{float:right;font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;
+  padding:2px 9px;border-radius:999px;background:var(--good-soft);color:var(--good);border:1px solid #bfe6cf;}
+.pill.soon{background:#f1eff8;color:var(--muted);border-color:var(--line);}
+.foot{color:var(--muted);font-size:13px;margin-top:28px;text-align:center;}
+@media (max-width:600px){a.day,div.day{grid-template-columns:1fr;gap:6px}.wrap{padding:22px 15px 50px}h1{font-size:24px}}
+</style>
+</head><body><div class="wrap">
+
+<h1>Game Theory &amp; Strategic Thinking: 14-day exam prep</h1>
+<p class="lede">~30 minutes a day, from 25 September to the exam on 8 October. Ten days teach. Four are full timed mock exams. Open a day to listen to its audio and take its quiz.</p>
+<p class="sig">Bar Ilan IMBA &middot; Prof. Yuval Heller &middot; built by Ifat Yaakobi &amp; Claude Cowork</p>
+
+
+<h2>Which lecture each day covers</h2>
+<div class="legend">
+  <div><span class="p P1">P1</span>Introduction</div>
+  <div><span class="p P2">P2</span>Sequential games</div>
+  <div><span class="p P3">P3</span>Prisoner's dilemmas</div>
+  <div><span class="p P4">P4</span>Nash equilibrium</div>
+  <div><span class="p P5">P5</span>Mixed strategies</div>
+  <div><span class="p P6">P6</span>Credible strategies</div>
+</div>
+
+<h2>The 14 days</h2>
+
+<a class="day" href="Day-01.html">
+  <div class="dwhen"><div class="dn">Day 1</div><div class="dd">Fri 25 Sep</div><div class="dt">30 min</div></div>
+  <div><div class="dtitle">Exam map + backward induction<span class="pill">ready</span></div>
+  <span class="p P1">P1</span><span class="p P2">P2</span>
+  <p class="dsub">Reading a game tree, solving it from the last node, and the three traps that make tree questions cost marks.</p></div>
+</a>
+
+<a class="day" href="Day-02.html">
+  <div class="dwhen"><div class="dn">Day 2</div><div class="dd">Sat 26 Sep</div><div class="dt">30 min · paper</div></div>
+  <div><div class="dtitle">Name that game<span class="pill">ready</span></div>
+  <span class="p P3">P3</span><span class="p P4">P4</span>
+  <p class="dsub">Prisoner's dilemma, stag hunt, battle of the sexes, chicken, matching pennies. Tell them apart by their shape.</p></div>
+</a>
+
+<div class="day mock soon">
+  <div class="dwhen"><div class="dn">Day 3</div><div class="dd">Sun 27 Sep</div><div class="dt">90 + 30 min</div></div>
+  <div><div class="dtitle">Mock 1: Practice exam<span class="pill soon">coming</span></div>
+  <span class="p P1">P1</span><span class="p P2">P2</span><span class="p P3">P3</span><span class="p P4">P4</span><span class="p P5">P5</span>
+  <p class="dsub">Diagnostic. A low score here is information, not a verdict. It writes the error log that guides the next week.</p></div>
+</div>
+
+<a class="day" href="Day-04.html">
+  <div class="dwhen"><div class="dn">Day 4</div><div class="dd">Mon 28 Sep</div><div class="dt">30 min</div></div>
+  <div><div class="dtitle">Pure Nash I: underline and count<span class="pill">ready</span></div>
+  <span class="p P4">P4</span>
+  <p class="dsub">The biggest topic on the paper. Underline best replies until it is automatic, on 3×3 and 4×4 matrices.</p></div>
+</a>
+
+<a class="day" href="Day-05.html">
+  <div class="dwhen"><div class="dn">Day 5</div><div class="dd">Tue 29 Sep</div><div class="dt">30 min</div></div>
+  <div><div class="dtitle">Pure Nash II: elimination<span class="pill">ready</span></div>
+  <span class="p P4">P4</span>
+  <p class="dsub">Iterated elimination of dominated strategies, and why <i>strictly</i> and <i>weakly</i> are not the same word.</p></div>
+</a>
+
+<a class="day" href="Day-06.html">
+  <div class="dwhen"><div class="dn">Day 6</div><div class="dd">Wed 30 Sep</div><div class="dt">30 min</div></div>
+  <div><div class="dtitle">Mixed Strategies I: making your opponent indifferent<span class="pill">ready</span></div>
+  <span class="p P5">P5</span>
+  <p class="dsub">The one calculation the professor says you may need. Zero-sum shorthand, the indifference method, and the trap of mixing when you did not have to.</p></div>
+</a>
+
+<div class="day mock soon">
+  <div class="dwhen"><div class="dn">Day 7</div><div class="dd">Thu 1 Oct</div><div class="dt">90 + 30 min</div></div>
+  <div><div class="dtitle">Mock 2: 2024 A<span class="pill soon">coming</span></div>
+  <span class="p P1">P1</span><span class="p P2">P2</span><span class="p P3">P3</span><span class="p P4">P4</span><span class="p P5">P5</span>
+  <p class="dsub">The paper with the most calculation. It has no commitment questions, so it is a clean test of the method.</p></div>
+</div>
+
+<div class="day soon">
+  <div class="dwhen"><div class="dn">Day 8</div><div class="dd">Fri 2 Oct</div><div class="dt">30 min · light</div></div>
+  <div><div class="dtitle">Repeated games and sustaining cooperation<span class="pill soon">coming</span></div>
+  <span class="p P3">P3</span>
+  <p class="dsub">Exactly one of these on every exam. It is verbal, not mathematical. It turns on an off-by-one.</p></div>
+</div>
+
+<div class="day soon">
+  <div class="dwhen"><div class="dn">Day 9</div><div class="dd">Sat 3 Oct</div><div class="dt">30 min · paper</div></div>
+  <div><div class="dtitle">Making strategies credible<span class="pill soon">coming</span></div>
+  <span class="p P6">P6</span>
+  <p class="dsub">The eight devices, each with one story: Cortés burning his ships, the doomsday machine, the union leader with a public mandate.</p></div>
+</div>
+
+<div class="day mock soon">
+  <div class="dwhen"><div class="dn">Day 10</div><div class="dd">Sun 4 Oct</div><div class="dt">90 + 30 min</div></div>
+  <div><div class="dtitle">Mock 3: 2025 B<span class="pill soon">coming</span></div>
+  <span class="p P1">P1</span><span class="p P2">P2</span><span class="p P3">P3</span><span class="p P4">P4</span><span class="p P5">P5</span><span class="p P6">P6</span>
+  <p class="dsub">Five mixed-strategy questions, more than any other paper. Chosen to stress-test Day 6.</p></div>
+</div>
+
+<div class="day soon">
+  <div class="dwhen"><div class="dn">Day 11</div><div class="dd">Mon 5 Oct</div><div class="dt">30 min</div></div>
+  <div><div class="dtitle">The two arithmetic questions you must not lose<span class="pill soon">coming</span></div>
+  <span class="p P5">P5</span><span class="p P1">P1</span><span class="p P4">P4</span>
+  <p class="dsub">The linked zero-sum pair at the end of every paper, plus the 2/3-average contest.</p></div>
+</div>
+
+<div class="day mock soon">
+  <div class="dwhen"><div class="dn">Day 12</div><div class="dd">Tue 6 Oct</div><div class="dt">90 + 30 min · 16:00</div></div>
+  <div><div class="dtitle">Mock 4: 2025 C · dress rehearsal<span class="pill soon">coming</span></div>
+  <span class="p P1">P1</span><span class="p P2">P2</span><span class="p P3">P3</span><span class="p P4">P4</span><span class="p P5">P5</span><span class="p P6">P6</span>
+  <p class="dsub">The most recent paper, taken at 16:00. That is the same hour as the real exam, so your body clock gets practice too.</p></div>
+</div>
+
+<div class="day soon">
+  <div class="dwhen"><div class="dn">Day 13</div><div class="dd">Wed 7 Oct</div><div class="dt">30 min</div></div>
+  <div><div class="dtitle">Full-course sweep: one lap through all six<span class="pill soon">coming</span></div>
+  <span class="p P1">P1</span><span class="p P2">P2</span><span class="p P3">P3</span><span class="p P4">P4</span><span class="p P5">P5</span><span class="p P6">P6</span>
+  <p class="dsub">Five minutes per lecture, one concrete task each. Then the error log, top to bottom.</p></div>
+</div>
+
+<div class="day soon">
+  <div class="dwhen"><div class="dn">Day 14</div><div class="dd">Thu 8 Oct</div><div class="dt">30 min · exam 16:00</div></div>
+  <div><div class="dtitle">Warm-up, then the exam<span class="pill soon">coming</span></div>
+  <span class="p P2">P2</span><span class="p P4">P4</span><span class="p P5">P5</span>
+  <p class="dsub">Nothing new. One tree, one matrix, one mixed equilibrium, one read of the trap list. Then close the folder.</p></div>
+</div>
+
+<h2>The exam itself</h2>
+<div class="panel"><h3>What to expect on the day</h3>
+<div class="facts">
+  <div class="fact"><div class="k">When</div><div class="v">Thu 8 Oct, 16:00</div></div>
+  <div class="fact"><div class="k">Questions</div><div class="v">15 multiple-choice</div></div>
+  <div class="fact"><div class="k">Time</div><div class="v">90 minutes</div></div>
+  <div class="fact"><div class="k">Rules</div><div class="v">Closed book</div></div>
+  <div class="fact"><div class="k">Bring</div><div class="v">A calculator</div></div>
+  <div class="fact"><div class="k">Mo'ed B</div><div class="v">8 Nov, 16:00</div></div>
+</div>
+<p class="note">Five options (a&ndash;e) per question. No stated penalty for a wrong answer, so never leave a blank. There is <b>no formula sheet</b>. The four mock days use real past papers, which had 14 questions each. The shapes are the same.</p>
+</div>
+
+<p class="foot">Every page works offline. Answers stay hidden until you choose an option.</p>
+
+</div><!-- GoatCounter analytics -->
+<script data-goatcounter="https://game-theory.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<!-- Activity tracking: audio plays and finishes, quiz and mock completion. Sends counts to GoatCounter only. No personal data. -->
+<script>
+(function(){
+  function ev(path, title){
+    try{
+      if(!window.goatcounter || !window.goatcounter.count) return;
+      window.goatcounter.count({path: path, title: title, event: true});
+    }catch(e){}
+  }
+  var page = (location.pathname.split('/').pop() || 'index.html').replace(/\.html$/,'') || 'index';
+
+  // Audio: one count the first time a strip is played, one when it reaches the end.
+  Array.prototype.forEach.call(document.querySelectorAll('audio'), function(a){
+    var name = (a.getAttribute('src') || 'audio').replace(/\.mp3$/,'');
+    var started = false, finished = false;
+    a.addEventListener('play', function(){
+      if(started) return; started = true;
+      ev('audio-play/' + name, 'Audio started: ' + name);
+    });
+    a.addEventListener('ended', function(){
+      if(finished) return; finished = true;
+      ev('audio-done/' + name, 'Audio finished: ' + name);
+    });
+  });
+
+  // Learn-day quiz: one count when every question has been answered, with the score.
+  var qbody = document.getElementById('quizBody');
+  if(qbody){
+    var chip = document.getElementById('scoreChip');
+    var qsent = false;
+    qbody.addEventListener('click', function(){
+      if(qsent) return;
+      setTimeout(function(){
+        if(qsent) return;
+        var blocks = qbody.querySelectorAll('.qblock');
+        if(!blocks.length) return;
+        var done = 0;
+        Array.prototype.forEach.call(blocks, function(b){ if(b.dataset.done) done++; });
+        if(done !== blocks.length) return;
+        qsent = true;
+        var raw = chip ? chip.textContent.trim() : '';
+        var slug = raw.replace(/\s*\/\s*/, '-of-') || 'unknown';
+        ev('quiz-done/' + page + '/' + slug, 'Quiz finished: ' + page + ' ' + raw);
+      }, 0);
+    });
+  }
+
+  // Mock day: one count when the results panel opens, with the score.
+  var res = document.getElementById('results');
+  if(res && window.MutationObserver){
+    var msent = false;
+    var mo = new MutationObserver(function(){
+      if(msent || !res.classList.contains('show')) return;
+      msent = true; mo.disconnect();
+      var el = document.getElementById('resScore');
+      var raw = el ? el.textContent.trim() : '';
+      var slug = raw.replace(/\s*\/\s*/, '-of-') || 'unknown';
+      ev('mock-done/' + page + '/' + slug, 'Mock submitted: ' + page + ' ' + raw);
+    });
+    mo.observe(res, {attributes: true, attributeFilter: ['class']});
+  }
+})();
+</script>
+</body></html>

@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Making Strategies Credible: the eight devices</title>
+<style>
+:root{--bg:#f5f3fb;--card:#fff;--ink:#211c33;--muted:#6f6886;--brand:#6b4ef0;--brand-d:#5238c4;
+--brand-soft:#ece7fd;--good:#1f9d63;--good-soft:#e4f6ec;--bad:#d2453f;--bad-soft:#fae5e4;--line:#e7e3f2;
+--amber:#b6791f;--amber-soft:#fcf3e3;}
+*{box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);margin:0;line-height:1.55;}
+.wrap{max-width:760px;margin:0 auto;padding:26px 22px 60px;}
+.home{display:inline-block;margin:0 0 12px;color:var(--brand);font-weight:700;font-size:13px;text-decoration:none;}
+.crumb{color:var(--brand);font-weight:600;font-size:13px;text-transform:uppercase;letter-spacing:.05em;}
+h1{font-size:28px;margin:8px 0 4px;letter-spacing:-.02em;}
+.lede{color:var(--muted);margin:0 0 14px;font-size:16px;}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px 24px;margin:18px 0;box-shadow:0 1px 3px rgba(40,20,90,.04);}
+.panel h3{margin:0 0 6px;font-size:18px;display:flex;align-items:center;gap:8px;}
+.panel h3 .scorechip{margin-left:auto;}
+.panel .note{color:var(--muted);font-size:14px;margin:0 0 14px;}
+.preq{background:var(--amber-soft);border:1px solid #f0deb8;border-radius:16px;padding:18px 20px;margin:18px 0;}
+.preq .tag{color:var(--amber);font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.06em;}
+.preq p{margin:8px 0 0;font-size:16px;} .preq .do{margin-top:10px;font-weight:600;color:var(--amber);}
+audio{width:100%;margin-top:6px;}
+.secaudio{background:var(--brand-soft);border:1px solid #d9d0fb;border-radius:12px;padding:10px 13px;margin:4px 0 14px;}
+.secaudio .salab{display:block;font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--brand-d);margin-bottom:7px;}
+.takeaway{font-size:14.5px;background:#fbfaff;border:1px dashed var(--line);border-radius:11px;padding:13px 16px;margin-top:14px;}
+.takeaway b{color:var(--brand);} .takeaway ul{margin:2px 0 0;padding-left:20px;} .takeaway li{margin:5px 0;}
+.takeaway .tk-gen{margin:10px 0 0;padding-top:10px;border-top:1px dashed var(--line);}
+.sub{font-size:15px;font-weight:800;color:var(--brand-d);margin:20px 0 6px;}
+.p{font-size:15px;margin:0 0 8px;}
+.partlab{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--brand);margin:0 0 6px;}
+.rule{background:var(--brand-soft);border-radius:11px;padding:12px 16px;font-weight:600;color:var(--brand-d);margin:16px 0;}
+.question{background:#f6f4fc;border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:10px;padding:14px 16px;font-size:15.5px;}
+.step{display:flex;gap:14px;padding:12px 0;border-top:1px solid var(--line);} .step:first-of-type{border-top:none;}
+.stepn{flex:0 0 28px;height:28px;border-radius:8px;background:var(--brand);color:#fff;font-weight:700;display:grid;place-items:center;font-size:14px;}
+.stepbody .lab{font-weight:600;}
+.math{font-family:"SF Mono",Menlo,Consolas,monospace;background:#f6f4fc;border:1px solid var(--line);border-radius:8px;padding:8px 12px;margin-top:6px;font-size:14.5px;display:inline-block;}
+.ans{background:var(--good-soft);border:1px solid #bfe6cf;border-radius:11px;padding:12px 16px;margin-top:16px;font-weight:600;color:var(--good);}
+.tryq{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:10px 0;} .tryq .q{font-weight:600;margin-bottom:8px;}
+.reveal-btn{background:var(--brand);color:#fff;border:none;border-radius:9px;padding:8px 14px;font-weight:600;cursor:pointer;font-size:14px;}
+.reveal{display:none;margin-top:10px;padding:11px 14px;border-radius:9px;background:#faf9fe;border:1px dashed var(--line);font-size:14px;} .reveal.show{display:block;}
+.dtable{width:100%;border-collapse:collapse;font-size:13.5px;margin:10px 0;}
+.dtable th,.dtable td{border:1px solid var(--line);padding:8px 8px;text-align:center;}
+.dtable th{background:var(--brand-soft);color:var(--brand-d);font-weight:700;} .dtable td.lab{text-align:left;font-weight:600;background:var(--brand-soft);color:var(--brand-d);}
+.dtable td.hlcell{background:var(--good-soft);font-weight:700;color:var(--good);}
+.dtable td.dim{color:var(--muted);}
+.datalab{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--brand-d);margin:20px 0 8px;}
+.given{color:var(--muted);font-size:13px;margin:2px 0 4px;}
+.svg-wrap{background:#fff;border:1px solid var(--line);border-radius:13px;padding:14px;margin:14px 0;text-align:center;}
+.svg-wrap svg{width:100%;height:auto;max-width:560px;}
+.cap{color:var(--muted);font-size:13px;margin-top:8px;}
+.qblock{padding:16px 0;border-top:1px solid var(--line);} .qblock:first-of-type{border-top:none;padding-top:4px;}
+.qnum{color:var(--brand);font-weight:700;font-size:12px;letter-spacing:.04em;text-transform:uppercase;}
+.examtag{display:inline-block;background:var(--good-soft);color:var(--good);border:1px solid #bfe6cf;border-radius:999px;padding:2px 9px;font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;margin-left:8px;vertical-align:middle;}
+.qtext{font-weight:600;margin:6px 0 12px;font-size:16px;}
+.qtext .dtable{font-weight:400;max-width:360px;}
+.opt{display:block;width:100%;text-align:left;background:#fff;border:1.5px solid var(--line);border-radius:11px;padding:11px 14px;margin:7px 0;font-size:15px;cursor:pointer;transition:.14s;color:var(--ink);}
+.opt:hover{border-color:var(--brand);background:var(--brand-soft);}
+.opt.correct{border-color:var(--good);background:var(--good-soft);} .opt.wrong{border-color:var(--bad);background:var(--bad-soft);}
+.opt .mark{float:right;font-weight:700;}
+.exp{margin-top:11px;padding:13px 15px;border-radius:11px;background:#faf9fe;border:1px dashed var(--line);font-size:14px;display:none;} .exp.show{display:block;} .exp b{color:var(--brand);}
+.scorechip{font-size:13px;color:var(--muted);font-weight:600;}
+.navrow{display:flex;justify-content:space-between;margin-top:22px;gap:10px;}
+.navbtn{text-decoration:none;font-weight:600;font-size:14px;padding:10px 16px;border-radius:11px;border:1px solid var(--line);color:var(--ink);background:#fff;}
+.navbtn.primary{background:var(--brand);color:#fff;border-color:var(--brand);}
+.tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.warnbox{background:var(--amber-soft);border:1px solid #f0deb8;border-radius:11px;padding:12px 16px;margin:14px 0;font-size:14.5px;}
+.warnbox b{color:var(--amber);}
+@media print{
+  body{background:#fff;} .panel{box-shadow:none;border-color:#ccc;}
+  audio,.secaudio,.timer,.navrow,.home{display:none!important;}
+  .reveal,.exp{display:block!important;} .preq{border-color:#ccc;}
+  .qblock{break-inside:avoid;} .panel{break-inside:avoid;}
+}
+</style>
+<style>
+/* presentation chips, same look as the hub, scoped to spans so p.p paragraphs are untouched */
+:root{--p1:#7c5cbf;--p2:#2f7fd0;--p3:#1d8a6a;--p4:#c2820b;--p5:#c04a7e;--p6:#4a6fa5;}
+span.p{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.04em;padding:2px 7px;border-radius:5px;color:#fff;margin-right:3px;white-space:nowrap;}
+.P1{background:var(--p1)}.P2{background:var(--p2)}.P3{background:var(--p3)}
+.P4{background:var(--p4)}.P5{background:var(--p5)}.P6{background:var(--p6)}
+.tags{margin:0 0 12px;}
+.panel h3 .tags{margin:0;}
+/* paper-day banner */
+.paper{background:#f2f8f4;border:1px solid #bfe6cf;border-radius:14px;padding:14px 18px;margin:16px 0;font-size:14.5px;}
+.paper b{color:var(--good);}
+.paper .allbtn{background:var(--good);color:#fff;border:none;border-radius:9px;padding:7px 13px;font-weight:600;cursor:pointer;font-size:13.5px;margin-top:9px;}
+.dtable td.left{text-align:left;}
+.dtable td.num{width:26px;font-weight:800;color:var(--brand-d);background:#faf9fe;}
+@media print{
+  /* pen-and-paper day: nothing on this page may hide behind a click */
+  .reveal,.exp{display:block!important;border-style:solid!important;}
+  .reveal-btn,.paper .allbtn{display:none!important;}
+  .svg-wrap{break-inside:avoid;} .tryq{break-inside:avoid;}
+}
+</style>
+</head><body><div class="wrap">
+<a class="home" href="index.html">&larr; All 14 days</a>
+<div class="crumb">Day 9 of 14 &middot; Learn</div>
+<h1>Making strategies credible</h1>
+<div class="tags"><span class="p P6">P6</span></div>
+<p class="lede">No calculation anywhere today. This is a recall day: eight names, eight pictures. Commitment is about 6% of the paper. It was first taught in 2025, so only the three 2025 papers carry these questions.</p>
+
+<div class="paper"><b>&#9998; This is a paper day.</b> It falls on Simchat Torah, so the page is built to be read, or printed, with no clicking at all. Everything that teaches is in the words and the pictures. The buttons only hold answers. If you print the page, every answer opens by itself.
+<br><button class="allbtn" onclick="document.querySelectorAll('.reveal').forEach(function(r){r.classList.add('show')});document.querySelectorAll('.exp').forEach(function(e){e.classList.add('show')});document.querySelectorAll('.reveal-btn').forEach(function(b){b.disabled=true});this.disabled=true;this.textContent='All answers open';">Open every answer on this page</button></div>
+
+<div class="preq"><span class="tag">&#9208; Guess first</span>
+<p>You own the only bakery in a small town. Someone is thinking of opening a second one across the road. You put a sign in your window: <i>&ldquo;Open here and I will drop my prices until neither of us earns a shekel.&rdquo;</i></p>
+<p>A price war really would lose you money, more money than simply sharing the town with a rival. Your neighbour knows this too.</p>
+<p>Does the sign keep her out?</p>
+<p class="do">Take 20 seconds. Commit to an answer before you read on.</p></div>
+
+<!-- SCRIPT Day-09-intro.mp3 | NOA=Heart TOM=Fenrir
+NOA: Today there is nothing to calculate. Not one number anywhere. This part of the course is pure memory.
+TOM: So what am I meant to walk away with?
+NOA: Eight names, and eight pictures. That is genuinely all of it. The exam hands you a small story and asks which of the eight things is happening in it.
+TOM: Then let me guess where it goes wrong. Not the stories. Remembering which name belongs to which story.
+NOA: Exactly. So we do not start with the list. We start with the problem the list was invented to solve. Look at the first tree on the page. A big firm tells a newcomer, come in here and I will start a price war. And the newcomer walks straight in.
+TOM: Because a price war would hurt the big firm too. Everyone can see that.
+NOA: That is the whole disease in one line. A threat that would hurt you to carry out is a threat nobody believes.
+TOM: So the cure is to make it hurt less?
+NOA: The cure is stranger than that. The cure is to take away your own freedom to back down. Every one of the eight devices is a different way of doing that.
+TOM: Giving up my own options on purpose. That sounds like a mistake.
+NOA: Which is exactly why it earns a whole lecture.
+-->
+<div class="panel"><h3>&#127911; Why a threat is not believed <span class="scorechip">~1 min</span></h3>
+<p class="note">A quick map of what you'll learn today. Each section below also has its own short audio.</p>
+<audio controls preload="none" src="Day-09-intro.mp3"></audio>
+<div class="takeaway"><ul>
+<li><b>Non-credible threat</b>: a threat you would <i>not</i> carry out if the moment actually came. Backward induction sees straight through it, so it changes nothing.</li>
+<li><b>Strategic move</b>: changing the game <i>before</i> the other player chooses, so that a better ending becomes possible. Usually you do it by removing one of your own options.</li>
+<li><b>The eight devices</b>: contracts, reputation, cutting off communication, burning bridges behind you, leaving the outcome beyond your control, moving in small steps, teamwork, mandated negotiating agents. Learn them in that order.</li>
+<li><b>Salami tactics</b>: the same small-steps idea turned around and used to <i>break</i> somebody else's commitment, one slice at a time.</li>
+</ul>
+<p class="tk-gen">One line to hold onto: <b>you become believable by giving up your own freedom to change your mind.</b></p></div></div>
+
+<!-- ============ SECTION 1 ============ -->
+<!-- SCRIPT Day-09-empty-threat.mp3 | NOA=Heart TOM=Fenrir
+NOA: Look at the tree at the top of this section. Two moves, three endings, and that is the whole game. The newcomer decides whether to walk into the market. If she stays out, the big firm keeps the town to itself, and that is the ending the big firm loves most.
+TOM: And if she walks in?
+NOA: Then it is the firm's turn, and the firm has two choices. Share the market quietly, or start a price war.
+TOM: And the firm has already announced, loudly, that it will fight.
+NOA: It has. Now solve the tree the way you always solve a tree. Start at the end, never at the beginning. Stand at the firm's node with the newcomer already inside the market. From there, the war is the worse ending for the firm as well as for her.
+TOM: So the firm shares. Not out of kindness. Because at that moment, fighting simply costs it more.
+NOA: And here is the part that matters. The newcomer can see that node too. She looks ahead, sees the firm choosing to share, compares that with staying out, and finds that walking in is better for her.
+TOM: So she walks in. The threat was loud and it changed nothing.
+NOA: Follow the highlighted path on the page. It runs straight past the war branch. The war branch is drawn faded on purpose. It is a real branch of the tree. It just never gets used by anybody.
+TOM: So the test for a threat is not, is it frightening. The test is, would I actually do it when the moment arrived.
+NOA: Say that one back to yourself before the exam. If you would not carry it out, it is not a threat. It is noise.
+-->
+<div class="panel"><h3>The problem: a threat nobody believes <span class="tags"><span class="p P6">P6</span><span class="p P2">P2</span></span></h3>
+<div class="secaudio"><span class="salab">&#127911; Listen to this section</span><audio controls preload="none" src="Day-09-empty-threat.mp3"></audio></div>
+
+<p class="p">The whole lecture starts from one uncomfortable fact: <b>saying a thing does not make it true.</b> Presentation 6 opens with the monopolist's entry game. It is only two moves long.</p>
+
+<p class="p">A competitor is deciding whether to enter a market. The monopolist has said that any entry will be met with a price war. Here is the tree.</p>
+
+<div class="svg-wrap">
+<svg viewBox="0 0 560 265" role="img" aria-label="A game tree. The competitor moves first, choosing to enter or stay out. Staying out gives the monopolist four and the competitor nothing. Entering hands the choice to the monopolist, who can accommodate, giving both players two, or fight, giving both players minus one. The highlighted path is enter then accommodate. The fight branch is drawn faded because the monopolist would never take it.">
+  <!-- branches (drawn first, nodes on top) -->
+  <line x1="48" y1="140" x2="424" y2="214" stroke="#b9b2cf" stroke-width="2"/>
+  <line x1="230" y1="82" x2="424" y2="124" stroke="#d2453f" stroke-width="2" stroke-dasharray="6 4" opacity=".75"/>
+  <line x1="48" y1="140" x2="230" y2="82" stroke="#1f9d63" stroke-width="3.6"/>
+  <line x1="230" y1="82" x2="424" y2="46" stroke="#1f9d63" stroke-width="3.6"/>
+  <!-- leaves -->
+  <rect x="418" y="40" width="11" height="11" rx="2" fill="#1f9d63"/>
+  <rect x="418" y="118" width="11" height="11" rx="2" fill="#d2453f" opacity=".7"/>
+  <rect x="418" y="208" width="11" height="11" rx="2" fill="#b9b2cf"/>
+  <!-- nodes -->
+  <circle cx="48" cy="140" r="16" fill="#6b4ef0"/>
+  <text x="48" y="145" text-anchor="middle" font-size="13.5" font-weight="700" fill="#fff" font-family="-apple-system,Segoe UI,Arial">2</text>
+  <circle cx="230" cy="82" r="16" fill="#6b4ef0"/>
+  <text x="230" y="87" text-anchor="middle" font-size="13.5" font-weight="700" fill="#fff" font-family="-apple-system,Segoe UI,Arial">1</text>
+  <!-- node names -->
+  <g font-size="11" font-family="-apple-system,Segoe UI,Arial" fill="#5238c4" font-weight="700">
+    <text x="48" y="174" text-anchor="middle">Competitor</text>
+    <text x="230" y="58" text-anchor="middle">Monopolist</text>
+  </g>
+  <!-- branch labels -->
+  <g font-size="11.5" font-family="-apple-system,Segoe UI,Arial" font-weight="600">
+    <text x="132" y="100" text-anchor="middle" fill="#1f9d63">Enter</text>
+    <text x="222" y="196" text-anchor="middle" fill="#6f6886">Stay out</text>
+    <text x="330" y="52" text-anchor="middle" fill="#1f9d63">Accommodate</text>
+    <text x="336" y="134" text-anchor="middle" fill="#d2453f">Fight: the threat</text>
+  </g>
+  <!-- the cross on the non-credible branch -->
+  <text x="386" y="119" font-size="15" font-weight="800" fill="#d2453f" font-family="-apple-system,Segoe UI,Arial">&#10007;</text>
+  <!-- leaf payoffs -->
+  <g font-family="-apple-system,Segoe UI,Arial">
+    <text x="438" y="51" font-size="14" font-weight="700" fill="#1f9d63">(2, 2)</text>
+    <text x="438" y="66" font-size="10.5" fill="#6f6886">market shared</text>
+    <text x="438" y="129" font-size="14" font-weight="700" fill="#d2453f">(&minus;1, &minus;1)</text>
+    <text x="438" y="144" font-size="10.5" fill="#6f6886">war: never taken</text>
+    <text x="438" y="219" font-size="14" font-weight="700" fill="#6f6886">(4, 0)</text>
+    <text x="438" y="234" font-size="10.5" fill="#6f6886">what he wanted</text>
+  </g>
+  <text x="280" y="257" text-anchor="middle" font-size="10.5" fill="#6f6886" font-family="-apple-system,Segoe UI,Arial">each ending is (Player 1 = Monopolist, Player 2 = Competitor)</text>
+</svg>
+<div class="cap">The green path is the backward-induction path. The red branch is the threat: it exists in the tree, and nobody ever walks it.</div>
+</div>
+
+<p class="p">Solve it from the end, as always. Stand at the monopolist's node, with the competitor already inside. Fighting pays the monopolist &minus;1. Accommodating pays 2. So the monopolist accommodates. Not out of kindness, but because at that moment fighting is simply the worse of two bad options.</p>
+
+<p class="p">The competitor can see that node too. Entering gives her 2. Staying out gives her 0. So she enters. The monopolist ends on 2 when he wanted 4, and the sign in the window changed nothing at all.</p>
+
+<div class="rule">The test for a threat is never <i>&ldquo;is it frightening?&rdquo;</i> It is <b>&ldquo;would I actually carry it out when the moment came?&rdquo;</b> If not, it is not a threat. It is noise, and backward induction sees straight through it.</div>
+
+<p class="partlab">Worked example</p>
+<div class="question">In the entry game above, the monopolist has publicly threatened to fight any entrant. Solve the game by backward induction. What does each player actually do, what does the monopolist get, and what does he lose by having a threat nobody believes?</div>
+
+<div class="step"><div class="stepn">1</div><div class="stepbody"><div class="lab">Go to the last decision node, which is the monopolist's.</div>
+Compare only the two endings that follow it: Accommodate gives him 2, Fight gives him &minus;1.
+<br><span class="math">2 &gt; −1 → he accommodates</span></div></div>
+
+<div class="step"><div class="stepn">2</div><div class="stepbody"><div class="lab">Replace that whole node by what will happen there.</div>
+The branch marked &ldquo;Enter&rdquo; now leads, in practice, to (2,&nbsp;2). The fight ending is gone from the competitor's sum, not because it is impossible, but because it will never be chosen.</div></div>
+
+<div class="step"><div class="stepn">3</div><div class="stepbody"><div class="lab">Now the competitor's node.</div>
+She compares her own numbers only. Enter gives her 2, and Stay out gives her 0.
+<br><span class="math">2 &gt; 0 → she enters</span></div></div>
+
+<div class="step"><div class="stepn">4</div><div class="stepbody"><div class="lab">Read the path off the tree.</div>
+Enter, then Accommodate. Outcome (2,&nbsp;2). Compare with the ending the monopolist was aiming at, (4,&nbsp;0).</div></div>
+
+<div class="ans">&#10003; The competitor <b>enters</b> and the monopolist <b>accommodates</b>. He gets <b>2</b> instead of the <b>4</b> he wanted. The threat cost him nothing to make and earned him nothing, because it was never going to be carried out.</div>
+
+<div class="warnbox"><b>Notice the shape of the failure.</b> The monopolist's problem is not that his threat is too small. It is that he has <i>too much freedom</i>. On the day, he is still free to choose the sensible thing, and everybody knows it. Every device in this lecture attacks that freedom.</div>
+
+<div class="tryq"><div class="q">A landlord tells a new tenant: &ldquo;pay one day late and I evict you.&rdquo; Evicting means a court fee and two months with the flat empty. Accepting the late rent costs the landlord nothing at all. The tenant knows both facts.<br><br>Is the threat credible? And what exactly is the landlord's problem?</div>
+<button class="reveal-btn" onclick="this.nextElementSibling.classList.add('show');this.disabled=true;">Reveal answer</button>
+<div class="reveal"><b>Not credible.</b> Put yourself at the landlord's node, one day after the rent was due. Evicting is worse for him than accepting the money. So he accepts. The tenant looks ahead and already knows that, so the threat does not change her behaviour.<br><br><b>His problem is not the size of the threat. It is his own freedom.</b> He is still free to be reasonable on the day. To fix it he must remove that freedom in advance. One way is a signed clause with an automatic penalty: a <i>contract</i>, enforced by someone else. Another is to hand the flat to a letting agency whose staff are not allowed to let anything go: <i>mandated negotiating agents</i>.</div></div>
+</div>
+
+<!-- ============ SECTION 2 ============ -->
+<!-- SCRIPT Day-09-cold-war.mp3 | NOA=Heart TOM=Fenrir
+NOA: Now the second tree on the page. Same two moves, same three endings, completely different stakes. In Europe during the cold war, the Soviet side had the stronger conventional army. The American answer was, invade a country in the west and we go nuclear.
+TOM: I already know how this one solves, because it is the same shape as the shop.
+NOA: Then show me.
+TOM: Start at the end. The invasion has happened. America now chooses between backing down, which is bad, and a nuclear exchange, which is a disaster for America as well. So America backs down.
+NOA: And the Soviet side, looking forward from the first node?
+TOM: Sees exactly that. So invading beats staying home. The frightening branch never gets walked, same as before.
+NOA: Now notice what did not rescue the threat. Its size. The nuclear branch is the worst ending anywhere in that tree, by an enormous distance, and it is still not believed.
+TOM: Because the person I would be punishing is also me.
+NOA: Which gives you the move for the rest of the day. If you cannot make a threat frightening enough, stop trying. Change the game instead. Do something now, before the other side chooses, that removes the backing down branch from your own tree.
+TOM: Cut a branch off my own tree, so the other player has nothing left to count on.
+NOA: The course calls that a strategic move. Look at the second version of the tree on the page, the one where backing down has been made painful. The other side now stays home, and you never have to fight at all.
+TOM: I got a better ending by making one of my own options worse. That is going to take a minute to settle.
+NOA: Sit with it for a moment. And then the good news: there are only eight standard ways of doing exactly that, and the professor has a name for each one.
+-->
+<div class="panel"><h3>The same shape, at the highest stakes, and the way out <span class="tags"><span class="p P6">P6</span><span class="p P2">P2</span></span></h3>
+<div class="secaudio"><span class="salab">&#127911; Listen to this section</span><audio controls preload="none" src="Day-09-cold-war.mp3"></audio></div>
+
+<p class="p">The second example in Presentation 6 is the cold war in Europe. The Soviet Union had the stronger ordinary army. The American answer was a promise: invade a western country, and we go nuclear.</p>
+
+<div class="svg-wrap">
+<svg viewBox="0 0 560 265" role="img" aria-label="A second game tree with the same shape. The Soviet Union moves first, choosing to invade or stay home. Staying home gives both nothing. Invading hands the choice to the USA, which can back down, giving the USA minus one and the Soviet Union one, or go nuclear, giving both minus ten. The highlighted path is invade then back down; the nuclear branch is faded.">
+  <line x1="48" y1="140" x2="424" y2="214" stroke="#b9b2cf" stroke-width="2"/>
+  <line x1="230" y1="82" x2="424" y2="124" stroke="#d2453f" stroke-width="2" stroke-dasharray="6 4" opacity=".75"/>
+  <line x1="48" y1="140" x2="230" y2="82" stroke="#1f9d63" stroke-width="3.6"/>
+  <line x1="230" y1="82" x2="424" y2="46" stroke="#1f9d63" stroke-width="3.6"/>
+  <rect x="418" y="40" width="11" height="11" rx="2" fill="#1f9d63"/>
+  <rect x="418" y="118" width="11" height="11" rx="2" fill="#d2453f" opacity=".7"/>
+  <rect x="418" y="208" width="11" height="11" rx="2" fill="#b9b2cf"/>
+  <circle cx="48" cy="140" r="16" fill="#6b4ef0"/>
+  <text x="48" y="145" text-anchor="middle" font-size="13.5" font-weight="700" fill="#fff" font-family="-apple-system,Segoe UI,Arial">2</text>
+  <circle cx="230" cy="82" r="16" fill="#6b4ef0"/>
+  <text x="230" y="87" text-anchor="middle" font-size="13.5" font-weight="700" fill="#fff" font-family="-apple-system,Segoe UI,Arial">1</text>
+  <g font-size="11" font-family="-apple-system,Segoe UI,Arial" fill="#5238c4" font-weight="700">
+    <text x="48" y="174" text-anchor="middle">Soviet Union</text>
+    <text x="230" y="58" text-anchor="middle">USA</text>
+  </g>
+  <g font-size="11.5" font-family="-apple-system,Segoe UI,Arial" font-weight="600">
+    <text x="132" y="100" text-anchor="middle" fill="#1f9d63">Invade</text>
+    <text x="222" y="196" text-anchor="middle" fill="#6f6886">Stay home</text>
+    <text x="330" y="52" text-anchor="middle" fill="#1f9d63">Back down</text>
+    <text x="336" y="134" text-anchor="middle" fill="#d2453f">Nuclear: the threat</text>
+  </g>
+  <text x="392" y="119" font-size="15" font-weight="800" fill="#d2453f" font-family="-apple-system,Segoe UI,Arial">&#10007;</text>
+  <g font-family="-apple-system,Segoe UI,Arial">
+    <text x="438" y="51" font-size="14" font-weight="700" fill="#1f9d63">(&minus;1, 1)</text>
+    <text x="438" y="66" font-size="10.5" fill="#6f6886">a country lost</text>
+    <text x="438" y="129" font-size="14" font-weight="700" fill="#d2453f">(&minus;10, &minus;10)</text>
+    <text x="438" y="144" font-size="10.5" fill="#6f6886">never taken</text>
+    <text x="438" y="219" font-size="14" font-weight="700" fill="#6f6886">(0, 0)</text>
+    <text x="438" y="234" font-size="10.5" fill="#6f6886">what the USA wanted</text>
+  </g>
+  <text x="280" y="257" text-anchor="middle" font-size="10.5" fill="#6f6886" font-family="-apple-system,Segoe UI,Arial">each ending is (Player 1 = USA, Player 2 = Soviet Union)</text>
+</svg>
+<div class="cap">Identical shape to the bakery. Start at the USA's node: &minus;1 beats &minus;10, so it backs down. The Soviet Union sees that, and 1 beats 0, so it invades.</div>
+</div>
+
+<p class="p">Now look at what did <i>not</i> save the threat. Its size. The nuclear ending is the worst thing anywhere in that tree, by a huge distance, and it is still not believed. The side doing the punishing is also being punished. <b>Terrifying is not the same as credible.</b></p>
+
+<p class="p">So stop trying to make the threat bigger. Change the game instead. Presentation 6 calls this a <b>strategic move</b>: something you do <i>now</i>, before the other player chooses, that changes the tree in your favour. In practice it almost always means making one of your own branches worse.</p>
+
+<div class="svg-wrap">
+<svg viewBox="0 0 560 265" role="img" aria-label="The same cold war tree after a commitment device. Backing down now costs the USA minus eleven, worse than the nuclear branch at minus ten, so the USA would go nuclear. The Soviet Union therefore stays home, and the highlighted path is stay home, giving both players zero.">
+  <line x1="230" y1="82" x2="424" y2="46" stroke="#b9b2cf" stroke-width="2" stroke-dasharray="6 4"/>
+  <line x1="48" y1="140" x2="230" y2="82" stroke="#b9b2cf" stroke-width="2"/>
+  <line x1="230" y1="82" x2="424" y2="124" stroke="#d2453f" stroke-width="3.2"/>
+  <line x1="48" y1="140" x2="424" y2="214" stroke="#1f9d63" stroke-width="3.6"/>
+  <rect x="418" y="40" width="11" height="11" rx="2" fill="#b9b2cf"/>
+  <rect x="418" y="118" width="11" height="11" rx="2" fill="#d2453f"/>
+  <rect x="418" y="208" width="11" height="11" rx="2" fill="#1f9d63"/>
+  <circle cx="48" cy="140" r="16" fill="#6b4ef0"/>
+  <text x="48" y="145" text-anchor="middle" font-size="13.5" font-weight="700" fill="#fff" font-family="-apple-system,Segoe UI,Arial">2</text>
+  <circle cx="230" cy="82" r="16" fill="#6b4ef0"/>
+  <text x="230" y="87" text-anchor="middle" font-size="13.5" font-weight="700" fill="#fff" font-family="-apple-system,Segoe UI,Arial">1</text>
+  <g font-size="11" font-family="-apple-system,Segoe UI,Arial" fill="#5238c4" font-weight="700">
+    <text x="48" y="174" text-anchor="middle">Soviet Union</text>
+    <text x="230" y="58" text-anchor="middle">USA</text>
+  </g>
+  <g font-size="11.5" font-family="-apple-system,Segoe UI,Arial" font-weight="600">
+    <text x="132" y="100" text-anchor="middle" fill="#6f6886">Invade</text>
+    <text x="222" y="196" text-anchor="middle" fill="#1f9d63">Stay home</text>
+    <text x="330" y="52" text-anchor="middle" fill="#6f6886">Back down</text>
+    <text x="318" y="120" text-anchor="middle" fill="#d2453f">Nuclear: now real</text>
+  </g>
+  <text x="392" y="52" font-size="15" font-weight="800" fill="#6f6886" font-family="-apple-system,Segoe UI,Arial">&#10007;</text>
+  <g font-family="-apple-system,Segoe UI,Arial">
+    <text x="438" y="51" font-size="14" font-weight="700" fill="#6f6886">(&minus;11, 1)</text>
+    <text x="438" y="66" font-size="10.5" fill="#b6791f">now the worse option</text>
+    <text x="438" y="129" font-size="14" font-weight="700" fill="#d2453f">(&minus;10, &minus;10)</text>
+    <text x="438" y="144" font-size="10.5" fill="#6f6886">now preferred</text>
+    <text x="438" y="219" font-size="14" font-weight="700" fill="#1f9d63">(0, 0)</text>
+    <text x="438" y="234" font-size="10.5" fill="#6f6886">nobody ever fights</text>
+  </g>
+  <text x="280" y="257" text-anchor="middle" font-size="10.5" fill="#6f6886" font-family="-apple-system,Segoe UI,Arial">the same tree, after a commitment device has been added</text>
+</svg>
+<div class="cap">One leaf moved, and the whole solution flips. Backing down now costs more than fighting, so the USA would fight. The Soviet Union sees that and stays home, so the fight never happens.</div>
+</div>
+
+<div class="rule">A strategic move works by making <b>your own option worse</b>, in advance, in a way the other side can <i>see</i>. Two conditions: it has to be done before he chooses, and it has to be visible to him. A secret commitment deters nobody.</div>
+
+<p class="partlab">Worked example</p>
+<div class="question">The bakery again, with the original numbers: (Enter, Accommodate) pays the two of you 2 and 2; (Enter, Fight) pays &minus;1 and &minus;1; Stay out pays you 4 and her 0. Before she decides, you sign contracts with your regular customers. You promise that if a rival ever opens, you will beat their price all year, and you must pay each customer a penalty if you do not. Now quietly sharing the town costs you &minus;2 instead of 2.<br><br>Does she still enter?</div>
+
+<div class="step"><div class="stepn">1</div><div class="stepbody"><div class="lab">Redraw only the leaf the contract touched.</div>
+Accommodate now pays you &minus;2. Fight still pays you &minus;1. Nothing else in the tree changed.</div></div>
+
+<div class="step"><div class="stepn">2</div><div class="stepbody"><div class="lab">Re-solve your node.</div>
+<span class="math">−1 &gt; −2 → you fight</span>
+The threat has become the thing you would really do. It is now credible, and it became credible without becoming any bigger.</div></div>
+
+<div class="step"><div class="stepn">3</div><div class="stepbody"><div class="lab">Re-solve her node with that in mind.</div>
+Entering now leads to the war ending, which pays her &minus;1. Staying out pays her 0.
+<br><span class="math">0 &gt; −1 → she stays out</span></div></div>
+
+<div class="step"><div class="stepn">4</div><div class="stepbody"><div class="lab">Read off your own payoff.</div>
+She stays out, so you land on 4, the ending you wanted from the start.</div></div>
+
+<div class="ans">&#10003; She <b>stays out</b>, and you get <b>4</b> instead of 2. Read that twice: you made one of your own endings <i>worse</i> on purpose, and ended up better off. And because she stays out, you never actually pay the penalty. The device works precisely by never being used.</div>
+
+<div class="tryq"><div class="q">Same bakery, but you sign the contracts <b>in secret</b>, planning to reveal them the day she opens. Does the device still work?</div>
+<button class="reveal-btn" onclick="this.nextElementSibling.classList.add('show');this.disabled=true;">Reveal answer</button>
+<div class="reveal"><b>No.</b> A commitment device changes the other player's behaviour only through what she <i>believes</i> when she chooses. If she cannot see the contract at the moment she is deciding, her tree is the old tree, and she enters exactly as before.<br><br>You will then really fight, because the contract is real. So you both land on &minus;1, which is worse for you than the 2 you would have had with no contract at all. <b>An invisible commitment is not a commitment. It is just a wound you gave yourself.</b> Make it visible and impossible to undo, or do not bother.</div></div>
+
+<div class="tryq"><div class="q">Why does the professor say the nuclear threat fails <i>even though</i> it is the most frightening thing in the tree? Answer in one sentence, as if you were explaining it to a friend.</div>
+<button class="reveal-btn" onclick="this.nextElementSibling.classList.add('show');this.disabled=true;">Reveal answer</button>
+<div class="reveal">Something like: <b>&ldquo;because carrying it out would also destroy the side making the threat, so at the moment of truth they would not do it, and the other side knows that in advance.&rdquo;</b><br><br>The size of a punishment does not decide whether it is credible. What matters is only the comparison at your own node, between carrying it out and not carrying it out. A threat that hurts you more than it helps you is empty, however loud it is.</div></div>
+</div>
+
+<!-- ============ SECTION 3 ============ -->
+<!-- SCRIPT Day-09-eight-devices.mp3 | NOA=Heart TOM=Fenrir
+NOA: Eight of them, and the professor teaches them in a fixed order. Keep his order. The order is free memory.
+TOM: Give me pictures, not definitions.
+NOA: One. Contracts. The picture is the NATO treaty, the clause saying an attack on any one of us is an attack on all of us. Written down, and enforced by somebody other than me.
+TOM: So on the day, the punishment is no longer my decision.
+NOA: Two. Reputation. Kennedy, in public, during the Berlin crisis. If we do not keep our word here, he said, everything we have promised anywhere means nothing. He was not really talking about Berlin.
+TOM: He was talking about every crisis after it. And a strong enough reputation does the work of a contract with nothing signed.
+NOA: Three. Cutting off communication. Doctor Strangelove. A base commander sends the bombers and then destroys the radio, so nobody can recall them. Including himself.
+TOM: You cannot be talked out of it if you cannot be reached.
+NOA: Four. Burning bridges behind you. William the Conqueror lands in England and burns his own ships. No way home, so there is nothing left to argue about.
+TOM: And the submarine captain in The Hunt for Red October, who posts a letter announcing his defection before he sails. Same trick. He has made turning back fatal.
+NOA: Five. Leaving the outcome beyond your control. The doomsday machine, from the same film. A machine that answers automatically and cannot be switched off, because a machine that could be switched off would be switched off.
+TOM: And six?
+NOA: Six. Moving in small steps. You do not trust the builder, the builder does not trust you, so nobody hands over everything at once. You pay a little as each piece of the kitchen is finished.
+TOM: One big frightening promise, chopped into a chain of small safe ones.
+NOA: Seven. Teamwork. The Roman army. Running from a battle was punished by death. And failing to kill the man beside you who ran was also punished by death.
+TOM: So nobody can quietly look away. The group holds itself.
+NOA: Eight. Mandated negotiating agents. A worker who says he cannot take less than a certain raise is not believed, because why would he refuse slightly less? So he hands the talking to a union leader who has taken a narrow mandate in public and would lose everything by bending.
+TOM: Weakness on purpose. I cannot give you what you want, because I am not allowed to.
+NOA: Look at the eight small cards on the page, and say the names out loud in order once. Contracts, reputation, cutting off communication, burning bridges, beyond your control, small steps, teamwork, mandated agents.
+-->
+<div class="panel"><h3>The eight devices: eight names, eight pictures</h3>
+<div class="secaudio"><span class="salab">&#127911; Listen to this section</span><audio controls preload="none" src="Day-09-eight-devices.mp3"></audio></div>
+
+<p class="p">Every device below is an answer to one question: <b>how do I make myself unable to back down?</b> Learn them in the professor's order. The exam question is always &ldquo;here is a story, which one is it?&rdquo;, and a list in order is much easier to search than a pile.</p>
+
+<div class="svg-wrap">
+<svg viewBox="0 0 560 296" role="img" aria-label="Eight numbered cards in two columns. One, contracts, NATO Article five. Two, reputation, Kennedy on Berlin. Three, cut off communication, the radio destroyed. Four, burn bridges, the ships burned in ten sixty-six. Five, beyond your control, the doomsday machine. Six, small steps, the kitchen paid stage by stage. Seven, teamwork, the Roman army. Eight, mandated agents, the union leader's public mandate.">
+  <g font-family="-apple-system,Segoe UI,Arial">
+
+  <!-- 1 -->
+  <rect x="6" y="6" width="268" height="64" rx="12" fill="#faf9fe" stroke="#e7e3f2"/>
+  <circle cx="36" cy="38" r="17" fill="#6b4ef0"/><text x="36" y="43.5" text-anchor="middle" font-size="15" font-weight="800" fill="#fff">1</text>
+  <text x="62" y="34" font-size="14" font-weight="700" fill="#211c33">Contracts</text>
+  <text x="62" y="51" font-size="10.5" fill="#6f6886">NATO Article 5</text>
+  <g transform="translate(246,38)" stroke="#6b4ef0" fill="none" stroke-width="1.6">
+    <rect x="-8" y="-11" width="16" height="22" rx="2"/><line x1="-4" y1="-5" x2="4" y2="-5"/><line x1="-4" y1="0" x2="4" y2="0"/><line x1="-4" y1="5" x2="2" y2="5"/></g>
+
+  <!-- 2 -->
+  <rect x="286" y="6" width="268" height="64" rx="12" fill="#faf9fe" stroke="#e7e3f2"/>
+  <circle cx="316" cy="38" r="17" fill="#4a6fa5"/><text x="316" y="43.5" text-anchor="middle" font-size="15" font-weight="800" fill="#fff">2</text>
+  <text x="342" y="34" font-size="14" font-weight="700" fill="#211c33">Reputation</text>
+  <text x="342" y="51" font-size="10.5" fill="#6f6886">Kennedy on Berlin</text>
+  <g transform="translate(526,38)"><polygon points="0,-11 2.7,-3.72 10.46,-3.4 4.37,1.42 6.47,8.9 0,4.6 -6.47,8.9 -4.37,1.42 -10.46,-3.4 -2.7,-3.72" fill="#4a6fa5"/></g>
+
+  <!-- 3 -->
+  <rect x="6" y="76" width="268" height="64" rx="12" fill="#faf9fe" stroke="#e7e3f2"/>
+  <circle cx="36" cy="108" r="17" fill="#1d8a6a"/><text x="36" y="113.5" text-anchor="middle" font-size="15" font-weight="800" fill="#fff">3</text>
+  <text x="62" y="104" font-size="13" font-weight="700" fill="#211c33">Cut off communication</text>
+  <text x="62" y="121" font-size="10.5" fill="#6f6886">the radio destroyed</text>
+  <g transform="translate(252,108)" stroke="#1d8a6a" stroke-width="1.8" stroke-linecap="round">
+    <line x1="-11" y1="0" x2="-5" y2="0"/><line x1="5" y1="0" x2="11" y2="0"/>
+    <line x1="-4" y1="-4" x2="4" y2="4"/><line x1="-4" y1="4" x2="4" y2="-4"/></g>
+
+  <!-- 4 -->
+  <rect x="286" y="76" width="268" height="64" rx="12" fill="#faf9fe" stroke="#e7e3f2"/>
+  <circle cx="316" cy="108" r="17" fill="#d2453f"/><text x="316" y="113.5" text-anchor="middle" font-size="15" font-weight="800" fill="#fff">4</text>
+  <text x="342" y="104" font-size="14" font-weight="700" fill="#211c33">Burn bridges</text>
+  <text x="342" y="121" font-size="10.5" fill="#6f6886">the ships burned, 1066</text>
+  <g transform="translate(526,108)"><path d="M0,-11 C8,-3 7,9 0,11 C-7,9 -8,-3 0,-11 Z" fill="#d2453f"/><path d="M0,-2 C4,2 3,7 0,8 C-3,7 -4,2 0,-2 Z" fill="#fcf3e3"/></g>
+
+  <!-- 5 -->
+  <rect x="6" y="146" width="268" height="64" rx="12" fill="#faf9fe" stroke="#e7e3f2"/>
+  <circle cx="36" cy="178" r="17" fill="#b6791f"/><text x="36" y="183.5" text-anchor="middle" font-size="15" font-weight="800" fill="#fff">5</text>
+  <text x="62" y="174" font-size="14" font-weight="700" fill="#211c33">Beyond your control</text>
+  <text x="62" y="191" font-size="10.5" fill="#6f6886">the doomsday machine</text>
+  <g transform="translate(246,178)" stroke="#b6791f" fill="none" stroke-width="1.7">
+    <circle cx="0" cy="0" r="10"/><line x1="0" y1="0" x2="6" y2="-7"/><circle cx="0" cy="0" r="1.8" fill="#b6791f"/></g>
+
+  <!-- 6 -->
+  <rect x="286" y="146" width="268" height="64" rx="12" fill="#faf9fe" stroke="#e7e3f2"/>
+  <circle cx="316" cy="178" r="17" fill="#c04a7e"/><text x="316" y="183.5" text-anchor="middle" font-size="15" font-weight="800" fill="#fff">6</text>
+  <text x="342" y="174" font-size="14" font-weight="700" fill="#211c33">Small steps</text>
+  <text x="342" y="191" font-size="10.5" fill="#6f6886">the kitchen, stage by stage</text>
+  <g transform="translate(526,178)"><polyline points="-11,10 -11,3 -4,3 -4,-3 3,-3 3,-10 11,-10" fill="none" stroke="#c04a7e" stroke-width="1.8" stroke-linejoin="round"/></g>
+
+  <!-- 7 -->
+  <rect x="6" y="216" width="268" height="64" rx="12" fill="#faf9fe" stroke="#e7e3f2"/>
+  <circle cx="36" cy="248" r="17" fill="#2f7fd0"/><text x="36" y="253.5" text-anchor="middle" font-size="15" font-weight="800" fill="#fff">7</text>
+  <text x="62" y="244" font-size="14" font-weight="700" fill="#211c33">Teamwork</text>
+  <text x="62" y="261" font-size="10.5" fill="#6f6886">the Roman army</text>
+  <g transform="translate(246,248)" stroke="#2f7fd0" stroke-width="1.5">
+    <line x1="0" y1="-7" x2="-8" y2="6"/><line x1="0" y1="-7" x2="8" y2="6"/><line x1="-8" y1="6" x2="8" y2="6"/>
+    <circle cx="0" cy="-7" r="4" fill="#2f7fd0"/><circle cx="-8" cy="6" r="4" fill="#2f7fd0"/><circle cx="8" cy="6" r="4" fill="#2f7fd0"/></g>
+
+  <!-- 8 -->
+  <rect x="286" y="216" width="268" height="64" rx="12" fill="#faf9fe" stroke="#e7e3f2"/>
+  <circle cx="316" cy="248" r="17" fill="#7c5cbf"/><text x="316" y="253.5" text-anchor="middle" font-size="15" font-weight="800" fill="#fff">8</text>
+  <text x="342" y="244" font-size="14" font-weight="700" fill="#211c33">Mandated agents</text>
+  <text x="342" y="261" font-size="10.5" fill="#6f6886">the union leader's mandate</text>
+  <g transform="translate(526,248)"><path d="M-5,-1 v-4 a5,5 0 0 1 10,0 v4" fill="none" stroke="#7c5cbf" stroke-width="1.7"/><rect x="-8" y="-1" width="16" height="12" rx="2.5" fill="#7c5cbf"/></g>
+
+  </g>
+</svg>
+<div class="cap">The memory board. Cover the right-hand words and say the eight names down the columns; then cover the names and say what each picture is.</div>
+</div>
+
+<p class="p">Now the same eight, with what each one actually does. Every device buys credibility by <b>taking something away from you</b>. The last column is the one to understand, because it is the same idea eight times over.</p>
+
+<div class="tscroll">
+<table class="dtable" style="min-width:560px">
+<tr><th></th><th>Device</th><th>The picture</th><th>What it takes away from you</th></tr>
+<tr><td class="num">1</td><td class="lab">Contracts</td><td class="left">NATO Article 5: an attack on one is an attack on all. Also the kitchen contract with payment tied to progress, and the monopolist's beat-the-competition clause with customers.</td><td class="left">Your right to decide on the day. A third party now enforces it.</td></tr>
+<tr><td class="num">2</td><td class="lab">Reputation</td><td class="left">Kennedy during the Berlin crisis: <i>&ldquo;if we are not true to our word there, all that we have achieved in collective security, which relies on these words, will mean nothing.&rdquo;</i></td><td class="left">The cheap way out, because backing down once would cost you every future game.</td></tr>
+<tr><td class="num">3</td><td class="lab">Cutting off communication</td><td class="left"><i>Dr. Strangelove</i>: the base commander sends the bombers and then destroys the radio. The slides&rsquo; extreme example: a last will and testament.</td><td class="left">Your ability to be talked out of it. No message can reach you, so nothing can be re-opened.</td></tr>
+<tr><td class="num">4</td><td class="lab">Burning bridges behind you</td><td class="left">William the Conqueror burns his own ships after landing in England (1066). And the captain in <i>The Hunt for Red October</i>, who posts a letter to the admiral before he sails saying he is changing sides. Now the navy will certainly hunt him, and turning back would kill him. Sun Tzu gives the other side of this: when you surround an enemy, leave him a way out.</td><td class="left">Your retreat. There is no road back, so fighting is all that is left.</td></tr>
+<tr><td class="num">5</td><td class="lab">Leaving the outcome beyond your control</td><td class="left"><i>Dr. Strangelove</i> again: the doomsday machine, which answers automatically and cannot be switched off. Real version: missiles held at launch readiness during a crisis. And in <i>L.A. Confidential</i>, the detective who leaves one bullet in the revolver and keeps pulling the trigger.</td><td class="left">Your freedom to choose, on purpose. The response is no longer a human decision at all.</td></tr>
+<tr><td class="num">6</td><td class="lab">Moving in small steps</td><td class="left">The kitchen remodelling paid day by day, or week by week, as the work is finished. Neither side ever has much at risk.</td><td class="left">The size of the promise. One big act of trust becomes a chain of small ones.</td></tr>
+<tr><td class="num">7</td><td class="lab">Teamwork</td><td class="left">The Roman army: running away was punished by death, and failing to kill a man who ran was <i>also</i> punished by death. Also Alcoholics Anonymous, where breaking the commitment costs you your standing in the group.</td><td class="left">Your privacy. The group is watching, and looking the other way is itself punished.</td></tr>
+<tr><td class="num">8</td><td class="lab">Mandated negotiating agents</td><td class="left">The union leader who takes a narrow mandate and states his position in public. Also sports agents, and the shop assistant who is simply not allowed to change the price.</td><td class="left">Your power to give in. You really cannot say yes, so &ldquo;no&rdquo; becomes believable.</td></tr>
+</table></div>
+
+<div class="rule">Ask three questions of any story: <b>who is trying to be believed? what freedom did they give up? and who or what makes that stick?</b> The answer to the second question names the device almost every time.</div>
+
+<p class="partlab">Worked example</p>
+<div class="question">Before price talks with a large supplier, a company's board passes a formal rule: the chief executive may not sign any agreement above a stated price without a full shareholder vote. The board then prints the rule in a press release. Which of the eight devices is this, and why does it work?</div>
+
+<div class="step"><div class="stepn">1</div><div class="stepbody"><div class="lab">Who is trying to be believed, and of what?</div>
+The company. It wants the supplier to believe it will walk away rather than pay more than the stated price.</div></div>
+
+<div class="step"><div class="stepn">2</div><div class="stepbody"><div class="lab">Why would a plain promise fail?</div>
+Because on the day, paying a little more still beats having no deal at all. The supplier knows that, so &ldquo;this is our final price&rdquo; is exactly the non-credible threat from the first section.</div></div>
+
+<div class="step"><div class="stepn">3</div><div class="stepbody"><div class="lab">What freedom was given up?</div>
+The negotiator's <b>power to give in</b>. The chief executive simply cannot agree in the room. The press release makes that visible to the other side before they choose.</div></div>
+
+<div class="step"><div class="stepn">4</div><div class="stepbody"><div class="lab">Match it against the list.</div>
+It is not a contract with the supplier, because no agreement between the two sides exists yet. It is not burning bridges, because the company can still walk away, which is the whole point. It is the negotiator who has been tied down.</div></div>
+
+<div class="ans">&#10003; <b>Mandated negotiating agents</b> (device 8). It works exactly the way the union leader's public mandate works: the negotiator is made <i>weaker</i> on purpose, and that weakness is what makes the refusal believable.</div>
+
+<div class="tryq"><div class="q">A hospital's night pharmacy is robbed again and again. The manager installs a time-lock safe. Once closed, it cannot be opened by anybody, including the staff, until morning. A large sign on the door says so.<br><br>Which device, and what is the sign for?</div>
+<button class="reveal-btn" onclick="this.nextElementSibling.classList.add('show');this.disabled=true;">Reveal answer</button>
+<div class="reveal"><b>Leaving the outcome beyond your control</b> (device 5). &ldquo;We won't open the safe&rdquo; is not credible when a robber is standing in front of a frightened member of staff. On the night, opening it is obviously better than being hurt. The time lock takes the choice away from the staff completely, so there is nothing left to threaten out of them.<br><br><b>The sign is not decoration.</b> A commitment only changes behaviour through what the other side believes when they choose. A secret time lock protects the drugs, but it does not stop the robbery.</div></div>
+
+<div class="tryq"><div class="q">Two strangers agree to swap a second-hand car for cash. Neither trusts the other to hand over first, so they use a lawyer. She holds both the money and the keys, and she releases each one only when both have arrived.<br><br>Which device is this, and which <i>other</i> device could have solved the same problem without a lawyer?</div>
+<button class="reveal-btn" onclick="this.nextElementSibling.classList.add('show');this.disabled=true;">Reveal answer</button>
+<div class="reveal"><b>Contracts</b> (device 1). This one shows why the slides make such a fuss about <i>third-party enforcement</i>. The lawyer is the third party. Without someone outside the deal to hold the stakes, the agreement is only two promises facing each other.<br><br><b>The other answer is moving in small steps</b> (device 6): swap in pieces. Part of the cash, then the keys, then the rest, then the paperwork. Neither side ever risks much. That is the same cure the slides give to the homeowner who does not trust the builder.<br><br>A third possibility, if one of them is a dealer with a name to protect: <i>reputation</i> (device 2). The slides say it outright. A strong reputation can remove the need for a contract.</div></div>
+</div>
+
+<!-- ============ SECTION 4 ============ -->
+<!-- SCRIPT Day-09-small-print.mp3 | NOA=Heart TOM=Fenrir
+NOA: Every one of the eight has a catch, and the exam likes the catch more than the device.
+TOM: Start with contracts.
+NOA: A contract has to survive being renegotiated. If, on the day, both of us would rather tear it up, then it was never a commitment. It was a wish. And it needs somebody outside the two of us to enforce it. Where courts are slow or corrupt, people go looking for other enforcers, and that gets ugly quickly.
+TOM: And cutting off communication? That one looked free.
+NOA: It is not. You pay twice. You lose flexibility, because you cannot react to news you never hear. And you lose any way of checking, because you cannot even confirm your message arrived.
+TOM: What about leaving the outcome beyond my control? That is the one that frightens me.
+NOA: It is a balance, and the professor chooses that word carefully. The device must be strong enough that the other side is genuinely deterred. But not so strong that the first false alarm ends everything. And false alarms are not a possibility. Given enough time they are a certainty.
+TOM: So the more automatic I make it, the better it deters and the worse it fails.
+NOA: That is the trade in one sentence. Now small steps. They work only while there is no obvious final step. The moment we can both see the last payment coming, we both start reasoning backwards from it, and the trust unravels from the end.
+TOM: So leave the door open to more business afterwards.
+NOA: And now the mirror. Small steps run in reverse. Look at the picture on the page. A child is told not to go in the water. He sits on the bank. Then his toes. Then he stands up, still only feet in. Then a little deeper, and straight back out.
+TOM: And no single one of those is worth having a fight about.
+NOA: Until he is swimming out of sight. That is salami tactics. Slicing somebody else's commitment so thin that they never find a slice worth defending. Same tool as small steps, pointed the other way.
+-->
+<div class="panel"><h3>The small print, and salami tactics</h3>
+<div class="secaudio"><span class="salab">&#127911; Listen to this section</span><audio controls preload="none" src="Day-09-small-print.mp3"></audio></div>
+
+<p class="p">The slides do not stop at the list. Each device comes with a catch, and the exam often likes the catch more than the device. These five are named openly.</p>
+
+<div class="tscroll">
+<table class="dtable" style="min-width:420px">
+<tr><th>Device</th><th>The catch the slides flag</th></tr>
+<tr><td class="lab">Contracts</td><td class="left">A contract can never cover everything, and it must <b>survive being re-opened</b>. If on the day both sides would rather tear it up, it was never a commitment. It also needs <b>third-party enforcement</b>. Where courts are slow or corrupt, people turn to private judges or worse.</td></tr>
+<tr><td class="lab">Reputation</td><td class="left">A <b>strong reputation can replace a contract</b> completely. That is a strength, but it means the reputation itself is what you are betting, and one public climb-down spends it.</td></tr>
+<tr><td class="lab">Cutting off communication</td><td class="left">You pay twice. You lose <b>flexibility</b>, because you cannot react to news you never hear. And you lose the ability to <b>check</b>, because you cannot even confirm your message arrived.</td></tr>
+<tr><td class="lab">Beyond your control</td><td class="left">A <b>delicate balance</b>. Strong enough to deter, but not so strong that the false alarm, which will come sooner or later, destroys everything. Taking away your own choice is what makes it work and what makes it dangerous.</td></tr>
+<tr><td class="lab">Moving in small steps</td><td class="left">Works only when there is <b>no clear final step</b>. As soon as both sides can see the last one coming, they reason backwards from it, and the trust unravels from the end. It works better when there is a chance of future business.</td></tr>
+</table></div>
+
+<div class="rule">The pattern behind all five: a device buys credibility with <b>your own flexibility</b>. The more of it you sell, the more believable you are. And the worse it goes when the world does something you did not plan for.</div>
+
+<p class="datalab">Renegotiation-proofness: the catch worth understanding properly</p>
+<p class="p">Of those five, the first is the one the slides argue out in detail. A contract you would both happily tear up is not a commitment at all. The professor's example is a <b>self-control</b> contract: anyone who photographs Mr. X eating unhealthy food collects a large reward. It works. Then Mr. X, standing in front of the cake, offers the photographer a share to look away. Both are better off tearing the contract up, so both do. The commitment vanishes exactly when it was needed.</p>
+
+<p class="p">Compare the version the slides say <i>does</i> hold. In some rehabilitation centres a patient writes a damaging letter about himself in advance. It is published if he fails a random drug test. Why can that one not be bought off? Because of a two-part argument, and it is worth learning as two parts:</p>
+
+<div class="tscroll">
+<table class="dtable" style="min-width:420px">
+<tr><th>If the person holding the letter&hellip;</th><th>&hellip;then</th></tr>
+<tr><td class="lab">agrees to renegotiate and suppress it</td><td class="left">they are <b>fired</b>. So taking the bribe costs them their job. Re-opening the deal is not in their interest either.</td></tr>
+<tr><td class="lab">is <i>not</i> fired for suppressing it</td><td class="left">the centre's <b>reputation is lost</b>, and with it the whole scheme's value for every future patient. So the centre will fire them.</td></tr>
+</table></div>
+
+<p class="p">Read those two rows together and you have the general recipe: a contract survives being re-opened when <b>somebody would lose by agreeing to tear it up</b>. Notice what is holding it together in the second row. It is reputation, doing the job of an enforcer. That is the same swap the slides make for device 2.</p>
+
+<div class="rule">Test any contract with one question: <b>on the day, would both sides rather cancel it?</b> If yes, it commits nobody. A contract only binds you if tearing it up would hurt somebody whose agreement is needed to tear it up.</div>
+
+<p class="datalab">Salami tactics: the same idea, running backwards</p>
+<p class="p">Moving in small steps builds a commitment slowly. Run it the other way and you can take somebody else's <i>apart</i>. The professor's example is a child told not to go in the water.</p>
+
+<div class="svg-wrap">
+<svg viewBox="0 0 560 235" role="img" aria-label="Five horizontal bars of growing length, starting from the same point. A red dashed vertical line marks the rule, do not go in the water. The first bar stops just short of it; each following bar crosses further past it, and the last one runs almost off the page. No single increase is large.">
+  <g font-family="-apple-system,Segoe UI,Arial">
+  <!-- the rule -->
+  <line x1="196" y1="26" x2="196" y2="198" stroke="#d2453f" stroke-width="1.6" stroke-dasharray="5 4"/>
+  <text x="200" y="20" font-size="10.5" font-weight="700" fill="#d2453f">the rule: do not go in the water</text>
+  <!-- rows -->
+  <text x="150" y="48" text-anchor="end" font-size="11" fill="#6f6886">sits on the bank</text>
+  <rect x="160" y="37" width="28" height="14" rx="4" fill="#6b4ef0" opacity=".22"/>
+  <text x="150" y="80" text-anchor="end" font-size="11" fill="#6f6886">toes in the water</text>
+  <rect x="160" y="69" width="62" height="14" rx="4" fill="#6b4ef0" opacity=".38"/>
+  <text x="150" y="112" text-anchor="end" font-size="11" fill="#6f6886">stands up, feet in</text>
+  <rect x="160" y="101" width="110" height="14" rx="4" fill="#6b4ef0" opacity=".54"/>
+  <text x="150" y="144" text-anchor="end" font-size="11" fill="#6f6886">deeper, then straight back</text>
+  <rect x="160" y="133" width="170" height="14" rx="4" fill="#6b4ef0" opacity=".7"/>
+  <text x="150" y="176" text-anchor="end" font-size="11" fill="#6f6886">swims out of sight</text>
+  <rect x="160" y="165" width="300" height="14" rx="4" fill="#6b4ef0" opacity=".9"/>
+  <!-- bracket -->
+  <path d="M196,204 v6 H460 v-6" fill="none" stroke="#b9b2cf" stroke-width="1.4"/>
+  <text x="328" y="227" text-anchor="middle" font-size="11" fill="#6f6886">the whole commitment, taken one thin slice at a time</text>
+  </g>
+</svg>
+<div class="cap">Not one of those steps is worth a fight on its own. That is exactly what makes the last one possible.</div>
+</div>
+
+<p class="p">Each slice is too small to be worth the argument it would cause, so the parent lets it go. And the next slice starts from the new line, not the old one. Soon the parent is shouting at a child who is swimming out of sight. The slides call this <b>salami tactics</b>, and the cold-war example is the <i>Yes Prime Minister</i> sketch.</p>
+
+<div class="rule">Same tool, opposite direction. <b>Moving in small steps</b> = building your own commitment gradually. <b>Salami tactics</b> = slicing away someone else's, so thin that no single slice is worth defending.</div>
+
+<p class="partlab">Worked example</p>
+<div class="question">A homeowner and a builder agree that a kitchen will be paid for in five equal stages, one after each part of the work is finished. Presentation 6 says this is a good arrangement, but it also warns about one weak point. Which stage is fragile, why, and what does the lecture suggest doing about it?</div>
+
+<div class="step"><div class="stepn">1</div><div class="stepbody"><div class="lab">Why the arrangement works at all.</div>
+Neither side ever has much at risk. If the builder disappears, the homeowner has lost one stage's money; if the homeowner refuses to pay, the builder has lost one stage's work. Small stakes make trust cheap.</div></div>
+
+<div class="step"><div class="stepn">2</div><div class="stepbody"><div class="lab">Find the fragile stage using backward induction.</div>
+Go to the <b>last</b> stage. After it there is nothing: no more payments, no more work, no future to lose. So the builder has no reason to do it well, and the homeowner has no reason to pay.</div></div>
+
+<div class="step"><div class="stepn">3</div><div class="stepbody"><div class="lab">Let the reasoning roll backwards.</div>
+Knowing the last stage will go badly, the second-to-last stage has nothing worth protecting either, and so on. This is the same unravelling as the finitely repeated prisoner's dilemma from Day 8.</div></div>
+
+<div class="step"><div class="stepn">4</div><div class="stepbody"><div class="lab">Apply the lecture's remedy.</div>
+The slides say small steps work best when there is <b>no clear final step</b>, and when there is a chance of future business.</div></div>
+
+<div class="ans">&#10003; The <b>last</b> stage is the fragile one, because backward induction starts there and works its way back through all the others. The cure is to blur the ending: a retainer, a period for fixing faults, a maintenance arrangement, the chance of the next job. Then neither side can point at a step and say &ldquo;after this, nothing.&rdquo;</div>
+
+<div class="tryq"><div class="q">Why does the course insist that a device which leaves the outcome beyond your control needs a <i>delicate balance</i>? Say it in your own words, and name the thing that is certain to happen eventually.</div>
+<button class="reveal-btn" onclick="this.nextElementSibling.classList.add('show');this.disabled=true;">Reveal answer</button>
+<div class="reveal">Something like: <b>&ldquo;the device has to be automatic enough that the other side really is deterred. But every automatic device gets a false alarm sooner or later, and the more automatic it is, the worse that false alarm is.&rdquo;</b><br><br>The certain thing is the <b>false alarm</b>. The slides treat it as something that will happen, not as a risk you can design away. That is why the balance is delicate rather than solvable. The doomsday machine deters perfectly and fails terribly, and those are the same property.</div></div>
+
+<div class="tryq"><div class="q">A supplier has a firm rule: no credit, payment on delivery. A regular customer asks to pay two days late &ldquo;just this once&rdquo;. Then a week. Then he asks for thirty days on one small invoice. Then on all of them.<br><br>Name what the customer is doing, and say what the supplier should have done at the first step.</div>
+<button class="reveal-btn" onclick="this.nextElementSibling.classList.add('show');this.disabled=true;">Reveal answer</button>
+<div class="reveal"><b>Salami tactics.</b> Every request is small enough that saying no looks petty and risks a good customer, so the supplier gives in. Each thing he gives becomes the new starting line for the next request.<br><br><b>What to do at the first step:</b> refuse the very first slice, because it is the only one that is cheap to refuse. Or take the decision out of your own hands. A written credit policy run by the accounts department (<i>a contract</i> plus <i>mandated agents</i>) makes the answer &ldquo;I'm not allowed to&rdquo; instead of &ldquo;I'd rather not&rdquo;.<br><br>Notice how this matches the whole day. The supplier's problem is again <i>too much freedom</i>. He is able to say yes, so he will be asked.</div></div>
+</div>
+
+<!-- ============ QUIZ ============ -->
+<div class="panel"><h3>&#128221; Quiz yourself <span class="scorechip" id="scoreChip">0 / 6</span></h3>
+<p class="note">Pick an option. The answer and the explanation appear only after you choose. Commitment was first taught in 2025, so there is only one past-final question here that you never meet again as a mock, and it is tagged. The other five are fresh, and they come in three shapes: name the device from a story, find the story that matches a named device, and say which move would <i>not</i> work. None of them uses a story from the pages above. If you are working on paper, the printed page opens every explanation.</p>
+<div id="quizBody"></div></div>
+
+<div class="navrow"><a class="navbtn" href="Day-08.html">&larr; Back</a><a class="navbtn primary" href="Day-10.html">Next &rarr;</a></div>
+</div>
+<script>
+const QUIZ = [
+{"q":"Which of these five stories is an example of <b>mandated negotiating agents</b>, device 8?",
+ "opts":["A group of small pharmacies buys its stock together. They send one buyer to the talks with a price limit they agreed between them and published in advance. She has no power to go above it, and the wholesaler has read the limit","A hiker crossing a gorge cuts the rope bridge behind her, so the only way on is forward","A city council signs an agreement with an outside auditor who is paid to publish any overspend, whether the council likes it or not","A rocket carries a flight computer that destroys the vehicle by itself if it leaves its safe corridor. No controller on the ground can stop it","A restaurant chain turns down a cheap supplier, because every customer would hear about it and its good name is the only thing it really sells"],"correct":0,
+ "exp":"<b>The pharmacies' buying group.</b> Ask the three questions. Who is trying to be believed? The pharmacies. What freedom did they give up? Their <b>power to give in</b>: the person in the room genuinely cannot agree to a higher price. Who makes that stick? The published limit the drug company has already seen.<br><br>That is the union leader's trick exactly. The negotiator is made <i>weaker</i> on purpose, and the weakness is what makes the refusal true rather than merely stated. The slides put store clerks and government officials who must follow rules mechanically in the same box.<br><br><b>Why each of the others is a different device:</b><br>&bull; <b>The cut rope bridge</b> is <b>burning bridges behind you</b>, device 4. What is taken away is her <i>retreat</i>, not her power to agree.<br>&bull; <b>The outside auditor</b> is a <b>contract</b>, device 1. What makes it work is third-party enforcement: somebody outside the council publishes the breach whether the council wants it or not.<br>&bull; <b>The rocket's flight computer</b> is <b>leaving the outcome beyond your control</b>, device 5. Nobody decides on the day. The response is not a human choice at all.<br>&bull; <b>The restaurant chain</b> is <b>reputation</b>, device 2. Nothing binds it except the cost of being seen to break its word, in every future dealing."},
+
+{"src":"2025 A final","q":"In the \"cutting off communication\" strategy, what is the main advantage?",
+ "opts":["Increasing flexibility","Eliminating the risk of renegotiation","Gaining full control over the opponent","Lowering the chances of miscommunication","Delaying commitment as long as possible"],"correct":1,
+ "exp":"<b>Eliminating the risk of renegotiation.</b> If nobody can reach you, nobody can talk you out of it. That is the whole point.<br><br><b>Two options are the exact opposite of the truth.</b> Cutting off communication <i>reduces</i> flexibility and <i>raises</i> the risk of a message going wrong, because you cannot even confirm your message arrived. The slides list both as costs of the device, so they are the tempting wrong answers. And it is a commitment made now, not a commitment delayed."},
+
+{"q":"A grower's neighbour moves the boundary fence a little further onto his land every year. The grower wants the neighbour to believe that the very next move will be met with a fight he never drops, however much it costs him. In this region court cases take about ten years, and the judges are widely thought to be corrupt. Four of the moves below would make his threat believable. <b>Which one would not?</b>",
+ "opts":["Signing an agreement with the neighbour that sets an automatic penalty for the next fence move, to be collected through the local court","Saying it at the village meeting, in front of everyone, so that backing down would cost him his name in every other dealing he has","Handing the case to a lawyer whose written instructions, shown to the neighbour, do not allow her to settle","Joining a growers' association whose rules fine any member who quietly settles a boundary case, and whose members can all see the fence","Paying a law firm in another country in advance to file the case by itself the day the fence moves, with no way for him to call it off"],"correct":0,
+ "exp":"<b>The agreement enforced by the local court.</b> A contract is only ever as strong as the person who enforces it. The slides are blunt about this: contracts need <b>third-party enforcement</b>, and where courts are slow or corrupt people have to look elsewhere. Here the enforcer takes ten years and cannot be trusted, so the penalty is a number on a page. On the day, the neighbour knows nothing will be collected, and the grower is back to a threat he would rather not carry out.<br><br><b>Why the other four do work:</b><br>&bull; <b>The village meeting</b> is <b>reputation</b>, device 2. Backing down now costs him something he keeps, and it costs him it in every future dealing, not just this one. No court is needed.<br>&bull; <b>The lawyer who may not settle</b> is <b>mandated negotiating agents</b>, device 8. The person in the room genuinely cannot say yes, and the neighbour has seen the instructions.<br>&bull; <b>The growers' association</b> is <b>teamwork</b>, device 7. The group watches, and it punishes the member who quietly gives in. That is the Roman army rule in a milder form.<br>&bull; <b>The pre-paid foreign law firm</b> is <b>leaving the outcome beyond your control</b>, device 5. The case files itself, so on the day it is not his decision any more. Notice what makes it different from the first option: the enforcer sits outside the broken system, and the grower has no switch to turn it off.<br><br><b>The lesson to carry into the exam:</b> a device is not right or wrong on its own. Ask whether the thing that makes it stick actually exists in <i>that</i> story."},
+
+{"q":"A company lets each junior manager approve spending up to 2,000 without asking anyone. One manager starts by approving an invoice for 1,900. Next she splits a 4,000 order into two invoices of 2,000. Then into four of 1,000. Within a year she is approving whatever she likes, always in small pieces. Nobody ever thinks a single one of these is worth an argument. What is she doing?",
+ "opts":["Salami tactics: taking somebody else's commitment apart one thin slice at a time, so that no single slice is worth defending","Moving in small steps: building trust a little at a time, so that neither side ever has much at risk","Burning bridges behind her: each approval removes one of her own options","Mandated negotiating agents: she is acting inside a limit that somebody else set for her","Teamwork: the group is watching, so nobody can quietly look away"],"correct":0,
+ "exp":"<b>Salami tactics.</b> The 2,000 limit was the company's commitment. Every request is small enough that objecting looks petty, so nobody objects, and each thing allowed becomes the starting line for the next one.<br><br><b>The distractor that matters is \"moving in small steps\", and the difference is direction.</b> They are the same tool pointed opposite ways. Moving in small steps <i>builds</i> your own commitment out of small safe pieces, like paying a builder stage by stage. Salami tactics <i>dissolves</i> somebody else's, one slice at a time. Here nothing is being built and no trust is growing. A rule is being eaten.<br><br><b>Why the other three do not fit:</b><br>&bull; <b>Burning bridges</b> destroys your own retreat so that you cannot back down. She loses nothing and gives up nothing. She gains room.<br>&bull; <b>Mandated negotiating agents</b> means a person genuinely cannot exceed their limit, which is exactly what makes them believable. She can exceed hers, and does, so this is the opposite of the device.<br>&bull; <b>Teamwork</b> makes a commitment stick because the group punishes anyone who lets it slide. Here nobody is punishing anything, and that is the whole problem.<br><br><b>What should have been done:</b> refuse the very first slice, because it is the only one that is cheap to refuse. Or take the decision away from the people being asked, with a rule that counts a split order as one order."},
+
+{"q":"A bank installs an automated trading system that closes a position the moment a price threshold is crossed. By design, no employee of the bank, including the person who set it up, can override or switch it off during trading hours. Which of the eight credibility devices is this?",
+ "opts":["Contracts","Cutting off communication","Burning bridges behind you","Leaving the outcome beyond your control","Teamwork"],"correct":3,
+ "exp":"<b>Leaving the outcome beyond your control</b> (device 5). The key feature is that the response is no longer anybody's decision. Human choice has been removed on purpose, exactly as with the doomsday machine.<br><br><b>Why not the near misses?</b> A contract needs another party and an outside enforcer; there is neither here. Cutting off communication is about messages not reaching you, and the traders can still talk to everyone. They just cannot act. Burning bridges destroys a <i>retreat</i>. Here nothing has been destroyed. An automatic rule has been added.<br><br>And remember the catch: the more perfectly it deters, the worse it behaves on the day it fires by mistake."},
+
+{"q":"A supermarket chain tells a small supplier: \"accept our new price or we delist you from every store.\" Delisting would leave a gap on the chain's shelves that no other supplier can fill for at least a season, and that gap costs the chain considerably more than simply paying the supplier's current price. The supplier knows this. What does the theory predict, and why?",
+ "opts":["The threat works, because delisting hurts the small supplier far more than it hurts the chain","The threat fails, because the chain would not actually carry it out once the supplier refuses","The threat works, because the chain is far larger and can absorb the loss","The threat fails, because the supplier can simply sell to a different chain","The threat works only if the supplier is risk averse"],"correct":1,
+ "exp":"<b>The threat fails, because the chain would not carry it out.</b> Stand at the chain's decision node, the moment after the supplier has refused, and compare only what follows from there: delisting costs it a season of empty shelf; paying the old price costs it the old price. Paying is better. The supplier reasons that out in advance, so the threat changes nothing he does.<br><br><b>The trap is the first option, and it is the whole lesson.</b> How badly the punishment hurts the <i>other</i> side does not decide credibility. Remember that the nuclear threat was the most frightening ending anywhere in its tree, and it was still not believed. What decides credibility is one comparison at your <i>own</i> node: would you rather carry it out or not? Size and relative strength never enter it.<br><br><b>The fix</b> is any device that removes the chain's freedom before the supplier answers: a published pricing policy its buyers have no authority to depart from (mandated negotiating agents), or a standing agreement with automatic terms and an outside judge (a contract)."}
+];
+function shuffleItem(it){var c=it.opts[it.correct];for(var i=it.opts.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=it.opts[i];it.opts[i]=it.opts[j];it.opts[j]=t;}it.correct=it.opts.indexOf(c);}
+QUIZ.forEach(shuffleItem);
+const body=document.getElementById('quizBody');
+if(body){let score=0;
+QUIZ.forEach((item,qi)=>{
+  const block=document.createElement('div');block.className='qblock';
+  const tag=item.src?`<span class="examtag">${item.src}</span>`:'';
+  block.innerHTML=`<div class="qnum">Question ${qi+1}${tag}</div><div class="qtext">${item.q}</div>`;
+  const exp=document.createElement('div');exp.className='exp';exp.innerHTML=item.exp;
+  item.opts.forEach((opt,oi)=>{
+    const btn=document.createElement('button');btn.className='opt';
+    btn.innerHTML=`${String.fromCharCode(65+oi)}. ${opt}<span class="mark"></span>`;
+    btn.onclick=()=>{ if(block.dataset.done)return; block.dataset.done="1";
+      const btns=block.querySelectorAll('.opt');btns.forEach(x=>x.disabled=true);
+      btns[item.correct].classList.add('correct');btns[item.correct].querySelector('.mark').textContent='✓';
+      if(oi===item.correct){score++;}else{btn.classList.add('wrong');btn.querySelector('.mark').textContent='✗';}
+      document.getElementById('scoreChip').textContent=`${score} / ${QUIZ.length}`; exp.classList.add('show'); };
+    block.appendChild(btn); });
+  block.appendChild(exp);body.appendChild(block); });}
+</script><!-- GoatCounter analytics -->
+<script data-goatcounter="https://game-theory.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<!-- Activity tracking: audio plays and finishes, quiz and mock completion. Sends counts to GoatCounter only. No personal data. -->
+<script>
+(function(){
+  function ev(path, title){
+    try{
+      if(!window.goatcounter || !window.goatcounter.count) return;
+      window.goatcounter.count({path: path, title: title, event: true});
+    }catch(e){}
+  }
+  var page = (location.pathname.split('/').pop() || 'index.html').replace(/\.html$/,'') || 'index';
+
+  // Audio: one count the first time a strip is played, one when it reaches the end.
+  Array.prototype.forEach.call(document.querySelectorAll('audio'), function(a){
+    var name = (a.getAttribute('src') || 'audio').replace(/\.mp3$/,'');
+    var started = false, finished = false;
+    a.addEventListener('play', function(){
+      if(started) return; started = true;
+      ev('audio-play/' + name, 'Audio started: ' + name);
+    });
+    a.addEventListener('ended', function(){
+      if(finished) return; finished = true;
+      ev('audio-done/' + name, 'Audio finished: ' + name);
+    });
+  });
+
+  // Learn-day quiz: one count when every question has been answered, with the score.
+  var qbody = document.getElementById('quizBody');
+  if(qbody){
+    var chip = document.getElementById('scoreChip');
+    var qsent = false;
+    qbody.addEventListener('click', function(){
+      if(qsent) return;
+      setTimeout(function(){
+        if(qsent) return;
+        var blocks = qbody.querySelectorAll('.qblock');
+        if(!blocks.length) return;
+        var done = 0;
+        Array.prototype.forEach.call(blocks, function(b){ if(b.dataset.done) done++; });
+        if(done !== blocks.length) return;
+        qsent = true;
+        var raw = chip ? chip.textContent.trim() : '';
+        var slug = raw.replace(/\s*\/\s*/, '-of-') || 'unknown';
+        ev('quiz-done/' + page + '/' + slug, 'Quiz finished: ' + page + ' ' + raw);
+      }, 0);
+    });
+  }
+
+  // Mock day: one count when the results panel opens, with the score.
+  var res = document.getElementById('results');
+  if(res && window.MutationObserver){
+    var msent = false;
+    var mo = new MutationObserver(function(){
+      if(msent || !res.classList.contains('show')) return;
+      msent = true; mo.disconnect();
+      var el = document.getElementById('resScore');
+      var raw = el ? el.textContent.trim() : '';
+      var slug = raw.replace(/\s*\/\s*/, '-of-') || 'unknown';
+      ev('mock-done/' + page + '/' + slug, 'Mock submitted: ' + page + ' ' + raw);
+    });
+    mo.observe(res, {attributes: true, attributeFilter: ['class']});
+  }
+})();
+</script>
+</body></html>

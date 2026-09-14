@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exam Map + Backward Induction</title>
+<style>
+:root{--bg:#f5f3fb;--card:#fff;--ink:#211c33;--muted:#6f6886;--brand:#6b4ef0;--brand-d:#5238c4;
+--brand-soft:#ece7fd;--good:#1f9d63;--good-soft:#e4f6ec;--bad:#d2453f;--bad-soft:#fae5e4;--line:#e7e3f2;
+--amber:#b6791f;--amber-soft:#fcf3e3;}
+*{box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);margin:0;line-height:1.55;}
+.wrap{max-width:760px;margin:0 auto;padding:26px 22px 60px;}
+.home{display:inline-block;margin:0 0 12px;color:var(--brand);font-weight:700;font-size:13px;text-decoration:none;}
+.crumb{color:var(--brand);font-weight:600;font-size:13px;text-transform:uppercase;letter-spacing:.05em;}
+h1{font-size:28px;margin:8px 0 4px;letter-spacing:-.02em;}
+.lede{color:var(--muted);margin:0 0 14px;font-size:16px;}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px 24px;margin:18px 0;box-shadow:0 1px 3px rgba(40,20,90,.04);}
+.panel h3{margin:0 0 6px;font-size:18px;display:flex;align-items:center;gap:8px;}
+.panel h3 .scorechip{margin-left:auto;}
+.panel .note{color:var(--muted);font-size:14px;margin:0 0 14px;}
+.preq{background:var(--amber-soft);border:1px solid #f0deb8;border-radius:16px;padding:18px 20px;margin:18px 0;}
+.preq .tag{color:var(--amber);font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.06em;}
+.preq p{margin:8px 0 0;font-size:16px;} .preq .do{margin-top:10px;font-weight:600;color:var(--amber);}
+audio{width:100%;margin-top:6px;}
+.secaudio{background:var(--brand-soft);border:1px solid #d9d0fb;border-radius:12px;padding:10px 13px;margin:4px 0 14px;}
+.secaudio .salab{display:block;font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--brand-d);margin-bottom:7px;}
+.takeaway{font-size:14.5px;background:#fbfaff;border:1px dashed var(--line);border-radius:11px;padding:13px 16px;margin-top:14px;}
+.takeaway b{color:var(--brand);} .takeaway ul{margin:2px 0 0;padding-left:20px;} .takeaway li{margin:5px 0;}
+.takeaway .tk-gen{margin:10px 0 0;padding-top:10px;border-top:1px dashed var(--line);}
+.sub{font-size:15px;font-weight:800;color:var(--brand-d);margin:20px 0 6px;}
+.p{font-size:15px;margin:0 0 8px;}
+.partlab{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--brand);margin:0 0 6px;}
+.rule{background:var(--brand-soft);border-radius:11px;padding:12px 16px;font-weight:600;color:var(--brand-d);margin:16px 0;}
+.question{background:#f6f4fc;border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:10px;padding:14px 16px;font-size:15.5px;}
+.step{display:flex;gap:14px;padding:12px 0;border-top:1px solid var(--line);} .step:first-of-type{border-top:none;}
+.stepn{flex:0 0 28px;height:28px;border-radius:8px;background:var(--brand);color:#fff;font-weight:700;display:grid;place-items:center;font-size:14px;}
+.stepbody .lab{font-weight:600;}
+.math{font-family:"SF Mono",Menlo,Consolas,monospace;background:#f6f4fc;border:1px solid var(--line);border-radius:8px;padding:8px 12px;margin-top:6px;font-size:14.5px;display:inline-block;}
+.ans{background:var(--good-soft);border:1px solid #bfe6cf;border-radius:11px;padding:12px 16px;margin-top:16px;font-weight:600;color:var(--good);}
+.tryq{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:10px 0;} .tryq .q{font-weight:600;margin-bottom:8px;}
+.reveal-btn{background:var(--brand);color:#fff;border:none;border-radius:9px;padding:8px 14px;font-weight:600;cursor:pointer;font-size:14px;}
+.reveal{display:none;margin-top:10px;padding:11px 14px;border-radius:9px;background:#faf9fe;border:1px dashed var(--line);font-size:14px;} .reveal.show{display:block;}
+.dtable{width:100%;border-collapse:collapse;font-size:13.5px;margin:10px 0;}
+.dtable th,.dtable td{border:1px solid var(--line);padding:8px 8px;text-align:center;}
+.dtable th{background:var(--brand-soft);color:var(--brand-d);font-weight:700;} .dtable td.lab{text-align:left;font-weight:600;background:var(--brand-soft);color:var(--brand-d);}
+.dtable td.hlcell{background:var(--good-soft);font-weight:700;color:var(--good);}
+.dtable td.dim{color:var(--muted);}
+.datalab{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--brand-d);margin:20px 0 8px;}
+.given{color:var(--muted);font-size:13px;margin:2px 0 4px;}
+.svg-wrap{background:#fff;border:1px solid var(--line);border-radius:13px;padding:14px;margin:14px 0;text-align:center;}
+.svg-wrap svg{width:100%;height:auto;max-width:560px;}
+.cap{color:var(--muted);font-size:13px;margin-top:8px;}
+.qblock{padding:16px 0;border-top:1px solid var(--line);} .qblock:first-of-type{border-top:none;padding-top:4px;}
+.qnum{color:var(--brand);font-weight:700;font-size:12px;letter-spacing:.04em;text-transform:uppercase;}
+.examtag{display:inline-block;background:var(--good-soft);color:var(--good);border:1px solid #bfe6cf;border-radius:999px;padding:2px 9px;font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;margin-left:8px;vertical-align:middle;}
+.qtext{font-weight:600;margin:6px 0 12px;font-size:16px;}
+.qtext .dtable{font-weight:400;max-width:360px;}
+.opt{display:block;width:100%;text-align:left;background:#fff;border:1.5px solid var(--line);border-radius:11px;padding:11px 14px;margin:7px 0;font-size:15px;cursor:pointer;transition:.14s;color:var(--ink);}
+.opt:hover{border-color:var(--brand);background:var(--brand-soft);}
+.opt.correct{border-color:var(--good);background:var(--good-soft);} .opt.wrong{border-color:var(--bad);background:var(--bad-soft);}
+.opt .mark{float:right;font-weight:700;}
+.exp{margin-top:11px;padding:13px 15px;border-radius:11px;background:#faf9fe;border:1px dashed var(--line);font-size:14px;display:none;} .exp.show{display:block;} .exp b{color:var(--brand);}
+.scorechip{font-size:13px;color:var(--muted);font-weight:600;}
+.navrow{display:flex;justify-content:space-between;margin-top:22px;gap:10px;}
+.navbtn{text-decoration:none;font-weight:600;font-size:14px;padding:10px 16px;border-radius:11px;border:1px solid var(--line);color:var(--ink);background:#fff;}
+.navbtn.primary{background:var(--brand);color:#fff;border-color:var(--brand);}
+.tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.warnbox{background:var(--amber-soft);border:1px solid #f0deb8;border-radius:11px;padding:12px 16px;margin:14px 0;font-size:14.5px;}
+.warnbox b{color:var(--amber);}
+@media print{
+  body{background:#fff;} .panel{box-shadow:none;border-color:#ccc;}
+  audio,.secaudio,.timer,.navrow,.home{display:none!important;}
+  .reveal,.exp{display:block!important;} .preq{border-color:#ccc;}
+  .qblock{break-inside:avoid;} .panel{break-inside:avoid;}
+}
+</style>
+<style>
+/* presentation chips: same look as the hub, scoped to spans so p.p paragraphs are untouched */
+:root{--p1:#7c5cbf;--p2:#2f7fd0;--p3:#1d8a6a;--p4:#c2820b;--p5:#c04a7e;--p6:#4a6fa5;}
+span.p{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.04em;padding:2px 7px;border-radius:5px;color:#fff;margin-right:3px;white-space:nowrap;}
+.P1{background:var(--p1)}.P2{background:var(--p2)}.P3{background:var(--p3)}
+.P4{background:var(--p4)}.P5{background:var(--p5)}.P6{background:var(--p6)}
+.tags{margin:0 0 12px;}
+.panel h3 .tags{margin:0;}
+</style>
+</head><body><div class="wrap">
+<a class="home" href="index.html">&larr; All 14 days</a>
+<div class="crumb">Day 1 of 14 &middot; Learn</div>
+<h1>Exam map + backward induction</h1>
+<div class="tags"><span class="p P1">P1</span><span class="p P2">P2</span></div>
+<p class="lede">What the exam actually is, and then the cheapest marks on it: game trees. Sequential games are about 11% of the paper. Every past paper has at least one.</p>
+
+<div class="preq"><span class="tag">&#9208; Guess first</span>
+<p>A game tree has five endings. The very best ending for <b>player 1</b> pays her <b>9</b>. That is more than any other ending in the tree. To reach it, player 1 moves down, and then player 2 must move up. Player 2 gets <b>1</b> if he moves up, and <b>8</b> if he moves down instead.</p>
+<p>Will player 1 walk away with 9?</p>
+<p class="do">Take 20 seconds. Commit to an answer before you read on.</p></div>
+
+<!-- SCRIPT Day-01-intro.mp3 | NOA=Heart TOM=Fenrir
+NOA: Welcome to day one. Before we do any game theory, let's look at the exam itself, because knowing its shape saves you real time on the day.
+TOM: So it's a fixed thing. Same paper every year, more or less.
+NOA: More or less, yes. Multiple choice, five options each, and every past paper is built from the same small set of topics. You'll see the split on the page. Sequential games — trees — are about a ninth of the marks, and there has never been a paper without one.
+TOM: A ninth doesn't sound like much.
+NOA: It isn't much. But it's the cheapest ninth on the paper. A tree question has no algebra and no guessing. If you can read the picture, you can solve it every single time.
+TOM: So it's free marks, as long as I don't fool myself.
+NOA: That's exactly the risk, and that's the rest of today. There are three ways people lose a tree question, and none of them is arithmetic. Every one is a reading mistake.
+TOM: Give me one.
+NOA: The professor writes the wrong options out of numbers that are already sitting in the tree. So a wrong answer never looks wrong. It looks like something you saw a moment ago.
+TOM: Like a menu where every dish is on the menu, but only one is what I ordered.
+NOA: That's it. Today we learn to read a tree properly, from the last node backwards. Then we go trap by trap. And at the end, the strangest idea in this lecture — that having more choices can leave you worse off.
+TOM: Worse off from having more freedom. I'll want to see that one.
+-->
+<div class="panel"><h3>&#127911; Why you solve a tree backwards <span class="scorechip">~1 min</span></h3>
+<p class="note">A quick map of the exam, then the plan for the next half hour. Each section below has its own short audio.</p>
+<audio controls preload="none" src="Day-01-intro.mp3"></audio>
+
+<div class="takeaway"><ul>
+<li><b>Game tree</b>: a picture of who moves when. Forks are decisions, branches are actions, the endings carry a payoff for each player.</li>
+<li><b>Backward induction</b>: solve the <i>last</i> decision first, then the one before it, and keep walking left. The professor's phrase: <i>look forward and reason backward</i>.</li>
+<li><b>Strategy</b>: not a move. A complete plan that says what you would do at <i>every</i> point you could ever be asked to choose.</li>
+<li><b>The surprising one</b>: more freedom of action can hurt you. Extra options can make you worse off, because everyone else can see what you will do with them.</li>
+<li><b>Named cases to know</b>: Fredo &amp; Charlie, President vs Congress, the 21-flags game, the ultimatum game, the centipede game, the 1984 Orange Bowl.</li>
+</ul>
+<p class="tk-gen">One line to hold onto: <b>a number in the tree is not a number you can get.</b> Only the reachable endings are real.</p></div>
+
+<p class="datalab">The exam, in one table</p>
+<div class="tscroll">
+<table class="dtable">
+<tr><th>Topic</th><th>Lecture</th><th>Share of marks</th></tr>
+<tr><td class="lab">Pure Nash equilibrium: find, count, classify</td><td>P4</td><td>27%</td></tr>
+<tr><td class="lab">Mixed strategies / zero-sum</td><td>P5</td><td>21%</td></tr>
+<tr><td class="lab">2/3-average contest + behavioural facts</td><td>P1, P4</td><td>14%</td></tr>
+<tr><td class="lab">Dominance &amp; Prisoner's Dilemma</td><td>P3</td><td>13%</td></tr>
+<tr><td class="lab hlcell">Sequential games / backward induction</td><td>P2</td><td class="hlcell">11% &nbsp;&larr; today</td></tr>
+<tr><td class="lab">Repeated games</td><td>P3</td><td>7% (exactly one, every paper)</td></tr>
+<tr><td class="lab">Credibility / commitment</td><td>P6</td><td>6%</td></tr>
+</table></div>
+<div class="cap">14 multiple-choice questions, five options each, 90 minutes. That is 6.4 minutes per question. Closed book, calculator allowed, <b>no formula sheet</b>. 7 points each plus 2 free = 100, and no stated penalty for a wrong answer, so never leave a blank.</div>
+
+<div class="warnbox"><b>Where the tree questions sit.</b> In every past paper the sequential-game questions are around the middle: 2024 A had two of them (Q5 and Q6), 2024 B had two (Q5 and Q6), 2025 A one (Q8), 2025 B one (Q7), 2025 C one (Q7). Expect one or two. They are worth 7 or 14 points and they need no algebra at all.</div>
+</div>
+
+<!-- ============ SECTION 1 ============ -->
+<!-- SCRIPT Day-01-reading-trees.mp3 | NOA=Heart TOM=Fenrir
+NOA: A game tree is just a story of who moves when. Start at the left. Every fork is a moment where somebody chooses. Every branch is one thing they could do. And at the far right, where the branches stop, you find the ending — a pair of payoffs, the first for player one, the second for player two.
+TOM: So the tree is time running left to right.
+NOA: Yes. And here is the whole trick of this lecture. You do not solve it left to right. You solve it right to left.
+TOM: Backwards. Why backwards?
+NOA: Because the person who moves first cannot choose well until she knows what the other one will do afterwards. So you settle the last decision first, when there is nothing left to guess. Then you know what that branch is really worth, and you can settle the decision before it.
+TOM: It's like planning a journey by starting at the door you want to arrive at.
+NOA: That's a good way to hold it. The professor's phrase is: look forward and reason backward.
+TOM: Give me a story for it.
+NOA: The one from the lecture. A local businessman asks a foreign investor to put money into a business, and promises to split the profit fairly at the end of the year. Now, the investor's real question isn't "is this a good deal". It's "what will he do once my money is already in the country and the courts are weak?"
+TOM: And once the money is in, keeping all of it beats sharing it.
+NOA: Right. So that last node settles itself. The businessman keeps everything. Which means the investor's actual choice is not between sharing and not investing — it's between losing everything and not investing.
+TOM: So he stays home. And both of them end up with nothing, when they could both have done well.
+NOA: That's the sting of it. The backward answer is often the sad one, and it is still the answer.
+NOA: Now look at the tree drawn on the page. The thick coloured line is the solved path — the route the game actually takes. The faint dashed branches are what somebody would have chosen at a fork the game never arrives at. Notice where the solid line goes, and notice which large numbers it walks straight past.
+TOM: There's a big payoff sitting in the middle of the tree for player one, and the solid line never touches it.
+NOA: Because player one never gets to choose it. Somebody else stands between her and that ending, and that somebody has no reason to let her through. A number you cannot reach is not an option. It's decoration.
+-->
+<div class="panel"><h3>Reading a tree, and solving it from the last node <span class="p P2">P2</span></h3>
+<div class="secaudio"><span class="salab">&#127911; Listen to this section</span><audio controls preload="none" src="Day-01-reading-trees.mp3"></audio></div>
+
+<p class="p">The phrase <b>sequential game with perfect information</b> is really two separate requirements, and you have to check both.</p>
+<p class="p"><b>One: players move in turn</b>, not at the same moment. <b>Two: when it is your turn you can see everything that has already happened</b>: every past move, and all the payoffs.</p>
+<p class="p">Haggling in a market meets both. I say a price out loud. You hear it, and you answer with your own price. But drop either condition and you have a different kind of game. If we each write our number on paper and show it at the same moment, the first condition fails. If I can see your last move but not the card in your hand, the second one fails. The game is still sequential, but it is no longer <i>perfect information</i>. Keeping these two apart is worth a mark on its own.</p>
+
+<p class="p">These games are drawn as <b>trees</b>. Read them left to right, like time. Each fork is a moment where one named player chooses. Each branch is one action. Each ending on the right carries a pair of numbers: <i>player 1's payoff first, player 2's second</i>.</p>
+
+<p class="partlab">Why you must work backwards: Fredo &amp; Charlie</p>
+<p class="p">Presentation 2 opens with this. A businessman in a country with weak courts (Fredo) asks a foreign investor (Charlie) to put in $100,000 into a business that will return $500,000. Fredo promises to split the profit after a year.</p>
+<div class="tscroll">
+<table class="dtable">
+<tr><th>What happens</th><th>Charlie</th><th>Fredo</th></tr>
+<tr><td class="lab">Charlie doesn't invest</td><td>0</td><td>0</td></tr>
+<tr><td class="lab">Charlie invests, Fredo honours the deal</td><td>150,000</td><td>250,000</td></tr>
+<tr><td class="lab">Charlie invests, Fredo keeps everything</td><td>&minus;100,000</td><td>500,000</td></tr>
+</table></div>
+<p class="p">Charlie cannot answer "should I invest?" until he answers "what will Fredo do once the money is already here?" So settle Fredo's node first: keeping everything beats splitting. Now Charlie's real choice is between <i>losing</i> $100,000 and getting nothing. He stays home. The unique backward-induction outcome is (0, 0). Both men would have preferred the honest deal. That is what the lecture means by an <i>inefficient</i> equilibrium.</p>
+
+<div class="rule">Solve the <b>last</b> node first, because at the last node there is nothing left to predict. Then replace that node with the payoff pair it produces, and repeat. Keep walking left until you reach the start.</div>
+
+<p class="partlab">A full tree, solved</p>
+<p class="given">Player 1 moves first, at the round node. Player 2 moves at the square nodes. Player 1's payoff is always written first.</p>
+
+<div class="svg-wrap">
+<svg viewBox="0 0 560 300" role="img" aria-label="A game tree. Player one chooses A or B at the start. After A, player two chooses between an ending paying six to player one and two to player two, and an ending paying two and seven. After B, player two chooses between passing to another player one node, or an ending paying three to player one and eight to player two. At that second player one node the choices are an ending paying nine and one, or an ending paying four and five. The backward induction path runs from the start along B and then to the ending three, eight.">
+  <!-- edges: rejected -->
+  <g stroke="#c8c2dd" stroke-width="1.8" fill="none">
+    <line x1="52" y1="145" x2="198" y2="68"/>
+    <line x1="198" y1="68" x2="462" y2="34"/>
+    <line x1="198" y1="218" x2="338" y2="176"/>
+    <line x1="338" y1="176" x2="462" y2="202"/>
+  </g>
+  <!-- edges: would be chosen, at a node the game never reaches -->
+  <g stroke="#9a93b4" stroke-width="1.8" stroke-dasharray="5 4" fill="none">
+    <line x1="198" y1="68" x2="462" y2="102"/>
+    <line x1="338" y1="176" x2="462" y2="150"/>
+  </g>
+  <!-- edges: the equilibrium path itself -->
+  <g stroke="#1f9d63" stroke-width="3.4" fill="none">
+    <line x1="52" y1="145" x2="198" y2="218"/>
+    <line x1="198" y1="218" x2="462" y2="272"/>
+  </g>
+  <!-- leaves -->
+  <g fill="#8f88a8">
+    <circle cx="462" cy="34" r="4"/><circle cx="462" cy="102" r="4"/>
+    <circle cx="462" cy="150" r="4"/><circle cx="462" cy="202" r="4"/>
+  </g>
+  <circle cx="462" cy="272" r="6" fill="#1f9d63"/>
+  <!-- decoy ring -->
+  <circle cx="462" cy="150" r="10" fill="none" stroke="#b6791f" stroke-width="2" stroke-dasharray="3 2"/>
+  <!-- payoff labels -->
+  <g font-size="13" font-family="-apple-system,Segoe UI,Arial" font-weight="700" fill="#211c33">
+    <text x="476" y="39">(6, 2)</text>
+    <text x="476" y="107">(2, 7)</text>
+    <text x="476" y="155" fill="#b6791f">(9, 1)</text>
+    <text x="476" y="207">(4, 5)</text>
+    <text x="476" y="277" fill="#1f9d63">(3, 8) &#10003;</text>
+  </g>
+  <!-- nodes -->
+  <g>
+    <circle cx="52" cy="145" r="15" fill="#6b4ef0"/>
+    <rect x="183" y="53" width="30" height="30" rx="6" fill="#2f7fd0"/>
+    <rect x="183" y="203" width="30" height="30" rx="6" fill="#2f7fd0"/>
+    <circle cx="338" cy="176" r="15" fill="#6b4ef0"/>
+  </g>
+  <g font-size="13" font-family="-apple-system,Segoe UI,Arial" font-weight="700" fill="#fff" text-anchor="middle">
+    <text x="52" y="150">1</text><text x="198" y="73">2</text><text x="198" y="223">2</text><text x="338" y="181">1</text>
+  </g>
+  <!-- branch labels -->
+  <g font-size="12" font-family="-apple-system,Segoe UI,Arial" font-weight="600" fill="#6f6886" text-anchor="middle">
+    <text x="118" y="98">A</text>
+    <text x="118" y="196" fill="#1f9d63">B</text>
+    <text x="272" y="50">L</text>
+    <text x="272" y="92" fill="#9a93b4">R</text>
+    <text x="252" y="194">L</text>
+    <text x="272" y="248" fill="#1f9d63">R</text>
+    <text x="388" y="158" fill="#9a93b4">X</text>
+    <text x="388" y="199">Y</text>
+  </g>
+  <g font-size="11" font-family="-apple-system,Segoe UI,Arial" fill="#b6791f">
+    <text x="452" y="128" text-anchor="end">the trap: player 1's biggest number, unreachable</text>
+  </g>
+</svg>
+<div class="cap"><b>The thick green line is the solved path.</b> Player 1 plays B, then player 2 plays R, and the game ends at (3, 8). So player 1 gets <b>3</b>. The <b>grey dashed</b> branches are what a player <i>would</i> choose at a node the game never reaches. They matter while you are solving, but nobody ever walks down them. Notice that no line reaches the circled (9, 1). It is the biggest payoff player 1 can see anywhere, but player 2 stands in the way, and he would rather have 8 than 1.</div>
+</div>
+
+<p class="partlab">Worked example</p>
+<div class="question">In the tree above, what is the payoff of <b>player 1</b> in the backward-induction equilibrium?</div>
+
+<div class="step"><div class="stepn">1</div><div class="stepbody"><div class="lab">Start at the last node: the round node deep on branch B, where player 1 chooses again.</div>
+X ends at (9, 1); Y ends at (4, 5). Player 1 reads the <i>first</i> number.
+<br><span class="math">9 &gt; 4 &nbsp;&rarr;&nbsp; she plays X. This node is worth (9, 1).</span></div></div>
+
+<div class="step"><div class="stepn">2</div><div class="stepbody"><div class="lab">Move one step left: player 2's node on branch B.</div>
+L now leads to (9, 1); R ends at (3, 8). Player 2 reads the <i>second</i> number.
+<br><span class="math">8 &gt; 1 &nbsp;&rarr;&nbsp; he plays R. This node is worth (3, 8).</span></div></div>
+
+<div class="step"><div class="stepn">3</div><div class="stepbody"><div class="lab">Now the other side: player 2's node on branch A.</div>
+L ends at (6, 2); R ends at (2, 7).
+<br><span class="math">7 &gt; 2 &nbsp;&rarr;&nbsp; he plays R. This node is worth (2, 7).</span></div></div>
+
+<div class="step"><div class="stepn">4</div><div class="stepbody"><div class="lab">Finally the root. Both of player 1's branches now have a value.</div>
+A is worth (2, 7); B is worth (3, 8).
+<br><span class="math">3 &gt; 2 &nbsp;&rarr;&nbsp; she plays B.</span></div></div>
+
+<div class="ans">&#10003; The equilibrium outcome is <b>(3, 8)</b>. Player 1 gets <b>3</b>, player 2 gets <b>8</b>.</div>
+
+<div class="warnbox"><b>Look at what you would have to choose from.</b> An exam version of this question would offer 9, 6, 4, 3 and 2. Every one of those is a real payoff of player 1 <i>printed in the tree</i>. Four of them are unreachable. Recognising a number proves nothing.</div>
+
+<div class="tryq"><div class="q">Same tree, one change: the ending on branch B marked R is changed from (3, 8) to (3, 0). Nothing else moves.<br><br>Now what does player 1 get?</div>
+<button class="reveal-btn" onclick="this.nextElementSibling.classList.add('show');this.disabled=true;">Reveal answer</button>
+<div class="reveal"><b>She gets 9.</b> Redo it from the last node. The deep node is unchanged, so it is still worth (9, 1). Player 2 on branch B now compares 1 (from L) with 0 (from R). This time he prefers L. So branch B is worth (9, 1). At the root, B gives player 1 nine against A's two, so she plays B.<br><br>One number changed at one ending, and the whole answer moved from 3 to 9. <b>That is why you never guess a tree from its shape.</b></div></div>
+</div>
+
+<!-- ============ SECTION 2 ============ -->
+<!-- SCRIPT Day-01-tree-traps.mp3 | NOA=Heart TOM=Fenrir
+NOA: Solving a tree is easy. Losing the mark is also easy, and it happens in three ways. Let's take them one at a time.
+TOM: First one.
+NOA: The wrong options are not random. Every one of them is a payoff that lives somewhere in that tree. So the moment you feel the comfort of recognition — "yes, I saw that number" — you have learned nothing.
+TOM: So recognising an option is not evidence. It's bait.
+NOA: Beautifully put. And the most tempting bait is the biggest payoff player one could ever receive. It sits at the end of some branch, glowing. But if the player before her would never send her down that branch, she will never touch it.
+TOM: Reachable, not just present.
+NOA: Reachable, not just present. Second trap. Look at the two little trees on the page. They have the same skeleton — same forks, same shape, the same long chain where at each step somebody can stop the game or let it run on.
+TOM: They look identical to me.
+NOA: They are identical, except for one payoff, right at the very end. And that single change flips the answer completely. In one of them everybody keeps going and the game runs to the end. In the other, the very first player stops immediately and the whole chain never happens.
+TOM: So I cannot look at a shape and say "ah, I know this type".
+NOA: You cannot. Both papers in one year had a tree of this shape. In one, the solution says clearly that although it looks like this famous game, it isn't — the second player is better off letting it run, and that pulls everyone forward. In the other, the same shape, and stopping at the very first move is correct.
+TOM: Same picture, opposite answer. So the shape tells me nothing and the numbers tell me everything.
+NOA: Always solve. Never recognise.
+TOM: And the third trap?
+NOA: The smallest one, and it costs the most. Read who the question is about. Some papers ask for player one's payoff. Others ask for player two's. Some name the players with letters instead of numbers, or with colours. And in a three-player tree they use roman numerals.
+TOM: So I could do the whole thing perfectly and then hand in the wrong half of the pair.
+NOA: Which is why the other player's payoff is always sitting there among the options. Find the ending, then go back to the question and check whose number they want before you write anything down.
+-->
+<div class="panel"><h3>The three traps in a tree question <span class="p P2">P2</span></h3>
+<div class="secaudio"><span class="salab">&#127911; Listen to this section</span><audio controls preload="none" src="Day-01-tree-traps.mp3"></audio></div>
+
+<p class="p"><b>Trap 1: the wrong options are numbers from the tree.</b> The professor builds the wrong options out of payoffs that are already printed in the picture. So no option ever looks obviously wrong. The most tempting one is the biggest number player 1 could ever get. If the player who moves before her would never send her down that branch, that number is only decoration.</p>
+
+<p class="p"><b>Trap 2 is the big one, and it needs a picture.</b> A <b>centipede game</b> is a long chain: at each step the player whose turn it is can <i>stop</i> and take a payoff, or <i>continue</i> and hand the decision on. The pot grows as you go, but whoever stops takes the bigger share. In the classic version, backward induction says stop immediately. That is the famous, sad result.</p>
+
+<div class="rule">A tree that <b>looks</b> like a centipede is not necessarily a centipede. The shape tells you nothing. Only the numbers at the endings decide.</div>
+
+<div class="svg-wrap">
+<svg viewBox="0 0 560 300" role="img" aria-label="Two chains of four decision nodes, drawn one above the other. They are identical except for the payoffs at the very last ending. In the upper chain every player continues and the game reaches the final ending. In the lower chain the first player stops immediately and the rest of the chain never happens.">
+  <!-- ================= VERSION 1 ================= -->
+  <text x="10" y="16" font-size="12.5" font-family="-apple-system,Segoe UI,Arial" font-weight="800" fill="#5238c4">VERSION 1: everyone continues</text>
+  <!-- stop edges (down) -->
+  <g stroke="#c8c2dd" stroke-width="1.8">
+    <line x1="62" y1="66" x2="62" y2="104"/><line x1="156" y1="66" x2="156" y2="104"/>
+    <line x1="250" y1="66" x2="250" y2="104"/><line x1="344" y1="66" x2="344" y2="104"/>
+  </g>
+  <!-- continue edges (right): all chosen -->
+  <g stroke="#1f9d63" stroke-width="3.4">
+    <line x1="79" y1="50" x2="139" y2="50"/><line x1="173" y1="50" x2="233" y2="50"/>
+    <line x1="267" y1="50" x2="327" y2="50"/><line x1="361" y1="50" x2="440" y2="50"/>
+  </g>
+  <g>
+    <circle cx="62" cy="50" r="16" fill="#6b4ef0"/><rect x="140" y="34" width="32" height="32" rx="7" fill="#2f7fd0"/>
+    <circle cx="250" cy="50" r="16" fill="#6b4ef0"/><rect x="328" y="34" width="32" height="32" rx="7" fill="#2f7fd0"/>
+    <circle cx="446" cy="50" r="6" fill="#1f9d63"/>
+  </g>
+  <g font-size="13" font-family="-apple-system,Segoe UI,Arial" font-weight="700" fill="#fff" text-anchor="middle">
+    <text x="62" y="55">1</text><text x="156" y="55">2</text><text x="250" y="55">1</text><text x="344" y="55">2</text>
+  </g>
+  <g font-size="12.5" font-family="-apple-system,Segoe UI,Arial" font-weight="700" fill="#211c33" text-anchor="middle">
+    <text x="62" y="122">(4, 0)</text><text x="156" y="122">(2, 8)</text>
+    <text x="250" y="122">(12, 4)</text><text x="344" y="122">(6, 16)</text>
+  </g>
+  <text x="458" y="55" font-size="13" font-family="-apple-system,Segoe UI,Arial" font-weight="700" fill="#1f9d63">(14, 20) &#10003;</text>
+  <g font-size="10.5" font-family="-apple-system,Segoe UI,Arial" fill="#6f6886">
+    <text x="70" y="86">stop</text><text x="164" y="86">stop</text><text x="258" y="86">stop</text><text x="352" y="86">stop</text>
+    <text x="109" y="42" text-anchor="middle" fill="#1f9d63">continue</text>
+  </g>
+  <line x1="10" y1="150" x2="550" y2="150" stroke="#e7e3f2" stroke-width="1.5"/>
+  <!-- ================= VERSION 2 ================= -->
+  <text x="10" y="176" font-size="12.5" font-family="-apple-system,Segoe UI,Arial" font-weight="800" fill="#5238c4">VERSION 2: a real centipede, player 1 stops at once</text>
+  <g stroke="#1f9d63" stroke-width="3.4">
+    <line x1="62" y1="226" x2="62" y2="264"/><line x1="156" y1="226" x2="156" y2="264"/>
+    <line x1="250" y1="226" x2="250" y2="264"/><line x1="344" y1="226" x2="344" y2="264"/>
+  </g>
+  <g stroke="#c8c2dd" stroke-width="1.8">
+    <line x1="79" y1="210" x2="139" y2="210"/><line x1="173" y1="210" x2="233" y2="210"/>
+    <line x1="267" y1="210" x2="327" y2="210"/><line x1="361" y1="210" x2="440" y2="210"/>
+  </g>
+  <g>
+    <circle cx="62" cy="210" r="16" fill="#6b4ef0"/><rect x="140" y="194" width="32" height="32" rx="7" fill="#2f7fd0"/>
+    <circle cx="250" cy="210" r="16" fill="#6b4ef0"/><rect x="328" y="194" width="32" height="32" rx="7" fill="#2f7fd0"/>
+    <circle cx="446" cy="210" r="5" fill="#8f88a8"/>
+    <circle cx="62" cy="270" r="6" fill="#1f9d63"/>
+  </g>
+  <g font-size="13" font-family="-apple-system,Segoe UI,Arial" font-weight="700" fill="#fff" text-anchor="middle">
+    <text x="62" y="215">1</text><text x="156" y="215">2</text><text x="250" y="215">1</text><text x="344" y="215">2</text>
+  </g>
+  <g font-size="12.5" font-family="-apple-system,Segoe UI,Arial" font-weight="700" text-anchor="middle">
+    <text x="62" y="288" fill="#1f9d63">(4, 0) &#10003;</text><text x="156" y="282" fill="#211c33">(2, 8)</text>
+    <text x="250" y="282" fill="#211c33">(12, 4)</text><text x="344" y="282" fill="#211c33">(6, 16)</text>
+  </g>
+  <text x="458" y="215" font-size="13" font-family="-apple-system,Segoe UI,Arial" font-weight="700" fill="#b6791f">(14, 12)</text>
+  <g font-size="10.5" font-family="-apple-system,Segoe UI,Arial" fill="#6f6886">
+    <text x="70" y="246" fill="#1f9d63">stop</text><text x="164" y="246" fill="#1f9d63">stop</text><text x="258" y="246" fill="#1f9d63">stop</text><text x="352" y="246" fill="#1f9d63">stop</text>
+    <text x="109" y="202" text-anchor="middle">continue</text>
+  </g>
+</svg>
+<div class="cap">Green again marks the branch each player chooses at his own node. Follow green from the left-hand node to find the outcome. The two trees have <b>exactly the same shape and exactly the same numbers</b>, except at the very last ending. There player 2's payoff is 20 in Version 1 and 12 in Version 2. That single number decides whether player 2 continues or stops at the last node. That decision then travels all the way back down the chain. Work out for yourself where each version ends up before you read on.</div>
+</div>
+
+<p class="partlab">Worked example</p>
+<div class="question">Take <b>Version 2</b> above. Show that player 1 stops immediately, and say what each player gets.</div>
+
+<div class="step"><div class="stepn">1</div><div class="stepbody"><div class="lab">Last node: player 2, the fourth node.</div>
+Stop gives him 16. Continue gives him 12.
+<br><span class="math">16 &gt; 12 &nbsp;&rarr;&nbsp; he stops. This node is worth (6, 16).</span></div></div>
+
+<div class="step"><div class="stepn">2</div><div class="stepbody"><div class="lab">Third node: player 1.</div>
+Stop gives her 12. Continue leads to (6, 16), so it gives her 6.
+<br><span class="math">12 &gt; 6 &nbsp;&rarr;&nbsp; she stops. This node is worth (12, 4).</span></div></div>
+
+<div class="step"><div class="stepn">3</div><div class="stepbody"><div class="lab">Second node: player 2.</div>
+Stop gives him 8. Continue leads to (12, 4), so it gives him 4.
+<br><span class="math">8 &gt; 4 &nbsp;&rarr;&nbsp; he stops. This node is worth (2, 8).</span></div></div>
+
+<div class="step"><div class="stepn">4</div><div class="stepbody"><div class="lab">First node: player 1.</div>
+Stop gives her 4. Continue leads to (2, 8), so it gives her 2.
+<br><span class="math">4 &gt; 2 &nbsp;&rarr;&nbsp; she stops. The game ends before it starts.</span></div></div>
+
+<div class="ans">&#10003; Outcome <b>(4, 0)</b>. Player 1 gets <b>4</b>. She takes 4 and player 2 gets nothing, even though there is an ending worth 14 and 12 at the far right, which both of them would prefer. That is the centipede paradox.<br><br>Now take Version 1, where only that one last number is different. Player 2 continues at the last node (20 beats 16), so player 1 continues at the third (14 beats 12), so player 2 continues at the second (20 beats 8), so player 1 continues at the first (14 beats 4). The game runs to the end at <b>(14, 20)</b>, and player 1 gets <b>14</b>. One number changed, and 4 became 14.</div>
+
+<div class="warnbox"><b>This really happened, twice, in one year.</b> In <b>2024 A question 6</b> the solution says it clearly: <i>"Although the game looks superficially like a centipede game, it is not. P2 is better off continuing in the last node, which induces both players to continue in all previous nodes."</i> The answer there was the <i>largest</i> option, 21, out of 21 / 1 / 10 / 9 / 0. In <b>2024 B question 6</b>, a real centipede, the answer was the <i>smallest</i> option, 11, out of 11 / 17 / 24 / 29 / none of the other answers. Same visual shape, opposite direction. You cannot guess from the option sizes either.</div>
+
+<p class="p"><b>Trap 3: check which player is asked.</b> This is the smallest trap and the most expensive one. You can solve the whole tree correctly and still hand in the wrong half of the pair. It changes between papers. 2024 A asked for <i>player 1 (=I)</i> in a three-player tree. 2025 C asked for <i>player 2 (=II)</i> in the same three-player format. 2025 B called the players <i>A</i> and <i>B</i>. 2024 B called player 1 "the red player" and put his payoffs on top in red. The other player's payoff is always sitting in the option list, waiting for you. Solve first, then read the question again before you pick.</p>
+
+<div class="tryq"><div class="q">In a four-node chain like the ones above, you have solved the last three nodes and found that the second node (player 2's first turn) is worth (2, 8). At the first node, player 1 can stop and take (9, 1).<br><br>Do you need to look at anything else to answer "what does player 1 get"?</div>
+<button class="reveal-btn" onclick="this.nextElementSibling.classList.add('show');this.disabled=true;">Reveal answer</button>
+<div class="reveal"><b>No. She gets 9, and you are done.</b> Stopping gives her 9; continuing gives her whatever the second node is worth to <i>her</i>, which is 2. Nine beats two, so she stops.<br><br>This is the whole point of backward induction: once a node has been replaced by its value, everything to the right of it is finished business. You never need to look at those endings again. That is exactly why the big unreachable numbers out there cannot hurt you, unless you let them.</div></div>
+</div>
+
+<!-- ============ SECTION 3 ============ -->
+<!-- SCRIPT Day-01-plans-and-freedom.mp3 | NOA=Heart TOM=Fenrir
+NOA: One word in this course does not mean what it means in ordinary English. Strategy. In everyday speech, your strategy is what you're going to do. Here, a strategy is a rule that says what you would do in every situation you could possibly find yourself in.
+TOM: Even the situations that never happen?
+NOA: Especially those. Think of it as instructions you could hand to a stranger and then leave the room. He has to be able to play the whole game without phoning you.
+TOM: So it's not a move. It's a recipe.
+NOA: A recipe for every kitchen. And that matters for the exam, because a question can ask how many strategies a player has, and the answer is usually much larger than the number of things she can do at any one moment.
+TOM: Because you multiply the choices across all the places she might have to choose.
+NOA: Exactly. Now let me show you why the whole plan matters, with the strangest result in this lecture. A president and a congress. The congress decides what spending to send over; the president decides whether to sign it. Each side has one project it loves and one it can live without, and both would rather have both projects than have nothing at all.
+TOM: And the president can only take the whole package or throw it out.
+NOA: That's the original game. And it lands somewhere decent — both projects pass, and both sides are reasonably happy. Look at the table on the page.
+TOM: Fine. So what changes?
+NOA: The president asks for a new power. Instead of accepting or rejecting the whole package, let him strike out single lines. More freedom. Strictly more options than before.
+TOM: That has to help him.
+NOA: Work it backwards. If he can strike lines, then whatever the congress sends, he will keep only his favourite and delete theirs.
+TOM: Ah. So the congress can see that coming.
+NOA: And what does the congress do about it?
+TOM: Stops sending anything. Why hand him a package he's just going to cut to pieces?
+NOA: So nothing passes. And now compare the endings. Both sides are worse off than before he got the extra power. Not just the congress — him too.
+TOM: He got more freedom and it cost him. Because everyone else could see what he'd do with it.
+NOA: That is the insight the professor wants you to carry out of this lecture. Greater freedom of action can hurt you. Your power to choose is also a promise you can no longer make.
+TOM: Like a shopkeeper putting a fixed price on the wall. He's given up the right to haggle, and that's exactly why nobody haggles.
+NOA: And the same reasoning runs the flag game on the page. Somebody wins it not by being clever in the moment, but by knowing in advance which positions are poison to be standing on, and handing every one of them to the opponent. The page marks them for you. Notice that they are evenly spaced.
+TOM: So the plan is decided before the game starts, and the moves are just the plan being carried out.
+NOA: That is backward induction in one sentence.
+-->
+<div class="panel"><h3>A strategy is a whole plan, and more freedom can hurt <span class="p P1">P1</span><span class="p P2">P2</span></h3>
+<div class="secaudio"><span class="salab">&#127911; Listen to this section</span><audio controls preload="none" src="Day-01-plans-and-freedom.mp3"></audio></div>
+
+<p class="p">Presentation 1 gives the definition you must hold onto: <b>a strategy is a rule determining a player's move in all possible cases.</b> Not "what I will do", but "what I would do, everywhere I might be asked". Think of it as written instructions you hand to a stranger before leaving the room: he must be able to finish the game without phoning you.</p>
+
+<p class="p">This is why counting strategies gives bigger numbers than people expect. If player 2 moves at three different nodes and has two actions at each, he has 2 &times; 2 &times; 2 = <b>8</b> strategies. That holds even though he only ever makes one move in a single play of the game. Multiply across the nodes. Never add.</p>
+
+<div class="rule">Move = one action at one node. <b>Strategy = a complete instruction sheet covering every node you could reach</b>, including the ones you expect never to visit.</div>
+
+<p class="partlab">The counter-intuitive result: President vs Congress</p>
+<p class="p">1987. Two spending items: an antiballistic missile system (M), which President Reagan wants, and urban renewal (U), which Congress wants. Both sides prefer having both items to having neither. Congress chooses what to send. The President signs or vetoes <i>the whole package</i>. Payoffs run 4 (best) down to 1 (worst).</p>
+<div class="tscroll">
+<table class="dtable">
+<tr><th>Outcome</th><th>Congress</th><th>President</th></tr>
+<tr><td class="lab hlcell">Both U &amp; M pass</td><td class="hlcell">3</td><td class="hlcell">3</td></tr>
+<tr><td class="lab">U only</td><td>4</td><td>1</td></tr>
+<tr><td class="lab">M only</td><td>1</td><td>4</td></tr>
+<tr><td class="lab">Neither</td><td>2</td><td>2</td></tr>
+</table></div>
+<p class="p">In his 1987 State of the Union address, Reagan asked for a <b>line-item veto</b>, which is the power to cut single lines instead of rejecting the whole bill. That is strictly more freedom. Does it help him?</p>
+
+<p class="partlab">Worked example</p>
+<div class="question">Using the payoff table above, solve both versions of the game by backward induction: (a) the President can only approve or veto the whole package; (b) the President has a line-item veto and can delete individual items. Compare the two outcomes.</div>
+
+<div class="step"><div class="stepn">1</div><div class="stepbody"><div class="lab">Version (a): go to the President's node first, once for each thing Congress might send.</div>
+Vetoing anything produces "Neither", worth 2 to him.
+<br><span class="math">Sent U+M: approve = 3 &gt; 2 &nbsp;&rarr;&nbsp; approve</span>
+<br><span class="math">Sent U: approve = 1 &lt; 2 &nbsp;&rarr;&nbsp; veto</span>
+<br><span class="math">Sent M: approve = 4 &gt; 2 &nbsp;&rarr;&nbsp; approve</span></div></div>
+
+<div class="step"><div class="stepn">2</div><div class="stepbody"><div class="lab">Now Congress, knowing all of that. Read Congress's own column.</div>
+<span class="math">Send U+M &rarr; 3 &nbsp;|&nbsp; Send U &rarr; 2 &nbsp;|&nbsp; Send M &rarr; 1 &nbsp;|&nbsp; Send nothing &rarr; 2</span>
+<br>Best is 3. Congress sends the full package. Outcome: <b>both items pass, (3, 3)</b>.</div></div>
+
+<div class="step"><div class="stepn">3</div><div class="stepbody"><div class="lab">Version (b): the President's node again. Now he can keep any part of what arrives.</div>
+<span class="math">Sent U+M: he can take M only &rarr; 4. Best of {3, 4, 1, 2} &nbsp;&rarr;&nbsp; keep M only</span>
+<br><span class="math">Sent U: keep U = 1, delete it = 2 &nbsp;&rarr;&nbsp; delete it</span>
+<br><span class="math">Sent M: keep M = 4 &nbsp;&rarr;&nbsp; keep it</span></div></div>
+
+<div class="step"><div class="stepn">4</div><div class="stepbody"><div class="lab">And Congress again.</div>
+<span class="math">Send U+M &rarr; 1 &nbsp;|&nbsp; Send U &rarr; 2 &nbsp;|&nbsp; Send M &rarr; 1 &nbsp;|&nbsp; Send nothing &rarr; 2</span>
+<br>Best is 2. Congress stops sending the package at all. Outcome: <b>neither item passes, (2, 2)</b>.</div></div>
+
+<div class="ans">&#10003; With the line-item veto the outcome falls from (3, 3) to (2, 2). That is <b>Pareto-worse: worse for both players, including the President who gained the power.</b> The lecture's insight: <i>greater freedom of action can hurt a player.</i></div>
+
+<p class="p">Why? Because in a sequential game your options are also a promise. Once the President <i>can</i> cut the package apart, Congress knows he <i>will</i>, so Congress never offers it. Losing the ability to do something can be worth more than the ability itself.</p>
+
+<p class="partlab">Long games: the poison positions in the 21-flags game</p>
+<p class="p">Two players, 21 flags. On your turn you remove 1, 2 or 3 flags. Whoever takes the last flag wins. The tree is far too large to draw. But backward reasoning still works, because you only need to know which positions are <i>losing</i> to stand on.</p>
+<div class="tscroll">
+<table class="dtable">
+<tr><th>Flags left on your turn</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>11</th><th>12</th><th>13</th><th>14</th><th>15</th><th>16</th><th>17</th><th>18</th><th>19</th><th>20</th><th>21</th></tr>
+<tr><td class="lab">Take</td><td>1</td><td>2</td><td>3</td><td style="background:var(--bad-soft);color:var(--bad);font-weight:700">any</td><td>1</td><td>2</td><td>3</td><td style="background:var(--bad-soft);color:var(--bad);font-weight:700">any</td><td>1</td><td>2</td><td>3</td><td style="background:var(--bad-soft);color:var(--bad);font-weight:700">any</td><td>1</td><td>2</td><td>3</td><td style="background:var(--bad-soft);color:var(--bad);font-weight:700">any</td><td>1</td><td>2</td><td>3</td><td style="background:var(--bad-soft);color:var(--bad);font-weight:700">any</td><td>1</td></tr>
+<tr><td class="lab">You</td><td>win</td><td>win</td><td>win</td><td style="background:var(--bad-soft);color:var(--bad);font-weight:700">lose</td><td>win</td><td>win</td><td>win</td><td style="background:var(--bad-soft);color:var(--bad);font-weight:700">lose</td><td>win</td><td>win</td><td>win</td><td style="background:var(--bad-soft);color:var(--bad);font-weight:700">lose</td><td>win</td><td>win</td><td>win</td><td style="background:var(--bad-soft);color:var(--bad);font-weight:700">lose</td><td>win</td><td>win</td><td>win</td><td style="background:var(--bad-soft);color:var(--bad);font-weight:700">lose</td><td>win</td></tr>
+</table></div>
+<div class="cap">The red columns are the <b>multiples of 4</b>. If it is your turn and the count is a multiple of 4, you lose against a player who knows this. Otherwise, take enough to <i>leave</i> a multiple of 4, and keep doing it. Note that 21 is not a multiple of 4, so the player who moves first wins: take 1, leave 20.</div>
+
+<div class="tryq"><div class="q">You are playing the 21-flags game. It is your turn and <b>14 flags</b> remain. How many do you take, and why?</div>
+<button class="reveal-btn" onclick="this.nextElementSibling.classList.add('show');this.disabled=true;">Reveal answer</button>
+<div class="reveal"><b>Take 2, leaving 12.</b> Twelve is a multiple of 4, so your opponent is now standing on a poison position. Whatever she removes (1, 2 or 3), you remove what completes 4 (3, 2 or 1), and you hand her 8, then 4, then 0. She never takes the last flag.<br><br>Check the other moves. Taking 1 leaves 13, and taking 3 leaves 11. Neither is a multiple of 4, so she can put <i>you</i> back on one.</div></div>
+
+<div class="warnbox"><b>Two more named cases the exam asks about directly.</b><br>
+<b>The ultimatum game.</b> A proposes how to split a sum of money. B accepts (both get it) or rejects (both get nothing). Backward induction says B should accept even one cent, so A should offer almost nothing. In the lab that is not what happens: the <b>modal offer is 50%</b>, the <b>median offer is about 40%</b>, offers below 10% are rare, and offers under 20% are often rejected in anger. In the <b>dictator game</b>, where B cannot refuse, the median allocation is 25%. That tells us the behaviour is part fairness and part a correct fear of rejection.<br><br>
+<b>The 1984 Orange Bowl.</b> Nebraska were behind and scored twice. Their coach took the safe extra point first and the risky two-point play second, and lost by one. He should have swapped the order. If the risky attempt fails early there is still a second chance. If it succeeds, the order never mattered. The lesson: <b>if you must take a risk, take it as early as possible.</b></div>
+</div>
+
+<!-- ============ QUIZ ============ -->
+<div class="panel"><h3>&#128221; Quiz yourself <span class="scorechip" id="scoreChip">0 / 6</span></h3>
+<p class="note">Pick an option. The answer and the explanation appear only after you choose. All six are fresh problems written for this page. None of them is copied from a past paper, and none of them repeats a tree, a number or a story used above.</p>
+<div id="quizBody"></div></div>
+
+<div class="navrow"><a class="navbtn" href="index.html">&larr; All 14 days</a><a class="navbtn primary" href="Day-02.html">Next &rarr;</a></div>
+</div>
+<script>
+var TREE_Q3 = '<div class="svg-wrap"><svg viewBox="0 0 340 170" role="img" aria-label="A game tree with player one choosing Up or Down, and player two choosing between two endings on each side.">'
++ '<g stroke="#c8c2dd" stroke-width="1.8" fill="none">'
++ '<line x1="34" y1="82" x2="130" y2="42"/><line x1="34" y1="82" x2="130" y2="122"/>'
++ '<line x1="130" y1="42" x2="248" y2="22"/><line x1="130" y1="42" x2="248" y2="62"/>'
++ '<line x1="130" y1="122" x2="248" y2="102"/><line x1="130" y1="122" x2="248" y2="142"/></g>'
++ '<g fill="#8f88a8"><circle cx="248" cy="22" r="4"/><circle cx="248" cy="62" r="4"/><circle cx="248" cy="102" r="4"/><circle cx="248" cy="142" r="4"/></g>'
++ '<g font-size="12.5" font-family="-apple-system,Segoe UI,Arial" font-weight="700" fill="#211c33">'
++ '<text x="260" y="27">(7, 3)</text><text x="260" y="67">(1, 9)</text><text x="260" y="107">(5, 6)</text><text x="260" y="147">(6, 4)</text></g>'
++ '<circle cx="34" cy="82" r="14" fill="#6b4ef0"/><rect x="116" y="28" width="28" height="28" rx="6" fill="#2f7fd0"/><rect x="116" y="108" width="28" height="28" rx="6" fill="#2f7fd0"/>'
++ '<g font-size="12" font-family="-apple-system,Segoe UI,Arial" font-weight="700" fill="#fff" text-anchor="middle">'
++ '<text x="34" y="87">1</text><text x="130" y="47">2</text><text x="130" y="127">2</text></g>'
++ '<g font-size="11" font-family="-apple-system,Segoe UI,Arial" font-weight="600" fill="#6f6886" text-anchor="middle">'
++ '<text x="74" y="52">Up</text><text x="72" y="118">Down</text>'
++ '<text x="172" y="28">a</text><text x="172" y="62">b</text><text x="172" y="108">c</text><text x="172" y="142">d</text></g>'
++ '</svg><div class="cap">Player 1 moves at the round node, player 2 at the square nodes. Player 1&rsquo;s payoff is written first.</div></div>';
+
+var TREE_Q4 = '<div class="svg-wrap"><svg viewBox="0 0 400 130" role="img" aria-label="A chain of three decision nodes where each player may stop or continue.">'
++ '<g stroke="#c8c2dd" stroke-width="1.8" fill="none">'
++ '<line x1="50" y1="50" x2="50" y2="84"/><line x1="150" y1="50" x2="150" y2="84"/><line x1="250" y1="50" x2="250" y2="84"/>'
++ '<line x1="65" y1="35" x2="135" y2="35"/><line x1="165" y1="35" x2="235" y2="35"/><line x1="265" y1="35" x2="326" y2="35"/></g>'
++ '<g fill="#8f88a8"><circle cx="50" cy="88" r="4"/><circle cx="150" cy="88" r="4"/><circle cx="250" cy="88" r="4"/><circle cx="332" cy="35" r="4"/></g>'
++ '<circle cx="50" cy="35" r="15" fill="#6b4ef0"/><rect x="135" y="20" width="30" height="30" rx="7" fill="#2f7fd0"/><circle cx="250" cy="35" r="15" fill="#6b4ef0"/>'
++ '<g font-size="12.5" font-family="-apple-system,Segoe UI,Arial" font-weight="700" fill="#fff" text-anchor="middle">'
++ '<text x="50" y="40">1</text><text x="150" y="40">2</text><text x="250" y="40">1</text></g>'
++ '<g font-size="12.5" font-family="-apple-system,Segoe UI,Arial" font-weight="700" fill="#211c33" text-anchor="middle">'
++ '<text x="50" y="108">(6, 1)</text><text x="150" y="108">(3, 9)</text><text x="250" y="108">(13, 5)</text></g>'
++ '<text x="344" y="40" font-size="12.5" font-family="-apple-system,Segoe UI,Arial" font-weight="700" fill="#211c33">(9, 14)</text>'
++ '<g font-size="10.5" font-family="-apple-system,Segoe UI,Arial" fill="#6f6886">'
++ '<text x="58" y="72">stop</text><text x="158" y="72">stop</text><text x="258" y="72">stop</text>'
++ '<text x="100" y="28" text-anchor="middle">continue</text></g>'
++ '</svg><div class="cap">Player 1 at the round nodes, player 2 at the square node. Player 1&rsquo;s payoff first.</div></div>';
+
+var TREE_Q1 = '<div class="svg-wrap"><svg viewBox="0 0 400 210" role="img" aria-label="A three-player game tree. Player one chooses L or R at the start. After L, player two chooses between an ending paying seven, two and four, or handing the move to player three, who chooses between an ending paying one, nine and three and an ending paying five, one and eight. After R, player two chooses between an ending paying four, six and two and an ending paying six, three and five.">'
++ '<g stroke="#c8c2dd" stroke-width="1.8" fill="none">'
++ '<line x1="40" y1="104" x2="98" y2="58"/><line x1="40" y1="116" x2="98" y2="162"/>'
++ '<line x1="126" y1="50" x2="296" y2="26"/><line x1="126" y1="62" x2="190" y2="80"/>'
++ '<line x1="218" y1="76" x2="296" y2="62"/><line x1="218" y1="90" x2="296" y2="100"/>'
++ '<line x1="126" y1="158" x2="296" y2="146"/><line x1="126" y1="170" x2="296" y2="190"/></g>'
++ '<g fill="#8f88a8"><circle cx="300" cy="26" r="4"/><circle cx="300" cy="62" r="4"/>'
++ '<circle cx="300" cy="100" r="4"/><circle cx="300" cy="146" r="4"/><circle cx="300" cy="190" r="4"/></g>'
++ '<g font-size="12.5" font-family="-apple-system,Segoe UI,Arial" font-weight="700" fill="#211c33">'
++ '<text x="310" y="31">(7, 2, 4)</text><text x="310" y="67">(1, 9, 3)</text><text x="310" y="105">(5, 1, 8)</text>'
++ '<text x="310" y="151">(4, 6, 2)</text><text x="310" y="195">(6, 3, 5)</text></g>'
++ '<circle cx="26" cy="110" r="14" fill="#6b4ef0"/>'
++ '<rect x="98" y="42" width="28" height="28" rx="6" fill="#2f7fd0"/>'
++ '<rect x="98" y="150" width="28" height="28" rx="6" fill="#2f7fd0"/>'
++ '<rect x="190" y="68" width="28" height="28" rx="6" fill="#c04a7e"/>'
++ '<g font-size="11.5" font-family="-apple-system,Segoe UI,Arial" font-weight="700" fill="#fff" text-anchor="middle">'
++ '<text x="26" y="114">I</text><text x="112" y="60">II</text><text x="112" y="168">II</text><text x="204" y="86">III</text></g>'
++ '<g font-size="11" font-family="-apple-system,Segoe UI,Arial" font-weight="600" fill="#6f6886" text-anchor="middle">'
++ '<text x="62" y="72">L</text><text x="62" y="152">R</text>'
++ '<text x="164" y="32">l</text><text x="158" y="80">r</text>'
++ '<text x="256" y="59">u</text><text x="256" y="106">d</text>'
++ '<text x="200" y="142">l</text><text x="200" y="188">r</text></g>'
++ '</svg><div class="cap">Player I moves at the round node, player II at the blue square nodes, player III at the pink node. Each ending is written in the order <b>(I, II, III)</b>.</div></div>';
+
+var TREE_Q6 = '<div class="svg-wrap"><svg viewBox="0 0 440 130" role="img" aria-label="A chain of four decision nodes. Player A moves at the first and third node, player B at the second and fourth. At each node the player may stop, ending the game at the payoff written below, or continue to the right. The final ending is at the far right.">'
++ '<g stroke="#c8c2dd" stroke-width="1.8" fill="none">'
++ '<line x1="36" y1="55" x2="36" y2="86"/><line x1="120" y1="55" x2="120" y2="86"/>'
++ '<line x1="204" y1="55" x2="204" y2="86"/><line x1="288" y1="55" x2="288" y2="86"/>'
++ '<line x1="51" y1="40" x2="105" y2="40"/><line x1="135" y1="40" x2="189" y2="40"/>'
++ '<line x1="219" y1="40" x2="273" y2="40"/><line x1="303" y1="40" x2="356" y2="40"/></g>'
++ '<g fill="#8f88a8"><circle cx="36" cy="90" r="4"/><circle cx="120" cy="90" r="4"/>'
++ '<circle cx="204" cy="90" r="4"/><circle cx="288" cy="90" r="4"/><circle cx="360" cy="40" r="4"/></g>'
++ '<circle cx="36" cy="40" r="15" fill="#6b4ef0"/><rect x="105" y="25" width="30" height="30" rx="7" fill="#2f7fd0"/>'
++ '<circle cx="204" cy="40" r="15" fill="#6b4ef0"/><rect x="273" y="25" width="30" height="30" rx="7" fill="#2f7fd0"/>'
++ '<g font-size="12.5" font-family="-apple-system,Segoe UI,Arial" font-weight="700" fill="#fff" text-anchor="middle">'
++ '<text x="36" y="45">A</text><text x="120" y="45">B</text><text x="204" y="45">A</text><text x="288" y="45">B</text></g>'
++ '<g font-size="12.5" font-family="-apple-system,Segoe UI,Arial" font-weight="700" fill="#211c33" text-anchor="middle">'
++ '<text x="36" y="110">(5, 1)</text><text x="120" y="110">(3, 7)</text><text x="204" y="110">(9, 4)</text><text x="288" y="110">(7, 12)</text></g>'
++ '<text x="370" y="44" font-size="12.5" font-family="-apple-system,Segoe UI,Arial" font-weight="700" fill="#211c33">(14, 18)</text>'
++ '<g font-size="10.5" font-family="-apple-system,Segoe UI,Arial" fill="#6f6886">'
++ '<text x="44" y="74">stop</text><text x="128" y="74">stop</text><text x="212" y="74">stop</text><text x="296" y="74">stop</text>'
++ '<text x="78" y="33" text-anchor="middle">continue</text></g>'
++ '</svg><div class="cap">Player A moves at the round nodes, player B at the square nodes. Player A&rsquo;s payoff is written first at every ending.</div></div>';
+
+const QUIZ = [
+{"q":"What is the payoff of <b>player II</b> in the backward-induction equilibrium of the following three-player game?"+TREE_Q1,
+ "opts":["2","3","6","7","9"],"correct":0,
+ "exp":"<b>2.</b><br><br><b>The rule:</b> backward induction. Solve the last node first, because there is nothing left to predict there. Replace that node with the ending it produces. Then walk one step left and repeat.<br><br><b>The inputs.</b> Five endings, each written (I, II, III): (7, 2, 4), (1, 9, 3), (5, 1, 8), (4, 6, 2), (6, 3, 5).<br><br><b>Step 1. Player III's node, deep on branch L.</b><br><span class=\"math\">u ends at (1, 9, 3) &rarr; III gets 3</span><br><span class=\"math\">d ends at (5, 1, 8) &rarr; III gets 8</span><br><span class=\"math\">8 &gt; 3 &rarr; III plays d. The node is worth (5, 1, 8).</span><br><br><b>Step 2. Player II's node after L.</b> She reads the <i>second</i> number.<br><span class=\"math\">l ends at (7, 2, 4) &rarr; II gets 2</span><br><span class=\"math\">r now leads to (5, 1, 8) &rarr; II gets 1</span><br><span class=\"math\">2 &gt; 1 &rarr; II plays l. The node is worth (7, 2, 4).</span><br><br><b>Step 3. Player II's node after R.</b><br><span class=\"math\">l ends at (4, 6, 2) &rarr; II gets 6</span><br><span class=\"math\">r ends at (6, 3, 5) &rarr; II gets 3</span><br><span class=\"math\">6 &gt; 3 &rarr; II plays l. The node is worth (4, 6, 2).</span><br><br><b>Step 4. Player I at the root.</b> He reads the <i>first</i> number.<br><span class=\"math\">L is worth (7, 2, 4) &rarr; I gets 7</span><br><span class=\"math\">R is worth (4, 6, 2) &rarr; I gets 4</span><br><span class=\"math\">7 &gt; 4 &rarr; I plays L.</span><br><br><b>Verification.</b> The path is L then l, ending at (7, 2, 4). Check nobody wants to move. Player I would get 4 by switching to R, and he has 7. Player II would get 1 by switching to r, and she has 2. Player III never gets a turn at all. So player II's payoff is <b>2</b>.<br><br><b>Where each wrong option comes from.</b><br>&bull; <b>9</b> is player II's largest payoff anywhere in the tree, at (1, 9, 3). To reach it she would have to play r, which hands the move to player III, who then takes d. She would end with 1. The 9 is decoration.<br>&bull; <b>6</b> is player II's payoff at (4, 6, 2), on branch R. She would much prefer it to 2, but she does not choose the branch. Player I does, and R pays him 4 against L's 7.<br>&bull; <b>7</b> is <i>player I's</i> payoff at the correct ending. This is the mark you lose by solving the tree perfectly and then forgetting who was asked.<br>&bull; <b>3</b> is player II's payoff at (6, 3, 5), the ending she rejects at her own node on branch R.<br><br>Every wrong option is a number printed in the picture. Recognising a number proves nothing."},
+
+{"q":"A flag game, played exactly like the 21-flags game with one rule reversed: two players alternate, each removes 1, 2 or 3 flags on her turn, and the player who removes <b>the last flag loses</b>. It is your turn and 15 flags remain. How many should you remove?",
+ "opts":["1","2","3","Any of them, because the reversed rule makes no difference","You cannot force a win from 15"],"correct":1,
+ "exp":"<b>Take 2, leaving 13.</b> Do not reuse the rule from the ordinary game. Work it out again, because the goal changed.<br><br>Work from the end. With <b>1</b> flag left on your turn you are forced to take it and you lose. So 1 is now the poisoned count. With 2, 3 or 4 you simply leave your opponent exactly 1 and win. With <b>5</b> you must leave her 2, 3 or 4, and she wins from all of those, so 5 is poisoned too.<br><br>So the poisoned counts are <b>1, 5, 9, 13, 17, 21</b>. Each one is one more than a multiple of 4, not a multiple of 4 itself. From 15 you take 2 to leave 13. After that, whatever she removes you complete to 4, walking her down 13 &rarr; 9 &rarr; 5 &rarr; 1.<br><br><b>The trap:</b> in the ordinary game the answer from 15 is to take 3 (leaving 12). Reversing who wins shifts every poisoned position by one, and the answer changes with it. \"You cannot force a win\" is true from 21 in this version, but not from 15."},
+
+{"q":"What is the payoff of <b>player 2</b> in the backward-induction equilibrium of the following game?"+TREE_Q3,
+ "opts":["3","4","5","6","9"],"correct":3,
+ "exp":"<b>6.</b> Start at the right.<br><br><b>Player 2's upper node</b> (after Up): a gives him 3, b gives him 9 &rarr; he plays b, and that node is worth (1, 9).<br><b>Player 2's lower node</b> (after Down): c gives him 6, d gives him 4 &rarr; he plays c, and that node is worth (5, 6).<br><b>Player 1 at the root:</b> Up now leads to a payoff of 1 for her, Down leads to 5 &rarr; she plays Down.<br><br>The outcome is <b>(5, 6)</b>, so player 2 gets <b>6</b>.<br><br><b>Verification.</b> Stand on the ending (5, 6). Player 1 switching to Up would land on (1, 9) and get 1 instead of 5. Player 2 switching from c to d would get 4 instead of 6. Neither wants to move, so the path holds.<br><br><b>Two traps sitting in this list.</b> 9 is player 2's largest payoff in the whole tree. He would love the ending (1, 9), but player 1 will never send him there. And 5 is <i>player 1's</i> payoff at the correct ending. If you solved the game perfectly and then forgot who was asked, 5 is the mistake you would make."},
+
+{"q":"What is the payoff of <b>player 1</b> in the backward-induction equilibrium of the following game?"+TREE_Q4,
+ "opts":["1","3","6","9","13"],"correct":2,
+ "exp":"<b>6. Player 1 stops at her very first turn.</b><br><br><b>Last node (player 1):</b> stopping gives her 13, continuing gives her 9 &rarr; she stops. That node is worth (13, 5).<br><b>Middle node (player 2):</b> stopping gives him 9, continuing leads to (13, 5) which gives him 5 &rarr; he stops. That node is worth (3, 9).<br><b>First node (player 1):</b> stopping gives her 6, continuing leads to (3, 9) which gives her 3 &rarr; she stops. Outcome <b>(6, 1)</b>.<br><br><b>Verification.</b> Walk it forward. Player 1 stops at once and takes 6. Had she continued, player 2 would have stopped and left her 3. Had he continued, she would have stopped at her second turn and taken 13, but she never gets there. 6 is the number she can actually reach.<br><br><b>The traps:</b> 13 is what she would get if she ever reached her second turn, but player 2 stops the game before that. 9 is her payoff at the far end, and it is also player 2's payoff at the ending he chooses. 3 is what she gets on the branch she rejects. Every wrong option is a number printed in the picture.<br><br>Notice how the whole chain unravels from a single comparison at the last node. Change 13 to 8 and player 1 would continue. Then player 2 would continue too, and the answer would become 9."},
+
+{"q":"Players A and B take turns along the chain below. At each node the player whose turn it is can <b>stop</b>, ending the game at the payoff under that node, or <b>continue</b>, handing the decision on. Solved by backward induction, this game runs all the way to the last ending on the right. Which <b>single</b> change to one payoff would instead make player A stop at her very first turn?"+TREE_Q6,
+ "opts":["Change the last ending from (14, 18) to (14, 10)","Change B's stop payoff at his first turn from 7 to 16","Change A's stop payoff at her second turn from 9 to 13","Change B's stop payoff at his last turn from 12 to 17","Change B's payoff at A's first stop ending from 1 to 6"],"correct":0,
+ "exp":"<b>Change the last ending from (14, 18) to (14, 10).</b><br><br><b>The rule:</b> backward induction, run once for the tree as printed and once for each proposed change. A chain like this looks like a centipede game. It is not one until the numbers say so.<br><br><b>First, solve the tree as printed.</b> Four nodes, then the final ending (14, 18).<br><span class=\"math\">Node 4 (B): stop = 12, continue = 18 &rarr; 18 &gt; 12, continue</span><br><span class=\"math\">Node 3 (A): stop = 9, continue = 14 &rarr; 14 &gt; 9, continue</span><br><span class=\"math\">Node 2 (B): stop = 7, continue = 18 &rarr; 18 &gt; 7, continue</span><br><span class=\"math\">Node 1 (A): stop = 5, continue = 14 &rarr; 14 &gt; 5, continue</span><br>Everyone continues. The game ends at (14, 18) and A gets 14.<br><br><b>Now the correct change.</b> Make the last ending (14, 10).<br><span class=\"math\">Node 4 (B): stop = 12, continue = 10 &rarr; 12 &gt; 10, stop. Worth (7, 12).</span><br><span class=\"math\">Node 3 (A): stop = 9, continue = 7 &rarr; 9 &gt; 7, stop. Worth (9, 4).</span><br><span class=\"math\">Node 2 (B): stop = 7, continue = 4 &rarr; 7 &gt; 4, stop. Worth (3, 7).</span><br><span class=\"math\">Node 1 (A): stop = 5, continue = 3 &rarr; 5 &gt; 3, stop.</span><br><br><b>Verification.</b> The outcome becomes (5, 1). A stops at her very first turn, exactly as asked. One number at one ending moved her from 14 to 5.<br><br><b>The exact wrong calculation behind each distractor.</b><br>&bull; <b>B's stop at his first turn, 7 to 16.</b> Nodes 4 and 3 are untouched, so continuing is still worth 18 to him. 18 &gt; 16, so he still continues. Nothing moves. It feels big because 16 is more than double 7.<br>&bull; <b>A's stop at her second turn, 9 to 13.</b> Node 4 is untouched, so continuing is still worth 14 to her. 14 &gt; 13, so she still continues. One short.<br>&bull; <b>B's stop at his last turn, 12 to 17.</b> Continuing is worth 18. 18 &gt; 17, so he still continues. This is the closest miss on the list and it still changes nothing.<br>&bull; <b>B's payoff at A's first stop ending, 1 to 6.</b> B never chooses at that ending. A's own number there is still 5. A payoff at an ending where that player has no decision cannot change anything.<br><br><b>The idea to carry.</b> In a chain like this the collapse has to start at the far right. While the last player still prefers to continue, every player before him is comparing his own stop payoff against the same large final ending. Raising a stop payoff only works if it beats that final number."},
+
+{"q":"In a sequential game, player 1 moves first and picks either Left or Right. Player 2 then sees which one she chose, and picks one of three actions: <i>a</i>, <i>b</i> or <i>c</i>. How many different strategies does player 2 have in this game?",
+ "opts":["3","5","6","9","12"],"correct":3,
+ "exp":"<b>9.</b> A strategy is <i>a rule determining a player's move in all possible cases</i>: a complete instruction sheet, not a single move.<br><br>Player 2 can end up at two different nodes: one if player 1 went Left, one if she went Right. His plan has to fill in <b>both</b> lines, and the two lines are independent. \"a if Left, c if Right\" is a different plan from \"a if Left, a if Right\".<br><span class=\"math\">3 &times; 3 = 9</span><br><br><b>Why the wrong options are tempting.</b> 3 is just the number of <i>actions</i> he has, which is the everyday meaning of \"strategy\". 5 is 3 + 2, adding the choices instead of multiplying them. 6 is 3 &times; 2, actions times nodes, which is what you get if you think he picks one node and one action. 12 is what you get if you also count player 1's two options as his.<br><br>The rule to carry: <b>multiply the number of actions across every node where that player might be asked to choose.</b> He will only ever make one move in a single play of the game, but that does not shrink the plan he has to bring."}
+];
+function shuffleItem(it){var c=it.opts[it.correct];for(var i=it.opts.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=it.opts[i];it.opts[i]=it.opts[j];it.opts[j]=t;}it.correct=it.opts.indexOf(c);}
+QUIZ.forEach(shuffleItem);
+const body=document.getElementById('quizBody');
+if(body){let score=0;
+QUIZ.forEach((item,qi)=>{
+  const block=document.createElement('div');block.className='qblock';
+  const tag=item.src?`<span class="examtag">${item.src}</span>`:'';
+  block.innerHTML=`<div class="qnum">Question ${qi+1}${tag}</div><div class="qtext">${item.q}</div>`;
+  const exp=document.createElement('div');exp.className='exp';exp.innerHTML=item.exp;
+  item.opts.forEach((opt,oi)=>{
+    const btn=document.createElement('button');btn.className='opt';
+    btn.innerHTML=`${String.fromCharCode(65+oi)}. ${opt}<span class="mark"></span>`;
+    btn.onclick=()=>{ if(block.dataset.done)return; block.dataset.done="1";
+      const btns=block.querySelectorAll('.opt');btns.forEach(x=>x.disabled=true);
+      btns[item.correct].classList.add('correct');btns[item.correct].querySelector('.mark').textContent='✓';
+      if(oi===item.correct){score++;}else{btn.classList.add('wrong');btn.querySelector('.mark').textContent='✗';}
+      document.getElementById('scoreChip').textContent=`${score} / ${QUIZ.length}`; exp.classList.add('show'); };
+    block.appendChild(btn); });
+  block.appendChild(exp);body.appendChild(block); });}
+</script><!-- GoatCounter analytics -->
+<script data-goatcounter="https://game-theory.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<!-- Activity tracking: audio plays and finishes, quiz and mock completion. Sends counts to GoatCounter only. No personal data. -->
+<script>
+(function(){
+  function ev(path, title){
+    try{
+      if(!window.goatcounter || !window.goatcounter.count) return;
+      window.goatcounter.count({path: path, title: title, event: true});
+    }catch(e){}
+  }
+  var page = (location.pathname.split('/').pop() || 'index.html').replace(/\.html$/,'') || 'index';
+
+  // Audio: one count the first time a strip is played, one when it reaches the end.
+  Array.prototype.forEach.call(document.querySelectorAll('audio'), function(a){
+    var name = (a.getAttribute('src') || 'audio').replace(/\.mp3$/,'');
+    var started = false, finished = false;
+    a.addEventListener('play', function(){
+      if(started) return; started = true;
+      ev('audio-play/' + name, 'Audio started: ' + name);
+    });
+    a.addEventListener('ended', function(){
+      if(finished) return; finished = true;
+      ev('audio-done/' + name, 'Audio finished: ' + name);
+    });
+  });
+
+  // Learn-day quiz: one count when every question has been answered, with the score.
+  var qbody = document.getElementById('quizBody');
+  if(qbody){
+    var chip = document.getElementById('scoreChip');
+    var qsent = false;
+    qbody.addEventListener('click', function(){
+      if(qsent) return;
+      setTimeout(function(){
+        if(qsent) return;
+        var blocks = qbody.querySelectorAll('.qblock');
+        if(!blocks.length) return;
+        var done = 0;
+        Array.prototype.forEach.call(blocks, function(b){ if(b.dataset.done) done++; });
+        if(done !== blocks.length) return;
+        qsent = true;
+        var raw = chip ? chip.textContent.trim() : '';
+        var slug = raw.replace(/\s*\/\s*/, '-of-') || 'unknown';
+        ev('quiz-done/' + page + '/' + slug, 'Quiz finished: ' + page + ' ' + raw);
+      }, 0);
+    });
+  }
+
+  // Mock day: one count when the results panel opens, with the score.
+  var res = document.getElementById('results');
+  if(res && window.MutationObserver){
+    var msent = false;
+    var mo = new MutationObserver(function(){
+      if(msent || !res.classList.contains('show')) return;
+      msent = true; mo.disconnect();
+      var el = document.getElementById('resScore');
+      var raw = el ? el.textContent.trim() : '';
+      var slug = raw.replace(/\s*\/\s*/, '-of-') || 'unknown';
+      ev('mock-done/' + page + '/' + slug, 'Mock submitted: ' + page + ' ' + raw);
+    });
+    mo.observe(res, {attributes: true, attributeFilter: ['class']});
+  }
+})();
+</script>
+</body></html>

@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pure Nash II: Elimination</title>
+<style>
+:root{--bg:#f5f3fb;--card:#fff;--ink:#211c33;--muted:#6f6886;--brand:#6b4ef0;--brand-d:#5238c4;
+--brand-soft:#ece7fd;--good:#1f9d63;--good-soft:#e4f6ec;--bad:#d2453f;--bad-soft:#fae5e4;--line:#e7e3f2;
+--amber:#b6791f;--amber-soft:#fcf3e3;}
+*{box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);margin:0;line-height:1.55;}
+.wrap{max-width:760px;margin:0 auto;padding:26px 22px 60px;}
+.home{display:inline-block;margin:0 0 12px;color:var(--brand);font-weight:700;font-size:13px;text-decoration:none;}
+.crumb{color:var(--brand);font-weight:600;font-size:13px;text-transform:uppercase;letter-spacing:.05em;}
+h1{font-size:28px;margin:8px 0 4px;letter-spacing:-.02em;}
+.lede{color:var(--muted);margin:0 0 14px;font-size:16px;}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px 24px;margin:18px 0;box-shadow:0 1px 3px rgba(40,20,90,.04);}
+.panel h3{margin:0 0 6px;font-size:18px;display:flex;align-items:center;gap:8px;}
+.panel h3 .scorechip{margin-left:auto;}
+.panel .note{color:var(--muted);font-size:14px;margin:0 0 14px;}
+.preq{background:var(--amber-soft);border:1px solid #f0deb8;border-radius:16px;padding:18px 20px;margin:18px 0;}
+.preq .tag{color:var(--amber);font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.06em;}
+.preq p{margin:8px 0 0;font-size:16px;} .preq .do{margin-top:10px;font-weight:600;color:var(--amber);}
+audio{width:100%;margin-top:6px;}
+.secaudio{background:var(--brand-soft);border:1px solid #d9d0fb;border-radius:12px;padding:10px 13px;margin:4px 0 14px;}
+.secaudio .salab{display:block;font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--brand-d);margin-bottom:7px;}
+.takeaway{font-size:14.5px;background:#fbfaff;border:1px dashed var(--line);border-radius:11px;padding:13px 16px;margin-top:14px;}
+.takeaway b{color:var(--brand);} .takeaway ul{margin:2px 0 0;padding-left:20px;} .takeaway li{margin:5px 0;}
+.takeaway .tk-gen{margin:10px 0 0;padding-top:10px;border-top:1px dashed var(--line);}
+.sub{font-size:15px;font-weight:800;color:var(--brand-d);margin:20px 0 6px;}
+.p{font-size:15px;margin:0 0 8px;}
+.partlab{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--brand);margin:0 0 6px;}
+.rule{background:var(--brand-soft);border-radius:11px;padding:12px 16px;font-weight:600;color:var(--brand-d);margin:16px 0;}
+.question{background:#f6f4fc;border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:10px;padding:14px 16px;font-size:15.5px;}
+.step{display:flex;gap:14px;padding:12px 0;border-top:1px solid var(--line);} .step:first-of-type{border-top:none;}
+.stepn{flex:0 0 28px;height:28px;border-radius:8px;background:var(--brand);color:#fff;font-weight:700;display:grid;place-items:center;font-size:14px;}
+.stepbody .lab{font-weight:600;}
+.math{font-family:"SF Mono",Menlo,Consolas,monospace;background:#f6f4fc;border:1px solid var(--line);border-radius:8px;padding:8px 12px;margin-top:6px;font-size:14.5px;display:inline-block;}
+.ans{background:var(--good-soft);border:1px solid #bfe6cf;border-radius:11px;padding:12px 16px;margin-top:16px;font-weight:600;color:var(--good);}
+.tryq{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:10px 0;} .tryq .q{font-weight:600;margin-bottom:8px;}
+.reveal-btn{background:var(--brand);color:#fff;border:none;border-radius:9px;padding:8px 14px;font-weight:600;cursor:pointer;font-size:14px;}
+.reveal{display:none;margin-top:10px;padding:11px 14px;border-radius:9px;background:#faf9fe;border:1px dashed var(--line);font-size:14px;} .reveal.show{display:block;}
+.dtable{width:100%;border-collapse:collapse;font-size:13.5px;margin:10px 0;}
+.dtable th,.dtable td{border:1px solid var(--line);padding:8px 8px;text-align:center;}
+.dtable th{background:var(--brand-soft);color:var(--brand-d);font-weight:700;} .dtable td.lab{text-align:left;font-weight:600;background:var(--brand-soft);color:var(--brand-d);}
+.dtable td.hlcell{background:var(--good-soft);font-weight:700;color:var(--good);}
+.dtable td.dim{color:var(--muted);}
+.datalab{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--brand-d);margin:20px 0 8px;}
+.given{color:var(--muted);font-size:13px;margin:2px 0 4px;}
+.svg-wrap{background:#fff;border:1px solid var(--line);border-radius:13px;padding:14px;margin:14px 0;text-align:center;}
+.svg-wrap svg{width:100%;height:auto;max-width:560px;}
+.cap{color:var(--muted);font-size:13px;margin-top:8px;}
+.qblock{padding:16px 0;border-top:1px solid var(--line);} .qblock:first-of-type{border-top:none;padding-top:4px;}
+.qnum{color:var(--brand);font-weight:700;font-size:12px;letter-spacing:.04em;text-transform:uppercase;}
+.examtag{display:inline-block;background:var(--good-soft);color:var(--good);border:1px solid #bfe6cf;border-radius:999px;padding:2px 9px;font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;margin-left:8px;vertical-align:middle;}
+.qtext{font-weight:600;margin:6px 0 12px;font-size:16px;}
+.qtext .dtable{font-weight:400;max-width:360px;}
+.opt{display:block;width:100%;text-align:left;background:#fff;border:1.5px solid var(--line);border-radius:11px;padding:11px 14px;margin:7px 0;font-size:15px;cursor:pointer;transition:.14s;color:var(--ink);}
+.opt:hover{border-color:var(--brand);background:var(--brand-soft);}
+.opt.correct{border-color:var(--good);background:var(--good-soft);} .opt.wrong{border-color:var(--bad);background:var(--bad-soft);}
+.opt .mark{float:right;font-weight:700;}
+.exp{margin-top:11px;padding:13px 15px;border-radius:11px;background:#faf9fe;border:1px dashed var(--line);font-size:14px;display:none;} .exp.show{display:block;} .exp b{color:var(--brand);}
+.scorechip{font-size:13px;color:var(--muted);font-weight:600;}
+.navrow{display:flex;justify-content:space-between;margin-top:22px;gap:10px;}
+.navbtn{text-decoration:none;font-weight:600;font-size:14px;padding:10px 16px;border-radius:11px;border:1px solid var(--line);color:var(--ink);background:#fff;}
+.navbtn.primary{background:var(--brand);color:#fff;border-color:var(--brand);}
+.tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.warnbox{background:var(--amber-soft);border:1px solid #f0deb8;border-radius:11px;padding:12px 16px;margin:14px 0;font-size:14.5px;}
+.warnbox b{color:var(--amber);}
+@media print{
+  body{background:#fff;} .panel{box-shadow:none;border-color:#ccc;}
+  audio,.secaudio,.timer,.navrow,.home{display:none!important;}
+  .reveal,.exp{display:block!important;} .preq{border-color:#ccc;}
+  .qblock{break-inside:avoid;} .panel{break-inside:avoid;}
+}
+/* ---- presentation chips (from index.html) ---- */
+:root{--p1:#7c5cbf;--p2:#2f7fd0;--p3:#1d8a6a;--p4:#c2820b;--p5:#c04a7e;--p6:#4a6fa5;}
+span.p{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.04em;padding:2px 7px;border-radius:5px;color:#fff;margin-right:3px;white-space:nowrap;}
+.P1{background:var(--p1)}.P2{background:var(--p2)}.P3{background:var(--p3)}
+.P4{background:var(--p4)}.P5{background:var(--p5)}.P6{background:var(--p6)}
+.tags{margin:0 0 12px;}
+.panel .tags{margin:-2px 0 12px;}
+/* ---- elimination rounds ---- */
+.dtable .k1{background:#fbeddd!important;color:#a8681a!important;text-decoration:line-through;font-weight:400!important;}
+.dtable .k2{background:#fae5e4!important;color:#b03a35!important;text-decoration:line-through;font-weight:400!important;}
+.dtable .k3{background:#e6eff9!important;color:#2f6ba8!important;text-decoration:line-through;font-weight:400!important;}
+.dtable .k4{background:#eee8fb!important;color:#5238c4!important;text-decoration:line-through;font-weight:400!important;}
+.dtable .keep{background:var(--good-soft)!important;color:var(--good)!important;font-weight:800!important;}
+.elegend{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0 2px;font-size:12px;}
+.elegend span{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--line);border-radius:8px;padding:3px 9px;color:var(--muted);}
+.elegend i{width:11px;height:11px;border-radius:3px;display:inline-block;font-style:normal;border:1px solid rgba(0,0,0,.08);}
+.shrink{display:flex;flex-wrap:wrap;gap:14px;align-items:flex-end;justify-content:center;margin:14px 0 2px;}
+.shrink figure{margin:0;text-align:center;}
+.shrink table{border-collapse:collapse;margin:0 auto;}
+.shrink td{border:1px solid var(--line);width:19px;height:19px;padding:0;background:#fbfaff;}
+.shrink td.on{background:var(--brand-soft);border-color:#d3c9f7;}
+.shrink td.win{background:var(--good-soft);border-color:#bfe6cf;}
+.shrink figcaption{font-size:11px;color:var(--muted);margin-top:6px;line-height:1.35;}
+.shrink figcaption b{color:var(--brand-d);display:block;font-size:11.5px;}
+</style>
+</head><body><div class="wrap">
+<a class="home" href="index.html">&larr; All 14 days</a>
+<div class="crumb">Day 5 of 14 &middot; Learn</div>
+<h1>Pure Nash II: elimination</h1>
+<div class="tags"><span class="p P4">P4</span></div>
+<p class="lede">Finding pure equilibria is 27% of the marks, the biggest single block on the paper. Yesterday you underlined every cell. Today you learn how to throw most of them away first.</p>
+
+<div class="preq"><span class="tag">&#9208; Guess first</span>
+<p>Two firms pick how much to produce. Producing a <b>small</b> quantity is your best possible move against a rival who floods the market. It earns you more than any other choice you have.</p>
+<p>So a small quantity is a move you must obviously keep. Can it ever be right to cross it out?</p>
+<p class="do">Take 20 seconds. Commit to an answer before you read on.</p></div>
+
+<div class="panel"><h3>&#127911; Why elimination is safe <span class="scorechip">~1 min</span></h3>
+<p class="note">A quick map of what you'll learn today. Each section below also has its own short audio.</p>
+<!-- SCRIPT Day-05-intro.mp3 | NOA=Heart TOM=Fenrir
+NOA: Yesterday you underlined best replies, cell by cell. That works. But on a big grid it is slow, and slow is what hurts you in an exam.
+TOM: So today is the shortcut.
+NOA: Today is the shortcut. Before you underline anything, you throw away the moves that no sensible player would ever make. Cross out a row, cross out a column, and the grid gets smaller. Then you do it again on whatever is left.
+TOM: Like clearing the table before you start cooking.
+NOA: Exactly like that. And the reason it is safe is a promise. If a move loses no matter what the other side does, it cannot be part of any equilibrium. Deleting it changes nothing.
+TOM: So nothing gets lost.
+NOA: Nothing gets lost, as long as the losing is total. If a move merely ties in some cases, deleting it can quietly throw an equilibrium away. That difference is the thing the exam tests.
+TOM: And if the grid keeps shrinking?
+NOA: Sometimes it shrinks all the way down to one single cell. When that happens you are already finished. You have the answer, and there is nothing else to find.
+-->
+<audio controls preload="none" src="Day-05-intro.mp3"></audio>
+<div class="takeaway"><ul>
+<li><b>Strictly dominated</b>: another move of yours gives a <i>strictly</i> higher payoff against <i>every single</i> thing the opponent could do. Never on average. Always.</li>
+<li><b>Weakly dominated</b>: never better, and sometimes worse. Ties are allowed.</li>
+<li><b>Iterated elimination of strictly dominated strategies (IESDS)</b>: delete a strictly dominated strategy, then look again at the smaller grid, and repeat. The order controls <i>when</i> each cut becomes legal, so you must look again after every cut. But whichever legal order you take, you end at the <b>same surviving set</b>. Order only changes the answer if you eliminate <i>weakly</i> dominated strategies.</li>
+<li><b>Dominance-solvable</b>: the process ends with one single cell. That cell is the unique Nash equilibrium: <i>no other pure one, and no mixed one either.</i></li>
+</ul>
+<p class="tk-gen">One line to hold onto: <b>strict elimination throws away nothing; weak elimination can throw away an answer.</b></p></div></div>
+
+<!-- ============ SECTION 1 ============ -->
+<div class="panel"><h3>A dominated strategy is not a bad strategy</h3>
+<div class="tags"><span class="p P4">P4</span></div>
+<!-- SCRIPT Day-05-dominated.mp3 | NOA=Heart TOM=Fenrir
+NOA: People hear the word dominated and they think bad. That is not it. A dominated move can be perfectly fine in some situations.
+TOM: Then what makes it dominated?
+NOA: There has to be another move of yours that beats it in every single column. Every one. Not on average, not usually. Always. So whatever your opponent is planning, you would rather be holding the other move.
+TOM: Which means I never have to guess what he is doing. The comparison is already settled before he moves.
+NOA: That is the whole gift of it. Now look at the little grid on the page with the two flatmates trying to meet. Staying home never earns more than going. But there is one case where the two are exactly equal, and that is when the other person also stays home.
+TOM: So it is not always worse. Only sometimes worse.
+NOA: That is the weak kind. And here is the sting. Both going, and both staying home, are each a stable outcome. Delete staying home because it is weakly worse, and you have just deleted a real equilibrium. Something that genuinely happens.
+TOM: Two people sitting at home, each waiting, each with no reason to move first.
+NOA: That is it exactly. So strict is safe and weak is not. Strict throws away nothing. Weak can throw away an answer.
+-->
+<div class="secaudio"><span class="salab">&#127911; Listen to this section</span><audio controls preload="none" src="Day-05-dominated.mp3"></audio></div>
+
+<p class="p">The word <i>dominated</i> sounds like a judgement. It isn't. A dominated strategy can pay you well. It can even pay more in one column than the strategy that dominates it pays in a different column. That is not the test.</p>
+
+<p class="p">The test is a <b>row-by-row comparison against a fixed column</b>. Pick two of your own strategies. Walk across every single thing the opponent might do. If one of them wins <i>every</i> comparison, the other is <b>strictly dominated</b>. You can delete it without ever needing to know what the opponent will actually choose.</p>
+
+<div class="rule">Strictly dominated = there is another move of mine that beats it against <b>every</b> opponent strategy. <br>Weakly dominated = another move is <b>never worse</b>, and <b>somewhere strictly better</b>. Ties allowed.</div>
+
+<p class="p">That "ties allowed" is not a detail. It is the whole difference, and it is what the exam tests.</p>
+
+<p class="partlab">Two flatmates, one shop</p>
+<p class="p">Dana and Rami both want a bulk deal at the shop, but it only works if both of them turn up. One person alone cannot carry it. Going costs nothing except the walk. If both go, each gains 1. Any other combination, both get 0.</p>
+<div class="tscroll">
+<table class="dtable" style="max-width:420px">
+<tr><th></th><th>Rami goes</th><th>Rami stays home</th></tr>
+<tr><td class="lab">Dana goes</td><td class="hlcell">1, &nbsp;1 &nbsp;&#10003;</td><td>0, &nbsp;0</td></tr>
+<tr><td class="lab">Dana stays home</td><td>0, &nbsp;0</td><td class="hlcell">0, &nbsp;0 &nbsp;&#10003;</td></tr>
+</table></div>
+<div class="cap">Two pure Nash equilibria, both marked green. Both-go is obvious. Both-stay is also stable: if Rami is staying home, Dana walking to the shop alone gains her nothing, so she has no reason to move either.</div>
+
+<p class="p">Now compare Dana's two rows. <i>Going</i> gives her 1 when Rami goes, and 0 when he stays. <i>Staying</i> gives her 0 and 0. So going is <b>never worse</b> and <b>sometimes better</b>. That is weak domination. The tie in the right-hand column is what stops it being strict.</p>
+
+<p class="p">Delete "stays home" because it is weakly dominated, and delete Rami's for the same reason, and you are left with one cell: both go. Clean, tidy, and <b>wrong</b>. You just erased a genuine equilibrium. Two flatmates each sitting at home waiting for the other one to move first is a real thing that really happens.</p>
+
+<div class="warnbox"><b>The exam sentence, in one line.</b> Eliminating <i>strictly</i> dominated strategies never removes an equilibrium. Eliminating <i>weakly</i> dominated strategies can. So when you are counting equilibria, only ever cross out on <b>strict</b> grounds.</div>
+
+<p class="partlab">Worked example</p>
+<div class="question">In the flatmates game above, is Dana's "stays home" strictly dominated, weakly dominated, or neither? And what happens to the number of pure Nash equilibria if you delete it anyway?</div>
+
+<div class="step"><div class="stepn">1</div><div class="stepbody"><div class="lab">Fix the first column: Rami goes.</div>
+Dana's payoff from going is 1; from staying it is 0.
+<br><span class="math">1 &gt; 0 &nbsp;→&nbsp; going wins this column</span></div></div>
+
+<div class="step"><div class="stepn">2</div><div class="stepbody"><div class="lab">Fix the second column: Rami stays home.</div>
+Dana's payoff from going is 0; from staying it is also 0.
+<br><span class="math">0 = 0 &nbsp;→&nbsp; a tie, not a win</span></div></div>
+
+<div class="step"><div class="stepn">3</div><div class="stepbody"><div class="lab">Apply the two definitions.</div>
+Strict needs a win in <i>every</i> column. It failed in column two. Weak needs never-worse plus at least one strict win. Both are true here.
+<br><span class="math">weakly dominated, not strictly</span></div></div>
+
+<div class="step"><div class="stepn">4</div><div class="stepbody"><div class="lab">Count the equilibria before and after.</div>
+Before deleting: (go, go) and (stay, stay), so two. After deleting both players' "stay" rows and columns, only (go, go) survives, so one.
+<br><span class="math">2 &nbsp;→&nbsp; 1: one equilibrium destroyed</span></div></div>
+
+<div class="ans">&#10003; <b>Weakly dominated, not strictly.</b> Deleting it drops the count from <b>2 to 1</b>, which is exactly why the course only lets you eliminate on strict grounds.</div>
+
+<div class="tryq"><div class="q">Read the convention first. In the table below, as the exam always states, the <b>first number is player 1's payoff and the second is player 2's</b>.<br>
+<table class="dtable" style="max-width:340px;margin:10px 0"><tr><th></th><th>Left</th><th>Right</th></tr>
+<tr><td class="lab">Up</td><td>5, &nbsp;&minus;1</td><td>6, &nbsp;&minus;2</td></tr>
+<tr><td class="lab">Down</td><td>4, &nbsp;3</td><td>7, &nbsp;&minus;3</td></tr></table>
+Which player has a strictly dominant strategy, and what is the unique Nash equilibrium?<br><br>
+Then: a classmate answers <i>"Player 2's dominant strategy is Right, so the equilibrium is (Up, Right)."</i> Every subtraction he did was correct. What went wrong?</div>
+<button class="reveal-btn" onclick="this.nextElementSibling.classList.add('show');this.disabled=true;">Reveal answer</button>
+<div class="reveal"><b>Player 2's dominant strategy is Left, and the unique equilibrium is (Up, Left).</b><br><br>Player 2 chooses the column, so only the <i>second</i> number in each cell is hers. Left against Right: in the Up row &minus;1 &gt; &minus;2; in the Down row 3 &gt; &minus;3. Left wins both rows, so Left is strictly dominant. Delete Right.<br><br>Now player 1 compares his own numbers inside the surviving Left column: Up gives 5, Down gives 4. Up wins. Unique equilibrium <b>(Up, Left)</b>, payoffs (5, &minus;1). Player 1 has no dominant strategy of his own. Down beats Up against Right (7 &gt; 6) but loses against Left (4 &lt; 5).<br><br><b>What the classmate did:</b> he read the pairs the wrong way round, treating the <i>first</i> number as player 2's. Do that and player 2 appears to compare 5 against 6, then 4 against 7, so Right looks dominant, and out comes (Up, Right). His arithmetic was perfect. He simply compared the wrong column of numbers.<br><br><b>Why this is the most dangerous error on the paper:</b> it does not feel like an error. A dropped minus sign or a missed cell usually leaves you stuck, or gives you something that is not among the options. Swapping the two players gives you a clean, confident, unique answer that is sitting right there in the list. Before you compare anything, find the sentence that says which number belongs to whom (every exam question states it) and circle the choosing player's numbers.</div></div>
+</div>
+
+<!-- ============ SECTION 2 ============ -->
+<div class="panel"><h3>The chain: delete, look again, delete again</h3>
+<div class="tags"><span class="p P4">P4</span></div>
+<!-- SCRIPT Day-05-chain.mp3 | NOA=Heart TOM=Fenrir
+NOA: Two firms choosing how much to produce. Look at the big grid on the page. The largest quantity is hopeless. Whatever the rival does, the firm would earn more by cutting back one step. So it goes.
+TOM: And it goes for both of them, because the game looks the same from either side.
+NOA: Row and column together. That is where the speed comes from. Now watch what happens next, because this is the part people miss. The smallest quantity was perfectly fine a moment ago. It was actually the best answer against a rival who floods the market.
+TOM: But the flooding move just left the room.
+NOA: It just left the room. So the only reason to keep the small quantity walked out with it. In the smaller grid it is now beaten everywhere, and out it goes too.
+TOM: That is a little unsettling. A move I was defending a second ago becomes rubbish, and nothing about the move changed.
+NOA: Nothing about it changed. What changed is the world it lives in. And that is why you must look at the grid again after every cut. You cannot decide the whole chain at the start.
+TOM: So how do I not lose my place halfway through?
+NOA: Write the survivors down. After each cut, a short line on your draft paper listing what is still standing. A short list after every cut beats one long think.
+-->
+<div class="secaudio"><span class="salab">&#127911; Listen to this section</span><audio controls preload="none" src="Day-05-chain.mp3"></audio></div>
+
+<p class="p">One deletion is easy. The exam does not ask for one deletion. It gives you a 4&times;4 or a 5&times;5 and expects a <b>chain</b>. The trap is built into the chain: a strategy that is <i>not</i> dominated at the start can become dominated once something else has gone.</p>
+
+<p class="p">So the procedure has a rhythm. Delete one strictly dominated strategy. Then <b>look at the smaller grid as if you had never seen the big one</b>. Delete again. Repeat until nothing more can go.</p>
+
+<div class="rule">After every cut, re-examine. A strategy is dominated <b>in the grid that is in front of you now</b>, not in the grid you started with.</div>
+
+<p class="p">One thing that does <b>not</b> follow: it does not mean two students working in different orders can end up with different answers. With <i>strict</i> domination they cannot. The order decides <b>when</b> each cut becomes legal, but every legal order finishes at the <b>same surviving set</b>. That is the theorem, and it is the deeper reason strict elimination is the safe kind. Order only starts to matter for the answer once you cut <i>weakly</i> dominated strategies, which is exactly the thing you must not do.</p>
+
+<div class="warnbox"><b>Expect to be asked this directly.</b> "Does the order in which you eliminate strictly dominated strategies change the outcome?" &rarr; <b>No.</b> Same survivors every time. Change "strictly" to "weakly" in that sentence and the answer flips to yes.</div>
+
+<p class="partlab">The data: Cournot competition (Presentation 4)</p>
+<p class="p">Two firms sell the same good. Marginal cost is $20 each. The price falls as total output rises: <span class="math">P = 140 &minus; Q&#8321; &minus; Q&#8322;</span> so each firm's profit is <span class="math">&#960;&#7522; = (120 &minus; Q&#11388; &minus; Q&#7522;)&middot;Q&#7522;</span>. To keep it a matrix, each firm may only choose 30, 35, 40, 50 or 60 units.</p>
+<p class="given">Row = firm 1's quantity, column = firm 2's quantity. Each cell shows (firm 1's profit, firm 2's profit). The grid below is computed directly from that profit formula. For example row 40, column 50: P = 140 &minus; 40 &minus; 50 = 50, so firm 1 earns (50 &minus; 20) &times; 40 = 1200. Note the game is <b>symmetric</b>: whatever is dominated for one firm is dominated for the other, so every cut removes a row <i>and</i> the matching column at once.</p>
+
+<div class="tscroll">
+<table class="dtable">
+<tr><th>Q&#8321; \ Q&#8322;</th><th class="k2">30</th><th class="k4">35</th><th class="keep">40</th><th class="k3">50</th><th class="k1">60</th></tr>
+<tr><td class="lab k2">30</td><td class="k2">1800, 1800</td><td class="k2">1650, 1925</td><td class="k2">1500, 2000</td><td class="k2">1200, 2000</td><td class="k1">900, 1800</td></tr>
+<tr><td class="lab k4">35</td><td class="k2">1925, 1650</td><td class="k4">1750, 1750</td><td class="k4">1575, 1800</td><td class="k3">1225, 1750</td><td class="k1">875, 1500</td></tr>
+<tr><td class="lab keep">40</td><td class="k2">2000, 1500</td><td class="k4">1800, 1575</td><td class="keep">1600, 1600</td><td class="k3">1200, 1500</td><td class="k1">800, 1200</td></tr>
+<tr><td class="lab k3">50</td><td class="k2">2000, 1200</td><td class="k3">1750, 1225</td><td class="k3">1500, 1200</td><td class="k3">1000, 1000</td><td class="k1">500, 600</td></tr>
+<tr><td class="lab k1">60</td><td class="k1">1800, 900</td><td class="k1">1500, 875</td><td class="k1">1200, 800</td><td class="k1">600, 500</td><td class="k1">0, 0</td></tr>
+</table></div>
+<div class="elegend">
+<span><i style="background:#fbeddd"></i> Round 1: cut 60</span>
+<span><i style="background:#fae5e4"></i> Round 2: cut 30</span>
+<span><i style="background:#e6eff9"></i> Round 3: cut 50</span>
+<span><i style="background:#eee8fb"></i> Round 4: cut 35</span>
+<span><i style="background:#e4f6ec"></i> Survivor</span>
+</div>
+<div class="cap">Each colour is the round in which that cell left the game. Read the colours from pale orange inwards and you are watching the grid collapse toward the green cell in the middle.</div>
+
+<div class="shrink">
+<figure><table><tr><td class="on"></td><td class="on"></td><td class="on"></td><td class="on"></td><td class="on"></td></tr><tr><td class="on"></td><td class="on"></td><td class="on"></td><td class="on"></td><td class="on"></td></tr><tr><td class="on"></td><td class="on"></td><td class="on"></td><td class="on"></td><td class="on"></td></tr><tr><td class="on"></td><td class="on"></td><td class="on"></td><td class="on"></td><td class="on"></td></tr><tr><td class="on"></td><td class="on"></td><td class="on"></td><td class="on"></td><td class="on"></td></tr></table><figcaption><b>5 &times; 5</b>30 35 40 50 60</figcaption></figure>
+<figure><table><tr><td class="on"></td><td class="on"></td><td class="on"></td><td class="on"></td></tr><tr><td class="on"></td><td class="on"></td><td class="on"></td><td class="on"></td></tr><tr><td class="on"></td><td class="on"></td><td class="on"></td><td class="on"></td></tr><tr><td class="on"></td><td class="on"></td><td class="on"></td><td class="on"></td></tr></table><figcaption><b>4 &times; 4</b>60 is gone</figcaption></figure>
+<figure><table><tr><td class="on"></td><td class="on"></td><td class="on"></td></tr><tr><td class="on"></td><td class="on"></td><td class="on"></td></tr><tr><td class="on"></td><td class="on"></td><td class="on"></td></tr></table><figcaption><b>3 &times; 3</b>30 is gone</figcaption></figure>
+<figure><table><tr><td class="on"></td><td class="on"></td></tr><tr><td class="on"></td><td class="on"></td></tr></table><figcaption><b>2 &times; 2</b>50 is gone</figcaption></figure>
+<figure><table><tr><td class="win"></td></tr></table><figcaption><b>1 &times; 1</b>(40, 40)</figcaption></figure>
+</div>
+<div class="cap">The same four rounds, seen only as size. Five choices each, then four, then three, then two, then one. The whole question is this shrink.</div>
+
+<p class="partlab">Worked example</p>
+<div class="question">Run iterated elimination of strictly dominated strategies on the Cournot grid above. Which quantities survive, and in what order do the others go?</div>
+
+<div class="step"><div class="stepn">1</div><div class="stepbody"><div class="lab">Round 1: compare 60 against 50, column by column.</div>
+Against a rival at 30/35/40/50/60, quantity 60 earns 1800 / 1500 / 1200 / 600 / 0. Quantity 50 earns 2000 / 1750 / 1500 / 1000 / 500.
+<br><span class="math">50 wins all five columns → 60 is strictly dominated. Cut row 60 and column 60.</span></div></div>
+
+<div class="step"><div class="stepn">2</div><div class="stepbody"><div class="lab">Round 2: now look at the 4&times;4 and compare 30 against 35.</div>
+Against 30/35/40/50, quantity 30 earns 1800 / 1650 / 1500 / 1200. Quantity 35 earns 1925 / 1750 / 1575 / 1225.
+<br><span class="math">35 wins all four → 30 is strictly dominated. Cut row 30 and column 30.</span>
+<br><b>This is the step the pretest was about.</b> In the original 5&times;5 this comparison <i>fails</i>: against a rival at 60, quantity 30 earns 900 and quantity 35 earns only 875. Round 1 removed the one column where 30 was worth keeping.</div></div>
+
+<div class="step"><div class="stepn">3</div><div class="stepbody"><div class="lab">Round 3: in the 3&times;3, compare 50 against 40.</div>
+Against 35/40/50, quantity 50 earns 1750 / 1500 / 1000. Quantity 40 earns 1800 / 1600 / 1200.
+<br><span class="math">40 wins all three → 50 is strictly dominated. Cut row 50 and column 50.</span>
+<br>Again the sequence unlocked it: in the 4&times;4 these two <i>tied</i> against a rival at 30, where both earn 2000. A tie is not strict domination, so this cut was not yet legal until 30 had gone.</div></div>
+
+<div class="step"><div class="stepn">4</div><div class="stepbody"><div class="lab">Round 4: in the 2&times;2, compare 35 against 40.</div>
+Against 35/40, quantity 35 earns 1750 / 1575. Quantity 40 earns 1800 / 1600.
+<br><span class="math">40 wins both → 35 is strictly dominated. Cut row 35 and column 35.</span></div></div>
+
+<div class="ans">&#10003; Four rounds, in this order: <b>60, then 30, then 50, then 35</b>. That leaves a single cell: <b>(40, 40)</b>, worth 1600 to each firm. Because each round cuts a row <i>and</i> a column, that is <b>eight strike-throughs</b>, and losing count of them is the real risk here, not the arithmetic.</div>
+
+<div class="warnbox"><b>How to stay fast and not lose your place.</b> Don't try to hold the chain in your head. After each cut write one short line on your draft paper (<i>still alive: 30 35 40 50</i>) and only compare inside that list. On a 5&times;5, one written line per round costs you about ten seconds and saves you the re-count that costs two minutes.</div>
+
+<div class="tryq"><div class="q">A student looks at the full 5&times;5 Cournot grid at the very start and says: "30 is obviously terrible. It never gives the highest profit in any column. Let me delete 30 first and save time."<br><br>Is she allowed to? And what is the flaw in her reasoning?</div>
+<button class="reveal-btn" onclick="this.nextElementSibling.classList.add('show');this.disabled=true;">Reveal answer</button>
+<div class="reveal"><b>No, she is not allowed to. Her test is the wrong test.</b><br><br>Look at the 60 column in the original grid. Quantity 30 earns 900 there; 35 earns 875, 40 earns 800, 50 earns 500, 60 earns 0. So in that column, 30 is not just good enough. It is the <b>best row on the board</b>. Nothing dominates it. It cannot be deleted.<br><br><b>The flaw:</b> "never gives the highest profit in any column" is a different claim from "some single other strategy beats it in every column". Domination is a comparison between <i>two specific strategies</i> across all columns, not a comparison against the best of everything. Her sentence isn't even true here, but even when it is true it isn't enough.<br><br>And notice the order she wanted has the right instinct hiding inside it: 30 <i>does</i> go second. She just cannot get there until the 60 column is gone.</div></div>
+</div>
+
+<!-- ============ SECTION 3 ============ -->
+<div class="panel"><h3>One cell left means one equilibrium: pure <i>and</i> mixed</h3>
+<div class="tags"><span class="p P4">P4</span><span class="p P1">P1</span></div>
+<!-- SCRIPT Day-05-solvable.mp3 | NOA=Heart TOM=Fenrir
+NOA: Sometimes the cutting ends with exactly one cell left. The course has a name for that. Dominance-solvable.
+TOM: And that surviving cell is the equilibrium.
+NOA: That cell is the equilibrium. And here is the part the exam loves. It is the only one. Not the only pure one. The only one, full stop. There is no mixed equilibrium hiding somewhere else in the grid.
+TOM: Why not? I keep hearing that every game has one.
+NOA: Every game has at least one. That is Nash's theorem, and it is true. But a mixture has to be built out of moves you would actually use, and every other move here was thrown out for being hopeless. There is simply nothing left to mix.
+TOM: So when the question says how many equilibria, pure or mixed, the answer is just the one.
+NOA: Just the one. And that phrase, pure or mixed, is the trap itself. It whispers to you that a mixed one must be lurking somewhere, so people reach for a bigger answer.
+TOM: Where else does this same chain turn up?
+NOA: The guessing game you played in the first week, where everyone picks a number and you aim at a fraction of the average. The same reasoning runs there, and it walks all the way down to the smallest number allowed.
+TOM: Same idea, different clothes.
+NOA: And look at the two crossing lines on the page. That is the smooth version of the firms' story, where quantity can be anything at all. The point where those lines meet is the very same cell the cutting left behind.
+TOM: Different road, same destination.
+-->
+<div class="secaudio"><span class="salab">&#127911; Listen to this section</span><audio controls preload="none" src="Day-05-solvable.mp3"></audio></div>
+
+<p class="p">When the chain ends with exactly one surviving cell, the course calls the game <b>dominance-solvable</b>. The Cournot grid above is one. And that surviving cell is not just <i>an</i> equilibrium. It is <b>the only equilibrium the game has</b>.</p>
+
+<p class="p">Not "the only pure one". The only one. Full stop. There is no mixed equilibrium sitting somewhere else.</p>
+
+<div class="rule">Dominance-solvable &rarr; the surviving cell is the <b>unique</b> Nash equilibrium. No other pure equilibria, and <b>no mixed equilibria either</b>.</div>
+
+<p class="p">Why not? A mixed strategy is a recipe built out of the pure strategies you are willing to use. Every strategy you deleted was deleted because it loses against everything, so it can never be worth any positive weight in a mixture. There is literally nothing left to mix with.</p>
+
+<div class="warnbox"><b>The most likely trap on your paper.</b> The question is worded <i>"How many Nash equilibria (pure or mixed) exist?"</i> and the options run 0, 1, 2, 3, 4. That phrase "pure or mixed" whispers <i>surely there's a mixed one too</i>, and people who did all the elimination correctly then answer 2 instead of 1. Nash's theorem says every game has <b>at least</b> one. It never says more than one.</div>
+
+<p class="partlab">The same chain in the game you already played</p>
+<p class="p">The 2/3-average contest from Presentation 1: everyone picks a whole number from 1 to 100, and whoever is closest to two-thirds of the average wins. The same elimination runs there. It just runs a long way.</p>
+<div class="tscroll">
+<table class="dtable">
+<tr><th>Round</th><th>What gets deleted</th><th>What is left</th></tr>
+<tr><td class="lab">1</td><td>68&ndash;100, dominated by 67</td><td>1&ndash;67</td></tr>
+<tr><td class="lab">2</td><td>46&ndash;67, dominated by 45</td><td>1&ndash;45</td></tr>
+<tr><td class="lab">3</td><td>31&ndash;45, dominated by 30</td><td>1&ndash;30</td></tr>
+<tr><td class="lab">4</td><td>21&ndash;30, dominated by 20</td><td>1&ndash;20</td></tr>
+<tr><td class="lab">5</td><td>15&ndash;20, dominated by 14</td><td>1&ndash;14</td></tr>
+<tr><td class="lab">6</td><td>10&ndash;14, dominated by 9</td><td>1&ndash;9</td></tr>
+<tr><td class="lab">7</td><td>7&ndash;9, dominated by 6</td><td>1&ndash;6</td></tr>
+<tr><td class="lab">8</td><td>5&ndash;6, dominated by 4</td><td>1&ndash;4</td></tr>
+<tr><td class="lab">9</td><td>4, dominated by 3</td><td>1&ndash;3</td></tr>
+<tr><td class="lab">10</td><td>3, dominated by 2</td><td>1&ndash;2</td></tr>
+<tr><td class="lab keep">11</td><td class="keep">2, dominated by 1</td><td class="keep">1 &nbsp;&#10003;</td></tr>
+</table></div>
+<div class="cap">Eleven rounds, same rule every time. Whatever the others do, two-thirds of the average can never reach the top of the range. So the top of the range can always be beaten by aiming lower. The unique Nash equilibrium is everyone choosing 1, which almost nobody actually plays.</div>
+
+<p class="partlab">The smooth version: where the two best-reply lines cross</p>
+<p class="p">Drop the artificial menu of five quantities and let each firm choose any number at all. Then instead of a grid you get a curve. Firm <i>i</i>'s profit is <span class="math">(120 &minus; Q&#11388; &minus; Q&#7522;)&middot;Q&#7522;</span>. This is a parabola in Q&#7522; that hits zero at 0 and at 120 &minus; Q&#11388;. Its peak is exactly halfway between:</p>
+<div class="rule" style="text-align:center">BR(Q&#11388;) = (120 &minus; Q&#11388;) / 2</div>
+
+<div class="svg-wrap">
+<svg viewBox="0 0 560 300" role="img" aria-label="Two straight best-reply lines drawn on axes of firm one's quantity against firm two's quantity. Firm one's best reply falls from a high point on the vertical axis down to sixty on the horizontal axis. Firm two's best reply falls from sixty on the vertical axis to a far point on the horizontal axis. The two lines cross at the point forty, forty, which is marked with a red dot.">
+  <line x1="70" y1="30" x2="70" y2="250" stroke="#c8c2dd" stroke-width="1.5"/>
+  <line x1="70" y1="250" x2="520" y2="250" stroke="#c8c2dd" stroke-width="1.5"/>
+  <g font-size="10" fill="#6f6886" text-anchor="end" font-family="-apple-system,Segoe UI,Arial">
+    <line x1="66" y1="182.3" x2="70" y2="182.3" stroke="#c8c2dd"/><text x="62" y="185.5">40</text>
+    <line x1="66" y1="148.5" x2="70" y2="148.5" stroke="#c8c2dd"/><text x="62" y="151.5">60</text>
+    <line x1="66" y1="46.9" x2="70" y2="46.9" stroke="#c8c2dd"/><text x="62" y="50">120</text>
+  </g>
+  <g font-size="10" fill="#6f6886" text-anchor="middle" font-family="-apple-system,Segoe UI,Arial">
+    <line x1="70" y1="250" x2="70" y2="254" stroke="#c8c2dd"/><text x="70" y="267">0</text>
+    <line x1="202.3" y1="250" x2="202.3" y2="254" stroke="#c8c2dd"/><text x="202.3" y="267">40</text>
+    <line x1="268.5" y1="250" x2="268.5" y2="254" stroke="#c8c2dd"/><text x="268.5" y="267">60</text>
+    <line x1="466.9" y1="250" x2="466.9" y2="254" stroke="#c8c2dd"/><text x="466.9" y="267">120</text>
+  </g>
+  <!-- firm 1 best reply: Q1 = (120 - Q2)/2  from (0,120) to (60,0) -->
+  <line x1="70" y1="46.9" x2="268.5" y2="250" stroke="#6b4ef0" stroke-width="2.5"/>
+  <!-- firm 2 best reply: Q2 = (120 - Q1)/2  from (0,60) to (120,0) -->
+  <line x1="70" y1="148.5" x2="466.9" y2="250" stroke="#1f9d63" stroke-width="2.5"/>
+  <!-- crossing at (40,40) -->
+  <line x1="202.3" y1="182.3" x2="202.3" y2="250" stroke="#d2453f" stroke-width="1.3" stroke-dasharray="4 3"/>
+  <line x1="70" y1="182.3" x2="202.3" y2="182.3" stroke="#d2453f" stroke-width="1.3" stroke-dasharray="4 3"/>
+  <circle cx="202.3" cy="182.3" r="5.5" fill="#d2453f"/>
+  <g font-size="11.5" font-family="-apple-system,Segoe UI,Arial" font-weight="600">
+    <text x="112" y="72" fill="#6b4ef0">firm 1's best reply</text>
+    <text x="330" y="219" fill="#1f9d63">firm 2's best reply</text>
+    <text x="214" y="171" fill="#d2453f">(40, 40)</text>
+  </g>
+  <g font-size="10.5" font-family="-apple-system,Segoe UI,Arial" fill="#6f6886">
+    <text x="295" y="288" text-anchor="middle">Q&#8321;: firm 1's quantity</text>
+    <text x="22" y="140" transform="rotate(-90 22,140)" text-anchor="middle">Q&#8322;: firm 2's quantity</text>
+  </g>
+</svg>
+<div class="cap">Each line answers "given what the other firm does, what is my best output?" Only where they cross is <i>each</i> firm best-replying to the other at the same time. That crossing is (40, 40), the exact cell the elimination chain left standing on the grid above.</div>
+</div>
+
+<p class="partlab">Worked example</p>
+<div class="question">A different game. Row player chooses Up, Mid or Down; column player chooses Left, Center or Right. First number is the row player's payoff.
+<div class="tscroll"><table class="dtable" style="max-width:400px;margin-top:10px">
+<tr><th></th><th>Left</th><th>Center</th><th>Right</th></tr>
+<tr><td class="lab">Up</td><td>4, 7</td><td>1, 5</td><td>2, 1</td></tr>
+<tr><td class="lab">Mid</td><td>6, 2</td><td>5, 6</td><td>3, 4</td></tr>
+<tr><td class="lab">Down</td><td>2, 8</td><td>0, 9</td><td>7, 5</td></tr>
+</table></div>
+How many Nash equilibria (pure or mixed) does this game have?</div>
+
+<div class="step"><div class="stepn">1</div><div class="stepbody"><div class="lab">Start with the row player. Compare Up and Mid.</div>
+Up gives 4, 1, 2. Mid gives 6, 5, 3.
+<br><span class="math">6 &gt; 4, 5 &gt; 1, 3 &gt; 2 → Up is strictly dominated by Mid. Cut Up.</span></div></div>
+
+<div class="step"><div class="stepn">2</div><div class="stepbody"><div class="lab">Now the column player, in the 2&times;3 that is left (rows Mid and Down). Compare Left and Center.</div>
+Left gives her 2 and 8. Center gives her 6 and 9.
+<br><span class="math">6 &gt; 2, 9 &gt; 8 → Left is strictly dominated by Center. Cut Left.</span>
+<br>Note this was <i>not</i> true before: in the Up row, Left gave 7 and Center only 5. The row cut unlocked it.</div></div>
+
+<div class="step"><div class="stepn">3</div><div class="stepbody"><div class="lab">Still the column player. Compare Right and Center.</div>
+Right gives 4 and 5. Center gives 6 and 9.
+<br><span class="math">6 &gt; 4, 9 &gt; 5 → Right is strictly dominated by Center. Cut Right.</span></div></div>
+
+<div class="step"><div class="stepn">4</div><div class="stepbody"><div class="lab">One column left. Back to the row player.</div>
+In the Center column, Mid gives 5 and Down gives 0.
+<br><span class="math">5 &gt; 0 → Down is strictly dominated. Cut Down. One cell remains: (Mid, Center).</span></div></div>
+
+<div class="step"><div class="stepn">5</div><div class="stepbody"><div class="lab">Answer the question that was actually asked.</div>
+The game is dominance-solvable, so (Mid, Center) is the unique Nash equilibrium, pure <i>and</i> mixed.
+<br><span class="math">count = 1</span></div></div>
+
+<div class="ans">&#10003; <b>Exactly one</b>: the pure equilibrium (Mid, Center), payoffs (5, 6). Nothing mixed hides behind it, because every other strategy was thrown out for losing everywhere.</div>
+
+<div class="tryq"><div class="q">In real experiments with the 2/3-average game, only about one player in ten actually chooses 1. Most answers cluster somewhere in the teens.<br><br>Does that mean the elimination argument above is wrong, and that 1 is <i>not</i> really the Nash equilibrium?</div>
+<button class="reveal-btn" onclick="this.nextElementSibling.classList.add('show');this.disabled=true;">Reveal answer</button>
+<div class="reveal"><b>No. The equilibrium is still 1. The experiment measures something different.</b><br><br>Nash equilibrium asks: <i>if everyone were already doing this, would anyone want to change?</i> With everyone at 1, the average is 1, two-thirds of it is below 1, and 1 is the closest legal number. Nobody gains by moving. That is the definition, and it holds regardless of what people actually do.<br><br>What the experiment shows is how <b>many rounds of the reasoning</b> real people perform. Most stop after one or two: "others will pick around fifty, so I'll pick around thirty-three"; "no, others will think that, so I'll pick around twenty-two". Very few keep going all eleven rounds. Play the game repeatedly and answers drift downward, slowly, toward 1.<br><br><b>Exam note:</b> the course tests both facts, and they are different questions. <i>"What is the unique Nash equilibrium?"</i> &rarr; everyone chooses 1. <i>"What do people actually choose?"</i> &rarr; commonly the range 13&ndash;19. Read which one is being asked.</div></div>
+</div>
+
+<!-- ============ QUIZ ============ -->
+<div class="panel"><h3>&#128221; Quiz yourself <span class="scorechip" id="scoreChip">0 / 6</span></h3>
+<p class="note">Pick an option. The answer and the explanation appear only after you choose. Five of these six games are fresh, built only for this quiz. None of them repeat a grid from the sections above. One question is tagged, and it is a real past-final question from the August 2024 paper. That paper is held in reserve, so you never sit it as a timed mock.</p>
+<div id="quizBody"></div></div>
+
+<div class="navrow"><a class="navbtn" href="Day-04.html">&larr; Back</a><a class="navbtn primary" href="Day-06.html">Next &rarr;</a></div>
+</div>
+<script>
+function grid(rowLabels, colLabels, cells, w){
+  var h = '<div class="tscroll"><table class="dtable" style="max-width:'+(w||400)+'px">';
+  h += '<tr><th></th>';
+  for(var c=0;c<colLabels.length;c++) h += '<th>'+colLabels[c]+'</th>';
+  h += '</tr>';
+  for(var r=0;r<rowLabels.length;r++){
+    h += '<tr><td class="lab">'+rowLabels[r]+'</td>';
+    for(var c2=0;c2<colLabels.length;c2++) h += '<td>'+cells[r][c2]+'</td>';
+    h += '</tr>';
+  }
+  return h+'</table></div>';
+}
+// Fresh grids, built only for this quiz. Every answer below was checked with a
+// solver that finds all pure equilibria and walks every legal elimination order.
+
+// M4x4: dominance-solvable, and at each stage exactly one strategy can be cut.
+var M4x4 = grid(["a1","a2","a3","a4"],["b1","b2","b3","b4"],[
+  ["3, 8","2, 6","7, 4","5, 1"],
+  ["4, 2","5, 7","3, 5","1, 3"],
+  ["5, 3","3, 8","2, 6","4, 2"],
+  ["2, 5","1, 2","1, 9","9, 4"]], 430);
+// MSTALL: the cutting works for four rounds and then stops. Not dominance-solvable.
+var MSTALL = grid(["a1","a2","a3","a4"],["b1","b2","b3","b4"],[
+  ["6, 1","5, 3","1, 4","1, 3"],
+  ["6, 5","7, 4","5, 4","8, 7"],
+  ["9, 8","5, 1","3, 2","7, 1"],
+  ["8, 6","8, 5","3, 2","2, 2"]], 430);
+// MFREE: three different cuts are legal at the start, and every order ends in the same cell.
+var MFREE = grid(["R1","R2","R3"],["C1","C2","C3"],[
+  ["6, 6","8, 1","7, 1"],
+  ["8, 9","7, 2","9, 4"],
+  ["6, 8","5, 2","1, 6"]], 340);
+var M3x2 = grid(["Top","Middle","Bottom"],["Left","Right"],[
+  ["3, 2","1, 2"],
+  ["2, 1","1, 2"],
+  ["0, 0","0, 3"]], 320);
+var M3x3 = grid(["A","B","C"],["X","Y","Z"],[
+  ["3, 9","2, 4","8, 2"],
+  ["6, 3","5, 7","1, 5"],
+  ["7, 6","1, 8","4, 1"]], 360);
+// 2024 B final, question 1. The grid is printed in the exam PDF and in the solution
+// document. Re-solved in code: Right is player 2's only dominant strategy, as published.
+var M24B1 = grid(["Up","Middle","Down"],["Left","Center","Right"],[
+  ["6, 3","8, 4","9, 5"],
+  ["1, 1","2, &minus;3","8, 2"],
+  ["7, 4","4, 7","3, 8"]], 380);
+var CONV = '<br><span style="font-weight:400;font-size:13.5px;color:#6f6886">(First number in each cell is player 1\'s payoff, second is player 2\'s.)</span>';
+
+const QUIZ = [
+{"src":"2024 B final","q":"Which strategies are dominant strategies in the following game?"+CONV+M24B1,
+ "opts":["Up and Right","Only Up","Only Right","None of the players have dominant strategies","None of the other answers is correct"],"correct":2,
+ "exp":"<b>Only Right.</b><br><br><b>The rule.</b> A strategy is strictly dominant for a player when it beats <i>every</i> other strategy of that player against <i>every</i> choice of the opponent. One losing comparison kills it.<br><br><b>Step 1. Player 2 owns the second number, and she picks a column. Compare her columns inside each row.</b><br>Row Up: Left 3, Center 4, Right 5. Right wins.<br>Row Middle: Left 1, Center &minus;3, Right 2. Right wins.<br>Row Down: Left 4, Center 7, Right 8. Right wins.<br><span class=\"math\">Right beats Left and Center in all three rows → Right is strictly dominant for player 2.</span><br><br><b>Step 2. Player 1 owns the first number, and she picks a row. Compare her rows inside each column.</b><br>Up against Middle: 6&gt;1, 8&gt;2, 9&gt;8. Up wins all three, so Up dominates Middle.<br>Up against Down: 6 against 7 in Left. Up <b>loses</b> here, so Up is not dominant.<br>Down against Up: 7&gt;6 in Left, but 4&lt;8 in Center. Down is not dominant either.<br><span class=\"math\">Player 1 has no dominant strategy.</span><br><br><b>Check.</b> Best reply test. Player 1's best reply is Down against Left, Up against Center, Up against Right. Three different answers means no single row is always right, which is exactly what \"no dominant strategy\" means.<br><br><b>Where each wrong option comes from.</b><br><b>Up and Right:</b> you compared Up with Middle, saw it win in all three columns, and stopped. Dominance needs Up to beat <i>both</i> rivals, and Down beats it in the Left column.<br><b>Only Up:</b> the same mistake, plus missing that Right really is dominant for player 2.<br><b>None of the players have dominant strategies:</b> what you get if you judge Right by the size of the payoffs rather than by the comparison. Player 2's biggest number, 8, sits in the Down row, but dominance is column against column <i>inside</i> each row, not a hunt for the biggest number.<br><b>None of the other answers is correct:</b> this is where the swapped reading lands you. Treat the first number as player 2's and Down looks strictly dominant for player 1 (4&gt;3, 7&gt;4, 8&gt;5 against Up). \"Only Down\" is not on the list, so you reach for the last option. Read the convention line first, every time."},
+
+{"q":"Is the following game dominance-solvable? If so, which strategy does player 1 (the row player) play in the surviving outcome?"+CONV+M4x4,
+ "opts":["Strategy a1","Strategy a2","Strategy a3","Strategy a4","The game is not dominance-solvable"],"correct":1,
+ "exp":"<b>Yes, and player 1 plays a2.</b><br><br><b>The rule.</b> Delete a strictly dominated strategy, look again at the smaller grid, delete again. Stop when nothing more can go. If one cell is left, the game is dominance-solvable.<br><br><b>Six cuts, and each one only becomes legal after the one before it.</b><br>1. <b>b4</b> is strictly dominated by b3 for player 2 (4&gt;1, 5&gt;3, 6&gt;2, 9&gt;4).<br>2. In the 4&times;3 that is left, <b>a4</b> is strictly dominated by a2 (4&gt;2, 5&gt;1, 3&gt;1). It survived round one only because of column b4, where a4 scored 9.<br>3. In the 3&times;3, <b>b3</b> is strictly dominated by b2 (6&gt;4, 7&gt;5, 8&gt;6). Not true earlier: in row a4, b3 gave player 2 a 9 against b2's 2.<br>4. In the 3&times;2, <b>a1</b> is strictly dominated by a2 (4&gt;3, 5&gt;2). Not true earlier: in column b3, a1 scored 7 against a2's 3.<br>5. In the 2&times;2, <b>b1</b> is strictly dominated by b2 (7&gt;2, 8&gt;3). Not true earlier: in row a1, b1 gave 8 against b2's 6.<br>6. One column left. In b2, a2 gives 5 and <b>a3</b> gives 3, so a3 goes.<br><span class=\"math\">survivor: (a2, b2), payoffs (5, 7)</span><br><br><b>Check.</b> Test (a2, b2) directly in the full grid. Hold b2: player 1's column is 2, 5, 3, 1, so a2 with 5 is her best. Hold a2: player 2's row is 2, 7, 5, 3, so b2 with 7 is his best. Neither moves, so it is a Nash equilibrium. The cutting and the underlining agree.<br><br><b>The order here is forced.</b> At every stage exactly one strategy can be deleted, so there is nothing to choose. Sometimes a different partner does the dominating (a4 is beaten by a1 and a3 as well as by a2), but the strategy that leaves is the same either way.<br><br><b>Where each wrong option comes from.</b><br><b>a1:</b> it holds the 7 in column b3 and looks strong early. That column is deleted before a1 is judged.<br><b>a3:</b> the last row to be cut, so it is the answer if you stop one cut too soon.<br><b>a4:</b> it holds the 9 at (a4, b4), the biggest number player 1 can see. It is the first row to go.<br><b>Not dominance-solvable:</b> the chain does reach one cell, so this is wrong here. It is the right answer in the next question, which is why you check rather than guess.<br><br><b>The real risk is losing count, not the arithmetic.</b> Write your survivor list on the draft paper after every single cut."},
+
+{"q":"Is the following game dominance-solvable? If so, which strategy does player 1 (the row player) play in the surviving outcome?"+CONV+MSTALL,
+ "opts":["Strategy a1","Strategy a2","Strategy a3","Strategy a4","The game is not dominance-solvable"],"correct":4,
+ "exp":"<b>The game is not dominance-solvable.</b> The cutting works for a while and then stops with four cells left.<br><br><b>Step 1.</b> <b>a1</b> is strictly dominated by a4 for player 1 (8&gt;6, 8&gt;5, 3&gt;1, 2&gt;1). Cut a1.<br><b>Step 2.</b> In the rows a2, a3, a4, player 2's column b1 gives 5, 8, 6. Column <b>b3</b> gives 4, 2, 2 and column <b>b2</b> gives 4, 1, 5. b1 beats both in every row, so cut b2 and b3.<br><b>Step 3.</b> In the 3&times;2 that is left, <b>a4</b> is strictly dominated by a3 (9&gt;8 in b1, 7&gt;2 in b4). Cut a4.<br><b>Step 4. Now look at what is left and try to cut again.</b> Rows a2 and a3, columns b1 and b4:<br>a2: (6, 5) and (8, 7). a3: (9, 8) and (7, 1).<br>Player 1: in b1 she prefers a3 (9&gt;6), in b4 she prefers a2 (8&gt;7). Neither row dominates the other.<br>Player 2: in row a2 he prefers b4 (7&gt;5), in row a3 he prefers b1 (8&gt;1). Neither column dominates the other.<br><span class=\"math\">nothing more is strictly dominated → the chain stops at a 2&times;2</span><br><br><b>Check by underlining the survivors.</b> Both marks meet at (a3, b1) with payoffs (9, 8), and again at (a2, b4) with payoffs (8, 7). Two pure Nash equilibria.<br><br><b>The sharp reason this game could never be dominance-solvable.</b> It has two pure equilibria. Strict elimination never deletes an equilibrium, so the chain can never squeeze down to one cell when there are two. If you spot two equilibria early, you already know the answer to this question.<br><br><b>Where each wrong option comes from.</b><br><b>a3:</b> you found (a3, b1) and called it the surviving outcome. It is a real equilibrium, but it is not the only one, so nothing survived alone.<br><b>a2:</b> the same mistake with the other equilibrium, (a2, b4).<br><b>a4:</b> it survives three rounds and holds the biggest number in column b2, so it feels like the winner right up to the last cut.<br><b>a1:</b> the first row deleted.<br><br><b>Elimination still earned its keep.</b> It turned sixteen cells into four. Cutting and underlining are partners, not rivals: cut what you can, then underline what is left."},
+
+{"q":"Two students solve the game below. Both delete only strictly dominated strategies. Dana starts by deleting column C2. Ron starts by deleting row R3. Each then carries on until nothing more can be deleted. Which of the following is true?"+CONV+MFREE,
+ "opts":["Both finish at the same single cell, (R2, C1)",
+         "Dana finishes at (R2, C1) and Ron finishes at a different cell, because the order changes the result",
+         "Ron's first deletion is not allowed, because R3 is not strictly dominated",
+         "Dana's first deletion is not allowed, because you must delete a row before a column",
+         "Neither student can finish, because the game is not dominance-solvable"],"correct":0,
+ "exp":"<b>Both finish at the same single cell, (R2, C1), payoffs (8, 9).</b><br><br><b>The rule.</b> With <i>strict</i> domination, the order of the cuts changes nothing. Whichever legal order you take, you end with the same survivors. The order only decides <i>when</i> each cut becomes legal.<br><br><b>Both first moves are legal.</b><br>Dana's: for player 2, C1 gives 6, 9, 8 down the rows, and C2 gives 1, 2, 2. C1 wins every row, so C2 is strictly dominated.<br>Ron's: for player 1, R2 gives 8, 7, 9 across the columns, and R3 gives 6, 5, 1. R2 wins every column, so R3 is strictly dominated.<br><br><b>Dana's path.</b><br>1. Cut C2.<br>2. C3 gives player 2 1, 4, 6 against C1's 6, 9, 8, so cut C3.<br>3. One column left, C1. Player 1 gets 6, 8, 6, so cut R1 and R3.<br>4. Left: (R2, C1).<br><br><b>Ron's path.</b><br>1. Cut R3.<br>2. Now for player 2, C1 still beats C2 (6, 9 against 1, 2) and beats C3 (6, 9 against 1, 4). Cut both.<br>3. One column left. Player 1 gets 6 at R1 and 8 at R2, so cut R1.<br>4. Left: (R2, C1).<br><br><b>Check.</b> Test the cell directly. Hold C1: player 1's column is 6, 8, 6, so R2 is her best. Hold R2: player 2's row is 9, 2, 4, so C1 is his best. It is a Nash equilibrium, and since the game is dominance-solvable it is the only one, pure or mixed.<br><br><b>Where each wrong option comes from.</b><br><b>Different cells because order matters:</b> true for <b>weak</b> domination, false for strict. That swap is the single most tested sentence in this topic.<br><b>Ron's cut is illegal:</b> R3 really is strictly dominated by R2, in every column.<br><b>Rows before columns:</b> there is no such rule. Either player's strategy can go first.<br><b>Not dominance-solvable:</b> it ends at one cell, so it is.<br><br><b>The wider point.</b> Here three cuts were legal at the start: C2, C3 and R3. A solver that walks every legal order finds twelve different orders, and all twelve end at (R2, C1)."},
+
+{"q":"How many pure Nash equilibria exist in the following game?"+CONV+M3x2,
+ "opts":["0","1","2","3","4"],"correct":3,
+ "exp":"<b>Three:</b> (Top, Left), (Top, Right) and (Middle, Right).<br><br><b>Step 1. Cut what you may cut, on strict grounds only.</b> Bottom is strictly dominated by Top (3&gt;0 on the left, 1&gt;0 on the right). Delete Bottom. Nothing else is <i>strictly</i> dominated.<br><br><b>Step 2. Underline in the grid that is left.</b><br>Left column, player 1's numbers: 3, 2 → Top.<br>Right column, player 1's numbers: 1, 1 → a <b>tie</b>, so mark Top and Middle.<br>Top row, player 2's numbers: 2, 2 → a <b>tie</b>, so mark Left and Right.<br>Middle row, player 2's numbers: 1, 2 → Right.<br><br><b>Step 3. Cells with both marks.</b> (Top, Left), (Top, Right), (Middle, Right). Count = 3.<br><br><b>Check one by hand.</b> Take (Middle, Right), payoffs (1, 2). Hold Right: player 1 gets 1 from Top and 1 from Middle, so she gains nothing by moving. Hold Middle: player 2 gets 1 from Left and 2 from Right, so he stays. Nobody gains by moving alone, so it counts.<br><br><b>The trap, and it is the point of today.</b> It is tempting to keep cutting. Middle is <b>weakly</b> dominated by Top (3&gt;2 on the left, 1=1 on the right). Left is <b>weakly</b> dominated by Right for player 2 (2=2 in the Top row, 2&gt;1 in the Middle row). Delete those two and one cell is left, so you answer 1, having quietly destroyed two real equilibria.<br><br><b>Where each wrong count comes from.</b><br><b>1:</b> you eliminated on weak grounds as well as strict.<br><b>2:</b> you kept the weak cuts for one player only, or you ignored one of the two ties.<br><b>0:</b> you read a tie as \"no best reply\" instead of \"both are best replies\".<br><b>4:</b> you counted (Bottom, Right), where player 2's 3 is his biggest number anywhere. Player 1 gets 0 there and moves to Top.<br><br><b>The habit:</b> cut on strict grounds, then underline. Never cut on weak grounds when the question is counting equilibria."},
+
+{"q":"How many Nash equilibria (pure or mixed) exist in the following game?"+CONV+M3x3,
+ "opts":["0","1","2","3","4"],"correct":1,
+ "exp":"<b>Exactly one: the pure profile (B, Y), payoffs (5, 7).</b> The game is dominance-solvable, and at every stage exactly one cut is available, so the order is forced.<br><br>1. For player 2, <b>Z</b> is strictly dominated by Y (4&gt;2, 7&gt;5, 8&gt;1). Cut Z.<br>2. In the 3&times;2 left, <b>A</b> is strictly dominated by B (6&gt;3, 5&gt;2). It survived round one only because of column Z, where A scored 8 against B's 1.<br>3. In the 2&times;2 of rows B and C, <b>X</b> is now strictly dominated by Y for player 2 (7&gt;3, 8&gt;6). Not true earlier: in row A, X gave him 9 against Y's 4.<br>4. One column left. In Y, B gives 5 and C gives 1, so <b>C</b> goes.<br><span class=\"math\">survivor: (B, Y) → count = 1</span><br><br><b>Check.</b> Hold Y: player 1's column is 2, 5, 1, so B is her best. Hold B: player 2's row is 3, 7, 5, so Y is his best. It is an equilibrium.<br><br><b>Where each wrong count comes from.</b><br><b>2:</b> the phrase \"pure or mixed\" is the trap. You found one pure equilibrium and added a mixed one to be safe. A mixed strategy is built out of pure strategies you are willing to play, and everything except B and Y was deleted for losing against everything. There is nothing left to mix.<br><b>3 or 4:</b> you counted cells that carry one mark, such as (C, X). Player 1's 7 there really is her best reply to X, but player 2 in row C gets 6 at X and 8 at Y, so he leaves.<br><b>0:</b> you cannot get zero here, and in fact no game gets zero once mixed strategies are allowed. Nash's theorem says every game has <i>at least</i> one equilibrium. It never promises more than one."}
+];
+function shuffleItem(it){var c=it.opts[it.correct];for(var i=it.opts.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=it.opts[i];it.opts[i]=it.opts[j];it.opts[j]=t;}it.correct=it.opts.indexOf(c);}
+QUIZ.forEach(shuffleItem);
+const body=document.getElementById('quizBody');
+if(body){let score=0;
+QUIZ.forEach((item,qi)=>{
+  const block=document.createElement('div');block.className='qblock';
+  const tag=item.src?`<span class="examtag">${item.src}</span>`:'';
+  block.innerHTML=`<div class="qnum">Question ${qi+1}${tag}</div><div class="qtext">${item.q}</div>`;
+  const exp=document.createElement('div');exp.className='exp';exp.innerHTML=item.exp;
+  item.opts.forEach((opt,oi)=>{
+    const btn=document.createElement('button');btn.className='opt';
+    btn.innerHTML=`${String.fromCharCode(65+oi)}. ${opt}<span class="mark"></span>`;
+    btn.onclick=()=>{ if(block.dataset.done)return; block.dataset.done="1";
+      const btns=block.querySelectorAll('.opt');btns.forEach(x=>x.disabled=true);
+      btns[item.correct].classList.add('correct');btns[item.correct].querySelector('.mark').textContent='✓';
+      if(oi===item.correct){score++;}else{btn.classList.add('wrong');btn.querySelector('.mark').textContent='✗';}
+      document.getElementById('scoreChip').textContent=`${score} / ${QUIZ.length}`; exp.classList.add('show'); };
+    block.appendChild(btn); });
+  block.appendChild(exp);body.appendChild(block); });}
+</script><!-- GoatCounter analytics -->
+<script data-goatcounter="https://game-theory.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<!-- Activity tracking: audio plays and finishes, quiz and mock completion. Sends counts to GoatCounter only. No personal data. -->
+<script>
+(function(){
+  function ev(path, title){
+    try{
+      if(!window.goatcounter || !window.goatcounter.count) return;
+      window.goatcounter.count({path: path, title: title, event: true});
+    }catch(e){}
+  }
+  var page = (location.pathname.split('/').pop() || 'index.html').replace(/\.html$/,'') || 'index';
+
+  // Audio: one count the first time a strip is played, one when it reaches the end.
+  Array.prototype.forEach.call(document.querySelectorAll('audio'), function(a){
+    var name = (a.getAttribute('src') || 'audio').replace(/\.mp3$/,'');
+    var started = false, finished = false;
+    a.addEventListener('play', function(){
+      if(started) return; started = true;
+      ev('audio-play/' + name, 'Audio started: ' + name);
+    });
+    a.addEventListener('ended', function(){
+      if(finished) return; finished = true;
+      ev('audio-done/' + name, 'Audio finished: ' + name);
+    });
+  });
+
+  // Learn-day quiz: one count when every question has been answered, with the score.
+  var qbody = document.getElementById('quizBody');
+  if(qbody){
+    var chip = document.getElementById('scoreChip');
+    var qsent = false;
+    qbody.addEventListener('click', function(){
+      if(qsent) return;
+      setTimeout(function(){
+        if(qsent) return;
+        var blocks = qbody.querySelectorAll('.qblock');
+        if(!blocks.length) return;
+        var done = 0;
+        Array.prototype.forEach.call(blocks, function(b){ if(b.dataset.done) done++; });
+        if(done !== blocks.length) return;
+        qsent = true;
+        var raw = chip ? chip.textContent.trim() : '';
+        var slug = raw.replace(/\s*\/\s*/, '-of-') || 'unknown';
+        ev('quiz-done/' + page + '/' + slug, 'Quiz finished: ' + page + ' ' + raw);
+      }, 0);
+    });
+  }
+
+  // Mock day: one count when the results panel opens, with the score.
+  var res = document.getElementById('results');
+  if(res && window.MutationObserver){
+    var msent = false;
+    var mo = new MutationObserver(function(){
+      if(msent || !res.classList.contains('show')) return;
+      msent = true; mo.disconnect();
+      var el = document.getElementById('resScore');
+      var raw = el ? el.textContent.trim() : '';
+      var slug = raw.replace(/\s*\/\s*/, '-of-') || 'unknown';
+      ev('mock-done/' + page + '/' + slug, 'Mock submitted: ' + page + ' ' + raw);
+    });
+    mo.observe(res, {attributes: true, attributeFilter: ['class']});
+  }
+})();
+</script>
+</body></html>

@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Full-Course Sweep: One Lap Through All Six</title>
+<style>
+:root{--bg:#f5f3fb;--card:#fff;--ink:#211c33;--muted:#6f6886;--brand:#6b4ef0;--brand-d:#5238c4;
+--brand-soft:#ece7fd;--good:#1f9d63;--good-soft:#e4f6ec;--bad:#d2453f;--bad-soft:#fae5e4;--line:#e7e3f2;
+--amber:#b6791f;--amber-soft:#fcf3e3;
+--p1:#7c5cbf;--p2:#2f7fd0;--p3:#1d8a6a;--p4:#c2820b;--p5:#c04a7e;--p6:#4a6fa5;}
+*{box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);margin:0;line-height:1.55;}
+.wrap{max-width:760px;margin:0 auto;padding:26px 22px 60px;}
+.home{display:inline-block;margin:0 0 12px;color:var(--brand);font-weight:700;font-size:13px;text-decoration:none;}
+.crumb{color:var(--brand);font-weight:600;font-size:13px;text-transform:uppercase;letter-spacing:.05em;}
+h1{font-size:28px;margin:8px 0 4px;letter-spacing:-.02em;}
+.lede{color:var(--muted);margin:0 0 14px;font-size:16px;}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px 24px;margin:18px 0;box-shadow:0 1px 3px rgba(40,20,90,.04);}
+.panel h3{margin:0 0 6px;font-size:18px;display:flex;align-items:center;gap:8px;}
+.panel h3 .scorechip{margin-left:auto;}
+.panel .note{color:var(--muted);font-size:14px;margin:0 0 14px;}
+.preq{background:var(--amber-soft);border:1px solid #f0deb8;border-radius:16px;padding:18px 20px;margin:18px 0;}
+.preq .tag{color:var(--amber);font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.06em;}
+.preq p{margin:8px 0 0;font-size:16px;} .preq .do{margin-top:10px;font-weight:600;color:var(--amber);}
+audio{width:100%;margin-top:6px;}
+.secaudio{background:var(--brand-soft);border:1px solid #d9d0fb;border-radius:12px;padding:10px 13px;margin:4px 0 14px;}
+.secaudio .salab{display:block;font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--brand-d);margin-bottom:7px;}
+.takeaway{font-size:14.5px;background:#fbfaff;border:1px dashed var(--line);border-radius:11px;padding:13px 16px;margin-top:14px;}
+.takeaway b{color:var(--brand);} .takeaway ul{margin:2px 0 0;padding-left:20px;} .takeaway li{margin:5px 0;}
+.takeaway .tk-gen{margin:10px 0 0;padding-top:10px;border-top:1px dashed var(--line);}
+.sub{font-size:15px;font-weight:800;color:var(--brand-d);margin:20px 0 6px;}
+.p{font-size:15px;margin:0 0 8px;}
+.partlab{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--brand);margin:0 0 6px;}
+.rule{background:var(--brand-soft);border-radius:11px;padding:12px 16px;font-weight:600;color:var(--brand-d);margin:16px 0;}
+.question{background:#f6f4fc;border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:10px;padding:14px 16px;font-size:15.5px;}
+.step{display:flex;gap:14px;padding:12px 0;border-top:1px solid var(--line);} .step:first-of-type{border-top:none;}
+.stepn{flex:0 0 28px;height:28px;border-radius:8px;background:var(--brand);color:#fff;font-weight:700;display:grid;place-items:center;font-size:14px;}
+.stepbody .lab{font-weight:600;}
+.math{font-family:"SF Mono",Menlo,Consolas,monospace;background:#f6f4fc;border:1px solid var(--line);border-radius:8px;padding:8px 12px;margin-top:6px;font-size:14.5px;display:inline-block;}
+.ans{background:var(--good-soft);border:1px solid #bfe6cf;border-radius:11px;padding:12px 16px;margin-top:16px;font-weight:600;color:var(--good);}
+.tryq{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:10px 0;} .tryq .q{font-weight:600;margin-bottom:8px;}
+.reveal-btn{background:var(--brand);color:#fff;border:none;border-radius:9px;padding:8px 14px;font-weight:600;cursor:pointer;font-size:14px;}
+.reveal{display:none;margin-top:10px;padding:11px 14px;border-radius:9px;background:#faf9fe;border:1px dashed var(--line);font-size:14px;} .reveal.show{display:block;}
+.dtable{width:100%;border-collapse:collapse;font-size:13.5px;margin:10px 0;}
+.dtable th,.dtable td{border:1px solid var(--line);padding:8px 8px;text-align:center;}
+.dtable th{background:var(--brand-soft);color:var(--brand-d);font-weight:700;} .dtable td.lab{text-align:left;font-weight:600;background:var(--brand-soft);color:var(--brand-d);}
+.dtable td.hlcell{background:var(--good-soft);font-weight:700;color:var(--good);}
+.dtable td.dim{color:var(--muted);}
+.datalab{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--brand-d);margin:20px 0 8px;}
+.given{color:var(--muted);font-size:13px;margin:2px 0 4px;}
+.svg-wrap{background:#fff;border:1px solid var(--line);border-radius:13px;padding:14px;margin:14px 0;text-align:center;}
+.svg-wrap svg{width:100%;height:auto;max-width:560px;}
+.cap{color:var(--muted);font-size:13px;margin-top:8px;}
+.qblock{padding:16px 0;border-top:1px solid var(--line);} .qblock:first-of-type{border-top:none;padding-top:4px;}
+.qnum{color:var(--brand);font-weight:700;font-size:12px;letter-spacing:.04em;text-transform:uppercase;}
+.examtag{display:inline-block;background:var(--good-soft);color:var(--good);border:1px solid #bfe6cf;border-radius:999px;padding:2px 9px;font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;margin-left:8px;vertical-align:middle;}
+.qtext{font-weight:600;margin:6px 0 12px;font-size:16px;}
+.qtext .dtable{font-weight:400;max-width:360px;}
+.opt{display:block;width:100%;text-align:left;background:#fff;border:1.5px solid var(--line);border-radius:11px;padding:11px 14px;margin:7px 0;font-size:15px;cursor:pointer;transition:.14s;color:var(--ink);}
+.opt:hover{border-color:var(--brand);background:var(--brand-soft);}
+.opt.correct{border-color:var(--good);background:var(--good-soft);} .opt.wrong{border-color:var(--bad);background:var(--bad-soft);}
+.opt .mark{float:right;font-weight:700;}
+.exp{margin-top:11px;padding:13px 15px;border-radius:11px;background:#faf9fe;border:1px dashed var(--line);font-size:14px;display:none;} .exp.show{display:block;} .exp b{color:var(--brand);}
+.scorechip{font-size:13px;color:var(--muted);font-weight:600;}
+.navrow{display:flex;justify-content:space-between;margin-top:22px;gap:10px;}
+.navbtn{text-decoration:none;font-weight:600;font-size:14px;padding:10px 16px;border-radius:11px;border:1px solid var(--line);color:var(--ink);background:#fff;}
+.navbtn.primary{background:var(--brand);color:#fff;border-color:var(--brand);}
+.tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.warnbox{background:var(--amber-soft);border:1px solid #f0deb8;border-radius:11px;padding:12px 16px;margin:14px 0;font-size:14.5px;}
+.warnbox b{color:var(--amber);}
+/* --- presentation chips. The hub styles .p as a chip; day pages use .p for prose,
+      so the chip rule is scoped to span.p. --- */
+span.p{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.04em;padding:2px 7px;border-radius:5px;color:#fff;margin-right:3px;white-space:nowrap;}
+span.p.P1{background:var(--p1)}span.p.P2{background:var(--p2)}span.p.P3{background:var(--p3)}
+span.p.P4{background:var(--p4)}span.p.P5{background:var(--p5)}span.p.P6{background:var(--p6)}
+.tags{margin:0 0 6px;}
+.lapbadge{flex:0 0 auto;font-size:10.5px;font-weight:800;letter-spacing:.04em;padding:3px 8px;border-radius:6px;color:#fff;}
+.devgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:8px;margin:12px 0;}
+.dev{background:#fbfaff;border:1px dashed var(--line);border-radius:10px;padding:9px 12px;font-size:13px;}
+.dev b{display:block;color:var(--brand-d);font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:2px;}
+.reftab td.num{font-weight:800;color:var(--brand-d);white-space:nowrap;}
+.reftab td.src{color:var(--muted);font-size:12px;white-space:nowrap;}
+.reftab td.f{text-align:left;}
+.calm{background:var(--good-soft);border:1px solid #bfe6cf;border-radius:14px;padding:18px 20px;margin:18px 0;font-size:15px;}
+.calm b{color:var(--good);}
+@media print{
+  body{background:#fff;} .panel{box-shadow:none;border-color:#ccc;}
+  audio,.secaudio,.timer,.navrow,.home{display:none!important;}
+  .reveal,.exp{display:block!important;} .preq{border-color:#ccc;}
+  .qblock{break-inside:avoid;} .panel{break-inside:avoid;}
+}
+</style>
+</head><body><div class="wrap">
+<a class="home" href="index.html">&larr; All 14 days</a>
+<div class="crumb">Day 13 of 14 &middot; Sweep</div>
+<h1>Full-course sweep: one lap through all six</h1>
+<div class="tags"><span class="p P1">P1</span><span class="p P2">P2</span><span class="p P3">P3</span><span class="p P4">P4</span><span class="p P5">P5</span><span class="p P6">P6</span></div>
+<p class="lede">Nothing new today. Five minutes per lecture, one small task each. You are checking that every part of the course still answers when you knock on it.</p>
+<p class="given">The six lettered panels <i>are</i> the thirty-minute lap. The two after them (the numbers table and the error log) add about ten minutes more. If tonight is short, stop after P6. If you have the time, the numbers table is the best-value ten minutes on the site.</p>
+
+<div class="panel"><h3>&#127911; How this lap works <span class="scorechip">~1 min</span></h3>
+<p class="note">One lap, six panels, five minutes each. Only two panels have audio: the two heaviest topics.</p>
+<!-- SCRIPT Day-13-intro.mp3 | NOA=Heart TOM=Fenrir
+NOA: Tomorrow is the exam. So today is not a lesson. Today is a lap.
+TOM: A lap meaning what? Just reading everything again?
+NOA: No. Reading is the trap. Your notes will all feel familiar, and familiar feels like known, and it is not the same thing.
+TOM: So instead of reading, I should be trying to produce something.
+NOA: Yes. Say a definition out loud. Solve one tree. Point at one dilemma. Find the stable cells in one grid. Run one mixing calculation from the first line to the last. Then list the ways a threat can be made believable.
+TOM: And if one of those comes out slowly, that is the one I look at.
+NOA: Exactly, and only that one. This is a check, not a repair shop. If something is genuinely broken, tonight is too late to rebuild it, and pretending otherwise only eats the sleep you actually need.
+TOM: So the honest goal is a short list of soft spots, not a fixed brain.
+NOA: That is the whole goal.
+-->
+<audio controls preload="none" src="Day-13-intro.mp3"></audio>
+<div class="takeaway"><ul>
+<li><b>Six panels, five minutes each.</b> If a panel takes longer than that, mark it and move on. You have found a soft spot, and that is the useful part.</li>
+<li><b>Say it, don't read it.</b> Cover the reveal, produce the answer out loud, then check. Reading feels like knowing and is not knowing.</li>
+<li><b>The behavioural numbers panel</b> near the end is free marks. Read it twice.</li>
+<li><b>Finish on your error log</b>, the page you have been filling in since the first mock. Read it top to bottom and fix nothing new.</li>
+</ul>
+<p class="tk-gen">One line to hold onto: <b>today you are testing the machine, not rebuilding it.</b></p></div></div>
+
+<!-- ============ P1 ============ -->
+<div class="panel"><h3><span class="p P1" style="margin-right:0">P1</span> Say the two definitions <span class="scorechip">5 min</span></h3>
+
+<p class="p">Two sentences, out loud, before you look at anything. What is a <b>strategy</b>? What is a <b>dominant strategy</b>?</p>
+
+<div class="rule"><b>Strategy</b>: a rule that names your move in <i>every</i> case that could come up, not the one move you happen to make. &nbsp;<b>Dominant strategy</b>: a strategy that gives you a higher payoff than every other choice, whatever the other player does.</div>
+
+<p class="p">The word "every" in the first definition is the whole exam question. A strategy is written before the game starts and must survive any surprise. Look at the shape below: player 2 has <i>two</i> places where he might have to move, and his plan has to cover both, including the one he never actually reaches.</p>
+
+<div class="svg-wrap">
+<svg viewBox="0 0 560 210" role="img" aria-label="A game tree skeleton. Player one moves first at the root, choosing between an upper and a lower branch. Each branch leads to a node where player two moves, and player two has two choices at each of his two nodes, giving four endings in total.">
+  <g stroke="#c8c2dd" stroke-width="2" fill="none">
+    <line x1="70" y1="105" x2="245" y2="55"/><line x1="70" y1="105" x2="245" y2="160"/>
+    <line x1="245" y1="55" x2="430" y2="28"/><line x1="245" y1="55" x2="430" y2="85"/>
+    <line x1="245" y1="160" x2="430" y2="132"/><line x1="245" y1="160" x2="430" y2="188"/>
+  </g>
+  <circle cx="70" cy="105" r="15" fill="#6b4ef0"/>
+  <circle cx="245" cy="55" r="15" fill="#2f7fd0"/><circle cx="245" cy="160" r="15" fill="#2f7fd0"/>
+  <g fill="#c8c2dd"><circle cx="430" cy="28" r="5"/><circle cx="430" cy="85" r="5"/><circle cx="430" cy="132" r="5"/><circle cx="430" cy="188" r="5"/></g>
+  <g font-size="12" font-family="-apple-system,Segoe UI,Arial" font-weight="700" fill="#fff" text-anchor="middle">
+    <text x="70" y="110">1</text><text x="245" y="60">2</text><text x="245" y="165">2</text>
+  </g>
+  <g font-size="11.5" font-family="-apple-system,Segoe UI,Arial" fill="#6f6886">
+    <text x="145" y="70" text-anchor="middle">Left</text><text x="145" y="146" text-anchor="middle">Right</text>
+    <text x="332" y="32" text-anchor="middle">a</text><text x="332" y="82" text-anchor="middle">b</text>
+    <text x="332" y="136" text-anchor="middle">c</text><text x="332" y="186" text-anchor="middle">d</text>
+  </g>
+  <g font-size="11" font-family="-apple-system,Segoe UI,Arial" font-weight="700" fill="#2f7fd0">
+    <text x="245" y="35" text-anchor="middle">node A</text><text x="245" y="192" text-anchor="middle">node B</text>
+  </g>
+</svg>
+<div class="cap">Player 1 moves once. Player 2 might move at node A or at node B. He will only ever reach one of them, but his strategy must still say what to do at both.</div>
+</div>
+
+<div class="tryq"><div class="q">How many <b>strategies</b> does player 2 have in this tree? And how many does player 1 have?</div>
+<button class="reveal-btn" onclick="this.nextElementSibling.classList.add('show');this.disabled=true;">Reveal answer</button>
+<div class="reveal"><b>Player 2 has four. Player 1 has two.</b><br><br>Player 2's plan must fill in two blanks (what to do at node A, and what to do at node B) with two options each. That is 2 &times; 2 = <b>four</b> complete plans: (a,&nbsp;c), (a,&nbsp;d), (b,&nbsp;c), (b,&nbsp;d).<br><br>Player 1 has only one place to move, so he has just two strategies: Left or Right.<br><br><b>Why the exam cares.</b> "Player 2 plays b" is not a strategy: it says nothing about node B. If you can say that sentence, you have the definition. Now say the second one: a dominant strategy beats every alternative <i>in every column</i>, not on average, and not usually.</div></div>
+</div>
+
+<!-- ============ P2 ============ -->
+<div class="panel"><h3><span class="p P2" style="margin-right:0">P2</span> Solve one tree, last node first <span class="scorechip">5 min</span></h3>
+
+<p class="p">Same shape, now with payoffs. First number in each ending is player 1's, second is player 2's. Cover the reveal and solve it.</p>
+
+<div class="svg-wrap">
+<svg viewBox="0 0 560 215" role="img" aria-label="A game tree. Player one chooses Left or Right. After Left, player two chooses a, ending six and two, or b, ending four and five. After Right, player two chooses c, ending seven and three, or d, ending two and eight. Player two's choices are b and d, and player one then prefers Left, so the game ends at four and five.">
+  <g stroke="#c8c2dd" stroke-width="2" fill="none">
+    <line x1="60" y1="105" x2="235" y2="55"/><line x1="60" y1="105" x2="235" y2="160"/>
+    <line x1="235" y1="55" x2="415" y2="28"/>
+    <line x1="235" y1="160" x2="415" y2="132"/>
+  </g>
+  <g stroke="#1f9d63" stroke-width="3.2" fill="none">
+    <line x1="60" y1="105" x2="235" y2="55"/>
+    <line x1="235" y1="55" x2="415" y2="85"/>
+  </g>
+  <g stroke="#c8c2dd" stroke-width="2" fill="none">
+    <line x1="235" y1="160" x2="415" y2="188"/>
+  </g>
+  <circle cx="60" cy="105" r="15" fill="#6b4ef0"/>
+  <circle cx="235" cy="55" r="15" fill="#2f7fd0"/><circle cx="235" cy="160" r="15" fill="#2f7fd0"/>
+  <g font-size="12" font-family="-apple-system,Segoe UI,Arial" font-weight="700" fill="#fff" text-anchor="middle">
+    <text x="60" y="110">1</text><text x="235" y="60">2</text><text x="235" y="165">2</text>
+  </g>
+  <g font-size="11.5" font-family="-apple-system,Segoe UI,Arial" fill="#6f6886">
+    <text x="138" y="68" text-anchor="middle">Left</text><text x="138" y="146" text-anchor="middle">Right</text>
+    <text x="322" y="34" text-anchor="middle">a</text><text x="322" y="86" text-anchor="middle">b</text>
+    <text x="322" y="138" text-anchor="middle">c</text><text x="322" y="188" text-anchor="middle">d</text>
+  </g>
+  <g font-size="13" font-family="-apple-system,Segoe UI,Arial" font-weight="700" fill="#211c33">
+    <text x="428" y="33">(6, 2)</text>
+    <text x="428" y="90" fill="#1f9d63">(4, 5)</text>
+    <text x="428" y="137">(7, 3)</text>
+    <text x="428" y="193">(2, 8)</text>
+  </g>
+</svg>
+<div class="cap">The green path is the answer. Check it only after you have found it yourself.</div>
+</div>
+
+<div class="tryq"><div class="q">What does <b>player 1</b> get in the backward-induction equilibrium?</div>
+<button class="reveal-btn" onclick="this.nextElementSibling.classList.add('show');this.disabled=true;">Reveal answer</button>
+<div class="reveal"><b>Player 1 gets 4.</b><br><br><b>Node A first.</b> Player 2 reads only his own number: 2 if he plays a, 5 if he plays b. He plays <b>b</b>, so the Left branch is worth (4, 5).<br><br><b>Node B next.</b> 3 if he plays c, 8 if he plays d. He plays <b>d</b>, so the Right branch is worth (2, 8).<br><br><b>Now the root.</b> Player 1 compares the two branch values, reading only his own number: Left is worth 4, Right is worth 2. He goes <b>Left</b>. Final outcome (4, 5).<br><br><b>Both traps are here.</b> 7 is the biggest number in the tree and player 1 can never reach it, because player 2 would have to hand it over, and he will not. And 6 sits on the branch player 1 actually chooses, which makes it the most tempting wrong answer on the whole page.</div></div>
+</div>
+
+<!-- ============ P3 ============ -->
+<div class="panel"><h3><span class="p P3" style="margin-right:0">P3</span> Name one dilemma, then one best reply <span class="scorechip">5 min</span></h3>
+
+<p class="p">Two farmers draw irrigation water from the same underground well. Each chooses to pump normally or to pump hard. First number is farmer 1's harvest, second is farmer 2's.</p>
+<div class="tscroll">
+<table class="dtable" style="max-width:400px">
+<tr><th></th><th>Farmer 2 pumps normally</th><th>Farmer 2 pumps hard</th></tr>
+<tr><td class="lab">Farmer 1 pumps normally</td><td>9, &nbsp;9</td><td>2, &nbsp;12</td></tr>
+<tr><td class="lab">Farmer 1 pumps hard</td><td>12, &nbsp;2</td><td>5, &nbsp;5</td></tr>
+</table></div>
+
+<div class="rule">The two-part test: <b>each</b> player has a dominant strategy, <b>and</b> the cell they both land on is worse for both than some other cell.</div>
+
+<div class="tryq"><div class="q"><b>(a)</b> Is this a prisoner's dilemma? Show both halves of the test.<br><br><b>(b)</b> Now the same game runs for ten seasons. Your neighbour's rule: pump normally in season 1, and keep pumping normally for as long as you have never once pumped hard. The moment you pump hard, he pumps hard in every remaining season. What is your best reply?</div>
+<button class="reveal-btn" onclick="this.nextElementSibling.classList.add('show');this.disabled=true;">Reveal answer</button>
+<div class="reveal"><b>(a) Yes.</b> <i>Dominance:</i> for farmer 1, pumping hard beats pumping normally in both columns: 12 &gt; 9 and 5 &gt; 2. The grid is symmetric, so the same is true for farmer 2. Both pump hard. <i>The second half:</i> that lands them on (5, 5), and (9, 9) is better for <b>both</b>. Two dominant strategies lead somewhere both players dislike. That is the dilemma, and it is why the well runs dry.<br><br><b>(b) Pump normally in seasons 1&ndash;9, pump hard in season 10.</b><br><br>This neighbour never forgives: one hard season and cooperation is gone for good. So pumping hard early buys you 12 once and costs you the difference between 9 and 5 in every season that follows. Terrible. But the <i>last</i> season is free: there are no seasons left for him to punish you in, so you take the 12 and walk away. Nine seasons at 9 is 81, plus 12 makes <b>93</b>. Never pumping hard at all gives 90. Pumping hard in every season gives just 57. Pumping hard in season 1 and then going back to normal is worst of all at 30, because you have triggered him and get nothing back for it.<br><br><b>Calibrate against this.</b> "Cooperate until the last round" is the right answer <i>here</i>, against an opponent who never forgives. It stops being right the moment the opponent tolerates a slip, because then round 1 is free as well. Always read what the opponent forgives before you choose.</div></div>
+</div>
+
+<!-- ============ P4 ============ -->
+<div class="panel"><h3><span class="p P4" style="margin-right:0">P4</span> Find every pure equilibrium in a 3&times;3 <span class="scorechip">5 min</span></h3>
+<div class="secaudio"><span class="salab">&#127911; Listen to this section</span>
+<!-- SCRIPT Day-13-counting-cells.mp3 | NOA=Heart TOM=Fenrir
+NOA: This is the biggest block of marks on the paper, so it is worth a few minutes.
+TOM: And it is the one where I feel most confident, which is probably the warning sign.
+NOA: It is. The routine is easy and that is exactly why it goes wrong under time pressure. People stop sweeping and start recognising.
+TOM: Recognising meaning, I glance at the grid and a cell just looks like the answer.
+NOA: Right. And then you stop looking. The counting questions are built for that. They hand you a short list of counts to choose between. Miss one cell and you land on the neighbouring option, which feels perfectly reasonable.
+TOM: So the fix is mechanical. Sweep every column for the row player, then every row for the column player, and only then look at what carries both marks.
+NOA: Columns first, and inside a column you read only the row player's number. Straight down, never across. Then turn the page sideways in your head and do the rows for the other player.
+TOM: The sideways bit is where I slip. I keep reading the wrong number of the pair.
+NOA: Then say out loud which player you are working for before each sweep. It sounds silly and it costs you nothing.
+TOM: And when I find a cell with both marks, that is a stable pair, because neither one has a move that improves things while the other stands still.
+NOA: That is the definition, in your own words. Keep those words, they are better than the textbook ones.
+TOM: One more thing. If I find one cell, I should not stop.
+NOA: Never stop. Finish the sweep. The question asks how many, not whether there is one.
+-->
+<audio controls preload="none" src="Day-13-counting-cells.mp3"></audio></div>
+
+<p class="p">First number is player 1's, second is player 2's. Find <i>all</i> the pure equilibria. Do the whole sweep, do not stop at the first one.</p>
+<div class="tscroll">
+<table class="dtable" style="max-width:420px">
+<tr><th></th><th>Left</th><th>Center</th><th>Right</th></tr>
+<tr><td class="lab">Up</td><td>4, &nbsp;3</td><td>6, &nbsp;5</td><td>2, &nbsp;7</td></tr>
+<tr><td class="lab">Middle</td><td>5, &nbsp;3</td><td>3, &nbsp;2</td><td>8, &nbsp;4</td></tr>
+<tr><td class="lab">Down</td><td>7, &nbsp;1</td><td>6, &nbsp;6</td><td>5, &nbsp;5</td></tr>
+</table></div>
+
+<div class="rule">Columns down for player 1, reading only the first number. Rows across for player 2, reading only the second. A cell marked twice is an equilibrium.</div>
+
+<div class="tryq"><div class="q">How many pure Nash equilibria does this game have? And what is the highest payoff player 1 can get in one of them?</div>
+<button class="reveal-btn" onclick="this.nextElementSibling.classList.add('show');this.disabled=true;">Reveal answer</button>
+<div class="reveal"><b>Two equilibria. Player 1's best is 8.</b><br><br><b>Player 1, column by column</b> (first numbers only): Left is 4, 5, 7 &rarr; <i>Down</i>. Center is 6, 3, 6 &rarr; <i>Up</i>. Right is 2, 8, 5 &rarr; <i>Middle</i>.<br><br>Careful in Center: 6 appears twice, at Up and at Down. Both are best replies, so both get a mark.<br><br><b>Player 2, row by row</b> (second numbers only): Up is 3, 5, 7 &rarr; <i>Right</i>. Middle is 3, 2, 4 &rarr; <i>Right</i>. Down is 1, 6, 5 &rarr; <i>Center</i>.<br><br><b>Cells with both marks:</b> (Middle, Right) = (8, 4) and (Down, Center) = (6, 6). That is <b>two</b>, and player 1's highest equilibrium payoff is <b>8</b>.<br><br>Notice that player 1's better equilibrium is player 2's worse one. Nothing says the two of you agree about which equilibrium is the good one.</div></div>
+</div>
+
+<!-- ============ P5 ============ -->
+<div class="panel"><h3><span class="p P5" style="margin-right:0">P5</span> One mixed equilibrium, start to finish <span class="scorechip">5 min</span></h3>
+<div class="secaudio"><span class="salab">&#127911; Listen to this section</span>
+<!-- SCRIPT Day-13-mixing.mp3 | NOA=Heart TOM=Fenrir
+NOA: The other heavy block. And here it is not the idea that costs marks, it is the order of the steps.
+TOM: Because the equation I write feels like it belongs to me, and it does not.
+NOA: Say that again, it is the whole lecture in one line.
+TOM: When I am working out how often I should mix, I set up the equation using my opponent's point of view. I choose my proportions so that his two options come out level.
+NOA: Yes. Your mixture is aimed at him. If it were aimed at you, he would find the side you lean on and sit there.
+TOM: So on the page, the numbers I use for my own equation are the ones running along my own row, but the payoff I am levelling belongs to the other player.
+NOA: In the one number per cell shorthand it is even simpler, because there is only one number and the two of you want opposite things about it. One of you is pushing it up, the other is pulling it down.
+TOM: And before I write anything, I check whether there is a cell that is already stable.
+NOA: Always. Smallest in its row and biggest in its column. If such a cell exists there is nothing to mix and no equation to write, and people burn minutes solving a game that was already finished.
+TOM: Then the last trap is the question itself. It usually asks about a particular ending, not about how often one of us plays something.
+NOA: An ending needs both players to have moved, so you multiply. And often the ending they name is a mismatched one, deliberately. Read that line twice before you touch the calculator.
+-->
+<audio controls preload="none" src="Day-13-mixing.mp3"></audio></div>
+
+<p class="p">Zero-sum shorthand: <b>one number per cell, and it is player 1's payoff</b>. Player 1 wants it high, player 2 wants it low. Do the whole thing: both proportions and the value.</p>
+<div class="tscroll">
+<table class="dtable" style="max-width:340px">
+<tr><th></th><th>Left</th><th>Right</th></tr>
+<tr><td class="lab">Top</td><td>3</td><td>6</td></tr>
+<tr><td class="lab">Bottom</td><td>5</td><td>3</td></tr>
+</table></div>
+<p class="given">Dominance check first: neither row beats the other in both columns (3 &lt; 5 but 6 &gt; 3), and neither column is better for player 2 in both rows. Saddle check: the best player 1 can guarantee himself is 3, the worst player 2 can be held to is 5. Those two do not meet, so no single cell is stable. You must mix.</p>
+
+<div class="tryq"><div class="q">Find how often player 1 plays Top, how often player 2 plays Left, the value of the game, and the probability that the outcome is <b>(Top, Left)</b>.</div>
+<button class="reveal-btn" onclick="this.nextElementSibling.classList.add('show');this.disabled=true;">Reveal answer</button>
+<div class="reveal"><b>Top 40% of the time; Left 60% of the time; value 4.2; P(Top, Left) = 24%.</b><br><br><b>Player 1's mixture</b> (call it <i>p</i> for Top). It must leave player 2 with nothing to choose between, so the two columns must come out level:<br>
+<span class="math">Left: 3p + 5(1−p) = 5 − 2p</span> &nbsp;<span class="math">Right: 6p + 3(1−p) = 3 + 3p</span><br>
+5 &minus; 2p = 3 + 3p &rarr; 5p = 2 &rarr; <b>p = 0.4</b>.<br><br>
+<b>Player 2's mixture</b> (call it <i>q</i> for Left). It must leave player 1 with nothing to choose between, so the two rows must come out level:<br>
+<span class="math">Top: 3q + 6(1−q) = 6 − 3q</span> &nbsp;<span class="math">Bottom: 5q + 3(1−q) = 3 + 2q</span><br>
+6 &minus; 3q = 3 + 2q &rarr; 5q = 3 &rarr; <b>q = 0.6</b>.<br><br>
+<b>Value:</b> put either one back in. 5 &minus; 2(0.4) = <b>4.2</b>. Check it the other way: 6 &minus; 3(0.6) = 4.2. Same number. That agreement is your proof you did not slip.<br><br>
+<b>The outcome cell:</b> both players have to move, so multiply. 0.4 &times; 0.6 = <b>24%</b>. Not 40% and not 60%: those are the two single proportions, and both will be sitting on the option list. And not 16%, which is (Top, Right).</div></div>
+</div>
+
+<!-- ============ P6 ============ -->
+<div class="panel"><h3><span class="p P6" style="margin-right:0">P6</span> Recite the eight devices <span class="scorechip">5 min</span></h3>
+
+<p class="p">Cover the grid. List all eight out loud. Then uncover and see which ones you missed. The missing ones are almost always the last three.</p>
+
+<div class="devgrid">
+<div class="dev"><b>1 &middot; Contracts</b>Bind yourself in writing. Needs a third party to enforce it, and must survive renegotiation. <i>NATO Article 5; the kitchen paid by stages.</i></div>
+<div class="dev"><b>2 &middot; Reputation</b>You play many games. Carrying out a costly threat once buys belief later.</div>
+<div class="dev"><b>3 &middot; Cutting off communication</b>Make yourself unreachable so you cannot be talked out of it. Costs you flexibility.</div>
+<div class="dev"><b>4 &middot; Burning bridges</b>Destroy your own retreat so that fighting is your only option.</div>
+<div class="dev"><b>5 &middot; Leaving the outcome beyond your control</b>Hand the trigger to a machine or a rule. Strong enough to deter, not so strong that an accident is fatal.</div>
+<div class="dev"><b>6 &middot; Moving in small steps</b>Break one big risky promise into many small ones. Works only when there is no obvious final step.</div>
+<div class="dev"><b>7 &middot; Teamwork</b>Peer pressure and collective resolve: the group enforces it on you. <i>Alcoholics Anonymous; the Roman army.</i></div>
+<div class="dev"><b>8 &middot; Mandated negotiating agents</b>Send someone whose hands are publicly tied: a union leader with a restrictive mandate, an agent, a clerk who must follow the rule.</div>
+</div>
+
+<div class="tryq"><div class="q">Name the device in each story. <b>(i)</b> A call-centre agent tells an angry customer that the cancellation fee is set by the system and nobody on the floor is allowed to waive it. <b>(ii)</b> A translator and a new client have never worked together and have signed nothing. The client sends one chapter at a time and pays on delivery, and there is always more of the book to come. <b>(iii)</b> Allied states sign a treaty stating that an armed attack on any one of them shall be treated as an attack on all. <b>(iv)</b> A recovering alcoholic joins a group where every week he must stand up in front of the others and say whether he drank.<br><br>And the bonus: what is <b>salami tactics</b>?</div>
+<button class="reveal-btn" onclick="this.nextElementSibling.classList.add('show');this.disabled=true;">Reveal answer</button>
+<div class="reveal"><b>(i) Mandated negotiating agent.</b> His hands are visibly tied by someone else, so haggling with him is pointless, which is exactly the point. The slides put store clerks and government officials who must follow rules mechanically in this same box.<br><br><b>(ii) Moving in small steps.</b> The three signals are all there: <i>no trust</i> between the two sides, <i>nothing written down</i>, and <i>no clear final step</i>. There is always more of the book. Each delivery is a small bet neither side minds losing.<br><br><b>(iii) Contracts.</b> This is NATO Article 5, and Presentation 6 files it under <b>device 1</b>, not under teamwork. It is a written agreement enforced by a third party, and that is what makes it a contract. The slide lists it as the cold-war use of contracts, alongside the monopolist's beat-the-competition clause.<br><br><b>(iv) Teamwork.</b> Peer pressure and collective resolve: the cost of breaking the commitment is your pride and standing in front of people you face every week. The lecture's other teamwork example is the Roman army, where deserting was a capital offence <i>and</i> failing to kill a deserter was too.<br><br><b>Do not mix (iii) and (iv) up.</b> Teamwork is pressure from inside a group you belong to. A treaty between states is a contract, however military it sounds.<br><br><b>Salami tactics</b> is the mirror image: using small steps to <i>break</i> someone else's commitment. Each slice is too thin to be worth a war, and after enough slices the whole thing is gone. The device and the counter-device are the same trick pointed in opposite directions.</div></div>
+
+<div class="warnbox"><b>The one genuine ambiguity.</b> The professor uses the <i>same</i> kitchen-remodelling story for two different devices: under <b>contracts</b> ("contract with payment linked to progress in work") and again under <b>moving in small steps</b> ("lack of trust between homeowner and contractor, and an incomplete contract"). If a story like that appears, the test is whether an <b>enforceable written agreement</b> exists. Signed and enforced &rarr; contracts. No trust, nothing written, no obvious last step &rarr; small steps.</div>
+</div>
+
+<!-- ============ BEHAVIOURAL NUMBERS ============ -->
+<div class="panel"><h3>&#128202; The behavioural numbers <span class="scorechip">read twice</span></h3>
+<div class="tags"><span class="p P2">P2</span><span class="p P3">P3</span><span class="p P4">P4</span></div>
+<p class="note">These are scattered across three lectures and every past paper picks one or two. There is nothing to work out. The question just wants the number. This is the cheapest panel on the site.</p>
+
+<div class="tscroll">
+<table class="dtable reftab">
+<tr><th style="text-align:left">What is measured</th><th>Number</th><th>From</th></tr>
+<tr><td class="f">Ultimatum game: <b>most common</b> offer</td><td class="num">50%</td><td class="src">P2</td></tr>
+<tr><td class="f">Ultimatum game: <b>median</b> offer</td><td class="num">about 40%</td><td class="src">P2</td></tr>
+<tr><td class="f">Ultimatum: offers below this are often rejected</td><td class="num">20%</td><td class="src">P2</td></tr>
+<tr><td class="f">Ultimatum: offers below this are <i>rare</i> in the first place</td><td class="num">10%</td><td class="src">P2</td></tr>
+<tr><td class="f">Ultimatum: offers when the proposer <i>earned</i> the role by winning a contest</td><td class="num">10% lower</td><td class="src">P2</td></tr>
+<tr><td class="f">Dictator game: median share given to the partner</td><td class="num">about 25%</td><td class="src">P2</td></tr>
+<tr><td class="f">Repeated prisoner's dilemma in the lab: cooperation in <b>round one</b></td><td class="num">about 45%</td><td class="src">P3</td></tr>
+<tr><td class="f">&hellip; and how fast that falls, round by round</td><td class="num">about 2%</td><td class="src">P3</td></tr>
+<tr><td class="f">High-stakes TV dilemma (<i>Golden Balls</i>, split or steal): who splits</td><td class="num">about 50%</td><td class="src">P3</td></tr>
+<tr><td class="f">&hellip; and what a <i>bigger</i> jackpot does to that rate</td><td class="num">falls slightly</td><td class="src">P3</td></tr>
+<tr><td class="f">2/3-average contest: who actually plays the equilibrium</td><td class="num">about 10%</td><td class="src">P4</td></tr>
+<tr><td class="f">2/3-average contest: what the equilibrium <i>is</i></td><td class="num">1</td><td class="src">P4</td></tr>
+</table></div>
+
+<div class="warnbox"><b>The one that catches people.</b> The last two rows are a matched pair of traps. The <i>equilibrium</i> of the 2/3-average contest is 1. What people actually play in the lab sits around 13 to 19. That range is offered as an option, worded to sound like the answer. Theory and experiment are two different questions. Read which one is being asked.</div>
+
+<p class="p">Say each row out loud once, cover the middle column, and go down the list again.</p>
+</div>
+
+<!-- ============ ERROR LOG ============ -->
+<div class="panel"><h3>&#128221; Now your error log <span class="scorechip">last 5 min</span></h3>
+<p class="p">The three-column page you have been filling in since the first mock: <i>question shape</i>, <i>what I did wrong</i>, <i>the rule next time</i>. Read it top to bottom, slowly, once.</p>
+
+<div class="rule">Read it. Fix nothing new. Anything not already on that page is not today's problem.</div>
+
+<p class="p">Read the third column out loud: the rules, not the mistakes. Those are the sentences you want in your head tomorrow afternoon. They are in your own words, which is why they will come back when you need them.</p>
+
+<div class="calm"><b>That is the lap.</b> Every lecture answered when you knocked on it. Whatever came out slowly today, you now know its name. Knowing where the soft spot is on the night before is worth far more than one more hour of grinding. Put the folder down. Sleep is the last thing on the syllabus, and tonight it is the most valuable one.</div>
+</div>
+
+<div class="navrow"><a class="navbtn" href="Day-12.html">&larr; Back</a><a class="navbtn primary" href="Day-14.html">Next &rarr;</a></div>
+</div>
+<!-- GoatCounter analytics -->
+<script data-goatcounter="https://game-theory.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<!-- Activity tracking: audio plays and finishes, quiz and mock completion. Sends counts to GoatCounter only. No personal data. -->
+<script>
+(function(){
+  function ev(path, title){
+    try{
+      if(!window.goatcounter || !window.goatcounter.count) return;
+      window.goatcounter.count({path: path, title: title, event: true});
+    }catch(e){}
+  }
+  var page = (location.pathname.split('/').pop() || 'index.html').replace(/\.html$/,'') || 'index';
+
+  // Audio: one count the first time a strip is played, one when it reaches the end.
+  Array.prototype.forEach.call(document.querySelectorAll('audio'), function(a){
+    var name = (a.getAttribute('src') || 'audio').replace(/\.mp3$/,'');
+    var started = false, finished = false;
+    a.addEventListener('play', function(){
+      if(started) return; started = true;
+      ev('audio-play/' + name, 'Audio started: ' + name);
+    });
+    a.addEventListener('ended', function(){
+      if(finished) return; finished = true;
+      ev('audio-done/' + name, 'Audio finished: ' + name);
+    });
+  });
+
+  // Learn-day quiz: one count when every question has been answered, with the score.
+  var qbody = document.getElementById('quizBody');
+  if(qbody){
+    var chip = document.getElementById('scoreChip');
+    var qsent = false;
+    qbody.addEventListener('click', function(){
+      if(qsent) return;
+      setTimeout(function(){
+        if(qsent) return;
+        var blocks = qbody.querySelectorAll('.qblock');
+        if(!blocks.length) return;
+        var done = 0;
+        Array.prototype.forEach.call(blocks, function(b){ if(b.dataset.done) done++; });
+        if(done !== blocks.length) return;
+        qsent = true;
+        var raw = chip ? chip.textContent.trim() : '';
+        var slug = raw.replace(/\s*\/\s*/, '-of-') || 'unknown';
+        ev('quiz-done/' + page + '/' + slug, 'Quiz finished: ' + page + ' ' + raw);
+      }, 0);
+    });
+  }
+
+  // Mock day: one count when the results panel opens, with the score.
+  var res = document.getElementById('results');
+  if(res && window.MutationObserver){
+    var msent = false;
+    var mo = new MutationObserver(function(){
+      if(msent || !res.classList.contains('show')) return;
+      msent = true; mo.disconnect();
+      var el = document.getElementById('resScore');
+      var raw = el ? el.textContent.trim() : '';
+      var slug = raw.replace(/\s*\/\s*/, '-of-') || 'unknown';
+      ev('mock-done/' + page + '/' + slug, 'Mock submitted: ' + page + ' ' + raw);
+    });
+    mo.observe(res, {attributes: true, attributeFilter: ['class']});
+  }
+})();
+</script>
+</body></html>

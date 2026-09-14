@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Two Arithmetic Questions You Must Not Lose</title>
+<style>
+:root{--bg:#f5f3fb;--card:#fff;--ink:#211c33;--muted:#6f6886;--brand:#6b4ef0;--brand-d:#5238c4;
+--brand-soft:#ece7fd;--good:#1f9d63;--good-soft:#e4f6ec;--bad:#d2453f;--bad-soft:#fae5e4;--line:#e7e3f2;
+--amber:#b6791f;--amber-soft:#fcf3e3;}
+*{box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);margin:0;line-height:1.55;}
+.wrap{max-width:760px;margin:0 auto;padding:26px 22px 60px;}
+.home{display:inline-block;margin:0 0 12px;color:var(--brand);font-weight:700;font-size:13px;text-decoration:none;}
+.crumb{color:var(--brand);font-weight:600;font-size:13px;text-transform:uppercase;letter-spacing:.05em;}
+h1{font-size:28px;margin:8px 0 4px;letter-spacing:-.02em;}
+.lede{color:var(--muted);margin:0 0 14px;font-size:16px;}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px 24px;margin:18px 0;box-shadow:0 1px 3px rgba(40,20,90,.04);}
+.panel h3{margin:0 0 6px;font-size:18px;display:flex;align-items:center;gap:8px;}
+.panel h3 .scorechip{margin-left:auto;}
+.panel .note{color:var(--muted);font-size:14px;margin:0 0 14px;}
+.preq{background:var(--amber-soft);border:1px solid #f0deb8;border-radius:16px;padding:18px 20px;margin:18px 0;}
+.preq .tag{color:var(--amber);font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.06em;}
+.preq p{margin:8px 0 0;font-size:16px;} .preq .do{margin-top:10px;font-weight:600;color:var(--amber);}
+audio{width:100%;margin-top:6px;}
+.secaudio{background:var(--brand-soft);border:1px solid #d9d0fb;border-radius:12px;padding:10px 13px;margin:4px 0 14px;}
+.secaudio .salab{display:block;font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--brand-d);margin-bottom:7px;}
+.takeaway{font-size:14.5px;background:#fbfaff;border:1px dashed var(--line);border-radius:11px;padding:13px 16px;margin-top:14px;}
+.takeaway b{color:var(--brand);} .takeaway ul{margin:2px 0 0;padding-left:20px;} .takeaway li{margin:5px 0;}
+.takeaway .tk-gen{margin:10px 0 0;padding-top:10px;border-top:1px dashed var(--line);}
+.sub{font-size:15px;font-weight:800;color:var(--brand-d);margin:20px 0 6px;}
+.p{font-size:15px;margin:0 0 8px;}
+.partlab{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--brand);margin:0 0 6px;}
+.rule{background:var(--brand-soft);border-radius:11px;padding:12px 16px;font-weight:600;color:var(--brand-d);margin:16px 0;}
+.question{background:#f6f4fc;border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:10px;padding:14px 16px;font-size:15.5px;}
+.step{display:flex;gap:14px;padding:12px 0;border-top:1px solid var(--line);} .step:first-of-type{border-top:none;}
+.stepn{flex:0 0 28px;height:28px;border-radius:8px;background:var(--brand);color:#fff;font-weight:700;display:grid;place-items:center;font-size:14px;}
+.stepbody .lab{font-weight:600;}
+.math{font-family:"SF Mono",Menlo,Consolas,monospace;background:#f6f4fc;border:1px solid var(--line);border-radius:8px;padding:8px 12px;margin-top:6px;font-size:14.5px;display:inline-block;}
+.ans{background:var(--good-soft);border:1px solid #bfe6cf;border-radius:11px;padding:12px 16px;margin-top:16px;font-weight:600;color:var(--good);}
+.tryq{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:10px 0;} .tryq .q{font-weight:600;margin-bottom:8px;}
+.reveal-btn{background:var(--brand);color:#fff;border:none;border-radius:9px;padding:8px 14px;font-weight:600;cursor:pointer;font-size:14px;}
+.reveal{display:none;margin-top:10px;padding:11px 14px;border-radius:9px;background:#faf9fe;border:1px dashed var(--line);font-size:14px;} .reveal.show{display:block;}
+.dtable{width:100%;border-collapse:collapse;font-size:13.5px;margin:10px 0;}
+.dtable th,.dtable td{border:1px solid var(--line);padding:8px 8px;text-align:center;}
+.dtable th{background:var(--brand-soft);color:var(--brand-d);font-weight:700;} .dtable td.lab{text-align:left;font-weight:600;background:var(--brand-soft);color:var(--brand-d);}
+.dtable td.hlcell{background:var(--good-soft);font-weight:700;color:var(--good);}
+.dtable td.dim{color:var(--muted);}
+.datalab{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--brand-d);margin:20px 0 8px;}
+.given{color:var(--muted);font-size:13px;margin:2px 0 4px;}
+.svg-wrap{background:#fff;border:1px solid var(--line);border-radius:13px;padding:14px;margin:14px 0;text-align:center;}
+.svg-wrap svg{width:100%;height:auto;max-width:560px;}
+.cap{color:var(--muted);font-size:13px;margin-top:8px;}
+.qblock{padding:16px 0;border-top:1px solid var(--line);} .qblock:first-of-type{border-top:none;padding-top:4px;}
+.qnum{color:var(--brand);font-weight:700;font-size:12px;letter-spacing:.04em;text-transform:uppercase;}
+.examtag{display:inline-block;background:var(--good-soft);color:var(--good);border:1px solid #bfe6cf;border-radius:999px;padding:2px 9px;font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;margin-left:8px;vertical-align:middle;}
+.qtext{font-weight:600;margin:6px 0 12px;font-size:16px;}
+.qtext .dtable{font-weight:400;max-width:360px;}
+.opt{display:block;width:100%;text-align:left;background:#fff;border:1.5px solid var(--line);border-radius:11px;padding:11px 14px;margin:7px 0;font-size:15px;cursor:pointer;transition:.14s;color:var(--ink);}
+.opt:hover{border-color:var(--brand);background:var(--brand-soft);}
+.opt.correct{border-color:var(--good);background:var(--good-soft);} .opt.wrong{border-color:var(--bad);background:var(--bad-soft);}
+.opt .mark{float:right;font-weight:700;}
+.exp{margin-top:11px;padding:13px 15px;border-radius:11px;background:#faf9fe;border:1px dashed var(--line);font-size:14px;display:none;} .exp.show{display:block;} .exp b{color:var(--brand);}
+.scorechip{font-size:13px;color:var(--muted);font-weight:600;}
+.navrow{display:flex;justify-content:space-between;margin-top:22px;gap:10px;}
+.navbtn{text-decoration:none;font-weight:600;font-size:14px;padding:10px 16px;border-radius:11px;border:1px solid var(--line);color:var(--ink);background:#fff;}
+.navbtn.primary{background:var(--brand);color:#fff;border-color:var(--brand);}
+.tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.warnbox{background:var(--amber-soft);border:1px solid #f0deb8;border-radius:11px;padding:12px 16px;margin:14px 0;font-size:14.5px;}
+.warnbox b{color:var(--amber);}
+/* ---- presentation chips (from index.html) ---- */
+:root{--p1:#7c5cbf;--p2:#2f7fd0;--p3:#1d8a6a;--p4:#c2820b;--p5:#c04a7e;--p6:#4a6fa5;}
+span.p{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.04em;padding:2px 7px;border-radius:5px;color:#fff;margin-right:3px;white-space:nowrap;}
+.P1{background:var(--p1)}.P2{background:var(--p2)}.P3{background:var(--p3)}
+.P4{background:var(--p4)}.P5{background:var(--p5)}.P6{background:var(--p6)}
+.tags{margin:0 0 12px;}
+.panel .tags{margin:-2px 0 12px;}
+/* ---- margin labels on a payoff grid ---- */
+.dtable td.mrg,.dtable th.mrg{background:#fbfaff;color:var(--muted);font-weight:600;font-size:12.5px;border-color:var(--line);}
+.dtable .mix{display:block;font-weight:400;font-size:11.5px;color:var(--muted);font-style:italic;}
+.dtable td.ask{background:var(--amber-soft);font-weight:700;color:var(--amber);}
+.dtable td.zero{color:var(--muted);}
+@media print{
+  body{background:#fff;} .panel{box-shadow:none;border-color:#ccc;}
+  audio,.secaudio,.timer,.navrow,.home{display:none!important;}
+  .reveal,.exp{display:block!important;} .preq{border-color:#ccc;}
+  .qblock{break-inside:avoid;} .panel{break-inside:avoid;}
+}
+</style>
+</head><body><div class="wrap">
+<a class="home" href="index.html">&larr; All 14 days</a>
+<div class="crumb">Day 11 of 14 &middot; Learn</div>
+<h1>The two arithmetic questions you must not lose</h1>
+<div class="tags"><span class="p P5">P5</span><span class="p P1">P1</span><span class="p P4">P4</span></div>
+<p class="lede">Yesterday's mock was full of mixing. Today you do not learn the method again. You drill it, and you hunt the traps. Two questions sit on one grid, on every paper. They are worth 14 points, and they both rest on a single equation.</p>
+
+<div class="preq"><span class="tag">&#9208; Guess first</span>
+<p>In a mixed equilibrium, player 1 plays <b>Top</b> two times out of three. Player 2 plays <b>Left</b> two times out of three.<br><br>Quick, without a calculator: how often do the two of them land on the cell <b>(Top, Right)</b>? Is it about two out of three? One out of three? Or something smaller than both?</p>
+<p class="do">Take 20 seconds. Commit to an answer before you read on.</p></div>
+
+<div class="panel"><h3>&#127911; The two questions that travel together <span class="scorechip">~1 min</span></h3>
+<p class="note">Thirty minutes, two halves, no new theory. Each section below has its own short audio.</p>
+<!-- SCRIPT Day-11-intro.mp3 | NOA=Heart TOM=Fenrir
+NOA: Yesterday was a long mock. Today is short, and today is not teaching. Today is drilling. You already know how to make an opponent indifferent, so we are not building that again. We are protecting it.
+TOM: Protecting it from what?
+NOA: From a pair of questions that every single paper carries, usually late on. They sit on the same little grid, one after the other. The first one asks how likely one particular outcome is. The second asks what player one earns on average.
+TOM: Same grid, same mixture, two answers. So they are welded together.
+NOA: Welded. And that is the danger. One slip in the indifference equation and you do not lose one question, you lose the pair.
+TOM: Which is the largest single lump of marks on the whole paper sitting on one piece of arithmetic.
+NOA: It is. So we hunt the traps instead of re-learning the method. Then, in the second half, the guessing contest. Everybody meets that one. Everybody thinks it is easy.
+TOM: And the wrong answer is waiting on the option list, being polite.
+NOA: Being very polite. Because it is the number you get when you stop one step early. Two halves today. Slow hands, careful eyes.
+-->
+<audio controls preload="none" src="Day-11-intro.mp3"></audio>
+<div class="takeaway"><ul>
+<li><b>The pair</b>: every paper carries two questions on the <i>same</i> zero-sum grid, usually late on. First the probability of one outcome, then player 1's expected payoff. One bad equation loses both.</li>
+<li><b>A cell is a product</b>: the probability of an outcome is a row chance <i>times</i> a column chance. Matching cell: p&nbsp;&times;&nbsp;q. Mismatched cell: p&nbsp;&times;&nbsp;(1&minus;q).</li>
+<li><b>The shape trap</b>: most past grids have zeros on the main diagonal, and then the two mixtures come out equal. Two past grids do not, and there the equality is false.</li>
+<li><b>Average first</b>: in the 2/3-average contest, combine the whole crowd into one average, <i>then</i> take two-thirds. Once, at the end.</li>
+<li><b>Equilibrium is not experiment</b>: the equilibrium of the contest is 1. The 13–19 you see in labs is what people do, not what the theory says.</li>
+</ul>
+<p class="tk-gen">One line to hold onto: <b>both halves fail the same way. You stop one step too early, and that half-finished number is on the option list.</b></p></div></div>
+
+<!-- ============ SECTION 1 ============ -->
+<div class="panel"><h3>One grid, two questions, and a cell is a product</h3>
+<div class="tags"><span class="p P5">P5</span></div>
+<!-- SCRIPT Day-11-cell-is-a-product.mp3 | NOA=Heart TOM=Fenrir
+NOA: Look at the grid on the page. There are letters written down the side and along the top. Those are the two mixtures. Down the side is how often player one picks each row. Along the top is how often player two picks each column.
+TOM: And those are the numbers I actually solve for.
+NOA: Those are the two numbers you solve for, and once you have them the hard part is over. But the question does not ask for either of them. It asks for a cell.
+TOM: A cell. So a row and a column at the same time.
+NOA: Both at the same time. The two players choose separately, they cannot see each other, so the chance of landing in one particular square is the row chance times the column chance. Look at the coloured square underneath the grid. The whole square is everything that can happen. One vertical cut, one horizontal cut, four rectangles.
+TOM: And the area of a rectangle is how likely that outcome is. That I can see rather than remember.
+NOA: That is exactly why it is drawn. Now here is where marks disappear. Sometimes the cell they ask about is a matching one, the top row with the left column. Sometimes it is a crossed one, the top row with the right column.
+TOM: And the crossed one needs the leftover part of the top edge, not the part I just calculated.
+NOA: The leftover part. Say the profile out loud before you multiply. Row name, column name, and only then reach for your calculator.
+TOM: And the little instruction in brackets at the end of the stem?
+NOA: Read it. It changes from paper to paper and it changes from the first question to the second question on the same grid. Sometimes whole percentage points, sometimes two places after the point, sometimes one place, and on a couple of the papers there is no instruction at all.
+TOM: It says round up on some of them, which sounds like always climb to the next number.
+NOA: It sounds like that, but the published answers do not do that. They round the ordinary way, up or down to whichever is nearer. Trust the options. They are spread far enough apart that the nearest one is obvious once your arithmetic is right.
+-->
+<div class="secaudio"><span class="salab">&#127911; Listen to this section</span><audio controls preload="none" src="Day-11-cell-is-a-product.mp3"></audio></div>
+
+<p class="p">Every past paper does the same thing, usually near the end. One small zero-sum grid, then two questions about it, back to back. The first: <i>what is the probability that the outcome is (this row, that column)?</i> The second: <i>what is player 1's expected payoff?</i></p>
+
+<p class="p">You solve the grid once. Two indifference equations give you two numbers: how often player 1 plays the top row, and how often player 2 plays the left column. That is the whole calculation. If it is right, both answers fall out. If it is wrong, both answers fall over. This is why 14 points sit on one piece of arithmetic. It is the biggest risk on the paper sitting in one place.</p>
+
+<p class="p">Now the part that costs marks. You have found "player 1 plays Top 80% of the time". It is very tempting to look at the options, see 80%, and take it. But the question did not ask about a <i>row</i>. It asked about a <i>cell</i>: a row <b>and</b> a column at the same time. The two players choose separately, so you multiply.</p>
+
+<div class="rule">A row probability is not an outcome probability. <b>P(row, column) = P(row) &times; P(column).</b> Matching cell &rarr; p &times; q. Mismatched cell &rarr; p &times; (1&minus;q).</div>
+
+<p class="partlab">The grid, with the mixtures written on the margins</p>
+<p class="p">There is one number per cell, and that number is player 1's payoff. Player 1 picks the row and wants it high. Player 2 picks the column and wants it low. Write the mixtures in the margins <i>before</i> you start, the way the professor does in his own solutions:</p>
+<div class="tscroll">
+<table class="dtable" style="max-width:430px">
+<tr><th class="mrg"></th><th>Left<span class="mix">played with prob. q</span></th><th>Right<span class="mix">played with prob. 1&minus;q</span></th></tr>
+<tr><td class="lab">Top<span class="mix">prob. p</span></td><td>5</td><td class="zero">0</td></tr>
+<tr><td class="lab">Down<span class="mix">prob. 1&minus;p</span></td><td class="zero">0</td><td>20</td></tr>
+</table></div>
+<p class="given">p and 1&minus;p are player 1's mixture. q and 1&minus;q are player 2's mixture. There are only ever these two unknowns in a 2&times;2.</p>
+
+<div class="svg-wrap">
+<svg viewBox="0 0 560 300" role="img" aria-label="A square divided into four rectangles by one vertical cut and one horizontal cut. The vertical cut is far to the right, the horizontal cut is low down. The big top-left rectangle is the matching outcome Top-Left; the tall narrow rectangle to its right is the mismatched outcome Top-Right; the wide short rectangle below is Down-Left; the small corner rectangle is Down-Right. The area of each rectangle is how likely that outcome is.">
+  <!-- column header labels -->
+  <text x="256" y="30" text-anchor="middle" font-size="12" font-weight="700" fill="#5238c4" font-family="-apple-system,Segoe UI,Arial">Left &#160;(q = 0.8)</text>
+  <text x="436" y="30" text-anchor="middle" font-size="12" font-weight="700" fill="#5238c4" font-family="-apple-system,Segoe UI,Arial">Right</text>
+  <text x="436" y="44" text-anchor="middle" font-size="11" fill="#6f6886" font-family="-apple-system,Segoe UI,Arial">(1&#8722;q = 0.2)</text>
+  <!-- top edge bracket -->
+  <line x1="112" y1="52" x2="398" y2="52" stroke="#6b4ef0" stroke-width="1.4"/>
+  <line x1="402" y1="52" x2="470" y2="52" stroke="#b6791f" stroke-width="1.4"/>
+  <!-- four rectangles -->
+  <rect x="112" y="60" width="286" height="168" fill="#ece7fd" stroke="#b9a9f7"/>
+  <rect x="398" y="60" width="72"  height="168" fill="#fcf3e3" stroke="#e2c489"/>
+  <rect x="112" y="228" width="286" height="42" fill="#f4f2fb" stroke="#d6cff0"/>
+  <rect x="398" y="228" width="72"  height="42" fill="#faf9fe" stroke="#d6cff0"/>
+  <!-- rectangle labels -->
+  <g font-family="-apple-system,Segoe UI,Arial" text-anchor="middle">
+    <text x="255" y="138" font-size="13.5" font-weight="700" fill="#5238c4">(Top, Left)</text>
+    <text x="255" y="158" font-size="12.5" fill="#5238c4">p &#215; q = 0.8 &#215; 0.8 = 0.64</text>
+    <text x="255" y="176" font-size="11.5" fill="#6f6886">64%</text>
+    <text x="434" y="140" font-size="12" font-weight="700" fill="#b6791f">(Top, Right)</text>
+    <text x="434" y="158" font-size="11" fill="#b6791f">p &#215; (1&#8722;q)</text>
+    <text x="434" y="174" font-size="11" fill="#b6791f">= 0.16 &#8594; 16%</text>
+    <text x="255" y="246" font-size="12" font-weight="700" fill="#5238c4">(Down, Left)</text>
+    <text x="255" y="262" font-size="11" fill="#6f6886">(1&#8722;p) &#215; q = 0.16 &#8594; 16%</text>
+    <text x="434" y="248" font-size="10.5" font-weight="700" fill="#6f6886">(Down, Right)</text>
+    <text x="434" y="262" font-size="10.5" fill="#6f6886">0.04 &#8594; 4%</text>
+  </g>
+  <!-- left edge labels -->
+  <g font-family="-apple-system,Segoe UI,Arial" text-anchor="middle">
+    <text x="70" y="144" font-size="12" font-weight="700" fill="#5238c4" transform="rotate(-90 70,144)">Top &#160;(p = 0.8)</text>
+    <text x="94" y="249" font-size="11" fill="#6f6886" transform="rotate(-90 94,249)">Down (1&#8722;p = 0.2)</text>
+  </g>
+  <line x1="100" y1="60" x2="100" y2="228" stroke="#6b4ef0" stroke-width="1.4"/>
+  <line x1="100" y1="232" x2="100" y2="270" stroke="#6f6886" stroke-width="1.4"/>
+  <text x="291" y="292" text-anchor="middle" font-size="11.5" fill="#6f6886" font-family="-apple-system,Segoe UI,Arial">the whole square = everything that can happen (100%)</text>
+</svg>
+<div class="cap">One vertical cut at q, one horizontal cut at p. The <b>area</b> of a rectangle is the probability of that outcome. Notice how different the big purple rectangle is from the thin amber one beside it, and that both of them start with the same p. Which one the question wants is decided only by the column name in the brackets.</div>
+</div>
+
+<p class="partlab">Trap 1: half the past questions ask for a mismatched cell</p>
+<p class="p">There are six of these probability questions across the past papers, and they split exactly down the middle. Three ask for a <b>matching</b> cell, meaning the same side for both players, so p&nbsp;&times;&nbsp;q: <i>(right, right)</i>, <i>(Top, left)</i>, <i>both players play left</i>. Three ask for a <b>mismatched</b> cell, meaning crossed, so one probability and one leftover: <i>(Left, right)</i>, <i>(Top, Right)</i>, <i>(Down, Left)</i>. Nothing in the question warns you which kind you are looking at. At exam speed the two look the same.</p>
+
+<div class="rule">Before you multiply, say the profile out loud: <i>row name, column name.</i> Then ask "same side or crossed?" That one second is worth 7 points.</div>
+
+<p class="partlab">Trap 2: the rounding line changes every year</p>
+<p class="p">The instruction in brackets is never the same twice. It is often different for the two questions on the <i>same</i> grid:</p>
+<div class="tscroll">
+<table class="dtable">
+<tr><th>Paper</th><th>Probability question</th><th>Expected-payoff question</th></tr>
+<tr><td class="lab">2024 A</td><td>round up to the closest percentage point</td><td>round up to two digits after the decimal point</td></tr>
+<tr><td class="lab">2024 B</td><td>round up to the closest percentage point</td><td>round up to two digits after the decimal point</td></tr>
+<tr><td class="lab">2025 A</td><td>rounded to the nearest percentage point</td><td>rounded to one decimal place</td></tr>
+<tr><td class="lab">2025 B</td><td>rounded to the nearest percentage point</td><td>rounded to one decimal place</td></tr>
+<tr><td class="lab">2025 C</td><td>rounded to the nearest percentage point</td><td class="dim">no instruction at all</td></tr>
+<tr><td class="lab">Practice</td><td>round up to the closest percentage point</td><td class="dim">no instruction at all</td></tr>
+</table></div>
+<div class="cap">The wording above is what the exam sheets themselves print. The 2025 A <i>detailed-solution</i> document writes the same two questions as "rounded up to the closest percentage point" and "rounded to one digit after the point". The solution write-ups are not always word for word, so trust the exam paper in front of you.</div>
+
+<div class="warnbox"><b>"Round up" does not mean round up.</b> Take it word for word and 11.11% becomes 12%, and 1.333 becomes 1.34. But the published answers on those exact questions are <b>11%</b> and <b>1.33</b>. So it means ordinary rounding, to whichever is nearer. Do not let the wording talk you out of a correct number. The five options are always far apart, so once your arithmetic is right the nearest option is obvious.</div>
+
+<p class="partlab">Worked example</p>
+<div class="question">Use the grid above (one number per cell = player 1's payoff; Top/Down are player 1's actions, Left/Right are player 2's):<br><br>
+<b>(a)</b> What is the probability that the outcome is <b>(Top, Right)</b> in the mixed equilibrium? (Rounded to the nearest percentage point.)<br>
+<b>(b)</b> What is player 1's expected payoff in the Nash equilibrium?</div>
+
+<div class="step"><div class="stepn">1</div><div class="stepbody"><div class="lab">Check there is no pure equilibrium first.</div>
+No cell here is both the smallest in its row and the largest in its column, so nobody can just sit still. Mixing is genuinely required.</div></div>
+
+<div class="step"><div class="stepn">2</div><div class="stepbody"><div class="lab">Find q, the mixture that makes <i>player 1</i> indifferent.</div>
+Player 1's payoff from Top is 5q + 0(1&minus;q). From Down it is 0q + 20(1&minus;q). Set them equal.
+<br><span class="math">5q = 20(1 − q) &nbsp;→&nbsp; 25q = 20 &nbsp;→&nbsp; q = 0.8</span></div></div>
+
+<div class="step"><div class="stepn">3</div><div class="stepbody"><div class="lab">Find p, the mixture that makes <i>player 2</i> indifferent.</div>
+Player 2 is the one who wants that payoff low, so she is indifferent when player 1's payoff is the same in both columns. Left column: 5p + 0(1&minus;p). Right column: 0p + 20(1&minus;p).
+<br><span class="math">5p = 20(1 − p) &nbsp;→&nbsp; p = 0.8</span></div></div>
+
+<div class="step"><div class="stepn">4</div><div class="stepbody"><div class="lab">(a) Read the cell name, then multiply.</div>
+The cell is <b>(Top, Right)</b>, so it is crossed. Top has probability p. Right has probability 1&minus;q.
+<br><span class="math">0.8 × (1 − 0.8) = 0.8 × 0.2 = 0.16 → 16%</span></div></div>
+
+<div class="step"><div class="stepn">5</div><div class="stepbody"><div class="lab">(b) Put q back into either row to get the value.</div>
+<span class="math">Top: 5 × 0.8 = 4</span> &nbsp; <span class="math">Down: 20 × 0.2 = 4</span>
+<br>They agree. That agreement <i>is</i> the check that your equation was right.</div></div>
+
+<div class="ans">&#10003; (a) <b>16%</b> &nbsp;&middot;&nbsp; (b) player 1's expected payoff, which is the value of the game, is <b>4</b>.<br>Note what would have gone wrong. 64% (the matching cell), 80% (the row alone) and 20% (the column alone) are all natural half-answers, and option lists on real papers do contain exactly these.</div>
+
+<div class="tryq"><div class="q">A different zero-sum game (one number per cell = player 1's payoff):<br>
+<div class="tscroll"><table class="dtable" style="max-width:330px;margin:10px 0"><tr><th></th><th>Left</th><th>Right</th></tr>
+<tr><td class="lab">Top</td><td>12</td><td>0</td></tr>
+<tr><td class="lab">Down</td><td>0</td><td>4</td></tr></table></div>
+<b>(a)</b> What is the probability of the outcome <b>(Top, Right)</b>, rounded to the closest percentage point? <b>(b)</b> What is player 1's expected payoff?</div>
+<button class="reveal-btn" onclick="this.nextElementSibling.classList.add('show');this.disabled=true;">Reveal answer</button>
+<div class="reveal"><b>(a) 19% &nbsp;·&nbsp; (b) 3.</b><br><br>Player 1 indifferent: 12q = 4(1&minus;q) → 16q = 4 → <b>q = 0.25</b>. Player 2 indifferent: 12p = 4(1&minus;p) → <b>p = 0.25</b>.<br><br>(Top, Right) is crossed, so p × (1&minus;q) = 0.25 × 0.75 = 0.1875 → <b>19%</b>. Value: 12 × 0.25 = 3, and from the other row 4 × 0.75 = 3. ✓<br><br><b>Watch the direction.</b> The big number is top-left, and yet Top is played only a quarter of the time. That feels backwards until you remember <i>why</i> you mix. The mixture is chosen to control your <i>opponent</i>, not to chase your own big payoff.</div></div>
+</div>
+
+<!-- ============ SECTION 2 ============ -->
+<div class="panel"><h3>Where the memorised shortcut breaks</h3>
+<div class="tags"><span class="p P5">P5</span></div>
+<!-- SCRIPT Day-11-shortcut-breaks.mp3 | NOA=Heart TOM=Fenrir
+NOA: Most of the past grids look the same. Two numbers on the main diagonal, zeros on the other two corners. Practise on those long enough and your hand starts writing the answer before your brain reads the grid.
+TOM: Because in that shape both players end up mixing in the same proportions.
+NOA: In the same proportions, yes. Which feels like a law, and it is not a law. It is a coincidence of that shape.
+TOM: So somewhere there is a grid that punishes me for trusting it.
+NOA: There are two, and they are both on past papers. Look at the grid on the page where the zeros have moved to the other diagonal. Everything else feels familiar, the numbers are still friendly, and the answer is completely different.
+TOM: Different how?
+NOA: The two mixtures are no longer equal. They swap. Player one leans towards one row while player two leans towards the other column, and the amount each of them leans is the other one's amount.
+TOM: So if I write the two mixtures as the same number, I get a cell probability that is wrong.
+NOA: Wrong, and worse than wrong. On the real paper the number you get from the recipe is sitting there as one of the five options. It looks like a reward for knowing the shortcut.
+TOM: That is nasty. And the value of the game?
+NOA: The value survives, which is exactly what makes it dangerous. You check your second answer, it agrees, and you feel safe about a first answer that is already lost.
+TOM: So the only safe move is to write the two indifference equations out.
+NOA: Every time. Two lines of algebra. And look at the last grid on the page, the one with no zeros anywhere. Nothing cancels, nothing is symmetric, and there is no recipe to reach for at all. That one is honest with you. The dangerous grid is the one that looks like the ones you practised.
+-->
+<div class="secaudio"><span class="salab">&#127911; Listen to this section</span><audio controls preload="none" src="Day-11-shortcut-breaks.mp3"></audio></div>
+
+<p class="p">Here is a real pattern in the past papers, and it is a trap dressed as a gift. <b>Five of the seven past zero-sum grids have the same shape:</b> two numbers on the main diagonal, zeros in the other two corners.</p>
+
+<div class="tscroll">
+<table class="dtable" style="max-width:330px">
+<tr><th></th><th>Left</th><th>Right</th></tr>
+<tr><td class="lab">Top</td><td><i>a</i></td><td class="zero">0</td></tr>
+<tr><td class="lab">Down</td><td class="zero">0</td><td><i>b</i></td></tr>
+</table></div>
+<p class="p">Solve that shape once in letters and you get a recipe. Both players play their <i>first</i> action with probability <i>b</i>&nbsp;/&nbsp;(<i>a</i>+<i>b</i>), and the value of the game is <i>ab</i>&nbsp;/&nbsp;(<i>a</i>+<i>b</i>). It works on 2024 A, 2024 B, 2025 A, 2025 B and the practice exam. Five for five. After five, you stop reading the grid.</p>
+
+<p class="p">The most tempting part of the recipe is that <b>p and q come out equal</b>. That feels like a deep truth about zero-sum games. It is not. It is an accident of that one shape, and two of the seven grids break it.</p>
+
+<div class="rule">Never trust a shape. Write both indifference equations, every time. Two lines of algebra cost you thirty seconds. A wrong shape costs you 14 points.</div>
+
+<p class="partlab">Break 1: the zeros move to the other diagonal</p>
+<p class="p">This is what the 2025 C paper did. The published solution says plainly: <i>player 1 plays top with probability 40% and down with 60%, and player 2 plays left with probability 60% and right with 40%.</i> Read that twice. The two mixtures are <b>not equal</b>. They are swapped.</p>
+
+<div class="tscroll">
+<table class="dtable" style="max-width:430px">
+<tr><th class="mrg"></th><th>Left<span class="mix">prob. q</span></th><th>Right<span class="mix">prob. 1&minus;q</span></th></tr>
+<tr><td class="lab">Top<span class="mix">prob. p</span></td><td class="zero">0</td><td>30</td></tr>
+<tr><td class="lab">Down<span class="mix">prob. 1&minus;p</span></td><td>20</td><td class="zero">0</td></tr>
+</table></div>
+<div class="cap">The 2025 C grid, rebuilt from the numbers its own solution prints. It gives back both published answers exactly, so it is the right game to practise on. Note how friendly it looks: two numbers, two zeros, nothing unusual. Everything about it invites the recipe, and the recipe is wrong here.</div>
+
+<p class="partlab">Worked example</p>
+<div class="question">Using the grid above: what is the probability that the outcome is <b>(Down, Left)</b> in the mixed equilibrium, and what is player 1's expected payoff?</div>
+
+<div class="step"><div class="stepn">1</div><div class="stepbody"><div class="lab">Make player 1 indifferent to get q.</div>
+Top pays 0q + 30(1&minus;q). Down pays 20q + 0(1&minus;q).
+<br><span class="math">30(1 − q) = 20q &nbsp;→&nbsp; 30 = 50q &nbsp;→&nbsp; q = 0.6</span></div></div>
+
+<div class="step"><div class="stepn">2</div><div class="stepbody"><div class="lab">Make player 2 indifferent to get p.</div>
+Left column pays 0p + 20(1&minus;p). Right column pays 30p + 0(1&minus;p).
+<br><span class="math">20(1 − p) = 30p &nbsp;→&nbsp; 20 = 50p &nbsp;→&nbsp; p = 0.4</span></div></div>
+
+<div class="step"><div class="stepn">3</div><div class="stepbody"><div class="lab">Stop and look at what you have.</div>
+<span class="math">p = 0.4 &nbsp;but&nbsp; q = 0.6</span>
+<br>They are <b>different</b>, and they add to one. That is the mark of the anti-diagonal shape, and it is exactly what the published solution says: <i>top 40%, down 60%; left 60%, right 40%</i>. If you had assumed p = q you would already be lost.</div></div>
+
+<div class="step"><div class="stepn">4</div><div class="stepbody"><div class="lab">Multiply for the cell, then compute the value.</div>
+<span class="math">P(Down, Left) = (1 − p) × q = 0.6 × 0.6 = 0.36 → 36%</span>
+<br><span class="math">value: Top row 30 × 0.4 = 12 &nbsp;·&nbsp; Down row 20 × 0.6 = 12</span></div></div>
+
+<div class="ans">&#10003; P(Down, Left) = <b>36%</b>, and player 1's expected payoff is <b>12</b>. Both are the published answers to the 2025 C pair.</div>
+
+<div class="warnbox"><b>Now watch the recipe fail on this exact grid.</b> Feed its two visible numbers into the main-diagonal formula and you get equal mixtures of 40% each. So P(Down, Left) becomes 0.6 &times; 0.4 = <b>24%</b> instead of 36%. And <b>24% is printed on the real paper as option (b)</b>. The wrong method has its own reward waiting for it.<br><br>Worse: the <i>value</i> question that follows survives the same mistake. The value formula treats the two numbers the same way round, so the recipe still returns 12, which is correct. You check your second answer, it agrees, and you walk away confident about a first answer you have already lost.</div>
+
+<p class="partlab">Break 2: no zeros anywhere</p>
+<p class="p">The other break is simpler and more honest: a grid with four non-zero numbers. Nothing cancels, nothing is symmetric, and there is no recipe to reach for. This shape appeared on the practice exam. It is only frightening if you have stopped writing the equations.</p>
+
+<div class="tryq"><div class="q">A zero-sum game (one number per cell = player 1's payoff):<br>
+<div class="tscroll"><table class="dtable" style="max-width:330px;margin:10px 0"><tr><th></th><th>Left</th><th>Right</th></tr>
+<tr><td class="lab">Top</td><td>4</td><td>1</td></tr>
+<tr><td class="lab">Down</td><td>2</td><td>3</td></tr></table></div>
+Find p, q, and player 1's expected payoff.</div>
+<button class="reveal-btn" onclick="this.nextElementSibling.classList.add('show');this.disabled=true;">Reveal answer</button>
+<div class="reveal"><b>p = 0.25, q = 0.5, value = 2.5.</b><br><br>First, no pure equilibrium: Top's smallest number is 1, but 1 is not the largest in the Right column (3 is). Down's smallest is 2, and 2 is not the largest in the Left column (4 is). So mix.<br><br><b>q:</b> Top pays 4q + 1(1&minus;q) = 1 + 3q. Down pays 2q + 3(1&minus;q) = 3 &minus; q. Equal: 1 + 3q = 3 &minus; q → 4q = 2 → <b>q = 0.5</b>.<br><b>p:</b> Left column pays 4p + 2(1&minus;p) = 2 + 2p. Right column pays 1p + 3(1&minus;p) = 3 &minus; 2p. Equal: 2 + 2p = 3 &minus; 2p → 4p = 1 → <b>p = 0.25</b>.<br><b>Value:</b> 2 + 2(0.25) = <b>2.5</b>, and from the other side 1 + 3(0.5) = 2.5. ✓<br><br><b>The recipe?</b> Feeding the main-diagonal numbers 4 and 3 into it gives mixtures of about 0.43 and a value of about 1.71. Not close to anything. Here the shortcut fails so loudly that you would notice. That is exactly why the anti-diagonal case is the dangerous one.</div></div>
+</div>
+
+<!-- ============ SECTION 3 ============ -->
+<div class="panel"><h3>The 2/3-average contest: average first, then take two-thirds</h3>
+<div class="tags"><span class="p P1">P1</span><span class="p P4">P4</span></div>
+<!-- SCRIPT Day-11-average-first.mp3 | NOA=Heart TOM=Fenrir
+NOA: The guessing contest turns up on every paper, and the story around it changes every time. A different crowd, a different range, a different mix of people. The maths underneath never changes.
+TOM: So the story is decoration.
+NOA: The story is decoration, but you still have to read it carefully, because it tells you who is in the room. Look at the line drawn on the page. There is a band of people spread evenly across part of the scale, and there is a cluster of people all standing on one spot.
+TOM: Two very different crowds. So where do I start?
+NOA: You start with the middle of the spread. For an even spread, the middle is just the lowest end and the highest end added together and halved.
+TOM: And that is where I would normally guess halfway along the whole scale, out of habit.
+NOA: Out of habit, and it is usually wrong, because the spread rarely starts at the very bottom or ends at the very top. Read the two ends they gave you, not the two ends of the scale.
+TOM: Right. Now I have the middle of the band, and I have the spot where the cluster is standing. Two groups.
+NOA: Two groups. And now the step everybody skips. Combine them first. Put the whole crowd together and find where the crowd sits on average.
+TOM: Then take two thirds of that.
+NOA: Then take two thirds of that, once, at the end. Look at the two markers under the line. One is the crowd's average. The other is two thirds of it, and it sits noticeably to the left. That second marker is your answer.
+TOM: And if I take two thirds of one group before I combine, I land somewhere in between.
+NOA: You land somewhere in between, and that somewhere is on the option list. Every time. It is not a coincidence, it is designed.
+TOM: One more thing. In the lab, people cluster in a certain low range, and the exam sometimes offers me that range.
+NOA: It offers it, and it is never the answer to an equilibrium question. What people actually do and what the theory predicts are two different questions. If they ask for the equilibrium of the contest, the reasoning strips the top away layer by layer until the only survivor is the smallest number allowed.
+TOM: So the equilibrium is the bottom of the scale, and the lab range is just what humans do.
+NOA: Exactly that. Keep the two apart and you will never lose that mark.
+-->
+<div class="secaudio"><span class="salab">&#127911; Listen to this section</span><audio controls preload="none" src="Day-11-average-first.mp3"></audio></div>
+
+<p class="p">Every single paper has one. Each player picks a whole number between 1 and 100, and whoever is closest to two-thirds of the average wins. The question tells you what everybody <i>else</i> is doing, and asks for your best reply. The crowd is described differently every year. That is the only thing that changes.</p>
+
+<p class="p">There are exactly three things to get right, and each of them is a mark someone loses.</p>
+
+<p class="partlab">Thing 1: the middle of a range is not 50</p>
+<p class="p">If a group picks evenly from a range, the average of that group is simply <b>(smallest + largest) ÷ 2</b>. Read the two ends they actually gave you, not the ends of the scale.</p>
+<div class="tscroll">
+<table class="dtable" style="max-width:360px">
+<tr><th>The range they describe</th><th>Its average</th></tr>
+<tr><td class="lab">1 to 89</td><td>45</td></tr>
+<tr><td class="lab">21 to 99</td><td class="ask">60, not 50</td></tr>
+<tr><td class="lab">1 to 100</td><td>50.5</td></tr>
+</table></div>
+<div class="cap">All three ranges have appeared in a real question. The 21-to-99 one is the sharp case. It does not start at 1 and it does not end at 100, so the habit of writing 50 is punished directly. And this is only <i>step one</i>. The average of one group is never the answer by itself.</div>
+
+<p class="partlab">Thing 2: average the whole crowd first, <i>then</i> multiply</p>
+<p class="p">Most of the recent papers describe a crowd made of <b>two groups</b>: half spread over a range, half doing something else. The order you work in is the whole question.</p>
+
+<div class="rule">Combine every group into one crowd average. <b>Then</b> take two-thirds of it, once, at the very end. Two-thirds of one group is never the answer, and it is always on the option list.</div>
+
+<div class="svg-wrap">
+<svg viewBox="0 0 560 268" role="img" aria-label="A number line from one to one hundred. A wide shaded band covers the part of the scale from eleven to eighty-nine, marked half the crowd spread evenly, with a dot at its middle at fifty. A narrow tall block sits at thirty, marked the other half all on one number. Below the line, a first marker shows the average of the whole crowd at forty, and an arrow points left from it to a second marker at about twenty-seven, labelled your answer. A faint third marker sits between them at about thirty-three, labelled the trap.">
+  <!-- group 1: uniform band 11..89 -->
+  <rect x="106.5" y="40" width="362.4" height="22" rx="5" fill="#ece7fd" stroke="#b9a9f7"/>
+  <text x="287.7" y="55" text-anchor="middle" font-size="11.5" fill="#5238c4" font-weight="600" font-family="-apple-system,Segoe UI,Arial">half the crowd, spread evenly from 11 to 89</text>
+  <circle cx="287.7" cy="51" r="4.5" fill="#6b4ef0"/>
+  <line x1="287.7" y1="62" x2="287.7" y2="140" stroke="#6b4ef0" stroke-width="1.2" stroke-dasharray="4 3"/>
+  <text x="287.7" y="32" text-anchor="middle" font-size="11" fill="#6b4ef0" font-weight="700" font-family="-apple-system,Segoe UI,Arial">its middle = 50</text>
+  <!-- group 2: spike at 30 -->
+  <rect x="188.7" y="82" width="12" height="30" rx="3" fill="#1f9d63"/>
+  <line x1="194.7" y1="112" x2="194.7" y2="140" stroke="#1f9d63" stroke-width="1.2" stroke-dasharray="4 3"/>
+  <text x="182" y="100" text-anchor="end" font-size="11" fill="#1f9d63" font-weight="600" font-family="-apple-system,Segoe UI,Arial">the other half, all on 30</text>
+  <!-- axis -->
+  <line x1="60" y1="140" x2="524" y2="140" stroke="#c8c2dd" stroke-width="1.5"/>
+  <g font-size="10" fill="#6f6886" text-anchor="middle" font-family="-apple-system,Segoe UI,Arial">
+    <line x1="60" y1="140" x2="60" y2="145" stroke="#c8c2dd"/><text x="60" y="157">1</text>
+    <line x1="171.5" y1="140" x2="171.5" y2="145" stroke="#c8c2dd"/><text x="171.5" y="157">25</text>
+    <line x1="287.7" y1="140" x2="287.7" y2="145" stroke="#c8c2dd"/><text x="287.7" y="157">50</text>
+    <line x1="403.8" y1="140" x2="403.8" y2="145" stroke="#c8c2dd"/><text x="403.8" y="157">75</text>
+    <line x1="520" y1="140" x2="520" y2="145" stroke="#c8c2dd"/><text x="520" y="157">100</text>
+  </g>
+  <!-- step 1: crowd average -->
+  <line x1="241.2" y1="140" x2="241.2" y2="184" stroke="#d2453f" stroke-width="1.5"/>
+  <circle cx="241.2" cy="184" r="5" fill="#d2453f"/>
+  <text x="252" y="181" text-anchor="start" font-size="11.5" font-weight="700" fill="#d2453f" font-family="-apple-system,Segoe UI,Arial">step 1: average the whole crowd = 40</text>
+  <text x="252" y="195" text-anchor="start" font-size="10.5" fill="#6f6886" font-family="-apple-system,Segoe UI,Arial">(50 + 30) ÷ 2</text>
+  <!-- step 2: two-thirds -->
+  <line x1="241.2" y1="184" x2="241.2" y2="222" stroke="#d2453f" stroke-width="1.2" stroke-dasharray="3 3"/>
+  <line x1="238" y1="222" x2="186" y2="222" stroke="#1f9d63" stroke-width="2"/>
+  <path d="M179 222 L188 217.5 L188 226.5 Z" fill="#1f9d63"/>
+  <circle cx="179.3" cy="222" r="5" fill="#1f9d63"/>
+  <text x="252" y="219" text-anchor="start" font-size="11.5" font-weight="700" fill="#1f9d63" font-family="-apple-system,Segoe UI,Arial">step 2: take two-thirds = 26.67 → 27</text>
+  <text x="252" y="233" text-anchor="start" font-size="10.5" fill="#6f6886" font-family="-apple-system,Segoe UI,Arial">this is the answer</text>
+  <!-- the trap -->
+  <circle cx="210.2" cy="252" r="4.5" fill="#b6791f"/>
+  <line x1="210.2" y1="140" x2="210.2" y2="248" stroke="#b6791f" stroke-width="1" stroke-dasharray="2 4"/>
+  <text x="222" y="256" text-anchor="start" font-size="10.5" fill="#b6791f" font-weight="600" font-family="-apple-system,Segoe UI,Arial">the trap: two-thirds of 50 alone = 33.33 → 33</text>
+</svg>
+<div class="cap">Two groups, one crowd. Do it in the wrong order, taking two-thirds of the band's middle and ignoring the cluster, and you land on the amber dot, between the crowd average and the right answer. That in-between number is what the examiner puts on the option list.</div>
+</div>
+
+<p class="partlab">Worked example</p>
+<div class="question">You play the 2/3-average competition with 200 other players (each player chooses an integer between 1 and 100; whoever is closest to two-thirds of the average wins). Half of the other players choose uniformly from {11, …, 89}. The remaining half all choose 30.<br><br>What is your best reply?<br><br><i>Options: (a) 20 &nbsp; (b) 27 &nbsp; (c) 30 &nbsp; (d) 33 &nbsp; (e) 40</i></div>
+
+<div class="step"><div class="stepn">1</div><div class="stepbody"><div class="lab">Average of the first group.</div>
+Uniform over 11 to 89.
+<br><span class="math">(11 + 89) ÷ 2 = 50</span></div></div>
+
+<div class="step"><div class="stepn">2</div><div class="stepbody"><div class="lab">Average of the second group.</div>
+Everyone picks the same number, so the group's average is that number: 30.</div></div>
+
+<div class="step"><div class="stepn">3</div><div class="stepbody"><div class="lab">Combine into one crowd average. The halves are equal, so it is a plain average of the two.</div>
+<span class="math">(50 + 30) ÷ 2 = 40</span></div></div>
+
+<div class="step"><div class="stepn">4</div><div class="stepbody"><div class="lab">Only now, take two-thirds.</div>
+<span class="math">(2/3) × 40 = 26.67 → nearest whole number: 27</span></div></div>
+
+<div class="ans">&#10003; <b>27.</b><br>Look at what the other options are. <b>40</b> is the crowd average, so you forgot the last step. <b>33</b> is two-thirds of 50, so you multiplied before you combined. <b>30</b> is one of the groups. <b>20</b> is two-thirds of 30. Every wrong option is a half-finished version of the right answer, which is exactly how these are built.</div>
+
+<p class="partlab">Thing 3: equilibrium is 1, and 13 to 19 is what humans do</p>
+<p class="p">Sometimes the question does not describe a crowd at all. It asks for the <b>Nash equilibrium of the contest</b>. That is a different question, and the answer never changes. Nobody should pick above 67, because two-thirds of any average cannot go above 66.67. With everything above 67 gone, nobody should pick above 45. Then 30, then 20, then 14 … each round strips the top away, and the only survivor is <b>1</b>.</p>
+
+<p class="p">And every time this is asked, one of the options is "typically in the range between 13 and 19". That range is real. It is what people actually pick in laboratories, and only about 10% play the equilibrium. But what people do is not the equilibrium.</p>
+
+<div class="rule">Two different questions, two different answers. <b>"What is the Nash equilibrium?" → 1.</b> &nbsp; <b>"What do people actually choose?" → around 13 to 19.</b></div>
+
+<div class="tryq"><div class="q">Ten players in total play the 2/3-average competition. The nine others play 5, 10, 20, 30, 40, 40, 50, 50 and 89. What is a best reply?<br><br><i>Options: (a) 1 &nbsp; (b) 22 &nbsp; (c) 23 &nbsp; (d) 33</i></div>
+<button class="reveal-btn" onclick="this.nextElementSibling.classList.add('show');this.disabled=true;">Reveal answer</button>
+<div class="reveal"><b>22 and 23 both win. The question has two correct answers.</b><br><br>First, the thing that makes this one different. With only ten players, <i>your own number moves the average</i>. In the big-crowd questions there are hundreds of others, so whatever you pick barely shifts the mean, and you can safely take two-thirds of <i>their</i> average and stop. Here your bid is a tenth of the total, so the target moves as you move. You have to test each option.<br><br>The nine sum to 334. Bid 22 → total 356, average 35.6, target 23.73; your 22 is 1.73 away, and the nearest rival number (20) is 3.73 away. Bid 23 → total 357, average 35.7, target 23.80; your 23 is 0.80 away against 20's 3.80. Both win. Bid 33 → target 24.47, and now 20 is closer than you are, so you lose. Bid 1 → hopeless.<br><br><b>This is a known mistake</b> in the practice exam. The professor wrote the question expecting one answer, and he later agreed that <b>22 and 23 are both best replies</b>. If you meet it, do not hunt for the single right answer. There is not one. Pick either and move on.</div></div>
+
+<div class="tryq"><div class="q">You play with 200 other players. Half of them choose uniformly from {1, …, 60}. The other half all choose 12. What is your best reply?</div>
+<button class="reveal-btn" onclick="this.nextElementSibling.classList.add('show');this.disabled=true;">Reveal answer</button>
+<div class="reveal"><b>14.</b><br><br>First group's average: (1 + 60) ÷ 2 = 30.5. Second group: 12. Crowd average: (30.5 + 12) ÷ 2 = 21.25. Two-thirds of that: 14.17 → <b>14</b>.<br><br>The trap number here is <b>20</b>, which is two-thirds of 30.5, taken before you combined the crowd. And <b>21</b> is the crowd average with the last step forgotten. Same two mistakes, every year.</div></div>
+</div>
+
+<!-- ============ QUIZ ============ -->
+<div class="panel"><h3>&#128221; Quiz yourself <span class="scorechip" id="scoreChip">0 / 6</span></h3>
+<p class="note">Pick an option. The answer and the explanation appear only after you choose. One question carries a tag: it is a real past-final question, word for word, from a paper you never sit as a mock. The other five are new, and their grids were built for this page. So nothing here spoils a later mock, and nothing repeats the worked examples above.</p>
+<div id="quizBody"></div></div>
+
+<div class="navrow"><a class="navbtn" href="Day-10.html">&larr; Back</a><a class="navbtn primary" href="Day-12.html">Next &rarr;</a></div>
+</div>
+<script>
+function mat(rows, cols, cells){
+  var h = '<div class="tscroll"><table class="dtable" style="max-width:330px">';
+  h += '<tr><th></th><th>'+cols[0]+'</th><th>'+cols[1]+'</th></tr>';
+  h += '<tr><td class="lab">'+rows[0]+'</td><td>'+cells[0]+'</td><td>'+cells[1]+'</td></tr>';
+  h += '<tr><td class="lab">'+rows[1]+'</td><td>'+cells[2]+'</td><td>'+cells[3]+'</td></tr>';
+  return h+'</table></div>';
+}
+var MDIAG = mat(["Top","Down"],["Left","Right"],[3,0,0,7]);
+var MANTI = mat(["Top","Down"],["Left","Right"],[0,9,18,0]);
+var MFULL = mat(["Top","Down"],["Left","Right"],[10,2,4,6]);
+
+const QUIZ = [
+{"q":"You play the 2/3-average competition with 200 other players. Each player chooses a whole number between 1 and 100, and the players closest to two-thirds of the average of the numbers win. All 200 of the other players choose their numbers uniformly from {17, &hellip;, 93}. What would be your best reply?",
+ "opts":["25","33","37","50","55"],"correct":2,
+ "exp":"<b>37.</b><br><br><b>The rule.</b> For a group that picks evenly across a range, the group's average is (smallest + largest) &divide; 2. Your best reply is two-thirds of the crowd's average.<br><br><b>The inputs.</b> One group only, spread evenly from 17 to 93. There is nothing to combine here, so the whole question is whether you read the two ends correctly.<br><br><b>1.</b> Add the two ends: 17 + 93 = 110<br><b>2.</b> Halve it: 110 &divide; 2 = 55. That is the crowd's average.<br><b>3.</b> Take two-thirds, once: (2/3) &times; 55 = 36.67<br><b>4.</b> The choices are whole numbers, so round: <b>37</b><br><br><b>Check.</b> If the crowd averages 55, the winning target is 36.67. Your 37 sits 0.33 away from it. The nearest other option, 33, sits 3.67 away. Nothing on the list is closer than 37. &#10003;<br><br><b>Where each wrong option comes from.</b><br>55: the crowd average. You stopped one step early and never took the two-thirds.<br>50: the middle of the whole 1 to 100 scale. The crowd was not spread over the whole scale. Read the two ends the question actually gave you.<br>33: (2/3) &times; 50 = 33.33. That is the last mistake plus the right final step, which makes it the most tempting wrong answer here.<br>25: (2/3) &times; 37 = 24.67. You took two-thirds twice, one level too deep. Best-replying to your own best reply is not what was asked."},
+
+{"src":"2025 A final","q":"Assume that you play with 200 other players the 2/3-average competition (namely, each player chooses an integer number between 1 and 100; the players who chose the number closest to 2/3 of the average of the ten numbers win). What would be your best reply if: (1) half of the players choose their numbers uniformly in the domain {1,&hellip;,100}, and (2) the remaining half choose a number that is the best-reply to a uniform play in the domain {1,&hellip;,100}.",
+ "opts":["25","28","33","35","42"],"correct":1,
+ "exp":"<b>28.</b><br><br><b>The rule.</b> Average the whole crowd first. <i>Then</i> take two-thirds, once, at the very end.<br><br><b>The inputs.</b> Two groups of equal size. Group 1 picks evenly over 1 to 100. Group 2 best-replies to group 1.<br><br><b>1.</b> Group 1's average: (1 + 100) &divide; 2 = 50.5<br><b>2.</b> Group 2 best-replies to that, so each of them plays (2/3) &times; 50.5 = 33.67, which as a whole number is 34<br><b>3.</b> Combine. The two halves are the same size, so the crowd average is a plain average: (50.5 + 34) &divide; 2 = 42.25<br><b>4.</b> Only now take two-thirds: (2/3) &times; 42.25 = 28.17<br><b>5.</b> Round to a whole number: <b>28</b><br><br><b>Check.</b> Count heads instead of groups: (100 &times; 50.5 + 100 &times; 34) &divide; 200 = 8450 &divide; 200 = 42.25. The same crowd average, so the same answer. &#10003;<br><br><b>Where each wrong option comes from.</b><br>42: the crowd average, 42.25. You stopped before the last multiplication.<br>35: roughly group 2's number, 34. You answered with one group's choice instead of your own best reply.<br>33: (2/3) &times; 50.5 = 33.67. You multiplied before you combined, so you best-replied to group 1 only. That just makes you a copy of group 2, and group 2 is not who you are playing against on its own.<br>25: 50.5 &divide; 2 = 25.25. It comes from halving group 1's average because \"half the players\" play uniformly, instead of averaging the two groups.<br><br><b>One oddity in the paper.</b> The stem says \"the average of the ten numbers\" while the question describes 201 players. That is a leftover from another version of the question. It changes nothing: use the crowd the question describes."},
+
+{"q":"In laboratory experiments of the 2/3-average contest, where do most players' choices actually land, and how many of them play the Nash equilibrium?",
+ "opts":["Choices usually land in the 13 to 19 range, and about 10% of players choose the equilibrium","Choices usually land in the 13 to 19 range, and that range is the Nash equilibrium","Most players choose 1, and about 90% of them play the equilibrium","Choices are spread evenly over 1 to 100, so the average is about 50","Most players choose 50, and nobody plays the equilibrium"],"correct":0,
+ "exp":"<b>Choices land around 13 to 19, and only about one player in ten picks the equilibrium.</b><br><br>Most people run one or two rounds of the elimination and then stop. They assume others are naive, best-reply to that assumption, and go no further. The course calls them level-1 and level-2 players. That is why the crowd sits well below 50 but well above 1.<br><br><b>Keep the two questions apart.</b> \"What is the Nash equilibrium?\" has the answer <b>1</b>, every time. \"What do people actually choose?\" has the answer 13 to 19. The exam offers you the wrong one of the pair on purpose.<br><br><b>Why each other option is wrong.</b><br>\"...and that range is the Nash equilibrium\": right numbers, wrong label. The equilibrium is 1, reached by stripping the top away round after round. This is the sharpest distractor on the list, and a version of it sits on a real past paper.<br>\"Most players choose 1, and about 90% play the equilibrium\": the 90% is the true figure turned upside down. It is about 10%, and it has stayed near that in experiment after experiment.<br>\"Choices are spread evenly over 1 to 100\": that describes level-0 players, the few who are not reasoning at all. Most people clearly are reasoning, which is why the crowd sits below the middle of the scale.<br>\"Most players choose 50, and nobody plays the equilibrium\": 50 is roughly what you would pick if you thought everyone else chose at random and then forgot the two-thirds step. And some people do play the equilibrium, about one in ten of them."},
+
+{"q":"A zero-sum game (one number per cell = player 1's payoff; player 1 chooses the row, player 2 chooses the column). What is the probability that the outcome is (Top, Right) in the mixed equilibrium? (Rounded to the nearest percentage point.)"+MDIAG,
+ "opts":["9%","21%","30%","49%","70%"],"correct":1,
+ "exp":"<b>21%.</b><br><br><b>The rule: the indifference condition, used twice, then P(row, column) = P(row) &times; P(column).</b><br><br><b>The inputs.</b> p is the chance of Top, q is the chance of Left. Top pays 3 against Left and 0 against Right. Down pays 0 against Left and 7 against Right.<br><br><b>Find q</b>, the mixture that makes player 1 indifferent:<br><b>1.</b> Top: 3q + 0(1&minus;q) = 3q<br><b>2.</b> Down: 0q + 7(1&minus;q) = 7 &minus; 7q<br><b>3.</b> Equal: 3q = 7 &minus; 7q<br><b>4.</b> Add 7q: 10q = 7<br><b>5.</b> q = 0.7, so Left is played 70% of the time and <b>Right 30%</b><br><br><b>Find p</b>, the mixture that makes player 2 indifferent:<br><b>1.</b> Left column: 3p + 0(1&minus;p) = 3p<br><b>2.</b> Right column: 0p + 7(1&minus;p) = 7 &minus; 7p<br><b>3.</b> Equal: 3p = 7 &minus; 7p<br><b>4.</b> Add 7p: 10p = 7<br><b>5.</b> p = 0.7, so <b>Top is played 70%</b><br><br><b>Multiply.</b> (Top, Right) is a crossed cell: P = p &times; (1 &minus; q) = 0.7 &times; 0.3 = 0.21 = <b>21%</b>.<br><br><b>Check.</b> Value from Top: 3 &times; 0.7 = 2.1. From Down: 7 &times; 0.3 = 2.1. The same, so both mixtures are right. The four cells also add to 1: 0.49 + 0.21 + 0.21 + 0.09 = 1. &#10003;<br><br><b>Where each wrong option comes from.</b><br>70%: p on its own, the row without the column.<br>30%: 1 &minus; q on its own, the column without the row.<br>49%: 0.7 &times; 0.7 = P(Top, Left), the matching cell. This is what you get by multiplying the two numbers you just solved for without re-reading the cell name in the question. On a grid like this one it is the most common way to lose the mark.<br>9%: 0.3 &times; 0.3 = P(Down, Right), the other crossed pair."},
+
+{"q":"A zero-sum game (one number per cell = player 1's payoff). What is the probability that the outcome is (Top, Right) in the mixed equilibrium? (Round up to the closest percentage point.)"+MANTI,
+ "opts":["11%","22%","33%","44%","67%"],"correct":3,
+ "exp":"<b>44%.</b><br><br><b>The rule: the indifference condition, used twice, then P(row, column) = P(row) &times; P(column).</b> Look at the zeros before anything else. They sit on the anti-diagonal, so the two mixtures will <i>not</i> be equal.<br><br><b>The inputs.</b> p is the chance of Top, q is the chance of Left. Top pays 0 against Left and 9 against Right. Down pays 18 against Left and 0 against Right.<br><br><b>Find q</b>, the mixture that makes player 1 indifferent:<br><b>1.</b> Top: 0q + 9(1&minus;q) = 9 &minus; 9q<br><b>2.</b> Down: 18q + 0(1&minus;q) = 18q<br><b>3.</b> Equal: 9 &minus; 9q = 18q<br><b>4.</b> Add 9q: 9 = 27q<br><b>5.</b> q = 1/3, so Left is played a third of the time and <b>Right two thirds</b><br><br><b>Find p</b>, the mixture that makes player 2 indifferent:<br><b>1.</b> Left column: 0p + 18(1&minus;p) = 18 &minus; 18p<br><b>2.</b> Right column: 9p + 0(1&minus;p) = 9p<br><b>3.</b> Equal: 18 &minus; 18p = 9p<br><b>4.</b> Add 18p: 18 = 27p<br><b>5.</b> p = 2/3, so <b>Top is played two thirds of the time</b><br><br><b>Stop and look.</b> p = 2/3 and q = 1/3. They are different, and they add to 1. That is the signature of the anti-diagonal shape.<br><br><b>Multiply.</b> (Top, Right) is crossed: P = p &times; (1 &minus; q) = (2/3) &times; (2/3) = 4/9 = 44.4% &rarr; <b>44%</b>.<br><br><b>Check.</b> Value from Top: 9 &times; (2/3) = 6. From Down: 18 &times; (1/3) = 6. The same. &#10003;<br><br><b>Where each wrong option comes from.</b><br>22%: the \"p equals q\" shortcut. Take the two visible numbers 9 and 18, feed them into the main-diagonal recipe, and you get 18 &divide; 27 = 2/3 for both players. Then (Top, Right) comes out as (2/3) &times; (1/3) = 2/9 = 22%. Five of the seven past grids reward that habit, and this shape punishes it. 22% is also the true P(Top, Left), so it looks familiar twice over.<br>67%: p on its own, the row without the column.<br>33%: q on its own, which is also 1 &minus; p. Either way it is a single mixture, not a cell.<br>11%: 1/9 = P(Down, Left), the other crossed pair.<br><br><b>And the value will not rescue you.</b> The wrong recipe still returns 9 &times; 18 &divide; 27 = 6, which is the correct value of the game. So the second question of the pair comes out right while the first one is already lost. That is why you write both equations instead of trusting a shape.<br><br><b>On the wording.</b> \"Round up to the closest percentage point\" would literally turn 44.4% into 45%. The published answers never do that, and 45% is not even on the list. It means ordinary rounding, to whichever whole number is nearer."},
+
+{"q":"A zero-sum game (one number per cell = player 1's payoff). What is player 1's expected payoff in the Nash equilibrium? (Rounded to one decimal place.)"+MFULL,
+ "opts":["3.6","4","5.2","5.5","6"],"correct":2,
+ "exp":"<b>5.2.</b><br><br><b>The rule: the indifference condition, used twice, then put a mixture back into any row or column to get the value of the game.</b> No zeros anywhere here, so nothing cancels and there is no shape to lean on.<br><br><b>The inputs.</b> p is the chance of Top, q is the chance of Left. Top pays 10 against Left and 2 against Right. Down pays 4 against Left and 6 against Right.<br><br><b>First, is mixing needed?</b> Top's smallest number is 2, and 2 is not the biggest in the Right column (6 is). Down's smallest is 4, and 4 is not the biggest in the Left column (10 is). No saddle point, so mix.<br><br><b>Find q</b>, the mixture that makes player 1 indifferent:<br><b>1.</b> Top: 10q + 2(1&minus;q) = 2 + 8q<br><b>2.</b> Down: 4q + 6(1&minus;q) = 6 &minus; 2q<br><b>3.</b> Equal: 2 + 8q = 6 &minus; 2q<br><b>4.</b> Add 2q: 2 + 10q = 6<br><b>5.</b> Subtract 2: 10q = 4<br><b>6.</b> q = 0.4<br><br><b>Find p</b>, the mixture that makes player 2 indifferent:<br><b>1.</b> Left column: 10p + 4(1&minus;p) = 4 + 6p<br><b>2.</b> Right column: 2p + 6(1&minus;p) = 6 &minus; 4p<br><b>3.</b> Equal: 4 + 6p = 6 &minus; 4p<br><b>4.</b> Add 4p: 4 + 10p = 6<br><b>5.</b> Subtract 4: 10p = 2<br><b>6.</b> p = 0.2<br><br><b>Get the value.</b> Put q = 0.4 into the Top row: 2 + 8(0.4) = 2 + 3.2 = <b>5.2</b>.<br><br><b>Check.</b> Down row: 6 &minus; 2(0.4) = 5.2. Left column with p = 0.2: 4 + 6(0.2) = 5.2. Right column: 6 &minus; 4(0.2) = 5.2. All four agree. Getting the same number twice is your free check and it costs ten seconds. &#10003;<br><br><b>Where each wrong option comes from.</b><br>4: the better of the two row minimums. Top's worst case is 2, Down's worst case is 4, so 4 is what player 1 can guarantee without mixing at all. Mixing is worth 1.2 more than that.<br>6: the better of the two column maximums. Left's worst case for player 2 is 10, Right's is 6, so 6 is what she can hold him to without mixing. The true value always sits between these two numbers, and here it does: 4 &lt; 5.2 &lt; 6.<br>5.5: the plain average of all four payoffs, (10 + 2 + 4 + 6) &divide; 4. The four cells are not equally likely, so this is never the value.<br>3.6: p and q swapped. Using 0.2 as the column mixture gives Top 10(0.2) + 2(0.8) = 3.6. Notice the built-in warning: Down would then give 4(0.2) + 6(0.8) = 5.6, and the two do not agree. When your two rows disagree, your mixture is wrong."}
+];
+function shuffleItem(it){var c=it.opts[it.correct];for(var i=it.opts.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=it.opts[i];it.opts[i]=it.opts[j];it.opts[j]=t;}it.correct=it.opts.indexOf(c);}
+QUIZ.forEach(shuffleItem);
+const body=document.getElementById('quizBody');
+if(body){let score=0;
+QUIZ.forEach((item,qi)=>{
+  const block=document.createElement('div');block.className='qblock';
+  const tag=item.src?`<span class="examtag">${item.src}</span>`:'';
+  block.innerHTML=`<div class="qnum">Question ${qi+1}${tag}</div><div class="qtext">${item.q}</div>`;
+  const exp=document.createElement('div');exp.className='exp';exp.innerHTML=item.exp;
+  item.opts.forEach((opt,oi)=>{
+    const btn=document.createElement('button');btn.className='opt';
+    btn.innerHTML=`${String.fromCharCode(65+oi)}. ${opt}<span class="mark"></span>`;
+    btn.onclick=()=>{ if(block.dataset.done)return; block.dataset.done="1";
+      const btns=block.querySelectorAll('.opt');btns.forEach(x=>x.disabled=true);
+      btns[item.correct].classList.add('correct');btns[item.correct].querySelector('.mark').textContent='✓';
+      if(oi===item.correct){score++;}else{btn.classList.add('wrong');btn.querySelector('.mark').textContent='✗';}
+      document.getElementById('scoreChip').textContent=`${score} / ${QUIZ.length}`; exp.classList.add('show'); };
+    block.appendChild(btn); });
+  block.appendChild(exp);body.appendChild(block); });}
+</script><!-- GoatCounter analytics -->
+<script data-goatcounter="https://game-theory.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<!-- Activity tracking: audio plays and finishes, quiz and mock completion. Sends counts to GoatCounter only. No personal data. -->
+<script>
+(function(){
+  function ev(path, title){
+    try{
+      if(!window.goatcounter || !window.goatcounter.count) return;
+      window.goatcounter.count({path: path, title: title, event: true});
+    }catch(e){}
+  }
+  var page = (location.pathname.split('/').pop() || 'index.html').replace(/\.html$/,'') || 'index';
+
+  // Audio: one count the first time a strip is played, one when it reaches the end.
+  Array.prototype.forEach.call(document.querySelectorAll('audio'), function(a){
+    var name = (a.getAttribute('src') || 'audio').replace(/\.mp3$/,'');
+    var started = false, finished = false;
+    a.addEventListener('play', function(){
+      if(started) return; started = true;
+      ev('audio-play/' + name, 'Audio started: ' + name);
+    });
+    a.addEventListener('ended', function(){
+      if(finished) return; finished = true;
+      ev('audio-done/' + name, 'Audio finished: ' + name);
+    });
+  });
+
+  // Learn-day quiz: one count when every question has been answered, with the score.
+  var qbody = document.getElementById('quizBody');
+  if(qbody){
+    var chip = document.getElementById('scoreChip');
+    var qsent = false;
+    qbody.addEventListener('click', function(){
+      if(qsent) return;
+      setTimeout(function(){
+        if(qsent) return;
+        var blocks = qbody.querySelectorAll('.qblock');
+        if(!blocks.length) return;
+        var done = 0;
+        Array.prototype.forEach.call(blocks, function(b){ if(b.dataset.done) done++; });
+        if(done !== blocks.length) return;
+        qsent = true;
+        var raw = chip ? chip.textContent.trim() : '';
+        var slug = raw.replace(/\s*\/\s*/, '-of-') || 'unknown';
+        ev('quiz-done/' + page + '/' + slug, 'Quiz finished: ' + page + ' ' + raw);
+      }, 0);
+    });
+  }
+
+  // Mock day: one count when the results panel opens, with the score.
+  var res = document.getElementById('results');
+  if(res && window.MutationObserver){
+    var msent = false;
+    var mo = new MutationObserver(function(){
+      if(msent || !res.classList.contains('show')) return;
+      msent = true; mo.disconnect();
+      var el = document.getElementById('resScore');
+      var raw = el ? el.textContent.trim() : '';
+      var slug = raw.replace(/\s*\/\s*/, '-of-') || 'unknown';
+      ev('mock-done/' + page + '/' + slug, 'Mock submitted: ' + page + ' ' + raw);
+    });
+    mo.observe(res, {attributes: true, attributeFilter: ['class']});
+  }
+})();
+</script>
+</body></html>
