@@ -87,7 +87,7 @@ span.p{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.04e
 <div class="crumb">Day 1 of 14 &middot; Learn</div>
 <h1>Exam map + backward induction</h1>
 <div class="tags"><span class="p P1">P1</span><span class="p P2">P2</span></div>
-<p class="lede">What the exam actually is, and then the cheapest marks on it: game trees. Sequential games are about 11% of the paper. Every past paper has at least one.</p>
+<p class="lede">What the exam actually is, and then the cheapest marks on it: game trees. Sequential games, where players move one after another, are about 11% of the paper. Every past paper has at least one.</p>
 
 <div class="preq"><span class="tag">&#9208; Guess first</span>
 <p>A game tree has five endings. The very best ending for <b>player 1</b> pays her <b>9</b>. That is more than any other ending in the tree. To reach it, player 1 moves down, and then player 2 must move up. Player 2 gets <b>1</b> if he moves up, and <b>8</b> if he moves down instead.</p>
@@ -116,7 +116,7 @@ TOM: Worse off from having more freedom. I'll want to see that one.
 <li><b>Game tree</b>: a picture of who moves when. Forks are decisions, branches are actions, the endings carry a payoff for each player.</li>
 <li><b>Backward induction</b>: solve the <i>last</i> decision first, then the one before it, and keep walking left. The professor's phrase: <i>look forward and reason backward</i>.</li>
 <li><b>Strategy</b>: not a move. A complete plan that says what you would do at <i>every</i> point you could ever be asked to choose.</li>
-<li><b>The surprising one</b>: more freedom of action can hurt you. Extra options can make you worse off, because everyone else can see what you will do with them.</li>
+<li><b>The surprising one</b>: more freedom of action can leave you worse off, because everyone else can see what you will do with the extra options.</li>
 <li><b>Named cases to know</b>: Fredo &amp; Charlie, President vs Congress, the 21-flags game, the ultimatum game, the centipede game, the 1984 Orange Bowl.</li>
 </ul>
 <p class="tk-gen">One line to hold onto: <b>a number in the tree is not a number you can get.</b> Only the reachable endings are real.</p></div>
@@ -135,7 +135,7 @@ TOM: Worse off from having more freedom. I'll want to see that one.
 </table></div>
 <div class="cap">14 multiple-choice questions, five options each, 90 minutes. That is 6.4 minutes per question. Closed book, calculator allowed, <b>no formula sheet</b>. 7 points each plus 2 free = 100, and no stated penalty for a wrong answer, so never leave a blank.</div>
 
-<div class="warnbox"><b>Where the tree questions sit.</b> In every past paper the sequential-game questions are around the middle: 2024 A had two of them (Q5 and Q6), 2024 B had two (Q5 and Q6), 2025 A one (Q8), 2025 B one (Q7), 2025 C one (Q7). Expect one or two. They are worth 7 or 14 points and they need no algebra at all.</div>
+<div class="warnbox"><b>Where the tree questions sit.</b> In every past paper the sequential-game questions are around the middle, somewhere between question 5 and question 8. Two papers carried two of them, three papers carried one. Expect one or two. They are worth 7 or 14 points and they need no algebra at all.</div>
 </div>
 
 <!-- ============ SECTION 1 ============ -->
@@ -160,14 +160,14 @@ NOA: Because player one never gets to choose it. Somebody else stands between he
 <div class="panel"><h3>Reading a tree, and solving it from the last node <span class="p P2">P2</span></h3>
 <div class="secaudio"><span class="salab">&#127911; Listen to this section</span><audio controls preload="none" src="Day-01-reading-trees.mp3"></audio></div>
 
-<p class="p">The phrase <b>sequential game with perfect information</b> is really two separate requirements, and you have to check both.</p>
+<p class="p">The phrase <b>sequential game with perfect information</b> is really two separate conditions, and you have to check both.</p>
 <p class="p"><b>One: players move in turn</b>, not at the same moment. <b>Two: when it is your turn you can see everything that has already happened</b>: every past move, and all the payoffs.</p>
 <p class="p">Haggling in a market meets both. I say a price out loud. You hear it, and you answer with your own price. But drop either condition and you have a different kind of game. If we each write our number on paper and show it at the same moment, the first condition fails. If I can see your last move but not the card in your hand, the second one fails. The game is still sequential, but it is no longer <i>perfect information</i>. Keeping these two apart is worth a mark on its own.</p>
 
 <p class="p">These games are drawn as <b>trees</b>. Read them left to right, like time. Each fork is a moment where one named player chooses. Each branch is one action. Each ending on the right carries a pair of numbers: <i>player 1's payoff first, player 2's second</i>.</p>
 
 <p class="partlab">Why you must work backwards: Fredo &amp; Charlie</p>
-<p class="p">Presentation 2 opens with this. A businessman in a country with weak courts (Fredo) asks a foreign investor (Charlie) to put in $100,000 into a business that will return $500,000. Fredo promises to split the profit after a year.</p>
+<p class="p">Presentation 2 opens with this. A businessman in a country with weak courts (Fredo) asks a foreign investor (Charlie) to put $100,000 into a business that will return $500,000. Fredo promises to split the profit after a year.</p>
 <div class="tscroll">
 <table class="dtable">
 <tr><th>What happens</th><th>Charlie</th><th>Fredo</th></tr>
@@ -300,7 +300,7 @@ NOA: Which is why the other player's payoff is always sitting there among the op
 
 <p class="p"><b>Trap 2 is the big one, and it needs a picture.</b> A <b>centipede game</b> is a long chain: at each step the player whose turn it is can <i>stop</i> and take a payoff, or <i>continue</i> and hand the decision on. The pot grows as you go, but whoever stops takes the bigger share. In the classic version, backward induction says stop immediately. That is the famous, sad result.</p>
 
-<div class="rule">A tree that <b>looks</b> like a centipede is not necessarily a centipede. The shape tells you nothing. Only the numbers at the endings decide.</div>
+<div class="rule">A tree that <b>looks</b> like a centipede is not always a centipede. The shape tells you nothing. Only the numbers at the endings decide.</div>
 
 <div class="svg-wrap">
 <svg viewBox="0 0 560 300" role="img" aria-label="Two chains of four decision nodes, drawn one above the other. They are identical except for the payoffs at the very last ending. In the upper chain every player continues and the game reaches the final ending. In the lower chain the first player stops immediately and the rest of the chain never happens.">
@@ -385,11 +385,11 @@ Stop gives him 8. Continue leads to (12, 4), so it gives him 4.
 Stop gives her 4. Continue leads to (2, 8), so it gives her 2.
 <br><span class="math">4 &gt; 2 &nbsp;&rarr;&nbsp; she stops. The game ends before it starts.</span></div></div>
 
-<div class="ans">&#10003; Outcome <b>(4, 0)</b>. Player 1 gets <b>4</b>. She takes 4 and player 2 gets nothing, even though there is an ending worth 14 and 12 at the far right, which both of them would prefer. That is the centipede paradox.<br><br>Now take Version 1, where only that one last number is different. Player 2 continues at the last node (20 beats 16), so player 1 continues at the third (14 beats 12), so player 2 continues at the second (20 beats 8), so player 1 continues at the first (14 beats 4). The game runs to the end at <b>(14, 20)</b>, and player 1 gets <b>14</b>. One number changed, and 4 became 14.</div>
+<div class="ans">&#10003; Outcome <b>(4, 0)</b>. Player 1 gets <b>4</b>. She takes 4 and player 2 gets nothing. Both of them would prefer the ending worth 14 and 12 at the far right. That is the centipede paradox.<br><br>Now take Version 1, where only that one last number is different. Player 2 continues at the last node (20 beats 16), so player 1 continues at the third (14 beats 12), so player 2 continues at the second (20 beats 8), so player 1 continues at the first (14 beats 4). The game runs to the end at <b>(14, 20)</b>, and player 1 gets <b>14</b>. One number changed, and 4 became 14.</div>
 
-<div class="warnbox"><b>This really happened, twice, in one year.</b> In <b>2024 A question 6</b> the solution says it clearly: <i>"Although the game looks superficially like a centipede game, it is not. P2 is better off continuing in the last node, which induces both players to continue in all previous nodes."</i> The answer there was the <i>largest</i> option, 21, out of 21 / 1 / 10 / 9 / 0. In <b>2024 B question 6</b>, a real centipede, the answer was the <i>smallest</i> option, 11, out of 11 / 17 / 24 / 29 / none of the other answers. Same visual shape, opposite direction. You cannot guess from the option sizes either.</div>
+<div class="warnbox"><b>This really happened in the course's past papers.</b> One paper has a tree of this shape, and its solution says it clearly: <i>"Although the game looks superficially like a centipede game, it is not. P2 is better off continuing in the last node, which induces both players to continue in all previous nodes."</i> There the right answer was the <i>largest</i> number on the option list. In <b>2024 B question 6</b>, a real centipede, the answer was the <i>smallest</i> option, 11, out of 11 / 17 / 24 / 29 / none of the other answers. Same visual shape, opposite direction. You cannot guess from the option sizes either.</div>
 
-<p class="p"><b>Trap 3: check which player is asked.</b> This is the smallest trap and the most expensive one. You can solve the whole tree correctly and still hand in the wrong half of the pair. It changes between papers. 2024 A asked for <i>player 1 (=I)</i> in a three-player tree. 2025 C asked for <i>player 2 (=II)</i> in the same three-player format. 2025 B called the players <i>A</i> and <i>B</i>. 2024 B called player 1 "the red player" and put his payoffs on top in red. The other player's payoff is always sitting in the option list, waiting for you. Solve first, then read the question again before you pick.</p>
+<p class="p"><b>Trap 3: check which player is asked.</b> This is the smallest trap and the most expensive one. You can solve the whole tree correctly and still hand in the wrong half of the pair. Which player they ask for changes from paper to paper. One paper asked for <i>player 1 (=I)</i> in a three-player tree. Another used the same three-player format and asked for <i>player 2 (=II)</i>. A third called the players <i>A</i> and <i>B</i> instead of numbering them. The 2024 B paper called player 1 "the red player" and said his payoffs were the upper numbers, printed in red. The other player's payoff is always sitting in the option list, waiting for you. Solve first, then read the question again before you pick.</p>
 
 <div class="tryq"><div class="q">In a four-node chain like the ones above, you have solved the last three nodes and found that the second node (player 2's first turn) is worth (2, 8). At the first node, player 1 can stop and take (9, 1).<br><br>Do you need to look at anything else to answer "what does player 1 get"?</div>
 <button class="reveal-btn" onclick="this.nextElementSibling.classList.add('show');this.disabled=true;">Reveal answer</button>
@@ -432,7 +432,7 @@ NOA: That is backward induction in one sentence.
 <div class="rule">Move = one action at one node. <b>Strategy = a complete instruction sheet covering every node you could reach</b>, including the ones you expect never to visit.</div>
 
 <p class="partlab">The counter-intuitive result: President vs Congress</p>
-<p class="p">1987. Two spending items: an antiballistic missile system (M), which President Reagan wants, and urban renewal (U), which Congress wants. Both sides prefer having both items to having neither. Congress chooses what to send. The President signs or vetoes <i>the whole package</i>. Payoffs run 4 (best) down to 1 (worst).</p>
+<p class="p">1987, in the United States. Two spending items are on the table. One is an antiballistic missile system (M), a defence project President Reagan wants. The other is urban renewal (U), money to rebuild poor city areas, which Congress wants. Both sides prefer having both items to having neither. Congress is the US parliament, and it decides what public money is spent on. So Congress chooses what to send. The President then signs <i>the whole package</i> or rejects all of it, which is called a veto. Payoffs run 4 (best) down to 1 (worst).</p>
 <div class="tscroll">
 <table class="dtable">
 <tr><th>Outcome</th><th>Congress</th><th>President</th></tr>
@@ -441,10 +441,10 @@ NOA: That is backward induction in one sentence.
 <tr><td class="lab">M only</td><td>1</td><td>4</td></tr>
 <tr><td class="lab">Neither</td><td>2</td><td>2</td></tr>
 </table></div>
-<p class="p">In his 1987 State of the Union address, Reagan asked for a <b>line-item veto</b>, which is the power to cut single lines instead of rejecting the whole bill. That is strictly more freedom. Does it help him?</p>
+<p class="p">Once a year the President gives a speech to Congress called the State of the Union. In his 1987 speech, Reagan asked for a <b>line-item veto</b>: the power to cut single lines instead of rejecting the whole bill. That is strictly more freedom. Does it help him?</p>
 
 <p class="partlab">Worked example</p>
-<div class="question">Using the payoff table above, solve both versions of the game by backward induction: (a) the President can only approve or veto the whole package; (b) the President has a line-item veto and can delete individual items. Compare the two outcomes.</div>
+<div class="question">Using the payoff table above, solve both versions of the game by backward induction: (a) the President can only approve or veto the whole package; (b) the President has a line-item veto and can delete single items. Compare the two outcomes.</div>
 
 <div class="step"><div class="stepn">1</div><div class="stepbody"><div class="lab">Version (a): go to the President's node first, once for each thing Congress might send.</div>
 Vetoing anything produces "Neither", worth 2 to him.
@@ -470,7 +470,7 @@ Vetoing anything produces "Neither", worth 2 to him.
 <p class="p">Why? Because in a sequential game your options are also a promise. Once the President <i>can</i> cut the package apart, Congress knows he <i>will</i>, so Congress never offers it. Losing the ability to do something can be worth more than the ability itself.</p>
 
 <p class="partlab">Long games: the poison positions in the 21-flags game</p>
-<p class="p">Two players, 21 flags. On your turn you remove 1, 2 or 3 flags. Whoever takes the last flag wins. The tree is far too large to draw. But backward reasoning still works, because you only need to know which positions are <i>losing</i> to stand on.</p>
+<p class="p">Two players, 21 flags. On your turn you remove 1, 2 or 3 flags. Whoever takes the last flag wins. The tree is far too large to draw. But backward reasoning still works, because you only need to know which positions you <i>lose</i> from.</p>
 <div class="tscroll">
 <table class="dtable">
 <tr><th>Flags left on your turn</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>11</th><th>12</th><th>13</th><th>14</th><th>15</th><th>16</th><th>17</th><th>18</th><th>19</th><th>20</th><th>21</th></tr>
@@ -484,8 +484,8 @@ Vetoing anything produces "Neither", worth 2 to him.
 <div class="reveal"><b>Take 2, leaving 12.</b> Twelve is a multiple of 4, so your opponent is now standing on a poison position. Whatever she removes (1, 2 or 3), you remove what completes 4 (3, 2 or 1), and you hand her 8, then 4, then 0. She never takes the last flag.<br><br>Check the other moves. Taking 1 leaves 13, and taking 3 leaves 11. Neither is a multiple of 4, so she can put <i>you</i> back on one.</div></div>
 
 <div class="warnbox"><b>Two more named cases the exam asks about directly.</b><br>
-<b>The ultimatum game.</b> A proposes how to split a sum of money. B accepts (both get it) or rejects (both get nothing). Backward induction says B should accept even one cent, so A should offer almost nothing. In the lab that is not what happens: the <b>modal offer is 50%</b>, the <b>median offer is about 40%</b>, offers below 10% are rare, and offers under 20% are often rejected in anger. In the <b>dictator game</b>, where B cannot refuse, the median allocation is 25%. That tells us the behaviour is part fairness and part a correct fear of rejection.<br><br>
-<b>The 1984 Orange Bowl.</b> Nebraska were behind and scored twice. Their coach took the safe extra point first and the risky two-point play second, and lost by one. He should have swapped the order. If the risky attempt fails early there is still a second chance. If it succeeds, the order never mattered. The lesson: <b>if you must take a risk, take it as early as possible.</b></div>
+<b>The ultimatum game.</b> A proposes how to split a sum of money. B accepts (both get it) or rejects (both get nothing). Backward induction says B should accept even one cent, so A should offer almost nothing. In the lab that is not what happens. The most common offer, the <b>modal offer, is 50%</b>. The middle offer, the <b>median, is about 40%</b>. Offers below 10% are rare, and offers under 20% are often rejected in anger. In the <b>dictator game</b>, where B cannot refuse, the median share is 25%. So the behaviour is part fairness and part a correct fear of being rejected.<br><br>
+<b>The 1984 Orange Bowl.</b> This was a big American football final. After scoring, a team may take a safe kick worth one point, or try a risky play worth two. Nebraska were behind and scored twice. Their coach took the safe extra point first and the risky two-point play second, and lost by one. He should have swapped the order. If the risky play fails early there is still a second chance. If it succeeds, the order never mattered. The lesson: <b>if you must take a risk, take it as early as possible.</b></div>
 </div>
 
 <!-- ============ QUIZ ============ -->
@@ -595,7 +595,7 @@ const QUIZ = [
 
 {"q":"In a sequential game, player 1 moves first and picks either Left or Right. Player 2 then sees which one she chose, and picks one of three actions: <i>a</i>, <i>b</i> or <i>c</i>. How many different strategies does player 2 have in this game?",
  "opts":["3","5","6","9","12"],"correct":3,
- "exp":"<b>9.</b> A strategy is <i>a rule determining a player's move in all possible cases</i>: a complete instruction sheet, not a single move.<br><br>Player 2 can end up at two different nodes: one if player 1 went Left, one if she went Right. His plan has to fill in <b>both</b> lines, and the two lines are independent. \"a if Left, c if Right\" is a different plan from \"a if Left, a if Right\".<br><span class=\"math\">3 &times; 3 = 9</span><br><br><b>Why the wrong options are tempting.</b> 3 is just the number of <i>actions</i> he has, which is the everyday meaning of \"strategy\". 5 is 3 + 2, adding the choices instead of multiplying them. 6 is 3 &times; 2, actions times nodes, which is what you get if you think he picks one node and one action. 12 is what you get if you also count player 1's two options as his.<br><br>The rule to carry: <b>multiply the number of actions across every node where that player might be asked to choose.</b> He will only ever make one move in a single play of the game, but that does not shrink the plan he has to bring."}
+ "exp":"<b>9.</b> A strategy is <i>a rule determining a player's move in all possible cases</i>: a complete instruction sheet, not a single move.<br><br>Player 2 can end up at two different nodes: one if player 1 went Left, one if she went Right. His plan has to fill in <b>both</b> lines, and the two lines are independent. \"a if Left, c if Right\" is a different plan from \"a if Left, a if Right\".<br><span class=\"math\">3 &times; 3 = 9</span><br><br><b>Why the wrong options are tempting.</b> 3 is just the number of <i>actions</i> he has, which is the everyday meaning of \"strategy\". 5 is 3 + 2, adding the choices instead of multiplying them. 6 is 3 &times; 2, actions times nodes, which is what you get if you think he picks one node and one action. 12 is 3 &times; 2 &times; 2: his three actions, times his two nodes, times player 1's two moves. Player 1's moves belong to player 1's plan, not to his.<br><br>The rule to carry: <b>multiply the number of actions across every node where that player might be asked to choose.</b> He will only ever make one move in a single play of the game, but that does not shrink the plan he has to bring."}
 ];
 function shuffleItem(it){var c=it.opts[it.correct];for(var i=it.opts.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=it.opts[i];it.opts[i]=it.opts[j];it.opts[j]=t;}it.correct=it.opts.indexOf(c);}
 QUIZ.forEach(shuffleItem);

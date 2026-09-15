@@ -77,7 +77,7 @@ audio{width:100%;margin-top:6px;}
 <a class="home" href="index.html">&larr; All 14 days</a>
 <div class="crumb">Day 6 of 14 &middot; Learn</div>
 <h1>Mixed Strategies I: making your opponent indifferent</h1>
-<p class="lede">The one calculation the professor says outright you may need in the exam. About 21% of the marks live here.</p>
+<p class="lede">The professor says out loud that you may need this calculation in the exam. About 21% of the marks live here.</p>
 
 <div class="preq"><span class="tag">&#9208; Guess first</span>
 <p>You're taking a penalty kick. You know your <b>right</b>-footed shot is stronger: you score more often with it. Should you take every penalty to the right?</p>
@@ -100,9 +100,9 @@ NOA: You are mixing so you cannot be read. Hold onto that line and the rest of t
 <audio controls preload="none" src="Day-06-intro.mp3"></audio>
 <div class="takeaway"><ul>
 <li><b>Zero-sum game</b>: whatever one player gains, the other loses. It is written with <i>one</i> number per cell: player 1's payoff. Player 1 wants it high, player 2 wants it low.</li>
-<li><b>Mixed strategy</b>: instead of always choosing the same action, you choose at random, with fixed proportions.</li>
-<li><b>The indifference rule</b>: your best mixture is the one that gives your <i>opponent</i> the same average payoff whatever he does. Then he has nothing to use against you.</li>
-<li><b>Value of the game</b>: the payoff that comes out of the equilibrium. A <b>Nash equilibrium</b> is a pair of choices where neither player wants to change. In a zero-sum game the value is the same number in every Nash equilibrium.</li>
+<li><b>Mixed strategy</b>: you choose at random, with fixed proportions. The opposite is a <b>pure strategy</b>: you always pick the same action.</li>
+<li><b>The indifference rule</b>: your best mixture is the one that leaves your <i>opponent</i> <b>indifferent</b>. Indifferent means both of his choices pay him the same on average. He has no reason to prefer either one, so he has nothing to use against you.</li>
+<li><b>Nash equilibrium</b>: a pair of choices where neither player wants to change. <b>Value of the game</b>: the payoff that comes out of that equilibrium. In a zero-sum game the value is the same number in every Nash equilibrium.</li>
 </ul>
 <p class="tk-gen">One line to hold onto: <b>you don't mix to win. You mix so you can't be read.</b></p></div></div>
 
@@ -123,34 +123,34 @@ NOA: And that is the whole problem. There is no resting place. If your opponent 
 -->
 <div class="secaudio"><span class="salab">&#127911; Listen to this section</span><audio controls preload="none" src="Day-06-zerosum.mp3"></audio></div>
 
-<p class="p">Some games are pure conflict. There is a fixed pie and every crumb you take is a crumb the other person loses. Poker between two players. A penalty kick. Rock-paper-scissors. The course calls these <b>zero-sum games</b>.</p>
+<p class="p">Some games are pure conflict. There is a fixed pie. Every crumb you take is a crumb the other person loses. Poker between two players. A penalty kick. Rock-paper-scissors. The course calls these <b>zero-sum games</b>.</p>
 
-<p class="p">Because the two payoffs always add to zero, writing both is a waste of ink. So the course uses a shorthand: <b>one number per cell, and that number is player 1's payoff.</b> Player 2's payoff is simply minus that number.</p>
+<p class="p">The two payoffs always add to zero, so writing both is a waste of ink. The course uses a shorthand instead: <b>one number per cell, and that number is player 1's payoff.</b> Player 2's payoff is that same number with a minus sign.</p>
 
 <p class="p">Every zero-sum question on every past exam uses this shorthand. If you see a matrix with a single number in each cell, this is what you're looking at.</p>
 
 <div class="rule">Player 1 (the rows) wants the number <b>high</b>. Player 2 (the columns) wants the same number <b>low</b>. One number, two opposite goals.</div>
 
 <p class="partlab">The two forms, side by side</p>
-<p class="p">Vizzini's battle of wits from <i>The Princess Bride</i>. Westley secretly poisons one goblet; Vizzini picks one to drink. Vizzini wants to guess right, Westley wants him to guess wrong. Written the long way:</p>
+<p class="p">Vizzini's battle of wits from <i>The Princess Bride</i>. Westley secretly poisons one goblet. Vizzini then picks a goblet to drink. Vizzini wants to guess right. Westley wants him to guess wrong. Here is the game written the long way:</p>
 <div class="tscroll">
 <table class="dtable">
 <tr><th></th><th>Westley poisons<br>his own goblet</th><th>Westley poisons<br>Vizzini's goblet</th></tr>
-<tr><td class="lab">Vizzini drinks<br>from his own</td><td>&minus;1, &nbsp;1</td><td>1, &nbsp;&minus;1</td></tr>
-<tr><td class="lab">Vizzini drinks<br>from Westley's</td><td>1, &nbsp;&minus;1</td><td>&minus;1, &nbsp;1</td></tr>
+<tr><td class="lab">Vizzini drinks<br>from his own</td><td>1, &nbsp;&minus;1</td><td>&minus;1, &nbsp;1</td></tr>
+<tr><td class="lab">Vizzini drinks<br>from Westley's</td><td>&minus;1, &nbsp;1</td><td>1, &nbsp;&minus;1</td></tr>
 </table></div>
 <p class="p">And the same game in one-number form, with only Vizzini's payoff:</p>
 <div class="tscroll">
 <table class="dtable">
 <tr><th></th><th>Poisons his own</th><th>Poisons Vizzini's</th></tr>
-<tr><td class="lab">Drinks from his own</td><td>&minus;1</td><td>1</td></tr>
-<tr><td class="lab">Drinks from Westley's</td><td>1</td><td>&minus;1</td></tr>
+<tr><td class="lab">Drinks from his own</td><td>1</td><td>&minus;1</td></tr>
+<tr><td class="lab">Drinks from Westley's</td><td>&minus;1</td><td>1</td></tr>
 </table></div>
-<div class="cap">The second number was never information. It was always the first one with a minus sign.</div>
+<div class="cap">The second number never told you anything new. It was always the first one with a minus sign.</div>
 
 <p class="p">Now look for a stable pair of choices. There isn't one. Whatever cell you point at, one of the two players wants to move. That's the "endless circle of logic" Vizzini talks himself into. The only way out is to stop being predictable.</p>
 
-<div class="rule">You need randomness exactly when <b>it hurts you to let your opponent see your choice before he responds.</b></div>
+<div class="rule">You need randomness exactly when <b>it hurts you if your opponent sees your choice before he answers.</b></div>
 </div>
 
 <!-- ============ SECTION 2 ============ -->
@@ -178,19 +178,19 @@ NOA: The try-it problem. Getting better at defending one side can make the goali
 
 <p class="p">So you must mix. But in what proportions? Half and half? That feels fair, and it is usually wrong.</p>
 
-<p class="p">Here is the idea. Suppose your mixture gives your opponent a better average result when he goes left than when he goes right. Then he will always go left. You have handed him a free advantage. The only mixture he cannot exploit is the one where <b>he gets exactly the same average payoff whichever action he picks</b>. At that point he has no reason to prefer anything, and no way to read you.</p>
+<p class="p">Here is the idea. Suppose your mixture pays your opponent more when he goes left than when he goes right. Then he will always go left. You have handed him a free advantage, and he keeps it for the rest of the game. The only mixture he cannot use against you is the one where <b>he gets exactly the same average payoff whichever action he picks</b>. He is then indifferent. He has no reason to prefer anything, and no way to read you.</p>
 
-<div class="rule">Find the mixture that makes the <b>opponent</b> indifferent. Set his two expected payoffs equal, and solve.</div>
+<div class="rule">You find <i>your own</i> mixture by making the <b>opponent</b> indifferent. Set his two <b>expected payoffs</b> (his two average payoffs) equal to each other. Then solve for your proportions.</div>
 
 <p class="partlab">The exam's data</p>
-<p class="p">The penalty-kick game from Presentation 5. The numbers are the kicker's chance of scoring, in percent. The kicker (rows) wants it high; the goalie (columns) wants it low. Note the right side is stronger for this kicker.</p>
+<p class="p">The penalty-kick game from Presentation 5. Each number is the kicker's chance of scoring, in percent. The kicker picks the row and wants it high. The goalie picks the column and wants it low. Note that the right side is the stronger side for this kicker.</p>
 <div class="tscroll">
 <table class="dtable">
 <tr><th></th><th>Goalie dives Left</th><th>Goalie dives Right</th></tr>
 <tr><td class="lab">Kicker goes Left &nbsp;<i>(x)</i></td><td>58</td><td>95</td></tr>
 <tr><td class="lab">Kicker goes Right &nbsp;<i>(1&minus;x)</i></td><td>93</td><td>70</td></tr>
 </table></div>
-<p class="given">First check there is no stable pure pair: whatever cell you pick, one player wants to move. So mixing is required.</p>
+<p class="given">First check that no pair of pure strategies is stable. Whatever cell you pick, one player wants to move. So mixing is needed.</p>
 
 <div class="svg-wrap">
 <svg viewBox="0 0 560 250" role="img" aria-label="Two straight lines crossing. One line shows the kicker's scoring chance when the goalie dives left, falling from ninety-three down to fifty-eight. The other shows the chance when the goalie dives right, rising from seventy up to ninety-five. They cross a little before forty percent, at a height of about eighty.">
@@ -237,10 +237,10 @@ NOA: The try-it problem. Getting better at defending one side can make the goali
 </div>
 
 <p class="partlab">Worked example</p>
-<div class="question">Using the penalty-kick table above: what proportion <i>x</i> of his kicks should the kicker send to the left, and what scoring rate does that guarantee him?</div>
+<div class="question">Use the penalty-kick table above. What proportion <i>x</i> of his kicks should the kicker send to the left? And what scoring rate does that guarantee him?</div>
 
 <div class="step"><div class="stepn">1</div><div class="stepbody"><div class="lab">Write the kicker's payoff if the goalie dives Left.</div>
-He scores 58 whenever he kicked left (share <i>x</i>), and 93 whenever he kicked right (share 1&minus;<i>x</i>).
+He scores 58 when he kicks left, which is a share <i>x</i> of the time. He scores 93 when he kicks right, a share 1&minus;<i>x</i> of the time.
 <br><span class="math">58x + 93(1 − x) = 93 − 35x</span></div></div>
 
 <div class="step"><div class="stepn">2</div><div class="stepbody"><div class="lab">Write the kicker's payoff if the goalie dives Right.</div>
@@ -248,20 +248,20 @@ Same idea, other column.
 <br><span class="math">95x + 70(1 − x) = 70 + 25x</span></div></div>
 
 <div class="step"><div class="stepn">3</div><div class="stepbody"><div class="lab">Set them equal: this is the indifference condition.</div>
-Now the goalie's choice makes no difference to the kicker's average.
+Now the goalie's choice makes no difference to the kicker's average. In a zero-sum game that is the same as making the goalie indifferent, because his payoff is just minus the kicker's.
 <br><span class="math">93 − 35x = 70 + 25x &nbsp;→&nbsp; 23 = 60x</span></div></div>
 
 <div class="step"><div class="stepn">4</div><div class="stepbody"><div class="lab">Solve, then put x back into either line to get the value.</div>
 <span class="math">x = 23/60 = 38.3%</span>
 <br><span class="math">93 − 35(0.383) = 79.6</span></div></div>
 
-<div class="ans">&#10003; The kicker goes left <b>38.3%</b> of the time, and that guarantees him a <b>79.6%</b> scoring rate, the value of the game. (Doing the same on the goalie's side gives 41.7% left.)</div>
+<div class="ans">&#10003; The kicker goes left <b>38.3%</b> of the time. That guarantees him a <b>79.6%</b> scoring rate, which is the value of the game. (Doing the same work on the goalie's side gives 41.7% left.)</div>
 
-<div class="warnbox"><b>Notice what just happened.</b> The kicker's left foot is his <i>weaker</i> side: 58 against 93 when the goalie guesses right. And he still uses it more than a third of the time. Not because it's good, but because never using it would make him readable.</div>
+<div class="warnbox"><b>Notice what just happened.</b> The kicker's left foot is his <i>weaker</i> side: 58 against 93 when the goalie dives left. And he still uses it more than a third of the time. Not because it is good, but because never using it would make him easy to read.</div>
 
 <div class="tryq"><div class="q">Suppose the goalie trains hard and gets better at defending his right. The bottom-right number falls from 70 to 60. The kicker now scores less often when they both go right. Everything else stays the same.<br><br>Will the goalie now dive <b>right</b> more often, since he's better at it?</div>
 <button class="reveal-btn" onclick="this.nextElementSibling.classList.add('show');this.disabled=true;">Reveal answer</button>
-<div class="reveal"><b>No, the opposite.</b> The goalie dives <b>left</b> more often, going from 41.7% to 50%.<br><br>Why: getting better at the right side makes the kicker avoid the right. The kicker shifts left, from 38.3% up to 47.1%. The goalie follows him there. The value of the game drops from 79.6 to 76.5, so the goalie is genuinely better off. He just gets there by using his improved side <i>less</i>.<br><br>The slides put it in one line: <i>becoming better at something may make you use it less often.</i> This is the surprising result of the whole lecture. It is exactly the kind of thing a concept question likes to ask.</div></div>
+<div class="reveal"><b>No, the opposite.</b> The goalie dives <b>left</b> more often, going from 41.7% to 50%.<br><br>Why: getting better at the right side makes the kicker avoid the right. The kicker shifts left, from 38.3% up to 47.1%. The goalie follows him there. The value of the game drops from 79.6 to 76.5, so the goalie is really better off. He just gets there by using his improved side <i>less</i>.<br><br>The slides put it in one line: <i>becoming better at something may make you use it less often.</i> This is the surprising result of the whole lecture. It is exactly the kind of thing a concept question likes to ask.</div></div>
 </div>
 
 <!-- ============ SECTION 3 ============ -->
@@ -281,9 +281,9 @@ NOA: And more than the minute. It is a wrong answer avoided, because a mixture c
 -->
 <div class="secaudio"><span class="salab">&#127911; Listen to this section</span><audio controls preload="none" src="Day-06-pure.mp3"></audio></div>
 
-<p class="p">Here is the trap. Once you learn the indifference method, it is tempting to see "zero-sum" and immediately start writing equations. Sometimes there is nothing to solve.</p>
+<p class="p">Here is the trap. Once you know the indifference method, it is tempting to see the words "zero-sum" and start writing equations at once. Sometimes there is nothing to solve.</p>
 
-<p class="p">Take the same penalty story, but now the kicker's left foot is genuinely bad. Not just weaker: bad. One number changes the whole game:</p>
+<p class="p">Take the same penalty story, but now the kicker's left foot is really bad. Not just weaker: bad. One number changes the whole game:</p>
 <div class="tscroll">
 <table class="dtable">
 <tr><th></th><th>Goalie dives Left</th><th>Goalie dives Right</th></tr>
@@ -294,7 +294,7 @@ NOA: And more than the minute. It is a wrong answer avoided, because a mixture c
 
 <p class="p">The test is quick. Look at the highlighted number: it is the <b>smallest in its row</b> and the <b>largest in its column</b>. When such a cell exists, that cell is the equilibrium and the value of the game is just that number. When no such cell exists, as in the 58/95/93/70 version, you must mix.</p>
 
-<div class="rule">Before you write a single equation, check for dominance. If one row beats the other everywhere, the game is already solved.</div>
+<div class="rule">Before you write a single equation, look for a <b>dominant strategy</b>: a row that beats the other row in every column. If you find one, the game is already solved.</div>
 
 <div class="tryq"><div class="q">A zero-sum game, one number per cell = player 1's payoff:<br><br>
 <table class="dtable" style="max-width:340px;margin:10px 0"><tr><th></th><th>Left</th><th>Right</th></tr>
@@ -307,7 +307,7 @@ Does this game need a mixed strategy? What is player 1's payoff in equilibrium?<
 
 <!-- ============ QUIZ ============ -->
 <div class="panel"><h3>&#128221; Quiz yourself <span class="scorechip" id="scoreChip">0 / 6</span></h3>
-<p class="note">Pick an option. The answer and the explanation appear only after you choose. One question carries a tag: it is a real past-final question, word for word, from a paper you never sit as a mock. The other five are new. Their grids were built for this page, so they do not copy any exam you will sit later, and they do not repeat the examples above.</p>
+<p class="note">Pick an option. The answer and the explanation appear only after you choose. One question carries a tag. That one is a real past-final question, word for word, from a paper you never sit as a mock. The other five are new. Their grids were built for this page, so they copy no exam you will sit later, and they do not repeat the examples above.</p>
 <div id="quizBody"></div></div>
 
 <div class="navrow"><a class="navbtn" href="Day-05.html">&larr; Back</a><a class="navbtn primary" href="Day-07.html">Next &rarr;</a></div>
@@ -340,11 +340,11 @@ const QUIZ = [
 
 {"src":"2025 A final","q":"What is the main difference between a zero-sum game and a general (non-zero-sum) game?",
  "opts":["In zero-sum games, one player's gain is the other's loss","General games have no Nash equilibria","Zero-sum games require cooperation","General games are strictly competitive","None of the other answers is correct"],"correct":0,
- "exp":"<b>In zero-sum games, one player's gain is the other's loss.</b> That is the definition, and it is why one number per cell is enough. Player 2's payoff is always player 1's payoff with a minus sign in front.<br><br><b>Why each other option is wrong.</b><br>\"General games have no Nash equilibria\": false. Nash proved that every finite game has at least one equilibrium, pure or mixed.<br>\"Zero-sum games require cooperation\": backwards. Zero-sum is the one setting where cooperation buys nothing, because no cell is better for both players.<br>\"General games are strictly competitive\": also backwards. \"Strictly competitive\" is another name for zero-sum.<br>\"None of the other answers is correct\": the first option is correct, so this one cannot be. Across six solved past papers this option has never once been the right answer. Low prior, not zero."},
+ "exp":"<b>In zero-sum games, one player's gain is the other's loss.</b> That is the definition, and it is why one number per cell is enough. Player 2's payoff is always player 1's payoff with a minus sign in front.<br><br><b>Why each other option is wrong.</b><br>\"General games have no Nash equilibria\": false. Nash proved that every finite game has at least one equilibrium, pure or mixed.<br>\"Zero-sum games require cooperation\": backwards. Zero-sum is the one setting where cooperation buys nothing, because no cell is better for both players.<br>\"General games are strictly competitive\": also backwards. \"Strictly competitive\" is another name for zero-sum.<br>\"None of the other answers is correct\": the first option is correct, so this one cannot be. Across six solved past papers this option has never once been the right answer. So it is unlikely, but it is not impossible."},
 
 {"q":"You are solving a 2&times;2 zero-sum game that has no stable pure pair. You want p, the probability that player 1 plays Top. Which equation gives it?",
  "opts":["Make player 2 indifferent: set player 1's payoff in the Left column equal to his payoff in the Right column","Make player 1 indifferent: set his payoff from Top equal to his payoff from Down","Set the two numbers on the main diagonal equal to each other","p is always 1/2, because a mixed strategy has to be unpredictable","Divide player 1's largest payoff by the sum of all four payoffs"],"correct":0,
- "exp":"<b>Make player 2 indifferent.</b> This is the part that feels upside down, and it is worth saying out loud: <b>your own mixture is set by your opponent's indifference, not by your own.</b><br><br>Here is why. If your mixture gave player 2 a better average in one column, she would simply always pick that column, and you would be readable. The only mixture she cannot use against you is the one that leaves her nothing to choose between. In the one-number shorthand her payoff is minus player 1's, so making her indifferent is the same as making player 1's payoff equal in the two columns.<br><br><b>Why each other option is wrong.</b><br>\"Set his payoff from Top equal to his payoff from Down\": the right method for the wrong unknown. That equation gives q, player 2's mixture. Swapping the two is harmless on a main-diagonal grid, where p and q happen to be equal, and fatal on an anti-diagonal one, where they are not.<br>\"Set the two numbers on the main diagonal equal\": those are two fixed payoffs. There is no unknown in that equation, and it ignores half the grid.<br>\"p is always 1/2\": an even mixture is unpredictable, but it is usually still exploitable. In the three grids in this quiz p came out at 0.4, 0.4 and 0.2.<br>\"Divide the largest payoff by the sum of all four\": not a rule in this course, and it uses no indifference at all."},
+ "exp":"<b>Make player 2 indifferent.</b> This is the part that feels upside down, and it is worth saying out loud: <b>your own mixture is set by your opponent's indifference, not by your own.</b><br><br>Here is why. If your mixture gave player 2 a better average in one column, she would simply always pick that column, and you would be readable. The only mixture she cannot use against you is the one that leaves her nothing to choose between. In the one-number shorthand her payoff is minus player 1's, so making her indifferent is the same as making player 1's payoff equal in the two columns.<br><br><b>Why each other option is wrong.</b><br>\"Set his payoff from Top equal to his payoff from Down\": the right method for the wrong unknown. That equation gives q, player 2's mixture. Swapping the two is harmless on a main-diagonal grid, where p and q happen to be equal. On an anti-diagonal grid they are not equal, and swapping them gives you the wrong answer.<br>\"Set the two numbers on the main diagonal equal\": those are two fixed payoffs. There is no unknown in that equation, and it ignores half the grid.<br>\"p is always 1/2\": an even mixture is unpredictable, but your opponent can usually still use it against you. In the three grids in this quiz p came out at 0.4, 0.4 and 0.2.<br>\"Divide the largest payoff by the sum of all four\": not a rule in this course, and it uses no indifference at all."},
 
 {"q":"A zero-sum game (one number per cell = player 1's payoff). What is player 1's payoff in the Nash equilibrium?"+MPURE,
  "opts":["5","6","7","8","You cannot tell without solving for the mixed equilibrium"],"correct":1,

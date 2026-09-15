@@ -98,7 +98,7 @@ span.p.P4{background:var(--p4)}span.p.P5{background:var(--p5)}span.p.P6{backgrou
 <div class="crumb">Day 14 of 14 &middot; Exam day</div>
 <h1>Warm-up, then the exam</h1>
 <div class="tags"><span class="p P2">P2</span><span class="p P4">P4</span><span class="p P5">P5</span></div>
-<p class="lede">Thirty minutes this morning. Three warm-up questions, one read of the trap list, one read of the tactics. Then close the folder. The exam is at 16:00.</p>
+<p class="lede">Thirty minutes this morning. Three warm-up questions, one read of the trap list, one of the tactics. Then close the folder. The exam is at 16:00.</p>
 
 <div class="panel"><h3>&#127911; Before you start <span class="scorechip">under a minute</span></h3>
 <!-- SCRIPT Day-14-intro.mp3 | NOA=Heart TOM=Fenrir
@@ -123,7 +123,7 @@ NOA: Shut it. Eat something. Take the calculator.
 
 <!-- ============ WARM-UP 1 ============ -->
 <div class="panel"><h3><span class="p P2" style="margin-right:0">P2</span> Warm-up 1: one tree <span class="scorechip">~6 min</span></h3>
-<p class="p">First number in each ending is player 1's, second is player 2's. Solve it from the last node backwards. Read the question carefully.</p>
+<p class="p">First number in each ending is player 1's, second is player 2's. Work backwards from the last node. Read the question carefully.</p>
 
 <div class="svg-wrap">
 <svg viewBox="0 0 560 240" role="img" aria-label="A three-level game tree. Player one chooses A or B at the root. After A, player two chooses between an ending of five and two, or passing back to player one, who would then choose between eight and one, or three and six. After B, player two chooses between four and seven, or six and three. Working backwards, player one would take eight and one at the deep node, so player two prefers five and two; after B player two prefers four and seven; and player one at the root prefers A, ending at five and two.">
@@ -161,12 +161,12 @@ NOA: Shut it. Eat something. Take the calculator.
     <text x="332" y="213">(6, 3)</text>
   </g>
 </svg>
-<div class="cap">Purple nodes are player 1's, blue nodes are player 2's. Note that player 1 moves twice on the upper branch. Green is the answer path. Look at it only after you have solved it.</div>
+<div class="cap">Purple nodes are player 1's, blue nodes are player 2's. Player 1 moves twice on the upper branch. Green is the answer path. Look at it only after you have solved it.</div>
 </div>
 
 <div class="tryq"><div class="q">What is <b>player 2's</b> payoff in the backward-induction equilibrium?</div>
 <button class="reveal-btn" onclick="this.nextElementSibling.classList.add('show');this.disabled=true;">Reveal answer</button>
-<div class="reveal"><b>Player 2 gets 2.</b><br><br><b>Deepest node first.</b> Player 1 chooses between (8, 1) and (3, 6). He reads his own number: 8 beats 3, so he plays <b>x</b> and that node is worth (8, 1).<br><br><b>Player 2's node after A.</b> His choices are a1, worth 2 to him, or a2, which now leads to that (8, 1). He compares 2 against 1 and takes <b>a1</b>. Branch A is worth (5, 2).<br><br><b>Player 2's node after B.</b> b1 gives him 7, b2 gives him 3. He takes <b>b1</b>. Branch B is worth (4, 7).<br><br><b>The root.</b> Player 1 compares his own numbers: A is worth 5, B is worth 4. He plays <b>A</b>. Final outcome <b>(5, 2)</b>, so player 2 gets <b>2</b>.<br><br><b>The trap.</b> 7 is player 2's best number in the whole tree, and he cannot get it, because player 1 never goes to that side. And if you were rushing you might have answered 5, which is player <i>1</i>'s payoff. Check which player is asked. That single habit is worth more marks than any formula.</div></div>
+<div class="reveal"><b>Player 2 gets 2.</b><br><br><b>Deepest node first.</b> Player 1 chooses between (8, 1) and (3, 6). He reads his own number: 8 beats 3, so he plays <b>x</b> and that node is worth (8, 1).<br><br><b>Player 2's node after A.</b> His choices are a1, worth 2 to him, or a2, which now leads to that (8, 1). He compares 2 against 1 and takes <b>a1</b>. Branch A is worth (5, 2).<br><br><b>Player 2's node after B.</b> b1 gives him 7, b2 gives him 3. He takes <b>b1</b>. Branch B is worth (4, 7).<br><br><b>The root.</b> Player 1 compares his own numbers: A is worth 5, B is worth 4. He plays <b>A</b>. Final outcome <b>(5, 2)</b>, so player 2 gets <b>2</b>.<br><br><b>The trap.</b> 7 is player 2's best number in the whole tree. He cannot get it, because player 1 never goes to that side. If you rush, you might answer 5. That is player <i>1</i>'s payoff, not player 2's. Check which player is asked. That one habit is worth more marks than any formula.</div></div>
 </div>
 
 <!-- ============ WARM-UP 2 ============ -->
@@ -182,7 +182,7 @@ NOA: Shut it. Eat something. Take the calculator.
 
 <div class="tryq"><div class="q">How many pure Nash equilibria are there? And what is the highest payoff player 1 can get in one?</div>
 <button class="reveal-btn" onclick="this.nextElementSibling.classList.add('show');this.disabled=true;">Reveal answer</button>
-<div class="reveal"><b>Two equilibria. Player 1's highest is 8.</b><br><br><b>Player 1, down each column</b> (first numbers): Left is 3, 6, 1 &rarr; <i>Middle</i>. Center is 7, 2, 8 &rarr; <i>Down</i>. Right is 4, 5, 6 &rarr; <i>Down</i>.<br><br><b>Player 2, across each row</b> (second numbers): Up is 5, 2, 4 &rarr; <i>Left</i>. Middle is 6, 5, 3 &rarr; <i>Left</i>. Down is 4, 7, 6 &rarr; <i>Center</i>.<br><br><b>Both marks:</b> (Middle, Left) = (6, 6) and (Down, Center) = (8, 7). Two of them.<br><br>(Down, Right) is the near miss: player 1 is happy there, but player 2 would slide across to Center. One player content is not an equilibrium.<br><br><b>Highest payoff for player 1 in a pure equilibrium: 8.</b> Not 7, which is the biggest number in his Up row and sits in no equilibrium at all.</div></div>
+<div class="reveal"><b>Two equilibria. Player 1's highest is 8.</b><br><br><b>Player 1, down each column</b> (first numbers): Left is 3, 6, 1 &rarr; <i>Middle</i>. Center is 7, 2, 8 &rarr; <i>Down</i>. Right is 4, 5, 6 &rarr; <i>Down</i>.<br><br><b>Player 2, across each row</b> (second numbers): Up is 5, 2, 4 &rarr; <i>Left</i>. Middle is 6, 5, 3 &rarr; <i>Left</i>. Down is 4, 7, 6 &rarr; <i>Center</i>.<br><br><b>Both marks:</b> (Middle, Left) = (6, 6) and (Down, Center) = (8, 7). Two of them.<br><br>(Down, Right) is the near miss: player 1 is happy there, but player 2 would move across to Center. One happy player is not enough. An equilibrium needs both.<br><br><b>Highest payoff for player 1 in a pure equilibrium: 8.</b> Not 7. That is the biggest number in his Up row, but it sits in no equilibrium at all.</div></div>
 </div>
 
 <!-- ============ WARM-UP 3 ============ -->
@@ -205,28 +205,28 @@ NOA: Shut it. Eat something. Take the calculator.
 <b>Player 2's mixture</b> (<i>q</i> for Left) must leave player 1 indifferent, so make the two rows equal:<br>
 <span class="math">Top: 9q + 3(1−q) = 3 + 6q</span> &nbsp;<span class="math">Bottom: 2q + 6(1−q) = 6 − 4q</span><br>
 3 + 6q = 6 &minus; 4q &rarr; 10q = 3 &rarr; <b>q = 0.3</b>.<br><br>
-<b>Value:</b> 2 + 7(0.4) = <b>4.8</b>. Check from the other side: 3 + 6(0.3) = 4.8. The two agreeing is your proof.<br><br>
+<b>Value:</b> 2 + 7(0.4) = <b>4.8</b>. Check from the other side: 3 + 6(0.3) = 4.8. The two agree. That is your proof.<br><br>
 <b>The cell.</b> (Top, Right) is a mismatched pair: Top is player 1's, Right is player 2's. So it is 0.4 &times; 0.7 = 0.28 = <b>28%</b>.<br><br>
-<b>Everything else on the option list is a wrong turn you can name:</b> 40% is <i>p</i> on its own, 30% is <i>q</i> on its own, 12% is the matched cell (Top, Left), and 70% is just how often player 2 goes Right. An outcome needs both players to have moved, so you always multiply.</div></div>
+<b>Every other option is a mistake you can name:</b> 40% is <i>p</i> on its own, 30% is <i>q</i> on its own, 12% is the matched cell (Top, Left), and 70% is just how often player 2 goes Right. An outcome needs a move from both players, so you always multiply.</div></div>
 </div>
 
 <!-- ============ TRAP LIST ============ -->
 <div class="panel"><h3>&#9888;&#65039; The trap list: read once <span class="scorechip">~5 min</span></h3>
-<p class="note">Every one of these appears again and again across the six solved papers. Read the list slowly, once. Do not re-read it in the exam room.</p>
+<p class="note">Every one of these appears again and again across the six solved papers. Read it slowly, once. Do not re-read it in the exam room.</p>
 <ol class="traps">
-<li><b>Which player is asked?</b> It changes from paper to paper: player 1, player 2, "Player A", "Player B", and sometimes a <i>name</i> like Rowana the row player, or John and Mary. A name feels friendly and hides the question. Turn it into "row player" or "column player" before you start, and underline it.</li>
+<li><b>Which player is asked?</b> The label changes from paper to paper: player 1, player 2, "Player A", "Player B", and sometimes a <i>name</i> like Rowana the row player, or John and Mary. A name is easy to read past. Turn it into "row player" or "column player" before you start, and underline it.</li>
 <li><b>In a tree question, every wrong option is a number that appears in the tree.</b> Usually one of them is a big number on a branch the other player will never let you reach. Solve the tree. Never pick the biggest number you can see.</li>
-<li><b>Counting equilibria: finish the sweep.</b> The options are always 0, 1, 2, 3, 4. One missed cell moves you exactly one option along, and the wrong answer still looks fine.</li>
-<li><b>"Highest payoff player 1 can get in a pure equilibrium"</b> always offers "the game has no pure equilibrium" as the last option. Check that before you use it. And read only equilibrium cells, not the whole grid.</li>
+<li><b>Counting equilibria: finish the sweep.</b> The options are always 0, 1, 2, 3, 4. One missed cell moves your answer one option along. The wrong answer still looks fine.</li>
+<li><b>"Highest payoff player 1 can get in a pure equilibrium"</b> always offers "the game has no pure equilibrium" as the last option. Check it is really true before you pick it. And read only equilibrium cells, not the whole grid.</li>
 <li><b>The probability of an outcome is p &times; q, never p.</b> Both single proportions are on the option list, waiting.</li>
 <li><b>The cell they name is often mismatched:</b> one player's row with the other player's column. Read that line twice. Multiplying the matched pair instead is the most expensive slip on the paper.</li>
-<li><b>Read the rounding instruction.</b> It genuinely changes between papers: nearest percentage point, two digits after the decimal point, one decimal place. And one paper gives no instruction at all.</li>
+<li><b>Read the rounding instruction.</b> It changes between papers: nearest percentage point, two digits after the decimal point, one decimal place. And one paper gives no instruction at all.</li>
 <li><b>2/3-average: the mean of a uniform range is (min + max) &divide; 2, not 50.</b> With a mixed population, average the whole population first, <i>then</i> take two thirds. The un-averaged number is always offered.</li>
 <li><b>2/3-average: the equilibrium is 1.</b> The range 13 to 19 is what people play in the lab, not the theory. Read which one the question wants.</li>
-<li><b>Repeated games: read what the opponent forgives</b> before you choose. And "play tit-for-tat" has been offered and has never once been the answer.</li>
+<li><b>Repeated games: read what the opponent forgives</b> before you choose. And "play tit-for-tat" has been offered, but it has never been the answer.</li>
 <li><b>"Name the game" questions hide a non-matrix game in the options:</b> Dictator, Ultimatum. Those are sequential games. A payoff matrix cannot be either of them.</li>
 <li><b>Dominance questions: usually only one player has a dominant strategy.</b> The tempting wrong option adds a strategy for the other player too.</li>
-<li><b>"None of the other answers is correct" has never been the right answer</b> across the six solved papers. That is a low chance, but not zero. If you land on it, treat that as a prompt to check your arithmetic once more. If the other four really are wrong, choose it. Never use it as a shelter.</li>
+<li><b>"None of the other answers is correct" has never been the right answer</b> across the six solved papers. So it is unlikely, but not impossible. If you land on it, check your arithmetic once more. If the other four really are wrong, choose it. Never pick it just because you are unsure.</li>
 </ol>
 </div>
 
@@ -236,21 +236,21 @@ NOA: Shut it. Eat something. Take the calculator.
 
 <div class="rule">Two passes. Answer everything you can in about the first 50 minutes, then spend the remaining 40 on the three or four heavy ones you left behind.</div>
 
-<p class="p">The heavy questions are usually the pair of zero-sum calculations and one big counting grid. If you meet them on the first pass and they are slow, mark them and move on. A hard question is worth exactly the same as an easy one. Paying six minutes for one while three easy ones sit unread is a bad trade.</p>
+<p class="p">The heavy questions are usually the pair of zero-sum calculations and one big counting grid. If you meet them on the first pass and they are slow, mark them and move on. A hard question is worth exactly the same as an easy one. Spending six minutes on one, while three easy ones sit unread, is a bad trade.</p>
 
-<div class="tactic"><div class="tk">Never blank</div><div class="tv">No paper states a penalty for a wrong answer. An empty box scores zero for certain. A guess never does. Before you hand it in, look for gaps. If you have ruled out even one option, your guess is already better than a coin.</div></div>
+<div class="tactic"><div class="tk">Never blank</div><div class="tv">No paper states a penalty for a wrong answer. An empty box always scores zero. A guess can still be right, so never leave a box empty. Before you hand it in, look for gaps. If you have ruled out even one option, your guess has a better chance than a coin flip.</div></div>
 
-<div class="tactic"><div class="tk">Rounding</div><div class="tv">Read the instruction in that specific question, every time. Nearest percentage point, one decimal place, two decimals, or nothing at all. It is not the same on every paper. It is not even the same in both halves of the coupled pair.</div></div>
+<div class="tactic"><div class="tk">Rounding</div><div class="tv">Read the instruction in that specific question, every time. Nearest percentage point, one decimal place, two decimals, or nothing at all. It is not the same on every paper. Two questions about the same game can even ask for different rounding.</div></div>
 
-<div class="tactic"><div class="tk">Which player</div><div class="tv">Say the name to yourself before you write anything: "I want player 2's number." Then say it again when you pick the option. This costs two seconds and it is the single cheapest mark on the paper.</div></div>
+<div class="tactic"><div class="tk">Which player</div><div class="tv">Say the name to yourself before you write anything: "I want player 2's number." Then say it again when you pick the option. This costs two seconds. It is the cheapest mark on the paper.</div></div>
 
-<div class="tactic"><div class="tk">Second pass</div><div class="tv">Come back to the heavy ones with the whole clock spent and the easy marks banked. You will read them differently. The panic that made them look hard on the first pass will be gone.</div></div>
+<div class="tactic"><div class="tk">Second pass</div><div class="tv">Come back to the heavy ones with the easy marks banked and the rest of the clock all yours. You will read them differently. Questions that looked hard on the first pass often look smaller now.</div></div>
 </div>
 
 <div class="calm">
-<p><b>That is everything.</b> You have sat four full papers under the clock. You can solve a tree backwards, sweep a grid, and run an indifference equation from the first line to the last. Not because you memorised them, but because you understood why each step is there.</p>
-<p>You will not feel ready. Nobody does at breakfast. Feeling ready is not what matters. Being able to do the work is, and that part is already done.</p>
-<p>Eat something. Take a calculator and a pen you like. Get there early enough that the walk is unhurried. Then close this and go.</p>
+<p><b>That is everything.</b> You have done four full papers under the clock. You can solve a tree backwards, sweep a grid, and run an indifference equation from the first line to the last. Not because you memorised them, but because you understood why each step is there.</p>
+<p>You will not feel ready. Nobody does at breakfast. Feeling ready is not what matters. What matters is being able to do the work. That part is already done.</p>
+<p>Eat something. Take a calculator and a pen you like. Get there early, so the walk is calm. Then close this and go.</p>
 <p><b>Good luck, Ifat. Go and enjoy it.</b></p>
 </div>
 

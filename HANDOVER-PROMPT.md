@@ -1,81 +1,157 @@
 # Handover prompt — Game Theory 14-day study site
 
+Written 14 September 2026, late. Replaces the earlier 14 September version, whose Job 1 did not
+exist: Day 7 and Day 10 were already built. Since then two full passes have run over all 15 pages,
+a correctness verification and a simple-English rewrite, and the hub has been repaired.
+
 ## How to use this
 
 1. Start the new chat **inside the same Project** ("Introduction to Game Theory and Strategic Thinking").
-2. **Attach `game-theory-prep.zip`** to the first message. This is essential. Each chat gets a fresh cloud machine, so the site files do not travel by themselves. The zip holds all 15 pages, the 34 audio scripts, and BUILD-SPEC.md.
+2. Nothing needs attaching. The site is public on GitHub and the folder is on my computer. Both
+   addresses are in the brief.
 3. Paste everything below the line as your first message.
 
 ---
 
-I am continuing work from an earlier chat that ran out of context. The zip attached holds the whole project. Please unzip it into your working folder and read `BUILD-SPEC.md` first, then this brief.
+I am continuing work from an earlier chat. Read `BUILD-SPEC.md` before anything else. It is in the
+repository below and it owns every rule about how these pages are built. Then read
+`VERIFICATION-2026-09-14.md` in the same folder, which records what was checked on 14 September
+and what is still open.
 
 ## Step 0 — load the skills and show me the receipt
 
-Before any work, fetch these Notion pages with the Notion MCP and tell me, in a short list, which ones loaded and which failed:
+Fetch `exam-prep-manifest` FIRST: https://app.notion.com/p/3d6af5bbc35381028c2ec6357dfc599f
 
-- exam-prep-manifest (load this FIRST, it owns the shape of the package) — https://app.notion.com/p/3d6af5bbc35381028c2ec6357dfc599f
+Then build the receipt **from the load-order table on that page, not from this list**. Every skill
+in that table gets a row saying whether its fetch worked. A skill in the table that this prompt
+does not name still gets a row. A receipt that matches the prompt rather than the manifest looks
+complete when it is not, which is how three skills were missed on 10 September.
+
+IDs I already have, all confirmed working on 14 September:
+
 - working-with-ifat — 398af5bbc35381c09505f86bb0a51840
 - talk-to-ifat — 3b1af5bbc3538182b880e5acae2c893a
-- cut-the-fluff — 3acaf5bbc35381a5abaac37e4d1a9f2d
+- exam-prep-day-builder — 398af5bbc3538137bcd5cca363291a0e
 - exam-question-writer — 398af5bbc35381529662ef7ea22e773d
+- cut-the-fluff — 3acaf5bbc35381a5abaac37e4d1a9f2d
 - learning-podcast-builder — 398af5bbc3538108b45bf107e995e34b
+- mrt-explainer-visuals — 3b4af5bbc35381649c80c18c473b6a7c
 - verified-numbers — 3c4af5bbc353811f928bc4b583e366fd
 - evidence-honesty — 398af5bbc35381ea8f87eee050e4378f
+- mrt-agent-fanout — 3caaf5bbc35381889a78d161a6eac794
 - notion-writer-common-brain-standard — 398af5bbc35381469a97fd7d93e48383
 
 If a fetch fails, say so and stop. Do not work from memory of these pages.
 
-## What is already finished
+## Where the files are
 
-A 14-day exam prep site for my MBA Game Theory exam (Bar Ilan IMBA, Prof. Yuval Heller, Thursday 8 October 2026, 16:00, 15 multiple choice questions, five options each).
+**GitHub, public, read it directly:**
+`https://raw.githubusercontent.com/ifatprouser-bit/Introduction-to-Game-Theory-and-Strategic-Thinking/main/<filename>`
+Repository: https://github.com/ifatprouser-bit/Introduction-to-Game-Theory-and-Strategic-Thinking
 
-- `index.html` plus `Day-01.html` to `Day-14.html`, all built, all checked.
-- 10 learn days (1, 2, 4, 5, 6, 8, 9, 11, 13, 14) and 4 timed mocks (3, 7, 10, 12).
-- Aurora theme, matching my other site at ifatprouser-bit.github.io/econ-prep.
-- Quiz answers only appear after I click an option.
-- Every day is tagged with the presentations P1 to P6 it covers, plus a coverage map on the index.
-- GoatCounter is on all 15 pages, site code `game-theory`.
-- Simple English pass done. No em dashes. Course vocabulary kept.
-- Quiz freshness pass done: 85 percent of questions are new, 0 past-paper questions are spoiled by appearing in both a learn day and a mock.
-- 34 audio scripts in `scripts/`, each also embedded as an HTML comment above its `<audio>` tag.
+**Note: GitHub is now behind my computer.** All fifteen pages changed on 14 September and none has
+been pushed. My folder is the current version, not the repository.
 
-## What is left — three jobs, in this order
+**On my computer,** if I connect the folder:
+`G:\My Drive\MBA\Bar Ilan\All Courses\Game theory\Test plan\game-theory-prep_1`
 
-### Job 1 — finish the audio (this is the big one)
+**The past papers and lecture decks** are in this Project's files, and also in
+`G:\My Drive\MBA\Bar Ilan\All Courses\Game theory`
 
-38 mp3 files are referenced by the pages. Only 2 exist so far: `Day-01-intro.mp3` and `Day-01-reading-trees.mp3`. Day 6's four files exist on my machine but in the retired Aria and Andrew voices, so they must be rebuilt.
+## The state of the site
 
-- Tool: `mcp__remote-devices__voicebox__dialogue_to_mp3`.
-- Voices: **NOA = Heart**, **TOM = Fenrir**. Nothing else.
-- The tool caches each line, so if a call times out at 60 seconds, call it again with exactly the same arguments and it resumes where it stopped. Do not change the text between retries.
-- Scripts live in `scripts/Day-NN-<slug>-script.txt`. The output filename is given at the top of each script.
-- **Day 6 has no scripts.** They were written straight into the page in the old chat and never saved. Write four fresh scripts for `Day-06-intro`, `Day-06-zerosum`, `Day-06-pure`, `Day-06-indifference` from what is actually on `Day-06.html`, in the same NOA and TOM style as the other 34, then generate them.
-- Audio rules are in BUILD-SPEC.md section 4. The one that catches people out: **no spoken digits**. Say "one third", not "1/3".
-- When the files are made, collect them into the site folder next to the HTML (the `<audio src>` is a plain filename, same folder, no `audio/` prefix), then rebuild the zip.
+A 14-day exam prep site for my MBA Game Theory exam (Bar-Ilan IMBA, Prof. Yuval Heller,
+Thursday 8 October 2026, 16:00).
 
-Note: no folder on my computer is connected to the session right now. You will need to ask me for folder access before you can copy the finished mp3s back, or just tell me where Voicebox saved them.
+- `index.html` plus `Day-01.html` to `Day-14.html`. 10 learn days and 4 timed mocks.
+- All four mocks are complete and working: Days 3, 7, 10 and 12, 14 questions each, five options
+  each, timer, submit, auto-submit, results panel.
+- The hub links all 14 days. Nine of them were still marked "coming" until 14 September.
+- All 38 mp3 files built in Kokoro Heart (NOA) and Fenrir (TOM). 65 minutes of audio.
+- All 38 scripts exist as `.txt` files and are embedded as HTML comments above their `<audio>` tags.
+- GoatCounter on all 15 pages, site code `game-theory`.
+- Zero em dashes in visible page text across all 15 pages.
+- **Verified 14 September**: every game on every page re-solved in code. No answer key was wrong.
+  Ten reserve-paper leaks closed, sixteen content errors fixed.
+- **Simple English pass, 14 September**: all 15 pages rewritten for a second-language reader, about
+  900 sentences shortened and about 90 course terms explained on first use. No number, option,
+  matrix cell or answer key changed, proved by a fingerprint check before and after. Mock question
+  stems and all 280 options stayed frozen, because she must meet the real paper's wording cold.
+- Per-page reports are in `reports/Day-NN.md` (correctness) and `reports/english-Day-NN.md`
+  (English). The summary of both is `VERIFICATION-2026-09-14.md`.
 
-### Job 2 — two edits to the exam-prep-manifest page in Notion
+## How to check whether a page is finished
 
-Both were drafted in the old chat and both failed to apply, because the `old_str` I sent did not match the stored table row. Fetch the page first, read its exact stored markdown, then apply.
+**Never judge a page by searching its HTML source.** Days 3 and 12 write their questions into the
+HTML. Days 7 and 10 build theirs from a JavaScript array at the bottom of the file, so a text
+search finds nothing and reports a finished page as empty. That mistake cost a whole handover.
 
-**Edit A — fill in four missing URLs** in the load order table: talk-to-ifat, verified-numbers, evidence-honesty, notion-writer-common-brain-standard. The IDs are in Step 0 above.
+Render the page in Chromium and count what a learner actually sees. Playwright and Chromium are
+installed in the cloud workspace. One console error appears on every page,
+`Failed to load resource: net::ERR_INVALID_URL`. That is the GoatCounter tag, whose address starts
+with `//` and cannot resolve from a local file. It works on the live site. Ignore it.
 
-**Edit B — replace Rule 8.** The current Rule 8 says to match each day to the learner's week. I rejected that. These documents are shared with my classmates, so no one can know when any single reader is busy, and I have other exams the plan cannot see. The replacement rule is titled **"keep each day's scope reasonable"** and says:
+## What is left
 
-> Do not build the plan around anyone's calendar. These packages are shared, so the reader's week is unknown. Control scope instead. One idea per day. Fit the stated time budget: about 5 minutes rotating recall, 15 minutes teaching, 7 minutes at exam pace, 3 minutes error log. Two to four teaching panels per learn day, no more. Mock days are longer and must be labelled as longer. Do not place two heavy calculation days back to back.
+### Job 1 — push the changed files to GitHub
 
-### Job 3 — final check, then I upload
+**All fifteen pages changed on 14 September**, so the repository is well behind the folder. Push
+`index.html` and `Day-01.html` through `Day-14.html`. Also add the `scripts` folder, which never
+uploaded, and replace or delete the stale `game-theory-prep_1.zip` sitting next to the folder on my
+Drive.
 
-Once the audio is in, give me the zip. **I upload to GitHub myself.** Do not create repos, do not suggest moving this to Claude Code, do not move any files anywhere. Everything stays in this chat.
+This matters more than it used to: the hub was linking only five of the fourteen days, with the
+other nine greyed out as "coming", so anyone opening the site from GitHub saw a two-thirds empty
+course. That is fixed in the folder and not yet on GitHub.
+
+### Job 2 — the three open content items
+
+These are written up in full in `VERIFICATION-2026-09-14.md` under "Open items". In short:
+
+- The **"13 to 19" lab range** for the 2/3-average game appears on Days 11 and 13, and neither
+  Presentation 1 nor Presentation 4 states it in text. Day 11's quiz 3 depends on it. Decide
+  whether to keep it, source it, or rewrite the question around the parts that are sourced.
+- **Day 14's tone.** Three sentences were flagged on that page, which is read an hour before the
+  exam. Two were second-language readability faults and are fixed: an ellipsis that let "a guess
+  never does" be read as "a guess never scores zero", and a tactic that named and predicted panic.
+  **One is left for me**, because it is a tone call and not an English one: trap 6 says multiplying
+  the matched pair is "the most expensive slip on the paper". Do I want a mistake ranked as the
+  worst on the paper, an hour before I sit it? `reports/english-Day-14.md` offers a same-meaning
+  alternative without the ranking, unapplied.
+- **A site-wide analytics bug.** The tracking block at the bottom of every page reads an element
+  called `resScore`, but the mock pages call theirs `rScore`, so the "mock submitted" event sends
+  an empty score. It changes nothing a learner sees. Fix it once across all 15 pages, not on one.
+
+### Job 3 — the skill edits I still have not answered
+
+Proposed on 10 September, still open: the receipt rule (to `exam-prep-manifest`), and two
+corrections to `learning-podcast-builder` (the Voicebox server is a local process on port 17493,
+so the machine must be awake even though Replicate does the synthesis; and the generation
+mechanics: one call at a time, never parallel, expect a 60 second timeout and one retry, pass the
+script file's text verbatim so the line cache hits).
+
+A fourth is now proposed, from the 14 September session: **`exam-prep-manifest` should say that a
+page is verified by rendering it, never by searching its source**, and **the reserve-papers rule
+should say explicitly that it covers prose, warning boxes and explanations, not only tagged quiz
+items.** Seven of the ten learn days broke the rule in that second form while every tagged item
+was clean.
 
 ## Rules that must not slip
 
-- **Never give me the answer.** My weekly assignments are graded. Hints and smaller questions only. This site is exam revision, which is different, but the habit still applies to anything I ask about.
-- Simple English, short answers, one idea at a time. English is my second language and my students' too.
-- No em dashes anywhere in the pages.
+- **Never give me the answer.** My weekly assignments are graded. Hints and smaller questions only.
+- Simple English, short answers, one idea at a time. English is my second language and my
+  classmates' too.
+- No em dashes anywhere in the visible page text. The audio-script comments are speech: leave their
+  punctuation alone.
 - Keep the exam vocabulary the professor uses. Simplify everything around it.
-- Matrices in the past-paper PDFs print **player 2's payoff first, then player 1's** in the flattened text. This is proven in BUILD-SPEC.md section 6. An earlier version of the spec had this backwards and taught a false erratum. Do not re-open it.
-- Reserve papers rule: a learn day quiz may only quote a past paper that is not used as one of the four mocks.
-- Verify every game tree, matrix, elimination chain and mixed equilibrium in code before it goes on a page. Do not eyeball them.
+- **Reserve papers rule.** A learn day may quote only 2024 B or 2025 A. The four mocks are the
+  practice paper, 2024 A, 2025 B and 2025 C, and naming one of those, or its question number, its
+  answer or its option list, anywhere on a learn day, spoils a paper I have not yet sat. This
+  applies to prose and warning boxes, not only to tagged quiz items.
+- **The cell-order rule.** In an extracted PDF grid the second number is player 1's. This is
+  settled and was confirmed again on three papers. But it is a fact about how the text layer
+  flattens, not about what is printed: the papers themselves print player 1 first, and 2024 B says
+  so in words. Never teach it as an exam-room reading rule.
+- Verify every game tree, matrix, elimination chain and mixed equilibrium in code. Do not eyeball
+  them, and do not trust a page's own explanation as evidence.
+- **If a skill and this prompt disagree, the skill wins and this prompt is stale.**
