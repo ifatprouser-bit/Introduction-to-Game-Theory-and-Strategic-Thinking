@@ -8,7 +8,9 @@ a correctness verification and a simple-English rewrite, and the hub has been re
 
 1. Start the new chat **inside the same Project** ("Introduction to Game Theory and Strategic Thinking").
 2. Nothing needs attaching. The site is public on GitHub and the folder is on my computer. Both
-   addresses are in the brief.
+   addresses are in the brief, and as of 15 September the two match.
+   **Do not read the site from `claude/site/` in this Project.** Those two files are a partial
+   snapshot from 3 September and they are wrong.
 3. Paste everything below the line as your first message.
 
 ---
@@ -49,8 +51,13 @@ If a fetch fails, say so and stop. Do not work from memory of these pages.
 `https://raw.githubusercontent.com/ifatprouser-bit/Introduction-to-Game-Theory-and-Strategic-Thinking/main/<filename>`
 Repository: https://github.com/ifatprouser-bit/Introduction-to-Game-Theory-and-Strategic-Thinking
 
-**Note: GitHub is now behind my computer.** All fifteen pages changed on 14 September and none has
-been pushed. My folder is the current version, not the repository.
+**GitHub is current.** I uploaded all fifteen pages from my Drive folder on 15 September, and the
+repository now matches. Verified from the repository itself: `index.html` has zero "coming" cards,
+and `Day-07.html` carries the honesty fix and the corrected punctuation.
+
+**If a change ever looks missing on the live site, wait before assuming the upload failed.** GitHub
+Pages rebuilds after an upload and its cache can serve the old page for up to about ten minutes.
+Press Ctrl+F5 to force a fresh load.
 
 **On my computer,** if I connect the folder:
 `G:\My Drive\MBA\Bar Ilan\All Courses\Game theory\Test plan\game-theory-prep_1`
@@ -66,7 +73,8 @@ Thursday 8 October 2026, 16:00).
 - `index.html` plus `Day-01.html` to `Day-14.html`. 10 learn days and 4 timed mocks.
 - All four mocks are complete and working: Days 3, 7, 10 and 12, 14 questions each, five options
   each, timer, submit, auto-submit, results panel.
-- The hub links all 14 days. Nine of them were still marked "coming" until 14 September.
+- The hub links all 14 days. Nine were still marked "coming" until 14 September, on the Drive copy
+  and on GitHub both. Fixed in both.
 - All 38 mp3 files built in Kokoro Heart (NOA) and Fenrir (TOM). 65 minutes of audio.
 - All 38 scripts exist as `.txt` files and are embedded as HTML comments above their `<audio>` tags.
 - GoatCounter on all 15 pages, site code `game-theory`.
@@ -93,16 +101,14 @@ with `//` and cannot resolve from a local file. It works on the live site. Ignor
 
 ## What is left
 
-### Job 1 — push the changed files to GitHub
+### Job 1 — two small housekeeping items on GitHub
 
-**All fifteen pages changed on 14 September**, so the repository is well behind the folder. Push
-`index.html` and `Day-01.html` through `Day-14.html`. Also add the `scripts` folder, which never
-uploaded, and replace or delete the stale `game-theory-prep_1.zip` sitting next to the folder on my
-Drive.
+The fifteen pages are uploaded and the site is live and correct. Two things are still outstanding:
 
-This matters more than it used to: the hub was linking only five of the fourteen days, with the
-other nine greyed out as "coming", so anyone opening the site from GitHub saw a two-thirds empty
-course. That is fixed in the folder and not yet on GitHub.
+- The **`scripts` folder** has never been uploaded. The site does not need it and nothing links to
+  it, but the audio scripts should live beside the pages they belong to.
+- **`game-theory-prep_1.zip`**, sitting next to the folder on my Drive, is from 10 September and is
+  now well out of date. Replace it or delete it, so nobody unzips the old site by mistake.
 
 ### Job 2 — the three open content items
 
