@@ -65,6 +65,7 @@ audio{width:100%;margin-top:6px;}
 .navbtn{text-decoration:none;font-weight:600;font-size:14px;padding:10px 16px;border-radius:11px;border:1px solid var(--line);color:var(--ink);background:#fff;}
 .navbtn.primary{background:var(--brand);color:#fff;border-color:var(--brand);}
 .tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.howto{background:#f7f5fd;border:1px dashed #cfc4f5;border-radius:10px;padding:9px 13px;margin:8px 0 14px;font-size:13.5px;line-height:1.55;}
 .warnbox{background:var(--amber-soft);border:1px solid #f0deb8;border-radius:11px;padding:12px 16px;margin:14px 0;font-size:14.5px;}
 .warnbox b{color:var(--amber);}
 /* --- presentation chips. The hub styles .p as a chip; day pages use .p for prose,
@@ -143,19 +144,19 @@ NOA: That is the whole goal.
   </g>
   <g font-size="11.5" font-family="-apple-system,Segoe UI,Arial" fill="#6f6886">
     <text x="145" y="70" text-anchor="middle">Left</text><text x="145" y="146" text-anchor="middle">Right</text>
-    <text x="332" y="32" text-anchor="middle">a</text><text x="332" y="82" text-anchor="middle">b</text>
-    <text x="332" y="136" text-anchor="middle">c</text><text x="332" y="186" text-anchor="middle">d</text>
+    <text x="332" y="30" text-anchor="middle">Up</text><text x="332" y="86" text-anchor="middle">Down</text>
+    <text x="332" y="134" text-anchor="middle">Up</text><text x="332" y="190" text-anchor="middle">Down</text>
   </g>
   <g font-size="11" font-family="-apple-system,Segoe UI,Arial" font-weight="700" fill="#2f7fd0">
-    <text x="245" y="35" text-anchor="middle">node A</text><text x="245" y="192" text-anchor="middle">node B</text>
+    <text x="245" y="35" text-anchor="middle">his turn after Left</text><text x="245" y="192" text-anchor="middle">his turn after Right</text>
   </g>
 </svg>
-<div class="cap">Player 1 moves once. Player 2 might move at node A or at node B. He will only ever reach one of them. His strategy must still say what to do at both.</div>
+<div class="cap">Player 1 moves once. Player 2 might move after Left or after Right. He will only ever reach one of them. His strategy must still say what to do at both.</div>
 </div>
 
 <div class="tryq"><div class="q">How many <b>strategies</b> does player 2 have in this tree? And how many does player 1 have?</div>
 <button class="reveal-btn" onclick="this.nextElementSibling.classList.add('show');this.disabled=true;">Reveal answer</button>
-<div class="reveal"><b>Player 2 has four. Player 1 has two.</b><br><br>Player 2's plan must fill in two blanks (what to do at node A, and what to do at node B) with two options each. That is 2 &times; 2 = <b>four</b> complete plans: (a,&nbsp;c), (a,&nbsp;d), (b,&nbsp;c), (b,&nbsp;d).<br><br>Player 1 has only one place to move, so he has just two strategies: Left or Right.<br><br><b>Why the exam cares.</b> "Player 2 plays b" is not a strategy: it says nothing about node B. If you can say that sentence, you have the definition. Now say the second one: a dominant strategy beats every alternative <i>in every column</i>, not on average, and not usually.</div></div>
+<div class="reveal"><b>Player 2 has four. Player 1 has two.</b><br><br>Player 2's plan must fill in two blanks (what to do after Left, and what to do after Right) with two options each. That is 2 &times; 2 = <b>four</b> complete plans: Up&nbsp;/&nbsp;Up, Up&nbsp;/&nbsp;Down, Down&nbsp;/&nbsp;Up, Down&nbsp;/&nbsp;Down (first word: after Left; second word: after Right).<br><br>Player 1 has only one place to move, so he has just two strategies: Left or Right.<br><br><b>Why the exam cares.</b> "Player 2 plays Down" is not a strategy: it does not say what he does after Right. If you can say that sentence, you have the definition. Now say the second one: a dominant strategy beats every alternative <i>in every column</i>, not on average, and not usually.</div></div>
 </div>
 
 <!-- ============ P2 ============ -->
@@ -184,8 +185,8 @@ NOA: That is the whole goal.
   </g>
   <g font-size="11.5" font-family="-apple-system,Segoe UI,Arial" fill="#6f6886">
     <text x="138" y="68" text-anchor="middle">Left</text><text x="138" y="146" text-anchor="middle">Right</text>
-    <text x="322" y="34" text-anchor="middle">a</text><text x="322" y="86" text-anchor="middle">b</text>
-    <text x="322" y="138" text-anchor="middle">c</text><text x="322" y="188" text-anchor="middle">d</text>
+    <text x="322" y="32" text-anchor="middle">Up</text><text x="322" y="90" text-anchor="middle">Down</text>
+    <text x="322" y="136" text-anchor="middle">Up</text><text x="322" y="192" text-anchor="middle">Down</text>
   </g>
   <g font-size="13" font-family="-apple-system,Segoe UI,Arial" font-weight="700" fill="#211c33">
     <text x="428" y="33">(6, 2)</text>
@@ -199,7 +200,7 @@ NOA: That is the whole goal.
 
 <div class="tryq"><div class="q">What does <b>player 1</b> get in the backward-induction equilibrium?</div>
 <button class="reveal-btn" onclick="this.nextElementSibling.classList.add('show');this.disabled=true;">Reveal answer</button>
-<div class="reveal"><b>Player 1 gets 4.</b><br><br><b>Node A first.</b> Player 2 reads only his own number: 2 if he plays a, 5 if he plays b. He plays <b>b</b>, so the Left branch is worth (4, 5).<br><br><b>Node B next.</b> 3 if he plays c, 8 if he plays d. He plays <b>d</b>, so the Right branch is worth (2, 8).<br><br><b>Now the root.</b> Player 1 compares the two branch values, reading only his own number: Left is worth 4, Right is worth 2. He goes <b>Left</b>. Final outcome (4, 5).<br><br><b>Both traps are here.</b> 7 is the biggest payoff player 1 can see in the tree, and he can never reach it. Player 2 would have to hand it over, and he will not. The other trap is 6. It sits on the branch player 1 really does choose, so it is the most tempting wrong answer on the page.</div></div>
+<div class="reveal"><b>Player 1 gets 4.</b><br><br><b>His turn after Left, first.</b> Player 2 reads only his own number: 2 if he plays Up, 5 if he plays Down. He plays <b>Down</b>, so the Left branch is worth (4, 5).<br><br><b>His turn after Right, next.</b> 3 if he plays Up, 8 if he plays Down. He plays <b>Down</b>, so the Right branch is worth (2, 8).<br><br><b>Now the root.</b> Player 1 compares the two branch values, reading only his own number: Left is worth 4, Right is worth 2. He goes <b>Left</b>. Final outcome (4, 5).<br><br><b>Both traps are here.</b> 7 is the biggest payoff player 1 can see in the tree, and he can never reach it. Player 2 would have to hand it over, and he will not. The other trap is 6. It sits on the branch player 1 really does choose, so it is the most tempting wrong answer on the page.</div></div>
 </div>
 
 <!-- ============ P3 ============ -->
@@ -212,6 +213,7 @@ NOA: That is the whole goal.
 <tr><td class="lab">Farmer 1 pumps normally</td><td>9, &nbsp;9</td><td>2, &nbsp;12</td></tr>
 <tr><td class="lab">Farmer 1 pumps hard</td><td>12, &nbsp;2</td><td>5, &nbsp;5</td></tr>
 </table></div>
+<div class="howto"><b>How to read this table.</b> Rows: farmer 1's choice. Columns: farmer 2's choice. In each cell, farmer 1's harvest comes first and farmer 2's second.</div>
 
 <div class="rule">The two-part test: <b>each</b> player has a dominant strategy, <b>and</b> the cell they both land on is worse for both than some other cell.</div>
 
@@ -248,6 +250,7 @@ NOA: Never stop. Finish the sweep. The question asks how many, not whether there
 <tr><td class="lab">Middle</td><td>5, &nbsp;3</td><td>3, &nbsp;2</td><td>8, &nbsp;4</td></tr>
 <tr><td class="lab">Down</td><td>7, &nbsp;1</td><td>6, &nbsp;6</td><td>5, &nbsp;5</td></tr>
 </table></div>
+<div class="howto"><b>How to read this table.</b> Rows: player 1's choice. Columns: player 2's choice. In each cell, player 1's payoff comes first and player 2's second.</div>
 
 <div class="rule">Columns down for player 1, reading only the first number. Rows across for player 2, reading only the second. A cell marked twice is a <b>pure Nash equilibrium</b>: neither player can do better by moving alone.</div>
 
@@ -281,6 +284,7 @@ NOA: An ending needs both players to have moved, so you multiply. And often the 
 <tr><td class="lab">Top</td><td>3</td><td>6</td></tr>
 <tr><td class="lab">Bottom</td><td>5</td><td>3</td></tr>
 </table></div>
+<div class="howto"><b>How to read this table.</b> Rows: player 1's choice. Columns: player 2's choice. One number per cell: player 1's payoff. Player 2 gets minus that, so player 1 wants it high and player 2 wants it low.</div>
 <p class="given">Dominance check first: neither row beats the other in both columns (3 &lt; 5 but 6 &gt; 3). And neither column is better for player 2 in both rows. Saddle check: the best player 1 can guarantee himself is 3, and the worst player 2 can be held to is 5. Those two do not meet, so no single cell is stable. You must mix.</p>
 
 <div class="tryq"><div class="q">Find how often player 1 plays Top, how often player 2 plays Left, the value of the game, and the probability that the outcome is <b>(Top, Left)</b>.</div>

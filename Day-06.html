@@ -64,6 +64,7 @@ audio{width:100%;margin-top:6px;}
 .navbtn{text-decoration:none;font-weight:600;font-size:14px;padding:10px 16px;border-radius:11px;border:1px solid var(--line);color:var(--ink);background:#fff;}
 .navbtn.primary{background:var(--brand);color:#fff;border-color:var(--brand);}
 .tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.howto{background:#f7f5fd;border:1px dashed #cfc4f5;border-radius:10px;padding:9px 13px;margin:8px 0 14px;font-size:13.5px;line-height:1.55;}
 .warnbox{background:var(--amber-soft);border:1px solid #f0deb8;border-radius:11px;padding:12px 16px;margin:14px 0;font-size:14.5px;}
 .warnbox b{color:var(--amber);}
 @media print{
@@ -139,6 +140,7 @@ NOA: And that is the whole problem. There is no resting place. If your opponent 
 <tr><td class="lab">Vizzini drinks<br>from his own</td><td>1, &nbsp;&minus;1</td><td>&minus;1, &nbsp;1</td></tr>
 <tr><td class="lab">Vizzini drinks<br>from Westley's</td><td>&minus;1, &nbsp;1</td><td>1, &nbsp;&minus;1</td></tr>
 </table></div>
+<div class="howto"><b>How to read this table.</b> Rows: which goblet Vizzini drinks from. Columns: which goblet Westley poisons. In each cell, Vizzini's payoff first and Westley's second. 1 = win, &minus;1 = lose. Every cell adds up to 0.</div>
 <p class="p">And the same game in one-number form, with only Vizzini's payoff:</p>
 <div class="tscroll">
 <table class="dtable">
@@ -190,6 +192,7 @@ NOA: The try-it problem. Getting better at defending one side can make the goali
 <tr><td class="lab">Kicker goes Left &nbsp;<i>(x)</i></td><td>58</td><td>95</td></tr>
 <tr><td class="lab">Kicker goes Right &nbsp;<i>(1&minus;x)</i></td><td>93</td><td>70</td></tr>
 </table></div>
+<div class="howto"><b>How to read this table.</b> Rows: where the kicker shoots. Columns: where the goalie dives. Each number is the kicker&rsquo;s chance of scoring, in percent: the kicker wants it high, the goalie low. <b>x</b> is the share of kicks that go Left.</div>
 <p class="given">First check that no pair of pure strategies is stable. Whatever cell you pick, one player wants to move. So mixing is needed.</p>
 
 <div class="svg-wrap">
@@ -302,6 +305,7 @@ NOA: And more than the minute. It is a wrong answer avoided, because a mixture c
 <table class="dtable" style="max-width:340px;margin:10px 0"><tr><th></th><th>Left</th><th>Right</th></tr>
 <tr><td class="lab">Top</td><td>4</td><td>7</td></tr>
 <tr><td class="lab">Down</td><td>2</td><td>5</td></tr></table>
+<div class="howto"><b>How to read this table.</b> Rows: player 1's choice. Columns: player 2's choice. One number per cell: player 1's payoff. Player 2 gets minus that, so player 1 wants it high and player 2 wants it low.</div>
 Does this game need a mixed strategy? What is player 1's payoff in equilibrium?</div>
 <button class="reveal-btn" onclick="this.nextElementSibling.classList.add('show');this.disabled=true;">Reveal answer</button>
 <div class="reveal"><b>No mixing. Player 1 gets 4.</b><br><br>Top beats Down in both columns (4 &gt; 2 and 7 &gt; 5), so player 1 always plays Top. Player 2 wants the number low, so facing Top she picks the smaller one: 4 rather than 7, which is Left.<br><br>Check the cell: 4 is the smallest in its row and the largest in its column. Stable. The equilibrium is (Top, Left) and the value is <b>4</b>.</div></div>

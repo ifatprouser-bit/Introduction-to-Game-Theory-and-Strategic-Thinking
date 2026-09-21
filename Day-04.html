@@ -64,6 +64,7 @@ audio{width:100%;margin-top:6px;}
 .navbtn{text-decoration:none;font-weight:600;font-size:14px;padding:10px 16px;border-radius:11px;border:1px solid var(--line);color:var(--ink);background:#fff;}
 .navbtn.primary{background:var(--brand);color:#fff;border-color:var(--brand);}
 .tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.howto{background:#f7f5fd;border:1px dashed #cfc4f5;border-radius:10px;padding:9px 13px;margin:8px 0 14px;font-size:13.5px;line-height:1.55;}
 .warnbox{background:var(--amber-soft);border:1px solid #f0deb8;border-radius:11px;padding:12px 16px;margin:14px 0;font-size:14.5px;}
 .warnbox b{color:var(--amber);}
 @media print{
@@ -159,6 +160,7 @@ NOA: Hold onto that sentence. Mixing up those two questions is the most common w
 <tr><td class="lab">Ana keeps Normal</td><td>8,&nbsp; 8</td><td>3,&nbsp; 10</td></tr>
 <tr><td class="lab">Ana Cuts</td><td>10,&nbsp; 3</td><td>5,&nbsp; 5</td></tr>
 </table></div>
+<div class="howto"><b>How to read this table.</b> Rows: Ana's choice. Columns: Boaz's choice. In each cell, Ana's profit comes first and Boaz's second. Profits are in hundreds of shekels.</div>
 
 <div class="svg-wrap">
 <svg viewBox="0 0 560 290" role="img" aria-label="A two by two grid of four cells. From the top-left cell, where both keep the normal price, two arrows point away: one downward and one to the right, showing that each player wants to move. From the bottom-right cell, where both cut, no arrows leave. That cell is highlighted green.">
@@ -230,12 +232,13 @@ Boaz gets 3 from Normal, 5 from Cut. He stays too.
 <div class="warnbox"><b>The trap this sets up.</b> When a question asks "how many pure Nash equilibria?", your eye is drawn to the friendly cells: the big numbers, the cells where both do well. Those are exactly the cells most likely to fail. The routine in the next section stops your eye from choosing for you.</div>
 
 <div class="tryq"><div class="q">A different pair. Two neighbouring farms decide whether to <b>Share</b> a water pump or each buy their own (<b>Alone</b>). Profits in thousands, player 1 first:<br>
-<div class="tscroll"><table class="dtable" style="max-width:340px;margin:10px 0"><tr><th></th><th>B Shares</th><th>B Alone</th></tr>
-<tr><td class="lab">A Shares</td><td>7,&nbsp; 7</td><td>1,&nbsp; 4</td></tr>
-<tr><td class="lab">A Alone</td><td>4,&nbsp; 1</td><td>3,&nbsp; 3</td></tr></table></div>
+<div class="tscroll"><table class="dtable" style="max-width:340px;margin:10px 0"><tr><th></th><th>Farm 2 shares</th><th>Farm 2 alone</th></tr>
+<tr><td class="lab">Farm 1 shares</td><td>7,&nbsp; 7</td><td>1,&nbsp; 4</td></tr>
+<tr><td class="lab">Farm 1 alone</td><td>4,&nbsp; 1</td><td>3,&nbsp; 3</td></tr></table></div>
+<div class="howto"><b>How to read this table.</b> Rows: farm 1's choice. Columns: farm 2's choice. In each cell, farm 1's profit comes first and farm 2's second. Profits are in thousands.</div>
 Here (Share, Share) is the best cell for both. Does that mean it fails the test, like the ice-cream case did?</div>
 <button class="reveal-btn" onclick="this.nextElementSibling.classList.add('show');this.disabled=true;">Reveal answer</button>
-<div class="reveal"><b>No, here it passes.</b> And that is the point: "best for both" tells you nothing either way. You still have to check.<br><br>Freeze B at Share: A gets 7 from Share, 4 from Alone → A stays. Freeze A at Share: B gets 7 from Share, 4 from Alone → B stays. So (Share, Share) <b>is</b> an equilibrium.<br><br>Now check the other diagonal cell. Freeze B at Alone: A gets 1 from Share, 3 from Alone → A stays. Same for B. So <b>(Alone, Alone) is also an equilibrium</b>. This game has two.<br><br>Two games, two friendly-looking cells, opposite verdicts. Never guess from the shape of the numbers. Mark, then read.</div></div>
+<div class="reveal"><b>No, here it passes.</b> And that is the point: "best for both" tells you nothing either way. You still have to check.<br><br>Freeze farm 2 at Share: farm 1 gets 7 from Share, 4 from Alone → farm 1 stays. Freeze farm 1 at Share: farm 2 gets 7 from Share, 4 from Alone → farm 2 stays. So (Share, Share) <b>is</b> an equilibrium.<br><br>Now check the other diagonal cell. Freeze farm 2 at Alone: farm 1 gets 1 from Share, 3 from Alone → farm 1 stays. Same for farm 2. So <b>(Alone, Alone) is also an equilibrium</b>. This game has two.<br><br>Two games, two friendly-looking cells, opposite verdicts. Never guess from the shape of the numbers. Mark, then read.</div></div>
 </div>
 
 <!-- ============ SECTION 2 ============ -->
@@ -322,7 +325,8 @@ Stage row: Boaz gets 3, 6, 1 → biggest 6. Lake row: Boaz gets 4, 9, 2 → bigg
 <tr><th></th><th>Left</th><th>Center</th><th>Right</th></tr>
 <tr><td class="lab">Up</td><td>2,&nbsp; 6</td><td>6,&nbsp; 3</td><td>4,&nbsp; 2</td></tr>
 <tr><td class="lab">Middle</td><td>7,&nbsp; 4</td><td>3,&nbsp; 8</td><td>1,&nbsp; 5</td></tr>
-<tr><td class="lab">Down</td><td>5,&nbsp; 1</td><td>4,&nbsp; 2</td><td>8,&nbsp; 7</td></tr></table></div></div>
+<tr><td class="lab">Down</td><td>5,&nbsp; 1</td><td>4,&nbsp; 2</td><td>8,&nbsp; 7</td></tr></table></div>
+<div class="howto"><b>How to read this table.</b> Rows: player 1's choice. Columns: player 2's choice. In each cell, player 1's payoff comes first and player 2's second.</div></div>
 <button class="reveal-btn" onclick="this.nextElementSibling.classList.add('show');this.disabled=true;">Reveal answer</button>
 <div class="reveal"><b>Exactly one: (Down, Right), payoffs (8, 7).</b><br><br><b>Columns, player 1's numbers:</b> Left → 2, 7, 5, biggest is Middle. Center → 6, 3, 4, biggest is Up. Right → 4, 1, 8, biggest is Down.<br><br><b>Rows, player 2's numbers:</b> Up → 6, 3, 2, biggest is Left. Middle → 4, 8, 5, biggest is Center. Down → 1, 2, 7, biggest is Right.<br><br>Both marks land together only at (Down, Right). Check the near-misses: (Middle, Left) has player 1's mark but player 2 prefers Center; (Up, Center) has player 1's mark but player 2 prefers Left. Each of those is a cell that would push a careless count from one to three.</div></div>
 </div>
@@ -365,6 +369,7 @@ NOA: Look at the marked grid on the page and find it. It's there.
 <tr><td class="lab">C</td><td class="necell"><span class="br1">3</span>,&nbsp; <span class="br2">8</span></td><td><span class="br1">9</span>,&nbsp; 5</td><td>4,&nbsp; 3</td><td>7,&nbsp; 6</td></tr>
 <tr><td class="lab">D</td><td>0,&nbsp; 2</td><td>2,&nbsp; <span class="br2">9</span></td><td>5,&nbsp; 4</td><td><span class="br1">10</span>,&nbsp; 7</td></tr>
 </table></div>
+<div class="howto"><b>How to read this table.</b> Same layout as before. The letters A to D and W to Z are only names for the choices, as on the exam paper. They carry no meaning.</div>
 <div class="cap">Four solid marks (one per column), four dotted marks (one per row), two green cells. Find the biggest number player 1 can see anywhere: the 10 in the bottom-right. It is solidly underlined, and it is not in an equilibrium, because player 2 in row D would rather be at X.</div>
 
 <p class="partlab">Worked example</p>
@@ -474,7 +479,8 @@ The cell holds (5, 4). Player 1's payoff is 5; <b>player 2's is 4</b>. The quest
 <tr><th></th><th>Left</th><th>Center</th><th>Right</th></tr>
 <tr><td class="lab">Up</td><td>9,&nbsp; 8</td><td>7,&nbsp; 9</td><td>4,&nbsp; 7</td></tr>
 <tr><td class="lab">Middle</td><td>10,&nbsp; 6</td><td>7,&nbsp; 6</td><td>2,&nbsp; 7</td></tr>
-<tr><td class="lab">Down</td><td>8,&nbsp; 3</td><td>8,&nbsp; 1</td><td>5,&nbsp; 4</td></tr></table></div></div>
+<tr><td class="lab">Down</td><td>8,&nbsp; 3</td><td>8,&nbsp; 1</td><td>5,&nbsp; 4</td></tr></table></div>
+<div class="howto"><b>How to read this table.</b> Rows: player 1's choice. Columns: player 2's choice. In each cell, player 1's payoff comes first and player 2's second.</div></div>
 <button class="reveal-btn" onclick="this.nextElementSibling.classList.add('show');this.disabled=true;">Reveal answer</button>
 <div class="reveal"><b>4</b>, at (Down, Right).<br><br><b>Columns:</b> Left → 9, 10, 8, best is Middle. Center → 7, 7, 8, best is Down. Right → 4, 2, 5, best is Down.<br><b>Rows:</b> Up → 8, 9, 7, best is Center. Middle → 6, 6, 7, best is Right. Down → 3, 1, 4, best is Right.<br><br>Both marks meet only at <b>(Down, Right)</b>, holding (5, 4). Player 2 gets <b>4</b>.<br><br>Three arrangements, three different cell names: (Middle, Right), (Middle, Center), (Down, Right). And the same two numbers sit inside every time. The cell name is decoration. The marking is the answer.</div></div>
 </div>

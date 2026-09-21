@@ -275,6 +275,17 @@ The same applies to `&mdash;`. En dashes in number ranges (3–5) are fine.
 
 **If you change a script, change its embedded HTML comment to match, byte for byte.**
 
+### Full words, never letters, in anything that explains (added 21 September 2026)
+
+Ifat's rule: a learner should never have to remember what a letter stands for. Every letter held in memory costs working memory that the reasoning needs.
+
+- **Moves** in worked examples, try-its, quiz explanations and tree labels are full words: Up / Down, Left / Right, Stop / Continue, Cooperate / Defect. Never A, B, L, R, X, Y, u, d, a, b.
+- **Things** are named in full: "only urban renewal", not "U only"; "the proposer", not "A".
+- **Refer to a node by who moves and how you got there** ("player 2's turn after player 1 plays Down"), never "the node on branch B".
+- **Tables explain themselves.** Every data table gets a one-line "How to read this table" box, and uses the same words its audio strip uses.
+- **Exception:** a quiz *stem* copied faithfully from a real paper keeps the paper's notation, because Ifat must meet it cold. Its explanation still uses full words.
+- **One audio strip per example**, sitting directly above that example's visual. A strip longer than about two minutes is two strips.
+
 ### Two more of her rules worth checking while you are in the file
 
 - **State it once.** Do not write the idea and then, beside it, the version you rejected. One "we also considered X" on a page is useful; repeated down the page it makes the reader hold every idea twice.

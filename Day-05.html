@@ -64,6 +64,7 @@ audio{width:100%;margin-top:6px;}
 .navbtn{text-decoration:none;font-weight:600;font-size:14px;padding:10px 16px;border-radius:11px;border:1px solid var(--line);color:var(--ink);background:#fff;}
 .navbtn.primary{background:var(--brand);color:#fff;border-color:var(--brand);}
 .tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.howto{background:#f7f5fd;border:1px dashed #cfc4f5;border-radius:10px;padding:9px 13px;margin:8px 0 14px;font-size:13.5px;line-height:1.55;}
 .warnbox{background:var(--amber-soft);border:1px solid #f0deb8;border-radius:11px;padding:12px 16px;margin:14px 0;font-size:14.5px;}
 .warnbox b{color:var(--amber);}
 @media print{
@@ -196,6 +197,7 @@ Before deleting: (go, go) and (stay, stay), so two. After deleting both players'
 <table class="dtable" style="max-width:340px;margin:10px 0"><tr><th></th><th>Left</th><th>Right</th></tr>
 <tr><td class="lab">Up</td><td>5, &nbsp;&minus;1</td><td>6, &nbsp;&minus;2</td></tr>
 <tr><td class="lab">Down</td><td>4, &nbsp;3</td><td>7, &nbsp;&minus;3</td></tr></table>
+<div class="howto"><b>How to read this table.</b> Rows: player 1's choice. Columns: player 2's choice. In each cell, player 1's payoff comes first and player 2's second.</div>
 Which player has a strictly dominant strategy, and what is the unique Nash equilibrium?<br><br>
 Then: a classmate answers <i>"Player 2's dominant strategy is Right, so the equilibrium is (Up, Right)."</i> Every subtraction he did was correct. What went wrong?</div>
 <button class="reveal-btn" onclick="this.nextElementSibling.classList.add('show');this.disabled=true;">Reveal answer</button>
@@ -241,6 +243,7 @@ NOA: Write the survivors down. After each cut, a short line on your draft paper 
 <tr><td class="lab k3">50</td><td class="k2">2000, 1200</td><td class="k3">1750, 1225</td><td class="k3">1500, 1200</td><td class="k3">1000, 1000</td><td class="k1">500, 600</td></tr>
 <tr><td class="lab k1">60</td><td class="k1">1800, 900</td><td class="k1">1500, 875</td><td class="k1">1200, 800</td><td class="k1">600, 500</td><td class="k1">0, 0</td></tr>
 </table></div>
+<div class="howto"><b>How to read this table.</b> Rows: how many units firm 1 makes. Columns: how many units firm 2 makes. In each cell, firm 1&rsquo;s profit first and firm 2&rsquo;s second. The colours show the order in which rows and columns are cut.</div>
 <div class="elegend">
 <span><i style="background:#fbeddd"></i> Round 1: cut 60</span>
 <span><i style="background:#fae5e4"></i> Round 2: cut 30</span>
@@ -385,6 +388,7 @@ TOM: Different road, same destination.
 <tr><td class="lab">Mid</td><td>6, 2</td><td>5, 6</td><td>3, 4</td></tr>
 <tr><td class="lab">Down</td><td>2, 8</td><td>0, 9</td><td>7, 5</td></tr>
 </table></div>
+<div class="howto"><b>How to read this table.</b> Rows: the row player's choice. Columns: the column player's choice. In each cell, the row player's payoff comes first and the column player's second.</div>
 How many Nash equilibria (pure or mixed) does this game have?</div>
 
 <div class="step"><div class="stepn">1</div><div class="stepbody"><div class="lab">Start with the row player. Compare Up and Mid.</div>

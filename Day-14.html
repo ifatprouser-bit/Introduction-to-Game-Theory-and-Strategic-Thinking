@@ -65,6 +65,7 @@ audio{width:100%;margin-top:6px;}
 .navbtn{text-decoration:none;font-weight:600;font-size:14px;padding:10px 16px;border-radius:11px;border:1px solid var(--line);color:var(--ink);background:#fff;}
 .navbtn.primary{background:var(--brand);color:#fff;border-color:var(--brand);}
 .tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.howto{background:#f7f5fd;border:1px dashed #cfc4f5;border-radius:10px;padding:9px 13px;margin:8px 0 14px;font-size:13.5px;line-height:1.55;}
 .warnbox{background:var(--amber-soft);border:1px solid #f0deb8;border-radius:11px;padding:12px 16px;margin:14px 0;font-size:14.5px;}
 .warnbox b{color:var(--amber);}
 /* --- presentation chips. The hub styles .p as a chip; day pages use .p for prose,
@@ -147,10 +148,10 @@ NOA: Shut it. Eat something. Take the calculator.
     <text x="48" y="123">1</text><text x="175" y="67">2</text><text x="175" y="183">2</text><text x="320" y="100">1</text>
   </g>
   <g font-size="11.5" font-family="-apple-system,Segoe UI,Arial" fill="#6f6886">
-    <text x="103" y="80" text-anchor="middle">A</text><text x="103" y="160" text-anchor="middle">B</text>
-    <text x="248" y="38" text-anchor="middle">a1</text><text x="252" y="88" text-anchor="middle">a2</text>
-    <text x="248" y="156" text-anchor="middle">b1</text><text x="248" y="205" text-anchor="middle">b2</text>
-    <text x="396" y="76" text-anchor="middle">x</text><text x="396" y="118" text-anchor="middle">y</text>
+    <text x="100" y="78" text-anchor="middle">Up</text><text x="100" y="164" text-anchor="middle">Down</text>
+    <text x="248" y="36" text-anchor="middle">Up</text><text x="252" y="92" text-anchor="middle">Down</text>
+    <text x="248" y="154" text-anchor="middle">Up</text><text x="248" y="209" text-anchor="middle">Down</text>
+    <text x="396" y="76" text-anchor="middle">Up</text><text x="396" y="118" text-anchor="middle">Down</text>
   </g>
   <g fill="#c8c2dd"><circle cx="465" cy="72" r="4"/><circle cx="465" cy="120" r="4"/><circle cx="320" cy="30" r="4"/><circle cx="320" cy="152" r="4"/><circle cx="320" cy="208" r="4"/></g>
   <g font-size="13" font-family="-apple-system,Segoe UI,Arial" font-weight="700" fill="#211c33">
@@ -166,7 +167,7 @@ NOA: Shut it. Eat something. Take the calculator.
 
 <div class="tryq"><div class="q">What is <b>player 2's</b> payoff in the backward-induction equilibrium?</div>
 <button class="reveal-btn" onclick="this.nextElementSibling.classList.add('show');this.disabled=true;">Reveal answer</button>
-<div class="reveal"><b>Player 2 gets 2.</b><br><br><b>Deepest node first.</b> Player 1 chooses between (8, 1) and (3, 6). He reads his own number: 8 beats 3, so he plays <b>x</b> and that node is worth (8, 1).<br><br><b>Player 2's node after A.</b> His choices are a1, worth 2 to him, or a2, which now leads to that (8, 1). He compares 2 against 1 and takes <b>a1</b>. Branch A is worth (5, 2).<br><br><b>Player 2's node after B.</b> b1 gives him 7, b2 gives him 3. He takes <b>b1</b>. Branch B is worth (4, 7).<br><br><b>The root.</b> Player 1 compares his own numbers: A is worth 5, B is worth 4. He plays <b>A</b>. Final outcome <b>(5, 2)</b>, so player 2 gets <b>2</b>.<br><br><b>The trap.</b> 7 is player 2's best number in the whole tree. He cannot get it, because player 1 never goes to that side. If you rush, you might answer 5. That is player <i>1</i>'s payoff, not player 2's. Check which player is asked. That one habit is worth more marks than any formula.</div></div>
+<div class="reveal"><b>Player 2 gets 2.</b><br><br><b>Deepest node first.</b> Player 1 chooses between (8, 1) and (3, 6). He reads his own number: 8 beats 3, so he plays <b>Up</b> and that node is worth (8, 1).<br><br><b>Player 2's turn after Up.</b> His choices are Up, worth 2 to him, or Down, which now leads to that (8, 1). He compares 2 against 1 and takes <b>Up</b>. So player 1's Up is worth (5, 2).<br><br><b>Player 2's turn after Down.</b> Up gives him 7, Down gives him 3. He takes <b>Up</b>. So player 1's Down is worth (4, 7).<br><br><b>The root.</b> Player 1 compares his own numbers: Up is worth 5, Down is worth 4. He plays <b>Up</b>. Final outcome <b>(5, 2)</b>, so player 2 gets <b>2</b>.<br><br><b>The trap.</b> 7 is player 2's best number in the whole tree. He cannot get it, because player 1 never goes to that side. If you rush, you might answer 5. That is player <i>1</i>'s payoff, not player 2's. Check which player is asked. That one habit is worth more marks than any formula.</div></div>
 </div>
 
 <!-- ============ WARM-UP 2 ============ -->
@@ -179,6 +180,7 @@ NOA: Shut it. Eat something. Take the calculator.
 <tr><td class="lab">Middle</td><td>6, &nbsp;6</td><td>2, &nbsp;5</td><td>5, &nbsp;3</td></tr>
 <tr><td class="lab">Down</td><td>1, &nbsp;4</td><td>8, &nbsp;7</td><td>6, &nbsp;6</td></tr>
 </table></div>
+<div class="howto"><b>How to read this table.</b> Rows: player 1's choice. Columns: player 2's choice. In each cell, player 1's payoff comes first and player 2's second.</div>
 
 <div class="tryq"><div class="q">How many pure Nash equilibria are there? And what is the highest payoff player 1 can get in one?</div>
 <button class="reveal-btn" onclick="this.nextElementSibling.classList.add('show');this.disabled=true;">Reveal answer</button>
@@ -194,6 +196,7 @@ NOA: Shut it. Eat something. Take the calculator.
 <tr><td class="lab">Top</td><td>9</td><td>3</td></tr>
 <tr><td class="lab">Bottom</td><td>2</td><td>6</td></tr>
 </table></div>
+<div class="howto"><b>How to read this table.</b> Rows: player 1's choice. Columns: player 2's choice. One number per cell: player 1's payoff. Player 2 gets minus that, so player 1 wants it high and player 2 wants it low.</div>
 <p class="given">Check for a stable cell first. Top's smallest is 3, and 3 is not the biggest in the Right column. Bottom's smallest is 2, and 2 is not the biggest in the Left column. There is no stable cell, so you have to mix.</p>
 
 <div class="tryq"><div class="q">Find both mixtures and the value of the game. Then: what is the probability that the outcome is <b>(Top, Right)</b>, to the nearest percentage point?</div>

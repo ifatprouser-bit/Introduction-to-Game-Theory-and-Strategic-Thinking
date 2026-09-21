@@ -64,6 +64,7 @@ audio{width:100%;margin-top:6px;}
 .navbtn{text-decoration:none;font-weight:600;font-size:14px;padding:10px 16px;border-radius:11px;border:1px solid var(--line);color:var(--ink);background:#fff;}
 .navbtn.primary{background:var(--brand);color:#fff;border-color:var(--brand);}
 .tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.howto{background:#f7f5fd;border:1px dashed #cfc4f5;border-radius:10px;padding:9px 13px;margin:8px 0 14px;font-size:13.5px;line-height:1.55;}
 .warnbox{background:var(--amber-soft);border:1px solid #f0deb8;border-radius:11px;padding:12px 16px;margin:14px 0;font-size:14.5px;}
 .warnbox b{color:var(--amber);}
 /* ---- presentation chips (from index.html) ---- */
@@ -155,6 +156,7 @@ NOA: It sounds like that, but the published answers do not do that. They round t
 <tr><td class="lab">Top<span class="mix">prob. p</span></td><td>5</td><td class="zero">0</td></tr>
 <tr><td class="lab">Down<span class="mix">prob. 1&minus;p</span></td><td class="zero">0</td><td>20</td></tr>
 </table></div>
+<div class="howto"><b>How to read this table.</b> Rows: player 1's choice, with how often he plays it: <b>p</b> for Top, <b>1 &minus; p</b> for Down. Columns: player 2's choice, with how often she plays it: <b>q</b> for Left, <b>1 &minus; q</b> for Right. One number per cell: player 1's payoff.</div>
 <p class="given">p and 1&minus;p are player 1's mixture. q and 1&minus;q are player 2's mixture. There are only ever these two unknowns in a 2&times;2.</p>
 
 <div class="svg-wrap">
@@ -251,6 +253,7 @@ The value of the game is the average payoff the grid delivers when both sides mi
 <div class="tscroll"><table class="dtable" style="max-width:330px;margin:10px 0"><tr><th></th><th>Left</th><th>Right</th></tr>
 <tr><td class="lab">Top</td><td>12</td><td>0</td></tr>
 <tr><td class="lab">Down</td><td>0</td><td>4</td></tr></table></div>
+<div class="howto"><b>How to read this table.</b> Rows: player 1's choice. Columns: player 2's choice. One number per cell: player 1's payoff. Player 2 gets minus that, so player 1 wants it high and player 2 wants it low.</div>
 <b>(a)</b> What is the probability of the outcome <b>(Top, Right)</b>, rounded to the closest percentage point? <b>(b)</b> What is player 1's expected payoff?</div>
 <button class="reveal-btn" onclick="this.nextElementSibling.classList.add('show');this.disabled=true;">Reveal answer</button>
 <div class="reveal"><b>(a) 19% &nbsp;·&nbsp; (b) 3.</b><br><br>Player 1 indifferent: 12q = 4(1&minus;q) → 16q = 4 → <b>q = 0.25</b>. Player 2 indifferent: 12p = 4(1&minus;p) → <b>p = 0.25</b>.<br><br>(Top, Right) is crossed, so p × (1&minus;q) = 0.25 × 0.75 = 0.1875 → <b>19%</b>. Value: 12 × 0.25 = 3, and from the other row 4 × 0.75 = 3. ✓<br><br><b>Watch the direction.</b> The big number is top-left, and yet Top is played only a quarter of the time. That feels backwards until you remember <i>why</i> you mix. The mixture is chosen to control your <i>opponent</i>, not to chase your own big payoff.</div></div>
@@ -284,6 +287,7 @@ NOA: Every time. Two lines of algebra. And look at the last grid on the page, th
 <tr><td class="lab">Top</td><td><i>a</i></td><td class="zero">0</td></tr>
 <tr><td class="lab">Down</td><td class="zero">0</td><td><i>b</i></td></tr>
 </table></div>
+<div class="howto"><b>How to read this table.</b> The general shape, not a real game. <b>a</b> and <b>b</b> stand for any two positive numbers on the main diagonal (top-left and bottom-right). The other two corners are 0. One number per cell: player 1's payoff.</div>
 <p class="p">Solve that shape once in letters and you get a recipe. Both players play their <i>first</i> action with probability <i>b</i>&nbsp;/&nbsp;(<i>a</i>+<i>b</i>), and the value of the game is <i>ab</i>&nbsp;/&nbsp;(<i>a</i>+<i>b</i>). It works on five of the seven past grids. After that many wins in a row, you stop reading the grid at all.</p>
 
 <p class="p">The most tempting part of the recipe is that <b>p and q come out equal</b>. That feels like a deep truth about zero-sum games. It is not. It is an accident of that one shape, and two of the seven grids break it.</p>
@@ -331,6 +335,7 @@ Left column pays 0p + 12(1&minus;p). Right column pays 36p + 0(1&minus;p).
 <div class="tscroll"><table class="dtable" style="max-width:330px;margin:10px 0"><tr><th></th><th>Left</th><th>Right</th></tr>
 <tr><td class="lab">Top</td><td>4</td><td>1</td></tr>
 <tr><td class="lab">Down</td><td>2</td><td>3</td></tr></table></div>
+<div class="howto"><b>How to read this table.</b> Rows: player 1's choice. Columns: player 2's choice. One number per cell: player 1's payoff. Player 2 gets minus that, so player 1 wants it high and player 2 wants it low.</div>
 Find p, q, and player 1's expected payoff.</div>
 <button class="reveal-btn" onclick="this.nextElementSibling.classList.add('show');this.disabled=true;">Reveal answer</button>
 <div class="reveal"><b>p = 0.25, q = 0.5, value = 2.5.</b><br><br>First, no pure equilibrium: Top's smallest number is 1, but 1 is not the largest in the Right column (3 is). Down's smallest is 2, and 2 is not the largest in the Left column (4 is). So mix.<br><br><b>q:</b> Top pays 4q + 1(1&minus;q) = 1 + 3q. Down pays 2q + 3(1&minus;q) = 3 &minus; q. Equal: 1 + 3q = 3 &minus; q → 4q = 2 → <b>q = 0.5</b>.<br><b>p:</b> Left column pays 4p + 2(1&minus;p) = 2 + 2p. Right column pays 1p + 3(1&minus;p) = 3 &minus; 2p. Equal: 2 + 2p = 3 &minus; 2p → 4p = 1 → <b>p = 0.25</b>.<br><b>Value:</b> 2 + 2(0.25) = <b>2.5</b>, and from the other side 1 + 3(0.5) = 2.5. ✓<br><br><b>The recipe?</b> Feeding the main-diagonal numbers 4 and 3 into it gives mixtures of about 0.43 and a value of about 1.71. Not close to anything. Here the shortcut fails so loudly that you would notice. That is exactly why the anti-diagonal case is the dangerous one.</div></div>
@@ -353,10 +358,8 @@ TOM: Then take two thirds of that.
 NOA: Then take two thirds of that, once, at the end. Look at the two markers under the line. One is the crowd's average. The other is two thirds of it, and it sits noticeably to the left. That second marker is your answer.
 TOM: And if I take two thirds of one group before I combine, I land somewhere in between.
 NOA: You land somewhere in between, and that somewhere is on the option list. Every time. It is not a coincidence, it is designed.
-TOM: One more thing. In the lab, people cluster in a certain low range, and the exam sometimes offers me that range.
-NOA: It offers it, and it is never the answer to an equilibrium question. What people actually do and what the theory predicts are two different questions. If they ask for the equilibrium of the contest, the reasoning strips the top away layer by layer until the only survivor is the smallest number allowed.
-TOM: So the equilibrium is the bottom of the scale, and the lab range is just what humans do.
-NOA: Exactly that. Keep the two apart and you will never lose that mark.
+TOM: Like the tip on a shared dinner bill. Add up the whole table first, then work out the tip once. Tip on my plate only, and I get a number that fits nobody.
+NOA: That is the order exactly. Combine, then shrink.
 -->
 <div class="secaudio"><span class="salab">&#127911; Listen to this section</span><audio controls preload="none" src="Day-11-average-first.mp3"></audio></div>
 
@@ -440,13 +443,6 @@ The two halves are the same size, so a plain average of the two group averages i
 
 <div class="ans">&#10003; <b>27.</b><br>Look at what the other options are. <b>40</b> is the crowd average, so you forgot the last step. <b>33</b> is two-thirds of 50. You took two-thirds of one group and left the other half of the crowd out. <b>30</b> is one of the groups. <b>20</b> is two-thirds of 30. Every wrong option is a half-finished version of the right answer. That is exactly how they are built.</div>
 
-<p class="partlab">Thing 3: equilibrium is 1, and 13 to 19 is what humans do</p>
-<p class="p">Sometimes the question does not describe a crowd at all. It asks for the <b>Nash equilibrium of the contest</b>. That is a different question, and the answer never changes. Nobody should pick above 67, because two-thirds of any average cannot go above 66.67. With everything above 67 gone, nobody should pick above 45. Then 30, then 20, then 14 … each round strips the top away, and the only survivor is <b>1</b>.</p>
-
-<p class="p">And every time this is asked, one of the options is "typically in the range between 13 and 19". That range is real. It is what people actually pick in laboratories, and only about 10% play the equilibrium. But what people do is not the equilibrium.</p>
-
-<div class="rule">Two different questions, two different answers. <b>"What is the Nash equilibrium?" → 1.</b> &nbsp; <b>"What do people actually choose?" → around 13 to 19.</b></div>
-
 <div class="tryq"><div class="q">Ten players in total play the 2/3-average competition. The nine others play 5, 15, 25, 35, 45, 45, 55, 65 and 75. What is a best reply?<br><br><i>Options: (a) 1 &nbsp; (b) 26 &nbsp; (c) 27 &nbsp; (d) 33</i></div>
 <button class="reveal-btn" onclick="this.nextElementSibling.classList.add('show');this.disabled=true;">Reveal answer</button>
 <div class="reveal"><b>26 and 27 both win. Two of the options are correct.</b><br><br>First, the thing that makes this one different. With only ten players, <i>your own number moves the average</i>. In the big-crowd questions there are hundreds of others. Whatever you pick barely moves the average, so you can take two-thirds of <i>their</i> average and stop. Here your bid is a tenth of the total, so the target moves as you move. You have to test each option.<br><br>The nine sum to 365. Bid 26 → total 391, average 39.1, target 26.07; your 26 is 0.07 away, and the nearest rival number (25) is 1.07 away. Bid 27 → total 392, average 39.2, target 26.13; your 27 is 0.87 away against 25's 1.13. Both win. Bid 33 → target 26.53, and now 25 is 1.53 away while you are 6.47 away, so you lose. Bid 1 → target 24.40, and 25 sits right beside it, so 1 is hopeless.<br><br><b>Two correct options can really happen.</b> One past question of this kind has two best replies, and the professor agreed that both are right. So do not hunt for the single right answer when two of them win. Pick either and move on.</div></div>
@@ -454,6 +450,30 @@ The two halves are the same size, so a plain average of the two group averages i
 <div class="tryq"><div class="q">You play with 200 other players. Half of them choose uniformly from {1, …, 60}. The other half all choose 12. What is your best reply?</div>
 <button class="reveal-btn" onclick="this.nextElementSibling.classList.add('show');this.disabled=true;">Reveal answer</button>
 <div class="reveal"><b>14.</b><br><br>First group's average: (1 + 60) ÷ 2 = 30.5. Second group: 12. Crowd average: (30.5 + 12) ÷ 2 = 21.25. Two-thirds of that: 14.17 → <b>14</b>.<br><br>The trap number here is <b>20</b>, which is two-thirds of 30.5, taken before you combined the crowd. And <b>21</b> is the crowd average with the last step forgotten. Same two mistakes, every year.</div></div>
+</div>
+
+<div class="panel"><h3>The 2/3-average contest: the equilibrium is 1, the lab range is not</h3>
+<div class="secaudio"><span class="salab">&#127911; Listen to this section</span>
+<!-- SCRIPT Day-11-equilibrium-vs-lab.mp3 | NOA=Heart TOM=Fenrir
+NOA: Sometimes the contest question describes no crowd at all. It asks for the equilibrium of the game.
+TOM: The number everyone picks if everyone reasons perfectly.
+NOA: Right. And the reasoning is a staircase going down. Nobody sensible picks a number above two thirds of the top, because the average can never be that high. Once everyone knows that, the new top is lower, and two thirds of that is lower again.
+TOM: So each step knocks the top down, and I keep walking until I hit the floor.
+NOA: Until the smallest number allowed. That is the equilibrium. Now the trap. Every time this is asked, one option says the answer is typically in a certain low range. That is the range people actually pick in lab experiments.
+TOM: And that sounds scientific, so it feels safe.
+NOA: It sounds scientific, and it answers a different question. What people really do and what the theory predicts are two separate things. Look at the rule box on the page. Two questions, two answers.
+TOM: So if they ask for the equilibrium, I give the floor. If they ask what people do in the lab, I give the range.
+NOA: Exactly that. Keep the two apart and you will never lose that mark.
+-->
+<audio controls preload="none" src="Day-11-equilibrium-vs-lab.mp3"></audio></div>
+<p class="partlab">Thing 3: equilibrium is 1, and 13 to 19 is what humans do</p>
+<p class="p">Sometimes the question does not describe a crowd at all. It asks for the <b>Nash equilibrium of the contest</b>. That is a different question, and the answer never changes. Nobody should pick above 67, because two-thirds of any average cannot go above 66.67. With everything above 67 gone, nobody should pick above 45. Then 30, then 20, then 14 … each round strips the top away, and the only survivor is <b>1</b>.</p>
+
+<p class="p">And every time this is asked, one of the options is "typically in the range between 13 and 19". That range is real. It is what people actually pick in laboratories, and only about 10% play the equilibrium. But what people do is not the equilibrium.</p>
+
+<div class="rule">Two different questions, two different answers. <b>"What is the Nash equilibrium?" → 1.</b> &nbsp; <b>"What do people actually choose?" → around 13 to 19.</b></div>
+
+
 </div>
 
 <!-- ============ QUIZ ============ -->
