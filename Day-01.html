@@ -427,20 +427,50 @@ NOA: That's a good way to hold it. A move is one action at one fork. A strategy 
 
 <div class="rule">Move = one action at one node. <b>Strategy = a complete instruction sheet covering every node you could reach</b>, including the ones you expect never to visit.</div>
 
+<p class="datalab">The game: player 2 can be asked to choose at three forks</p>
+<div class="svg-wrap">
+<svg viewBox="0 0 560 290" role="img" aria-label="A game tree. Player 1 chooses Up, Middle or Down. Each choice leads to a fork where player 2 chooses Left or Right. The chosen branches of Sheet 3 are drawn in green: Left at fork 1, Right at fork 2, Left at fork 3.">
+  <g stroke="#c8c2dd" stroke-width="1.8" fill="none">
+    <line x1="60" y1="145" x2="250" y2="50"/><line x1="60" y1="145" x2="250" y2="145"/><line x1="60" y1="145" x2="250" y2="240"/>
+    <line x1="250" y1="50" x2="430" y2="72"/><line x1="250" y1="145" x2="430" y2="123"/><line x1="250" y1="240" x2="430" y2="262"/>
+  </g>
+  <g stroke="#1f9d63" stroke-width="3.2" fill="none">
+    <line x1="250" y1="50" x2="430" y2="28"/><line x1="250" y1="145" x2="430" y2="167"/><line x1="250" y1="240" x2="430" y2="218"/>
+  </g>
+  <g fill="#8f88a8"><circle cx="430" cy="72" r="4"/><circle cx="430" cy="123" r="4"/><circle cx="430" cy="262" r="4"/></g>
+  <g fill="#1f9d63"><circle cx="430" cy="28" r="5"/><circle cx="430" cy="167" r="5"/><circle cx="430" cy="218" r="5"/></g>
+  <circle cx="60" cy="145" r="15" fill="#6b4ef0"/>
+  <rect x="235" y="35" width="30" height="30" rx="6" fill="#2f7fd0"/><rect x="235" y="130" width="30" height="30" rx="6" fill="#2f7fd0"/><rect x="235" y="225" width="30" height="30" rx="6" fill="#2f7fd0"/>
+  <g font-size="13" font-family="-apple-system,Segoe UI,Arial" font-weight="700" fill="#fff" text-anchor="middle">
+    <text x="60" y="150">1</text><text x="250" y="55">2</text><text x="250" y="150">2</text><text x="250" y="245">2</text>
+  </g>
+  <g font-size="12" font-family="-apple-system,Segoe UI,Arial" font-weight="600" fill="#6f6886" text-anchor="middle">
+    <text x="145" y="84">Up</text><text x="150" y="138">Middle</text><text x="145" y="213">Down</text>
+    <text x="340" y="30" fill="#1f9d63">Left</text><text x="340" y="80">Right</text>
+    <text x="340" y="126">Left</text><text x="340" y="176" fill="#1f9d63">Right</text>
+    <text x="340" y="220" fill="#1f9d63">Left</text><text x="340" y="270">Right</text>
+  </g>
+  <g font-size="12" font-family="-apple-system,Segoe UI,Arial" font-weight="800" fill="#2f7fd0" text-anchor="middle">
+    <text x="250" y="26">fork 1</text><text x="250" y="122">fork 2</text><text x="250" y="283">fork 3</text>
+  </g>
+</svg>
+<div class="cap">Player 1 moves first: Up, Middle or Down. Each choice leads to a different fork where player 2 chooses Left or Right. In a real game player 1 picks only one path, so player 2 plays at only one fork. His strategy must still answer all three. <b>The green branches are Sheet 3</b> in the table below.</div>
+</div>
+
 <p class="datalab">Player 2's 8 possible instruction sheets</p>
 <div class="tscroll">
 <table class="dtable">
-<tr><th>Instruction sheet</th><th>At his 1st fork</th><th>At his 2nd fork</th><th>At his 3rd fork</th></tr>
+<tr><th>Instruction sheet</th><th>Fork 1<br>(after Up)</th><th>Fork 2<br>(after Middle)</th><th>Fork 3<br>(after Down)</th></tr>
 <tr><td class="lab">Sheet 1</td><td>Left</td><td>Left</td><td>Left</td></tr>
 <tr><td class="lab">Sheet 2</td><td>Left</td><td>Left</td><td>Right</td></tr>
-<tr><td class="lab">Sheet 3</td><td>Left</td><td>Right</td><td>Left</td></tr>
+<tr><td class="lab hlcell">Sheet 3</td><td class="hlcell">Left</td><td class="hlcell">Right</td><td class="hlcell">Left</td></tr>
 <tr><td class="lab">Sheet 4</td><td>Left</td><td>Right</td><td>Right</td></tr>
 <tr><td class="lab">Sheet 5</td><td>Right</td><td>Left</td><td>Left</td></tr>
 <tr><td class="lab">Sheet 6</td><td>Right</td><td>Left</td><td>Right</td></tr>
 <tr><td class="lab">Sheet 7</td><td>Right</td><td>Right</td><td>Left</td></tr>
 <tr><td class="lab">Sheet 8</td><td>Right</td><td>Right</td><td>Right</td></tr>
 </table></div>
-<div class="howto"><b>How to read this table.</b> Each row is one whole strategy for player 2. It answers all three forks, even though a real game reaches only one of them. Each new fork doubles the rows: 2, then 4, then 8.</div>
+<div class="howto"><b>How to read this table.</b> Each row is one whole strategy for player 2: what he does at fork 1, fork 2 and fork 3 in the tree above. It answers all three forks, even though a real game reaches only one of them. The green row is the green branches in the tree. Each new fork doubles the rows: 2, then 4, then 8.</div>
 </div>
 
 <!-- ============ SECTION 4 ============ -->
