@@ -1,0 +1,13 @@
+Title: Day 13 — Full-course sweep — how to use this page
+Voices: NOA = Heart, TOM = Fenrir
+Output: Day-13-intro.mp3
+
+NOA: Tomorrow is the exam. So today is not a lesson. Today is a lap.
+TOM: A lap meaning what? Just reading everything again?
+NOA: No. Reading is the trap. Your notes will all feel familiar, and familiar feels like known, and it is not the same thing.
+TOM: So instead of reading, I should be trying to produce something.
+NOA: Yes. Say a definition out loud. Solve one tree. Point at one dilemma. Find the stable cells in one grid. Run one mixing calculation from the first line to the last. Then list the ways a threat can be made believable.
+TOM: And if one of those comes out slowly, that is the one I look at.
+NOA: Exactly, and only that one. This is a check, not a repair shop. If something is genuinely broken, tonight is too late to rebuild it, and pretending otherwise only eats the sleep you actually need.
+TOM: So the honest goal is a short list of soft spots, not a fixed brain.
+NOA: That is the whole goal.

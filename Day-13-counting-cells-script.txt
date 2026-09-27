@@ -1,0 +1,17 @@
+Title: Day 13 — Finding every pure equilibrium in a grid
+Voices: NOA = Heart, TOM = Fenrir
+Output: Day-13-counting-cells.mp3
+
+NOA: This is the biggest block of marks on the paper, so it is worth a few minutes.
+TOM: And it is the one where I feel most confident, which is probably the warning sign.
+NOA: It is. The routine is easy and that is exactly why it goes wrong under time pressure. People stop sweeping and start recognising.
+TOM: Recognising meaning, I glance at the grid and a cell just looks like the answer.
+NOA: Right. And then you stop looking. The counting questions are built for that. They hand you a short list of counts to choose between. Miss one cell and you land on the neighbouring option, which feels perfectly reasonable.
+TOM: So the fix is mechanical. Sweep every column for the row player, then every row for the column player, and only then look at what carries both marks.
+NOA: Columns first, and inside a column you read only the row player's number. Straight down, never across. Then turn the page sideways in your head and do the rows for the other player.
+TOM: The sideways bit is where I slip. I keep reading the wrong number of the pair.
+NOA: Then say out loud which player you are working for before each sweep. It sounds silly and it costs you nothing.
+TOM: And when I find a cell with both marks, that is a stable pair, because neither one has a move that improves things while the other stands still.
+NOA: That is the definition, in your own words. Keep those words, they are better than the textbook ones.
+TOM: One more thing. If I find one cell, I should not stop.
+NOA: Never stop. Finish the sweep. The question asks how many, not whether there is one.

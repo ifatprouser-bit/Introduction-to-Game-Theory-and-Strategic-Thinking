@@ -1,0 +1,15 @@
+Title: Day 13 — One mixed equilibrium, start to finish
+Voices: NOA = Heart, TOM = Fenrir
+Output: Day-13-mixing.mp3
+
+NOA: The other heavy block. And here it is not the idea that costs marks, it is the order of the steps.
+TOM: Because the equation I write feels like it belongs to me, and it does not.
+NOA: Say that again, it is the whole lecture in one line.
+TOM: When I am working out how often I should mix, I set up the equation using my opponent's point of view. I choose my proportions so that his two options come out level.
+NOA: Yes. Your mixture is aimed at him. If it were aimed at you, he would find the side you lean on and sit there.
+TOM: So on the page, the numbers I use for my own equation are the ones running along my own row, but the payoff I am levelling belongs to the other player.
+NOA: In the one number per cell shorthand it is even simpler, because there is only one number and the two of you want opposite things about it. One of you is pushing it up, the other is pulling it down.
+TOM: And before I write anything, I check whether there is a cell that is already stable.
+NOA: Always. Smallest in its row and biggest in its column. If such a cell exists there is nothing to mix and no equation to write, and people burn minutes solving a game that was already finished.
+TOM: Then the last trap is the question itself. It usually asks about a particular ending, not about how often one of us plays something.
+NOA: An ending needs both players to have moved, so you multiply. And often the ending they name is a mismatched one, deliberately. Read that line twice before you touch the calculator.
