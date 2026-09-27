@@ -1,0 +1,15 @@
+Title: Day 2 — Dominance, and the prisoner's dilemma's two conditions
+Voices: NOA = Heart, TOM = Fenrir
+Output: Day-02-dominance.mp3
+
+NOA: Start with the simplest idea in the whole course. A dominant strategy is a choice that gives you your best payoff no matter what the other player does.
+TOM: So I do not need to guess what she will do. I just look down my own rows and one of them wins every time.
+NOA: That is it. And the rule that follows is short enough to tattoo on your hand. If you have a dominant strategy, use it. If a strategy is dominated, never play it.
+TOM: The mirror image. One is always better, so take it. One is always worse, so drop it.
+NOA: Now look at the table of the two mail-order clothes firms on the page. Each firm can print the higher price in its winter catalogue, or the lower one. Follow the lower row across, and compare it with the upper row, column by column.
+TOM: The lower price wins in both columns. For both firms. So both of them cut.
+NOA: And here is the sting. Look at the cell they land in, then look at the cell where they both kept the higher price. Both firms are worse off in the cell they chose for themselves.
+TOM: They each did the smart thing and together they did the stupid thing.
+NOA: That is the prisoner's dilemma, and notice it took two separate checks. Every player has a dominant strategy. And the cell those dominant strategies produce is worse for everybody than some other cell.
+TOM: So if only the first one holds, it is not a dilemma. It is just a game with an obvious answer.
+NOA: Exactly. The exam loves that gap. A matrix where dominance is clean and the outcome is already the best cell for both. It looks like the famous game. It is not the famous game.

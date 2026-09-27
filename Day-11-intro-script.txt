@@ -1,0 +1,21 @@
+Title: Day 11 — The two arithmetic questions you must not lose
+Voices: NOA = Heart, TOM = Fenrir
+Output: Day-11-intro.mp3
+
+NOA: Yesterday was a long mock. Today is short, and today is not teaching. Today is drilling. You already know how to make an opponent indifferent, so we are not building that again. We are protecting it.
+
+TOM: Protecting it from what?
+
+NOA: From a pair of questions that every single paper carries, usually late on. They sit on the same little grid, one after the other. The first one asks how likely one particular outcome is. The second asks what player one earns on average.
+
+TOM: Same grid, same mixture, two answers. So they are welded together.
+
+NOA: Welded. And that is the danger. One slip in the indifference equation and you do not lose one question, you lose the pair.
+
+TOM: Which is the largest single lump of marks on the whole paper sitting on one piece of arithmetic.
+
+NOA: It is. So we hunt the traps instead of re-learning the method. Then, in the second half, the guessing contest. Everybody meets that one. Everybody thinks it is easy.
+
+TOM: And the wrong answer is waiting on the option list, being polite.
+
+NOA: Being very polite. Because it is the number you get when you stop one step early. Two halves today. Slow hands, careful eyes.

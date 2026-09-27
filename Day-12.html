@@ -171,7 +171,7 @@ span.P4{background:var(--p4)}span.P5{background:var(--p5)}span.P6{background:var
 
 <div class="results" id="results">
   <h3>&#128203; Your paper, marked</h3>
-  <div class="bigscore"><span class="n" id="rScore">0 / 14</span><span class="pc" id="rPct">0%</span></div>
+  <div class="bigscore"><span class="n" id="resScore">0 / 14</span><span class="pc" id="rPct">0%</span></div>
   <div class="missed" id="rMissed"></div>
   <p class="note" id="rTime"></p>
   <div class="srcnote">
@@ -604,7 +604,7 @@ span.P4{background:var(--p4)}span.P5{background:var(--p5)}span.P6{background:var
       if(exp) exp.classList.add('show');
     });
 
-    document.getElementById('rScore').textContent = score + ' / 14';
+    document.getElementById('resScore').textContent = score + ' / 14';
     document.getElementById('rPct').textContent = Math.round(score/14*100) + '%';
     var m = document.getElementById('rMissed');
     if(missed.length === 0){

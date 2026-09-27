@@ -1,0 +1,27 @@
+Title: Day 1 — Exam map + backward induction
+Voices: NOA = Heart, TOM = Fenrir
+Output: Day-01-intro.mp3
+
+NOA: Welcome to day one. Before we do any game theory, let's look at the exam itself, because knowing its shape saves you real time on the day.
+
+TOM: So it's a fixed thing. Same paper every year, more or less.
+
+NOA: More or less, yes. Multiple choice, five options each, and every past paper is built from the same small set of topics. You'll see the split on the page. Sequential games — trees — are about a ninth of the marks, and there has never been a paper without one.
+
+TOM: A ninth doesn't sound like much.
+
+NOA: It isn't much. But it's the cheapest ninth on the paper. A tree question has no algebra and no guessing. If you can read the picture, you can solve it every single time.
+
+TOM: So it's free marks, as long as I don't fool myself.
+
+NOA: That's exactly the risk, and that's the rest of today. There are three ways people lose a tree question, and none of them is arithmetic. Every one is a reading mistake.
+
+TOM: Give me one.
+
+NOA: The professor writes the wrong options out of numbers that are already sitting in the tree. So a wrong answer never looks wrong. It looks like something you saw a moment ago.
+
+TOM: Like a menu where every dish is on the menu, but only one is what I ordered.
+
+NOA: That's it. Today we learn to read a tree properly, from the last node backwards. Then we go trap by trap. And at the end, the strangest idea in this lecture — that having more choices can leave you worse off.
+
+TOM: Worse off from having more freedom. I'll want to see that one.

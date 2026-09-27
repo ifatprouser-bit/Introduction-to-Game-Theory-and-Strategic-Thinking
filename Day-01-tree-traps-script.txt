@@ -1,0 +1,37 @@
+Title: Day 1 — The three traps in a tree question
+Voices: NOA = Heart, TOM = Fenrir
+Output: Day-01-tree-traps.mp3
+
+NOA: Solving a tree is easy. Losing the mark is also easy, and it happens in three ways. Let's take them one at a time.
+
+TOM: First one.
+
+NOA: The wrong options are not random. Every one of them is a payoff that lives somewhere in that tree. So the moment you feel the comfort of recognition — "yes, I saw that number" — you have learned nothing.
+
+TOM: So recognising an option is not evidence. It's bait.
+
+NOA: Beautifully put. And the most tempting bait is the biggest payoff player one could ever receive. It sits at the end of some branch, glowing. But if the player before her would never send her down that branch, she will never touch it.
+
+TOM: Reachable, not just present.
+
+NOA: Reachable, not just present. Second trap. Look at the two little trees on the page. They have the same skeleton — same forks, same shape, the same long chain where at each step somebody can stop the game or let it run on.
+
+TOM: They look identical to me.
+
+NOA: They are identical, except for one payoff, right at the very end. And that single change flips the answer completely. In one of them everybody keeps going and the game runs to the end. In the other, the very first player stops immediately and the whole chain never happens.
+
+TOM: So I cannot look at a shape and say "ah, I know this type".
+
+NOA: You cannot. Both papers in one year had a tree of this shape. In one, the solution says clearly that although it looks like this famous game, it isn't — the second player is better off letting it run, and that pulls everyone forward. In the other, the same shape, and stopping at the very first move is correct.
+
+TOM: Same picture, opposite answer. So the shape tells me nothing and the numbers tell me everything.
+
+NOA: Always solve. Never recognise.
+
+TOM: And the third trap?
+
+NOA: The smallest one, and it costs the most. Read who the question is about. Some papers ask for player one's payoff. Others ask for player two's. Some name the players with letters instead of numbers, or with colours. And in a three-player tree they use roman numerals.
+
+TOM: So I could do the whole thing perfectly and then hand in the wrong half of the pair.
+
+NOA: Which is why the other player's payoff is always sitting there among the options. Find the ending, then go back to the question and check whose number they want before you write anything down.

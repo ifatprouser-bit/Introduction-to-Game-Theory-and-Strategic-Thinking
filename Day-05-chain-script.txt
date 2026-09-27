@@ -1,0 +1,21 @@
+Title: Day 5 — The elimination chain, done in order
+Voices: NOA = Heart, TOM = Fenrir
+Output: Day-05-chain.mp3
+
+NOA: Two firms choosing how much to produce. Look at the big grid on the page. The largest quantity is hopeless. Whatever the rival does, the firm would earn more by cutting back one step. So it goes.
+
+TOM: And it goes for both of them, because the game looks the same from either side.
+
+NOA: Row and column together. That is where the speed comes from. Now watch what happens next, because this is the part people miss. The smallest quantity was perfectly fine a moment ago. It was actually the best answer against a rival who floods the market.
+
+TOM: But the flooding move just left the room.
+
+NOA: It just left the room. So the only reason to keep the small quantity walked out with it. In the smaller grid it is now beaten everywhere, and out it goes too.
+
+TOM: That is a little unsettling. A move I was defending a second ago becomes rubbish, and nothing about the move changed.
+
+NOA: Nothing about it changed. What changed is the world it lives in. And that is why you must look at the grid again after every cut. You cannot decide the whole chain at the start.
+
+TOM: So how do I not lose my place halfway through?
+
+NOA: Write the survivors down. After each cut, a short line on your draft paper listing what is still standing. A short list after every cut beats one long think.

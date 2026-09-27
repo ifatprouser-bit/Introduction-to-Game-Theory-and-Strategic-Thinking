@@ -1,0 +1,15 @@
+Title: Day 9 — Why a threat fails: the entry game
+Voices: NOA = Heart, TOM = Fenrir
+Output: Day-09-empty-threat.mp3
+
+NOA: Look at the tree at the top of this section. Two moves, three endings, and that is the whole game. The newcomer decides whether to walk into the market. If she stays out, the big firm keeps the town to itself, and that is the ending the big firm loves most.
+TOM: And if she walks in?
+NOA: Then it is the firm's turn, and the firm has two choices. Share the market quietly, or start a price war.
+TOM: And the firm has already announced, loudly, that it will fight.
+NOA: It has. Now solve the tree the way you always solve a tree. Start at the end, never at the beginning. Stand at the firm's node with the newcomer already inside the market. From there, the war is the worse ending for the firm as well as for her.
+TOM: So the firm shares. Not out of kindness. Because at that moment, fighting simply costs it more.
+NOA: And here is the part that matters. The newcomer can see that node too. She looks ahead, sees the firm choosing to share, compares that with staying out, and finds that walking in is better for her.
+TOM: So she walks in. The threat was loud and it changed nothing.
+NOA: Follow the highlighted path on the page. It runs straight past the war branch. The war branch is drawn faded on purpose. It is a real branch of the tree. It just never gets used by anybody.
+TOM: So the test for a threat is not, is it frightening. The test is, would I actually do it when the moment arrived.
+NOA: Say that one back to yourself before the exam. If you would not carry it out, it is not a threat. It is noise.

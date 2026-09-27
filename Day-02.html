@@ -87,6 +87,9 @@ span.p{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.04e
 .trio .dtable{margin:4px 0 6px;font-size:12.5px;}
 .trio .dtable th,.trio .dtable td{padding:6px 4px;}
 .trio .tnote{font-size:12.5px;color:var(--muted);}
+.walk{list-style:none;padding:0;margin:10px 0;font-size:14.5px;}
+.walk li{padding:9px 0;border-top:1px solid var(--line);} .walk li:first-child{border-top:none;}
+.walk b{color:var(--brand-d);}
 .fam{display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-top:1px dashed var(--line);font-size:14.5px;}
 .fam:first-of-type{border-top:none;}
 .fam .ic{flex:0 0 24px;text-align:center;}
@@ -128,7 +131,7 @@ NOA: And the map on the page walks you there. Follow it with your finger the fir
 <ul>
 <li><b>Dominant strategy</b>: a choice that gives you your best payoff <i>no matter what</i> the other player does. Rule: if you have one, use it.</li>
 <li><b>Dominated strategy</b>: one of your own moves that loses to another of your own moves, no matter what the other player does: one row pays you less than another row in <i>every</i> column. Rule: cross it out. It is never played.</li>
-<li><b>Pure Nash equilibrium</b>: a cell where neither player wants to move. Counting these cells is the fastest way to sort a matrix.</li>
+<li><b>Pure Nash equilibrium</b>, called a <b>stable cell</b> on this page: a cell where neither player wants to move. Counting these cells is the fastest way to sort a matrix. The next panel shows the test.</li>
 <li><b>Pareto-ranked</b>: one outcome is better for <i>both</i> players than another. Not the same as "bigger total" and not the same as "better on average".</li>
 </ul>
 <p class="tk-gen">One line to hold onto: <b>first ask who has a dominant strategy. Then count the stable cells. Then ask if the two players agree about which one is nicer.</b></p></div>
@@ -199,6 +202,49 @@ NOA: And the map on the page walks you there. Follow it with your finger the fir
 </svg>
 <div class="cap">Four questions, asked in this order, will name any of the five games. They also tell you when a matrix is none of them. Check dominance first, because it takes one glance and it settles the prisoner's dilemma before you count anything.</div>
 </div></div>
+
+<!-- ============ SECTION 0: STABLE CELL ============ -->
+<div class="panel"><h3>First: what "stable cell" means <span class="p P4" style="margin-left:auto">P4</span></h3>
+<div class="secaudio"><span class="salab">&#127911; Listen to this section</span><!-- SCRIPT Day-02-stable.mp3 | NOA=Heart TOM=Fenrir
+NOA: Before we sort any games, one phrase has to be yours: a stable cell.
+TOM: The page keeps saying it. A cell where nobody wants to move.
+NOA: Right, but let us make the test physical. A cell is one ending of the game: your choice together with the other player's choice. Now freeze the other player's choice. Ask yourself: knowing what he picked, would I switch mine?
+TOM: And then the same question for him, with my choice frozen.
+NOA: Two questions, two answers. If both of you say, no, I would stay, then nobody moves, and the cell is stable. If even one of you would switch, the cell falls apart.
+TOM: Like seats at a dinner table. Given where everyone else is sitting, nobody wants to swap.
+NOA: That is the whole idea. And the course's name for a stable cell is a pure Nash equilibrium. The same thing, in formal clothes.
+TOM: So when the map says count the stable cells, I go cell by cell. Freeze, ask, freeze, ask.
+NOA: Walk it once on the little table on the page. After that, counting is just patience.
+-->
+<audio controls preload="none" src="Day-02-stable.mp3"></audio></div>
+
+<p class="p">A <b>cell</b> is one possible ending of the game: your choice together with the other player's choice.</p>
+
+<p class="p"><b>Stable</b> means: nobody regrets. Like seats at a dinner table. Given where everyone else sits, nobody wants to swap.</p>
+
+<div class="rule">The test, for any cell:
+<ol>
+<li>Freeze the other player's choice. Ask: knowing what he picked, would I switch mine?</li>
+<li>Freeze your choice. Ask the same question for him.</li>
+</ol>
+Both answers are "no, I stay": the cell is <b>stable</b>. The course's name for a stable cell is a <b>pure Nash equilibrium</b>. The same thing, in formal clothes.</div>
+
+<p class="partlab">Walk it once</p>
+<p class="p">Dana and Omer pick a cafe for tomorrow, each on their own phone tonight. Dana picks the row, Omer picks the column:</p>
+<div class="tscroll">
+<table class="dtable" style="max-width:420px">
+<tr><th></th><th>Omer: North cafe</th><th>Omer: Beach cafe</th></tr>
+<tr><td class="lab">Dana: North cafe</td><td class="hlcell">2,&nbsp; 3 &nbsp;&#10003;</td><td>4,&nbsp; 1</td></tr>
+<tr><td class="lab">Dana: Beach cafe</td><td>1,&nbsp; 2</td><td>3,&nbsp; 4</td></tr>
+</table></div>
+<div class="howto"><b>How to read this table.</b> Rows: Dana's choice. Columns: Omer's choice. In each cell, Dana's payoff comes first and Omer's second. Green = the stable cell.</div>
+
+<ul class="walk">
+<li>Check <b>(Beach, Beach)</b> = 3, 4. Freeze Omer on Beach. Dana compares her numbers in that column: switching to North gives her 4, staying gives 3. She switches. One regret is enough: <b>not stable</b>.</li>
+<li>Check <b>(North, North)</b> = 2, 3. Freeze Omer on North: Dana has 2, switching gives her 1. She stays. Freeze Dana on North: Omer has 3, switching gives him 1. He stays. Nobody moves: <b>stable</b>.</li>
+</ul>
+<p class="p">That is the whole skill. Counting equilibria is this same test, run cell by cell, with patience. Day 4 trains it on bigger grids.</p>
+</div>
 
 <!-- ============ SECTION 1 ============ -->
 <div class="panel"><h3>Dominance, and why a prisoner's dilemma needs <i>two</i> ticks <span class="p P3" style="margin-left:auto">P3</span></h3>

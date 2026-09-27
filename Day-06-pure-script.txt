@@ -1,0 +1,25 @@
+Title: Day 6 — Careful: not every zero-sum game needs mixing
+Voices: NOA = Heart, TOM = Fenrir
+Output: Day-06-pure.mp3
+
+NOA: Here is the trap, and it arrives the moment you get good at the method. You see the words zero-sum, and your hand starts writing equations.
+
+TOM: And sometimes there is nothing to solve.
+
+NOA: Sometimes there is nothing to solve at all. Look at the second penalty table on the page. It is the same story, but now the kicker's weaker foot is not merely weaker. It is bad.
+
+TOM: Bad enough that kicking the other way wins in both columns.
+
+NOA: In both. So the kicker never chooses it, and there is no decision left for him to make. Knowing that, the goalie takes the smallest number available in that row, and the two of them settle. No mixing, no equations.
+
+TOM: How do I spot it quickly?
+
+NOA: There is a test that takes seconds. Find a cell that is the smallest in its row and at the same time the largest in its column. If such a cell exists, that cell is the equilibrium and the value of the game is simply the number sitting in it.
+
+TOM: And if no cell does both?
+
+NOA: Then nobody can stand still, and you mix. That is the fork in the road, and it is worth doing before you write a single equation. Check for a move that beats another move everywhere. If you find one, the game has already solved itself.
+
+TOM: Which is a minute saved in an exam where every question gets about six.
+
+NOA: And more than the minute. It is a wrong answer avoided, because a mixture calculated for a game that did not need one gives you a number that looks perfectly reasonable and is not the answer.

@@ -1,0 +1,23 @@
+Title: Day 6 — Mixed Strategies I — why you mix at all
+Voices: NOA = Heart, TOM = Fenrir
+Output: Day-06-intro.mp3
+
+NOA: Before anything else, answer the penalty question at the top of the page. Your stronger foot scores more often. So should every kick go that way?
+
+TOM: My instinct says yes. Use the better foot.
+
+NOA: Hold that thought, because today is the day it breaks. This is the one calculation the professor says out loud that you may need in the exam, and it is the biggest single block of marks on the paper.
+
+TOM: So what do I actually learn?
+
+NOA: Three things, and they build. First, a kind of game where whatever you win, the other side loses. Those get written with just one number in each cell, and you will see why the second number was never telling you anything.
+
+TOM: And the second thing?
+
+NOA: The heart of it. When there is no safe move, you choose at random, in fixed proportions. And there is exactly one set of proportions worth using: the one that leaves your opponent with nothing to prefer.
+
+NOA: Third, a trap. Once you know the method it is tempting to reach for it every time. Some of these games are already settled and need no mixing at all. Spotting those takes seconds and saves you minutes.
+
+TOM: So the short version is that I am not mixing in order to win.
+
+NOA: You are mixing so you cannot be read. Hold onto that line and the rest of the day makes sense.

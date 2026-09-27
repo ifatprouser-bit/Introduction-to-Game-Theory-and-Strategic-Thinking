@@ -1,0 +1,49 @@
+Title: Day 8 — Finding the gap in the opponent's rule
+Voices: NOA = Heart, TOM = Fenrir
+Output: Day-08-find-the-gap.mp3
+
+NOA: Here is the question you will actually be asked. The paper hands you the other player's rule, written out in words, and gives you five possible replies. You pick the best one.
+
+TOM: And the rule is always some version of, I will be nice — unless.
+
+NOA: Always. So start at the end and ask one question in each round: if I cheat here, does it change anything the other player does later?
+
+TOM: And if the answer is no, cheating is free.
+
+NOA: Free. That question is the entire method. The final round is always free, because nothing comes after it.
+
+TOM: Free, though — does free always mean it pays well?
+
+NOA: Good question, and no. Look at the two timelines. In the first, the last round is green: they are still cooperating, so you take the big prize. In the second they have already turned against you, so defecting there is still right, but it only earns you the poor payoff. Free means nothing can be taken from you for doing it. It does not promise a reward.
+
+TOM: So take it either way.
+
+NOA: Take it either way. Now suppose their rule says they will forgive one slip.
+
+TOM: Then my first cheat costs me nothing either.
+
+NOA: Nothing. A free move at the start as well as at the end. That is where people lose the mark — they spot the one at the end, choose the answer that only cheats there, and leave the other sitting unused.
+
+TOM: Two green cells, not one. I would have missed that.
+
+NOA: Now the other shape. Suppose the rule says they will start cheating from a certain round onwards, no matter what you do.
+
+TOM: Then from that round on they are lost to me anyway.
+
+NOA: They are. And here is the part almost everybody gets wrong. What they do in that round was decided by what you did the round before.
+
+TOM: Oh. So if they are going to turn against me anyway, my good behaviour in the round just before that is already wasted.
+
+NOA: Wasted. So you move first, one round earlier. The official solution says it plainly — waiting until they turn misses an opportunity in the round before it.
+
+TOM: So both traps are the same mistake wearing different clothes. Being one round out.
+
+NOA: Exactly. And what about the option that says, just copy whatever they did last time?
+
+TOM: I have seen it offered. Is it ever right?
+
+NOA: It appears on some of the older papers, and it has never once been the best reply. Copying never moves first, so it never takes a free move, and against someone who turns on you it always reacts a round late.
+
+TOM: So it protects me from being taken advantage of, but it cannot take advantage of anybody.
+
+NOA: That is the trade. Good for holding an arrangement together, useless when their rule is already fixed and you can see the holes in it.

@@ -1,0 +1,20 @@
+Title: Day 2 — Three games with two equilibria, and how they differ
+Voices: NOA = Heart, TOM = Fenrir
+Output: Day-02-two-equilibria.mp3
+
+NOA: Now the family that costs people marks. Three different games, and all three have exactly two stable outcomes. If you only count, you cannot tell them apart.
+TOM: So counting is not enough. What is the second question?
+NOA: Whether the two players rank those outcomes the same way. Look at the three green-marked tables side by side on the page.
+TOM: The first one, the hunters. Both green cells are on the diagonal, and one of them is bigger for both of them.
+NOA: That is the stag hunt. The two hunters can chase the big animal together, or each catch a small one alone. Both agree the big animal is better. They just have to trust each other to show up.
+TOM: So they want the same thing. The only problem is nerve.
+NOA: Right. Now the middle table. The husband and the wife, one film each prefers, and both would rather be together than apart. Two stable outcomes again. But now?
+TOM: Now they point in opposite directions. He is happier in one green cell, she is happier in the other. Nobody is happier in both.
+NOA: That is the difference the marking scheme keeps testing. In the hunters' game the two equilibria are ranked. In the couple's game they are not. One outcome better for both, versus each player wanting a different one.
+TOM: And the third table? The single-lane bridge.
+NOA: Same disagreement as the couple, but the stable cells have moved off the diagonal. Somebody yields and somebody goes. That is chicken. And there is one more fingerprint. Look at the cell where both drivers yield. It is not stable, but add the two payoffs and it beats either equilibrium.
+TOM: So the polite outcome is the one nobody can hold. That is depressing.
+NOA: It is also the whole reason chicken is dangerous. Let me hand it back to you. What is the single question that splits the hunters from the couple?
+TOM: Do both players agree on which of the two stable outcomes is better. Agree, hunters. Disagree, couple or bridge.
+NOA: And bridge rather than couple when?
+TOM: When the green cells sit off the diagonal. When agreeing with each other is exactly what nobody does.

@@ -1,0 +1,29 @@
+Title: Day 8 — Repeated games and sustaining cooperation
+Voices: NOA = Heart, TOM = Fenrir
+Output: Day-08-intro.mp3
+
+NOA: Every paper in this course has exactly one question about playing the same game again and again with the same person. Always one. Never more.
+
+TOM: So it is a small piece of the exam.
+
+NOA: Small, and completely predictable. The paper describes a rule the other player is following, and asks what you should do back. There is nothing to calculate.
+
+TOM: Just reading, then.
+
+NOA: Reading, and one careful walk backwards. The whole question is this: where does their rule stop protecting them?
+
+TOM: Find the gap, and step into it.
+
+NOA: Yes. And there is a reason a gap exists at all. When both of you know the game will end, the last round has no future inside it, so nothing can hold you back there.
+
+TOM: And once the last round is spoiled, the one before it starts to look the same.
+
+NOA: That unravelling is the theory. But real people do cooperate, for years, in markets and in families. So we also have to ask what makes that possible.
+
+TOM: Being able to tell when someone cheated you, I would guess.
+
+NOA: Detection, yes, and a punishment they can actually feel. Hold that thought.
+
+TOM: What should I watch out for?
+
+NOA: One trap, and it is always the same shape. You end up one round out. Either you miss a free move at the very start, or you wait one round too long at the end.

@@ -494,7 +494,7 @@ function submit(auto){
   const used = 90*60 - state.left;
 
   let html = '<h3>Results</h3>' +
-    '<p class="bigscore">' + score + ' / 14 &nbsp;&middot;&nbsp; ' + pct + '%</p>' +
+    '<p class="bigscore" id="resScore">' + score + ' / 14 &nbsp;&middot;&nbsp; ' + pct + '%</p>' +
     '<p class="bigsub">On the exam’s own scale that is <b>' + mark + ' / 100</b> ' +
     '(7 points a question, plus 2 free). Time used: ' + fmt(used) + '.</p>';
 

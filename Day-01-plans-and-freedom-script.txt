@@ -1,0 +1,49 @@
+Title: Day 1 — A strategy is a whole plan, and why more freedom can hurt
+Voices: NOA = Heart, TOM = Fenrir
+Output: Day-01-plans-and-freedom.mp3
+
+NOA: One word in this course does not mean what it means in ordinary English. Strategy. In everyday speech, your strategy is what you're going to do. Here, a strategy is a rule that says what you would do in every situation you could possibly find yourself in.
+
+TOM: Even the situations that never happen?
+
+NOA: Especially those. Think of it as instructions you could hand to a stranger and then leave the room. He has to be able to play the whole game without phoning you.
+
+TOM: So it's not a move. It's a recipe.
+
+NOA: A recipe for every kitchen. And that matters for the exam, because a question can ask how many strategies a player has, and the answer is usually much larger than the number of things she can do at any one moment.
+
+TOM: Because you multiply the choices across all the places she might have to choose.
+
+NOA: Exactly. Now let me show you why the whole plan matters, with the strangest result in this lecture. A president and a congress. The congress decides what spending to send over; the president decides whether to sign it. Each side has one project it loves and one it can live without, and both would rather have both projects than have nothing at all.
+
+TOM: And the president can only take the whole package or throw it out.
+
+NOA: That's the original game. And it lands somewhere decent — both projects pass, and both sides are reasonably happy. Look at the table on the page.
+
+TOM: Fine. So what changes?
+
+NOA: The president asks for a new power. Instead of accepting or rejecting the whole package, let him strike out single lines. More freedom. Strictly more options than before.
+
+TOM: That has to help him.
+
+NOA: Work it backwards. If he can strike lines, then whatever the congress sends, he will keep only his favourite and delete theirs.
+
+TOM: Ah. So the congress can see that coming.
+
+NOA: And what does the congress do about it?
+
+TOM: Stops sending anything. Why hand him a package he's just going to cut to pieces?
+
+NOA: So nothing passes. And now compare the endings. Both sides are worse off than before he got the extra power. Not just the congress — him too.
+
+TOM: He got more freedom and it cost him. Because everyone else could see what he'd do with it.
+
+NOA: That is the insight the professor wants you to carry out of this lecture. Greater freedom of action can hurt you. Your power to choose is also a promise you can no longer make.
+
+TOM: Like a shopkeeper putting a fixed price on the wall. He's given up the right to haggle, and that's exactly why nobody haggles.
+
+NOA: And the same reasoning runs the flag game on the page. Somebody wins it not by being clever in the moment, but by knowing in advance which positions are poison to be standing on, and handing every one of them to the opponent. The page marks them for you. Notice that they are evenly spaced.
+
+TOM: So the plan is decided before the game starts, and the moves are just the plan being carried out.
+
+NOA: That is backward induction in one sentence.

@@ -1,0 +1,37 @@
+Title: Day 11 — Average first, then take two thirds
+Voices: NOA = Heart, TOM = Fenrir
+Output: Day-11-average-first.mp3
+
+NOA: The guessing contest turns up on every paper, and the story around it changes every time. A different crowd, a different range, a different mix of people. The maths underneath never changes.
+
+TOM: So the story is decoration.
+
+NOA: The story is decoration, but you still have to read it carefully, because it tells you who is in the room. Look at the line drawn on the page. There is a band of people spread evenly across part of the scale, and there is a cluster of people all standing on one spot.
+
+TOM: Two very different crowds. So where do I start?
+
+NOA: You start with the middle of the spread. For an even spread, the middle is just the lowest end and the highest end added together and halved.
+
+TOM: And that is where I would normally guess halfway along the whole scale, out of habit.
+
+NOA: Out of habit, and it is usually wrong, because the spread rarely starts at the very bottom or ends at the very top. Read the two ends they gave you, not the two ends of the scale.
+
+TOM: Right. Now I have the middle of the band, and I have the spot where the cluster is standing. Two groups.
+
+NOA: Two groups. And now the step everybody skips. Combine them first. Put the whole crowd together and find where the crowd sits on average.
+
+TOM: Then take two thirds of that.
+
+NOA: Then take two thirds of that, once, at the end. Look at the two markers under the line. One is the crowd's average. The other is two thirds of it, and it sits noticeably to the left. That second marker is your answer.
+
+TOM: And if I take two thirds of one group before I combine, I land somewhere in between.
+
+NOA: You land somewhere in between, and that somewhere is on the option list. Every time. It is not a coincidence, it is designed.
+
+TOM: One more thing. In the lab, people cluster in a certain low range, and the exam sometimes offers me that range.
+
+NOA: It offers it, and it is never the answer to an equilibrium question. What people actually do and what the theory predicts are two different questions. If they ask for the equilibrium of the contest, the reasoning strips the top away layer by layer until the only survivor is the smallest number allowed.
+
+TOM: So the equilibrium is the bottom of the scale, and the lab range is just what humans do.
+
+NOA: Exactly that. Keep the two apart and you will never lose that mark.

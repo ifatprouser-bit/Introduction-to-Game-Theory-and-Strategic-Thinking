@@ -1,0 +1,29 @@
+Title: Day 4 — Re-solve, don't remember
+Voices: NOA = Heart, TOM = Fenrir
+Output: Day-04-resolve-dont-remember.mp3
+
+NOA: Last piece of the day, and it is about memory rather than method.
+
+TOM: Memory being the enemy?
+
+NOA: The same grid comes back. Different sitting, same numbers — but the rows shuffled, or the columns swapped around.
+
+TOM: So it looks like a game I've already met.
+
+NOA: It looks familiar. And familiar is exactly when your hand stops marking and your memory starts talking.
+
+TOM: And the shuffle moves the equilibrium to a different place on the page.
+
+NOA: It moves the cell. The payoffs sitting in that cell don't change at all — but the label does. What used to be the last column has moved to the middle. Follow the highlighted cell down the page as it travels.
+
+TOM: So remembering where it was is remembering the wrong thing.
+
+NOA: And here's the sharper trick. The question rotates too. One sitting asks what the row player earns there. The next asks what the column player earns.
+
+TOM: Same grid, same cell, different answer.
+
+NOA: There is a pair of questions in the past papers with word for word identical wording — and different correct answers, because the grid underneath was different.
+
+TOM: Then the only safe habit is to mark whatever is actually in front of me. Every time.
+
+NOA: Every time. Underline first. Read the question last.

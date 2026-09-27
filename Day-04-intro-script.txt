@@ -1,0 +1,25 @@
+Title: Day 4 — Pure Nash I — underline and count
+Voices: NOA = Heart, TOM = Fenrir
+Output: Day-04-intro.mp3
+
+NOA: Today is the biggest day of the whole exam. More marks live in this one idea than in anything else on the paper.
+
+TOM: And it's a grid of numbers. That feels almost too plain to be the biggest thing.
+
+NOA: It is plain. That is exactly why it's worth owning. There is a routine, and once your hand knows it, these questions stop being puzzles and become chores.
+
+TOM: A chore I can do while half asleep. I'd take that.
+
+NOA: Here is the whole routine. Go down each column and mark the best the row player can do there. Then go across each row and mark the best the column player can do. Wherever both marks land in the same cell, you have found an equilibrium.
+
+TOM: So the marking does the thinking, and I just read the answer off the page.
+
+NOA: Yes. And the exam knows it. It asks how many you found. Or what the row player earns in one of them. Or the highest the row player can earn in any of them.
+
+TOM: And if I miss a cell, the count is wrong.
+
+NOA: Every wrong count is sitting there as an option, waiting. So the danger today is not the idea.
+
+TOM: The danger is being sloppy.
+
+NOA: That's the whole day.

@@ -1,0 +1,25 @@
+Title: Day 4 — The underline routine
+Voices: NOA = Heart, TOM = Fenrir
+Output: Day-04-underline-routine.mp3
+
+NOA: Now the routine itself. Same every time, and I want it boring.
+
+TOM: Boring is the goal?
+
+NOA: Boring is the goal. First you work the columns. Cover the whole grid except one column. Ask only this: if the column player went here, what is the row player's best row? Underline that number.
+
+TOM: One column at a time, so I'm never comparing things that shouldn't be compared.
+
+NOA: Right. Then you turn the page sideways in your head and work the rows. If the row player went here, what is the column player's best column? Underline that number.
+
+TOM: And then I hunt for the cells wearing both underlines.
+
+NOA: Look at the pair of grids on the page. Blank on top, marked underneath. Every cell holds at most two marks, and the equilibria are the ones carrying both.
+
+TOM: What if a column has a tie at the top?
+
+NOA: Then underline both. A tie means the row player is happy either way, so both stay in the running.
+
+TOM: The mistake I can feel myself making is drifting. Marking the row player's best while my eye is travelling along a row.
+
+NOA: Everybody does that once. So say the sentence out loud while your pen moves. Columns for the row player. Rows for the column player. Say it, and your hand stops drifting.

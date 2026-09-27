@@ -151,7 +151,7 @@ span.p.P4{background:var(--p4)}span.p.P5{background:var(--p5)}span.p.P6{backgrou
 <div class="results" id="results">
   <h3>&#128203; Paper marked</h3>
   <div class="rgrid">
-    <div class="rcell"><div class="k">Score</div><div class="v" id="rScore">&ndash;</div></div>
+    <div class="rcell"><div class="k">Score</div><div class="v" id="resScore">&ndash;</div></div>
     <div class="rcell"><div class="k">Percent</div><div class="v" id="rPct">&ndash;</div></div>
     <div class="rcell"><div class="k">Exam mark</div><div class="v" id="rMark">&ndash;</div></div>
     <div class="rcell"><div class="k">Time used</div><div class="v" id="rTime">&ndash;</div></div>
@@ -465,7 +465,7 @@ function finish(auto){
     rec.exp.classList.add("show");
   });
 
-  document.getElementById("rScore").textContent = score + " / 14";
+  document.getElementById("resScore").textContent = score + " / 14";
   document.getElementById("rPct").textContent = Math.round(score/14*100) + "%";
   document.getElementById("rMark").textContent = (score*7 + 2) + " / 100";
   document.getElementById("rTime").textContent = fmt(TOTAL - remain);

@@ -1,0 +1,33 @@
+Title: Day 8 — Why the last round poisons the whole game
+Voices: NOA = Heart, TOM = Fenrir
+Output: Day-08-last-round.mp3
+
+NOA: Picture two shops that have quietly agreed to keep their prices high. They will meet again next month, and the month after that. The future is what keeps them honest.
+
+TOM: Cheat today, and you lose the arrangement tomorrow.
+
+NOA: Right. Now put a date on it. Both of them know the arrangement ends after a fixed number of months, and each knows the other knows.
+
+TOM: Then the last month has nothing after it.
+
+NOA: Nothing at all. Whatever you do there, there is no tomorrow left to punish you in. So in the last round, cutting your price is simply better — and both of them can see that.
+
+TOM: Which means the last month is spoiled before it even arrives.
+
+NOA: And that is the crack. Now step back one month. You are deciding whether to behave. But you already know the final month will be a price war whatever you do.
+
+TOM: So being good this month buys me nothing next month.
+
+NOA: Nothing. So you cut your price here too. And now this month is spoiled, and the same argument moves back another step.
+
+TOM: It keeps walking backwards until there is nothing left.
+
+NOA: All the way to the opening move. Look at the arrow on the page — it runs from right to left, from the end towards the beginning. That direction is the whole idea. The course calls the result the unique backward induction equilibrium, and what it says is blunt: cut your price in every single round.
+
+TOM: But that is not what people actually do.
+
+NOA: No. In the experiments, pairs cooperate for most of the game and only start cheating in the last few rounds. And there is a good reason for that. A few people really will keep copying you until the end, so it pays to look like one of them for a while.
+
+TOM: So the theory is right about the shape, and wrong about the timing.
+
+NOA: And the exam lives in that gap. It asks you to be the one who breaks first, at exactly the right moment.

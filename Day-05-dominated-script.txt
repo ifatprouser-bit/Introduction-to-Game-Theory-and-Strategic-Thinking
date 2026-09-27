@@ -1,0 +1,21 @@
+Title: Day 5 — A dominated strategy is not a bad strategy
+Voices: NOA = Heart, TOM = Fenrir
+Output: Day-05-dominated.mp3
+
+NOA: People hear the word dominated and they think bad. That is not it. A dominated move can be perfectly fine in some situations.
+
+TOM: Then what makes it dominated?
+
+NOA: There has to be another move of yours that beats it in every single column. Every one. Not on average, not usually. Always. So whatever your opponent is planning, you would rather be holding the other move.
+
+TOM: Which means I never have to guess what he is doing. The comparison is already settled before he moves.
+
+NOA: That is the whole gift of it. Now look at the little grid on the page with the two flatmates trying to meet. Staying home never earns more than going. But there is one case where the two are exactly equal, and that is when the other person also stays home.
+
+TOM: So it is not always worse. Only sometimes worse.
+
+NOA: That is the weak kind. And here is the sting. Both going, and both staying home, are each a stable outcome. Delete staying home because it is weakly worse, and you have just deleted a real equilibrium. Something that genuinely happens.
+
+TOM: Two people sitting at home, each waiting, each with no reason to move first.
+
+NOA: That is it exactly. So strict is safe and weak is not. Strict throws away nothing. Weak can throw away an answer.

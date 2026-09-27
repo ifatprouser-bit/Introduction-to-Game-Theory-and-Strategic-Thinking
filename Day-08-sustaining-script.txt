@@ -1,0 +1,37 @@
+Title: Day 8 — What keeps cooperation alive
+Voices: NOA = Heart, TOM = Fenrir
+Output: Day-08-sustaining.mp3
+
+NOA: If the theory says cheat in every round, why do real arrangements survive for years?
+
+TOM: Because real life does not come with a printed end date.
+
+NOA: That is part of it. But even with no end date, cooperation still needs a few things in place, and the course names each one.
+
+TOM: Start with the obvious one.
+
+NOA: You have to be able to tell that you were cheated. Published prices help an arrangement stay alive. Secret discounts kill it, because you simply never find out.
+
+TOM: If I cannot see it, I cannot answer it.
+
+NOA: Next, the punishment has to be possible, and it has to hurt. But be careful here, because the next bit is the opposite of what you would guess. The punishment must not be too severe.
+
+TOM: Why not? Surely harsher is safer.
+
+NOA: Because mistakes will always happen. A delivery arrives late. A price is misread. If one honest error triggers a war that never ends, the arrangement dies the first time somebody slips.
+
+TOM: So you want a threat that is real, but survivable.
+
+NOA: Then, everybody has to know where the line is. When there are hundreds of things you could do, being vague about which of them counts as cheating is fatal.
+
+TOM: And the last one?
+
+NOA: Patience, and what patience costs. Cheating pays you once, straight away. Staying honest pays you a little, every round, for as long as the arrangement lasts.
+
+TOM: So which one wins depends on how much I care about later.
+
+NOA: It does, and there is a tipping point where the two are worth exactly the same. Look at the two lines crossing on the page. The falling curve is what the lost stream is worth to you today; the flat line is the one-off prize for cheating. To the left of the crossing, staying honest is your best reply. To the right of it, take the money and run.
+
+TOM: So a low enough interest rate is what keeps people honest.
+
+NOA: That is the sentence to remember. And you should be able to find the crossing yourself, because the loss you give up is a payment that repeats forever, and a payment that repeats forever has a very simple value today.

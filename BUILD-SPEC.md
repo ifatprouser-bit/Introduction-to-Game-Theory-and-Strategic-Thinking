@@ -222,6 +222,8 @@ Source: Ifat's `cut-the-fluff` standard. She is reading English as a second lang
 
 Write for someone reading English as a second language. **Short sentences. Everyday words only.**
 
+**And lean pages, not dense ones.** One idea per sentence. Let the tables, rule boxes and numbered steps carry the detail, and keep the paragraphs between them short — Ifat flagged Day 2 as overwhelming (27 Sep 2026) even though every sentence in it was correct. Rewritten Day 2 section 1 is the model.
+
 **The one exception: the course's own vocabulary stays.** Nash equilibrium, dominant strategy, dominated strategy, backward induction, zero-sum, mixed strategy, best reply, prisoner's dilemma, stag hunt, battle of the sexes, chicken, matching pennies, the value of the game, dominance-solvable, salami tactics, the eight device names. Simplifying those away would leave her unable to read her own exam paper. **Keep them, and explain each one the first time it appears on that page.**
 
 **The mechanical test: if a word has a shorter everyday twin, use the twin.**

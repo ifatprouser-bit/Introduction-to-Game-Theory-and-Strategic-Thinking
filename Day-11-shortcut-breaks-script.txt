@@ -1,0 +1,29 @@
+Title: Day 11 — Where the memorised recipe breaks
+Voices: NOA = Heart, TOM = Fenrir
+Output: Day-11-shortcut-breaks.mp3
+
+NOA: Most of the past grids look the same. Two numbers on the main diagonal, zeros on the other two corners. Practise on those long enough and your hand starts writing the answer before your brain reads the grid.
+
+TOM: Because in that shape both players end up mixing in the same proportions.
+
+NOA: In the same proportions, yes. Which feels like a law, and it is not a law. It is a coincidence of that shape.
+
+TOM: So somewhere there is a grid that punishes me for trusting it.
+
+NOA: There are two, and they are both on past papers. Look at the grid on the page where the zeros have moved to the other diagonal. Everything else feels familiar, the numbers are still friendly, and the answer is completely different.
+
+TOM: Different how?
+
+NOA: The two mixtures are no longer equal. They swap. Player one leans towards one row while player two leans towards the other column, and the amount each of them leans is the other one's amount.
+
+TOM: So if I write the two mixtures as the same number, I get a cell probability that is wrong.
+
+NOA: Wrong, and worse than wrong. On the real paper the number you get from the recipe is sitting there as one of the five options. It looks like a reward for knowing the shortcut.
+
+TOM: That is nasty. And the value of the game?
+
+NOA: The value survives, which is exactly what makes it dangerous. You check your second answer, it agrees, and you feel safe about a first answer that is already lost.
+
+TOM: So the only safe move is to write the two indifference equations out.
+
+NOA: Every time. Two lines of algebra. And look at the last grid on the page, the one with no zeros anywhere. Nothing cancels, nothing is symmetric, and there is no recipe to reach for at all. That one is honest with you. The dangerous grid is the one that looks like the ones you practised.

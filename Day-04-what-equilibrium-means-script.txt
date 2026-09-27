@@ -1,0 +1,25 @@
+Title: Day 4 — What the equilibrium test actually asks
+Voices: NOA = Heart, TOM = Fenrir
+Output: Day-04-what-equilibrium-means.mp3
+
+NOA: Let's start with the definition, and it's shorter than people expect. Each player's choice is a best reply to the other player's choice. That's the whole thing.
+
+TOM: Best reply meaning — given what she did, I could not have done better?
+
+NOA: Exactly that. Not better than her. Better than your own other options, with her choice held still.
+
+TOM: So it's really a test about regret. Nobody looks back and wishes they had moved on their own.
+
+NOA: That's a good way to say it. No private regrets anywhere in the cell. And now notice what the test never asks. It never asks whether the outcome is nice.
+
+TOM: Ah. So a cell could be lovely for both of them and still fail the test?
+
+NOA: Look at the arrows on the page, leaving the friendly-looking corner. Both players want to walk away from it. Lovely, and unstable.
+
+TOM: And I suppose the opposite happens too. Somewhere miserable that neither of them will leave.
+
+NOA: The highlighted cell. Both would rather be in the friendly corner. Neither will move alone, because moving alone makes things worse for whoever moves.
+
+TOM: So good and stable are two different questions, and the exam only ever asks the second one.
+
+NOA: Hold onto that sentence. Mixing up those two questions is the most common way people drop a mark here.

@@ -1,0 +1,13 @@
+Title: Day 2 — Name that game
+Voices: NOA = Heart, TOM = Fenrir
+Output: Day-02-intro.mp3
+
+NOA: Today is a sorting day. Five little games, and the whole skill is telling them apart quickly.
+TOM: Five feels like a lot to hold in my head at once.
+NOA: It is less than it sounds, because they come in three families. One family has a single stable outcome that everybody regrets. One family has a pair of stable outcomes and the only question is how those two are ranked. And one has nothing stable at all.
+TOM: So really I am asking two questions, not five.
+NOA: Exactly two. First: does each player have one choice that is best no matter what the other one does? If yes, you are in the first family, and there is one more thing to check before you name it.
+TOM: And if nobody has a choice like that?
+NOA: Then you count the stable outcomes. Two of them, and you ask whether both players agree about which one is nicer. If they agree, it is one game. If they disagree, it is another. And if there are none at all, that is the last one.
+TOM: Agree or disagree. That I can remember.
+NOA: Your teacher spreads these across two lectures. The exam puts them in a single question and asks you to choose. So today we lay them side by side and look at what actually differs.

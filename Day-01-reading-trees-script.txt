@@ -1,0 +1,35 @@
+Title: Day 1 — Reading a game tree and solving it from the last node
+Voices: NOA = Heart, TOM = Fenrir
+Output: Day-01-reading-trees.mp3
+
+NOA: A game tree is just a story of who moves when. Start at the left. Every fork is a moment where somebody chooses. Every branch is one thing they could do. And at the far right, where the branches stop, you find the ending — a pair of payoffs, the first for player one, the second for player two.
+
+TOM: So the tree is time running left to right.
+
+NOA: Yes. And here is the whole trick of this lecture. You do not solve it left to right. You solve it right to left.
+
+TOM: Backwards. Why backwards?
+
+NOA: Because the person who moves first cannot choose well until she knows what the other one will do afterwards. So you settle the last decision first, when there is nothing left to guess. Then you know what that branch is really worth, and you can settle the decision before it.
+
+TOM: It's like planning a journey by starting at the door you want to arrive at.
+
+NOA: That's a good way to hold it. The professor's phrase is: look forward and reason backward.
+
+TOM: Give me a story for it.
+
+NOA: The one from the lecture. A local businessman asks a foreign investor to put money into a business, and promises to split the profit fairly at the end of the year. Now, the investor's real question isn't "is this a good deal". It's "what will he do once my money is already in the country and the courts are weak?"
+
+TOM: And once the money is in, keeping all of it beats sharing it.
+
+NOA: Right. So that last node settles itself. The businessman keeps everything. Which means the investor's actual choice is not between sharing and not investing — it's between losing everything and not investing.
+
+TOM: So he stays home. And both of them end up with nothing, when they could both have done well.
+
+NOA: That's the sting of it. The backward answer is often the sad one, and it is still the answer.
+
+NOA: Now look at the tree drawn on the page. The thick coloured line is the solved path — the route the game actually takes. The faint dashed branches are what somebody would have chosen at a fork the game never arrives at. Notice where the solid line goes, and notice which large numbers it walks straight past.
+
+TOM: There's a big payoff sitting in the middle of the tree for player one, and the solid line never touches it.
+
+NOA: Because player one never gets to choose it. Somebody else stands between her and that ending, and that somebody has no reason to let her through. A number you cannot reach is not an option. It's decoration.

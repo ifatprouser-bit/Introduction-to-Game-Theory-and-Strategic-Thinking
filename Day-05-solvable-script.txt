@@ -1,0 +1,27 @@
+Title: Day 5 — Dominance-solvable, and the counting trap
+Voices: NOA = Heart, TOM = Fenrir
+Output: Day-05-solvable.mp3
+
+NOA: Sometimes the cutting ends with exactly one cell left. The course has a name for that. Dominance-solvable.
+
+TOM: And that surviving cell is the equilibrium.
+
+NOA: That cell is the equilibrium. And here is the part the exam loves. It is the only one. Not the only pure one. The only one, full stop. There is no mixed equilibrium hiding somewhere else in the grid.
+
+TOM: Why not? I keep hearing that every game has one.
+
+NOA: Every game has at least one. That is Nash's theorem, and it is true. But a mixture has to be built out of moves you would actually use, and every other move here was thrown out for being hopeless. There is simply nothing left to mix.
+
+TOM: So when the question says how many equilibria, pure or mixed, the answer is just the one.
+
+NOA: Just the one. And that phrase, pure or mixed, is the trap itself. It whispers to you that a mixed one must be lurking somewhere, so people reach for a bigger answer.
+
+TOM: Where else does this same chain turn up?
+
+NOA: The guessing game you played in the first week, where everyone picks a number and you aim at a fraction of the average. The same reasoning runs there, and it walks all the way down to the smallest number allowed.
+
+TOM: Same idea, different clothes.
+
+NOA: And look at the two crossing lines on the page. That is the smooth version of the firms' story, where quantity can be anything at all. The point where those lines meet is the very same cell the cutting left behind.
+
+TOM: Different road, same destination.

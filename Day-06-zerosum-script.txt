@@ -1,0 +1,25 @@
+Title: Day 6 — Zero-sum, and why one number is enough
+Voices: NOA = Heart, TOM = Fenrir
+Output: Day-06-zerosum.mp3
+
+NOA: Some games are pure conflict. There is a fixed pie, and every crumb you take is a crumb the other person does not get. Poker between two people. A penalty kick. Rock paper scissors.
+
+TOM: Nothing to share and nothing to gain together.
+
+NOA: Nothing at all. The course calls these zero-sum games, because the two payoffs always add up to nothing. And that gives us a shortcut in how the grid is written.
+
+TOM: Which is why the cells on the page have only one number in them.
+
+NOA: Exactly. That single number is always player one's payoff. Player two's is the same number with a minus sign in front. Look at the two tables side by side on the page. The long one and the short one are the same game.
+
+TOM: So the second number never carried any information.
+
+NOA: It never did. It was always just the first one, flipped. And every zero-sum question on every past paper uses the short form, so when you see one number per cell, you know immediately what you are holding.
+
+TOM: What do the two players want from that one number?
+
+NOA: Opposite things. The player choosing rows wants it high. The player choosing columns wants that very same number low. One number, two goals pulling against each other.
+
+TOM: Take the poisoned goblets on the page. Whatever cell I point at, somebody wants to move.
+
+NOA: And that is the whole problem. There is no resting place. If your opponent could see your choice before he answered it, he would beat you every time. So the only way out is to stop being predictable.

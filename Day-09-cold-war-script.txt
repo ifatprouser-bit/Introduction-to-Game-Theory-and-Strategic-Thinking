@@ -1,0 +1,17 @@
+Title: Day 9 — The same shape, at maximum stakes: the cold war
+Voices: NOA = Heart, TOM = Fenrir
+Output: Day-09-cold-war.mp3
+
+NOA: Now the second tree on the page. Same two moves, same three endings, completely different stakes. In Europe during the cold war, the Soviet side had the stronger conventional army. The American answer was, invade a country in the west and we go nuclear.
+TOM: I already know how this one solves, because it is the same shape as the shop.
+NOA: Then show me.
+TOM: Start at the end. The invasion has happened. America now chooses between backing down, which is bad, and a nuclear exchange, which is a disaster for America as well. So America backs down.
+NOA: And the Soviet side, looking forward from the first node?
+TOM: Sees exactly that. So invading beats staying home. The frightening branch never gets walked, same as before.
+NOA: Now notice what did not rescue the threat. Its size. The nuclear branch is the worst ending anywhere in that tree, by an enormous distance, and it is still not believed.
+TOM: Because the person I would be punishing is also me.
+NOA: Which gives you the move for the rest of the day. If you cannot make a threat frightening enough, stop trying. Change the game instead. Do something now, before the other side chooses, that removes the backing down branch from your own tree.
+TOM: Cut a branch off my own tree, so the other player has nothing left to count on.
+NOA: The course calls that a strategic move. Look at the second version of the tree on the page, the one where backing down has been made painful. The other side now stays home, and you never have to fight at all.
+TOM: I got a better ending by making one of my own options worse. That is going to take a minute to settle.
+NOA: Sit with it for a moment. And then the good news: there are only eight standard ways of doing exactly that, and the professor has a name for each one.

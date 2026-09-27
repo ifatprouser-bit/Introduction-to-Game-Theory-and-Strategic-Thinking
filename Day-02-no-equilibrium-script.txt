@@ -1,0 +1,17 @@
+Title: Day 2 — When nothing is stable, and how to count equilibria
+Voices: NOA = Heart, TOM = Fenrir
+Output: Day-02-no-equilibrium.mp3
+
+NOA: Last shape. Sometimes you go around the whole matrix and there is no cell where both players are happy to stay.
+TOM: The pennies game. I pick a side, you pick a side, I win if they match and you win if they do not.
+NOA: Put your finger on any cell in the table on the page. Wherever you put it, one of us wants to move. And when that one moves, the other one wants to move too. It never settles.
+TOM: It is a chase. Like a cat and a mouse going round a table forever.
+NOA: A good picture. And it is why that game has no stable outcome in plain, fixed choices. The only stable thing is to choose at random.
+TOM: So the honest answer is that there is nothing to find?
+NOA: No, and this is the part I want you to be careful with, because two of your past papers word it differently and both of them are right. One says the pennies game has no pure equilibrium. Another says it has a unique equilibrium.
+TOM: That sounds like a contradiction.
+NOA: It sounds like one, and it is not. Pure means a fixed choice, always the same side. Mixed means choosing at random with settled proportions. Count only the pure ones and you get none. Count everything, pure and mixed together, and you get one.
+TOM: So the question is really asking me which basket to count.
+NOA: Yes. Read the words in the stem before you count anything. Pure equilibria, or all equilibria. That single word decides your answer.
+TOM: Let me say it back. If it asks how many pure ones, I only look for cells where neither player wants to move. If it asks how many altogether, I have to remember the random ones exist as well.
+NOA: And one fact makes that safe. Every finite game has at least one equilibrium somewhere. So if you count the pure ones and get none, you have not made a mistake. You have found the game that must be played at random.

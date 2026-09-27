@@ -64,7 +64,6 @@ audio{width:100%;margin-top:6px;}
 .navbtn{text-decoration:none;font-weight:600;font-size:14px;padding:10px 16px;border-radius:11px;border:1px solid var(--line);color:var(--ink);background:#fff;}
 .navbtn.primary{background:var(--brand);color:#fff;border-color:var(--brand);}
 .tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
-.howto{background:#f7f5fd;border:1px dashed #cfc4f5;border-radius:10px;padding:9px 13px;margin:8px 0 14px;font-size:13.5px;line-height:1.55;}
 .warnbox{background:var(--amber-soft);border:1px solid #f0deb8;border-radius:11px;padding:12px 16px;margin:14px 0;font-size:14.5px;}
 .warnbox b{color:var(--amber);}
 /* ---- presentation chips (from index.html) ---- */
@@ -91,7 +90,7 @@ span.p{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.04e
 <div class="crumb">Day 11 of 14 &middot; Learn</div>
 <h1>The two arithmetic questions you must not lose</h1>
 <div class="tags"><span class="p P5">P5</span><span class="p P1">P1</span><span class="p P4">P4</span></div>
-<p class="lede">Yesterday's mock was full of mixing. Today you do not learn the method again. You drill it, and you hunt the traps. Two questions sit on one grid, on every paper. They are worth 14 points, and they both rest on a single equation.</p>
+<p class="lede">Yesterday's mock was full of mixing. Today you do not learn the method again: you drill it and hunt the traps. Every paper puts two questions on one grid, worth 14 points together, and both rest on a single equation.</p>
 
 <div class="preq"><span class="tag">&#9208; Guess first</span>
 <p>A <b>mixed strategy</b> means you do not always play the same action. You pick at random, with fixed chances. A mixed equilibrium is when both sides do that and neither one wants to change.<br><br>Here player 1 plays <b>Top</b> two times out of three. Player 2 plays <b>Left</b> two times out of three.<br><br>Quick, without a calculator: how often do the two of them land on the cell <b>(Top, Right)</b>? Is it about two out of three? One out of three? Or something smaller than both?</p>
@@ -140,11 +139,11 @@ NOA: It sounds like that, but the published answers do not do that. They round t
 -->
 <div class="secaudio"><span class="salab">&#127911; Listen to this section</span><audio controls preload="none" src="Day-11-cell-is-a-product.mp3"></audio></div>
 
-<p class="p">Every past paper does the same thing, usually near the end. One small zero-sum grid, then two questions about it, back to back. The first: <i>what is the probability that the outcome is (this row, that column)?</i> The second: <i>what is player 1's expected payoff?</i> An expected payoff is an average: what you earn per play if you played the game many times.</p>
+<p class="p">Every past paper does the same thing, usually near the end: one small zero-sum grid, then two questions back to back. First: <i>what is the probability that the outcome is (this row, that column)?</i> Second: <i>what is player 1's expected payoff?</i> An expected payoff is an average: what you earn per play over many plays.</p>
 
-<p class="p">You solve the grid once. Two <b>indifference</b> equations give you two numbers: how often player 1 plays the top row, and how often player 2 plays the left column. Indifference means a player does not care which action she takes, because both pay her the same. Together the two numbers describe one <b>Nash equilibrium</b>: a pair of strategies where neither side can do better by changing alone. That is the whole calculation. If it is right, both answers fall out. If it is wrong, both answers fall over. This is why 14 points sit on one piece of arithmetic, and it is the biggest single risk on the paper.</p>
+<p class="p">You solve the grid once. Two <b>indifference</b> equations give two numbers: how often player 1 plays the top row, and how often player 2 plays the left column. Indifference means a player does not care which action she takes, because both pay her the same. Together the two numbers form one <b>Nash equilibrium</b>: a pair of strategies where neither side can do better by changing alone. If the calculation is right, both answers fall out. If it is wrong, both fall over. That is why 14 points sit on one piece of arithmetic, the biggest single risk on the paper.</p>
 
-<p class="p">Now the part that costs marks. You have worked out that player 1 plays Top 80% of the time. The option list has 80% on it, and taking it feels safe. It is wrong. The question did not ask about a <i>row</i>. It asked about a <i>cell</i>, which is a row <b>and</b> a column at the same time. The two players choose separately, so you multiply.</p>
+<p class="p">Now the part that costs marks. You worked out that player 1 plays Top 80% of the time. The option list has 80% on it, and taking it feels safe. It is wrong. The question asked about a <i>cell</i>, not a <i>row</i>: a row <b>and</b> a column at the same time. The two players choose separately, so you multiply.</p>
 
 <div class="rule">The chance of a row is not the chance of an outcome. An outcome needs both: <b>P(row, column) = P(row) &times; P(column).</b> Matching cell &rarr; p &times; q. Mismatched cell &rarr; p &times; (1&minus;q).</div>
 
@@ -156,7 +155,6 @@ NOA: It sounds like that, but the published answers do not do that. They round t
 <tr><td class="lab">Top<span class="mix">prob. p</span></td><td>5</td><td class="zero">0</td></tr>
 <tr><td class="lab">Down<span class="mix">prob. 1&minus;p</span></td><td class="zero">0</td><td>20</td></tr>
 </table></div>
-<div class="howto"><b>How to read this table.</b> Rows: player 1's choice, with how often he plays it: <b>p</b> for Top, <b>1 &minus; p</b> for Down. Columns: player 2's choice, with how often she plays it: <b>q</b> for Left, <b>1 &minus; q</b> for Right. One number per cell: player 1's payoff.</div>
 <p class="given">p and 1&minus;p are player 1's mixture. q and 1&minus;q are player 2's mixture. There are only ever these two unknowns in a 2&times;2.</p>
 
 <div class="svg-wrap">
@@ -195,7 +193,7 @@ NOA: It sounds like that, but the published answers do not do that. They round t
   <line x1="100" y1="232" x2="100" y2="270" stroke="#6f6886" stroke-width="1.4"/>
   <text x="291" y="292" text-anchor="middle" font-size="11.5" fill="#6f6886" font-family="-apple-system,Segoe UI,Arial">the whole square = everything that can happen (100%)</text>
 </svg>
-<div class="cap">One vertical cut at q, one horizontal cut at p. The <b>area</b> of a rectangle is the probability of that outcome. Look at the big purple rectangle and the thin amber one beside it. They are very different sizes, and both of them start with the same p. Only the column name in the brackets tells you which one the question wants.</div>
+<div class="cap">One vertical cut at q, one horizontal cut at p. The <b>area</b> of a rectangle is the probability of that outcome. The big purple rectangle and the thin amber one beside it both start with the same p, yet their sizes are very different. Only the column name in the brackets tells you which one the question wants.</div>
 </div>
 
 <p class="partlab">Trap 1: half the past questions ask for a mismatched cell</p>
@@ -203,7 +201,7 @@ NOA: It sounds like that, but the published answers do not do that. They round t
 
 <p class="p">Three ask for a <b>matching</b> cell. Both players pick the same side, so you multiply p&nbsp;&times;&nbsp;q. Those three are <i>(right, right)</i>, <i>(Top, left)</i> and <i>both players play left</i>.</p>
 
-<p class="p">Three ask for a <b>mismatched</b> cell, also called a crossed cell. The players pick different sides, so you multiply one chance by the <b>leftover</b> of the other. A mismatched cell like <i>(Left, right)</i> is p times the leftover of q. It is not p&nbsp;&times;&nbsp;q. Those three are <i>(Left, right)</i>, <i>(Top, Right)</i> and <i>(Down, Left)</i>.</p>
+<p class="p">Three ask for a <b>mismatched</b> cell, also called a crossed cell. The players pick different sides, so you multiply one chance by the <b>leftover</b> of the other: <i>(Left, right)</i> is p times the leftover of q, not p&nbsp;&times;&nbsp;q. Those three are <i>(Left, right)</i>, <i>(Top, Right)</i> and <i>(Down, Left)</i>.</p>
 
 <p class="p">Nothing in the question warns you which kind you have. At exam speed the two look the same.</p>
 
@@ -218,7 +216,7 @@ NOA: It sounds like that, but the published answers do not do that. They round t
 <tr><td class="lab">2025 A</td><td>rounded to the nearest percentage point</td><td>rounded to one decimal place</td></tr>
 <tr><td class="lab">The other four past papers<span class="mix">not named here, so your mock days stay fresh</span></td><td>two of them use the first wording above, two use the second</td><td class="dim">one uses each wording above, and two give no instruction at all</td></tr>
 </table></div>
-<div class="cap">The wording above is what the exam sheets themselves print. The 2025 A <i>detailed-solution</i> document writes the same two questions as "rounded up to the closest percentage point" and "rounded to one digit after the point". So even the solution does not repeat the paper word for word. <b>Read the rounding instruction on the paper in front of you.</b> Never assume it is the one you practised on.</div>
+<div class="cap">The wording above is what the exam sheets themselves print. The 2025 A <i>detailed-solution</i> document writes the same two questions as "rounded up to the closest percentage point" and "rounded to one digit after the point", so even the solution does not repeat the paper word for word. <b>Read the rounding instruction on the paper in front of you.</b> Never assume it is the one you practised on.</div>
 
 <div class="warnbox"><b>"Round up" does not mean round up.</b> Read it word for word and 11.11% would become 12%, and 1.333 would become 1.34. No past answer key does that. They all round the ordinary way, up or down to whichever number is nearer. So do not let the wording talk you out of a correct number. The five options are always far apart. Once your arithmetic is right, the nearest option is the one to pick.</div>
 
@@ -253,7 +251,6 @@ The value of the game is the average payoff the grid delivers when both sides mi
 <div class="tscroll"><table class="dtable" style="max-width:330px;margin:10px 0"><tr><th></th><th>Left</th><th>Right</th></tr>
 <tr><td class="lab">Top</td><td>12</td><td>0</td></tr>
 <tr><td class="lab">Down</td><td>0</td><td>4</td></tr></table></div>
-<div class="howto"><b>How to read this table.</b> Rows: player 1's choice. Columns: player 2's choice. One number per cell: player 1's payoff. Player 2 gets minus that, so player 1 wants it high and player 2 wants it low.</div>
 <b>(a)</b> What is the probability of the outcome <b>(Top, Right)</b>, rounded to the closest percentage point? <b>(b)</b> What is player 1's expected payoff?</div>
 <button class="reveal-btn" onclick="this.nextElementSibling.classList.add('show');this.disabled=true;">Reveal answer</button>
 <div class="reveal"><b>(a) 19% &nbsp;·&nbsp; (b) 3.</b><br><br>Player 1 indifferent: 12q = 4(1&minus;q) → 16q = 4 → <b>q = 0.25</b>. Player 2 indifferent: 12p = 4(1&minus;p) → <b>p = 0.25</b>.<br><br>(Top, Right) is crossed, so p × (1&minus;q) = 0.25 × 0.75 = 0.1875 → <b>19%</b>. Value: 12 × 0.25 = 3, and from the other row 4 × 0.75 = 3. ✓<br><br><b>Watch the direction.</b> The big number is top-left, and yet Top is played only a quarter of the time. That feels backwards until you remember <i>why</i> you mix. The mixture is chosen to control your <i>opponent</i>, not to chase your own big payoff.</div></div>
@@ -279,7 +276,7 @@ NOA: Every time. Two lines of algebra. And look at the last grid on the page, th
 -->
 <div class="secaudio"><span class="salab">&#127911; Listen to this section</span><audio controls preload="none" src="Day-11-shortcut-breaks.mp3"></audio></div>
 
-<p class="p">Here is a real pattern in the past papers. It is a trap dressed as a gift. <b>Five of the seven past zero-sum grids have the same shape:</b> two numbers on the main diagonal, zeros in the other two corners.</p>
+<p class="p">A real pattern in the past papers, and a trap dressed as a gift. <b>Five of the seven past zero-sum grids have the same shape:</b> two numbers on the main diagonal, zeros in the other two corners.</p>
 
 <div class="tscroll">
 <table class="dtable" style="max-width:330px">
@@ -287,7 +284,6 @@ NOA: Every time. Two lines of algebra. And look at the last grid on the page, th
 <tr><td class="lab">Top</td><td><i>a</i></td><td class="zero">0</td></tr>
 <tr><td class="lab">Down</td><td class="zero">0</td><td><i>b</i></td></tr>
 </table></div>
-<div class="howto"><b>How to read this table.</b> The general shape, not a real game. <b>a</b> and <b>b</b> stand for any two positive numbers on the main diagonal (top-left and bottom-right). The other two corners are 0. One number per cell: player 1's payoff.</div>
 <p class="p">Solve that shape once in letters and you get a recipe. Both players play their <i>first</i> action with probability <i>b</i>&nbsp;/&nbsp;(<i>a</i>+<i>b</i>), and the value of the game is <i>ab</i>&nbsp;/&nbsp;(<i>a</i>+<i>b</i>). It works on five of the seven past grids. After that many wins in a row, you stop reading the grid at all.</p>
 
 <p class="p">The most tempting part of the recipe is that <b>p and q come out equal</b>. That feels like a deep truth about zero-sum games. It is not. It is an accident of that one shape, and two of the seven grids break it.</p>
@@ -295,7 +291,7 @@ NOA: Every time. Two lines of algebra. And look at the last grid on the page, th
 <div class="rule">Never trust a shape. Write both indifference equations, every time. Two lines of algebra cost you thirty seconds. A wrong shape costs you 14 points.</div>
 
 <p class="partlab">Break 1: the zeros move to the other diagonal</p>
-<p class="p">One of the past papers moves the zeros to the other diagonal. The grid below has that shape. Solve it and the two mixtures come out <b>different</b>. They swap over: the chance player 1 gives to the top row is the chance player 2 gives to the right column.</p>
+<p class="p">One past paper moves the zeros to the other diagonal, the shape of the grid below. Solve it and the two mixtures come out <b>different</b>. They swap over: the chance player 1 gives to the top row is the chance player 2 gives to the right column.</p>
 
 <div class="tscroll">
 <table class="dtable" style="max-width:430px">
@@ -303,7 +299,7 @@ NOA: Every time. Two lines of algebra. And look at the last grid on the page, th
 <tr><td class="lab">Top<span class="mix">prob. p</span></td><td class="zero">0</td><td>36</td></tr>
 <tr><td class="lab">Down<span class="mix">prob. 1&minus;p</span></td><td>12</td><td class="zero">0</td></tr>
 </table></div>
-<div class="cap">A grid with the zeros on the anti-diagonal, built for this page. Note how friendly it looks: two numbers, two zeros, nothing unusual. Everything about it invites the recipe. Here the recipe is wrong.</div>
+<div class="cap">A grid with the zeros on the anti-diagonal, built for this page. It looks friendly: two numbers, two zeros, nothing unusual. Everything invites the recipe, and here the recipe is wrong.</div>
 
 <p class="partlab">Worked example</p>
 <div class="question">Using the grid above: what is the probability that the outcome is <b>(Down, Left)</b> in the mixed equilibrium, and what is player 1's expected payoff?</div>
@@ -329,13 +325,12 @@ Left column pays 0p + 12(1&minus;p). Right column pays 36p + 0(1&minus;p).
 <div class="warnbox"><b>Now watch the recipe fail on this exact grid.</b> Feed its two visible numbers into the main-diagonal formula and you get equal mixtures: 12 &divide; 48 = 25% for both players. So P(Down, Left) becomes 0.75 &times; 0.25 = <b>19%</b> instead of 56%. On the real paper with this shape, the number the recipe gives is sitting there as one of the five options. The wrong method has its own reward waiting.<br><br>Worse: the <i>value</i> question that follows survives the same mistake. The value formula treats the two numbers the same way round, so the recipe still returns 9, which is correct. You check your second answer, it agrees, and you walk away confident about a first answer you have already lost.</div>
 
 <p class="partlab">Break 2: no zeros anywhere</p>
-<p class="p">The other break is simpler and more honest: a grid with four non-zero numbers. Nothing cancels. There is no symmetry to lean on and no recipe to reach for. One of the seven past grids has this shape. It is only frightening if you have stopped writing the equations.</p>
+<p class="p">The other break is simpler and more honest: a grid with four non-zero numbers. Nothing cancels, no symmetry to lean on, no recipe to reach for. One of the seven past grids has this shape. It is only frightening if you have stopped writing the equations.</p>
 
 <div class="tryq"><div class="q">A zero-sum game (one number per cell = player 1's payoff):<br>
 <div class="tscroll"><table class="dtable" style="max-width:330px;margin:10px 0"><tr><th></th><th>Left</th><th>Right</th></tr>
 <tr><td class="lab">Top</td><td>4</td><td>1</td></tr>
 <tr><td class="lab">Down</td><td>2</td><td>3</td></tr></table></div>
-<div class="howto"><b>How to read this table.</b> Rows: player 1's choice. Columns: player 2's choice. One number per cell: player 1's payoff. Player 2 gets minus that, so player 1 wants it high and player 2 wants it low.</div>
 Find p, q, and player 1's expected payoff.</div>
 <button class="reveal-btn" onclick="this.nextElementSibling.classList.add('show');this.disabled=true;">Reveal answer</button>
 <div class="reveal"><b>p = 0.25, q = 0.5, value = 2.5.</b><br><br>First, no pure equilibrium: Top's smallest number is 1, but 1 is not the largest in the Right column (3 is). Down's smallest is 2, and 2 is not the largest in the Left column (4 is). So mix.<br><br><b>q:</b> Top pays 4q + 1(1&minus;q) = 1 + 3q. Down pays 2q + 3(1&minus;q) = 3 &minus; q. Equal: 1 + 3q = 3 &minus; q → 4q = 2 → <b>q = 0.5</b>.<br><b>p:</b> Left column pays 4p + 2(1&minus;p) = 2 + 2p. Right column pays 1p + 3(1&minus;p) = 3 &minus; 2p. Equal: 2 + 2p = 3 &minus; 2p → 4p = 1 → <b>p = 0.25</b>.<br><b>Value:</b> 2 + 2(0.25) = <b>2.5</b>, and from the other side 1 + 3(0.5) = 2.5. ✓<br><br><b>The recipe?</b> Feeding the main-diagonal numbers 4 and 3 into it gives mixtures of about 0.43 and a value of about 1.71. Not close to anything. Here the shortcut fails so loudly that you would notice. That is exactly why the anti-diagonal case is the dangerous one.</div></div>
@@ -358,12 +353,14 @@ TOM: Then take two thirds of that.
 NOA: Then take two thirds of that, once, at the end. Look at the two markers under the line. One is the crowd's average. The other is two thirds of it, and it sits noticeably to the left. That second marker is your answer.
 TOM: And if I take two thirds of one group before I combine, I land somewhere in between.
 NOA: You land somewhere in between, and that somewhere is on the option list. Every time. It is not a coincidence, it is designed.
-TOM: Like the tip on a shared dinner bill. Add up the whole table first, then work out the tip once. Tip on my plate only, and I get a number that fits nobody.
-NOA: That is the order exactly. Combine, then shrink.
+TOM: One more thing. In the lab, people cluster in a certain low range, and the exam sometimes offers me that range.
+NOA: It offers it, and it is never the answer to an equilibrium question. What people actually do and what the theory predicts are two different questions. If they ask for the equilibrium of the contest, the reasoning strips the top away layer by layer until the only survivor is the smallest number allowed.
+TOM: So the equilibrium is the bottom of the scale, and the lab range is just what humans do.
+NOA: Exactly that. Keep the two apart and you will never lose that mark.
 -->
 <div class="secaudio"><span class="salab">&#127911; Listen to this section</span><audio controls preload="none" src="Day-11-average-first.mp3"></audio></div>
 
-<p class="p">Every single paper has one. Each player picks a whole number between 1 and 100, and whoever is closest to two-thirds of the average wins. The question tells you what everybody <i>else</i> is doing, and asks for your best reply. Your best reply is the choice that does best against what they do. The crowd is described differently every year. That is the only thing that changes.</p>
+<p class="p">Every single paper has one. Each player picks a whole number between 1 and 100, and whoever is closest to two-thirds of the average wins. The question tells you what everybody <i>else</i> is doing, and asks for your <b>best reply</b>: the choice that does best against what they do. Only the description of the crowd changes from year to year.</p>
 
 <p class="p">Three things have to be right. Each one is a mark that someone loses.</p>
 
@@ -376,10 +373,10 @@ NOA: That is the order exactly. Combine, then shrink.
 <tr><td class="lab">21 to 99</td><td class="ask">60, not 50</td></tr>
 <tr><td class="lab">1 to 100</td><td>50.5</td></tr>
 </table></div>
-<div class="cap">All three ranges have appeared in a real question. The 21-to-99 one is the sharp case. It does not start at 1 and it does not end at 100, so the habit of writing 50 is punished. And this is only the first move: the average of one group is never the answer by itself.</div>
+<div class="cap">All three ranges have appeared in a real question. The 21-to-99 one is the sharp case: it does not start at 1 or end at 100, so the habit of writing 50 is punished. And this is only the first move. The average of one group is never the answer by itself.</div>
 
 <p class="partlab">Thing 2: average the whole crowd first, <i>then</i> multiply</p>
-<p class="p">Most of the recent papers describe a crowd made of <b>two groups</b>: half spread over a range, half doing something else. The order you work in is the whole question.</p>
+<p class="p">Most recent papers describe a crowd made of <b>two groups</b>: half spread over a range, half doing something else. The order you work in is the whole question.</p>
 
 <div class="rule">First combine every group into one crowd average. <b>Then</b> take two-thirds of it, once, at the very end. Two-thirds of one group on its own is never the answer, and that number is always on the option list.</div>
 
@@ -443,6 +440,13 @@ The two halves are the same size, so a plain average of the two group averages i
 
 <div class="ans">&#10003; <b>27.</b><br>Look at what the other options are. <b>40</b> is the crowd average, so you forgot the last step. <b>33</b> is two-thirds of 50. You took two-thirds of one group and left the other half of the crowd out. <b>30</b> is one of the groups. <b>20</b> is two-thirds of 30. Every wrong option is a half-finished version of the right answer. That is exactly how they are built.</div>
 
+<p class="partlab">Thing 3: equilibrium is 1, and 13 to 19 is what humans do</p>
+<p class="p">Sometimes the question does not describe a crowd at all. It asks for the <b>Nash equilibrium of the contest</b>. That is a different question, and the answer never changes. Nobody should pick above 67, because two-thirds of any average cannot go above 66.67. With everything above 67 gone, nobody should pick above 45. Then 30, then 20, then 14 … each round strips the top away, and the only survivor is <b>1</b>.</p>
+
+<p class="p">Every time this is asked, one of the options is "typically in the range between 13 and 19". That range is real: it is what people actually pick in laboratories, and only about 10% play the equilibrium. But what people do is not the equilibrium.</p>
+
+<div class="rule">Two different questions, two different answers. <b>"What is the Nash equilibrium?" → 1.</b> &nbsp; <b>"What do people actually choose?" → around 13 to 19.</b></div>
+
 <div class="tryq"><div class="q">Ten players in total play the 2/3-average competition. The nine others play 5, 15, 25, 35, 45, 45, 55, 65 and 75. What is a best reply?<br><br><i>Options: (a) 1 &nbsp; (b) 26 &nbsp; (c) 27 &nbsp; (d) 33</i></div>
 <button class="reveal-btn" onclick="this.nextElementSibling.classList.add('show');this.disabled=true;">Reveal answer</button>
 <div class="reveal"><b>26 and 27 both win. Two of the options are correct.</b><br><br>First, the thing that makes this one different. With only ten players, <i>your own number moves the average</i>. In the big-crowd questions there are hundreds of others. Whatever you pick barely moves the average, so you can take two-thirds of <i>their</i> average and stop. Here your bid is a tenth of the total, so the target moves as you move. You have to test each option.<br><br>The nine sum to 365. Bid 26 → total 391, average 39.1, target 26.07; your 26 is 0.07 away, and the nearest rival number (25) is 1.07 away. Bid 27 → total 392, average 39.2, target 26.13; your 27 is 0.87 away against 25's 1.13. Both win. Bid 33 → target 26.53, and now 25 is 1.53 away while you are 6.47 away, so you lose. Bid 1 → target 24.40, and 25 sits right beside it, so 1 is hopeless.<br><br><b>Two correct options can really happen.</b> One past question of this kind has two best replies, and the professor agreed that both are right. So do not hunt for the single right answer when two of them win. Pick either and move on.</div></div>
@@ -452,33 +456,9 @@ The two halves are the same size, so a plain average of the two group averages i
 <div class="reveal"><b>14.</b><br><br>First group's average: (1 + 60) ÷ 2 = 30.5. Second group: 12. Crowd average: (30.5 + 12) ÷ 2 = 21.25. Two-thirds of that: 14.17 → <b>14</b>.<br><br>The trap number here is <b>20</b>, which is two-thirds of 30.5, taken before you combined the crowd. And <b>21</b> is the crowd average with the last step forgotten. Same two mistakes, every year.</div></div>
 </div>
 
-<div class="panel"><h3>The 2/3-average contest: the equilibrium is 1, the lab range is not</h3>
-<div class="secaudio"><span class="salab">&#127911; Listen to this section</span>
-<!-- SCRIPT Day-11-equilibrium-vs-lab.mp3 | NOA=Heart TOM=Fenrir
-NOA: Sometimes the contest question describes no crowd at all. It asks for the equilibrium of the game.
-TOM: The number everyone picks if everyone reasons perfectly.
-NOA: Right. And the reasoning is a staircase going down. Nobody sensible picks a number above two thirds of the top, because the average can never be that high. Once everyone knows that, the new top is lower, and two thirds of that is lower again.
-TOM: So each step knocks the top down, and I keep walking until I hit the floor.
-NOA: Until the smallest number allowed. That is the equilibrium. Now the trap. Every time this is asked, one option says the answer is typically in a certain low range. That is the range people actually pick in lab experiments.
-TOM: And that sounds scientific, so it feels safe.
-NOA: It sounds scientific, and it answers a different question. What people really do and what the theory predicts are two separate things. Look at the rule box on the page. Two questions, two answers.
-TOM: So if they ask for the equilibrium, I give the floor. If they ask what people do in the lab, I give the range.
-NOA: Exactly that. Keep the two apart and you will never lose that mark.
--->
-<audio controls preload="none" src="Day-11-equilibrium-vs-lab.mp3"></audio></div>
-<p class="partlab">Thing 3: equilibrium is 1, and 13 to 19 is what humans do</p>
-<p class="p">Sometimes the question does not describe a crowd at all. It asks for the <b>Nash equilibrium of the contest</b>. That is a different question, and the answer never changes. Nobody should pick above 67, because two-thirds of any average cannot go above 66.67. With everything above 67 gone, nobody should pick above 45. Then 30, then 20, then 14 … each round strips the top away, and the only survivor is <b>1</b>.</p>
-
-<p class="p">And every time this is asked, one of the options is "typically in the range between 13 and 19". That range is real. It is what people actually pick in laboratories, and only about 10% play the equilibrium. But what people do is not the equilibrium.</p>
-
-<div class="rule">Two different questions, two different answers. <b>"What is the Nash equilibrium?" → 1.</b> &nbsp; <b>"What do people actually choose?" → around 13 to 19.</b></div>
-
-
-</div>
-
 <!-- ============ QUIZ ============ -->
 <div class="panel"><h3>&#128221; Quiz yourself <span class="scorechip" id="scoreChip">0 / 6</span></h3>
-<p class="note">Pick an option. The answer and the explanation appear only after you choose. One question carries a tag: it is a real past-final question, word for word, from a paper you never sit as a mock. The other five are new, and their grids were built for this page. So nothing here spoils a later mock, and nothing repeats the worked examples above.</p>
+<p class="note">Pick an option; the answer and explanation appear only after you choose. One question carries a tag: a real past-final question, word for word, from a paper you never sit as a mock. The other five are new, with grids built for this page. Nothing here spoils a later mock or repeats the worked examples above.</p>
 <div id="quizBody"></div></div>
 
 <div class="navrow"><a class="navbtn" href="Day-10.html">&larr; Back</a><a class="navbtn primary" href="Day-12.html">Next &rarr;</a></div>
@@ -518,7 +498,7 @@ const QUIZ = [
 
 {"q":"A zero-sum game (one number per cell = player 1's payoff). What is player 1's expected payoff in the Nash equilibrium? (Rounded to one decimal place.)"+MFULL,
  "opts":["3.6","4","5.2","5.5","6"],"correct":2,
- "exp":"<b>5.2.</b><br><br><b>The rule: the indifference condition, used twice, then put a mixture back into any row or column to get the value of the game.</b> No zeros anywhere here, so nothing cancels and there is no shape to lean on.<br><br><b>The inputs.</b> p is the chance of Top, q is the chance of Left. Top pays 10 against Left and 2 against Right. Down pays 4 against Left and 6 against Right.<br><br><b>First, is mixing needed?</b> Top's smallest number is 2, and 2 is not the biggest in the Right column (6 is). Down's smallest is 4, and 4 is not the biggest in the Left column (10 is). No saddle point, so mix.<br><br><b>Find q</b>, the mixture that makes player 1 indifferent:<br><b>1.</b> Top: 10q + 2(1&minus;q) = 2 + 8q<br><b>2.</b> Down: 4q + 6(1&minus;q) = 6 &minus; 2q<br><b>3.</b> Equal: 2 + 8q = 6 &minus; 2q<br><b>4.</b> Add 2q: 2 + 10q = 6<br><b>5.</b> Subtract 2: 10q = 4<br><b>6.</b> q = 0.4<br><br><b>Find p</b>, the mixture that makes player 2 indifferent:<br><b>1.</b> Left column: 10p + 4(1&minus;p) = 4 + 6p<br><b>2.</b> Right column: 2p + 6(1&minus;p) = 6 &minus; 4p<br><b>3.</b> Equal: 4 + 6p = 6 &minus; 4p<br><b>4.</b> Add 4p: 4 + 10p = 6<br><b>5.</b> Subtract 4: 10p = 2<br><b>6.</b> p = 0.2<br><br><b>Get the value.</b> Put q = 0.4 into the Top row: 2 + 8(0.4) = 2 + 3.2 = <b>5.2</b>.<br><br><b>Check.</b> Down row: 6 &minus; 2(0.4) = 5.2. Left column with p = 0.2: 4 + 6(0.2) = 5.2. Right column: 6 &minus; 4(0.2) = 5.2. All four agree. Getting the same number twice is your free check and it costs ten seconds. &#10003;<br><br><b>Where each wrong option comes from.</b><br>4: the better of the two row minimums. Top's worst case is 2, Down's worst case is 4, so 4 is what player 1 can guarantee without mixing at all. Mixing is worth 1.2 more than that.<br>6: the better of the two column maximums. Left's worst case for player 2 is 10, Right's is 6, so 6 is what she can hold him to without mixing. The true value always sits between these two numbers, and here it does: 4 &lt; 5.2 &lt; 6.<br>5.5: the plain average of all four payoffs, (10 + 2 + 4 + 6) &divide; 4. The four cells are not equally likely, so this is never the value.<br>3.6: p and q swapped. Using 0.2 as the column mixture gives Top 10(0.2) + 2(0.8) = 3.6. Notice the built-in warning: Down would then give 4(0.2) + 6(0.8) = 5.6, and the two do not agree. When your two rows disagree, your mixture is wrong."}
+ "exp":"<b>5.2.</b><br><br><b>The rule: the indifference condition, used twice, then put a mixture back into any row or column to get the value of the game.</b> No zeros anywhere here, so nothing cancels and there is no shape to lean on.<br><br><b>The inputs.</b> p is the chance of Top, q is the chance of Left. Top pays 10 against Left and 2 against Right. Down pays 4 against Left and 6 against Right.<br><br><b>First, is mixing needed?</b> Top's smallest number is 2, and 2 is not the biggest in the Right column (6 is). Down's smallest is 4, and 4 is not the biggest in the Left column (10 is). No saddle point (a cell that is smallest in its row and biggest in its column), so mix.<br><br><b>Find q</b>, the mixture that makes player 1 indifferent:<br><b>1.</b> Top: 10q + 2(1&minus;q) = 2 + 8q<br><b>2.</b> Down: 4q + 6(1&minus;q) = 6 &minus; 2q<br><b>3.</b> Equal: 2 + 8q = 6 &minus; 2q<br><b>4.</b> Add 2q: 2 + 10q = 6<br><b>5.</b> Subtract 2: 10q = 4<br><b>6.</b> q = 0.4<br><br><b>Find p</b>, the mixture that makes player 2 indifferent:<br><b>1.</b> Left column: 10p + 4(1&minus;p) = 4 + 6p<br><b>2.</b> Right column: 2p + 6(1&minus;p) = 6 &minus; 4p<br><b>3.</b> Equal: 4 + 6p = 6 &minus; 4p<br><b>4.</b> Add 4p: 4 + 10p = 6<br><b>5.</b> Subtract 4: 10p = 2<br><b>6.</b> p = 0.2<br><br><b>Get the value.</b> Put q = 0.4 into the Top row: 2 + 8(0.4) = 2 + 3.2 = <b>5.2</b>.<br><br><b>Check.</b> Down row: 6 &minus; 2(0.4) = 5.2. Left column with p = 0.2: 4 + 6(0.2) = 5.2. Right column: 6 &minus; 4(0.2) = 5.2. All four agree. Getting the same number twice is your free check and it costs ten seconds. &#10003;<br><br><b>Where each wrong option comes from.</b><br>4: the better of the two row minimums. Top's worst case is 2, Down's worst case is 4, so 4 is what player 1 can guarantee without mixing at all. Mixing is worth 1.2 more than that.<br>6: the better of the two column maximums. Left's worst case for player 2 is 10, Right's is 6, so 6 is what she can hold him to without mixing. The true value always sits between these two numbers, and here it does: 4 &lt; 5.2 &lt; 6.<br>5.5: the plain average of all four payoffs, (10 + 2 + 4 + 6) &divide; 4. The four cells are not equally likely, so this is never the value.<br>3.6: p and q swapped. Using 0.2 as the column mixture gives Top 10(0.2) + 2(0.8) = 3.6. Notice the built-in warning: Down would then give 4(0.2) + 6(0.8) = 5.6, and the two do not agree. When your two rows disagree, your mixture is wrong."}
 ];
 function shuffleItem(it){var c=it.opts[it.correct];for(var i=it.opts.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=it.opts[i];it.opts[i]=it.opts[j];it.opts[j]=t;}it.correct=it.opts.indexOf(c);}
 QUIZ.forEach(shuffleItem);

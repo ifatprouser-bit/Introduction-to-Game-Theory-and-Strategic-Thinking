@@ -1,0 +1,21 @@
+Title: Day 5 — Pure Nash II — elimination
+Voices: NOA = Heart, TOM = Fenrir
+Output: Day-05-intro.mp3
+
+NOA: Yesterday you underlined best replies, cell by cell. That works. But on a big grid it is slow, and slow is what hurts you in an exam.
+
+TOM: So today is the shortcut.
+
+NOA: Today is the shortcut. Before you underline anything, you throw away the moves that no sensible player would ever make. Cross out a row, cross out a column, and the grid gets smaller. Then you do it again on whatever is left.
+
+TOM: Like clearing the table before you start cooking.
+
+NOA: Exactly like that. And the reason it is safe is a promise. If a move loses no matter what the other side does, it cannot be part of any equilibrium. Deleting it changes nothing.
+
+TOM: So nothing gets lost.
+
+NOA: Nothing gets lost, as long as the losing is total. If a move merely ties in some cases, deleting it can quietly throw an equilibrium away. That difference is the thing the exam tests.
+
+TOM: And if the grid keeps shrinking?
+
+NOA: Sometimes it shrinks all the way down to one single cell. When that happens you are already finished. You have the answer, and there is nothing else to find.

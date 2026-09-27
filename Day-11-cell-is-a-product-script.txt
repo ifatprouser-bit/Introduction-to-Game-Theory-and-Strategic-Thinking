@@ -1,0 +1,29 @@
+Title: Day 11 — A cell is a product, not a probability you already found
+Voices: NOA = Heart, TOM = Fenrir
+Output: Day-11-cell-is-a-product.mp3
+
+NOA: Look at the grid on the page. There are letters written down the side and along the top. Those are the two mixtures. Down the side is how often player one picks each row. Along the top is how often player two picks each column.
+
+TOM: And those are the numbers I actually solve for.
+
+NOA: Those are the two numbers you solve for, and once you have them the hard part is over. But the question does not ask for either of them. It asks for a cell.
+
+TOM: A cell. So a row and a column at the same time.
+
+NOA: Both at the same time. The two players choose separately, they cannot see each other, so the chance of landing in one particular square is the row chance times the column chance. Look at the coloured square underneath the grid. The whole square is everything that can happen. One vertical cut, one horizontal cut, four rectangles.
+
+TOM: And the area of a rectangle is how likely that outcome is. That I can see rather than remember.
+
+NOA: That is exactly why it is drawn. Now here is where marks disappear. Sometimes the cell they ask about is a matching one, the top row with the left column. Sometimes it is a crossed one, the top row with the right column.
+
+TOM: And the crossed one needs the leftover part of the top edge, not the part I just calculated.
+
+NOA: The leftover part. Say the profile out loud before you multiply. Row name, column name, and only then reach for your calculator.
+
+TOM: And the little instruction in brackets at the end of the stem?
+
+NOA: Read it. It changes from paper to paper and it changes from the first question to the second question on the same grid. Sometimes whole percentage points, sometimes two places after the point, sometimes one place, and on a couple of the papers there is no instruction at all.
+
+TOM: It says round up on some of them, which sounds like always climb to the next number.
+
+NOA: It sounds like that, but the published answers do not do that. They round the ordinary way, up or down to whichever is nearer. Trust the options. They are spread far enough apart that the nearest one is obvious once your arithmetic is right.

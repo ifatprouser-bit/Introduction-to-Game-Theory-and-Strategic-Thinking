@@ -1,0 +1,37 @@
+Title: Day 6 — The best mixture makes your opponent indifferent
+Voices: NOA = Heart, TOM = Fenrir
+Output: Day-06-indifference.mp3
+
+NOA: So you have to mix. But in what proportions? Most people say half and half, because it sounds fair.
+
+TOM: And fair is usually wrong here.
+
+NOA: Usually wrong. Think about what happens if your mixture leaves your opponent doing better on one side than the other. Even slightly better.
+
+TOM: Then he just goes to that side. Every time.
+
+NOA: Every time, and he never has to think again. You have handed him a free advantage that he keeps for the rest of the game. So the mixture you want is the one where both of his options come out the same for him.
+
+TOM: If both roads lead to the same place, he has no reason to pick either one.
+
+NOA: And no way to read you. That is the indifference rule, and it is the whole method. Set his two average payoffs equal to each other, and solve for your proportions.
+
+TOM: Notice whose payoffs those are. Mine or his?
+
+NOA: His. That catches people every single time. You are choosing your own mixture, but the equation you write is about what he gets. Your mixture is the thing you are solving for.
+
+TOM: Look at the two lines drawn on the page. Each one is what the kicker earns against one of the goalie's choices.
+
+NOA: And they cross once. Anywhere except that crossing, one line sits below the other, so the goalie simply picks whichever one is lower for you. Only at the meeting point does his choice stop mattering.
+
+TOM: The crossing is the answer.
+
+NOA: The crossing is the answer. And once you have it, put it back into either line and you get the payoff that comes out of the equilibrium. The course calls that the value of the game, and in a zero-sum game it is the same number however you get there.
+
+TOM: There is something strange in the worked example, though. The kicker keeps using his weaker foot.
+
+NOA: More than a third of the time, yes. Not because it is good. Because never using it would tell the goalie everything.
+
+TOM: And there is a stranger one underneath.
+
+NOA: The try-it problem. Getting better at defending one side can make the goalie use that side less. The slides say it in a line: becoming better at something may make you use it less often. That is the surprising result of the whole lecture, and it is exactly the sort of thing a concept question likes to ask.

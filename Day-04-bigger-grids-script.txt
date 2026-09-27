@@ -1,0 +1,29 @@
+Title: Day 4 — Bigger grids and the counting question
+Voices: NOA = Heart, TOM = Fenrir
+Output: Day-04-bigger-grids.mp3
+
+NOA: A wider grid is not harder. It is only longer.
+
+TOM: Same routine, more of it.
+
+NOA: Same routine, more of it. But there is a new risk on a wide grid, and it isn't cleverness. It's fatigue. The marking takes real time, and the last column is where attention goes.
+
+TOM: And the options on a counting question are just counts, aren't they? So a missed cell doesn't hand me a strange answer.
+
+NOA: It hands you a tidy wrong one. Every count you could possibly produce is offered, including none at all.
+
+TOM: So there's no silly option to warn me. I can't sanity-check my way out.
+
+NOA: You can't. Which gives you one habit worth having. Finish all the marking before you start counting. Never count as you go.
+
+TOM: And then there's the follow-up question you mentioned. The one that comes right after.
+
+NOA: It asks for the highest the row player can earn in an equilibrium. So: find every equilibrium first. Then look only at the row player's number inside those cells. Then take the biggest of those.
+
+TOM: Not the biggest number anywhere on the grid.
+
+NOA: Never that. The biggest number on the grid usually sits somewhere unstable — and it is always, always one of the options.
+
+TOM: Because it's exactly what a tired person would grab.
+
+NOA: Look at the marked grid on the page and find it. It's there.

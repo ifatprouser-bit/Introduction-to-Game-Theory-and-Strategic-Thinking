@@ -64,7 +64,6 @@ audio{width:100%;margin-top:6px;}
 .navbtn{text-decoration:none;font-weight:600;font-size:14px;padding:10px 16px;border-radius:11px;border:1px solid var(--line);color:var(--ink);background:#fff;}
 .navbtn.primary{background:var(--brand);color:#fff;border-color:var(--brand);}
 .tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
-.howto{background:#f7f5fd;border:1px dashed #cfc4f5;border-radius:10px;padding:9px 13px;margin:8px 0 14px;font-size:13.5px;line-height:1.55;}
 .warnbox{background:var(--amber-soft);border:1px solid #f0deb8;border-radius:11px;padding:12px 16px;margin:14px 0;font-size:14.5px;}
 .warnbox b{color:var(--amber);}
 @media print{
@@ -148,9 +147,9 @@ NOA: That is it exactly. So strict is safe and weak is not. Strict throws away n
 -->
 <div class="secaudio"><span class="salab">&#127911; Listen to this section</span><audio controls preload="none" src="Day-05-dominated.mp3"></audio></div>
 
-<p class="p">The word <i>dominated</i> sounds like an insult. It isn't. A dominated strategy can pay you well. In one column it can even pay more than the move that beats it pays in another column. That is not the test.</p>
+<p class="p">The word <i>dominated</i> sounds like an insult. It isn't. A dominated strategy can pay you well; in one column it can even pay more than the winning move pays in another. That is not the test.</p>
 
-<p class="p">The test is a <b>row-by-row comparison against a fixed column</b>. Pick two of your own strategies. Walk across every single thing the opponent might do. If one of them wins <i>every</i> comparison, the other is <b>strictly dominated</b>. You can delete it, and you never need to know what the opponent will choose.</p>
+<p class="p">The test compares <b>two of your own strategies, column by column</b>. Walk across every single thing the opponent might do. If one strategy wins <i>every</i> comparison, the other is <b>strictly dominated</b>. Delete it. You never need to know what the opponent will choose.</p>
 
 <div class="rule">Strictly dominated = there is another move of mine that beats it against <b>every</b> opponent strategy. <br>Weakly dominated = another move is <b>never worse</b>, and <b>somewhere strictly better</b>. Ties allowed. <br>Strictly dominant = the other way round: this move of mine beats <b>all</b> my other moves, against <b>every</b> opponent strategy.</div>
 
@@ -166,9 +165,9 @@ NOA: That is it exactly. So strict is safe and weak is not. Strict throws away n
 </table></div>
 <div class="cap">Two pure Nash equilibria, both marked green. Both-go is obvious. Both-stay is also stable. If Rami stays home, walking to the shop alone gains Dana nothing, so she has no reason to move either.</div>
 
-<p class="p">Now compare Dana's two rows. <i>Going</i> gives her 1 when Rami goes, and 0 when he stays. <i>Staying</i> gives her 0 and 0. So going is <b>never worse</b> and <b>sometimes better</b>. That is weak domination. The tie in the right-hand column is what stops it being strict.</p>
+<p class="p">Compare Dana's two rows. <i>Going</i> gives her 1 when Rami goes and 0 when he stays. <i>Staying</i> gives 0 and 0. So going is <b>never worse</b> and <b>sometimes better</b>: weak domination. The tie in the right-hand column stops it being strict.</p>
 
-<p class="p">Delete Dana's "stays home" because it is weakly dominated. Delete Rami's for the same reason. You are left with one cell: both go. Clean, tidy, and <b>wrong</b>. You just erased a real equilibrium. Two flatmates each sitting at home, waiting for the other to move first, is a thing that really happens.</p>
+<p class="p">Delete Dana's "stays home" as weakly dominated, and Rami's too. One cell is left: both go. Clean, tidy, and <b>wrong</b>. You erased a real equilibrium: two flatmates each sitting at home, waiting for the other to move first, is a thing that really happens.</p>
 
 <div class="warnbox"><b>The exam sentence, in one line.</b> Eliminating <i>strictly</i> dominated strategies never removes an equilibrium. Eliminating <i>weakly</i> dominated strategies can. So when you are counting equilibria, only ever cross out on <b>strict</b> grounds.</div>
 
@@ -197,7 +196,6 @@ Before deleting: (go, go) and (stay, stay), so two. After deleting both players'
 <table class="dtable" style="max-width:340px;margin:10px 0"><tr><th></th><th>Left</th><th>Right</th></tr>
 <tr><td class="lab">Up</td><td>5, &nbsp;&minus;1</td><td>6, &nbsp;&minus;2</td></tr>
 <tr><td class="lab">Down</td><td>4, &nbsp;3</td><td>7, &nbsp;&minus;3</td></tr></table>
-<div class="howto"><b>How to read this table.</b> Rows: player 1's choice. Columns: player 2's choice. In each cell, player 1's payoff comes first and player 2's second.</div>
 Which player has a strictly dominant strategy, and what is the unique Nash equilibrium?<br><br>
 Then: a classmate answers <i>"Player 2's dominant strategy is Right, so the equilibrium is (Up, Right)."</i> Every subtraction he did was correct. What went wrong?</div>
 <button class="reveal-btn" onclick="this.nextElementSibling.classList.add('show');this.disabled=true;">Reveal answer</button>
@@ -220,17 +218,18 @@ NOA: Write the survivors down. After each cut, a short line on your draft paper 
 -->
 <div class="secaudio"><span class="salab">&#127911; Listen to this section</span><audio controls preload="none" src="Day-05-chain.mp3"></audio></div>
 
-<p class="p">One deletion is easy. The exam does not ask for one deletion. It gives you a 4&times;4 or a 5&times;5 and expects a <b>chain</b>. The trap is built into the chain: a strategy that is <i>not</i> dominated at the start can become dominated once something else has gone.</p>
+<p class="p">One deletion is easy, but the exam gives you a 4&times;4 or a 5&times;5 and expects a <b>chain</b>. The trap is built in: a strategy that is <i>not</i> dominated at the start can become dominated once something else has gone.</p>
 
 <p class="p">So the method has a rhythm. Delete one strictly dominated strategy. Then <b>look at the smaller grid as if you had never seen the big one</b>. Delete again. Repeat until nothing more can go.</p>
 
 <div class="rule">After every cut, re-examine. A strategy is dominated <b>in the grid that is in front of you now</b>, not in the grid you started with.</div>
 
-<p class="p">One thing that does <b>not</b> follow: two students cutting in different orders do not end up with different answers. With <i>strict</i> domination they cannot. The order decides <b>when</b> each cut is allowed. But every allowed order finishes with the <b>same survivors</b>. That is the theorem, and it is the deeper reason strict elimination is the safe kind. Order only starts to change the answer once you cut <i>weakly</i> dominated strategies, and that is exactly the thing you must not do.</p>
+<p class="p">One thing that does <b>not</b> follow: two students cutting in different orders still finish with the <b>same survivors</b>. With <i>strict</i> domination the order only decides <b>when</b> each cut is allowed, never the final result. That is the theorem, and the deeper reason strict elimination is the safe kind. Order starts to change the answer only once you cut <i>weakly</i> dominated strategies, exactly the thing you must not do.</p>
 
 <div class="warnbox"><b>Expect to be asked this directly.</b> "Does the order in which you eliminate strictly dominated strategies change the outcome?" &rarr; <b>No.</b> Same survivors every time. Change "strictly" to "weakly" in that sentence and the answer flips to yes.</div>
 
 <p class="partlab">The data: Cournot competition (Presentation 4)</p>
+<p class="given">Cournot competition: two firms choose how much to produce, and the market price falls as total production rises.</p>
 <p class="p">Two firms sell the same good. Marginal cost is $20 each. The price falls as total output rises: <span class="math">P = 140 &minus; Q&#8321; &minus; Q&#8322;</span> so each firm's profit is <span class="math">&#960;&#7522; = (120 &minus; Q&#11388; &minus; Q&#7522;)&middot;Q&#7522;</span>. To keep it a matrix, each firm can only choose 30, 35, 40, 50 or 60 units.</p>
 <p class="given">Row = firm 1's quantity, column = firm 2's quantity. Each cell shows (firm 1's profit, firm 2's profit). The grid below comes straight from that profit formula. For example row 40, column 50: P = 140 &minus; 40 &minus; 50 = 50, so firm 1 earns (50 &minus; 20) &times; 40 = 1200. The game is <b>symmetric</b>: whatever is dominated for one firm is dominated for the other. So every cut removes a row <i>and</i> the matching column at once.</p>
 
@@ -243,7 +242,6 @@ NOA: Write the survivors down. After each cut, a short line on your draft paper 
 <tr><td class="lab k3">50</td><td class="k2">2000, 1200</td><td class="k3">1750, 1225</td><td class="k3">1500, 1200</td><td class="k3">1000, 1000</td><td class="k1">500, 600</td></tr>
 <tr><td class="lab k1">60</td><td class="k1">1800, 900</td><td class="k1">1500, 875</td><td class="k1">1200, 800</td><td class="k1">600, 500</td><td class="k1">0, 0</td></tr>
 </table></div>
-<div class="howto"><b>How to read this table.</b> Rows: how many units firm 1 makes. Columns: how many units firm 2 makes. In each cell, firm 1&rsquo;s profit first and firm 2&rsquo;s second. The colours show the order in which rows and columns are cut.</div>
 <div class="elegend">
 <span><i style="background:#fbeddd"></i> Round 1: cut 60</span>
 <span><i style="background:#fae5e4"></i> Round 2: cut 30</span>
@@ -317,12 +315,12 @@ TOM: Different road, same destination.
 
 <div class="rule">Dominance-solvable &rarr; the surviving cell is the <b>unique</b> Nash equilibrium. No other pure equilibria, and <b>no mixed equilibria either</b>.</div>
 
-<p class="p">Why not? A mixed strategy is a recipe built out of the pure strategies you are willing to use. You deleted each of those strategies because it loses against everything, so none of them can carry any weight in a mixture. There is nothing left to mix with.</p>
+<p class="p">Why not? A mixed strategy is a recipe built from the pure strategies you are willing to use. Each deleted strategy lost against everything, so none can carry weight in a mixture. There is nothing left to mix with.</p>
 
 <div class="warnbox"><b>The most likely trap on your paper.</b> The question is worded <i>"How many Nash equilibria (pure or mixed) exist?"</i> and the options run 0, 1, 2, 3, 4. That phrase "pure or mixed" whispers <i>surely there's a mixed one too</i>. People who did all the elimination correctly then answer 2 instead of 1. Nash's theorem says every game has <b>at least</b> one. It never says more than one.</div>
 
 <p class="partlab">The same chain in the game you already played</p>
-<p class="p">The 2/3-average contest from Presentation 1: everyone picks a whole number from 1 to 100, and whoever is closest to two-thirds of the average wins. The same elimination runs there. It just runs a long way.</p>
+<p class="p">The 2/3-average contest from Presentation 1: everyone picks a whole number from 1 to 100, and whoever is closest to two-thirds of the average wins. The same elimination runs there, just a long way.</p>
 <div class="tscroll">
 <table class="dtable">
 <tr><th>Round</th><th>What gets deleted</th><th>What is left</th></tr>
@@ -388,7 +386,6 @@ TOM: Different road, same destination.
 <tr><td class="lab">Mid</td><td>6, 2</td><td>5, 6</td><td>3, 4</td></tr>
 <tr><td class="lab">Down</td><td>2, 8</td><td>0, 9</td><td>7, 5</td></tr>
 </table></div>
-<div class="howto"><b>How to read this table.</b> Rows: the row player's choice. Columns: the column player's choice. In each cell, the row player's payoff comes first and the column player's second.</div>
 How many Nash equilibria (pure or mixed) does this game have?</div>
 
 <div class="step"><div class="stepn">1</div><div class="stepbody"><div class="lab">Start with the row player. Compare Up and Mid.</div>
