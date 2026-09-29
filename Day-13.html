@@ -4,32 +4,32 @@
 <title>Full-Course Sweep: One Lap Through All Six</title>
 <style>
 :root{--bg:#f5f3fb;--card:#fff;--ink:#211c33;--muted:#6f6886;--brand:#6b4ef0;--brand-d:#5238c4;
---brand-soft:#ece7fd;--good:#1f9d63;--good-soft:#e4f6ec;--bad:#d2453f;--bad-soft:#fae5e4;--line:#e7e3f2;
---amber:#b6791f;--amber-soft:#fcf3e3;
+--brand-soft:#ece7fd;--good:#15794a;--good-soft:#e4f6ec;--bad:#d2453f;--bad-soft:#fae5e4;--line:#e7e3f2;
+--amber:#8f5c12;--amber-soft:#fcf3e3;
 --p1:#7c5cbf;--p2:#2f7fd0;--p3:#1d8a6a;--p4:#c2820b;--p5:#c04a7e;--p6:#4a6fa5;}
 *{box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);margin:0;line-height:1.55;}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);margin:0;line-height:1.62;}
 .wrap{max-width:760px;margin:0 auto;padding:26px 22px 60px;}
 .home{display:inline-block;margin:0 0 12px;color:var(--brand);font-weight:700;font-size:13px;text-decoration:none;}
-.crumb{color:var(--brand);font-weight:600;font-size:13px;text-transform:uppercase;letter-spacing:.05em;}
+.crumb{color:var(--brand);font-weight:600;font-size:14px;}
 h1{font-size:28px;margin:8px 0 4px;letter-spacing:-.02em;}
 .lede{color:var(--muted);margin:0 0 14px;font-size:16px;}
-.panel{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px 24px;margin:18px 0;box-shadow:0 1px 3px rgba(40,20,90,.04);}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px 26px;margin:26px 0;box-shadow:0 1px 3px rgba(40,20,90,.04);}
 .panel h3{margin:0 0 6px;font-size:18px;display:flex;align-items:center;gap:8px;}
 .panel h3 .scorechip{margin-left:auto;}
 .panel .note{color:var(--muted);font-size:14px;margin:0 0 14px;}
 .preq{background:var(--amber-soft);border:1px solid #f0deb8;border-radius:16px;padding:18px 20px;margin:18px 0;}
-.preq .tag{color:var(--amber);font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.06em;}
+.preq .tag{color:var(--amber);font-weight:800;font-size:14px;}
 .preq p{margin:8px 0 0;font-size:16px;} .preq .do{margin-top:10px;font-weight:600;color:var(--amber);}
 audio{width:100%;margin-top:6px;}
 .secaudio{background:var(--brand-soft);border:1px solid #d9d0fb;border-radius:12px;padding:10px 13px;margin:4px 0 14px;}
-.secaudio .salab{display:block;font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--brand-d);margin-bottom:7px;}
+.secaudio .salab{display:block;font-size:13px;font-weight:800;color:var(--brand-d);margin-bottom:7px;}
 .takeaway{font-size:14.5px;background:#fbfaff;border:1px dashed var(--line);border-radius:11px;padding:13px 16px;margin-top:14px;}
 .takeaway b{color:var(--brand);} .takeaway ul{margin:2px 0 0;padding-left:20px;} .takeaway li{margin:5px 0;}
 .takeaway .tk-gen{margin:10px 0 0;padding-top:10px;border-top:1px dashed var(--line);}
 .sub{font-size:15px;font-weight:800;color:var(--brand-d);margin:20px 0 6px;}
-.p{font-size:15px;margin:0 0 8px;}
-.partlab{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--brand);margin:0 0 6px;}
+.p{font-size:16px;margin:0 0 12px;}
+.partlab{font-size:15px;font-weight:800;color:var(--brand);margin:0 0 6px;}
 .rule{background:var(--brand-soft);border-radius:11px;padding:12px 16px;font-weight:600;color:var(--brand-d);margin:16px 0;}
 .question{background:#f6f4fc;border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:10px;padding:14px 16px;font-size:15.5px;}
 .step{display:flex;gap:14px;padding:12px 0;border-top:1px solid var(--line);} .step:first-of-type{border-top:none;}
@@ -45,14 +45,14 @@ audio{width:100%;margin-top:6px;}
 .dtable th{background:var(--brand-soft);color:var(--brand-d);font-weight:700;} .dtable td.lab{text-align:left;font-weight:600;background:var(--brand-soft);color:var(--brand-d);}
 .dtable td.hlcell{background:var(--good-soft);font-weight:700;color:var(--good);}
 .dtable td.dim{color:var(--muted);}
-.datalab{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--brand-d);margin:20px 0 8px;}
+.datalab{font-size:15px;font-weight:800;color:var(--brand-d);margin:20px 0 8px;}
 .given{color:var(--muted);font-size:13px;margin:2px 0 4px;}
 .svg-wrap{background:#fff;border:1px solid var(--line);border-radius:13px;padding:14px;margin:14px 0;text-align:center;}
 .svg-wrap svg{width:100%;height:auto;max-width:560px;}
 .cap{color:var(--muted);font-size:13px;margin-top:8px;}
 .qblock{padding:16px 0;border-top:1px solid var(--line);} .qblock:first-of-type{border-top:none;padding-top:4px;}
-.qnum{color:var(--brand);font-weight:700;font-size:12px;letter-spacing:.04em;text-transform:uppercase;}
-.examtag{display:inline-block;background:var(--good-soft);color:var(--good);border:1px solid #bfe6cf;border-radius:999px;padding:2px 9px;font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;margin-left:8px;vertical-align:middle;}
+.qnum{color:var(--brand);font-weight:700;font-size:14px;}
+.examtag{display:inline-block;background:var(--good-soft);color:var(--good);border:1px solid #bfe6cf;border-radius:999px;padding:2px 9px;font-size:13px;font-weight:800;margin-left:8px;vertical-align:middle;}
 .qtext{font-weight:600;margin:6px 0 12px;font-size:16px;}
 .qtext .dtable{font-weight:400;max-width:360px;}
 .opt{display:block;width:100%;text-align:left;background:#fff;border:1.5px solid var(--line);border-radius:11px;padding:11px 14px;margin:7px 0;font-size:15px;cursor:pointer;transition:.14s;color:var(--ink);}
@@ -69,16 +69,16 @@ audio{width:100%;margin-top:6px;}
 .warnbox b{color:var(--amber);}
 /* --- presentation chips. The hub styles .p as a chip; day pages use .p for prose,
       so the chip rule is scoped to span.p. --- */
-span.p{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.04em;padding:2px 7px;border-radius:5px;color:#fff;margin-right:3px;white-space:nowrap;}
+span.p{display:inline-block;font-size:13px;font-weight:700;padding:2px 7px;border-radius:5px;color:#fff;margin-right:3px;white-space:nowrap;}
 span.p.P1{background:var(--p1)}span.p.P2{background:var(--p2)}span.p.P3{background:var(--p3)}
 span.p.P4{background:var(--p4)}span.p.P5{background:var(--p5)}span.p.P6{background:var(--p6)}
 .tags{margin:0 0 6px;}
-.lapbadge{flex:0 0 auto;font-size:10.5px;font-weight:800;letter-spacing:.04em;padding:3px 8px;border-radius:6px;color:#fff;}
+.lapbadge{flex:0 0 auto;font-size:13px;font-weight:800;padding:3px 8px;border-radius:6px;color:#fff;}
 .devgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:8px;margin:12px 0;}
 .dev{background:#fbfaff;border:1px dashed var(--line);border-radius:10px;padding:9px 12px;font-size:13px;}
-.dev b{display:block;color:var(--brand-d);font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:2px;}
+.dev b{display:block;color:var(--brand-d);font-size:13px;margin-bottom:2px;}
 .reftab td.num{font-weight:800;color:var(--brand-d);white-space:nowrap;}
-.reftab td.src{color:var(--muted);font-size:12px;white-space:nowrap;}
+.reftab td.src{color:var(--muted);font-size:13px;white-space:nowrap;}
 .reftab td.f{text-align:left;}
 .calm{background:var(--good-soft);border:1px solid #bfe6cf;border-radius:14px;padding:18px 20px;margin:18px 0;font-size:15px;}
 .calm b{color:var(--good);}

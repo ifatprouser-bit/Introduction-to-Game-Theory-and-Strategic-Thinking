@@ -4,34 +4,34 @@
 <title>Name That Game: The Five Game Types</title>
 <style>
 :root{--bg:#f5f3fb;--card:#fff;--ink:#211c33;--muted:#6f6886;--brand:#6b4ef0;--brand-d:#5238c4;
---brand-soft:#ece7fd;--good:#1f9d63;--good-soft:#e4f6ec;--bad:#d2453f;--bad-soft:#fae5e4;--line:#e7e3f2;
---amber:#b6791f;--amber-soft:#fcf3e3;}
+--brand-soft:#ece7fd;--good:#15794a;--good-soft:#e4f6ec;--bad:#d2453f;--bad-soft:#fae5e4;--line:#e7e3f2;
+--amber:#8f5c12;--amber-soft:#fcf3e3;}
 *{box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);margin:0;line-height:1.55;}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);margin:0;line-height:1.62;}
 .wrap{max-width:760px;margin:0 auto;padding:26px 22px 60px;}
 .home{display:inline-block;margin:0 0 12px;color:var(--brand);font-weight:700;font-size:13px;text-decoration:none;}
-.crumb{color:var(--brand);font-weight:600;font-size:13px;text-transform:uppercase;letter-spacing:.05em;}
+.crumb{color:var(--brand);font-weight:600;font-size:14px;}
 h1{font-size:28px;margin:8px 0 4px;letter-spacing:-.02em;}
 .lede{color:var(--muted);margin:0 0 14px;font-size:16px;}
-.panel{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px 24px;margin:18px 0;box-shadow:0 1px 3px rgba(40,20,90,.04);}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px 26px;margin:26px 0;box-shadow:0 1px 3px rgba(40,20,90,.04);}
 .panel h3{margin:0 0 6px;font-size:18px;display:flex;align-items:center;gap:8px;}
 .panel h3 .scorechip{margin-left:auto;}
 .panel .note{color:var(--muted);font-size:14px;margin:0 0 14px;}
 .preq{background:var(--amber-soft);border:1px solid #f0deb8;border-radius:16px;padding:18px 20px;margin:18px 0;}
-.preq .tag{color:var(--amber);font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.06em;}
+.preq .tag{color:var(--amber);font-weight:800;font-size:14px;}
 .preq p{margin:8px 0 0;font-size:16px;} .preq .do{margin-top:10px;font-weight:600;color:var(--amber);}
 audio{width:100%;margin-top:6px;}
 .secaudio{background:var(--brand-soft);border:1px solid #d9d0fb;border-radius:12px;padding:10px 13px;margin:4px 0 14px;}
-.secaudio .salab{display:block;font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--brand-d);margin-bottom:7px;}
+.secaudio .salab{display:block;font-size:13px;font-weight:800;color:var(--brand-d);margin-bottom:7px;}
 .takeaway{font-size:14.5px;background:#fbfaff;border:1px dashed var(--line);border-radius:11px;padding:13px 16px;margin-top:14px;}
 .takeaway b{color:var(--brand);} .takeaway ul{margin:2px 0 0;padding-left:20px;} .takeaway li{margin:5px 0;}
 .takeaway .tk-gen{margin:10px 0 0;padding-top:10px;border-top:1px dashed var(--line);}
 .sub{font-size:15px;font-weight:800;color:var(--brand-d);margin:20px 0 6px;}
-.p{font-size:15px;margin:0 0 8px;}
-.partlab{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--brand);margin:0 0 6px;}
+.p{font-size:16px;margin:0 0 12px;}
+.partlab{font-size:15px;font-weight:800;color:var(--brand);margin:0 0 8px;}
 .rule{background:var(--brand-soft);border-radius:11px;padding:12px 16px;font-weight:600;color:var(--brand-d);margin:16px 0;}
-.question{background:#f6f4fc;border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:10px;padding:14px 16px;font-size:15.5px;}
-.step{display:flex;gap:14px;padding:12px 0;border-top:1px solid var(--line);} .step:first-of-type{border-top:none;}
+.question{background:#f6f4fc;border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:10px;padding:14px 16px;font-size:16px;margin:0 0 12px;}
+.step{display:flex;gap:14px;padding:14px 0;border-top:1px solid var(--line);} .step:first-of-type{border-top:none;}
 .stepn{flex:0 0 28px;height:28px;border-radius:8px;background:var(--brand);color:#fff;font-weight:700;display:grid;place-items:center;font-size:14px;}
 .stepbody .lab{font-weight:600;}
 .math{font-family:"SF Mono",Menlo,Consolas,monospace;background:#f6f4fc;border:1px solid var(--line);border-radius:8px;padding:8px 12px;margin-top:6px;font-size:14.5px;display:inline-block;}
@@ -44,14 +44,14 @@ audio{width:100%;margin-top:6px;}
 .dtable th{background:var(--brand-soft);color:var(--brand-d);font-weight:700;} .dtable td.lab{text-align:left;font-weight:600;background:var(--brand-soft);color:var(--brand-d);}
 .dtable td.hlcell{background:var(--good-soft);font-weight:700;color:var(--good);}
 .dtable td.dim{color:var(--muted);}
-.datalab{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--brand-d);margin:20px 0 8px;}
+.datalab{font-size:15px;font-weight:800;color:var(--brand-d);margin:22px 0 8px;}
 .given{color:var(--muted);font-size:13px;margin:2px 0 4px;}
 .svg-wrap{background:#fff;border:1px solid var(--line);border-radius:13px;padding:14px;margin:14px 0;text-align:center;}
 .svg-wrap svg{width:100%;height:auto;max-width:560px;}
 .cap{color:var(--muted);font-size:13px;margin-top:8px;}
 .qblock{padding:16px 0;border-top:1px solid var(--line);} .qblock:first-of-type{border-top:none;padding-top:4px;}
-.qnum{color:var(--brand);font-weight:700;font-size:12px;letter-spacing:.04em;text-transform:uppercase;}
-.examtag{display:inline-block;background:var(--good-soft);color:var(--good);border:1px solid #bfe6cf;border-radius:999px;padding:2px 9px;font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;margin-left:8px;vertical-align:middle;}
+.qnum{color:var(--brand);font-weight:700;font-size:14px;}
+.examtag{display:inline-block;background:var(--good-soft);color:var(--good);border:1px solid #bfe6cf;border-radius:999px;padding:2px 10px;font-size:13px;font-weight:700;margin-left:8px;vertical-align:middle;}
 .qtext{font-weight:600;margin:6px 0 12px;font-size:16px;}
 .qtext .dtable{font-weight:400;max-width:360px;}
 .opt{display:block;width:100%;text-align:left;background:#fff;border:1.5px solid var(--line);border-radius:11px;padding:11px 14px;margin:7px 0;font-size:15px;cursor:pointer;transition:.14s;color:var(--ink);}
@@ -64,7 +64,7 @@ audio{width:100%;margin-top:6px;}
 .navbtn{text-decoration:none;font-weight:600;font-size:14px;padding:10px 16px;border-radius:11px;border:1px solid var(--line);color:var(--ink);background:#fff;}
 .navbtn.primary{background:var(--brand);color:#fff;border-color:var(--brand);}
 .tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
-.howto{background:#f7f5fd;border:1px dashed #cfc4f5;border-radius:10px;padding:9px 13px;margin:8px 0 14px;font-size:13.5px;line-height:1.55;}
+.howto{background:#f7f5fd;border:1px dashed #cfc4f5;border-radius:10px;padding:9px 13px;margin:8px 0 14px;font-size:13.5px;line-height:1.62;}
 .warnbox{background:var(--amber-soft);border:1px solid #f0deb8;border-radius:11px;padding:12px 16px;margin:14px 0;font-size:14.5px;}
 .warnbox b{color:var(--amber);}
 @media print{
@@ -77,23 +77,41 @@ audio{width:100%;margin-top:6px;}
 <style>
 /* presentation chips: from index.html, scoped to spans so .p paragraphs are untouched */
 :root{--p1:#7c5cbf;--p2:#2f7fd0;--p3:#1d8a6a;--p4:#c2820b;--p5:#c04a7e;--p6:#4a6fa5;}
-span.p{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.04em;padding:2px 7px;border-radius:5px;color:#fff;margin-right:3px;white-space:nowrap;}
+span.p{display:inline-block;font-size:13px;font-weight:700;padding:2px 7px;border-radius:5px;color:#fff;margin-right:3px;white-space:nowrap;}
 .P1{background:var(--p1)}.P2{background:var(--p2)}.P3{background:var(--p3)}
 .P4{background:var(--p4)}.P5{background:var(--p5)}.P6{background:var(--p6)}
 .tags{margin:0 0 10px;}
 .trio{display:flex;flex-wrap:wrap;gap:12px;margin:12px 0;}
 .trio > div{flex:1 1 205px;min-width:196px;}
-.trio .tname{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--brand-d);margin-bottom:2px;}
-.trio .dtable{margin:4px 0 6px;font-size:12.5px;}
+.trio .tname{font-size:14px;font-weight:800;color:var(--brand-d);margin-bottom:2px;}
+.trio .dtable{margin:4px 0 6px;font-size:13px;}
 .trio .dtable th,.trio .dtable td{padding:6px 4px;}
-.trio .tnote{font-size:12.5px;color:var(--muted);}
-.walk{list-style:none;padding:0;margin:10px 0;font-size:14.5px;}
+.trio .tnote{font-size:13px;color:var(--muted);}
+.walk{list-style:none;padding:0;margin:12px 0;font-size:15.5px;}
 .walk li{padding:9px 0;border-top:1px solid var(--line);} .walk li:first-child{border-top:none;}
 .walk b{color:var(--brand-d);}
 .fam{display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-top:1px dashed var(--line);font-size:14.5px;}
 .fam:first-of-type{border-top:none;}
 .fam .ic{flex:0 0 24px;text-align:center;}
 .fam b{color:var(--brand);}
+
+/* animated worked example (prisoner's dilemma walkthrough), scoped pdw- */
+#pdwTable th,#pdwTable td{transition:opacity .4s,box-shadow .4s,background .4s;}
+#pdwTable .pdw-dim{opacity:.22;}
+#pdwTable .pdw-win{background:var(--amber-soft);box-shadow:inset 0 0 0 2px var(--amber);font-weight:700;}
+#pdwTable .pdw-nash{background:var(--good-soft);box-shadow:inset 0 0 0 2px var(--good);font-weight:700;color:var(--good);}
+#pdwTable .pdw-better{background:var(--brand-soft);box-shadow:inset 0 0 0 2px var(--brand);font-weight:700;}
+.pdw-box{background:#f6f4fc;border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:10px;padding:14px 16px;min-height:100px;font-size:15.5px;margin:12px 0 0;}
+.pdw-box .pdw-tag{font-size:13px;font-weight:800;color:var(--brand);}
+.pdw-box p{margin:6px 0 0;}
+.pdw-think{color:var(--good);font-weight:600;}
+.pdw-controls{display:flex;align-items:center;gap:10px;margin:10px 0 0;}
+.pdw-controls button{font:inherit;border:none;border-radius:9px;padding:8px 16px;font-weight:600;cursor:pointer;font-size:14px;}
+#pdwNext{background:var(--brand);color:#fff;} #pdwBack{background:var(--brand-soft);color:var(--brand-d);}
+.pdw-controls button:disabled{opacity:.4;cursor:default;}
+.pdw-dots{display:flex;gap:5px;margin-left:auto;} .pdw-dot{width:8px;height:8px;border-radius:50%;background:var(--line);} .pdw-dot.on{background:var(--brand);}
+.pdw-print{display:none;}
+@media print{.pdw-live{display:none!important;}.pdw-print{display:block;}#pdwTable th,#pdwTable td{opacity:1!important;box-shadow:none!important;}}
 </style>
 </head><body><div class="wrap">
 <a class="home" href="index.html">&larr; All 14 days</a>
@@ -275,34 +293,96 @@ NOA: Then it looks like the famous game, and it is not. It is still a Nash equil
 
 <p class="partlab">The exam's numbers</p>
 <p class="p">The course's version, from Presentation 3. Two rival clothes firms sell from printed winter catalogues, so each price is locked for the season. Each firm prints $80 (<i>cooperate</i>) or $70 (<i>defect</i>). Profits in thousands.</p>
+
+<p class="partlab">Worked example</p>
+<div class="question">Is this a prisoner's dilemma? Check both ticks, in order. Click <b>Next</b>: the table dims everything except the two numbers being compared.</div>
 <div class="tscroll">
-<table class="dtable">
-<tr><th></th><th>Firm 2: cooperate ($80)</th><th>Firm 2: defect ($70)</th></tr>
-<tr><td class="lab">Firm 1: cooperate ($80)</td><td>75,&nbsp; 75</td><td>20,&nbsp; 120</td></tr>
-<tr><td class="lab">Firm 1: defect ($70)</td><td>120,&nbsp; 20</td><td class="hlcell">70,&nbsp; 70 &nbsp;&#10003;</td></tr>
+<table class="dtable" id="pdwTable">
+<tr><th></th><th id="pdw-c1">Firm 2: cooperate ($80)</th><th id="pdw-c2">Firm 2: defect ($70)</th></tr>
+<tr><td class="lab" id="pdw-r1">Firm 1: cooperate ($80)</td><td id="pdw-cc">75,&nbsp; 75</td><td id="pdw-cd">20,&nbsp; 120</td></tr>
+<tr><td class="lab" id="pdw-r2">Firm 1: defect ($70)</td><td id="pdw-dc">120,&nbsp; 20</td><td class="hlcell" id="pdw-dd">70,&nbsp; 70 &nbsp;&#10003;</td></tr>
 </table></div>
 <div class="howto"><b>How to read this table.</b> Rows: firm 1's choice. Columns: firm 2's choice. In each cell, firm 1's profit comes first and firm 2's second. Green = where the two dominant strategies meet.</div>
 <div class="cap">The green cell is the only stable cell. And it pays each firm less than the top-left cell.</div>
 
-<p class="partlab">Worked example</p>
-<div class="question">Use the table above. Is this a prisoner's dilemma? Check both conditions, in order.</div>
+<div class="pdw-live">
+<div class="pdw-box" id="pdwBox"></div>
+<div class="pdw-controls">
+<button id="pdwBack" type="button">Back</button>
+<button id="pdwNext" type="button">Next</button>
+<div class="pdw-dots" id="pdwDots"></div>
+</div>
+</div>
 
+<div class="pdw-print">
 <div class="step"><div class="stepn">1</div><div class="stepbody"><div class="lab">Does firm 1 have a dominant strategy?</div>
 Compare its two rows, column by column. If firm 2 cooperates: 120 beats 75. If firm 2 defects: 70 beats 20.
 <br><span class="math">defect wins in both columns → dominant</span></div></div>
-
 <div class="step"><div class="stepn">2</div><div class="stepbody"><div class="lab">Does firm 2 have one too?</div>
 Same check across each row, reading the second number. 120 beats 75, and 70 beats 20.
 <br><span class="math">defect is dominant for firm 2 too → first tick passes</span></div></div>
-
 <div class="step"><div class="stepn">3</div><div class="stepbody"><div class="lab">Where do the two dominant strategies land?</div>
 Bottom right: both defect, 70 each. Neither firm wants to move from there, so this cell is a <b>Nash equilibrium</b>.</div></div>
-
 <div class="step"><div class="stepn">4</div><div class="stepbody"><div class="lab">Second tick: is some other cell better for <i>both</i>?</div>
 Top left pays 75 each.
 <br><span class="math">75 &gt; 70 for firm 1 &nbsp;AND&nbsp; 75 &gt; 70 for firm 2</span></div></div>
-
 <div class="ans">&#10003; <b>Yes, a prisoner's dilemma.</b> Both ticks passed. Skip the second tick and you will call half the exam's matrices a dilemma.</div>
+</div>
+
+<script>
+(function(){
+  var cells = ["pdw-c1","pdw-c2","pdw-r1","pdw-r2","pdw-cc","pdw-cd","pdw-dc","pdw-dd"];
+  function $(id){ return document.getElementById(id); }
+  var steps = [
+    {tag:"The setup",
+     html:"Two ticks, in order. First tick: does <b>each</b> firm have a dominant strategy? Start with firm 1, one column at a time.",
+     bright:cells, marks:{}},
+    {tag:"Firm 1 · case one",
+     html:"Suppose firm 2 cooperates (prints $80). Look only at that column, first number. Firm 1 earns <b>75</b> by cooperating or <b>120</b> by defecting. <b>120 beats 75</b> — defect wins here.",
+     bright:["pdw-c1","pdw-r1","pdw-r2","pdw-cc","pdw-dc"], marks:{"pdw-dc":"pdw-win"}},
+    {tag:"Firm 1 · case two",
+     html:"Now suppose firm 2 defects (prints $70). Firm 1 earns <b>20</b> by cooperating or <b>70</b> by defecting. <b>70 beats 20</b> — defect wins again.",
+     bright:["pdw-c2","pdw-r1","pdw-r2","pdw-cd","pdw-dd"], marks:{"pdw-dd":"pdw-win"}},
+    {tag:"Firm 1 · conclusion",
+     html:"Defect won in <b>both</b> columns — whatever firm 2 does. So defecting is firm 1's <b>dominant strategy</b>. Firm 1 never needs to guess what firm 2 will do.",
+     bright:["pdw-c1","pdw-c2","pdw-r2","pdw-dc","pdw-dd"], marks:{"pdw-dc":"pdw-win","pdw-dd":"pdw-win"}},
+    {tag:"Your turn",
+     html:"<span class='pdw-think'>Before clicking Next: the game is symmetric. What is firm 2's dominant strategy, and which two numbers prove it in each case?</span> Say it out loud, then check.",
+     bright:cells, marks:{}},
+    {tag:"Firm 2 · the check",
+     html:"Firm 2 reads <b>rows</b>, second number. If firm 1 cooperates: <b>120 beats 75</b>. If firm 1 defects: <b>70 beats 20</b>. Defect is dominant for firm 2 too — <b>first tick passes</b>.",
+     bright:["pdw-c1","pdw-c2","pdw-r1","pdw-r2","pdw-cd","pdw-dd"], marks:{"pdw-cd":"pdw-win","pdw-dd":"pdw-win"}},
+    {tag:"Where they land",
+     html:"Both dominant strategies say defect, so the firms land in the green cell: <b>70 each</b>. Neither firm can gain by changing price alone — this cell is a <b>Nash equilibrium</b>.",
+     bright:["pdw-c2","pdw-r2","pdw-dd"], marks:{"pdw-dd":"pdw-nash"}},
+    {tag:"Second tick",
+     html:"Is some other cell better for <b>both</b>? Top left pays <b>75 each</b>: 75 &gt; 70 for firm 1 <b>and</b> 75 &gt; 70 for firm 2. <b>Second tick passes</b> — the equilibrium is worse for everyone than mutual cooperation.",
+     bright:["pdw-c1","pdw-c2","pdw-r1","pdw-r2","pdw-cc","pdw-dd"], marks:{"pdw-dd":"pdw-nash","pdw-cc":"pdw-better"}},
+    {tag:"Verdict",
+     html:"✓ <b>Yes, a prisoner's dilemma.</b> Both ticks passed. Skip the second tick and you will call half the exam's matrices a dilemma.",
+     bright:cells, marks:{"pdw-dd":"pdw-nash","pdw-cc":"pdw-better"}}
+  ];
+  var i = 0, dots = $("pdwDots");
+  if(!$("pdwTable") || !$("pdwBox")) return;
+  steps.forEach(function(){ var d=document.createElement("div"); d.className="pdw-dot"; dots.appendChild(d); });
+  function render(){
+    var s = steps[i];
+    cells.forEach(function(id){
+      var el = $(id);
+      el.classList.remove("pdw-dim","pdw-win","pdw-nash","pdw-better");
+      if(s.bright.indexOf(id) === -1) el.classList.add("pdw-dim");
+      if(s.marks[id]) el.classList.add(s.marks[id]);
+    });
+    $("pdwBox").innerHTML = "<div class='pdw-tag'>Step "+(i+1)+" of "+steps.length+" — "+s.tag+"</div><p>"+s.html+"</p>";
+    $("pdwBack").disabled = (i===0);
+    $("pdwNext").disabled = (i===steps.length-1);
+    for(var k=0;k<dots.children.length;k++){ dots.children[k].classList.toggle("on", k<=i); }
+  }
+  $("pdwNext").onclick = function(){ if(i<steps.length-1){ i++; render(); } };
+  $("pdwBack").onclick = function(){ if(i>0){ i--; render(); } };
+  render();
+})();
+</script>
 
 <div class="rule">Where two dominant strategies meet is <b>always a Nash equilibrium</b>. In a dilemma it is a bad one. When that same cell is also the best for both players, it is not a dilemma, just an easy game with a happy ending.</div>
 
