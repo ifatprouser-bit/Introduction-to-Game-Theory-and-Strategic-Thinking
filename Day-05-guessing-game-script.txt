@@ -1,0 +1,13 @@
+Title: Day 5 — The guessing game: aim at two thirds of the average
+Voices: NOA = Heart, TOM = Fenrir
+Output: Day-05-guessing-game.mp3
+
+NOA: Now the guessing game you played in the first week. Everyone picks a whole number from a range, and the winner is whoever lands closest to two thirds of the average.
+TOM: I remember that one felt strange. Like a guessing game, but with a trick inside.
+NOA: The trick is that it is the very same chain of cutting you just did with the firms, only a lot longer. Start at the top of the range. Two thirds of any average can never reach the top. So picking the very top is always beaten by aiming a little lower. Those numbers go first.
+TOM: And once they are gone, the range is smaller, so the average is smaller too.
+NOA: Right. And two thirds of that smaller average sits even lower, so the new top of the range is beaten as well. Every row of the table on the page is one of those drops.
+TOM: Like a ceiling coming down a little at a time, until there is no room left to stand.
+NOA: Until only the smallest number allowed is still standing. That is the one equilibrium. Everyone picks the smallest number.
+TOM: But nobody actually plays that. Most people picked much higher.
+NOA: True, and that is a different question. Equilibrium asks what happens if everyone reasons all the way down. An experiment measures how far real people actually reason. Both things are true at the same time. The exam asks for the equilibrium.

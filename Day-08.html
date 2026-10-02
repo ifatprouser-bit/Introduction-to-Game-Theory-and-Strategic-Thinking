@@ -79,10 +79,53 @@ span.p{display:inline-block;font-size:13px;font-weight:700;padding:2px 7px;borde
 .P4{background:var(--p4)}.P5{background:var(--p5)}.P6{background:var(--p6)}
 .tags{margin:0 0 12px;}
 .panel h3 .tags{margin:0;}
+.stepper{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px;margin:14px 0;}
+.stepper .sbar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px;font-size:14px;color:var(--muted);}
+.stepper .sbar b{color:var(--brand-d);}
+.stepper table.dtable td,.stepper table.dtable th{transition:background .25s,color .25s;}
+.stepper .cmpA{outline:3px solid #d2453f;outline-offset:-3px;}
+.stepper .cmpB{outline:3px solid #15794a;outline-offset:-3px;}
+.stepper .msg{border-radius:10px;padding:11px 14px;margin:10px 0 4px;font-size:15px;line-height:1.55;background:var(--brand-soft);min-height:48px;}
+.stepper .msg.good{background:var(--good-soft);} .stepper .msg.bad{background:var(--bad-soft);}
+.stepper .picks{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 2px;}
+.stepper .picks button{background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:9px 16px;font-size:16px;font-weight:700;cursor:pointer;color:var(--ink);}
+.stepper .picks button:hover{border-color:var(--brand);background:var(--brand-soft);}
+.stepper .picks button.no{border-color:var(--bad);background:var(--bad-soft);}
+.stepper .nav{display:flex;gap:10px;margin-top:12px;align-items:center;}
+.stepper .nav button{border:none;border-radius:9px;padding:9px 18px;font-weight:700;font-size:15px;cursor:pointer;}
+.stepper .nav .nx{background:var(--brand);color:#fff;} .stepper .nav .bk{background:var(--brand-soft);color:var(--brand-d);}
+.stepper .nav button:disabled{opacity:.4;cursor:default;}
+.stepper .nav .rs{background:none;color:var(--muted);font-weight:600;font-size:13.5px;margin-left:auto;text-decoration:underline;}
+.stepper .alive{font-weight:700;color:var(--brand-d);}
+.stepper .tabs{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;}
+.stepper .tabs button{border:1.5px solid var(--line);background:#fff;border-radius:9px;padding:7px 14px;font-weight:700;cursor:pointer;color:var(--ink);font-size:14px;}
+.stepper .tabs button.on{background:var(--brand);color:#fff;border-color:var(--brand);}
+.tstep .thead{font-size:15px;line-height:1.55;margin-bottom:6px;}
+.tstep .tb{display:none;padding:10px 13px;margin:8px 0;border-left:3px solid var(--line);border-radius:6px;font-size:15px;line-height:1.6;color:#555;}
+.tstep .tb.on{display:block;} .tstep .tb.cur{border-left-color:var(--brand);background:var(--brand-soft);color:var(--ink);}
+.tstep .tlab{font-weight:700;color:var(--brand-d);}
+.rstep .rtable{border-collapse:separate;border-spacing:0;width:100%;min-width:430px;font-size:13.5px;margin:6px 0;border-top:1px solid var(--line);border-left:1px solid var(--line);}
+.rstep .rtable th,.rstep .rtable td{border:0;border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:6px 5px;text-align:center;transition:background .25s;}
+.rstep .rtable th{background:var(--brand-soft);color:var(--brand-d);font-weight:700;font-size:13px;}
+.rstep .rtable th:first-child,.rstep .rtable td.lab{position:sticky;left:0;z-index:2;}
+.rstep .rtable td.lab{text-align:left;font-weight:600;color:var(--brand-d);background:#f6f4fc;white-space:nowrap;}
+.rstep .rtable tr.lhead td{text-align:left;font-weight:800;color:var(--ink);background:#fff;padding-top:12px;font-size:14px;}
+.rstep .rtable tr.lhead td span{position:sticky;left:6px;}
+.rstep .mv{display:inline-block;border-radius:6px;padding:2px 6px;font-weight:700;font-size:13px;white-space:nowrap;}
+.rstep .mv.C{background:var(--good-soft);color:var(--good);} .rstep .mv.D{background:var(--bad-soft);color:#b03a35;}
+.rstep td.unk{color:#b4aecb;font-weight:700;}
+.rstep td.pay{font-weight:700;white-space:nowrap;}
+.rstep td.tot{background:#faf9fe;font-size:13px;color:var(--muted);line-height:1.3;} .rstep td.tot b{color:var(--brand-d);font-size:15px;}
+.rstep td.tag{font-size:13px;color:var(--amber);line-height:1.3;border-top:none;}
+.rstep .nw{background:#fff6dc;}
+.rstep .foc{outline:3px solid var(--brand);outline-offset:-3px;}
+.rstep .rgap{border-radius:10px;padding:9px 14px;margin:8px 0 0;background:var(--amber-soft);font-size:15px;}
+.rstep .sdir{color:#b03a35;font-weight:700;}
+@media print{.tstep .tb{display:block!important;color:#000;} .tstep .nav{display:none!important;}}
 </style>
 </head><body><div class="wrap">
 <a class="home" href="index.html">&larr; All 14 days</a>
-<div class="crumb">Day 8 of 14 &middot; Learn</div>
+<div class="crumb">Day 6 of 14 &middot; Learn</div>
 <h1>Repeated games, and sustaining cooperation</h1>
 <div class="tags"><span class="p P3">P3</span></div>
 <p class="lede">One question, on every single paper, worth 7 points. It is in words, not numbers. One trap catches almost everybody. A short day: about 30 minutes.</p>
@@ -482,29 +525,179 @@ In which game would you expect more cooperation in the lab? Check both factors b
 <p class="note">Pick an option. The answer and the explanation appear only after you choose. Only one question here comes from a real past final, and that paper is one you never sit as a mock. The other five are fresh. None of them repeats a scenario or a round count from the examples above. Every one is a calculation dressed up in words. Add the rounds up. Do not match the wording to a shape you remember.</p>
 <div id="quizBody"></div></div>
 
-<div class="navrow"><a class="navbtn" href="Day-07.html">&larr; Back</a><a class="navbtn primary" href="Day-09.html">Next &rarr;</a></div>
+<div class="navrow"><a class="navbtn" href="Day-06.html">&larr; Back</a><a class="navbtn primary" href="Day-09.html">Next &rarr;</a></div>
 </div>
 <script>
+// ---- Rounds timeline stepper for repeated games (Back / Next) ----
+// buildRoundsStepper(cfg) returns a .stepper element. cfg: rounds (N), unit ('Week'|'Round'), show (columns: r or [a,b]; default first 3, a gap, last 3),
+//   words {C,D}, names [you,them], pay {CC,CD,DC,DD} (YOUR payoff, your move first; omit for moves only), finalMsg, and
+//   lines:[{label, me, her, expect, tags:{r:'note'}}] where me / her are 'CCD...' strings, arrays, or fn(r, otherPast) (the rule sees only past rounds).
+//   dir:'back' labels a backward walk (also per track). steps:[{reveal:[r|[a,b]], focus:[...], text}] reveal rounds cumulatively, forwards or backwards. tracks:{tab:{lines,steps,finalMsg}} adds tabs.
+// Totals are summed by the engine from per-round payoffs and must equal each line's expect (throws if not). Two lines: the gap is shown at the end.
+function buildRoundsStepper(cfg){
+  var N=cfg.rounds, unit=cfg.unit||'Round', W=cfg.words||{C:'Cooperate',D:'Defect'}, NM=cfg.names||['You','Them'], P=cfg.pay||null;
+  var tracks=cfg.tracks||{'':{lines:cfg.lines,steps:cfg.steps,finalMsg:cfg.finalMsg}}, names=Object.keys(tracks), cur=names[0], step=0;
+  function rng(x){return Array.isArray(x)?x:[x,x];}
+  function expand(list){var o=[];(list||[]).forEach(function(x){var a=rng(x);for(var r=a[0];r<=a[1];r++)o.push(r);});return o;}
+  var cols=cfg.show?cfg.show.map(rng):(N>12?[[1,1],[2,2],[3,3],[4,N-3],[N-2,N-2],[N-1,N-1],[N,N]]:expand([[1,N]]).map(rng));
+  function play(L){ // run both players round by round
+    var me=[],her=[],pay=[];
+    function mv(src,r,other){var v=typeof src==='function'?src(r,other.slice(0,r-1)):src[r-1]; if(v!=='C'&&v!=='D')throw new Error('bad move '+v+' in round '+r+' of '+L.label); return v;}
+    for(var r=1;r<=N;r++){var a=mv(L.me,r,her), b=mv(L.her,r,me); me.push(a); her.push(b); pay.push(P?P[a+b]:0);}
+    var tot=pay.reduce(function(s,x){return s+x;},0);
+    if(P&&L.expect!==undefined&&tot!==L.expect)throw new Error('total for "'+L.label+'" is '+tot+', expected '+L.expect);
+    return {me:me,her:her,pay:pay,tot:tot};
+  }
+  var runs={}; names.forEach(function(nm){runs[nm]=tracks[nm].lines.map(play);});
+  var root=document.createElement('div'); root.className='stepper rstep';
+  root.innerHTML=(names.length>1?'<div class="tabs"></div>':'')+'<div class="sbar"><span class="sround"></span><span class="sdir"></span></div>'+
+    '<div class="tscroll"><table class="rtable"></table></div><div class="rgap"></div><div class="msg"></div>'+
+    '<div class="nav"><button class="bk" type="button">&larr; Back</button><button class="nx" type="button">Next &rarr;</button></div>';
+  var tbl=root.querySelector('.rtable'), msg=root.querySelector('.msg'), gap=root.querySelector('.rgap'), bk=root.querySelector('.bk'), nx=root.querySelector('.nx');
+  function chip(m){return '<span class="mv '+m+'">'+W[m]+'</span>';}
+  function render(){
+    var T=tracks[cur], R=runs[cur], S=T.steps, atEnd=step>=S.length, st=atEnd?null:S[step], seen={}, fresh={}, foc={};
+    for(var t=0;t<(atEnd?S.length:step+1);t++)expand(S[t].reveal).forEach(function(r){seen[r]=1;});
+    if(atEnd)expand([[1,N]]).forEach(function(r){seen[r]=1;});
+    if(st){expand(st.reveal).forEach(function(r){fresh[r]=1;}); expand(st.focus).forEach(function(r){foc[r]=1;});}
+    var h='<tr><th></th>'+cols.map(function(c){var f=false;for(var r=c[0];r<=c[1];r++)if(foc[r])f=true;
+      return '<th class="'+(f?'foc':'')+'">'+(c[0]===c[1]?unit+' '+c[0]:unit+'s '+c[0]+'&ndash;'+c[1])+'</th>';}).join('')+(P?'<th>Total</th>':'')+'</tr>';
+    T.lines.forEach(function(L,li){
+      var run=R[li], so=0; for(var r=1;r<=N;r++)if(seen[r])so+=run.pay[r-1];
+      if(T.lines.length>1||L.label)h+='<tr class="lhead"><td colspan="'+(cols.length+2)+'"><span>'+L.label+'</span></td></tr>';
+      function cells(kind){return cols.map(function(c){
+        var all=true,any=false,nw=false,f=false,ms={},sum=0,ps={};
+        for(var r=c[0];r<=c[1];r++){if(seen[r])any=true;else all=false; if(fresh[r])nw=true; if(foc[r])f=true;
+          ms[kind==='me'?run.me[r-1]:run.her[r-1]]=1; sum+=run.pay[r-1]; ps[run.pay[r-1]]=1;}
+        var cl=(f?'foc ':'')+(nw?'nw ':''), n=c[1]-c[0]+1, k=Object.keys(ms), pk=Object.keys(ps);
+        if(!all)return '<td class="'+cl+'unk">?</td>';
+        if(kind==='pay')return '<td class="'+cl+'pay">'+(n===1?sum:(pk.length===1?n+' &times; '+pk[0]+' = '+sum:sum))+'</td>';
+        if(kind==='tag'){var tg=[];for(var q=c[0];q<=c[1];q++)if(L.tags&&L.tags[q])tg.push(L.tags[q]);return '<td class="'+cl+'tag">'+tg.join('<br>')+'</td>';}
+        return '<td class="'+cl+'">'+(k.length===1?chip(k[0]):'mixed')+'</td>';}).join('');}
+      h+='<tr><td class="lab">'+NM[0]+'</td>'+cells('me')+(P?'<td></td>':'')+'</tr>';
+      h+='<tr><td class="lab">'+NM[1]+'</td>'+cells('her')+(P?'<td></td>':'')+'</tr>';
+      if(P)h+='<tr class="earn"><td class="lab">'+NM[0]+' earn</td>'+cells('pay')+'<td class="tot">'+(atEnd?'<b>'+run.tot+'</b>':'so far<br><b>'+so+'</b>')+'</td></tr>';
+      if(L.tags)h+='<tr class="tagrow"><td class="lab"></td>'+cells('tag')+(P?'<td></td>':'')+'</tr>';
+    });
+    tbl.innerHTML=h;
+    if(atEnd&&P&&T.lines.length===2){var a=R[0].tot,b=R[1].tot,hi=a>=b?0:1;
+      gap.innerHTML='<b>'+T.lines[hi].label+'</b> '+R[hi].tot+' &minus; <b>'+T.lines[1-hi].label+'</b> '+R[1-hi].tot+' = a gap of <b>'+Math.abs(a-b)+'</b>';gap.style.display='';}
+    else{gap.innerHTML='';gap.style.display='none';}
+    var dr=T.dir||cfg.dir; root.querySelector('.sdir').innerHTML=(dr==='back'&&!atEnd)?'&larr; Working backwards from the last '+unit.toLowerCase():'';
+    root.querySelector('.sround').innerHTML=atEnd?'<b>Done</b>':'<b>Step '+(step+1)+' of '+S.length+'</b>';
+    msg.className='msg'+(atEnd?' good':''); msg.innerHTML=atEnd?T.finalMsg:st.text;
+    toFocus();
+    bk.disabled=step===0; nx.disabled=atEnd; nx.innerHTML=(step===S.length-1)?'Finish &rarr;':'Next &rarr;';
+  }
+  function toFocus(){ // keep the round being discussed in view when the table scrolls (phones)
+    var sc=root.querySelector('.tscroll'), f=tbl.querySelector('th.foc'); if(!sc||!sc.clientWidth)return;
+    sc.scrollLeft=f?Math.max(0,f.offsetLeft-(sc.clientWidth-f.offsetWidth)/2):0; }
+  if(window.ResizeObserver)new ResizeObserver(function(){toFocus();}).observe(root);
+  if(names.length>1){var tabs=root.querySelector('.tabs');names.forEach(function(nm){var b=document.createElement('button');b.type='button';b.textContent=nm;b.className=nm===cur?'on':'';
+    b.onclick=function(){cur=nm;step=0;Array.prototype.forEach.call(tabs.children,function(x){x.className=x.textContent===nm?'on':'';});render();};tabs.appendChild(b);});}
+  nx.onclick=function(){if(step<tracks[cur].steps.length){step++;render();}};
+  bk.onclick=function(){if(step>0){step--;render();}};
+  render(); return root;
+}
+
+// ---- Day 8 rounds animations (engine: engines/rounds.js) ----
+var TFT=function(r,o){return r===1?'C':o[r-2];};
+var MAIL={CC:75,DC:120,CD:20,DD:70};
+var CD_WORDS={C:'Cooperate',D:'Defect'};
+var ANIM_Q1={rounds:100,unit:'Round',words:CD_WORDS,names:['Player 1','Player 2'],dir:'back',
+ lines:[{label:'',me:'D'.repeat(100),her:'D'.repeat(100)}],
+ steps:[
+  {reveal:[100],focus:[100],text:"Start at the <b>last</b> round, round 100. There is no round 101, so nothing you do here can be punished later.<br>Round 100 is a one-shot prisoner's dilemma. Defect <b>strictly dominates</b>: it pays more whatever the other player does. <b>Both defect.</b>"},
+  {reveal:[99],focus:[99],text:"Step back to round 99. Round 100 is already decided: both defect, whatever happens now.<br>So cooperating in round 99 buys you nothing later. Round 99 is a one-shot dilemma too. <b>Both defect.</b>"},
+  {reveal:[98],focus:[98],text:"Round 98. Ask the same question: can my move here change anything later?<br>No. Rounds 99 and 100 are already fixed. <b>Both defect.</b>"},
+  {reveal:[[4,97]],focus:[[4,97]],text:"The same step repeats, one round at a time: 97, then 96, then 95, and on down to round 4.<br>Each time the future is already fixed, so each round is a one-shot dilemma. <b>Both defect.</b>"},
+  {reveal:[[1,3]],focus:[[1,3]],text:"Rounds 3, 2 and 1 fall the same way. The argument has reached the very first round. <b>Every round says defect.</b>"}],
+ finalMsg:"<b>Defect in all rounds.</b> This is the unique backward-induction answer.<br><b>The rule in one line:</b> with a known last round, solve the last round first, then step back. Every round becomes a one-shot dilemma.<br><br><b>Why the others fail:</b><br>&bull; \"Defect in the final round only\" is where the reasoning <i>starts</i>, not where it stops.<br>&bull; \"Cooperate every round\" is not stable (not a Nash equilibrium). Either player gains by defecting in round 100.<br>&bull; Randomising never helps, because defect strictly dominates in every round.<br>&bull; The interest rate only matters in a game that <i>never ends</i>. With a known end date it changes nothing.<br><br><i>The stem and the options are printed exactly as on the paper. The answer matches the published 2025 A solution. You never sit 2025 A as a mock, so meeting it now costs you nothing.</i>"};
+
+var VAN_RULE=function(r,p){return p.filter(function(m){return m==='D';}).length>=2?'D':'C';};
+var ANIM_Q2={rounds:12,unit:'Week',show:[1,2,[3,10],11,12],words:{C:'High',D:'Undercut'},names:['You','Her'],pay:{CC:50,DC:85,CD:10,DD:30},
+ lines:[
+  {label:'Tit-for-tat',me:TFT,her:VAN_RULE,expect:600,tags:{12:'copies her week 11'}},
+  {label:'Best reply: undercut in weeks 1 and 12',me:'DCCCCCCCCCCD',her:VAN_RULE,expect:670,tags:{1:'undercut 1: forgiven',12:'undercut 2: war would start in week 13'}}],
+ steps:[
+  {reveal:[1],focus:[1],text:"Her rule: she stays high until you have undercut her <b>twice</b>. Your first undercut is forgiven.<br>Week 1. <b>Tit-for-tat</b> starts high: you earn 50. <b>The best reply</b> undercuts her high price: 85. That is undercut number one, and she forgives it."},
+  {reveal:[2],focus:[2],text:"Week 2. Tit-for-tat copies her week-1 move. She was high, so it stays high: 50.<br>The best reply goes back to high. She is still high, because she forgave week 1: 50."},
+  {reveal:[[3,10]],focus:[[3,10]],text:"Weeks 3 to 10. Nothing happens. Everyone stays high in both timelines: 8 &times; 50 = 400.<br>Tit-for-tat never moves first, so nothing ever starts a defection."},
+  {reveal:[11],focus:[11],text:"Week 11. Still high everywhere: 50 each. The best reply is saving its second undercut for the very end."},
+  {reveal:[12],focus:[12],text:"Week 12, the last week. Tit-for-tat copies her week-11 high price, so it stays high: 50.<br>The best reply undercuts again: 85. This is undercut number two, so her war would start in week 13. <b>There is no week 13. That undercut is free too.</b>"}],
+ finalMsg:"<b>Tit-for-tat earns 600. The most you could earn is 670.</b> Tit-for-tat leaves 70 on the table: two free undercuts, each worth 85 instead of 50.<br><b>The rule in one line:</b> a defection is free when it cannot change what she does next. Count every free one her rule leaves.<br><br><b>The other options:</b><br>&bull; \"600 is already the most\": no. 600 is never undercutting at all.<br>&bull; \"Tit-for-tat earns 670\": 670 is the best reply's total. Tit-for-tat only copies her, and she was high in week 11.<br>&bull; \"635\": that is high in weeks 1 to 11, undercut in week 12: 11 &times; 50 + 85 = 635. The one-short answer, and not what tit-for-tat does either.<br>&bull; \"470\": that is undercutting every week: 85 + 85 + 10 &times; 30 = 470. She stays high in weeks 1 and 2, then undercuts from week 3.<br><br>Week 1 is not special. All 4,096 plans were checked: any one early undercut in weeks 1 to 11, plus week 12, reaches 670."};
+
+var PETROL_RULE=function(r,p){return r===1?'C':(r<=9?p[r-2]:'D');};
+var PETROL_BEST={label:'Best reply: undercut in weeks 9 to 12',me:'CCCCCCCCDDDD',her:PETROL_RULE,expect:510,tags:{9:'free: she copies your week-8 hold'}};
+var PETROL_RULE_TXT="Her rule: week 1 she holds. Weeks 2 to 9 she copies your last week. Weeks 10, 11 and 12 she undercuts, whatever you do.<br>";
+var ANIM_Q3={rounds:12,unit:'Week',show:[[1,7],8,9,10,11,12],words:{C:'Hold',D:'Undercut'},names:['You','Her'],pay:{CC:45,DC:75,CD:5,DD:25},
+ tracks:{
+  'One week late':{dir:'back',lines:[PETROL_BEST,{label:'Wait for her: undercut in weeks 10 to 12',me:'CCCCCCCCCDDD',her:PETROL_RULE,expect:480}],
+   steps:[
+    {reveal:[12],focus:[12],text:PETROL_RULE_TXT+"Start at the end, week 12. She undercuts whatever you do. Undercut too: 25 beats 5. Same in both plans."},
+    {reveal:[[10,11]],focus:[[10,11]],text:"Weeks 11 and 10. She is already fixed on undercutting. Nothing you do can change that. Undercut: 25 each week, in both plans."},
+    {reveal:[9],focus:[9],text:"Week 9, the key week. She copies your week-8 move. You held in week 8, so she holds now.<br>If you undercut here, she would copy it in week 10. But she was <b>already</b> going to undercut in week 10. So this undercut is <b>free</b>: 75.<br>The plan that waits holds, and earns only 45."},
+    {reveal:[8],focus:[8],text:"Week 8. Is it free too? No. She copies week 8 into week 9. Undercut here, and your 75 in week 9 drops to 25. So hold: 45 in both plans."},
+    {reveal:[[1,7]],focus:[[1,7]],text:"Weeks 1 to 7. You hold, and she holds back: 7 &times; 45 = 315 in both plans."}],
+   finalMsg:"<b>Undercut in weeks 9 to 12: 510.</b> Waiting until she turns gives 480. It throws away the free week 9, a loss of 30.<br><b>The rule in one line: start one round before she turns.</b> She turns in week 10, so you start in week 9.<br><br>Now open the other two tabs: going one week early costs you too, and tit-for-tat is always one week late.<br>One more wrong option: hold to week 11 and undercut only in week 12 gives 9 &times; 45 + 5 + 5 + 25 = 440. You sit on the sucker payoff of 5 in weeks 10 and 11."},
+  'One week early':{dir:'back',lines:[PETROL_BEST,{label:'Too early: undercut in weeks 8 to 12',me:'CCCCCCCDDDDD',her:PETROL_RULE,expect:490,tags:{9:'she copies your week-8 undercut'}}],
+   steps:[
+    {reveal:[[10,12]],focus:[[10,12]],text:PETROL_RULE_TXT+"Start at the end. Weeks 10, 11 and 12: she undercuts whatever you do. Both plans undercut: 25 each week."},
+    {reveal:[9],focus:[9],text:"Week 9. She copies your week-8 move.<br>In the best reply you held in week 8, so she holds: you undercut and earn 75.<br>In the early plan you undercut in week 8, so she copies it and undercuts now: only 25."},
+    {reveal:[8],focus:[8],text:"Week 8. The early plan undercuts while she holds: 75 instead of 45. It gains 30 here, but it lost 50 in week 9. Net: 20 worse."},
+    {reveal:[[1,7]],focus:[[1,7]],text:"Weeks 1 to 7. Both plans hold: 7 &times; 45 = 315."}],
+   finalMsg:"<b>Best reply 510. One week early 490.</b> Going early wakes up her copying rule one week too soon, so week 9 collapses from 75 to 25.<br><b>The rule in one line: start exactly one round before she turns.</b> Later costs you, and earlier costs you too."},
+  'Tit-for-tat':{lines:[PETROL_BEST,{label:'Tit-for-tat',me:TFT,her:PETROL_RULE,expect:460,tags:{10:'copies her week-9 hold'}}],
+   steps:[
+    {reveal:[[1,8]],focus:[[1,8]],text:PETROL_RULE_TXT+"Tit-for-tat holds in week 1, then copies her. She copies you. So both hold in weeks 1 to 8: 360 in both plans."},
+    {reveal:[9],focus:[9],text:"Week 9. Tit-for-tat copies her week-8 hold: 45. The best reply takes the free undercut: 75."},
+    {reveal:[10],focus:[10],text:"Week 10. She turns and undercuts. Tit-for-tat copies her week-9 hold, so it holds and walks into the sucker payoff: 5. The best reply undercuts: 25."},
+    {reveal:[[11,12]],focus:[[11,12]],text:"Weeks 11 and 12. Now tit-for-tat copies her undercut: 25 each week. It reacts one week late."}],
+   finalMsg:"<b>Tit-for-tat 460, best reply 510.</b> Tit-for-tat never moves first, so it always reacts one round late. It misses the free week 9 and pays the sucker price in week 10.<br><b>The rule in one line: start one round before she turns.</b>"}}};
+
+var FORGIVE2=function(r,p){return p.filter(function(m){return m==='D';}).length>=3?'D':'C';};
+var ANIM_Q4={rounds:10,unit:'Round',show:[1,2,[3,9],10],words:CD_WORDS,names:['You','Her'],pay:MAIL,
+ lines:[
+  {label:'Best reply: defect in rounds 1, 2 and 10',me:'DDCCCCCCCD',her:FORGIVE2,expect:885,tags:{1:'forgiven (1 of 2)',2:'forgiven (2 of 2)',10:'war would start in round 11'}},
+  {label:'Defect in rounds 1 and 10',me:'DCCCCCCCCD',her:FORGIVE2,expect:840,tags:{1:'forgiven (1 of 2)',10:'forgiven (2 of 2)'}}],
+ steps:[
+  {reveal:[1],focus:[1],text:"The question gives no numbers, so use the mail-order payoffs from this page: both cooperate 75, you defect on a co-operator 120, you cooperate against a defector 20, both defect 70.<br>Her rule: she cooperates until you have defected <b>three</b> times. She forgives two.<br>Round 1. Both plans defect: 120. She forgives it."},
+  {reveal:[2],focus:[2],text:"Round 2. The best reply defects again: 120. She still cooperates, because that is only defection number two.<br>The other plan cooperates: 75. <b>This is the free defection it leaves unused.</b>"},
+  {reveal:[[3,9]],focus:[[3,9]],text:"Rounds 3 to 9. Both plans cooperate, and so does she: 7 &times; 75 = 525."},
+  {reveal:[10],focus:[10],text:"Round 10, the last round. Both plans defect: 120.<br>For the best reply this is defection number three, so her war would start in round 11. <b>There is no round 11.</b>"}],
+ finalMsg:"<b>Defect in rounds 1, 2 and 10: 885.</b> Defecting in rounds 1 and 10 gives 840. It leaves one free defection unused, worth 120 &minus; 75 = 45.<br><b>The rule in one line:</b> count the free defections her rule leaves. Forgives none: one free. Forgives one: two. Forgives two: three. The last one always goes in the final round.<br><br><b>The trap</b> \"defect in round 1 and round 10\" is the right answer against a rival who forgives only <i>one</i>, the shape taught above.<br><b>The other options:</b> defect only in round 10 gives 795. Defect every round gives 850: she cooperates in rounds 1 to 3, then wars from round 4. Tit-for-tat gives 750, because it never defects at all."};
+
+var GRIM=function(r,p){return p.indexOf('D')>-1?'D':'C';};
+var ANIM_Q5={rounds:10,unit:'Round',show:[1,[2,9],10],words:CD_WORDS,names:['You','Her'],pay:MAIL,
+ lines:[
+  {label:'Best reply: defect only in round 10',me:'CCCCCCCCCD',her:GRIM,expect:795,tags:{10:'war would start in round 11'}},
+  {label:'Defect in rounds 1 and 10',me:'DCCCCCCCCD',her:GRIM,expect:350,tags:{1:'her war starts next round'}}],
+ steps:[
+  {reveal:[1],focus:[1],text:"Payoffs as in the mail-order game: both cooperate 75, you defect on a co-operator 120, you cooperate against a defector 20, both defect 70.<br>Her rule is <b>grim trigger</b>: after one defection she defects for the rest of the game. She forgives nothing.<br>Round 1. The best reply cooperates: 75. The other plan defects and grabs 120. It is ahead by 45, for now."},
+  {reveal:[[2,9]],focus:[[2,9]],text:"Rounds 2 to 9. The best reply keeps cooperating, and so does she: 8 &times; 75 = 600.<br>The other plan cooperates too, but she has been at war since round 2. You get the sucker payoff: 8 &times; 20 = 160."},
+  {reveal:[10],focus:[10],text:"Round 10, the last round. The best reply defects while she still cooperates: 120. Her war would start in round 11, which does not exist.<br>The other plan: both defect, 70."}],
+ finalMsg:"<b>Cooperate in rounds 1 to 9, defect in round 10: 795.</b> \"Defect in round 1 and round 10\" gives only 350. The round-1 defection buys 45 once, then costs eight rounds of war.<br><b>The rule in one line:</b> grim trigger forgives nothing, so only the last round is free.<br><br><b>The other three options all tie on 750:</b> cooperate every round is 10 &times; 75. Defect every round is 120 + 9 &times; 70. Tit-for-tat never defects here, so it is the same as cooperating. Do not memorise \"defect first and last\". Count the free defections the rule leaves."};
+
 const QUIZ = [
 {"src":"2025 A final","q":"In the finitely repeated Prisoner's Dilemma, which is played for 100 rounds, the backward induction solution suggests:",
  "opts":["Cooperate every round","Defect in the final round only","Defect in all rounds","Randomize between cooperation and defection","The answer depends on the interest rate"],"correct":2,
- "exp":"<b>Defect in all rounds.</b> Round 100 has no future, so both defect there. Knowing that, nothing you do in round 99 can change round 100. So round 99 is a one-shot dilemma too, and both defect. The argument walks all the way back to round 1.<br><br><b>Why the others fail:</b> \"Defect in the final round only\" is where the chain of reasoning <i>starts</i>, not where it stops. \"Cooperate every round\" is not stable (not a Nash equilibrium), because either player would gain by defecting in round 100. Randomising never helps here, because defect <b>strictly dominates</b> in every round: it pays better than cooperate whatever the opponent does. And the interest rate only matters in a game that <i>never ends</i>. With a known end date it changes nothing.<br><br><i>The stem and the options are printed exactly as they appear on the paper. The answer is checked against the published 2025 A solution, which gives \"Defect in all rounds\". You never sit 2025 A as a mock, so meeting this question now costs you nothing.</i>"},
+ "anim":ANIM_Q1},
 
 {"q":"Two ice-cream vans work the same beach for <b>12 weeks</b>, and both know it is 12. Each week each van sets a high price (cooperate) or undercuts (defect). Your profit that week: both high = <b>50</b>; you undercut a high-price rival = <b>85</b>; you stay high while she undercuts = <b>10</b>; both undercut = <b>30</b>.<br><br>Her rule: <i>\"I keep my price high, and I forgive one week of undercutting. Once you have undercut me twice, I undercut for the rest of the game.\"</i><br><br>You decide to play <b>tit-for-tat</b>: high price in week 1, then copy whatever she did the week before. What does that earn you over the 12 weeks, and what was the most you could have earned?",
  "opts":["Tit-for-tat earns 600. The most you could have earned is 670","Tit-for-tat earns 600, and that is already the most you could have earned","Tit-for-tat earns 670, because it takes the free undercut in the last week","Tit-for-tat earns 635, because it undercuts only in week 12","Tit-for-tat earns 470, because she undercuts from week 3 onwards"],"correct":0,
- "exp":"<b>Tit-for-tat earns 600. The best possible is 670. It leaves 70 on the table.</b><br><br><b>1. What does tit-for-tat actually do here?</b> Week 1 you are high, so she is high. Week 2 you copy her week-1 high price, so you are high, and she is still high. Nothing ever starts a defection, so both of you stay high for all 12 weeks.<br><span class=\"math\">12 &times; 50 = 600</span><br>Tit-for-tat never moves first. Against an opponent who is cooperating, that means it never defects at all.<br><br><b>2. Count the free undercuts her rule leaves.</b> She forgives one, so your <i>first</i> undercut costs you nothing: she is still high afterwards. Your <i>second</i> undercut starts the war, but only from the week after it. Put it in week 12 and the punishment would fall in week 13, which does not exist. That is <b>two</b> free undercuts.<br><br><b>3. Add up the best reply</b> (undercut in week 1 and week 12):<br><span class=\"math\">week 1: you 85 &nbsp;(she is high, 0 undercuts so far)</span><br><span class=\"math\">weeks 2 to 11: 10 &times; 50 = 500 &nbsp;(she has forgiven the one)</span><br><span class=\"math\">week 12: you 85 &nbsp;(she is still high; her war would start in week 13)</span><br><span class=\"math\">85 + 500 + 85 = 670</span><br><br><b>Verification.</b> I scored all 4,096 possible 12-week plans against her rule. The maximum really is 670, and 11 plans reach it: any single early undercut in weeks 1 to 11, together with week 12. So week 1 is not special. The work is done by the undercut in the <i>final</i> week, the one her punishment can never reach.<br><br><b>The exact wrong sum behind each of the other options:</b><br>&bull; <b>600 is the most possible.</b> No. 600 is what you get by never undercutting at all, and her rule hands you two free undercuts worth 35 each (85 instead of 50).<br>&bull; <b>670 for tit-for-tat.</b> 670 is the best reply's total, not tit-for-tat's. Tit-for-tat cannot collect the last-week undercut, because she was high in week 11 and it only copies her.<br>&bull; <b>635.</b> That is the plan \"high in weeks 1 to 11, undercut in week 12\": <span class=\"math\">11 &times; 50 + 85 = 550 + 85 = 635</span>. It is the classic one-short answer, and it is not what tit-for-tat does either.<br>&bull; <b>470.</b> That is \"undercut every week\": <span class=\"math\">85 + 85 + 10 &times; 30 = 170 + 300 = 470</span>. She stays high for weeks 1 and 2, then undercuts from week 3 to week 12."},
+ "anim":ANIM_Q2},
 
 {"q":"Two petrol stations at a motorway junction set prices for <b>12 weeks</b>. Each week: both hold the high price = <b>45</b> each; you undercut a holder = <b>75</b>; you hold while she undercuts = <b>5</b>; both undercut = <b>25</b>.<br><br>Her rule: <i>\"I hold the high price in week 1. In weeks 2 to 9 I copy whatever you did the week before. In weeks 10, 11 and 12 I undercut, whatever you do.\"</i><br><br>Which plan earns you the most over the 12 weeks?",
  "opts":["Undercut in weeks 9 to 12, hold the price in weeks 1 to 8","Undercut in weeks 10 to 12, hold the price in weeks 1 to 9","Undercut in weeks 8 to 12, hold the price in weeks 1 to 7","Hold the price in weeks 1 to 11, undercut only in week 12","Play tit-for-tat: hold in week 1, then copy her last move"],"correct":0,
- "exp":"<b>Undercut in weeks 9 to 12. Total 510.</b><br><br><b>1. Find the week she turns.</b> She undercuts from week 10 on, whatever you do. So weeks 10, 11 and 12 are lost to you either way, and you should undercut in all three: 25 beats 5.<br><br><b>2. The move almost everybody misses.</b> Week 9. She is copying your week-8 move. You held in week 8, so she holds in week 9. Now ask what an undercut in week 9 costs you. She would copy it and undercut in week 10. But she was <i>already</i> going to undercut in week 10. Her week-10 move was never yours to change. <b>So week 9 is free.</b><br><br><b>3. Check that week 8 is not free too.</b> Undercutting in week 8 gains <span class=\"math\">75 &minus; 45 = 30</span> that week. But she then copies it in week 9, so instead of 75 in week 9 you get 25. That loses <span class=\"math\">75 &minus; 25 = 50</span>. Net <span class=\"math\">30 &minus; 50 = &minus;20</span>. Stop at week 9.<br><br><b>4. Add it up.</b><br><span class=\"math\">weeks 1 to 8: 8 &times; 45 = 360</span><br><span class=\"math\">week 9: 75 &nbsp;(she is still holding, copying your week-8 hold)</span><br><span class=\"math\">weeks 10 to 12: 3 &times; 25 = 75</span><br><span class=\"math\">360 + 75 + 75 = 510</span><br><br><b>Verification.</b> I scored all 4,096 possible plans against her rule. 510 is the maximum, and this time exactly <b>one</b> plan reaches it.<br><br><b>The exact wrong sum behind each of the other options:</b><br>&bull; <b>Undercut 10 to 12 = 480.</b> <span class=\"math\">9 &times; 45 + 3 &times; 25 = 405 + 75 = 480</span>. This is the off-by-one trap. It waits until she turns, and throws away the free week 9. Cost: 30.<br>&bull; <b>Undercut 8 to 12 = 490.</b> <span class=\"math\">7 &times; 45 + 75 + 25 + 3 &times; 25 = 315 + 75 + 25 + 75 = 490</span>. Going one week too <i>early</i> costs you as well, because she copies your week-8 undercut, so week 9 collapses from 75 to 25. Cost: 20.<br>&bull; <b>Undercut in week 12 only = 440.</b> <span class=\"math\">9 &times; 45 + 5 + 5 + 25 = 405 + 35 = 440</span>. You sit on the sucker payoff of 5 through weeks 10 and 11 while she undercuts you.<br>&bull; <b>Tit-for-tat = 460.</b> <span class=\"math\">9 &times; 45 + 5 + 25 + 25 = 405 + 55 = 460</span>. It holds in week 10, because she held in week 9 and it only copies her, so it walks into the 5. It reacts from week 11. It is always one week late.<br><br><b>The rule, in one line: start one round before she does.</b> She turns in week 10, so you start in week 9. Notice that the two ways of being wrong point in opposite directions, and both cost you."},
+ "anim":ANIM_Q3},
 
 {"q":"A player plays a finitely repeated prisoner's dilemma that ends after 10 rounds, and wants to maximise her total payoff. Her opponent plays: cooperate as long as the player has defected <b>at most twice</b> so far; from the round after her third defection, defect for the rest of the game. What is the player's best reply?",
  "opts":["Defect in rounds 1, 2 and 10, cooperate in rounds 3-9","Defect in round 1 and round 10, cooperate in rounds 2-9","Cooperate in rounds 1-9, and defect in round 10","Defect in every round","Play tit-for-tat"],"correct":0,
- "exp":"<b>Defect in rounds 1, 2 and 10.</b> Count the free defections, do not remember a shape. This rule forgives <i>two</i>, so two early defections cost nothing at all. She is still cooperating after both. The third would trigger the war, so you place it in round 10, where the punishment has no round left to land in. <b>Three free defections.</b><br><br><b>The trap is \"defect in round 1 and round 10\".</b> That is the right answer against a rival who forgives only <i>one</i> defection, which is the shape worked through in the section above. Here it leaves a whole free defection unused.<br><br><b>Check it with numbers</b> (mail-order payoffs 75 / 120 / 20 / 70): defect 1, 2 and 10 gives 120 + 120 + 7×75 + 120 = <b>885</b>. Defect 1 and 10 gives 840. Defect only in round 10 gives 795. Defecting every round gives 850, because she still cooperates in rounds 1, 2 and 3, then wars from round 4 on. Tit-for-tat gives 750, the worst of the five, because it never defects at all.<br><br><b>The ladder to remember:</b> forgives none → one free defection. Forgives one → two. Forgives two → three. The last one always goes in the final round."},
+ "anim":ANIM_Q4},
 
 {"q":"A player plays a finitely repeated prisoner's dilemma that ends after 10 rounds. Her opponent plays <b>grim trigger</b>: cooperate as long as the player has never defected; from the round after her first defection, defect for the rest of the game. What is the player's best reply?",
  "opts":["Cooperate in rounds 1-9, and defect in round 10","Defect in round 1 and round 10, cooperate in rounds 2-9","Cooperate in every round","Defect in every round","Play tit-for-tat"],"correct":0,
- "exp":"<b>Cooperate 1&ndash;9, defect in round 10.</b> Grim trigger forgives nothing, so here there really <i>is</i> only one free defection: the last one.<br><br><b>All five, added up round by round</b> (mail-order payoffs 75 both cooperate, 120 you defect against a co-operator, 20 you cooperate against a defector, 70 both defect):<br>&bull; <b>Cooperate 1&ndash;9, defect 10:</b> <span class=\"math\">9 &times; 75 + 120 = 675 + 120 = 795</span> &nbsp;&#10003;<br>&bull; <b>Defect 1 and 10:</b> round 1 gives 120, then she wars from round 2 on, so rounds 2&ndash;9 give you the sucker payoff and round 10 is mutual defection. <span class=\"math\">120 + 8 &times; 20 + 70 = 120 + 160 + 70 = 350</span><br>&bull; <b>Cooperate every round:</b> <span class=\"math\">10 &times; 75 = 750</span><br>&bull; <b>Defect every round:</b> <span class=\"math\">120 + 9 &times; 70 = 120 + 630 = 750</span><br>&bull; <b>Tit-for-tat:</b> she never defects, so it never defects. Same as cooperating throughout. <span class=\"math\">10 &times; 75 = 750</span><br><br><b>Verification.</b> I scored all 1,024 possible 10-round plans against grim trigger. 795 is the maximum and only one plan reaches it.<br><br><b>This is the point of the question.</b> \"Defect in round 1 and round 10\" is the right answer against a rival who <i>tolerates one</i> defection. Here it is badly wrong. It scores 350 against 795: the round-1 defection buys 120 once and then costs you eight rounds of war. Notice also that the three losing plans all tie on 750, so the whole exam mark sits on one comparison.<br><br>The lesson: do not memorise \"defect first and last\". <b>Count the free defections the rule actually leaves.</b> Grim trigger forgives nothing, so it leaves the fewest of any rule you will meet."},
+ "anim":ANIM_Q5},
 
 {"q":"Two hauliers hold an agreed freight rate, repeated every year with no end date. Holding the rate earns each of them 60 per year. Undercutting a co-operating rival earns 90 in that year. If both undercut, each earns 45 per year. The rival is a conditional co-operator: she holds the rate until you undercut her, then undercuts forever. Above roughly what annual interest rate does undercutting become your best reply?",
  "opts":["50%","11%","25%","33%","200%"],"correct":0,
@@ -518,7 +711,7 @@ QUIZ.forEach((item,qi)=>{
   const block=document.createElement('div');block.className='qblock';
   const tag=item.src?`<span class="examtag">${item.src}</span>`:'';
   block.innerHTML=`<div class="qnum">Question ${qi+1}${tag}</div><div class="qtext">${item.q}</div>`;
-  const exp=document.createElement('div');exp.className='exp';exp.innerHTML=item.exp;
+  const exp=document.createElement('div');exp.className='exp';if(item.anim){exp.appendChild(buildRoundsStepper(item.anim));}else{exp.innerHTML=item.exp;}
   item.opts.forEach((opt,oi)=>{
     const btn=document.createElement('button');btn.className='opt';
     btn.innerHTML=`${String.fromCharCode(65+oi)}. ${opt}<span class="mark"></span>`;
@@ -593,6 +786,41 @@ QUIZ.forEach((item,qi)=>{
     });
     mo.observe(res, {attributes: true, attributeFilter: ['class']});
   }
+})();
+</script>
+<script>
+/* TSTEP: shared step-by-step player for explanations */
+(function(){
+function trim(s){return s.trim();}
+function lab(h){var m=h.match(/^\s*(?:<span[^>]*>)?\s*<b>([^<]{1,60})<\/b>/i);return m?m[1].replace(/[.:\s]+$/,''):'';}
+function build(html){
+  var parts=html.split(/(?:<br\s*\/?>\s*){2,}/i).map(trim).filter(Boolean);
+  if(parts.length<3) parts=html.split(/<br\s*\/?>/i).map(trim).filter(Boolean);
+  if(parts.length<2) return null;
+  var head=parts[0], steps=parts.slice(1), cur=1, N=steps.length;
+  var root=document.createElement('div'); root.className='stepper tstep';
+  root.innerHTML='<div class="thead">'+head+'</div><div class="sbar"><span class="tlab"></span><span>Step <b class="tn">1</b> of '+N+'</span></div><div class="tblocks"></div><div class="nav"><button class="bk" type="button">← Back</button><button class="nx" type="button">Next →</button><button class="rs" type="button">Show all</button></div>';
+  var box=root.querySelector('.tblocks');
+  var els=steps.map(function(h){var d=document.createElement('div');d.className='tb';d.innerHTML=h;box.appendChild(d);return d;});
+  var bk=root.querySelector('.bk'),nx=root.querySelector('.nx'),rs=root.querySelector('.rs'),tn=root.querySelector('.tn'),tl=root.querySelector('.tlab');
+  function render(){
+    els.forEach(function(d,i){d.className='tb'+(i<cur?' on':'')+(i===cur-1?' cur':'');});
+    tn.textContent=cur; tl.textContent=lab(steps[cur-1])||'';
+    bk.disabled=cur<=1; nx.disabled=cur>=N; rs.style.display=cur>=N?'none':'';
+  }
+  bk.onclick=function(){if(cur>1){cur--;render();}};
+  nx.onclick=function(){if(cur<N){cur++;render();}};
+  rs.onclick=function(){cur=N;render();};
+  render(); return root;
+}
+window.buildTextStepper=build;
+window.addEventListener('load',function(){
+  Array.prototype.forEach.call(document.querySelectorAll('.exp'),function(e){
+    if(e.querySelector('.stepper')||e.getAttribute('data-ts'))return;
+    e.setAttribute('data-ts','1');
+    var s=build(e.innerHTML); if(s){e.innerHTML='';e.appendChild(s);}
+  });
+});
 })();
 </script>
 </body></html>

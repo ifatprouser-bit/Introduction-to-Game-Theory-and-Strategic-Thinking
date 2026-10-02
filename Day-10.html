@@ -72,6 +72,55 @@ audio{width:100%;margin-top:6px;}
   .reveal,.exp{display:block!important;} .preq{border-color:#ccc;}
   .qblock{break-inside:avoid;} .panel{break-inside:avoid;}
 }
+.stepper{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px;margin:14px 0;}
+.stepper .sbar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px;font-size:14px;color:var(--muted);}
+.stepper .sbar b{color:var(--brand-d);}
+.stepper table.dtable td,.stepper table.dtable th{transition:background .25s,color .25s;}
+.stepper .cmpA{outline:3px solid #d2453f;outline-offset:-3px;}
+.stepper .cmpB{outline:3px solid #15794a;outline-offset:-3px;}
+.stepper .msg{border-radius:10px;padding:11px 14px;margin:10px 0 4px;font-size:15px;line-height:1.55;background:var(--brand-soft);min-height:48px;}
+.stepper .msg.good{background:var(--good-soft);} .stepper .msg.bad{background:var(--bad-soft);}
+.stepper .picks{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 2px;}
+.stepper .picks button{background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:9px 16px;font-size:16px;font-weight:700;cursor:pointer;color:var(--ink);}
+.stepper .picks button:hover{border-color:var(--brand);background:var(--brand-soft);}
+.stepper .picks button.no{border-color:var(--bad);background:var(--bad-soft);}
+.stepper .nav{display:flex;gap:10px;margin-top:12px;align-items:center;}
+.stepper .nav button{border:none;border-radius:9px;padding:9px 18px;font-weight:700;font-size:15px;cursor:pointer;}
+.stepper .nav .nx{background:var(--brand);color:#fff;} .stepper .nav .bk{background:var(--brand-soft);color:var(--brand-d);}
+.stepper .nav button:disabled{opacity:.4;cursor:default;}
+.stepper .nav .rs{background:none;color:var(--muted);font-weight:600;font-size:13.5px;margin-left:auto;text-decoration:underline;}
+.stepper .alive{font-weight:700;color:var(--brand-d);}
+.stepper .tabs{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;}
+.stepper .tabs button{border:1.5px solid var(--line);background:#fff;border-radius:9px;padding:7px 14px;font-weight:700;cursor:pointer;color:var(--ink);font-size:14px;}
+.stepper .tabs button.on{background:var(--brand);color:#fff;border-color:var(--brand);}
+.tstep .thead{font-size:15px;line-height:1.55;margin-bottom:6px;}
+.tstep .tb{display:none;padding:10px 13px;margin:8px 0;border-left:3px solid var(--line);border-radius:6px;font-size:15px;line-height:1.6;color:#555;}
+.tstep .tb.on{display:block;} .tstep .tb.cur{border-left-color:var(--brand);background:var(--brand-soft);color:var(--ink);}
+.tstep .tlab{font-weight:700;color:var(--brand-d);}
+@media print{.tstep .tb{display:block!important;color:#000;} .tstep .nav{display:none!important;}}
+/* engine css: keep + rounds */
+.dtable .k1{background:#fbeddd!important;color:#a8681a!important;text-decoration:line-through;font-weight:400!important;}
+.dtable .k2{background:#fae5e4!important;color:#b03a35!important;text-decoration:line-through;font-weight:400!important;}
+.dtable .k3{background:#e6eff9!important;color:#2f6ba8!important;text-decoration:line-through;font-weight:400!important;}
+.dtable .k4{background:#eee8fb!important;color:#5238c4!important;text-decoration:line-through;font-weight:400!important;}
+.dtable .keep{background:var(--good-soft)!important;color:var(--good)!important;font-weight:800!important;}
+.rstep .rtable{border-collapse:separate;border-spacing:0;width:100%;min-width:430px;font-size:13.5px;margin:6px 0;border-top:1px solid var(--line);border-left:1px solid var(--line);}
+.rstep .rtable th,.rstep .rtable td{border:0;border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:6px 5px;text-align:center;transition:background .25s;}
+.rstep .rtable th{background:var(--brand-soft);color:var(--brand-d);font-weight:700;font-size:13px;}
+.rstep .rtable th:first-child,.rstep .rtable td.lab{position:sticky;left:0;z-index:2;}
+.rstep .rtable td.lab{text-align:left;font-weight:600;color:var(--brand-d);background:#f6f4fc;white-space:nowrap;}
+.rstep .rtable tr.lhead td{text-align:left;font-weight:800;color:var(--ink);background:#fff;padding-top:12px;font-size:14px;}
+.rstep .rtable tr.lhead td span{position:sticky;left:6px;}
+.rstep .mv{display:inline-block;border-radius:6px;padding:2px 6px;font-weight:700;font-size:13px;white-space:nowrap;}
+.rstep .mv.C{background:var(--good-soft);color:var(--good);} .rstep .mv.D{background:var(--bad-soft);color:#b03a35;}
+.rstep td.unk{color:#b4aecb;font-weight:700;}
+.rstep td.pay{font-weight:700;white-space:nowrap;}
+.rstep td.tot{background:#faf9fe;font-size:13px;color:var(--muted);line-height:1.3;} .rstep td.tot b{color:var(--brand-d);font-size:15px;}
+.rstep td.tag{font-size:13px;color:var(--amber);line-height:1.3;border-top:none;}
+.rstep .nw{background:#fff6dc;}
+.rstep .foc{outline:3px solid var(--brand);outline-offset:-3px;}
+.rstep .rgap{border-radius:10px;padding:9px 14px;margin:8px 0 0;background:var(--amber-soft);font-size:15px;}
+.rstep .sdir{color:#b03a35;font-weight:700;}
 </style>
 <style>
 /* ---- mock-page additions (timer, presentation chips, exam-run states) ---- */
@@ -125,12 +174,12 @@ span.p.P4{background:var(--p4)}span.p.P5{background:var(--p5)}span.p.P6{backgrou
 </style>
 </head><body><div class="wrap">
 <a class="home" href="index.html">&larr; All 14 days</a>
-<div class="crumb">Day 10 of 14 &middot; Mock exam 3</div>
+<div class="crumb">Day 11 of 14 &middot; Mock exam 3</div>
 <h1>Mock 3: 2025 B, sat under exam conditions</h1>
 <p class="lede">The real Mo&rsquo;ed B paper from 26 June 2025. 90 minutes, 14 questions, five options each. Nothing is marked and nothing is explained until you press Submit.</p>
 <div class="chiprow"><span class="p P1">P1</span><span class="p P2">P2</span><span class="p P3">P3</span><span class="p P4">P4</span><span class="p P5">P5</span><span class="p P6">P6</span></div>
 
-<div class="mockhdr"><b>Why this paper, today.</b> 2025 B has <b>five mixed-strategy questions</b>, more than any other past paper. It is also the first mock that uses all six presentations, commitment included. Tomorrow, Day 11, drills the pair of zero-sum questions that share one matrix. So today&rsquo;s job is to find the gaps that tomorrow fixes.</div>
+<div class="mockhdr"><b>Why this paper, today.</b> 2025 B has <b>five mixed-strategy questions</b>, more than any other past paper. It is also the first mock that uses all six presentations, commitment included. So it is the hardest test of the mixing method you drilled on Day 8.</div>
 
 <div class="timer">
   <span class="clock" id="clock">90:00</span>
@@ -162,10 +211,628 @@ span.p.P4{background:var(--p4)}span.p.P5{background:var(--p5)}span.p.P6{backgrou
   <p class="srcnote">Marking: the real paper gives 7 points per question plus 2 free points, so 14 correct = 100. <b>No pass mark is printed on any past paper</b>, so none is shown here.</p>
 </div>
 
-<div class="navrow"><a class="navbtn" href="Day-09.html">&larr; Back</a><a class="navbtn primary" href="Day-11.html">Next &rarr;</a></div>
+<div class="navrow"><a class="navbtn" href="Day-07.html">&larr; Back</a><a class="navbtn primary" href="Day-12.html">Next &rarr;</a></div>
 </div>
 
 <script>
+/* ---------- step-by-step engines (copied from engines/) ---------- */
+// ---- Step-by-step explanation player for quiz questions ----
+// steps: ['cut',kind,red,green] | ['cmp',kind,red,green] | ['ul',kind,idx]   kind: 'row' (player 1) or 'col' (player 2)
+function buildGridStepper(cfg){
+  var R=cfg.rows, C=cfg.cols, M=cfg.cells;
+  var tracks=cfg.tracks||{'':cfg.steps}, names=Object.keys(tracks), cur=names[0];
+  var root=document.createElement('div'); root.className='stepper';
+  root.innerHTML=(names.length>1?'<div class="tabs"></div>':'')+'<div class="sbar"><span class="sround"></span><span>Still alive: <span class="alive"></span></span></div>'+
+    '<div class="tscroll"><table class="dtable"></table></div><div class="msg"></div>'+
+    '<div class="nav"><button class="bk">&larr; Back</button><button class="nx">Next &rarr;</button></div>';
+  if(cfg.noalive){root.querySelector('.sbar').lastChild.style.display='none';}
+  var tbl=root.querySelector('table'), msg=root.querySelector('.msg'), bk=root.querySelector('.bk'), nx=root.querySelector('.nx');
+  var step=0, CLS=['k1','k2','k3','k4','k1','k2','k3','k4'];
+  function allIdx(n){var a=[];for(var i=0;i<n;i++)a.push(i);return a;}
+  function val(i,j,k){return M[i][j][k];}
+  function beats(kind,g,r,ar,ac){ // g beats r in every alive opposite line
+    return kind==='row'?ac.every(function(c){return val(g,c,0)>val(r,c,0);}):ar.every(function(q){return val(q,g,1)>val(q,r,1);});
+  }
+  function bestSet(kind,idx,ar,ac){ // best replies inside the alive grid
+    var vals=kind==='col'?ar.map(function(i){return val(i,idx,0);}):ac.map(function(j){return val(idx,j,1);});
+    var lines=kind==='col'?ar:ac, m=Math.max.apply(null,vals); return lines.filter(function(z,t){return vals[t]===m;});
+  }
+  // replay state up to step s (cuts applied from steps before s, underlines up to and including s)
+  function stateAt(s,atEnd){
+    var steps=tracks[cur], ar=allIdx(R.length), ac=allIdx(C.length), cutRow={}, cutCol={}, ulC={}, ulR={}, n=0;
+    for(var t=0;t<steps.length;t++){
+      var st=steps[t], upto=atEnd?true:(st[0]==='ul'?t<=s:t<s);
+      if(!upto) continue;
+      if(st[0]==='cut'){ if(st[1]==='row'){cutRow[st[2]]=n; ar=ar.filter(function(v){return v!==st[2];});} else {cutCol[st[2]]=n; ac=ac.filter(function(v){return v!==st[2];});} n++; }
+      if(st[0]==='ul'){ var b=bestSet(st[1],st[2],ar,ac); if(st[1]==='col') ulC[st[2]]=b; else ulR[st[2]]=b; }
+    }
+    return {ar:ar,ac:ac,cutRow:cutRow,cutCol:cutCol,ulC:ulC,ulR:ulR};
+  }
+  // verify every authored cut / comparison is true (throws early if the data is wrong)
+  Object.keys(tracks).forEach(function(nm){ var steps=tracks[nm], ar=allIdx(R.length), ac=allIdx(C.length);
+    steps.forEach(function(st){
+      if(st[0]==='cut'){ if(!beats(st[1],st[3],st[2],ar,ac)) throw new Error('illegal cut '+st);
+        if(st[1]==='row') ar=ar.filter(function(v){return v!==st[2];}); else ac=ac.filter(function(v){return v!==st[2];}); } });
+  });
+  function render(){
+    var steps=tracks[cur], atEnd=step>=steps.length, S=stateAt(step,atEnd), st=atEnd?null:steps[step];
+    var ar=S.ar, ac=S.ac;
+    var h='<tr><th></th>'+C.map(function(c,j){var cl=S.cutCol[j]!==undefined?CLS[S.cutCol[j]]:'';
+      var cmp=(st&&st[0]!=='ul'&&st[1]==='col')?(j===st[2]?' cmpA':(j===st[3]?' cmpB':'')):((st&&st[0]==='ul'&&st[1]==='col'&&j===st[2])?' cmpB':'');
+      return '<th class="'+cl+cmp+'">'+c+'</th>';}).join('')+'</tr>';
+    var nashCells=0, survivor=(!cfg.stall&&!cfg.nash)&&ar.length===1&&ac.length===1;
+    R.forEach(function(r,i){
+      var rcl=S.cutRow[i]!==undefined?CLS[S.cutRow[i]]:'';
+      var rcmp=(st&&st[0]!=='ul'&&st[1]==='row')?(i===st[2]?' cmpA':(i===st[3]?' cmpB':'')):((st&&st[0]==='ul'&&st[1]==='row'&&i===st[2])?' cmpB':'');
+      h+='<tr><td class="lab '+rcl+rcmp+'">'+r+'</td>';
+      C.forEach(function(c,j){
+        var a=S.cutRow[i], b=S.cutCol[j], cl='';
+        if(a!==undefined&&b!==undefined)cl=CLS[Math.min(a,b)]; else if(a!==undefined)cl=CLS[a]; else if(b!==undefined)cl=CLS[b];
+        var u1=S.ulC[j]&&S.ulC[j].indexOf(i)>-1, u2=S.ulR[i]&&S.ulR[i].indexOf(j)>-1;
+        if(atEnd&&cl===''&&((survivor)||(cfg.nash&&u1&&u2)))cl='keep';
+        var p1=val(i,j,0), p2=val(i,j,1), t1=String(p1), t2=String(p2);
+        var cmp='', d1=false, d2=false;
+        if(st&&cl===''){
+          if(st[0]!=='ul'&&st[1]==='row'&&(i===st[2]||i===st[3])){cmp=i===st[2]?' cmpA':' cmpB'; d2=true;}
+          if(st[0]!=='ul'&&st[1]==='col'&&(j===st[2]||j===st[3])){cmp=j===st[2]?' cmpA':' cmpB'; d1=true;}
+          if(st[0]==='ul'&&st[1]==='col'&&j===st[2]){cmp=' cmpB'; d2=true;}
+          if(st[0]==='ul'&&st[1]==='row'&&i===st[2]){cmp=' cmpB'; d1=true;}
+        }
+        if(u1)t1='<u style="text-decoration-thickness:2px;text-underline-offset:3px">'+t1+'</u>';
+        if(u2)t2='<u style="text-decoration-thickness:2px;text-underline-offset:3px">'+t2+'</u>';
+        if(d1)t1='<span style="opacity:.4">'+t1+'</span>'; if(d2)t2='<span style="opacity:.4">'+t2+'</span>';
+        if(cl==='keep'&&cfg.nash)nashCells++;
+        h+='<td class="'+cl+cmp+'">'+t1+', '+t2+'</td>';
+      });
+      h+='</tr>';
+    });
+    tbl.innerHTML=h;
+    root.querySelector('.alive').textContent=R.filter(function(_,i){return ar.indexOf(i)>-1;}).concat(C.filter(function(_,j){return ac.indexOf(j)>-1;})).join(' · ');
+    root.querySelector('.sround').innerHTML=atEnd?'<b>Done</b>':'<b>Step '+(step+1)+' of '+steps.length+'</b>';
+    msg.className='msg';
+    if(atEnd){ msg.classList.add('good'); msg.innerHTML=cfg.finalMsg; }
+    else { msg.innerHTML=stepText(st,ar,ac,step); }
+    bk.disabled=step===0; nx.disabled=atEnd;
+    nx.textContent=(step===steps.length-1)?'Finish →':'Next →';
+  }
+  function stepText(st,ar,ac,s){
+    var kind=st[1], row=kind==='row', L=row?R:C, num=row?'first':'second', who=row?'Player 1':'Player 2', over=row?'column':'row';
+    if(st[0]==='ul'){
+      var idx=st[2], vals, names, lines, best=bestSet(kind,idx,ar,ac);
+      if(kind==='col'){ lines=ar; vals=ar.map(function(i){return val(i,idx,0);}); names=ar.map(function(i){return R[i];}); }
+      else { lines=ac; vals=ac.map(function(j){return val(idx,j,1);}); names=ac.map(function(j){return C[j];}); }
+      var tie=best.length>1;
+      var bestNames=kind==='col'?best.map(function(z){return R[z];}):best.map(function(z){return C[z];});
+      var asker=kind==='col'?'Player 1':'Player 2', nn=kind==='col'?'first':'second';
+      return (kind==='col'?'Say player 2 plays <b>'+C[idx]+'</b>.':'Say player 1 plays <b>'+R[idx]+'</b>.')+'<br>'+asker+' looks at the <b>'+nn+'</b> numbers: '+
+        vals.join(', ')+'.<br><b>'+(tie?'A tie, so underline both: '+bestNames.join(' and ')+'.':'Best is '+bestNames[0]+'. Underline it.')+'</b>'+(st[3]?'<br><span style="color:var(--muted)">'+st[3]+'</span>':'');
+    }
+    var x=L[st[2]], y=L[st[3]];
+    var nums=(row?ac:ar).map(function(z){var vx=row?val(st[2],z,0):val(z,st[2],1), vy=row?val(st[3],z,0):val(z,st[3],1); return vy+(vy>vx?' &gt; ':' &lt; ')+vx;}).join(', ');
+    if(st[0]==='cut') return '<b>'+who+'</b> only looks at the <b>'+num+'</b> numbers. Compare <b>'+x+'</b> (red) with <b>'+y+'</b> (green).<br>'+y+' is higher in every '+over+' still alive: '+nums+'.<br><b>So '+x+' is strictly dominated. Press Next to cut it.</b>'+(st[4]?'<br><span style="color:var(--muted)">'+st[4]+'</span>':'');
+    var ok=beats(kind,st[3],st[2],ar,ac);
+    return '<b>'+who+'</b> only looks at the <b>'+num+'</b> numbers. Is <b>'+y+'</b> (green) better than <b>'+x+'</b> (red) in every '+over+'?<br>'+nums+'.<br><b>'+(ok?'Yes. '+y+' beats '+x+' everywhere.':'No. '+y+' loses to '+x+' in at least one '+over+', so '+y+' is not dominant.')+'</b>'+(st[4]?'<br><span style="color:var(--muted)">'+st[4]+'</span>':'');
+  }
+  if(names.length>1){ var tabs=root.querySelector('.tabs'); names.forEach(function(nm){var b=document.createElement('button');b.textContent=nm;b.className=nm===cur?'on':'';b.onclick=function(){cur=nm;step=0;Array.prototype.forEach.call(tabs.children,function(x){x.className=x.textContent===nm?'on':'';});render();};tabs.appendChild(b);}); }
+  nx.onclick=function(){ if(step<tracks[cur].length){step++;render();} };
+  bk.onclick=function(){ if(step>0){step--;render();} };
+  render();
+  return root;
+}
+
+// ---- Rounds timeline stepper for repeated games (Back / Next) ----
+// buildRoundsStepper(cfg) returns a .stepper element. cfg: rounds (N), unit ('Week'|'Round'), show (columns: r or [a,b]; default first 3, a gap, last 3),
+//   words {C,D}, names [you,them], pay {CC,CD,DC,DD} (YOUR payoff, your move first; omit for moves only), finalMsg, and
+//   lines:[{label, me, her, expect, tags:{r:'note'}}] where me / her are 'CCD...' strings, arrays, or fn(r, otherPast) (the rule sees only past rounds).
+//   dir:'back' labels a backward walk (also per track). steps:[{reveal:[r|[a,b]], focus:[...], text}] reveal rounds cumulatively, forwards or backwards. tracks:{tab:{lines,steps,finalMsg}} adds tabs.
+// Totals are summed by the engine from per-round payoffs and must equal each line's expect (throws if not). Two lines: the gap is shown at the end.
+function buildRoundsStepper(cfg){
+  var N=cfg.rounds, unit=cfg.unit||'Round', W=cfg.words||{C:'Cooperate',D:'Defect'}, NM=cfg.names||['You','Them'], P=cfg.pay||null;
+  var tracks=cfg.tracks||{'':{lines:cfg.lines,steps:cfg.steps,finalMsg:cfg.finalMsg}}, names=Object.keys(tracks), cur=names[0], step=0;
+  function rng(x){return Array.isArray(x)?x:[x,x];}
+  function expand(list){var o=[];(list||[]).forEach(function(x){var a=rng(x);for(var r=a[0];r<=a[1];r++)o.push(r);});return o;}
+  var cols=cfg.show?cfg.show.map(rng):(N>12?[[1,1],[2,2],[3,3],[4,N-3],[N-2,N-2],[N-1,N-1],[N,N]]:expand([[1,N]]).map(rng));
+  function play(L){ // run both players round by round
+    var me=[],her=[],pay=[];
+    function mv(src,r,other){var v=typeof src==='function'?src(r,other.slice(0,r-1)):src[r-1]; if(v!=='C'&&v!=='D')throw new Error('bad move '+v+' in round '+r+' of '+L.label); return v;}
+    for(var r=1;r<=N;r++){var a=mv(L.me,r,her), b=mv(L.her,r,me); me.push(a); her.push(b); pay.push(P?P[a+b]:0);}
+    var tot=pay.reduce(function(s,x){return s+x;},0);
+    if(P&&L.expect!==undefined&&tot!==L.expect)throw new Error('total for "'+L.label+'" is '+tot+', expected '+L.expect);
+    return {me:me,her:her,pay:pay,tot:tot};
+  }
+  var runs={}; names.forEach(function(nm){runs[nm]=tracks[nm].lines.map(play);});
+  var root=document.createElement('div'); root.className='stepper rstep';
+  root.innerHTML=(names.length>1?'<div class="tabs"></div>':'')+'<div class="sbar"><span class="sround"></span><span class="sdir"></span></div>'+
+    '<div class="tscroll"><table class="rtable"></table></div><div class="rgap"></div><div class="msg"></div>'+
+    '<div class="nav"><button class="bk" type="button">&larr; Back</button><button class="nx" type="button">Next &rarr;</button></div>';
+  var tbl=root.querySelector('.rtable'), msg=root.querySelector('.msg'), gap=root.querySelector('.rgap'), bk=root.querySelector('.bk'), nx=root.querySelector('.nx');
+  function chip(m){return '<span class="mv '+m+'">'+W[m]+'</span>';}
+  function render(){
+    var T=tracks[cur], R=runs[cur], S=T.steps, atEnd=step>=S.length, st=atEnd?null:S[step], seen={}, fresh={}, foc={};
+    for(var t=0;t<(atEnd?S.length:step+1);t++)expand(S[t].reveal).forEach(function(r){seen[r]=1;});
+    if(atEnd)expand([[1,N]]).forEach(function(r){seen[r]=1;});
+    if(st){expand(st.reveal).forEach(function(r){fresh[r]=1;}); expand(st.focus).forEach(function(r){foc[r]=1;});}
+    var h='<tr><th></th>'+cols.map(function(c){var f=false;for(var r=c[0];r<=c[1];r++)if(foc[r])f=true;
+      return '<th class="'+(f?'foc':'')+'">'+(c[0]===c[1]?unit+' '+c[0]:unit+'s '+c[0]+'&ndash;'+c[1])+'</th>';}).join('')+(P?'<th>Total</th>':'')+'</tr>';
+    T.lines.forEach(function(L,li){
+      var run=R[li], so=0; for(var r=1;r<=N;r++)if(seen[r])so+=run.pay[r-1];
+      if(T.lines.length>1||L.label)h+='<tr class="lhead"><td colspan="'+(cols.length+2)+'"><span>'+L.label+'</span></td></tr>';
+      function cells(kind){return cols.map(function(c){
+        var all=true,any=false,nw=false,f=false,ms={},sum=0,ps={};
+        for(var r=c[0];r<=c[1];r++){if(seen[r])any=true;else all=false; if(fresh[r])nw=true; if(foc[r])f=true;
+          ms[kind==='me'?run.me[r-1]:run.her[r-1]]=1; sum+=run.pay[r-1]; ps[run.pay[r-1]]=1;}
+        var cl=(f?'foc ':'')+(nw?'nw ':''), n=c[1]-c[0]+1, k=Object.keys(ms), pk=Object.keys(ps);
+        if(!all)return '<td class="'+cl+'unk">?</td>';
+        if(kind==='pay')return '<td class="'+cl+'pay">'+(n===1?sum:(pk.length===1?n+' &times; '+pk[0]+' = '+sum:sum))+'</td>';
+        if(kind==='tag'){var tg=[];for(var q=c[0];q<=c[1];q++)if(L.tags&&L.tags[q])tg.push(L.tags[q]);return '<td class="'+cl+'tag">'+tg.join('<br>')+'</td>';}
+        return '<td class="'+cl+'">'+(k.length===1?chip(k[0]):'mixed')+'</td>';}).join('');}
+      h+='<tr><td class="lab">'+NM[0]+'</td>'+cells('me')+(P?'<td></td>':'')+'</tr>';
+      h+='<tr><td class="lab">'+NM[1]+'</td>'+cells('her')+(P?'<td></td>':'')+'</tr>';
+      if(P)h+='<tr class="earn"><td class="lab">'+NM[0]+' earn</td>'+cells('pay')+'<td class="tot">'+(atEnd?'<b>'+run.tot+'</b>':'so far<br><b>'+so+'</b>')+'</td></tr>';
+      if(L.tags)h+='<tr class="tagrow"><td class="lab"></td>'+cells('tag')+(P?'<td></td>':'')+'</tr>';
+    });
+    tbl.innerHTML=h;
+    if(atEnd&&P&&T.lines.length===2){var a=R[0].tot,b=R[1].tot,hi=a>=b?0:1;
+      gap.innerHTML='<b>'+T.lines[hi].label+'</b> '+R[hi].tot+' &minus; <b>'+T.lines[1-hi].label+'</b> '+R[1-hi].tot+' = a gap of <b>'+Math.abs(a-b)+'</b>';gap.style.display='';}
+    else{gap.innerHTML='';gap.style.display='none';}
+    var dr=T.dir||cfg.dir; root.querySelector('.sdir').innerHTML=(dr==='back'&&!atEnd)?'&larr; Working backwards from the last '+unit.toLowerCase():'';
+    root.querySelector('.sround').innerHTML=atEnd?'<b>Done</b>':'<b>Step '+(step+1)+' of '+S.length+'</b>';
+    msg.className='msg'+(atEnd?' good':''); msg.innerHTML=atEnd?T.finalMsg:st.text;
+    toFocus();
+    bk.disabled=step===0; nx.disabled=atEnd; nx.innerHTML=(step===S.length-1)?'Finish &rarr;':'Next &rarr;';
+  }
+  function toFocus(){ // keep the round being discussed in view when the table scrolls (phones)
+    var sc=root.querySelector('.tscroll'), f=tbl.querySelector('th.foc'); if(!sc||!sc.clientWidth)return;
+    sc.scrollLeft=f?Math.max(0,f.offsetLeft-(sc.clientWidth-f.offsetWidth)/2):0; }
+  if(window.ResizeObserver)new ResizeObserver(function(){toFocus();}).observe(root);
+  if(names.length>1){var tabs=root.querySelector('.tabs');names.forEach(function(nm){var b=document.createElement('button');b.type='button';b.textContent=nm;b.className=nm===cur?'on':'';
+    b.onclick=function(){cur=nm;step=0;Array.prototype.forEach.call(tabs.children,function(x){x.className=x.textContent===nm?'on':'';});render();};tabs.appendChild(b);});}
+  nx.onclick=function(){if(step<tracks[cur].steps.length){step++;render();}};
+  bk.onclick=function(){if(step>0){step--;render();}};
+  render(); return root;
+}
+
+// ---- Number-line stepper for 2/3-average (beauty contest) questions ----
+// buildNumberLineStepper({groups:[{kind:'range',lo,hi,share,name}|{kind:'point',value,share,name}|{kind:'reply',of:i,share,name}],
+//   expect:28, traps:[{opt:'42',at:'crowd'|'group:i'|'twoThirdsGroup:i'|'halfGroup:i'|'twice'|number, text}], finalMsg:'html'})
+// Steps: one per group (band or spike + its average), combine into the crowd average, take two-thirds once, round, then the traps.
+// Trap: short = line on the traps step, text = full note in the final summary. share = fraction of the crowd (equal shares give a plain average). 'reply' = two-thirds of group i's average, rounded.
+// Every number is computed here; it throws if the rounded target is not cfg.expect, or a trap sits more than 1.5 from its option.
+function buildNumberLineStepper(cfg){
+  function fmt(x){var r=Math.round(x*100)/100;return String(r);}
+  var G=cfg.groups.map(function(g){return Object.assign({},g);});
+  G.forEach(function(g,i){
+    if(g.kind==='range'){g.avg=(g.lo+g.hi)/2;}
+    else if(g.kind==='point'){g.avg=g.value;}
+    else if(g.kind==='reply'){g.raw=(2/3)*G[g.of].avg; g.avg=Math.round(g.raw);}
+    if(g.share===undefined) g.share=1/G.length;
+  });
+  var tot=G.reduce(function(s,g){return s+g.share;},0);
+  if(Math.abs(tot-1)>1e-9) throw new Error('numberline: shares must add to 1');
+  var crowd=G.reduce(function(s,g){return s+g.share*g.avg;},0);
+  var target=(2/3)*crowd, answer=Math.round(target);
+  if(cfg.expect!==undefined&&answer!==cfg.expect) throw new Error('numberline: got '+answer+' expected '+cfg.expect);
+  var traps=(cfg.traps||[]).map(function(t){
+    var a=t.at, v;
+    if(typeof a==='number') v=a;
+    else if(a==='crowd') v=crowd;
+    else if(a==='twice') v=(2/3)*answer;
+    else { var m=a.split(':'), g=G[+m[1]];
+      v=m[0]==='group'?g.avg:m[0]==='twoThirdsGroup'?(2/3)*g.avg:m[0]==='halfGroup'?g.avg/2:NaN; }
+    if(!(Math.abs(v-parseFloat(t.opt))<=1.5)) throw new Error('numberline: trap '+t.opt+' computed '+v);
+    return {opt:t.opt,v:v,text:t.text,short:t.short||t.text};
+  });
+  var equal=G.every(function(g){return Math.abs(g.share-G[0].share)<1e-9;});
+  var ord=['first','second','third','fourth'];
+  var VW=560; function X(v){return 30+(v-1)*((VW-60)/99);}
+  // ---- build the step list ----
+  var steps=[];
+  G.forEach(function(g,i){
+    var who=(G.length===1?'The whole crowd':'Group '+(i+1)+(g.name?' ('+g.name+')':''));
+    var t;
+    if(g.kind==='range') t='<b>'+who+'</b> picks evenly from <b>'+g.lo+' to '+g.hi+'</b>. The shaded band shows it.<br>The middle of an even spread is (smallest + largest) &divide; 2 = ('+g.lo+' + '+g.hi+') &divide; 2 = <b>'+fmt(g.avg)+'</b>.'+(g.lo!==1||g.hi!==100?'<br><span style="color:var(--muted)">Read the two ends they gave you, not the ends of the scale.</span>':'');
+    else if(g.kind==='point') t='<b>'+who+'</b> all choose <b>'+g.value+'</b>. Everyone on one spot, so their average is just <b>'+g.value+'</b>.';
+    else t='<b>'+who+'</b> best-replies to group '+(g.of+1)+'. A best reply is two-thirds of the average you face.<br>(2/3) &times; '+fmt(G[g.of].avg)+' = '+fmt(g.raw)+' &rarr; as a whole number <b>'+g.avg+'</b>. They all stand on that spot.';
+    steps.push({k:'g'+i,text:t});
+  });
+  var ctext;
+  if(G.length===1) ctext='<b>The crowd average.</b> There is only one group, so nothing to combine. The crowd sits on average at <b>'+fmt(crowd)+'</b> (red marker).<br><span style="color:var(--muted)">This is not the answer yet. Stopping here is the most common lost mark.</span>';
+  else if(equal) ctext='<b>Combine first.</b> The '+(G.length===2?'two halves are':'groups are')+' the same size, so a plain average of the group averages is enough:<br>('+G.map(function(g){return fmt(g.avg);}).join(' + ')+') &divide; '+G.length+' = <b>'+fmt(crowd)+'</b>. The red marker is the whole crowd.<br><span style="color:var(--muted)">Not the answer yet. You have not taken two-thirds.</span>';
+  else ctext='<b>Combine first.</b> Weight each group by its share:<br>'+G.map(function(g){return fmt(g.share)+' &times; '+fmt(g.avg);}).join(' + ')+' = <b>'+fmt(crowd)+'</b>. The red marker is the whole crowd.';
+  steps.push({k:'c',text:ctext});
+  steps.push({k:'t',text:'<b>Only now, take two-thirds. Once.</b> The green arrow moves left from the crowd average:<br>(2/3) &times; '+fmt(crowd)+' = <b>'+fmt(target)+'</b>.'});
+  steps.push({k:'r',text:'<b>Round.</b> Players choose whole numbers, so take the nearest one: '+fmt(target)+' &rarr; <b>'+answer+'</b>. That is your <b>best reply</b>: the choice that does best against this crowd.'});
+  if(traps.length) steps.push({k:'x',text:'<b>Where the wrong options sit.</b> Each amber dot is a half-finished version of the right answer:<br>'+traps.map(function(t){return '<b>'+t.opt+'</b>: '+t.short;}).join('<br>')});
+  var N=steps.length;
+  var root=document.createElement('div'); root.className='stepper nlstep';
+  root.innerHTML='<div class="sbar"><span class="sround"></span></div><div class="svg-wrap" style="margin:6px 0;padding:6px"></div><div class="msg"></div>'+
+    '<div class="nav"><button class="bk" type="button">&larr; Back</button><button class="nx" type="button">Next &rarr;</button></div>';
+  var box=root.querySelector('.svg-wrap'), msg=root.querySelector('.msg'), bk=root.querySelector('.bk'), nx=root.querySelector('.nx'), step=0;
+  var F='font-family="-apple-system,Segoe UI,Arial,sans-serif"';
+  function idx(k){for(var i=0;i<N;i++)if(steps[i].k===k)return i;return 99;}
+  function svg(s){
+    var gy0=24, gh=22, gap=12, rowsH=G.length*(gh+gap), ay=gy0+rowsH+18, cy=ay+30, ty=cy+34, xy=ty+38, H=(traps.length?xy+42:ty+28);
+    var narrow=(typeof window!=='undefined'&&window.innerWidth<560); VW=narrow?320:560; var FS=narrow?1.25:1;
+    var h='<svg viewBox="0 0 '+VW+' '+H+'" role="img" aria-label="A number line from 1 to 100 with the crowd groups, the crowd average and the two-thirds target." style="max-width:'+VW+'px">';
+    function op(k){if(s>=N)return 1;var i=idx(k);return i>s?0:(i===s?1:0.5);}
+    // axis
+    h+='<line x1="30" y1="'+ay+'" x2="'+(VW-30)+'" y2="'+ay+'" stroke="#c8c2dd" stroke-width="1.5"/>';
+    [1,25,50,75,100].forEach(function(v){h+='<line x1="'+X(v)+'" y1="'+ay+'" x2="'+X(v)+'" y2="'+(ay+5)+'" stroke="#c8c2dd"/><text x="'+X(v)+'" y="'+(ay+17)+'" text-anchor="middle" font-size="11" fill="#6f6886" '+F+'>'+v+'</text>';});
+    // groups
+    G.forEach(function(g,i){
+      var o=op('g'+i); if(!o) return; var y=gy0+i*(gh+gap), cur=o===1, col=i%2?'#1f9d63':'#6b4ef0', soft=i%2?'#e4f6ec':'#ece7fd';
+      h+='<g opacity="'+o+'">';
+      if(g.kind==='range'){
+        h+='<rect x="'+X(g.lo)+'" y="'+y+'" width="'+(X(g.hi)-X(g.lo))+'" height="'+gh+'" rx="5" fill="'+soft+'" stroke="'+col+'" stroke-width="'+(cur?2:1)+'"/>';
+        h+='<text x="'+(X(g.lo)+6)+'" y="'+(y+15)+'" font-size="11.5" fill="'+col+'" font-weight="700" '+F+'>'+g.lo+'</text><text x="'+(X(g.hi)-6)+'" y="'+(y+15)+'" text-anchor="end" font-size="11.5" fill="'+col+'" font-weight="700" '+F+'>'+g.hi+'</text>';
+      } else {
+        if(g.kind==='reply'){var fx=X(G[g.of].avg), tx=X(g.avg), ry=y+gh/2;
+          var sy=gy0+g.of*(gh+gap)+gh/2;
+          h+='<line x1="'+fx+'" y1="'+sy+'" x2="'+(tx+(tx<fx?8:-8))+'" y2="'+ry+'" stroke="'+col+'" stroke-width="1.5" stroke-dasharray="4 3"/>';}
+        h+='<rect x="'+(X(g.avg)-6)+'" y="'+y+'" width="12" height="'+gh+'" rx="3" fill="'+col+'"/>';
+      }
+      h+='<circle cx="'+X(g.avg)+'" cy="'+(y+gh/2)+'" r="'+(cur?5.5:4.5)+'" fill="'+col+'" stroke="#fff" stroke-width="1.5"/>';
+      h+='<line x1="'+X(g.avg)+'" y1="'+(y+gh)+'" x2="'+X(g.avg)+'" y2="'+ay+'" stroke="'+col+'" stroke-width="1" stroke-dasharray="3 3"/>';
+      var gn=G.length>1?'group '+(i+1)+': ':'', lx=X(g.avg), anchor='middle', lab=gn+'avg '+fmt(g.avg);
+      if(g.kind!=='range'){var rt=lx>VW/2; anchor=rt?'end':'start'; lx+=rt?-12:12; lab=gn+(g.kind==='reply'?'best reply ':'all on ')+fmt(g.avg);}
+      h+='<text x="'+lx+'" y="'+(g.kind==='range'?y-4:y+15)+'" text-anchor="'+anchor+'" font-size="12" font-weight="700" fill="'+col+'" '+F+'>'+lab+'</text>';
+      h+='</g>';
+    });
+    // crowd average
+    var oc=op('c');
+    if(oc){h+='<g opacity="'+oc+'"><line x1="'+X(crowd)+'" y1="'+ay+'" x2="'+X(crowd)+'" y2="'+cy+'" stroke="#d2453f" stroke-width="1.5"/><circle cx="'+X(crowd)+'" cy="'+cy+'" r="'+(oc===1?6:5)+'" fill="#d2453f"/>'+
+      '<text x="'+(X(crowd)>VW*0.55?X(crowd)-10:X(crowd)+10)+'" y="'+(cy+4)+'" text-anchor="'+(X(crowd)>VW*0.55?'end':'start')+'" font-size="12.5" font-weight="700" fill="#d2453f" '+F+'>crowd average '+fmt(crowd)+'</text></g>';}
+    // two-thirds arrow
+    var ot=op('t');
+    if(ot){var x0=X(crowd), x1=X(target);
+      h+='<g opacity="'+ot+'"><line x1="'+x0+'" y1="'+cy+'" x2="'+x0+'" y2="'+ty+'" stroke="#d2453f" stroke-width="1" stroke-dasharray="3 3"/>'+
+      '<line x1="'+x0+'" y1="'+ty+'" x2="'+(x1+8)+'" y2="'+ty+'" stroke="#15794a" stroke-width="2.2"/><path d="M'+x1+' '+ty+' L'+(x1+10)+' '+(ty-5)+' L'+(x1+10)+' '+(ty+5)+' Z" fill="#15794a"/>'+
+      '<text x="'+((x0+x1)/2)+'" y="'+(ty-7)+'" text-anchor="middle" font-size="12" font-weight="700" fill="#15794a" '+F+'>&#215; 2/3</text>'+
+      '<text x="'+(x0+10)+'" y="'+(ty+4)+'" font-size="12.5" font-weight="700" fill="#15794a" '+F+'>target '+fmt(target)+'</text></g>';}
+    // rounding
+    var orr=op('r');
+    if(orr){var xa=X(answer);
+      h+='<g opacity="'+orr+'"><line x1="'+xa+'" y1="'+ay+'" x2="'+xa+'" y2="'+ty+'" stroke="#15794a" stroke-width="2"/><circle cx="'+xa+'" cy="'+ty+'" r="'+(orr===1?8:6.5)+'" fill="#15794a"/>'+
+      '<text x="'+xa+'" y="'+(ty+4)+'" text-anchor="middle" font-size="10" font-weight="800" fill="#fff" '+F+'>&#10003;</text>'+
+      '<text x="'+(xa-12)+'" y="'+(ty+4)+'" text-anchor="end" font-size="13" font-weight="800" fill="#15794a" '+F+'>'+answer+'</text></g>';}
+    // traps
+    var ox=op('x');
+    if(ox&&traps.length){
+      var items=traps.map(function(t){return {v:t.v,lab:t.opt,ans:false};}).concat([{v:answer,lab:answer+' &#10003;',ans:true}]).sort(function(a,b){return a.v-b.v;});
+      items=items.reduce(function(acc,t){var pv=acc[acc.length-1]; if(pv&&!pv.ans&&!t.ans&&X(t.v)-X(pv.v)<9*FS){pv.lab+=' &middot; '+t.lab;} else acc.push(t); return acc;},[]);
+      var lastAt=[-999,-999,-999], LY=[xy-9,xy+20,xy+35];
+      h+='<g opacity="'+ox+'"><text x="2" y="'+(xy+4)+'" font-size="11" fill="#8f5c12" font-weight="700" '+F+'>traps</text>';
+      items.forEach(function(t){var x=X(t.v), w=(String(t.lab).replace(/&#10003;|&middot;/g,'v').length*7+8)*FS, lv=0;
+        while(lv<2&&x-lastAt[lv]<w) lv++; lastAt[lv]=x;
+        var col=t.ans?'#15794a':'#8f5c12';
+        h+='<circle cx="'+x+'" cy="'+xy+'" r="'+(t.ans?5.5:5)+'" fill="'+(t.ans?'#15794a':'#b6791f')+'"/><text x="'+x+'" y="'+LY[lv]+'" text-anchor="middle" font-size="12" font-weight="'+(t.ans?800:700)+'" fill="'+col+'" '+F+'>'+t.lab+'</text>';});
+      h+='</g>';}
+    h=h.replace(/font-size="([\d.]+)"/g,function(m,n){return 'font-size="'+(n*FS)+'"';});
+    return h+'</svg>';
+  }
+  function render(){
+    var atEnd=step>=N, s=atEnd?N-1:step;
+    box.innerHTML=svg(atEnd?N:s);
+    root.querySelector('.sround').innerHTML=atEnd?'<b>Done</b>':'<b>Step '+(step+1)+' of '+N+'</b>';
+    msg.className='msg'+(atEnd?' good':'');
+    msg.innerHTML=atEnd?(cfg.finalMsg||('<b>Best reply: '+answer+'.</b>'))+(traps.length?'<br><br><b>Where each wrong option comes from.</b><br>'+traps.map(function(t){return '<b>'+t.opt+'</b>: '+t.text;}).join('<br>'):''):steps[step].text;
+    bk.disabled=step===0; nx.disabled=atEnd; nx.innerHTML=(step===N-1)?'Finish &rarr;':'Next &rarr;';
+  }
+  nx.onclick=function(){if(step<N){step++;render();}};
+  bk.onclick=function(){if(step>0){step--;render();}};
+  render();
+  root._nl={crowd:crowd,target:target,answer:answer,groups:G,traps:traps};
+  return root;
+}
+if(typeof module!=='undefined') module.exports={buildNumberLineStepper:buildNumberLineStepper};
+
+// ---- Mixed-strategy stepper: Back/Next walk-through of a 2x2 indifference problem ----
+// buildMixedStepper(cfg) returns a .stepper element. cfg: rows:[2 word labels], cols:[2 word labels],
+//   cells: [[a,b],[c,d]] (zero-sum, player 1's payoff) or [[[a1,a2],[b1,b2]],[[c1,c2],[d1,d2]]] (two numbers),
+//   ask: 'q' | 'p' | 'pq' | 'value' | {cell:[rowIdx,colIdx]},  expect: the answer as a number (0.4, 0.24, 6...); throws if the engine disagrees.
+//   Optional: finalMsg (html, or function(r) using r.p, r.q, r.V, r.ans, r.u1(i,j)), notes:{pure,q,p,result,check: html or function(r)},
+//   trap:true (pure games: show the parallel lines that never cross), p1/p2 (player names), tol (default 0.006).
+// q = how often player 2 plays the first column; p = how often player 1 plays the first row. Every number shown is computed here.
+function buildMixedStepper(cfg){
+  if(!document.getElementById('mx-css')){
+    var css=document.createElement('style'); css.id='mx-css';
+    css.textContent='.mx-top{display:flex;gap:14px;flex-wrap:wrap;align-items:flex-start;}'+
+    '.mx-top .tscroll{flex:1 1 250px;min-width:0;} .mx-top table.dtable{margin:0;font-size:15px;}'+
+    '.mx-top table.dtable td{font-size:16px;font-weight:600;}'+
+    '.mx-key{flex:1 1 210px;font-size:14px;line-height:1.45;background:#fbfaff;border:1px solid var(--line);border-radius:10px;padding:9px 12px;}'+
+    '.mx-key .kl{margin:2px 0 3px;} .mx-key .kl b{color:var(--brand-d);} .mx-key .kv{color:var(--muted);font-weight:700;}'+
+    '.mx-bar{display:flex;height:24px;border-radius:7px;overflow:hidden;margin:3px 0 2px;font-size:13px;font-weight:700;}'+
+    '.mx-bar span{display:flex;align-items:center;justify-content:center;color:#fff;white-space:nowrap;overflow:hidden;transition:flex-basis .45s;}'+
+    '.mx-bar .s1{background:#5238c4;} .mx-bar .s2{background:#2f6ba8;} .mx-bar.unk span{background:#ddd8ec;color:#5b5573;}'+
+    '.mx-barlab{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin-bottom:8px;}'+
+    '.mx-edge{display:block;font-size:13px;font-weight:700;color:#2f6ba8;margin-top:2px;}'+
+    '.stepper table.dtable .mx-hl{outline:3px solid var(--brand);outline-offset:-3px;background:var(--brand-soft);}'+
+    '.stepper table.dtable .mx-keep{background:var(--good-soft)!important;color:var(--good)!important;font-weight:800;outline:3px solid #15794a;outline-offset:-3px;}'+
+    '.mx-dim{opacity:.35;}'+
+    '.mx-work{font-family:"SF Mono",Menlo,Consolas,monospace;background:#f6f4fc;border:1px solid var(--line);border-radius:8px;padding:8px 12px;margin-top:10px;font-size:14.5px;line-height:1.7;}'+
+    '.mx-work .wt{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;font-size:13px;font-weight:700;color:var(--muted);}'+
+    '.mx-work .wl{color:#7a7491;} .mx-work .wl.cur{color:var(--brand-d);font-weight:700;}';
+    document.head.appendChild(css);
+  }
+  var R=cfg.rows, C=cfg.cols, two=Array.isArray(cfg.cells[0][0]), ask=cfg.ask;
+  var P1=cfg.p1||'player 1', P2=cfg.p2||'player 2';
+  function cap(s){return s.charAt(0).toUpperCase()+s.slice(1);}
+  function u1(i,j){return two?cfg.cells[i][j][0]:cfg.cells[i][j];}
+  function u2(i,j){return two?cfg.cells[i][j][1]:-cfg.cells[i][j];}
+  function clean(x){return Math.round(x*1e9)/1e9;}
+  function num(x){x=clean(x);var r=Math.round(x*1000)/1000;return (Math.abs(x-r)>1e-6?'≈ ':'')+(r<0?'−':'')+String(Math.abs(r));}
+  function pct(x){x=clean(x*100);var r=Math.round(x*10)/10;return (Math.abs(x-r)>1e-6?'≈ ':'')+String(r)+'%';}
+  function sg(x){return x<0?'(−'+Math.abs(x)+')':String(x);}
+  function coefv(b,v){var a=Math.abs(b);return (a===1?'':String(clean(a)))+v;}
+  function lin(e,v){ // e = {a, b} means a + b*v
+    var a=clean(e.a), b=clean(e.b), s='';
+    if(a!==0) s=(a<0?'−':'')+Math.abs(a);
+    if(b!==0) s+= s===''?(b<0?'−':'')+coefv(b,v):(b<0?' − ':' + ')+coefv(b,v);
+    return s===''?'0':s;
+  }
+  function at(e,x){return clean(e.a+e.b*x);}
+  function plug(e,x){ // "6 − 6 × 0.4 = 3.6"
+    var a=clean(e.a), b=clean(e.b), s;
+    if(b===0) return num(a);
+    var t=(Math.abs(b)===1?'':Math.abs(b)+' × ')+num(x);
+    s=a===0?(b<0?'−':'')+t:num(a)+(b<0?' − ':' + ')+t;
+    return s+' = '+num(at(e,x));
+  }
+  // payoff lines: row i against q (player 1's numbers); column j against p (player 2's numbers, or player 1's when zero-sum)
+  function rowE(i){return {a:u1(i,1),b:u1(i,0)-u1(i,1)};}
+  function rowRaw(i){return sg(u1(i,0))+'q + '+sg(u1(i,1))+'(1 − q)';}
+  function colU(i,j){return two?u2(i,j):u1(i,j);}
+  function colE(j){return {a:colU(1,j),b:colU(0,j)-colU(1,j)};}
+  function colRaw(j){return sg(colU(0,j))+'p + '+sg(colU(1,j))+'(1 − p)';}
+  // solve L = R for v, one algebra move per line
+  function solve(L,Rr,v,lab){
+    var out=[], A=L, B=Rr, flip=false;
+    if(clean(A.b)===clean(B.b)) throw new Error('mixed: lines are parallel, no indifference point');
+    if(A.b<B.b){A=Rr;B=L;flip=true;} // keep the unknown on the side with the bigger coefficient
+    function eq(x,y){return flip?lin(y,v)+' = '+lin(x,v):lin(x,v)+' = '+lin(y,v);}
+    if(clean(B.b)!==0){ var t=(B.b<0?'Add ':'Subtract ')+coefv(B.b,v)+(B.b<0?' to':' from')+' both sides. Now '+v+' is on one side only.';
+      A={a:A.a,b:A.b-B.b}; B={a:B.a,b:0}; out.push({t:t,line:eq(A,B)}); }
+    if(clean(A.a)!==0){ var t2=(A.a>0?'Subtract '+clean(A.a)+' from':'Add '+clean(-A.a)+' to')+' both sides. Now the plain numbers are on the other side.';
+      B={a:B.a-A.a,b:0}; A={a:0,b:A.b}; out.push({t:t2,line:eq(A,B)}); }
+    var k=clean(A.b), n=clean(B.a), val=clean(n/k);
+    out.push({t:k===1?'That is the answer.':'Divide both sides by '+k+'.',line:v+' = '+(k===1?'':n+' ÷ '+k+' = ')+num(val),val:val});
+    if(!(val>0&&val<1)) throw new Error('mixed: '+v+' = '+val+' is not a real mixture');
+    return out;
+  }
+  // ---------- pure check ----------
+  var stable=[];
+  for(var i=0;i<2;i++)for(var j=0;j<2;j++){
+    var ok=two?(u1(i,j)>=u1(1-i,j)&&u2(i,j)>=u2(i,1-j)):(u1(i,j)<=u1(i,1-j)&&u1(i,j)>=u1(1-i,j));
+    if(ok) stable.push([i,j]);
+  }
+  var pure=stable.length>0;
+  var needP=!pure&&(ask==='p'||ask==='pq'||(ask&&ask.cell)), needQ=!pure&&ask!=='p';
+  var r={pure:pure,u1:u1,u2:u2,rows:R,cols:C,pct:pct,num:num};
+  var S=[], st={hl:[],keep:[],work:[],wt:'',qOn:false,pOn:false,q:null,p:null,dim:0,phase:'Check first'};
+  function push(msg,ch){ for(var k in ch) st[k]=ch[k]; var c=JSON.parse(JSON.stringify(st)); c.msg=msg; S.push(c); }
+  function note(k){var n=cfg.notes&&cfg.notes[k]; if(!n) return ''; n=typeof n==='function'?n(r):n; return '<br><span style="color:var(--muted)">'+n+'</span>';}
+  function cellName(i,j){return '('+R[i]+', '+C[j]+')';}
+  function workAdd(line){var w=st.work.slice(); w.push(line); return w;}
+
+  if(pure){
+    var s0=stable[0], vi=s0[0], vj=s0[1];
+    r.V=u1(vi,vj);
+    if(!two){
+      var dom=-1; for(var d=0;d<2;d++){ if(u1(d,0)>u1(1-d,0)&&u1(d,1)>u1(1-d,1)) dom=d; }
+      if(dom>=0){
+        push('<b>First, look for a stable cell. Before any equation.</b><br>'+cap(P1)+' compares his two rows. '+R[dom]+' beats '+R[1-dom]+' in both columns: '+
+          u1(dom,0)+' &gt; '+u1(1-dom,0)+' and '+u1(dom,1)+' &gt; '+u1(1-dom,1)+'.<br><b>So '+R[dom]+' is a dominant strategy. '+cap(P1)+' always plays '+R[dom]+'.</b>'+note('pure'),
+          {hl:[[dom,0],[dom,1]],phase:'Check first'});
+        var lo=u1(dom,0)<=u1(dom,1)?0:1;
+        push(cap(P2)+' knows this. She wants the number <b>low</b>.<br>In the '+R[dom]+' row she picks '+u1(dom,lo)+' rather than '+u1(dom,1-lo)+'. That means <b>'+C[lo]+'</b>.',
+          {hl:[[dom,lo]]});
+      }
+      push('<b>Saddle point test</b> on '+cellName(vi,vj)+' = '+u1(vi,vj)+'.<br>Smallest in its row? The row is '+u1(vi,0)+' and '+u1(vi,1)+'. Yes.<br>Largest in its column? The column is '+u1(0,vj)+' and '+u1(1,vj)+'. Yes.<br><b>A stable cell. Nobody wants to move, so nobody mixes.</b>',
+        {hl:[],keep:[[vi,vj]]});
+    } else {
+      push('<b>First, look for a stable cell.</b> Check '+cellName(vi,vj)+' = '+u1(vi,vj)+', '+u2(vi,vj)+'.<br>'+cap(P1)+' (first numbers): '+u1(vi,vj)+' against '+u1(1-vi,vj)+'. He stays.<br>'+cap(P2)+' (second numbers): '+u2(vi,vj)+' against '+u2(vi,1-vj)+'. She stays.<br><b>A Nash equilibrium in pure strategies. No mixing needed.</b>'+note('pure'),
+        {keep:[[vi,vj]]});
+    }
+    if(cfg.trap){
+      var e0=rowE(0), e1=rowE(1), gap=clean(e0.a-e1.a);
+      push('<b>What if you try the mixing algebra anyway?</b> Call q how often '+P2+' plays '+C[0]+'.<br>'+R[0]+' gives '+lin(e0,'q')+'.',
+        {qOn:true,hl:[[0,0],[0,1]],wt:'Trying the indifference equation',work:[R[0]+': '+rowRaw(0)+' = '+lin(e0,'q')],phase:'The trap'});
+      push(R[1]+' gives '+lin(e1,'q')+'.',{hl:[[1,0],[1,1]],work:workAdd(R[1]+': '+rowRaw(1)+' = '+lin(e1,'q'))});
+      push('Both have the same '+(e0.b<0?'−':'')+coefv(e0.b,'q')+' part, so they move together, like two train rails. They are <b>parallel</b>. '+R[gap>0?0:1]+' is ahead by '+Math.abs(gap)+' whatever q is.<br><b>They never cross. There is no indifference point to find.</b>',
+        {hl:[],work:workAdd(R[0]+' − '+R[1]+' = '+num(gap)+'  for every q')});
+    }
+    if(ask==='value'){ r.ans=r.V; push('<b>The value of the game</b> is the number in the stable cell: <b>'+num(r.V)+'</b>.'+note('result'),{hl:[],keep:[[vi,vj]],qOn:false,work:[],phase:'Answer'}); }
+    else if(ask&&ask.cell){ var hit=stable.some(function(c){return c[0]===ask.cell[0]&&c[1]===ask.cell[1];}); r.ans=hit?1:0;
+      push('Players do not mix, so '+cellName(ask.cell[0],ask.cell[1])+' happens '+(hit?'every time: 100%.':'never: 0%.')+note('result'),{hl:[ask.cell],phase:'Answer'}); }
+    else throw new Error('mixed: a pure game only supports ask value or cell');
+  } else {
+    // ---------- check: no stable cell ----------
+    var lines=[], hl=[];
+    if(!two){
+      for(var a=0;a<2;a++){
+        var mn=Math.min(u1(a,0),u1(a,1)), jj=u1(a,0)<=u1(a,1)?0:1, big=Math.max(u1(0,jj),u1(1,jj));
+        hl.push([a,jj]);
+        lines.push(R[a]+' row: its smallest number is '+mn+' (under '+C[jj]+'). The largest in the '+C[jj]+' column? No, '+big+' is larger.');
+      }
+      push('<b>First, look for a stable cell</b> (a saddle point): smallest in its row <i>and</i> largest in its column.<br>'+lines.join('<br>')+'<br><b>No cell passes. Nobody can stand still, so the players must mix.</b>',{hl:hl});
+    } else {
+      for(var a2=0;a2<2;a2++)for(var b2=0;b2<2;b2++){
+        if(u1(a2,b2)<u1(1-a2,b2)) lines.push(cellName(a2,b2)+': '+P1+' moves to '+R[1-a2]+' ('+u1(1-a2,b2)+' beats '+u1(a2,b2)+').');
+        else lines.push(cellName(a2,b2)+': '+P2+' moves to '+C[1-b2]+' ('+u2(a2,1-b2)+' beats '+u2(a2,b2)+').');
+      }
+      push('<b>First, look for a stable cell</b> where nobody wants to move.<br>'+lines.join('<br>')+'<br><b>Every cell has someone who moves. So the players must mix.</b>',{});
+    }
+    // ---------- q ----------
+    function doQ(){
+      var e0=rowE(0), e1=rowE(1);
+      push('<b>Name the unknown.</b> <b>q = how often '+P2+' plays '+C[0]+'.</b> She plays '+C[1]+' the rest of the time: 1 − q.<br>We find q with the <b>indifference condition</b>: '+P2+'\'s mixture must leave '+P1+' with nothing to prefer between '+R[0]+' and '+R[1]+'.',
+        {qOn:true,hl:[],keep:[],wt:'Finding q, using '+P1+'\'s numbers',work:[],dim:two?2:0,phase:'Finding q'});
+      push(cap(P1)+'\'s average from <b>'+R[0]+'</b>. He gets '+u1(0,0)+' when she plays '+C[0]+' (a share q of the time) and '+u1(0,1)+' when she plays '+C[1]+' (1 − q).'+(two?'<br>'+cap(P1)+' only looks at the <b>first</b> numbers.':''),
+        {hl:[[0,0],[0,1]],work:workAdd(R[0]+': '+rowRaw(0)+' = '+lin(e0,'q'))});
+      push('Same for <b>'+R[1]+'</b>: '+u1(1,0)+' against '+C[0]+', '+u1(1,1)+' against '+C[1]+'.',
+        {hl:[[1,0],[1,1]],work:workAdd(R[1]+': '+rowRaw(1)+' = '+lin(e1,'q'))});
+      push('<b>The indifference condition: set the two equal.</b> At the right q, '+R[0]+' and '+R[1]+' pay '+P1+' the same.',
+        {hl:[],work:workAdd(lin(e0,'q')+' = '+lin(e1,'q'))});
+      var sol=solve(e0,e1,'q');
+      sol.forEach(function(m){ push(m.t,{work:workAdd(m.line)}); });
+      r.q=sol[sol.length-1].val;
+      push('<b>Write it on the grid.</b> '+cap(P2)+' plays '+C[0]+' '+pct(r.q)+' of the time and '+C[1]+' '+pct(1-r.q)+'.'+note('q'),{q:r.q});
+    }
+    function doP(){
+      var f0=colE(0), f1=colE(1);
+      push('<b>Now the other player.</b> <b>p = how often '+P1+' plays '+R[0]+'.</b> He plays '+R[1]+' the rest of the time: 1 − p.<br>His mixture must leave <b>'+P2+'</b> with nothing to prefer between '+C[0]+' and '+C[1]+'.'+
+        (two?'<br>So now read only the <b>second</b> numbers, '+P2+'\'s.':'<br>Her payoff is minus the number in the cell. So she is indifferent exactly when '+P1+'\'s number is the same in both columns.'),
+        {pOn:true,hl:[],wt:'Finding p, using '+(two?P2+'\'s numbers':'the same numbers, column by column'),work:[],dim:two?1:0,phase:'Finding p'});
+      push('Down the <b>'+C[0]+'</b> column: '+colU(0,0)+' when '+P1+' plays '+R[0]+' (a share p), '+colU(1,0)+' when he plays '+R[1]+' (1 − p).',
+        {hl:[[0,0],[1,0]],work:workAdd(C[0]+': '+colRaw(0)+' = '+lin(f0,'p'))});
+      push('Same down the <b>'+C[1]+'</b> column: '+colU(0,1)+' and '+colU(1,1)+'.',
+        {hl:[[0,1],[1,1]],work:workAdd(C[1]+': '+colRaw(1)+' = '+lin(f1,'p'))});
+      push('<b>The indifference condition again: set them equal.</b>',{hl:[],work:workAdd(lin(f0,'p')+' = '+lin(f1,'p'))});
+      var sol=solve(f0,f1,'p');
+      sol.forEach(function(m){ push(m.t,{work:workAdd(m.line)}); });
+      r.p=sol[sol.length-1].val;
+      var diff=(r.q!=null&&Math.abs(r.p-r.q)>1e-9)?'<br><b>Stop and look:</b> p = '+num(r.p)+' but q = '+num(r.q)+'. They are not equal. Never assume they are.':'';
+      push('<b>Write it on the grid.</b> '+cap(P1)+' plays '+R[0]+' '+pct(r.p)+' of the time and '+R[1]+' '+pct(1-r.p)+'.'+diff+note('p'),{p:r.p});
+    }
+    if(needQ) doQ();
+    if(needP) doP();
+    // ---------- result ----------
+    var e0=rowE(0), e1=rowE(1);
+    if(r.q!=null) r.V=at(e0,r.q);
+    if(ask==='q') r.ans=r.q;
+    else if(ask==='p') r.ans=r.p;
+    else if(ask==='pq') r.ans=r.p;
+    else if(ask==='value'){
+      r.ans=r.V;
+      push('<b>The value of the game.</b> Put q back into either row. Both give the same number, so take the easier one.<br>'+cap(P1)+'\'s expected payoff is <b>'+num(r.V)+'</b>.'+note('result'),
+        {hl:[[0,0],[0,1]],wt:'The value of the game',work:[R[0]+': '+plug(e0,r.q)],dim:two?2:0,phase:'Answer'});
+    } else if(ask&&ask.cell){
+      var ci=ask.cell[0], cj=ask.cell[1], pr=ci===0?r.p:1-r.p, qr=cj===0?r.q:1-r.q;
+      r.ans=clean(pr*qr);
+      push('<b>Multiply.</b> The two players mix separately, so the chance of one cell is (chance of its row) × (chance of its column).<br>'+cellName(ci,cj)+': '+(ci===0?'p':'(1 − p)')+' × '+(cj===0?'q':'(1 − q)')+' = '+num(pr)+' × '+num(qr)+' = '+num(r.ans)+' = <b>'+pct(r.ans)+'</b>.'+note('result'),
+        {hl:[],keep:[[ci,cj]],wt:'The chance of the cell '+cellName(ci,cj),work:[(ci===0?'p':'(1 − p)')+' × '+(cj===0?'q':'(1 − q)')+' = '+num(pr)+' × '+num(qr)+' = '+num(r.ans)],dim:0,phase:'Answer'});
+    } else throw new Error('mixed: unknown ask');
+    // ---------- check ----------
+    var chk=[], txt=[];
+    if(r.q!=null){ var v0=at(e0,r.q), v1=at(e1,r.q); if(Math.abs(v0-v1)>1e-6) throw new Error('mixed: q check failed');
+      chk.push(R[0]+': '+plug(e0,r.q)); chk.push(R[1]+': '+plug(e1,r.q));
+      txt.push('With q = '+num(r.q)+', '+R[0]+' and '+R[1]+' both pay '+P1+' an average of '+num(v0)+'. He really is indifferent.'); }
+    if(r.p!=null){ var f0=colE(0), f1=colE(1), w0=at(f0,r.p), w1=at(f1,r.p); if(Math.abs(w0-w1)>1e-6) throw new Error('mixed: p check failed');
+      chk.push(C[0]+': '+plug(f0,r.p)); chk.push(C[1]+': '+plug(f1,r.p));
+      txt.push('With p = '+num(r.p)+', '+C[0]+' and '+C[1]+' both give '+num(w0)+'. '+cap(P2)+' really is indifferent.'); }
+    push('<b>Check: plug the answer back in.</b><br>'+txt.join('<br>')+' ✓'+note('check'),{hl:[],wt:'Check',work:chk,dim:0,phase:'Check'});
+  }
+  // ---------- verify against the expected answer ----------
+  if(cfg.expect!==undefined){ var tol=cfg.tol||0.006;
+    if(!(Math.abs(r.ans-cfg.expect)<=tol)) throw new Error('mixed: computed '+r.ans+' but expected '+cfg.expect); }
+
+  // ---------- render ----------
+  var root=document.createElement('div'); root.className='stepper mx';
+  root.innerHTML='<div class="sbar"><span class="sround"></span><span class="sphase"></span></div>'+
+    '<div class="mx-top"><div class="tscroll"><table class="dtable"></table></div><div class="mx-key"></div></div>'+
+    '<div class="mx-work"></div><div class="msg"></div>'+
+    '<div class="nav"><button class="bk" type="button">&larr; Back</button><button class="nx" type="button">Next &rarr;</button></div>';
+  var tbl=root.querySelector('table'), key=root.querySelector('.mx-key'), work=root.querySelector('.mx-work'), msg=root.querySelector('.msg'),
+      bk=root.querySelector('.bk'), nx=root.querySelector('.nx'), step=0, N=S.length;
+  function has(list,i,j){return list.some(function(c){return c[0]===i&&c[1]===j;});}
+  function bar(val,l1,l2,on){
+    if(val==null) return '<div class="mx-bar unk"><span style="flex-basis:50%">'+(on?'?':'')+'</span><span style="flex-basis:50%">'+(on?'?':'')+'</span></div><div class="mx-barlab"><span>'+l1+'</span><span>'+l2+'</span></div>';
+    return '<div class="mx-bar"><span class="s1" style="flex-basis:'+(val*100)+'%">'+(val>=0.12?pct(val):'')+'</span><span class="s2" style="flex-basis:'+((1-val)*100)+'%">'+(1-val>=0.12?pct(1-val):'')+'</span></div>'+
+      '<div class="mx-barlab"><span>'+l1+' '+pct(val)+'</span><span>'+l2+' '+pct(1-val)+'</span></div>';
+  }
+  function render(){
+    var atEnd=step>=N, s=S[Math.min(step,N-1)];
+    var h='<tr><th></th>'+C.map(function(c,j){
+      var tag=s.qOn?'<span class="mx-edge">'+(s.q==null?(j===0?'q':'1 − q'):pct(j===0?s.q:1-s.q))+'</span>':'';
+      return '<th>'+c+tag+'</th>';}).join('')+'</tr>';
+    for(var i=0;i<2;i++){
+      var tag=s.pOn?'<span class="mx-edge">'+(s.p==null?(i===0?'p':'1 − p'):pct(i===0?s.p:1-s.p))+'</span>':'';
+      h+='<tr><td class="lab">'+R[i]+tag+'</td>';
+      for(var j=0;j<2;j++){
+        var cl=has(s.keep,i,j)?'mx-keep':(has(s.hl,i,j)?'mx-hl':'');
+        var t;
+        if(two){ var a=String(u1(i,j)), b=String(u2(i,j)); if(s.dim===2)b='<span class="mx-dim">'+b+'</span>'; if(s.dim===1)a='<span class="mx-dim">'+a+'</span>'; t=a+', '+b; }
+        else t=String(u1(i,j));
+        t=t.replace(/-/g,'−');
+        h+='<td class="'+cl+'">'+t+(cl==='mx-keep'?' ✓':'')+'</td>';
+      }
+      h+='</tr>';
+    }
+    tbl.innerHTML=h;
+    var k='<div class="kl"><b>q</b> = how often '+P2+' plays <b>'+C[0]+'</b>'+(s.q!=null?'':' <span class="kv">'+(s.qOn?'?':'')+'</span>')+'</div>'+bar(s.q,C[0],C[1],s.qOn);
+    if(needP) k+='<div class="kl"><b>p</b> = how often '+P1+' plays <b>'+R[0]+'</b>'+(s.p!=null?'':' <span class="kv">'+(s.pOn?'?':'')+'</span>')+'</div>'+bar(s.p,R[0],R[1],s.pOn);
+    if(!needP&&!needQ&&!s.qOn) k='<div class="kl">'+cap(P1)+' picks the row and wants the number <b>high</b>.</div><div class="kl">'+cap(P2)+' picks the column and wants it <b>low</b>.</div>';
+    if(!two&&(needP||needQ)) k+='<div class="kl" style="color:var(--muted);font-size:13px">One number per cell: '+P1+'\'s payoff. '+cap(P2)+' wants it low.</div>';
+    key.innerHTML=k;
+    if(s.work.length){ work.style.display=''; work.innerHTML='<div class="wt">'+s.wt+'</div>'+s.work.map(function(l,x){return '<div class="wl'+(x===s.work.length-1&&!atEnd?' cur':'')+'">'+l+'</div>';}).join(''); }
+    else work.style.display='none';
+    root.querySelector('.sround').innerHTML=atEnd?'<b>Done</b>':'<b>Step '+(step+1)+' of '+N+'</b>';
+    root.querySelector('.sphase').textContent=atEnd?'':s.phase;
+    msg.className='msg';
+    if(atEnd){ msg.classList.add('good'); var f=cfg.finalMsg; msg.innerHTML=typeof f==='function'?f(r):(f||'<b>Answer: '+(ask&&ask.cell||ask==='value'?'':'')+num(r.ans)+'</b>'); }
+    else msg.innerHTML=s.msg;
+    bk.disabled=step===0; nx.disabled=atEnd; nx.textContent=step===N-1?'Finish →':'Next →';
+  }
+  nx.onclick=function(){if(step<N){step++;render();}};
+  bk.onclick=function(){if(step>0){step--;render();}};
+  render();
+  root.result=r;
+  return root;
+}
+
+/* ---------- animated explanations (built on load, hidden inside .exp until Submit) ---------- */
+var FORGIVE_ONE=function(r,past){return past.filter(function(m){return m==='D';}).length>=2?'D':'C';};
+var ANIM={
+3:{type:'rounds',rounds:10,unit:'Round',show:[1,[2,9],10],words:{C:'Cooperate',D:'Defect'},names:['You','Other player'],
+ lines:[
+  {label:'Best reply: defect in rounds 1 and 10',me:'DCCCCCCCCD',her:FORGIVE_ONE,tags:{1:'defection 1: forgiven',10:'defection 2: no round 11'}},
+  {label:'The trap: defect in round 10 only',me:'CCCCCCCCCD',her:FORGIVE_ONE,tags:{10:'his forgiveness is never used'}}],
+ steps:[
+  {reveal:[],focus:[],text:"Two words first. In a <b>prisoner&rsquo;s dilemma</b>, both players do better if both cooperate, but each one alone does better by defecting. A <b>best response</b> (a best reply) is your best choice, given what the other player does.<br>His rule: he cooperates until you have defected <b>two</b> times. So your first defection is <b>forgiven</b>."},
+  {reveal:[1],focus:[1],text:"<b>Round 1.</b> He starts by cooperating. The best reply defects here. You get the big one-round payoff from defecting.<br>This is defection number one. He forgives it, so it costs you nothing later."},
+  {reveal:[[2,9]],focus:[[2,9]],text:"<b>Rounds 2 to 9.</b> You cooperate. He has seen only one defection, so he keeps cooperating too.<br>Nine rounds of cooperation are still ahead of you after round 1. That is why round 1 is the best place for the forgiven defection."},
+  {reveal:[10],focus:[10],text:"<b>Round 10, the last round.</b> Defect again. This is defection number two, so he would switch to always defecting.<br>But he could only punish you in round 11. <b>There is no round 11.</b> So this defection is free too."},
+  {reveal:[],focus:[1,10],text:"Now compare the two lines. Both defect in round 10. Only the best reply also takes the defection he was willing to forgive, in round 1.<br><b>A forgiving opponent gives you two free defections, not one.</b>"}],
+ finalMsg:"<b>Answer: defect in round 1 and 10, cooperate in rounds 2&ndash;9.</b><br><b>The rule in one line:</b> a defection is free when it cannot change what he does next. Count every free one: the one he forgives, and the last round.<br><br><b>Why each other option tempts:</b><br>&bull; <b>Cooperate in rounds 1&ndash;9, defect in round 10</b> is the trap. Defecting only in round 10 does pay, which is why it looks right. It just throws away the early defection he was willing to forgive. It counts one too few.<br>&bull; <b>Cooperate every round</b> leaves both free defections unused.<br>&bull; The option with many defections passes two defections by round 3. From then on he defects in every round, so you lose the cooperation.<br>&bull; <b>Randomize</b> gives up control. A random defection can land in the middle and start his punishment early.<br><br>Every paper has one repeated-game question like this one."},
+
+5:{type:'grid',rows:['Up','Middle','Down'],cols:['Left','Center','Right'],
+ cells:[[[9,8],[7,9],[4,7]],[[8,3],[8,1],[5,4]],[[10,6],[7,6],[2,7]]],
+ nash:true,noalive:true,
+ steps:[
+  ['ul','col',0,'A <b>best reply</b> is the best choice against what the other player does. We underline Player 1&rsquo;s best reply in every column. Player 1 only looks at the first numbers.'],
+  ['ul','col',1],
+  ['ul','col',2],
+  ['ul','row',0,'Now Player 2. She only looks at the second numbers, row by row.'],
+  ['ul','row',1],
+  ['ul','row',2,'Now look for a cell where <b>both</b> numbers are underlined.']],
+ finalMsg:"<b>Answer: 5.</b> Only one cell has both numbers underlined: <b>(Middle, Right)</b>, with payoff profile (5, 4).<br>A <b>Nash equilibrium</b> is a pair of choices where neither player gains by changing on his own. <b>Pure</b> means each player picks one action, not a mixture. A <b>payoff profile</b> lists what each player gets, Player 1 first. Player 1 gets <b>5</b>.<br><br><b>The rule in one line:</b> underline each player&rsquo;s best replies. A cell with both numbers underlined is a pure Nash equilibrium. Then read the number for the player the question asks about.<br><br><b>The trap is 4.</b> That is Player 2&rsquo;s payoff in the very same cell. Read the question again before you answer: <i>which player is it asking about?</i><br>The other options are numbers you can see in the grid: 10 and 8 are Player 1&rsquo;s best replies against Left and Center, but those cells are not stable for Player 2. 7 is Player 1&rsquo;s number in two cells that are not stable either.<br><br><b>Worth knowing:</b> this same matrix comes back as 2025 A question 6, with Middle and Down swapped over. There the question asks for <i>Player 2&rsquo;s</i> payoff, which is 4. Same game, same profile (5, 4), but a different half of it is asked for. The professor reuses this grid."},
+
+6:{type:'nl',expect:12,
+ groups:[{kind:'range',lo:1,hi:67,share:0.5,name:'the random half'},{kind:'point',value:1,share:0.5,name:'the half who play 1'}],
+ traps:[
+  {opt:'34',at:'group:0',short:'the random half&rsquo;s average, and you stopped',text:"you found the average of the random half and stopped. You forgot the other half and the two-thirds."},
+  {opt:'22',at:'twoThirdsGroup:0',short:'two-thirds of the random half only',text:"(2/3) &times; 34 = 22.7, and 22 is the nearest option. You forgot the other half, who all play 1 and pull the average down."},
+  {opt:'18',at:'crowd',short:'the right crowd average, before two-thirds',text:"you got the crowd average right at 17.5, then forgot the two-thirds."},
+  {opt:'1',at:1,short:'the equilibrium, not the best reply',text:"you answered the equilibrium question instead of the best reply question. Equilibrium is what happens if <i>everyone</i> reasons all the way down. Here you are told exactly what the others do, so you reply to <i>them</i>."}],
+ finalMsg:"<b>Best reply: 12.</b> The random half averages (1 + 67) &divide; 2 = 34. The other half all play 1. Head count check: (100 &times; 34 + 100 &times; 1) &divide; 200 = 3500 &divide; 200 = 17.5. Two-thirds of 17.5 is 11.67, which rounds to 12.<br><br><b>The rule in one line:</b> find the average of the whole crowd first, then take two-thirds of it, once, then round. Use the two ends they give you, not 33 or 35."},
+
+10:{type:'mixed',rows:['Heads','Tails'],cols:['Heads','Tails'],cells:[[1,-1],[-1,1]],ask:'pq',expect:0.5,
+ finalMsg:"<b>Answer: each player plays heads and tails with 50% probability.</b> Both p and q come out at one half.<br><b>The rule in one line:</b> when no cell is stable, the equilibrium is mixed. Each player mixes so the other has nothing to gain by leaning one way.<br><br><b>The trap is &ldquo;There is no Nash equilibrium&rdquo;.</b> That is false. What is true is that there is no <b>pure</b> equilibrium. That is a different sentence. Every finite game has at least one Nash equilibrium once mixed strategies are allowed. That is Nash&rsquo;s theorem.<br><br><b>And watch the option about taking turns.</b> Heads, tails, heads, tails feels like mixing, but a pattern is not randomness. An opponent reads it after four rounds. Randomising means unpredictable, not just varied.<br>&ldquo;Always heads against always tails&rdquo; fails the stable-cell test from step 1. And 75% heads is not an equilibrium: Player 2 would then always play tails."},
+
+13:{type:'mixed',rows:['Top','Down'],cols:['Left','Right'],cells:[[3,0],[0,6]],ask:{cell:[0,1]},expect:2/9,
+ finalMsg:"<b>Answer: 22%.</b> P(Top, Right) = p &times; (1 &minus; q) = (2/3) &times; (1/3) = 2/9 = 22.2%, which rounds to 22%.<br>22% is how often this exact pair of choices comes up. It is not how often Top is played on its own. Top on its own is far more common.<br><br><b>The rule in one line:</b> the chance of a <b>cell</b> needs one probability from each player, multiplied. Never multiply two probabilities that belong to the same player.<br><br><b>The trap is 44%.</b> The cell is <b>mismatched</b>: Top belongs to Player 1, Right belongs to Player 2. Right happens with 1 &minus; q = 1/3, not q = 2/3. Multiply 2/3 by 2/3 and you get 4/9 = 44.4%, which sits on the option list waiting for you. Before you multiply, say out loud which probability belongs to which player.<br>11% is 1/9, the same mismatch made twice. 33% is just 1/3, one probability on its own with no multiplication at all."},
+
+14:{type:'mixed',rows:['Top','Down'],cols:['Left','Right'],cells:[[3,0],[0,6]],ask:'value',expect:2,
+ finalMsg:"<b>Answer: 2.</b> This number has a name: the <b>value of the game</b>. It is what Player 1 expects to win on average, once both players use their equilibrium mixtures. Top gives 3 &times; (2/3) + 0 &times; (1/3) = 2. Down gives 0 &times; (2/3) + 6 &times; (1/3) = 2. Both rows agree. That agreement <i>is</i> what the equilibrium mixture means. If your two rows disagree, your q is wrong. Use this as a free check in the exam.<br><br><b>The rule in one line:</b> find q with the indifference condition, then average either row against it.<br><br><b>Why this pair matters:</b> questions 13 and 14 sit on one matrix and one indifference calculation. Get p and q wrong once and you lose both. That is 14 points, the biggest single block of risk on the exam.<br><br><b>Do not learn a shortcut by heart.</b> This matrix has the shape a, 0 / 0, b, which gives p = q = b/(a+b) and value ab/(a+b). Five of the seven past matrices look like that. Two do not: 2025 C puts the zeros on the other diagonal, and the practice exam has no zeros at all. Work it out every time."}
+};
+function buildAnim(a){
+  if(a.type==='grid') return buildGridStepper(a);
+  if(a.type==='rounds') return buildRoundsStepper(a);
+  if(a.type==='nl') return buildNumberLineStepper(a);
+  if(a.type==='mixed') return buildMixedStepper(a);
+  throw new Error('unknown anim type '+a.type);
+}
+
 /* ---------- shared data blocks ---------- */
 var M5 = '<div class="tscroll"><table class="dtable" style="max-width:430px;margin:0 auto">'
 + '<tr><th></th><th colspan="3">Player 2</th></tr>'
@@ -181,7 +848,7 @@ var MZS = '<div class="tscroll"><table class="dtable" style="max-width:330px;mar
 + '<tr><td class="lab">Down</td><td>0</td><td>6</td></tr>'
 + '</table></div><p class="given">Zero-sum game: what one player wins, the other loses. So one number per cell is enough, and that number is Player 1&rsquo;s payoff. Player 1 picks the row and wants that number high. Player 2 picks the column and wants it low.</p>';
 
-var TREE = '<div class="tscroll"><div class="svg-wrap"><svg viewBox="0 0 640 268" role="img" aria-label="A six-node sequential game drawn as a chain running left to right. The players alternate: A, then B, then A, then B, then A, then B. At each of A\'s nodes the branch named N leaves the chain upwards to a leaf; at each of B\'s nodes the branch named s leaves the chain downwards to a leaf. The branches S1, n2, S3, n4 and S5 continue along the chain. The upper leaves, left to right, are nineteen and unknown, nineteen and two, and nine and twenty. The lower leaves, left to right, are twenty-three and fifteen, unknown and nineteen, and unknown and one. The final branch n6 leads right to the leaf four and five.">'
+var TREE = '<div class="tscroll"><div class="svg-wrap"><svg viewBox="0 0 640 268" role="img" aria-label="A six-node sequential game drawn as a chain running left to right. The players alternate: A, then B, then A, then B, then A, then B. At each of A\'s nodes the branch named Stop leaves the chain upwards to a leaf; at each of B\'s nodes the branch named Stop leaves the chain downwards to a leaf. The branches named Go on continue along the chain. The upper leaves, left to right, are nineteen and unknown, nineteen and two, and nine and twenty. The lower leaves, left to right, are twenty-three and fifteen, unknown and nineteen, and unknown and one. B\'s last Go on branch leads right to the leaf four and five.">'
 + '<g stroke="#8b83a8" stroke-width="1.8" fill="none">'
 + '<line x1="50" y1="140" x2="135" y2="140"/><line x1="135" y1="140" x2="220" y2="140"/>'
 + '<line x1="220" y1="140" x2="305" y2="140"/><line x1="305" y1="140" x2="390" y2="140"/>'
@@ -205,11 +872,11 @@ var TREE = '<div class="tscroll"><div class="svg-wrap"><svg viewBox="0 0 640 268
 + '<text x="135" y="243">(23, 15)</text><text x="305" y="243">(?, 19)</text><text x="475" y="243">(?, 1)</text>'
 + '<text x="600" y="145">(4, 5)</text></g>'
 + '<g font-family="-apple-system,Segoe UI,Arial" font-size="11.5" font-weight="600" fill="#6f6886">'
-+ '<text x="38" y="104" text-anchor="end">N1</text><text x="208" y="104" text-anchor="end">N3</text><text x="378" y="104" text-anchor="end">N5</text>'
-+ '<text x="147" y="186">s2</text><text x="317" y="186">s4</text><text x="487" y="186">s6</text>'
-+ '<text x="92" y="130" text-anchor="middle">S1</text><text x="177" y="130" text-anchor="middle">n2</text>'
-+ '<text x="262" y="130" text-anchor="middle">S3</text><text x="347" y="130" text-anchor="middle">n4</text>'
-+ '<text x="432" y="130" text-anchor="middle">S5</text><text x="516" y="130" text-anchor="middle">n6</text>'
++ '<text x="42" y="104" text-anchor="end">Stop</text><text x="212" y="104" text-anchor="end">Stop</text><text x="382" y="104" text-anchor="end">Stop</text>'
++ '<text x="143" y="186">Stop</text><text x="313" y="186">Stop</text><text x="483" y="186">Stop</text>'
++ '<text x="92" y="130" text-anchor="middle">Go on</text><text x="177" y="130" text-anchor="middle">Go on</text>'
++ '<text x="262" y="130" text-anchor="middle">Go on</text><text x="347" y="130" text-anchor="middle">Go on</text>'
++ '<text x="432" y="130" text-anchor="middle">Go on</text><text x="516" y="130" text-anchor="middle">Go on</text>'
 + '</g></svg>'
 + '<div class="cap">The first number in each leaf is Player A&rsquo;s payoff, the second is Player B&rsquo;s. The letter in each node is the player who chooses there.</div></div></div>'
 + '<div class="warnbox"><b>An honest note about this tree.</b> In the real paper this tree is a picture, so a computer cannot read its numbers out of the file. This drawing was rebuilt from the written solution, which walks the game one node at a time. That walkthrough names every node, every branch, and every payoff the players actually compare. Three leaf payoffs are shown as <b>?</b> because the solution never gives them. No player ever compares those three, so the question still has one clear answer without them. That was checked in code before this page was published. The drawing is ours. The game is the paper&rsquo;s.</div>';
@@ -277,7 +944,7 @@ var ITEMS = [
  q:"What will be the payoff of Player A in the backward-induction equilibrium of the sequential game shown above? (The first number in each leaf of the tree describes the payoff of Player A, and the second number describes the payoff of Player B. The letter in each node indicates the active player who makes a choice at that node.)",
  opts:["23","19","13","9","7"],
  correct:0,
- exp:"<b>23.</b> Start at the far end and walk backwards. At every node, look only at the payoff of the player who is choosing there.<br><br>1. <b>Last B node.</b> n6 gives B 5, s6 gives B 1. B takes <b>n6</b> &rarr; (4, 5).<br>2. <b>A node before it.</b> N5 gives A 9; S5 leads into that B node, where A ends with 4. A takes <b>N5</b> &rarr; (9, 20).<br>3. <b>B node before that.</b> n4 leads to (9, 20), so B gets 20; s4 gives B 19. B takes <b>n4</b>.<br>4. <b>A node before that.</b> N3 gives A 19; S3 leads on, where A ends with 9. A takes <b>N3</b> &rarr; (19, 2).<br>5. <b>First B node.</b> n2 leads to (19, 2), so B gets 2; s2 gives B 15. B takes <b>s2</b> &rarr; (23, 15).<br>6. <b>The first node, where A chooses.</b> N1 gives A 19; S1 leads to B&rsquo;s node where B will play s2, giving A 23. A takes <b>S1</b>.<br><br>The path is S1 then s2, and A receives <b>23</b>.<br><br><b>Two traps live in this question.</b> First, in line 6 above, A has to look past his own move to what B does next. S1 does not lead straight to a payoff. It leads to B&rsquo;s choice. Second, two of the wrong options are numbers you can see in the tree. <b>19</b> is what A gets by taking N1 at the very first node. <b>9</b> is the leaf A reaches if he walks one node too far. Both come from stopping early, which is exactly what a long chain tempts you to do."},
+ exp:"<b>23.</b> Start at the far end and walk backwards. This is <b>backward induction</b>. At every node, look only at the payoff of the player who is choosing there. Each player has two moves: <b>Stop</b> takes a leaf now, <b>Go on</b> passes the turn along the chain.<br><br><b>1. B&rsquo;s last turn.</b> Go on gives B 5. Stop gives B 1. B takes <b>Go on</b> &rarr; (4, 5).<br><br><b>2. A&rsquo;s last turn.</b> Stop gives A 9. Go on leads to B&rsquo;s last turn, where A ends with 4. A takes <b>Stop</b> &rarr; (9, 20).<br><br><b>3. B&rsquo;s middle turn.</b> Go on leads to (9, 20), so B gets 20. Stop gives B 19. B takes <b>Go on</b> &rarr; (9, 20).<br><br><b>4. A&rsquo;s middle turn.</b> Stop gives A 19. Go on leads on, where A ends with 9. A takes <b>Stop</b> &rarr; (19, 2).<br><br><b>5. B&rsquo;s first turn.</b> Go on leads to (19, 2), so B gets 2. Stop gives B 15. B takes <b>Stop</b> &rarr; (23, 15).<br><br><b>6. A&rsquo;s first turn, the start of the game.</b> Stop gives A 19. Go on leads to B&rsquo;s first turn, where B will stop, giving A 23. A takes <b>Go on</b>.<br><br><b>The path.</b> A goes on, then B stops at once. A receives <b>23</b>. The rule in one line: solve the last choice first, carry its result back, and let each player compare only his own numbers.<br><br><b>Two traps live in this question.</b> First, in step 6, A has to look past his own move to what B does next. Go on does not lead straight to a payoff. It leads to B&rsquo;s choice. Second, two of the wrong options are numbers you can see in the tree. <b>19</b> is what A gets by stopping at the very first node. <b>9</b> is the leaf A reaches if he walks one node too far. Both come from stopping early, which is exactly what a long chain tempts you to do."},
 
 {t:"q", n:8, tag:"2025 B final",
  q:"Which of the following statements about dominance-solvable games is true?",
@@ -365,7 +1032,8 @@ var blocks = {};
       (item.tag ? '<span class="examtag' +
         (item.tag.indexOf("redrawn") !== -1 ? ' redrawn' : '') + '">' + item.tag + '</span>' : '') +
       '</div><div class="qtext">' + item.q + '</div>';
-    var exp = document.createElement("div"); exp.className = "exp"; exp.innerHTML = item.exp;
+    var exp = document.createElement("div"); exp.className = "exp";
+    if(ANIM[item.n]){ exp.appendChild(buildAnim(ANIM[item.n])); } else { exp.innerHTML = item.exp; }
     var btns = [];
     item.opts.forEach(function(opt, oi){
       var b = document.createElement("button");
@@ -546,6 +1214,41 @@ paintClock(); updateProgress();
     });
     mo.observe(res, {attributes: true, attributeFilter: ['class']});
   }
+})();
+</script>
+<script>
+/* TSTEP: shared step-by-step player for explanations */
+(function(){
+function trim(s){return s.trim();}
+function lab(h){var m=h.match(/^\s*(?:<span[^>]*>)?\s*<b>([^<]{1,60})<\/b>/i);return m?m[1].replace(/[.:\s]+$/,''):'';}
+function build(html){
+  var parts=html.split(/(?:<br\s*\/?>\s*){2,}/i).map(trim).filter(Boolean);
+  if(parts.length<3) parts=html.split(/<br\s*\/?>/i).map(trim).filter(Boolean);
+  if(parts.length<2) return null;
+  var head=parts[0], steps=parts.slice(1), cur=1, N=steps.length;
+  var root=document.createElement('div'); root.className='stepper tstep';
+  root.innerHTML='<div class="thead">'+head+'</div><div class="sbar"><span class="tlab"></span><span>Step <b class="tn">1</b> of '+N+'</span></div><div class="tblocks"></div><div class="nav"><button class="bk" type="button">← Back</button><button class="nx" type="button">Next →</button><button class="rs" type="button">Show all</button></div>';
+  var box=root.querySelector('.tblocks');
+  var els=steps.map(function(h){var d=document.createElement('div');d.className='tb';d.innerHTML=h;box.appendChild(d);return d;});
+  var bk=root.querySelector('.bk'),nx=root.querySelector('.nx'),rs=root.querySelector('.rs'),tn=root.querySelector('.tn'),tl=root.querySelector('.tlab');
+  function render(){
+    els.forEach(function(d,i){d.className='tb'+(i<cur?' on':'')+(i===cur-1?' cur':'');});
+    tn.textContent=cur; tl.textContent=lab(steps[cur-1])||'';
+    bk.disabled=cur<=1; nx.disabled=cur>=N; rs.style.display=cur>=N?'none':'';
+  }
+  bk.onclick=function(){if(cur>1){cur--;render();}};
+  nx.onclick=function(){if(cur<N){cur++;render();}};
+  rs.onclick=function(){cur=N;render();};
+  render(); return root;
+}
+window.buildTextStepper=build;
+window.addEventListener('load',function(){
+  Array.prototype.forEach.call(document.querySelectorAll('.exp'),function(e){
+    if(e.querySelector('.stepper')||e.getAttribute('data-ts'))return;
+    e.setAttribute('data-ts','1');
+    var s=build(e.innerHTML); if(s){e.innerHTML='';e.appendChild(s);}
+  });
+});
 })();
 </script>
 </body></html>

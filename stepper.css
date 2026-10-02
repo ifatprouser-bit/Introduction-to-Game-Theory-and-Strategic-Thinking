@@ -1,0 +1,21 @@
+.stepper{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px;margin:14px 0;}
+.stepper .sbar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px;font-size:14px;color:var(--muted);}
+.stepper .sbar b{color:var(--brand-d);}
+.stepper table.dtable td,.stepper table.dtable th{transition:background .25s,color .25s;}
+.stepper .cmpA{outline:3px solid #d2453f;outline-offset:-3px;}
+.stepper .cmpB{outline:3px solid #15794a;outline-offset:-3px;}
+.stepper .msg{border-radius:10px;padding:11px 14px;margin:10px 0 4px;font-size:15px;line-height:1.55;background:var(--brand-soft);min-height:48px;}
+.stepper .msg.good{background:var(--good-soft);} .stepper .msg.bad{background:var(--bad-soft);}
+.stepper .picks{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 2px;}
+.stepper .picks button{background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:9px 16px;font-size:16px;font-weight:700;cursor:pointer;color:var(--ink);}
+.stepper .picks button:hover{border-color:var(--brand);background:var(--brand-soft);}
+.stepper .picks button.no{border-color:var(--bad);background:var(--bad-soft);}
+.stepper .nav{display:flex;gap:10px;margin-top:12px;align-items:center;}
+.stepper .nav button{border:none;border-radius:9px;padding:9px 18px;font-weight:700;font-size:15px;cursor:pointer;}
+.stepper .nav .nx{background:var(--brand);color:#fff;} .stepper .nav .bk{background:var(--brand-soft);color:var(--brand-d);}
+.stepper .nav button:disabled{opacity:.4;cursor:default;}
+.stepper .nav .rs{background:none;color:var(--muted);font-weight:600;font-size:13.5px;margin-left:auto;text-decoration:underline;}
+.stepper .alive{font-weight:700;color:var(--brand-d);}
+.stepper .tabs{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;}
+.stepper .tabs button{border:1.5px solid var(--line);background:#fff;border-radius:9px;padding:7px 14px;font-weight:700;cursor:pointer;color:var(--ink);font-size:14px;}
+.stepper .tabs button.on{background:var(--brand);color:#fff;border-color:var(--brand);}

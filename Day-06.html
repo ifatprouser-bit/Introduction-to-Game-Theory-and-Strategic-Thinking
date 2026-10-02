@@ -72,10 +72,36 @@ audio{width:100%;margin-top:6px;}
   .reveal,.exp{display:block!important;} .preq{border-color:#ccc;}
   .qblock{break-inside:avoid;} .panel{break-inside:avoid;}
 }
+.stepper{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px;margin:14px 0;}
+.stepper .sbar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px;font-size:14px;color:var(--muted);}
+.stepper .sbar b{color:var(--brand-d);}
+.stepper table.dtable td,.stepper table.dtable th{transition:background .25s,color .25s;}
+.stepper .cmpA{outline:3px solid #d2453f;outline-offset:-3px;}
+.stepper .cmpB{outline:3px solid #15794a;outline-offset:-3px;}
+.stepper .msg{border-radius:10px;padding:11px 14px;margin:10px 0 4px;font-size:15px;line-height:1.55;background:var(--brand-soft);min-height:48px;}
+.stepper .msg.good{background:var(--good-soft);} .stepper .msg.bad{background:var(--bad-soft);}
+.stepper .picks{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 2px;}
+.stepper .picks button{background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:9px 16px;font-size:16px;font-weight:700;cursor:pointer;color:var(--ink);}
+.stepper .picks button:hover{border-color:var(--brand);background:var(--brand-soft);}
+.stepper .picks button.no{border-color:var(--bad);background:var(--bad-soft);}
+.stepper .nav{display:flex;gap:10px;margin-top:12px;align-items:center;}
+.stepper .nav button{border:none;border-radius:9px;padding:9px 18px;font-weight:700;font-size:15px;cursor:pointer;}
+.stepper .nav .nx{background:var(--brand);color:#fff;} .stepper .nav .bk{background:var(--brand-soft);color:var(--brand-d);}
+.stepper .nav button:disabled{opacity:.4;cursor:default;}
+.stepper .nav .rs{background:none;color:var(--muted);font-weight:600;font-size:13.5px;margin-left:auto;text-decoration:underline;}
+.stepper .alive{font-weight:700;color:var(--brand-d);}
+.stepper .tabs{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;}
+.stepper .tabs button{border:1.5px solid var(--line);background:#fff;border-radius:9px;padding:7px 14px;font-weight:700;cursor:pointer;color:var(--ink);font-size:14px;}
+.stepper .tabs button.on{background:var(--brand);color:#fff;border-color:var(--brand);}
+.tstep .thead{font-size:15px;line-height:1.55;margin-bottom:6px;}
+.tstep .tb{display:none;padding:10px 13px;margin:8px 0;border-left:3px solid var(--line);border-radius:6px;font-size:15px;line-height:1.6;color:#555;}
+.tstep .tb.on{display:block;} .tstep .tb.cur{border-left-color:var(--brand);background:var(--brand-soft);color:var(--ink);}
+.tstep .tlab{font-weight:700;color:var(--brand-d);}
+@media print{.tstep .tb{display:block!important;color:#000;} .tstep .nav{display:none!important;}}
 </style>
 </head><body><div class="wrap">
 <a class="home" href="index.html">&larr; All 14 days</a>
-<div class="crumb">Day 6 of 14 &middot; Learn</div>
+<div class="crumb">Day 5 of 14 &middot; Learn</div>
 <h1>Mixed Strategies I: making your opponent indifferent</h1>
 <p class="lede">The professor says out loud that you may need this calculation in the exam. About 21% of the marks live here.</p>
 
@@ -187,8 +213,8 @@ NOA: The try-it problem. Getting better at defending one side can make the goali
 <div class="tscroll">
 <table class="dtable">
 <tr><th></th><th>Goalie dives Left</th><th>Goalie dives Right</th></tr>
-<tr><td class="lab">Kicker goes Left &nbsp;<i>(x)</i></td><td>58</td><td>95</td></tr>
-<tr><td class="lab">Kicker goes Right &nbsp;<i>(1&minus;x)</i></td><td>93</td><td>70</td></tr>
+<tr><td class="lab">Kicker goes Left</td><td>58</td><td>95</td></tr>
+<tr><td class="lab">Kicker goes Right</td><td>93</td><td>70</td></tr>
 </table></div>
 <p class="given">First check that no pair of pure strategies is stable. Whatever cell you pick, one player wants to move. So mixing is needed.</p>
 
@@ -228,34 +254,17 @@ NOA: The try-it problem. Getting better at defending one side can make the goali
     <text x="246" y="98" fill="#d2453f">the crossing</text>
   </g>
   <g font-size="10.5" font-family="-apple-system,Segoe UI,Arial" fill="#6f6886">
-    <text x="238.7" y="232" text-anchor="middle" fill="#d2453f" font-weight="600">x here</text>
+    <text x="238.7" y="232" text-anchor="middle" fill="#d2453f" font-weight="600">the right mix</text>
     <text x="20" y="115" fill="#6f6886" transform="rotate(-90 20,115)" text-anchor="middle">kicker's chance of scoring</text>
-    <text x="290" y="245" text-anchor="middle">x = how often the kicker goes Left</text>
+    <text x="290" y="245" text-anchor="middle">how often the kicker aims left</text>
   </g>
 </svg>
 <div class="cap">Two straight lines: the kicker's scoring chance against each of the goalie's two choices. Anywhere except the crossing, one line sits below the other. The goalie just picks that one. Only where they meet does the goalie's choice stop mattering.</div>
 </div>
 
 <p class="partlab">Worked example</p>
-<div class="question">Use the penalty-kick table above. What proportion <i>x</i> of his kicks should the kicker send to the left? And what scoring rate does that guarantee him?</div>
-
-<div class="step"><div class="stepn">1</div><div class="stepbody"><div class="lab">Write the kicker's payoff if the goalie dives Left.</div>
-He scores 58 when he kicks left, which is a share <i>x</i> of the time. He scores 93 when he kicks right, a share 1&minus;<i>x</i> of the time.
-<br><span class="math">58x + 93(1 − x) = 93 − 35x</span></div></div>
-
-<div class="step"><div class="stepn">2</div><div class="stepbody"><div class="lab">Write the kicker's payoff if the goalie dives Right.</div>
-Same idea, other column.
-<br><span class="math">95x + 70(1 − x) = 70 + 25x</span></div></div>
-
-<div class="step"><div class="stepn">3</div><div class="stepbody"><div class="lab">Set them equal: this is the indifference condition.</div>
-Now the goalie's choice makes no difference to the kicker's average. In a zero-sum game that is the same as making the goalie indifferent, because his payoff is just minus the kicker's.
-<br><span class="math">93 − 35x = 70 + 25x &nbsp;→&nbsp; 23 = 60x</span></div></div>
-
-<div class="step"><div class="stepn">4</div><div class="stepbody"><div class="lab">Solve, then put x back into either line to get the value.</div>
-<span class="math">x = 23/60 = 38.3%</span>
-<br><span class="math">93 − 35(0.383) = 79.6</span></div></div>
-
-<div class="ans">&#10003; The kicker goes left <b>38.3%</b> of the time. That guarantees him a <b>79.6%</b> scoring rate, which is the value of the game. (Doing the same work on the goalie's side gives 41.7% left.)</div>
+<div class="question">Use the penalty-kick table above. How often should the kicker aim left, and how often should the goalie dive left? What scoring rate does the kicker get?</div>
+<div id="pkStepper"></div>
 
 <div class="warnbox"><b>Notice what just happened.</b> The kicker's left foot is his <i>weaker</i> side: 58 against 93 when the goalie dives left. And he still uses it more than a third of the time. Not because it is good, but because never using it would make him easy to read.</div>
 
@@ -312,7 +321,7 @@ Does this game need a mixed strategy? What is player 1's payoff in equilibrium?<
 <p class="note">Pick an option. The answer and the explanation appear only after you choose. One question carries a tag. That one is a real past-final question, word for word, from a paper you never sit as a mock. The other five are new. Their grids were built for this page. They copy no exam you will sit later and do not repeat the examples above.</p>
 <div id="quizBody"></div></div>
 
-<div class="navrow"><a class="navbtn" href="Day-05.html">&larr; Back</a><a class="navbtn primary" href="Day-07.html">Next &rarr;</a></div>
+<div class="navrow"><a class="navbtn" href="Day-05.html">&larr; Back</a><a class="navbtn primary" href="Day-08.html">Next &rarr;</a></div>
 </div>
 <script>
 function mat(rows, cols, cells){
@@ -327,18 +336,289 @@ var MFULL = mat(["Top","Down"],["Left","Right"],[9,3,5,9]);
 var MANTI = mat(["Top","Down"],["Left","Right"],[0,40,10,0]);
 var MPURE = mat(["Top","Down"],["Left","Right"],[6,8,3,5]);
 
+// ---- Mixed-strategy stepper: Back/Next walk-through of a 2x2 indifference problem ----
+// buildMixedStepper(cfg) returns a .stepper element. cfg: rows:[2 word labels], cols:[2 word labels],
+//   cells: [[a,b],[c,d]] (zero-sum, player 1's payoff) or [[[a1,a2],[b1,b2]],[[c1,c2],[d1,d2]]] (two numbers),
+//   ask: 'q' | 'p' | 'pq' | 'value' | {cell:[rowIdx,colIdx]},  expect: the answer as a number (0.4, 0.24, 6...); throws if the engine disagrees.
+//   Optional: finalMsg (html, or function(r) using r.p, r.q, r.V, r.ans, r.u1(i,j)), notes:{pure,q,p,result,check: html or function(r)},
+//   trap:true (pure games: show the parallel lines that never cross), p1/p2 (player names), tol (default 0.006).
+// q = how often player 2 plays the first column; p = how often player 1 plays the first row. Every number shown is computed here.
+function buildMixedStepper(cfg){
+  if(!document.getElementById('mx-css')){
+    var css=document.createElement('style'); css.id='mx-css';
+    css.textContent='.mx-top{display:flex;gap:14px;flex-wrap:wrap;align-items:flex-start;}'+
+    '.mx-top .tscroll{flex:1 1 250px;min-width:0;} .mx-top table.dtable{margin:0;font-size:15px;}'+
+    '.mx-top table.dtable td{font-size:16px;font-weight:600;}'+
+    '.mx-key{flex:1 1 210px;font-size:14px;line-height:1.45;background:#fbfaff;border:1px solid var(--line);border-radius:10px;padding:9px 12px;}'+
+    '.mx-key .kl{margin:2px 0 3px;} .mx-key .kl b{color:var(--brand-d);} .mx-key .kv{color:var(--muted);font-weight:700;}'+
+    '.mx-bar{display:flex;height:24px;border-radius:7px;overflow:hidden;margin:3px 0 2px;font-size:13px;font-weight:700;}'+
+    '.mx-bar span{display:flex;align-items:center;justify-content:center;color:#fff;white-space:nowrap;overflow:hidden;transition:flex-basis .45s;}'+
+    '.mx-bar .s1{background:#5238c4;} .mx-bar .s2{background:#2f6ba8;} .mx-bar.unk span{background:#ddd8ec;color:#5b5573;}'+
+    '.mx-barlab{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin-bottom:8px;}'+
+    '.mx-edge{display:block;font-size:13px;font-weight:700;color:#2f6ba8;margin-top:2px;}'+
+    '.stepper table.dtable .mx-hl{outline:3px solid var(--brand);outline-offset:-3px;background:var(--brand-soft);}'+
+    '.stepper table.dtable .mx-keep{background:var(--good-soft)!important;color:var(--good)!important;font-weight:800;outline:3px solid #15794a;outline-offset:-3px;}'+
+    '.mx-dim{opacity:.35;}'+
+    '.mx-work{font-family:"SF Mono",Menlo,Consolas,monospace;background:#f6f4fc;border:1px solid var(--line);border-radius:8px;padding:8px 12px;margin-top:10px;font-size:14.5px;line-height:1.7;}'+
+    '.mx-work .wt{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;font-size:13px;font-weight:700;color:var(--muted);}'+
+    '.mx-work .wl{color:#7a7491;} .mx-work .wl.cur{color:var(--brand-d);font-weight:700;}';
+    document.head.appendChild(css);
+  }
+  var R=cfg.rows, C=cfg.cols, two=Array.isArray(cfg.cells[0][0]), ask=cfg.ask;
+  var P1=cfg.p1||'player 1', P2=cfg.p2||'player 2';
+  function cap(s){return s.charAt(0).toUpperCase()+s.slice(1);}
+  function u1(i,j){return two?cfg.cells[i][j][0]:cfg.cells[i][j];}
+  function u2(i,j){return two?cfg.cells[i][j][1]:-cfg.cells[i][j];}
+  function clean(x){return Math.round(x*1e9)/1e9;}
+  function num(x){x=clean(x);var r=Math.round(x*1000)/1000;return (Math.abs(x-r)>1e-6?'≈ ':'')+(r<0?'−':'')+String(Math.abs(r));}
+  function pct(x){x=clean(x*100);var r=Math.round(x*10)/10;return (Math.abs(x-r)>1e-6?'≈ ':'')+String(r)+'%';}
+  function sg(x){return x<0?'(−'+Math.abs(x)+')':String(x);}
+  function coefv(b,v){var a=Math.abs(b);return (a===1?'':String(clean(a)))+v;}
+  function lin(e,v){ // e = {a, b} means a + b*v
+    var a=clean(e.a), b=clean(e.b), s='';
+    if(a!==0) s=(a<0?'−':'')+Math.abs(a);
+    if(b!==0) s+= s===''?(b<0?'−':'')+coefv(b,v):(b<0?' − ':' + ')+coefv(b,v);
+    return s===''?'0':s;
+  }
+  function at(e,x){return clean(e.a+e.b*x);}
+  function plug(e,x){ // "6 − 6 × 0.4 = 3.6"
+    var a=clean(e.a), b=clean(e.b), s;
+    if(b===0) return num(a);
+    var t=(Math.abs(b)===1?'':Math.abs(b)+' × ')+num(x);
+    s=a===0?(b<0?'−':'')+t:num(a)+(b<0?' − ':' + ')+t;
+    return s+' = '+num(at(e,x));
+  }
+  // payoff lines: row i against q (player 1's numbers); column j against p (player 2's numbers, or player 1's when zero-sum)
+  function rowE(i){return {a:u1(i,1),b:u1(i,0)-u1(i,1)};}
+  function rowRaw(i){return sg(u1(i,0))+'q + '+sg(u1(i,1))+'(1 − q)';}
+  function colU(i,j){return two?u2(i,j):u1(i,j);}
+  function colE(j){return {a:colU(1,j),b:colU(0,j)-colU(1,j)};}
+  function colRaw(j){return sg(colU(0,j))+'p + '+sg(colU(1,j))+'(1 − p)';}
+  // solve L = R for v, one algebra move per line
+  function solve(L,Rr,v,lab){
+    var out=[], A=L, B=Rr, flip=false;
+    if(clean(A.b)===clean(B.b)) throw new Error('mixed: lines are parallel, no indifference point');
+    if(A.b<B.b){A=Rr;B=L;flip=true;} // keep the unknown on the side with the bigger coefficient
+    function eq(x,y){return flip?lin(y,v)+' = '+lin(x,v):lin(x,v)+' = '+lin(y,v);}
+    if(clean(B.b)!==0){ var t=(B.b<0?'Add ':'Subtract ')+coefv(B.b,v)+(B.b<0?' to':' from')+' both sides. Now '+v+' is on one side only.';
+      A={a:A.a,b:A.b-B.b}; B={a:B.a,b:0}; out.push({t:t,line:eq(A,B)}); }
+    if(clean(A.a)!==0){ var t2=(A.a>0?'Subtract '+clean(A.a)+' from':'Add '+clean(-A.a)+' to')+' both sides. Now the plain numbers are on the other side.';
+      B={a:B.a-A.a,b:0}; A={a:0,b:A.b}; out.push({t:t2,line:eq(A,B)}); }
+    var k=clean(A.b), n=clean(B.a), val=clean(n/k);
+    out.push({t:k===1?'That is the answer.':'Divide both sides by '+k+'.',line:v+' = '+(k===1?'':n+' ÷ '+k+' = ')+num(val),val:val});
+    if(!(val>0&&val<1)) throw new Error('mixed: '+v+' = '+val+' is not a real mixture');
+    return out;
+  }
+  // ---------- pure check ----------
+  var stable=[];
+  for(var i=0;i<2;i++)for(var j=0;j<2;j++){
+    var ok=two?(u1(i,j)>=u1(1-i,j)&&u2(i,j)>=u2(i,1-j)):(u1(i,j)<=u1(i,1-j)&&u1(i,j)>=u1(1-i,j));
+    if(ok) stable.push([i,j]);
+  }
+  var pure=stable.length>0;
+  var needP=!pure&&(ask==='p'||ask==='pq'||(ask&&ask.cell)), needQ=!pure&&ask!=='p';
+  var r={pure:pure,u1:u1,u2:u2,rows:R,cols:C,pct:pct,num:num};
+  var S=[], st={hl:[],keep:[],work:[],wt:'',qOn:false,pOn:false,q:null,p:null,dim:0,phase:'Check first'};
+  function push(msg,ch){ for(var k in ch) st[k]=ch[k]; var c=JSON.parse(JSON.stringify(st)); c.msg=msg; S.push(c); }
+  function note(k){var n=cfg.notes&&cfg.notes[k]; if(!n) return ''; n=typeof n==='function'?n(r):n; return '<br><span style="color:var(--muted)">'+n+'</span>';}
+  function cellName(i,j){return '('+R[i]+', '+C[j]+')';}
+  function workAdd(line){var w=st.work.slice(); w.push(line); return w;}
+
+  if(pure){
+    var s0=stable[0], vi=s0[0], vj=s0[1];
+    r.V=u1(vi,vj);
+    if(!two){
+      var dom=-1; for(var d=0;d<2;d++){ if(u1(d,0)>u1(1-d,0)&&u1(d,1)>u1(1-d,1)) dom=d; }
+      if(dom>=0){
+        push('<b>First, look for a stable cell. Before any equation.</b><br>'+cap(P1)+' compares his two rows. '+R[dom]+' beats '+R[1-dom]+' in both columns: '+
+          u1(dom,0)+' &gt; '+u1(1-dom,0)+' and '+u1(dom,1)+' &gt; '+u1(1-dom,1)+'.<br><b>So '+R[dom]+' is a dominant strategy. '+cap(P1)+' always plays '+R[dom]+'.</b>'+note('pure'),
+          {hl:[[dom,0],[dom,1]],phase:'Check first'});
+        var lo=u1(dom,0)<=u1(dom,1)?0:1;
+        push(cap(P2)+' knows this. She wants the number <b>low</b>.<br>In the '+R[dom]+' row she picks '+u1(dom,lo)+' rather than '+u1(dom,1-lo)+'. That means <b>'+C[lo]+'</b>.',
+          {hl:[[dom,lo]]});
+      }
+      push('<b>Saddle point test</b> on '+cellName(vi,vj)+' = '+u1(vi,vj)+'.<br>Smallest in its row? The row is '+u1(vi,0)+' and '+u1(vi,1)+'. Yes.<br>Largest in its column? The column is '+u1(0,vj)+' and '+u1(1,vj)+'. Yes.<br><b>A stable cell. Nobody wants to move, so nobody mixes.</b>',
+        {hl:[],keep:[[vi,vj]]});
+    } else {
+      push('<b>First, look for a stable cell.</b> Check '+cellName(vi,vj)+' = '+u1(vi,vj)+', '+u2(vi,vj)+'.<br>'+cap(P1)+' (first numbers): '+u1(vi,vj)+' against '+u1(1-vi,vj)+'. He stays.<br>'+cap(P2)+' (second numbers): '+u2(vi,vj)+' against '+u2(vi,1-vj)+'. She stays.<br><b>A Nash equilibrium in pure strategies. No mixing needed.</b>'+note('pure'),
+        {keep:[[vi,vj]]});
+    }
+    if(cfg.trap){
+      var e0=rowE(0), e1=rowE(1), gap=clean(e0.a-e1.a);
+      push('<b>What if you try the mixing algebra anyway?</b> Call q how often '+P2+' plays '+C[0]+'.<br>'+R[0]+' gives '+lin(e0,'q')+'.',
+        {qOn:true,hl:[[0,0],[0,1]],wt:'Trying the indifference equation',work:[R[0]+': '+rowRaw(0)+' = '+lin(e0,'q')],phase:'The trap'});
+      push(R[1]+' gives '+lin(e1,'q')+'.',{hl:[[1,0],[1,1]],work:workAdd(R[1]+': '+rowRaw(1)+' = '+lin(e1,'q'))});
+      push('Both have the same '+(e0.b<0?'−':'')+coefv(e0.b,'q')+' part, so they move together, like two train rails. They are <b>parallel</b>. '+R[gap>0?0:1]+' is ahead by '+Math.abs(gap)+' whatever q is.<br><b>They never cross. There is no indifference point to find.</b>',
+        {hl:[],work:workAdd(R[0]+' − '+R[1]+' = '+num(gap)+'  for every q')});
+    }
+    if(ask==='value'){ r.ans=r.V; push('<b>The value of the game</b> is the number in the stable cell: <b>'+num(r.V)+'</b>.'+note('result'),{hl:[],keep:[[vi,vj]],qOn:false,work:[],phase:'Answer'}); }
+    else if(ask&&ask.cell){ var hit=stable.some(function(c){return c[0]===ask.cell[0]&&c[1]===ask.cell[1];}); r.ans=hit?1:0;
+      push('Players do not mix, so '+cellName(ask.cell[0],ask.cell[1])+' happens '+(hit?'every time: 100%.':'never: 0%.')+note('result'),{hl:[ask.cell],phase:'Answer'}); }
+    else throw new Error('mixed: a pure game only supports ask value or cell');
+  } else {
+    // ---------- check: no stable cell ----------
+    var lines=[], hl=[];
+    if(!two){
+      for(var a=0;a<2;a++){
+        var mn=Math.min(u1(a,0),u1(a,1)), jj=u1(a,0)<=u1(a,1)?0:1, big=Math.max(u1(0,jj),u1(1,jj));
+        hl.push([a,jj]);
+        lines.push(R[a]+' row: its smallest number is '+mn+' (under '+C[jj]+'). The largest in the '+C[jj]+' column? No, '+big+' is larger.');
+      }
+      push('<b>First, look for a stable cell</b> (a saddle point): smallest in its row <i>and</i> largest in its column.<br>'+lines.join('<br>')+'<br><b>No cell passes. Nobody can stand still, so the players must mix.</b>',{hl:hl});
+    } else {
+      for(var a2=0;a2<2;a2++)for(var b2=0;b2<2;b2++){
+        if(u1(a2,b2)<u1(1-a2,b2)) lines.push(cellName(a2,b2)+': '+P1+' moves to '+R[1-a2]+' ('+u1(1-a2,b2)+' beats '+u1(a2,b2)+').');
+        else lines.push(cellName(a2,b2)+': '+P2+' moves to '+C[1-b2]+' ('+u2(a2,1-b2)+' beats '+u2(a2,b2)+').');
+      }
+      push('<b>First, look for a stable cell</b> where nobody wants to move.<br>'+lines.join('<br>')+'<br><b>Every cell has someone who moves. So the players must mix.</b>',{});
+    }
+    // ---------- q ----------
+    function doQ(){
+      var e0=rowE(0), e1=rowE(1);
+      push('<b>Name the unknown.</b> <b>q = how often '+P2+' plays '+C[0]+'.</b> She plays '+C[1]+' the rest of the time: 1 − q.<br>We find q with the <b>indifference condition</b>: '+P2+'\'s mixture must leave '+P1+' with nothing to prefer between '+R[0]+' and '+R[1]+'.',
+        {qOn:true,hl:[],keep:[],wt:'Finding q, using '+P1+'\'s numbers',work:[],dim:two?2:0,phase:'Finding q'});
+      push(cap(P1)+'\'s average from <b>'+R[0]+'</b>. He gets '+u1(0,0)+' when she plays '+C[0]+' (a share q of the time) and '+u1(0,1)+' when she plays '+C[1]+' (1 − q).'+(two?'<br>'+cap(P1)+' only looks at the <b>first</b> numbers.':''),
+        {hl:[[0,0],[0,1]],work:workAdd(R[0]+': '+rowRaw(0)+' = '+lin(e0,'q'))});
+      push('Same for <b>'+R[1]+'</b>: '+u1(1,0)+' against '+C[0]+', '+u1(1,1)+' against '+C[1]+'.',
+        {hl:[[1,0],[1,1]],work:workAdd(R[1]+': '+rowRaw(1)+' = '+lin(e1,'q'))});
+      push('<b>The indifference condition: set the two equal.</b> At the right q, '+R[0]+' and '+R[1]+' pay '+P1+' the same.',
+        {hl:[],work:workAdd(lin(e0,'q')+' = '+lin(e1,'q'))});
+      var sol=solve(e0,e1,'q');
+      sol.forEach(function(m){ push(m.t,{work:workAdd(m.line)}); });
+      r.q=sol[sol.length-1].val;
+      push('<b>Write it on the grid.</b> '+cap(P2)+' plays '+C[0]+' '+pct(r.q)+' of the time and '+C[1]+' '+pct(1-r.q)+'.'+note('q'),{q:r.q});
+    }
+    function doP(){
+      var f0=colE(0), f1=colE(1);
+      push('<b>Now the other player.</b> <b>p = how often '+P1+' plays '+R[0]+'.</b> He plays '+R[1]+' the rest of the time: 1 − p.<br>His mixture must leave <b>'+P2+'</b> with nothing to prefer between '+C[0]+' and '+C[1]+'.'+
+        (two?'<br>So now read only the <b>second</b> numbers, '+P2+'\'s.':'<br>Her payoff is minus the number in the cell. So she is indifferent exactly when '+P1+'\'s number is the same in both columns.'),
+        {pOn:true,hl:[],wt:'Finding p, using '+(two?P2+'\'s numbers':'the same numbers, column by column'),work:[],dim:two?1:0,phase:'Finding p'});
+      push('Down the <b>'+C[0]+'</b> column: '+colU(0,0)+' when '+P1+' plays '+R[0]+' (a share p), '+colU(1,0)+' when he plays '+R[1]+' (1 − p).',
+        {hl:[[0,0],[1,0]],work:workAdd(C[0]+': '+colRaw(0)+' = '+lin(f0,'p'))});
+      push('Same down the <b>'+C[1]+'</b> column: '+colU(0,1)+' and '+colU(1,1)+'.',
+        {hl:[[0,1],[1,1]],work:workAdd(C[1]+': '+colRaw(1)+' = '+lin(f1,'p'))});
+      push('<b>The indifference condition again: set them equal.</b>',{hl:[],work:workAdd(lin(f0,'p')+' = '+lin(f1,'p'))});
+      var sol=solve(f0,f1,'p');
+      sol.forEach(function(m){ push(m.t,{work:workAdd(m.line)}); });
+      r.p=sol[sol.length-1].val;
+      var diff=(r.q!=null&&Math.abs(r.p-r.q)>1e-6)?'<br><b>Stop and look:</b> p = '+num(r.p)+' but q = '+num(r.q)+'. They are not equal. Never assume they are.':'';
+      push('<b>Write it on the grid.</b> '+cap(P1)+' plays '+R[0]+' '+pct(r.p)+' of the time and '+R[1]+' '+pct(1-r.p)+'.'+diff+note('p'),{p:r.p});
+    }
+    if(needQ) doQ();
+    if(needP) doP();
+    // ---------- result ----------
+    var e0=rowE(0), e1=rowE(1);
+    if(r.q!=null) r.V=at(e0,r.q);
+    if(ask==='q') r.ans=r.q;
+    else if(ask==='p') r.ans=r.p;
+    else if(ask==='pq') r.ans=r.p;
+    else if(ask==='value'){
+      r.ans=r.V;
+      push('<b>The value of the game.</b> Put q back into either row. Both give the same number, so take the easier one.<br>'+cap(P1)+'\'s expected payoff is <b>'+num(r.V)+'</b>.'+note('result'),
+        {hl:[[0,0],[0,1]],wt:'The value of the game',work:[R[0]+': '+plug(e0,r.q)],dim:two?2:0,phase:'Answer'});
+    } else if(ask&&ask.cell){
+      var ci=ask.cell[0], cj=ask.cell[1], pr=ci===0?r.p:1-r.p, qr=cj===0?r.q:1-r.q;
+      r.ans=clean(pr*qr);
+      push('<b>Multiply.</b> The two players mix separately, so the chance of one cell is (chance of its row) × (chance of its column).<br>'+cellName(ci,cj)+': '+(ci===0?'p':'(1 − p)')+' × '+(cj===0?'q':'(1 − q)')+' = '+num(pr)+' × '+num(qr)+' = '+num(r.ans)+' = <b>'+pct(r.ans)+'</b>.'+note('result'),
+        {hl:[],keep:[[ci,cj]],wt:'The chance of the cell '+cellName(ci,cj),work:[(ci===0?'p':'(1 − p)')+' × '+(cj===0?'q':'(1 − q)')+' = '+num(pr)+' × '+num(qr)+' = '+num(r.ans)],dim:0,phase:'Answer'});
+    } else throw new Error('mixed: unknown ask');
+    // ---------- check ----------
+    var chk=[], txt=[];
+    if(r.q!=null){ var v0=at(e0,r.q), v1=at(e1,r.q); if(Math.abs(v0-v1)>1e-6) throw new Error('mixed: q check failed');
+      chk.push(R[0]+': '+plug(e0,r.q)); chk.push(R[1]+': '+plug(e1,r.q));
+      txt.push('With q = '+num(r.q)+', '+R[0]+' and '+R[1]+' both pay '+P1+' an average of '+num(v0)+'. He really is indifferent.'); }
+    if(r.p!=null){ var f0=colE(0), f1=colE(1), w0=at(f0,r.p), w1=at(f1,r.p); if(Math.abs(w0-w1)>1e-6) throw new Error('mixed: p check failed');
+      chk.push(C[0]+': '+plug(f0,r.p)); chk.push(C[1]+': '+plug(f1,r.p));
+      txt.push('With p = '+num(r.p)+', '+C[0]+' and '+C[1]+' both give '+num(w0)+'. '+cap(P2)+' really is indifferent.'); }
+    push('<b>Check: plug the answer back in.</b><br>'+txt.join('<br>')+' ✓'+note('check'),{hl:[],wt:'Check',work:chk,dim:0,phase:'Check'});
+  }
+  // ---------- verify against the expected answer ----------
+  if(cfg.expect!==undefined){ var tol=cfg.tol||0.006;
+    if(!(Math.abs(r.ans-cfg.expect)<=tol)) throw new Error('mixed: computed '+r.ans+' but expected '+cfg.expect); }
+
+  // ---------- render ----------
+  var root=document.createElement('div'); root.className='stepper mx';
+  root.innerHTML='<div class="sbar"><span class="sround"></span><span class="sphase"></span></div>'+
+    '<div class="mx-top"><div class="tscroll"><table class="dtable"></table></div><div class="mx-key"></div></div>'+
+    '<div class="mx-work"></div><div class="msg"></div>'+
+    '<div class="nav"><button class="bk" type="button">&larr; Back</button><button class="nx" type="button">Next &rarr;</button></div>';
+  var tbl=root.querySelector('table'), key=root.querySelector('.mx-key'), work=root.querySelector('.mx-work'), msg=root.querySelector('.msg'),
+      bk=root.querySelector('.bk'), nx=root.querySelector('.nx'), step=0, N=S.length;
+  function has(list,i,j){return list.some(function(c){return c[0]===i&&c[1]===j;});}
+  function bar(val,l1,l2,on){
+    if(val==null) return '<div class="mx-bar unk"><span style="flex-basis:50%">'+(on?'?':'')+'</span><span style="flex-basis:50%">'+(on?'?':'')+'</span></div><div class="mx-barlab"><span>'+l1+'</span><span>'+l2+'</span></div>';
+    return '<div class="mx-bar"><span class="s1" style="flex-basis:'+(val*100)+'%">'+(val>=0.12?pct(val):'')+'</span><span class="s2" style="flex-basis:'+((1-val)*100)+'%">'+(1-val>=0.12?pct(1-val):'')+'</span></div>'+
+      '<div class="mx-barlab"><span>'+l1+' '+pct(val)+'</span><span>'+l2+' '+pct(1-val)+'</span></div>';
+  }
+  function render(){
+    var atEnd=step>=N, s=S[Math.min(step,N-1)];
+    var h='<tr><th></th>'+C.map(function(c,j){
+      var tag=s.qOn?'<span class="mx-edge">'+(s.q==null?(j===0?'q':'1 − q'):pct(j===0?s.q:1-s.q))+'</span>':'';
+      return '<th>'+c+tag+'</th>';}).join('')+'</tr>';
+    for(var i=0;i<2;i++){
+      var tag=s.pOn?'<span class="mx-edge">'+(s.p==null?(i===0?'p':'1 − p'):pct(i===0?s.p:1-s.p))+'</span>':'';
+      h+='<tr><td class="lab">'+R[i]+tag+'</td>';
+      for(var j=0;j<2;j++){
+        var cl=has(s.keep,i,j)?'mx-keep':(has(s.hl,i,j)?'mx-hl':'');
+        var t;
+        if(two){ var a=String(u1(i,j)), b=String(u2(i,j)); if(s.dim===2)b='<span class="mx-dim">'+b+'</span>'; if(s.dim===1)a='<span class="mx-dim">'+a+'</span>'; t=a+', '+b; }
+        else t=String(u1(i,j));
+        t=t.replace(/-/g,'−');
+        h+='<td class="'+cl+'">'+t+(cl==='mx-keep'?' ✓':'')+'</td>';
+      }
+      h+='</tr>';
+    }
+    tbl.innerHTML=h;
+    var k='<div class="kl"><b>q</b> = how often '+P2+' plays <b>'+C[0]+'</b>'+(s.q!=null?'':' <span class="kv">'+(s.qOn?'?':'')+'</span>')+'</div>'+bar(s.q,C[0],C[1],s.qOn);
+    if(needP) k+='<div class="kl"><b>p</b> = how often '+P1+' plays <b>'+R[0]+'</b>'+(s.p!=null?'':' <span class="kv">'+(s.pOn?'?':'')+'</span>')+'</div>'+bar(s.p,R[0],R[1],s.pOn);
+    if(!needP&&!needQ&&!s.qOn) k='<div class="kl">'+cap(P1)+' picks the row and wants the number <b>high</b>.</div><div class="kl">'+cap(P2)+' picks the column and wants it <b>low</b>.</div>';
+    if(!two&&(needP||needQ)) k+='<div class="kl" style="color:var(--muted);font-size:13px">One number per cell: '+P1+'\'s payoff. '+cap(P2)+' wants it low.</div>';
+    key.innerHTML=k;
+    if(s.work.length){ work.style.display=''; work.innerHTML='<div class="wt">'+s.wt+'</div>'+s.work.map(function(l,x){return '<div class="wl'+(x===s.work.length-1&&!atEnd?' cur':'')+'">'+l+'</div>';}).join(''); }
+    else work.style.display='none';
+    root.querySelector('.sround').innerHTML=atEnd?'<b>Done</b>':'<b>Step '+(step+1)+' of '+N+'</b>';
+    root.querySelector('.sphase').textContent=atEnd?'':s.phase;
+    msg.className='msg';
+    if(atEnd){ msg.classList.add('good'); var f=cfg.finalMsg; msg.innerHTML=typeof f==='function'?f(r):(f||'<b>Answer: '+(ask&&ask.cell||ask==='value'?'':'')+num(r.ans)+'</b>'); }
+    else msg.innerHTML=s.msg;
+    bk.disabled=step===0; nx.disabled=atEnd; nx.textContent=step===N-1?'Finish →':'Next →';
+  }
+  nx.onclick=function(){if(step<N){step++;render();}};
+  bk.onclick=function(){if(step>0){step--;render();}};
+  render();
+  root.result=r;
+  return root;
+}
+
 const QUIZ = [
 {"q":"A zero-sum game. There is one number per cell and it is player 1's payoff. Player 1 picks the row and wants the number high. Player 2 picks the column and wants it low. In the mixed equilibrium, how often does player 2 play Left? (Rounded to the nearest percentage point.)"+MDIAG,
  "opts":["16%","24%","40%","50%","60%"],"correct":2,
- "exp":"<b>40%.</b><br><br><b>The rule: the indifference condition.</b> Player 2's mixture is the one that makes <i>player 1</i> indifferent between his two rows.<br><br><b>The inputs.</b> Call q the chance that player 2 plays Left, so 1&minus;q is the chance she plays Right. From the grid: Top pays 9 against Left and 0 against Right. Down pays 0 against Left and 6 against Right.<br><br><b>1.</b> Player 1's payoff from Top: 9q + 0(1&minus;q) = 9q<br><b>2.</b> Player 1's payoff from Down: 0q + 6(1&minus;q) = 6 &minus; 6q<br><b>3.</b> Set them equal: 9q = 6 &minus; 6q<br><b>4.</b> Add 6q to both sides: 15q = 6<br><b>5.</b> Divide by 15: q = 0.4 = <b>40%</b><br><br><b>Check.</b> Put q = 0.4 back in. Top gives 9 &times; 0.4 = 3.6. Down gives 6 &times; 0.6 = 3.6. The same number, so player 1 really is indifferent. &#10003;<br><br><b>Where each wrong option comes from.</b><br>60%: 9 &divide; 15. You put the payoff from the same row on top. The number that goes on top is the one sitting in the <i>other</i> row, which is 6.<br>50%: assuming a mixture must be half and half. It almost never is.<br>16%: 0.4 &times; 0.4. That is P(Top, Left), an outcome cell. The question asked for one player's mixture, not for a cell.<br>24%: 0.4 &times; 0.6. That is P(Top, Right), the crossed cell. Same mistake as above."},
+ "anim":{rows:["Top","Down"],cols:["Left","Right"],cells:[[9,0],[0,6]],ask:"q",expect:0.4,
+  finalMsg:function(r){var n=r.num,pc=r.pct,a=r.u1(0,0),d=r.u1(1,1);
+   return "<b>q = "+pc(r.q)+".</b> Player 2 plays Left "+pc(r.q)+" of the time.<br><b>The rule in one line:</b> player 2's mixture is the one that makes <i>player 1</i> indifferent between his two rows.<br><br><b>Where each wrong option comes from.</b><br>"+
+   pc(a/(a+d))+": "+a+" &divide; "+(a+d)+". You put the payoff from the same row on top. The number that goes on top sits in the <i>other</i> row, which is "+d+".<br>"+
+   "50%: assuming a mixture must be half and half. It almost never is.<br>"+
+   pc(r.q*r.q)+" and "+pc(r.q*(1-r.q))+": "+n(r.q)+" &times; "+n(r.q)+" and "+n(r.q)+" &times; "+n(1-r.q)+". Multiplying two chances gives the chance of an outcome cell. The question asked for one player's mixture, not a cell.";}}},
 
 {"q":"A zero-sum game (one number per cell = player 1's payoff). What is the probability that the outcome is (Top, Left) in the mixed equilibrium? (Round up to the closest percentage point.)"+MFULL,
  "opts":["16%","24%","36%","40%","60%"],"correct":1,
- "exp":"<b>24%.</b><br><br><b>The rule: the indifference condition, used twice, then P(row, column) = P(row) &times; P(column).</b> There are no zeros in this grid, so nothing cancels and there is no shortcut to reach for.<br><br><b>The inputs.</b> p is the chance of Top, q is the chance of Left. Top pays 9 against Left and 3 against Right. Down pays 5 against Left and 9 against Right.<br><br><b>First, is mixing needed?</b> Top's smallest number is 3, and 3 is not the biggest in the Right column (9 is). Down's smallest is 5, and 5 is not the biggest in the Left column (9 is). No cell is stable, so mix.<br><br><b>Find q</b>, the mixture that makes player 1 indifferent:<br><b>1.</b> Top: 9q + 3(1&minus;q) = 3 + 6q<br><b>2.</b> Down: 5q + 9(1&minus;q) = 9 &minus; 4q<br><b>3.</b> Equal: 3 + 6q = 9 &minus; 4q<br><b>4.</b> Add 4q: 3 + 10q = 9<br><b>5.</b> Subtract 3: 10q = 6<br><b>6.</b> q = 0.6<br><br><b>Find p</b>, the mixture that makes player 2 indifferent. She is indifferent when player 1's payoff is the same in both columns:<br><b>1.</b> Left column: 9p + 5(1&minus;p) = 5 + 4p<br><b>2.</b> Right column: 3p + 9(1&minus;p) = 9 &minus; 6p<br><b>3.</b> Equal: 5 + 4p = 9 &minus; 6p<br><b>4.</b> Add 6p: 5 + 10p = 9<br><b>5.</b> Subtract 5: 10p = 4<br><b>6.</b> p = 0.4<br><br><b>Multiply.</b> (Top, Left) is a matching cell, so P = p &times; q = 0.4 &times; 0.6 = 0.24 = <b>24%</b>.<br><br><b>Check.</b> Value from the rows: 3 + 6(0.6) = 6.6, and 9 &minus; 4(0.6) = 6.6. From the columns: 5 + 4(0.4) = 6.6, and 9 &minus; 6(0.4) = 6.6. All four agree, so p and q are right. &#10003;<br><br><b>Where each wrong option comes from.</b><br>40%: p on its own. That is how often Top is played, not how often (Top, Left) happens.<br>60%: q on its own, the Left column and no row.<br>16%: 0.4 &times; 0.4 = P(Top, Right). You read the row correctly and the column wrongly.<br>36%: 0.6 &times; 0.6 = P(Down, Left).<br><br><b>On the wording.</b> \"Round up to the closest percentage point\" is how the 2024 papers print it. It means ordinary rounding, to whichever whole number is nearer. Here it changes nothing: 0.24 is exactly 24%."},
+ "anim":{rows:["Top","Down"],cols:["Left","Right"],cells:[[9,3],[5,9]],ask:{cell:[0,0]},expect:0.24,
+  finalMsg:function(r){var n=r.num,pc=r.pct;
+   return "<b>"+pc(r.ans)+".</b><br><b>The rule in one line:</b> find q (make player 1 indifferent), find p (make player 2 indifferent), then the chance of a cell = chance of its row &times; chance of its column. This grid has no zeros, so no shortcut: write both equations.<br><br><b>Where each wrong option comes from.</b><br>"+
+   pc(r.p)+": p on its own. How often Top is played, not how often (Top, Left) happens.<br>"+
+   pc(r.q)+": q on its own. The Left column and no row.<br>"+
+   pc(r.p*(1-r.q))+": p &times; (1 &minus; q) = "+n(r.p)+" &times; "+n(1-r.q)+". That is (Top, Right): the right row, the wrong column.<br>"+
+   pc((1-r.p)*r.q)+": (1 &minus; p) &times; q = "+n(1-r.p)+" &times; "+n(r.q)+". That is (Down, Left).<br><br><b>On the wording.</b> \"Round up to the closest percentage point\" is how the 2024 papers print it. It means ordinary rounding, to whichever whole number is nearer. Here it changes nothing.";}}},
 
 {"q":"A zero-sum game (one number per cell = player 1's payoff). What is the probability that the outcome is (Down, Left) in the mixed equilibrium? (Rounded to the nearest percentage point.)"+MANTI,
  "opts":["4%","16%","20%","64%","80%"],"correct":3,
- "exp":"<b>64%.</b><br><br><b>The rule: the indifference condition, used twice, then P(row, column) = P(row) &times; P(column).</b> Look at where the zeros are before you start. They sit on the anti-diagonal, from bottom-left to top-right. Any recipe built on the usual shape breaks here, so write both equations out.<br><br><b>The inputs.</b> p is the chance of Top, q is the chance of Left. Top pays 0 against Left and 40 against Right. Down pays 10 against Left and 0 against Right.<br><br><b>Find q</b>, the mixture that makes player 1 indifferent:<br><b>1.</b> Top: 0q + 40(1&minus;q) = 40 &minus; 40q<br><b>2.</b> Down: 10q + 0(1&minus;q) = 10q<br><b>3.</b> Equal: 40 &minus; 40q = 10q<br><b>4.</b> Add 40q: 40 = 50q<br><b>5.</b> q = 0.8, so Left is played 80% of the time<br><br><b>Find p</b>, the mixture that makes player 2 indifferent:<br><b>1.</b> Left column: 0p + 10(1&minus;p) = 10 &minus; 10p<br><b>2.</b> Right column: 40p + 0(1&minus;p) = 40p<br><b>3.</b> Equal: 10 &minus; 10p = 40p<br><b>4.</b> Add 10p: 10 = 50p<br><b>5.</b> p = 0.2, so Top is played 20% and <b>Down 80%</b><br><br><b>Stop and look.</b> p = 0.2 but q = 0.8. They are not equal. On the usual grid they always are, and that habit is exactly what this shape punishes.<br><br><b>Multiply.</b> (Down, Left) is a crossed cell: P = (1 &minus; p) &times; q = 0.8 &times; 0.8 = 0.64 = <b>64%</b>.<br><br><b>Check.</b> Value from Top: 40 &times; 0.2 = 8. From Down: 10 &times; 0.8 = 8. The same, so both mixtures are right. &#10003;<br><br><b>Where each wrong option comes from.</b><br>16%: the \"p equals q\" shortcut. Feed the two visible numbers 40 and 10 into the usual recipe and you get 10 &divide; 50 = 0.2 for both players, so (Down, Left) becomes 0.8 &times; 0.2 = 16%. This is the mistake the question is built to catch. 16% is also the true P(Top, Left), so it looks familiar twice over.<br>80%: P(Down) on its own, the row without the column.<br>20%: P(Top) on its own. The wrong row, and no multiplication either.<br>4%: 0.2 &times; 0.2 = P(Top, Right)."},
+ "anim":{rows:["Top","Down"],cols:["Left","Right"],cells:[[0,40],[10,0]],ask:{cell:[1,0]},expect:0.64,
+  finalMsg:function(r){var n=r.num,pc=r.pct,b=r.u1(0,1),c=r.u1(1,0),s=c/(b+c);
+   return "<b>"+pc(r.ans)+".</b><br><b>The rule in one line:</b> look where the zeros are before you start. Here they sit on the anti-diagonal (bottom-left to top-right), so p and q are not equal. Write both equations out, then multiply row chance &times; column chance.<br><br><b>Where each wrong option comes from.</b><br>"+
+   pc((1-s)*s)+": the \"p equals q\" shortcut. Feed the two visible numbers "+b+" and "+c+" into the usual recipe and you get "+c+" &divide; "+(b+c)+" = "+n(s)+" for both players, so (Down, Left) becomes "+n(1-s)+" &times; "+n(s)+". This is the mistake the question is built to catch. It is also the true chance of (Top, Left), "+n(r.p)+" &times; "+n(r.q)+", so it looks familiar twice over.<br>"+
+   pc(1-r.p)+": how often Down is played, the row without the column.<br>"+
+   pc(r.p)+": how often Top is played. The wrong row, and no multiplication either.<br>"+
+   pc(r.p*(1-r.q))+": "+n(r.p)+" &times; "+n(1-r.q)+", the chance of (Top, Right).";}}},
 
 {"src":"2025 A final","q":"What is the main difference between a zero-sum game and a general (non-zero-sum) game?",
  "opts":["In zero-sum games, one player's gain is the other's loss","General games have no Nash equilibria","Zero-sum games require cooperation","General games are strictly competitive","None of the other answers is correct"],"correct":0,
@@ -350,7 +630,13 @@ const QUIZ = [
 
 {"q":"A zero-sum game (one number per cell = player 1's payoff). What is player 1's payoff in the Nash equilibrium?"+MPURE,
  "opts":["5","6","7","8","You cannot tell without solving for the mixed equilibrium"],"correct":1,
- "exp":"<b>6, and there is nothing to solve.</b><br><br><b>The rule: check for a saddle point before you write any equation.</b> A saddle point is a cell that is the <i>smallest in its row</i> and the <i>largest in its column</i>. When one exists, that cell is the equilibrium and its number is the value of the game.<br><br><b>1.</b> Compare the rows. Top beats Down in both columns: 6 &gt; 3 and 8 &gt; 5. So Top is a dominant strategy for player 1, and he always plays Top.<br><b>2.</b> Player 2 knows this and wants the number low. In the Top row she picks 6 rather than 8, which means Left.<br><b>3.</b> Test the cell (Top, Left) = 6. Smallest in its row? The row is 6 and 8, so yes. Largest in its column? The column is 6 and 3, so yes. It is a saddle point.<br><br><b>Check.</b> Neither player wants to move. Player 1 switching to Down drops him from 6 to 3. Player 2 switching to Right raises player 1 from 6 to 8, which is worse for her. &#10003;<br><br><b>Where each wrong option comes from.</b><br>8: the biggest number in player 1's best row. It forgets that player 2 picks the column and wants the number small.<br>5: the smallest number in the grid, cell (Down, Right). Player 1 would have to choose Down to get there, and he never will.<br>7: the average of 6 and 8, which is what you get by assuming player 2 mixes half and half. She has no reason to mix here.<br>\"You cannot tell without solving for the mixed equilibrium\": the trap this question exists for. Try it and the algebra falls apart. Top pays 6q + 8(1&minus;q) = 8 &minus; 2q, and Down pays 3q + 5(1&minus;q) = 5 &minus; 2q, so Top is ahead by exactly 3 whatever q is. The two lines are parallel and never cross, so there is no indifference point to find. Zero-sum does not always mean you must mix."}
+ "anim":{rows:["Top","Down"],cols:["Left","Right"],cells:[[6,8],[3,5]],ask:"value",expect:6,trap:true,
+  finalMsg:function(r){var u=r.u1;
+   return "<b>"+r.num(r.V)+", and there is nothing to solve.</b><br><b>The rule in one line:</b> before any equation, look for a saddle point, a cell that is the smallest in its row and the largest in its column. If one exists, its number is the value of the game.<br><br><b>Check.</b> Player 1 switching to Down drops him from "+u(0,0)+" to "+u(1,0)+". Player 2 switching to Right raises player 1 from "+u(0,0)+" to "+u(0,1)+", which is worse for her. Nobody moves.<br><br><b>Where each wrong option comes from.</b><br>"+
+   u(0,1)+": the biggest number in player 1's best row. It forgets that player 2 picks the column and wants the number small.<br>"+
+   u(1,1)+": the smallest number in the grid, at (Down, Right). Player 1 would have to choose Down, and he never will.<br>"+
+   ((u(0,0)+u(0,1))/2)+": the average of "+u(0,0)+" and "+u(0,1)+", as if player 2 mixed half and half. She has no reason to mix.<br>"+
+   "\"You cannot tell without solving for the mixed equilibrium\": the trap. You saw the two lines are parallel, so there is no crossing to find. Zero-sum does not always mean you must mix.";}}}
 ];
 function shuffleItem(it){var c=it.opts[it.correct];for(var i=it.opts.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=it.opts[i];it.opts[i]=it.opts[j];it.opts[j]=t;}it.correct=it.opts.indexOf(c);}
 QUIZ.forEach(shuffleItem);
@@ -360,7 +646,7 @@ QUIZ.forEach((item,qi)=>{
   const block=document.createElement('div');block.className='qblock';
   const tag=item.src?`<span class="examtag">${item.src}</span>`:'';
   block.innerHTML=`<div class="qnum">Question ${qi+1}${tag}</div><div class="qtext">${item.q}</div>`;
-  const exp=document.createElement('div');exp.className='exp';exp.innerHTML=item.exp;
+  const exp=document.createElement('div');exp.className='exp';if(item.anim){exp.appendChild(buildMixedStepper(item.anim));}else{exp.innerHTML=item.exp;}
   item.opts.forEach((opt,oi)=>{
     const btn=document.createElement('button');btn.className='opt';
     btn.innerHTML=`${String.fromCharCode(65+oi)}. ${opt}<span class="mark"></span>`;
@@ -371,6 +657,16 @@ QUIZ.forEach((item,qi)=>{
       document.getElementById('scoreChip').textContent=`${score} / ${QUIZ.length}`; exp.classList.add('show'); };
     block.appendChild(btn); });
   block.appendChild(exp);body.appendChild(block); });}
+
+// Section 2 worked example: penalty kick, animated
+(function(){var el=document.getElementById('pkStepper'); if(!el) return;
+el.appendChild(buildMixedStepper({rows:["Kick left","Kick right"],cols:["Dive left","Dive right"],cells:[[58,95],[93,70]],
+ ask:"pq",expect:23/60,p1:"the kicker",p2:"the goalie",
+ notes:{q:function(r){return "In words: the goalie dives left about "+Math.round(r.q*100)+" times in every 100 kicks.";},
+        p:function(r){return "In words: the kicker aims left about "+Math.round(r.p*100)+" times in every 100 kicks. Left is his weaker side, and he still uses it.";},
+        check:function(r){return "That shared number is the <b>value of the game</b>: the kicker scores "+r.pct(r.V/100)+" of the time, whatever the goalie does.";}},
+ finalMsg:function(r){return "<b>The kicker aims left "+r.pct(r.p)+" of the time. The goalie dives left "+r.pct(r.q)+" of the time. The kicker scores "+r.pct(r.V/100)+": the value of the game.</b><br><b>The rule in one line:</b> to find your own mix, make your <i>opponent</i> indifferent. Set his two averages equal and solve. Then put the answer back into either line to get the value.";}}));
+})();
 </script><!-- GoatCounter analytics -->
 <script data-goatcounter="https://game-theory.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
@@ -435,6 +731,41 @@ QUIZ.forEach((item,qi)=>{
     });
     mo.observe(res, {attributes: true, attributeFilter: ['class']});
   }
+})();
+</script>
+<script>
+/* TSTEP: shared step-by-step player for explanations */
+(function(){
+function trim(s){return s.trim();}
+function lab(h){var m=h.match(/^\s*(?:<span[^>]*>)?\s*<b>([^<]{1,60})<\/b>/i);return m?m[1].replace(/[.:\s]+$/,''):'';}
+function build(html){
+  var parts=html.split(/(?:<br\s*\/?>\s*){2,}/i).map(trim).filter(Boolean);
+  if(parts.length<3) parts=html.split(/<br\s*\/?>/i).map(trim).filter(Boolean);
+  if(parts.length<2) return null;
+  var head=parts[0], steps=parts.slice(1), cur=1, N=steps.length;
+  var root=document.createElement('div'); root.className='stepper tstep';
+  root.innerHTML='<div class="thead">'+head+'</div><div class="sbar"><span class="tlab"></span><span>Step <b class="tn">1</b> of '+N+'</span></div><div class="tblocks"></div><div class="nav"><button class="bk" type="button">← Back</button><button class="nx" type="button">Next →</button><button class="rs" type="button">Show all</button></div>';
+  var box=root.querySelector('.tblocks');
+  var els=steps.map(function(h){var d=document.createElement('div');d.className='tb';d.innerHTML=h;box.appendChild(d);return d;});
+  var bk=root.querySelector('.bk'),nx=root.querySelector('.nx'),rs=root.querySelector('.rs'),tn=root.querySelector('.tn'),tl=root.querySelector('.tlab');
+  function render(){
+    els.forEach(function(d,i){d.className='tb'+(i<cur?' on':'')+(i===cur-1?' cur':'');});
+    tn.textContent=cur; tl.textContent=lab(steps[cur-1])||'';
+    bk.disabled=cur<=1; nx.disabled=cur>=N; rs.style.display=cur>=N?'none':'';
+  }
+  bk.onclick=function(){if(cur>1){cur--;render();}};
+  nx.onclick=function(){if(cur<N){cur++;render();}};
+  rs.onclick=function(){cur=N;render();};
+  render(); return root;
+}
+window.buildTextStepper=build;
+window.addEventListener('load',function(){
+  Array.prototype.forEach.call(document.querySelectorAll('.exp'),function(e){
+    if(e.querySelector('.stepper')||e.getAttribute('data-ts'))return;
+    e.setAttribute('data-ts','1');
+    var s=build(e.innerHTML); if(s){e.innerHTML='';e.appendChild(s);}
+  });
+});
 })();
 </script>
 </body></html>

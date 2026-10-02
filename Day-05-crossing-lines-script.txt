@@ -1,0 +1,13 @@
+Title: Day 5 — The smooth version: where the two best-reply lines cross
+Voices: NOA = Heart, TOM = Fenrir
+Output: Day-05-crossing-lines.mp3
+
+NOA: Last picture. What if the firms could pick any quantity at all, not only from a short menu?
+TOM: Then there is no grid. There would be endless rows.
+NOA: Right. So instead of a grid, you get a line. For every quantity your rival might choose, there is exactly one quantity that is best for you. That is your best reply. Draw all of them together and you get a straight line sloping downward. If the rival makes more, you make less.
+TOM: Because the price is already getting crushed when there is too much on the market.
+NOA: Exactly. Each firm has its own line. Look at the picture on the page. One line is the best reply of the first firm, the other is the best reply of the second.
+TOM: And where the two lines cross, each firm is best replying to the other at the same time.
+NOA: And that is exactly what a Nash equilibrium is. Nobody wants to move alone. That crossing point is the very same cell the cutting left behind in the grid.
+TOM: Different road, same destination.
+NOA: Same destination. The grid shrinks toward the answer. The lines meet right on it.

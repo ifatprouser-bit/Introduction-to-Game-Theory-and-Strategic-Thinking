@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mock 1: The Practice Exam (Diagnostic)</title>
+<title>Mock 1: The Practice Exam</title>
 <style>
 :root{--bg:#f5f3fb;--card:#fff;--ink:#211c33;--muted:#6f6886;--brand:#6b4ef0;--brand-d:#5238c4;
 --brand-soft:#ece7fd;--good:#15794a;--good-soft:#e4f6ec;--bad:#d2453f;--bad-soft:#fae5e4;--line:#e7e3f2;
@@ -127,17 +127,65 @@ span.p{display:inline-block;font-size:13px;font-weight:700;padding:2px 7px;borde
   .qgroup{break-inside:avoid;page-break-inside:avoid;}
   .qgroup .qblock{break-before:avoid;page-break-before:avoid;}
 }
+.stepper{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px;margin:14px 0;}
+.stepper .sbar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px;font-size:14px;color:var(--muted);}
+.stepper .sbar b{color:var(--brand-d);}
+.stepper table.dtable td,.stepper table.dtable th{transition:background .25s,color .25s;}
+.stepper .cmpA{outline:3px solid #d2453f;outline-offset:-3px;}
+.stepper .cmpB{outline:3px solid #15794a;outline-offset:-3px;}
+.stepper .msg{border-radius:10px;padding:11px 14px;margin:10px 0 4px;font-size:15px;line-height:1.55;background:var(--brand-soft);min-height:48px;}
+.stepper .msg.good{background:var(--good-soft);} .stepper .msg.bad{background:var(--bad-soft);}
+.stepper .picks{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 2px;}
+.stepper .picks button{background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:9px 16px;font-size:16px;font-weight:700;cursor:pointer;color:var(--ink);}
+.stepper .picks button:hover{border-color:var(--brand);background:var(--brand-soft);}
+.stepper .picks button.no{border-color:var(--bad);background:var(--bad-soft);}
+.stepper .nav{display:flex;gap:10px;margin-top:12px;align-items:center;}
+.stepper .nav button{border:none;border-radius:9px;padding:9px 18px;font-weight:700;font-size:15px;cursor:pointer;}
+.stepper .nav .nx{background:var(--brand);color:#fff;} .stepper .nav .bk{background:var(--brand-soft);color:var(--brand-d);}
+.stepper .nav button:disabled{opacity:.4;cursor:default;}
+.stepper .nav .rs{background:none;color:var(--muted);font-weight:600;font-size:13.5px;margin-left:auto;text-decoration:underline;}
+.stepper .alive{font-weight:700;color:var(--brand-d);}
+.stepper .tabs{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;}
+.stepper .tabs button{border:1.5px solid var(--line);background:#fff;border-radius:9px;padding:7px 14px;font-weight:700;cursor:pointer;color:var(--ink);font-size:14px;}
+.stepper .tabs button.on{background:var(--brand);color:#fff;border-color:var(--brand);}
+.tstep .thead{font-size:15px;line-height:1.55;margin-bottom:6px;}
+.tstep .tb{display:none;padding:10px 13px;margin:8px 0;border-left:3px solid var(--line);border-radius:6px;font-size:15px;line-height:1.6;color:#555;}
+.tstep .tb.on{display:block;} .tstep .tb.cur{border-left-color:var(--brand);background:var(--brand-soft);color:var(--ink);}
+.tstep .tlab{font-weight:700;color:var(--brand-d);}
+@media print{.tstep .tb{display:block!important;color:#000;} .tstep .nav{display:none!important;}}
+.dtable .k1{background:#fbeddd!important;color:#a8681a!important;text-decoration:line-through;font-weight:400!important;}
+.dtable .k2{background:#fae5e4!important;color:#b03a35!important;text-decoration:line-through;font-weight:400!important;}
+.dtable .k3{background:#e6eff9!important;color:#2f6ba8!important;text-decoration:line-through;font-weight:400!important;}
+.dtable .k4{background:#eee8fb!important;color:#5238c4!important;text-decoration:line-through;font-weight:400!important;}
+.dtable .keep{background:var(--good-soft)!important;color:var(--good)!important;font-weight:800!important;}
+.rstep .rtable{border-collapse:separate;border-spacing:0;width:100%;min-width:430px;font-size:13.5px;margin:6px 0;border-top:1px solid var(--line);border-left:1px solid var(--line);}
+.rstep .rtable th,.rstep .rtable td{border:0;border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:6px 5px;text-align:center;transition:background .25s;}
+.rstep .rtable th{background:var(--brand-soft);color:var(--brand-d);font-weight:700;font-size:13px;}
+.rstep .rtable th:first-child,.rstep .rtable td.lab{position:sticky;left:0;z-index:2;}
+.rstep .rtable td.lab{text-align:left;font-weight:600;color:var(--brand-d);background:#f6f4fc;white-space:nowrap;}
+.rstep .rtable tr.lhead td{text-align:left;font-weight:800;color:var(--ink);background:#fff;padding-top:12px;font-size:14px;}
+.rstep .rtable tr.lhead td span{position:sticky;left:6px;}
+.rstep .mv{display:inline-block;border-radius:6px;padding:2px 6px;font-weight:700;font-size:13px;white-space:nowrap;}
+.rstep .mv.C{background:var(--good-soft);color:var(--good);} .rstep .mv.D{background:var(--bad-soft);color:#b03a35;}
+.rstep td.unk{color:#b4aecb;font-weight:700;}
+.rstep td.pay{font-weight:700;white-space:nowrap;}
+.rstep td.tot{background:#faf9fe;font-size:13px;color:var(--muted);line-height:1.3;} .rstep td.tot b{color:var(--brand-d);font-size:15px;}
+.rstep td.tag{font-size:13px;color:var(--amber);line-height:1.3;border-top:none;}
+.rstep .nw{background:#fff6dc;}
+.rstep .foc{outline:3px solid var(--brand);outline-offset:-3px;}
+.rstep .rgap{border-radius:10px;padding:9px 14px;margin:8px 0 0;background:var(--amber-soft);font-size:15px;}
+.rstep .sdir{color:#b03a35;font-weight:700;}
 </style>
 </head><body><div class="wrap">
 <a class="home" href="index.html">&larr; All 14 days</a>
-<div class="crumb mockcrumb">Day 3 of 14 &middot; Mock exam 1</div>
+<div class="crumb mockcrumb">Day 9 of 14 &middot; Mock exam 1</div>
 <h1>Mock 1: the practice paper</h1>
 <p class="lede">14 questions, 90 minutes, closed book, calculator allowed. Sit it in one go.</p>
 <div class="chiprow"><span class="p P1">P1</span><span class="p P2">P2</span><span class="p P3">P3</span><span class="p P4">P4</span><span class="p P5">P5</span></div>
 
 <div class="frame"><span class="tag">&#128207; Read this first: it is the point of today</span>
-<p>This is a <b>diagnostic</b>. You are sitting it early on purpose, before most of the teaching days. So half of this has not been taught to you yet. That is the plan, not a mistake.</p>
-<p>A low score today is <b>information, not a verdict</b>. Its only job is to show you the four or five things to work on next week. That list sets up Days 4 to 13. A score that feels good tells you almost nothing. A score with a clear pattern of misses tells you exactly what to do tomorrow.</p>
+<p>This is the <b>first of four practice tests</b>. You sit it after the teaching days, so everything on it has been taught to you. Treat it like the real exam.</p>
+<p>A low score today is <b>information, not a verdict</b>. Its only job is to show you the few things to fix before Thursday. A score that feels good tells you almost nothing. A score with a clear pattern of misses tells you exactly what to do tomorrow.</p>
 <p class="last">So do not look anything up. Do not pause to think it over. Do not stop early. Guess when you must, because there is no penalty. Let the paper find your gaps.</p></div>
 
 <div class="panel"><h3>How to sit it</h3>
@@ -187,11 +235,7 @@ span.p{display:inline-block;font-size:13px;font-weight:700;padding:2px 7px;borde
 <button class="opt">d. Neither player<span class="mark"></span></button>
 <button class="opt">e. None of the other answers is correct<span class="mark"></span></button>
 </div>
-<div class="exp"><b>c. Both players.</b><br><br>
-<b>The word first.</b> A <b>dominant strategy</b> is a move that pays you better than your other move, whatever the other player does. <i>Strictly</i> dominant means better in every case, never just equal.<br><br>
-<b>Player 1:</b> compare his two rows, one column at a time. Against Left, Down gives 9 and Up gives 2. Against Right, Down gives 3.1 and Up gives 3. Down wins in <i>both</i> columns. So Down is strictly dominant.<br><br>
-<b>Player 2:</b> compare her two columns, one row at a time. In row Up, Left gives &minus;1 and Right gives &minus;2. In row Down, Left gives 3 and Right gives &minus;3. Left wins in both rows. So Left is strictly dominant.<br><br>
-<b>Why 3.1 is in the question.</b> It is there to catch a fast eye. Suppose Down's second payoff were 2.9 instead of 3.1. Then Down would beat Up in one column and lose in the other, and player 1 would have no dominant strategy. One tenth of a point flips the whole answer. So check both columns, every time.</div>
+<div class="exp"><b>c. Both players.</b></div>
 </div>
 
 <!-- Q2 -->
@@ -212,12 +256,7 @@ span.p{display:inline-block;font-size:13px;font-weight:700;padding:2px 7px;borde
 <button class="opt">d. 3<span class="mark"></span></button>
 <button class="opt">e. 4<span class="mark"></span></button>
 </div>
-<div class="exp"><b>b. 1: the single strategy profile (Up, Left).</b><br><br>
-<b>The words first.</b> A <b>Nash equilibrium</b> is a pair of choices where neither player wants to move on their own. Given what the other one is doing, each player is already doing their best. <i>Pure</i> means each player picks one move for sure. <i>Mixed</i> means a player randomises between moves.<br><br>
-Start with player 2, because her choice is the easy one. In row Up she picks between &minus;1 and &minus;2, so Left. In row Down it is 3 against &minus;3, so Left again. <b>Left is strictly dominant for player 2</b>, so she plays it whatever happens.<br><br>
-Player 1 knows this. So he only ever faces the Left column: Up gives 5, Down gives 4. He plays Up. <b>(Up, Left) is the only Nash equilibrium.</b><br><br>
-<b>Why no mixed one is hiding.</b> IESDS (iterated elimination of <i>strictly</i> dominated strategies) never kills an equilibrium. Here it leaves exactly one cell standing. When one cell survives, that cell is the only equilibrium there is, pure or mixed. So the count is 1, not 2 or 3.<br><br>
-<b>Careful with player 1.</b> He has no dominant strategy of his own. Down beats Up against Right (7 vs 6) but loses against Left (4 vs 5). That does not matter, because Right is never played.</div>
+<div class="exp"><b>b. 1: the single strategy profile (Up, Left).</b></div>
 </div>
 
 <!-- Q3 -->
@@ -231,16 +270,7 @@ Player 1 knows this. So he only ever faces the Left column: Up gives 5, Down giv
 <button class="opt">d. 33<span class="mark"></span></button>
 <button class="opt">e. None of the other answers is correct<span class="mark"></span></button>
 </div>
-<div class="exp"><b>Both b (22) and c (23) are correct. Either one is marked right here.</b><br><br>
-The professor says so himself in the solutions: <i>"Both 22 and 23 will win against these 9 numbers, so, accidentally, both are best replies (I overlooked the fact that there are two best replies when writing the question)."</i> So if you chose the other one, you were not wrong.<br><br>
-<b>What a best reply is.</b> Your <b>best reply</b> is the move that pays you most against what the others are really doing. Not against what theory says they should do.<br><br>
-<b>The method.</b> The target is two thirds of the average of all ten numbers, your own bid included. So: add your bid to the nine you were given, divide by 10, take two thirds. Then see whose number sits closest to that target. The nine opponents add up to 334.<br>
-&bull; bid 1 &rarr; sum 335, average 33.5, target <b>22.33</b>. You are 21.3 away. The opponent playing 20 is only 2.3 away. You lose.<br>
-&bull; bid 22 &rarr; sum 356, average 35.6, target <b>23.73</b>. You are 1.7 away. The nearest opponent (20) is 3.7 away. <b>You win.</b><br>
-&bull; bid 23 &rarr; sum 357, average 35.7, target <b>23.80</b>. You are 0.8 away. The nearest opponent (20) is 3.8 away. <b>You win.</b><br>
-&bull; bid 33 &rarr; sum 367, average 36.7, target <b>24.47</b>. You are 8.5 away. 20 is 4.5 away. You lose.<br><br>
-<b>The trap that catches everyone: option (a).</b> 1 is the Nash equilibrium of this game. It is the answer when everyone reasons all the way down. It is <i>not</i> the best reply to these nine real numbers. A best reply answers the opponents you were given, not the ones theory says you should have.<br><br>
-<b>Rule of thumb.</b> Your own bid pulls the average up. So the target sits a little above two thirds of the opponents' average. Here the opponents average 37.1. Two thirds of that is 24.7, and the winning band turns out to be 21&ndash;28.</div>
+<div class="exp"><b>Both b (22) and c (23) are correct. Either one is marked right here.</b> The professor says so in his solutions: <i>"Both 22 and 23 will win against these 9 numbers, so, accidentally, both are best replies."</i></div>
 </div>
 
 <!-- Q4 -->
@@ -310,7 +340,7 @@ The professor says so himself in the solutions: <i>"Both 22 and 23 will win agai
 </svg>
 <div class="cap">John moves, then Mary, then John again.</div>
 </div>
-<p class="rebuilt">Rebuilt question. On the original paper this tree is a picture with no readable text behind it, so its payoffs could not be recovered. And unlike the matrices, no arithmetic in the solution pins them down. So this tree was built with the <i>same shape</i> the professor's solution describes ("John plays Down then Go, and Mary plays Left"), using fresh numbers. It was then re-solved as a check. It is not the professor's tree.</p>
+<!-- AUDIT (hidden from learner, answer-revealing provenance): Rebuilt question. On the original paper this tree is a picture with no readable text behind it, so its payoffs could not be recovered. And unlike the matrices, no arithmetic in the solution pins them down. So this tree was built with the same shape the professor's solution describes ("John plays Down then Go, and Mary plays Left"), using fresh numbers. It was then re-solved as a check. It is not the professor's tree. -->
 <div class="opts">
 <button class="opt">a. 2<span class="mark"></span></button>
 <button class="opt">b. 3<span class="mark"></span></button>
@@ -318,13 +348,7 @@ The professor says so himself in the solutions: <i>"Both 22 and 23 will win agai
 <button class="opt">d. 5<span class="mark"></span></button>
 <button class="opt">e. 6<span class="mark"></span></button>
 </div>
-<div class="exp"><b>d. 5.</b> Solve from the last node backwards, never from the front. The method has a name: <b>backward induction</b>. You work out what the last player will do, treat that as settled, then step back one node and repeat.<br><br>
-<b>1. John's second node (the far right).</b> Go gives him 5, Stop gives him 3. He takes <b>Go</b>. So that whole branch is worth (5, 4).<br>
-<b>2. Mary's node.</b> She now compares Left against Right. Left leads to the 4 she gets at Go. Right gives her 1. She takes <b>Left</b>.<br>
-<b>3. John's first node.</b> Up gives him 2. Down now leads, through Mary's Left and his own Go, to 5. He takes <b>Down</b>.<br><br>
-Equilibrium: John plays (Down, Go), Mary plays Left. <b>John's payoff is 5.</b><br><br>
-<b>Every wrong option is a real number on the tree.</b> That is on purpose, and it is the standard trap in tree questions. 4 is <i>Mary's</i> payoff in the very cell you land on. It is the answer you give if you read the wrong half of the pair. 6 is the biggest number in sight, but John only reaches it if Mary hands it to him, and she never will: Right pays her 1. 2 and 3 sit on branches that get cut.<br><br>
-<b>Ask yourself twice:</b> which player is the question asking about, and can that number be reached in equilibrium?</div>
+<div class="exp"><b>d. 5.</b></div>
 </div>
 
 <!-- Q6 -->
@@ -370,7 +394,7 @@ Equilibrium: John plays (Down, Go), Mary plays Left. <b>John's payoff is 5.</b><
   </g>
 </svg>
 </div>
-<p class="rebuilt">Tree redrawn. The original picture could not be read, so this tree was drawn from the professor's own written description of it: <i>"Player 1 offers to give the opponent part of an endowment of 10, and player 2 (the responder) decides whether to accept the offer, or to reject it (in which case, both players get 0)."</i> The shape is his, and the shape is what fixes the answer.</p>
+<!-- AUDIT (hidden from learner, answer-revealing provenance): Tree redrawn. The original picture could not be read, so this tree was drawn from the professor's own written description of it: "Player 1 offers to give the opponent part of an endowment of 10, and player 2 (the responder) decides whether to accept the offer, or to reject it (in which case, both players get 0)." The shape is his, and the shape is what fixes the answer. -->
 <div class="opts">
 <button class="opt">a. Dictator<span class="mark"></span></button>
 <button class="opt">b. Prisoner's dilemma<span class="mark"></span></button>
@@ -394,12 +418,12 @@ Read the tree as a story. One player proposes a split of a fixed sum. The other 
 <div class="qtext">Which type of game is described by the following payoff matrix?</div>
 <div class="tscroll"><table class="dtable" style="max-width:360px">
 <tr><th></th><th colspan="2">Player 2</th></tr>
-<tr><th></th><th>a</th><th>b</th></tr>
-<tr><td class="lab">Player 1 &nbsp;a</td><td>4, &nbsp;4</td><td>0, &nbsp;3</td></tr>
-<tr><td class="lab">Player 1 &nbsp;b</td><td>3, &nbsp;0</td><td>3, &nbsp;3</td></tr>
+<tr><th></th><th>Left</th><th>Right</th></tr>
+<tr><td class="lab">Player 1 &nbsp;Top</td><td>4, &nbsp;4</td><td>0, &nbsp;3</td></tr>
+<tr><td class="lab">Player 1 &nbsp;Bottom</td><td>3, &nbsp;0</td><td>3, &nbsp;3</td></tr>
 </table></div>
 <p class="given">Each cell is (player 1's payoff, player 2's payoff).</p>
-<p class="rebuilt">Matrix rebuilt from the professor's solution. He gives every number in words. There are two pure equilibria: (a,a) "yielding 4 to each player but bearing the risk of giving 0 if the opponent plays b", and (b,b) "which gives each player 3, and is safe in the sense that the player gets 3 regardless of the opponent's play". Re-solved here as a check that it gives his answer.</p>
+<!-- AUDIT (hidden from learner, answer-revealing provenance): Matrix rebuilt from the professor's solution. He gives every number in words. There are two pure equilibria: (a,a) "yielding 4 to each player but bearing the risk of giving 0 if the opponent plays b", and (b,b) "which gives each player 3, and is safe in the sense that the player gets 3 regardless of the opponent's play". Re-solved here as a check that it gives his answer. -->
 <div class="opts">
 <button class="opt">a. Prisoner's dilemma<span class="mark"></span></button>
 <button class="opt">b. Stag hunt<span class="mark"></span></button>
@@ -407,14 +431,7 @@ Read the tree as a story. One player proposes a split of a fixed sum. The other 
 <button class="opt">d. Chicken<span class="mark"></span></button>
 <button class="opt">e. Dictator<span class="mark"></span></button>
 </div>
-<div class="exp"><b>b. Stag hunt.</b><br><br>
-<b>Find the equilibria first.</b> Underline player 1's best reply in each column. In column a, 4 beats 3, so a. In column b, 3 beats 0, so b. Player 2 is the mirror image. Both are underlined in <b>(a,a)</b> and in <b>(b,b)</b>. So there are two pure equilibria.<br><br>
-<b>Now tell them apart by who prefers which.</b> That is how you name the game:<br>
-&bull; <b>Stag hunt</b>: two equilibria, and <i>both players agree</i> which is better. (a,a) at 4 each beats (b,b) at 3 each. One is the risky rich one, the other is safe. <b>This game.</b><br>
-&bull; <b>Battle of the sexes / chicken</b>: two equilibria, but each player prefers a <i>different</i> one. Here they want the same one, so both are out.<br>
-&bull; <b>Prisoner's dilemma</b>: needs a dominant strategy for each player. Neither player has one here (a is better against a, b is better against b). So it cannot be a prisoner's dilemma.<br>
-&bull; <b>Dictator</b>: not a matrix game at all.<br><br>
-<b>The tension the game is built on.</b> Row b pays 3 whether the opponent plays a or b. It is completely safe. Row a pays 4 if he joins you, and 0 if he does not. Rousseau's version: hunt the stag together and eat well, or grab a rabbit alone and eat something. The safe equilibrium is called risk-dominant. The rich one is Pareto-dominant, which means both players do better there.</div>
+<div class="exp"><b>b. Stag hunt.</b></div>
 </div>
 
 <!-- Q8 -->
@@ -448,7 +465,7 @@ That 10% is why option (a) is sitting there. It is a real number from the course
 <tr><td class="lab">You defect</td><td>2, &nbsp;&minus;1</td><td>0, &nbsp;0</td></tr>
 </table></div>
 <p class="given">Each cell is (your payoff, opponent's payoff).</p>
-<p class="rebuilt">Matrix rebuilt, and one word of the stem repaired. Three of the four cells are fixed by the arithmetic printed in the professor's solution. He works the winning payoff out as <span class="math" style="padding:2px 6px;font-size:13px">1&times;5 + 2&times;5 = 15</span>, so mutual cooperation pays 1 and a lone defection pays 2. He then writes the deviation as "at most 2 + 0", so mutual defection pays 0. The fourth cell, the sucker payoff, is <b>not</b> recovered. It was chosen, and set to &minus;1. Be clear about what that can affect. It changes nothing that is marked, because it never appears on the winning line, or in any comparison that decides the answer. It touches exactly one number on this page: the total of 5 quoted below for option (e), which is a wrong answer either way. <b>And the stem.</b> The paper says the opponent "imitates the <i>opponent's</i> most recent action". That cannot be what he means. His own solution works with <i>your</i> action being copied back at you. So it reads "the player's" here. That is a repair of an obvious slip, not his wording.</p>
+<!-- AUDIT (hidden from learner, answer-revealing provenance): Matrix rebuilt, and one word of the stem repaired. Three of the four cells are fixed by the arithmetic printed in the professor's solution. He works the winning payoff out as 1&times;5 + 2&times;5 = 15, so mutual cooperation pays 1 and a lone defection pays 2. He then writes the deviation as "at most 2 + 0", so mutual defection pays 0. The fourth cell, the sucker payoff, is not recovered. It was chosen, and set to &minus;1. Be clear about what that can affect. It changes nothing that is marked, because it never appears on the winning line, or in any comparison that decides the answer. It touches exactly one number on this page: the total of 5 quoted below for option (e), which is a wrong answer either way. And the stem. The paper says the opponent "imitates the opponent's most recent action". That cannot be what he means. His own solution works with your action being copied back at you. So it reads "the player's" here. That is a repair of an obvious slip, not his wording. -->
 <div class="qtext" style="margin-top:14px">The player wishes to maximise her sum of payoffs. What will be the player's best reply against an opponent who cooperates in odd rounds, and imitates the player's most recent action (from the previous round) in even rounds?</div>
 <div class="opts">
 <button class="opt">a. Cooperating in odd rounds, defecting in even rounds<span class="mark"></span></button>
@@ -457,15 +474,7 @@ That 10% is why option (a) is sitting there. It is a real number from the course
 <button class="opt">d. Cooperating in all rounds<span class="mark"></span></button>
 <button class="opt">e. Cooperating in even rounds, defecting in odd rounds<span class="mark"></span></button>
 </div>
-<div class="exp"><b>a. Cooperate in odd rounds, defect in even rounds, worth 15.</b><br><br>
-<b>First, read the opponent's rule slowly.</b> In odd rounds (1, 3, 5, 7, 9) he cooperates whatever you did, so those rounds are free. In even rounds (2, 4, 6, 8, 10) he copies whatever <i>you</i> played the round before. So your odd-round move buys you, or costs you, the even round that follows it.<br><br>
-<b>That makes each odd/even pair a small game of its own.</b> Cooperate in the odd round: you get 1, he cooperates next round, and you defect on him for 2. That is <b>3</b> per pair, five pairs, <b>15</b>. Defect in the odd round instead: you get 2, but he copies you and defects next round, so the best you can get is 0. That is 2 per pair, which is worse.<br><br>
-<b>Score the other options:</b><br>
-&bull; b. Defect always &rarr; 2, 0, 2, 0, … = <b>10</b><br>
-&bull; c. Cooperate except the last round &rarr; nine 1s plus a final 2 = <b>11</b><br>
-&bull; d. Cooperate always &rarr; ten 1s = <b>10</b><br>
-&bull; e. Defect odd, cooperate even &rarr; 2 then &minus;1, five times = <b>5</b>, the worst of the lot. You defect in the rounds he will copy, and you cooperate in the rounds where he is already punishing you.<br><br>
-<b>The lesson this question is really testing.</b> Cooperating is not being nice here. It is buying a cheap defection next round. Against an opponent who follows a fixed rule, look for the moves he cannot punish. Note also that the famous answer, "play tit-for-tat" (copy whatever your opponent did in the round before), is not even on the list. When it is offered on a real paper, it is almost never right.</div>
+<div class="exp"><b>a. Cooperate in odd rounds, defect in even rounds, worth 15.</b></div>
 </div>
 
 <!-- Q10 -->
@@ -483,7 +492,7 @@ That 10% is why option (a) is sitting there. It is a real number from the course
 <tr><td class="lab">50</td><td>2000, 1200</td><td>1750, 1225</td><td>1500, 1200</td><td>1000, 1000</td><td>500, 600</td></tr>
 <tr><td class="lab">60</td><td>1800, 900</td><td>1500, 875</td><td>1200, 800</td><td>600, 500</td><td>0, 0</td></tr>
 </table></div>
-<p class="rebuilt">Grid rebuilt. On the paper this 5&times;5 table is an image that cannot be read. So every cell here was worked out again from the course's own formula (MC = 20, P = 140 &minus; Q<sub>1</sub> &minus; Q<sub>2</sub>, profit = (120 &minus; Q<sub>i</sub> &minus; Q<sub>j</sub>)&nbsp;&times;&nbsp;Q<sub>i</sub>). It was then checked cell by cell against the same table in Presentation 4. It gives the professor's published elimination order and his answer.</p>
+<!-- AUDIT (hidden from learner, answer-revealing provenance): Grid rebuilt. On the paper this 5&times;5 table is an image that cannot be read. So every cell here was worked out again from the course's own formula (MC = 20, P = 140 &minus; Q1 &minus; Q2, profit = (120 &minus; Qi &minus; Qj)&nbsp;&times;&nbsp;Qi). It was then checked cell by cell against the same table in Presentation 4. It gives the professor's published elimination order and his answer. -->
 </div>
 <div class="opts">
 <button class="opt">a. 0<span class="mark"></span></button>
@@ -492,15 +501,7 @@ That 10% is why option (a) is sitting there. It is a real number from the course
 <button class="opt">d. 3<span class="mark"></span></button>
 <button class="opt">e. 4<span class="mark"></span></button>
 </div>
-<div class="exp"><b>b. 1: the game is dominance solvable, and (40, 40) is the only equilibrium there is.</b><br><br>
-<i>Dominance solvable</i> means you can strike out dominated moves one by one until a single cell is left. So never hunt for equilibria in a 5&times;5 by underlining 25 cells. Shrink it first. The game is symmetric, so whatever you delete for one firm you delete for the other.<br><br>
-<b>1. 60 goes, beaten by 50.</b> Row 60 pays 1800, 1500, 1200, 600, 0. Row 50 pays 2000, 1750, 1500, 1000, 500, which is strictly more in every single column.<br>
-<b>2. In the 4&times;4 that is left, 30 goes, beaten by 35.</b> 1800, 1650, 1500, 1200 against 1925, 1750, 1575, 1225.<br>
-<b>3. In the 3&times;3 left ({35, 40, 50}), 50 goes, beaten by 40.</b> 1750, 1500, 1000 against 1800, 1600, 1200.<br>
-<b>4. In the 2&times;2 left, 35 goes, beaten by 40.</b> 1750, 1575 against 1800, 1600.<br><br>
-One cell survives: <b>(40, 40)</b>, paying 1600 each. When elimination of <i>strictly</i> dominated strategies leaves exactly one cell, that cell is the unique Nash equilibrium. There are no mixed ones either, because a mixed equilibrium can never put weight on a strictly dominated strategy. So the count is 1.<br><br>
-<b>Two things to notice.</b> First, look again at 1 above. Why does 50 kill 60, and not 30? Against an opponent playing 30, both 60 and 30 earn exactly 1800. So 30 only <i>weakly</i> dominates 60, meaning it is at least as good everywhere and strictly better somewhere. Weak dominance is not allowed here, because deleting weakly dominated strategies can destroy real equilibria. Second, the order you delete in does not change where you end up, as long as every deletion is strict.<br><br>
-<b>Sanity check on the answer:</b> the continuous version of this exact Cournot game has best reply Q<sub>i</sub> = (120 &minus; Q<sub>j</sub>)/2, which crosses itself at 40. The grid was chosen to contain that point.</div>
+<div class="exp"><b>b. 1: the game is dominance solvable, and (40, 40) is the only equilibrium there is.</b></div>
 </div>
 
 <!-- Q11 -->
@@ -509,13 +510,13 @@ One cell survives: <b>(40, 40)</b>, paying 1600 each. When elimination of <i>str
 <div class="qtext">What is the highest payoff that player 1 can obtain in a pure Nash equilibrium of the following game?</div>
 <div class="tscroll"><table class="dtable" style="max-width:460px">
 <tr><th></th><th colspan="3">Player 2</th></tr>
-<tr><th></th><th>L</th><th>M</th><th>R</th></tr>
-<tr><td class="lab">Player 1 &nbsp;U</td><td>5, &nbsp;9</td><td>3, &nbsp;5</td><td>2, &nbsp;6</td></tr>
-<tr><td class="lab">Player 1 &nbsp;C</td><td>3, &nbsp;4</td><td>5, &nbsp;6</td><td>4, &nbsp;7</td></tr>
-<tr><td class="lab">Player 1 &nbsp;D</td><td>6, &nbsp;5</td><td>2, &nbsp;5</td><td>3, &nbsp;4</td></tr>
+<tr><th></th><th>Left</th><th>Center</th><th>Right</th></tr>
+<tr><td class="lab">Player 1 &nbsp;Top</td><td>5, &nbsp;9</td><td>3, &nbsp;5</td><td>2, &nbsp;6</td></tr>
+<tr><td class="lab">Player 1 &nbsp;Middle</td><td>3, &nbsp;4</td><td>5, &nbsp;6</td><td>4, &nbsp;7</td></tr>
+<tr><td class="lab">Player 1 &nbsp;Bottom</td><td>6, &nbsp;5</td><td>2, &nbsp;5</td><td>3, &nbsp;4</td></tr>
 </table></div>
 <p class="given">Each cell is (player 1's payoff, player 2's payoff).</p>
-<p class="rebuilt">Data checked. On the paper this 3&times;3 is a picture. But the professor types the same grid out in full on slide 29 of Presentation 6, so these are his own numbers, not a rebuild. Re-solved here as a check that they give his published equilibria, (D,L) and (C,R).</p>
+<!-- AUDIT (hidden from learner, answer-revealing provenance): Data checked. On the paper this 3&times;3 is a picture. But the professor types the same grid out in full on slide 29 of Presentation 6, so these are his own numbers, not a rebuild. Re-solved here as a check that they give his published equilibria, (D,L) and (C,R). -->
 <div class="opts">
 <button class="opt">a. 3<span class="mark"></span></button>
 <button class="opt">b. 4<span class="mark"></span></button>
@@ -523,18 +524,7 @@ One cell survives: <b>(40, 40)</b>, paying 1600 each. When elimination of <i>str
 <button class="opt">d. 6<span class="mark"></span></button>
 <button class="opt">e. The game does not admit a pure Nash equilibrium<span class="mark"></span></button>
 </div>
-<div class="exp"><b>d. 6, in the equilibrium (D, L).</b><br><br>
-<b>Underline player 1's best reply in each column</b> (compare the first numbers, going down):<br>
-&bull; column L: 5, 3, <b>6</b> &rarr; D<br>
-&bull; column M: 3, <b>5</b>, 2 &rarr; C<br>
-&bull; column R: 2, <b>4</b>, 3 &rarr; C<br><br>
-<b>Underline player 2's best reply in each row</b> (compare the second numbers, going across):<br>
-&bull; row U: <b>9</b>, 5, 6 &rarr; L<br>
-&bull; row C: 4, 6, <b>7</b> &rarr; R<br>
-&bull; row D: <b>5</b>, <b>5</b>, 4 &rarr; L and M are tied, so both are best replies<br><br>
-<b>Cells with both underlined:</b> (D, L) paying (6, 5), and (C, R) paying (4, 7). So there are two pure equilibria. Player 1's payoffs in them are 6 and 4. His highest is <b>6</b>.<br><br>
-<b>Watch the traps.</b> (C, M) looks like an equilibrium at a glance, and C really is player 1's best reply to M. But in row C player 2 prefers R (7) to M (6), so she moves away. And the tie in row D breaks nothing: L still counts as a best reply, so (D, L) is a real equilibrium.<br><br>
-<b>Also:</b> the question asks for the highest payoff <i>in an equilibrium</i>, not the highest payoff on the board. Player 1's best cell anywhere would be the 6 in (D, L) here. On other papers this is where people grab a big number they can never reach. Always find the equilibria first, then read the answer off them.</div>
+<div class="exp"><b>d. 6, in the equilibrium (Bottom, Left).</b></div>
 </div>
 
 <!-- Q12 + Q13 share one matrix : kept together, and kept with their data, when printed -->
@@ -547,7 +537,7 @@ One cell survives: <b>(40, 40)</b>, paying 1600 each. When elimination of <i>str
 <tr><td class="lab">Player 1: Left</td><td>1</td><td>0</td></tr>
 <tr><td class="lab">Player 1: Right</td><td>0</td><td>4</td></tr>
 </table></div>
-<p class="rebuilt">Matrix rebuilt from the algebra printed in the professor's solutions, which pins it down completely. Player 2 must play Left with probability 80% "which makes player 1's expected payoff equal to 0.8 regardless of her action", and player 1's payoff is "0.8&times;1 = 0.2&times;4". Re-solved here as a check that it gives both published answers, 64% and 0.8.</p>
+<!-- AUDIT (hidden from learner, answer-revealing provenance): Matrix rebuilt from the algebra printed in the professor's solutions, which pins it down completely. Player 2 must play Left with probability 80% "which makes player 1's expected payoff equal to 0.8 regardless of her action", and player 1's payoff is "0.8&times;1 = 0.2&times;4". Re-solved here as a check that it gives both published answers, 64% and 0.8. -->
 </div>
 
 <!-- Q12 -->
@@ -561,18 +551,7 @@ One cell survives: <b>(40, 40)</b>, paying 1600 each. When elimination of <i>str
 <button class="opt">d. 64%<span class="mark"></span></button>
 <button class="opt">e. 80<span class="mark"></span></button>
 </div>
-<div class="exp"><b>d. 64%.</b><br><br>
-<b>The rule this question runs on.</b> In a <b>mixed strategy</b> equilibrium each player randomises. And each one mixes in the way that leaves the <i>other</i> player indifferent, which means the other player's two moves pay exactly the same. That is the whole method.<br><br>
-<b>1. Check that mixing is really needed.</b> Look for a cell that is the smallest in its row and the largest in its column. 1 is the largest in its column, but it is not the smallest in its row, because 0 is. Try each cell in turn: no such cell exists. So the equilibrium is mixed.<br><br>
-<b>2. How often does player 2 play Left?</b> Her mixture must leave player 1 indifferent. Call it q.<br>
-<span class="math">player 1's row Left: 1q + 0(1&minus;q) = q</span><br>
-<span class="math">player 1's row Right: 0q + 4(1&minus;q) = 4 &minus; 4q</span><br>
-<span class="math">q = 4 &minus; 4q &rarr; 5q = 4 &rarr; q = 0.8</span><br><br>
-<b>3. How often does player 1 play Left?</b> Now do the same on the other side. His mixture p must leave player 2 indifferent, so player 1's payoff must be the same in both columns.<br>
-<span class="math">column Left: 1p + 0(1&minus;p) = p &nbsp;&nbsp;|&nbsp;&nbsp; column Right: 0p + 4(1&minus;p) = 4 &minus; 4p</span><br>
-<span class="math">p = 0.8</span><br><br>
-<b>4. The question asks about a cell, not a player.</b> The two players randomise independently, so multiply the two chances: <b>0.8 &times; 0.8 = 0.64 = 64%</b>.<br><br>
-<b>Every wrong option is a piece of this calculation.</b> 80 is p on its own, the answer if you forget that the question said <i>both</i>. 4% is 0.2 &times; 0.2, the opposite corner. 20% is 1 &minus; p. 50% is what you get by assuming a fair coin. This pattern comes back on every past paper. Read carefully whether the question wants one player's probability or one cell's.</div>
+<div class="exp"><b>d. 64%.</b></div>
 </div>
 
 <!-- Q13 -->
@@ -586,10 +565,7 @@ One cell survives: <b>(40, 40)</b>, paying 1600 each. When elimination of <i>str
 <button class="opt">d. 3.2<span class="mark"></span></button>
 <button class="opt">e. None of the other answers is correct<span class="mark"></span></button>
 </div>
-<div class="exp"><b>a. 0.8: the value of the game.</b><br><br>
-You already did the work in question 12. Player 2 plays Left 80% of the time. So player 1's payoff from playing Left is <span class="math">1 &times; 0.8 = 0.8</span>. Check it against his other row: <span class="math">4 &times; 0.2 = 0.8</span>. The same number, and that is exactly what "indifferent" means. It is also the <b>value of the game</b>: in a zero-sum game, this is the payoff in <i>every</i> Nash equilibrium.<br><br>
-<b>This pair of questions is the best habit you can take from the paper.</b> Every past exam ends with two questions on one matrix: a probability, then a payoff. One wrong indifference equation costs you both. That is 14 points, the biggest single risk in the room. So when you finish the probability question, do not move on. You are two multiplications away from the next answer.<br><br>
-<b>Where the wrong options come from.</b> 3.2 is 4 &times; 0.8, the right multiplication with the wrong pairing. 1.6 doubles it. 2.5 is the answer to question 14, sitting here to catch a slipped line.</div>
+<div class="exp"><b>a. 0.8: the value of the game.</b></div>
 </div>
 
 </div><!-- /qgroup -->
@@ -604,7 +580,7 @@ You already did the work in question 12. Player 2 plays Left 80% of the time. So
 <tr><td class="lab">Player 1: Bottom</td><td>2</td><td>3</td></tr>
 </table></div>
 <p class="given">One number per cell = player 1's payoff. Player 1 wants it high, player 2 wants it low.</p>
-<p class="rebuilt">Matrix rebuilt from the algebra in the professor's solution, which pins all four cells. Player 1 is indifferent only if player 2 mixes 50/50. Player 2 is indifferent only if player 1 plays Top with probability 25%. The payoff that comes out is 0.5&times;4 + 0.5&times;1. Re-solved here as a check that it gives his answer of 2.5.</p>
+<!-- AUDIT (hidden from learner, answer-revealing provenance): Matrix rebuilt from the algebra in the professor's solution, which pins all four cells. Player 1 is indifferent only if player 2 mixes 50/50. Player 2 is indifferent only if player 1 plays Top with probability 25%. The payoff that comes out is 0.5&times;4 + 0.5&times;1. Re-solved here as a check that it gives his answer of 2.5. -->
 <div class="opts">
 <button class="opt">a. 1<span class="mark"></span></button>
 <button class="opt">b. 1.5<span class="mark"></span></button>
@@ -612,14 +588,7 @@ You already did the work in question 12. Player 2 plays Left 80% of the time. So
 <button class="opt">d. 2.5<span class="mark"></span></button>
 <button class="opt">e. 3<span class="mark"></span></button>
 </div>
-<div class="exp"><b>d. 2.5.</b><br><br>
-<b>1. Is there a pure equilibrium?</b> Take player 1's guaranteed minimum first. Top guarantees 1, Bottom guarantees 2, so he can secure 2. Now player 2's guarantee. Left holds him to at most 4, Right to at most 3, so she can hold him to 3. Those two numbers are not the same (2 &ne; 3). So there is no saddle point, meaning no single cell both players are happy to sit on, and mixing is needed.<br><br>
-<b>2. Find player 2's mixture q (her probability of playing Left) by making player 1 indifferent.</b><br>
-<span class="math">Top: 4q + 1(1&minus;q) = 1 + 3q &nbsp;&nbsp;|&nbsp;&nbsp; Bottom: 2q + 3(1&minus;q) = 3 &minus; q</span><br>
-<span class="math">1 + 3q = 3 &minus; q &rarr; 4q = 2 &rarr; q = 0.5</span><br><br>
-<b>3. The value.</b> Put q back into either row: <span class="math">1 + 3(0.5) = 2.5</span>. Check the other: <span class="math">3 &minus; 0.5 = 2.5</span>. The same. <b>Player 1's equilibrium payoff is 2.5.</b><br><br>
-<b>Why this one deserves care.</b> There is not a single zero in this matrix. So the shortcut that works on the usual a,0 / 0,b games (mix b/(a+b), value ab/(a+b)) does not apply here. There is nothing to memorise. Write the two expressions, set them equal, and solve. The method is the same every time. Only the numbers change.<br><br>
-<b>If you want player 1's own mixture:</b> make player 2 indifferent. The Left column gives 4p + 2(1&minus;p) = 2 + 2p. Right gives 1p + 3(1&minus;p) = 3 &minus; 2p. They are equal at p = 0.25. So he plays Top a quarter of the time. The weaker-looking row is used <i>more</i>, and that is the mixing lesson in one line.</div>
+<div class="exp"><b>d. 2.5.</b></div>
 </div>
 
 </div><!-- /paper -->
@@ -636,7 +605,7 @@ You already did the work in question 12. Player 2 plays Left 80% of the time. So
 <div class="misslist" id="resMiss"></div>
 <p class="note"><b>About question 3.</b> It has two correct answers: 22 and 23. The professor says so himself in his solutions. Both count as right here. So if you chose either one, you got the point, and question 3 is not on your missed list.</p>
 
-<div class="warnbox"><b>There is no pass mark here, and nothing has been left out.</b> No past paper prints one, so no line has been invented for you. The number above is not a verdict. It is a starting position, taken eleven days out, before most of the teaching. What matters is the <i>list</i> below, not the score above it.</div>
+<div class="warnbox"><b>There is no pass mark here, and nothing has been left out.</b> No past paper prints one, so no line has been invented for you. The number above is not a verdict. It is a first reading, taken four days before the exam, with time left to fix what it finds. What matters is the <i>list</i> below, not the score above it.</div>
 
 <p class="partlab">Your error log</p>
 <p class="p">One row per question. For every one you missed, write a single sentence in your own words: <b>what I actually did wrong</b>. Not "I didn't know it", but "I read the second number as player 1's", or "I found the equilibria but answered with the wrong player's payoff". Then go to the day named in the last column. This list is the point of today.</p>
@@ -646,12 +615,12 @@ You already did the work in question 12. Player 2 plays Left 80% of the time. So
 
 <p class="partlab" style="margin-top:22px">Read the pattern, not the total</p>
 <div class="takeaway"><ul>
-<li><b>Missed 1, 2, 10 or 11?</b> Dominance and finding equilibria: the biggest block on the exam, about 40% of the marks. Days 4 and 5.</li>
-<li><b>Missed 12, 13 or 14?</b> The mixed-strategy arithmetic. These come as a linked pair on every paper, so one slip costs you twice. Days 6 and 11.</li>
+<li><b>Missed 1, 2, 10 or 11?</b> Dominance and finding equilibria: the biggest block on the exam, about 40% of the marks. Days 3 and 4.</li>
+<li><b>Missed 12, 13 or 14?</b> The mixed-strategy arithmetic. These come as a linked pair on every paper, so one slip costs you twice. Days 5 and 8.</li>
 <li><b>Missed 5 or 6?</b> Game trees and backward induction. Day 1.</li>
 <li><b>Missed 7?</b> Telling the five standard games apart. Day 2.</li>
-<li><b>Missed 9?</b> Repeated games. There is exactly one of these on every single exam, so it is worth 7 guaranteed points. Day 8.</li>
-<li><b>Missed 3?</b> The 2/3-average contest: arithmetic, not recall. The trap is answering with the equilibrium instead of the best reply to the numbers you were given. Day 11.</li>
+<li><b>Missed 9?</b> Repeated games. There is exactly one of these on every single exam, so it is worth 7 guaranteed points. Day 6.</li>
+<li><b>Missed 3?</b> The 2/3-average contest: arithmetic, not recall. The trap is answering with the equilibrium instead of the best reply to the numbers you were given. Day 8.</li>
 <li><b>Missed 4 or 8?</b> Recall and behavioural facts. Cheap marks. Day 13.</li>
 </ul>
 <p class="tk-gen">Two or three misses in the <i>same</i> row above is a real signal. One miss spread across three rows is usually just time pressure. Check whether you rushed the last four questions.</p></div>
@@ -664,26 +633,26 @@ You already did the work in question 12. Player 2 plays Left 80% of the time. So
 </ul></div>
 </div>
 
-<div class="navrow"><a class="navbtn" href="Day-02.html">&larr; Back</a><a class="navbtn primary" href="Day-04.html">Next &rarr;</a></div>
+<div class="navrow"><a class="navbtn" href="Day-11.html">&larr; Back</a><a class="navbtn primary" href="Day-07.html">Next &rarr;</a></div>
 </div>
 
 <script>
 (function(){
   var TOPICS = [
-    ["1","Dominant strategies in a 2&times;2","Day 4 &middot; Pure Nash I"],
-    ["2","Dominance solvable: counting equilibria","Day 5 &middot; Pure Nash II"],
-    ["3","2/3-average contest: best reply","Day 11 &middot; Arithmetic"],
+    ["1","Dominant strategies in a 2&times;2","Day 3 &middot; Pure Nash I"],
+    ["2","Dominance solvable: counting equilibria","Day 4 &middot; Pure Nash II"],
+    ["3","2/3-average contest: best reply","Day 8 &middot; Arithmetic"],
     ["4","Sequential vs simultaneous, perfect information","Day 1 &middot; Exam map"],
     ["5","Backward induction on a tree","Day 1 &middot; Backward induction"],
     ["6","Recognising the ultimatum game","Day 1 &middot; Backward induction"],
     ["7","Naming the archetype from a matrix","Day 2 &middot; Name that game"],
     ["8","Behavioural fact: Golden Balls","Day 13 &middot; Full sweep"],
-    ["9","Repeated game: best reply to a rule","Day 8 &middot; Repeated games"],
-    ["10","Iterated elimination on a 5&times;5","Day 5 &middot; Pure Nash II"],
-    ["11","All pure equilibria in a 3&times;3","Day 4 &middot; Pure Nash I"],
-    ["12","Zero-sum: probability of a cell","Day 6 &middot; Mixed strategies"],
-    ["13","Zero-sum: value of the game","Day 11 &middot; Arithmetic"],
-    ["14","Zero-sum with no zeros in it","Day 11 &middot; Arithmetic"]
+    ["9","Repeated game: best reply to a rule","Day 6 &middot; Repeated games"],
+    ["10","Iterated elimination on a 5&times;5","Day 4 &middot; Pure Nash II"],
+    ["11","All pure equilibria in a 3&times;3","Day 3 &middot; Pure Nash I"],
+    ["12","Zero-sum: probability of a cell","Day 5 &middot; Mixed strategies"],
+    ["13","Zero-sum: value of the game","Day 8 &middot; Arithmetic"],
+    ["14","Zero-sum with no zeros in it","Day 8 &middot; Arithmetic"]
   ];
 
   var blocks = [].slice.call(document.querySelectorAll('.qblock'));
@@ -884,6 +853,904 @@ You already did the work in question 12. Player 2 plays Left 80% of the time. So
     });
     mo.observe(res, {attributes: true, attributeFilter: ['class']});
   }
+})();
+</script>
+<script>
+/* Engines (copied from engines/: grid-plus, tree, mixed, rounds, bidline). */
+// grid-plus.js: grid.js plus 'swap' (try one cell change, shown old -> new), 'eq' (mark stable cells, verified), 'both' (is cell A better for BOTH players than cell B), 'hl' (point at cells with a note), tie-aware 'cmp' text, player names, corner label, per-track finalMsg.
+// ---- Step-by-step explanation player for payoff-matrix questions (extended copy of grid.js) ----
+// cfg: rows, cols, cells[i][j]=[p1,p2], steps | tracks:{name:[steps]}, finalMsg (string, or {trackName:html}),
+//      players:['Garage 1','Garage 2'] (optional), corner:'html' (optional top-left cell), nash, stall, noalive (as grid.js)
+// steps (kind 'row' = player 1 compares rows, 'col' = player 2 compares columns):
+//   ['cut',kind,red,green,note?]   cut a strictly dominated line (throws if not strict)
+//   ['cmp',kind,red,green,note?]   only compare; ties are printed as "=" and count as "not better"
+//   ['ul','col'|'row',idx,note?]   underline best replies
+//   ['swap',i,j,[p1,p2],note?]     try ONE change on the printed matrix: cell (i,j) becomes [p1,p2].
+//                                  A later swap replaces an earlier one. Every mark is cleared: the game is new.
+//   ['eq',[[i,j],...],note?]       mark stable cells (pure Nash equilibria). Throws if a listed cell is not stable.
+//   ['both',i,j,ei,ej,note?]       tick 2: is cell (i,j) better for BOTH players than cell (ei,ej)? Text is computed.
+//   ['hl',[[i,j],...],note]        outline cells; the note is the step text.
+function buildGridStepper(cfg){
+  if(!document.getElementById('gp-css')){var cs=document.createElement('style');cs.id='gp-css';cs.textContent=
+    '.stepper .dtable td.gp-keep{background:var(--good-soft)!important;color:var(--good)!important;font-weight:800!important;}'+
+    '.stepper .dtable td.gp-better{background:var(--brand-soft)!important;color:var(--brand-d)!important;font-weight:800!important;}'+
+    '.stepper .dtable td.gp-swap{background:var(--amber-soft,#fcf3e3)!important;color:var(--amber,#8f5c12)!important;font-weight:800!important;}'+
+    '.stepper .dtable td.gp-changed{box-shadow:inset 0 0 0 2px #e2b65c;}'+
+    '.stepper .cmpP{outline:3px solid var(--brand,#6b4ef0);outline-offset:-3px;}'+
+    '.stepper .gp-tag{display:block;font-size:13px;font-weight:700;margin-top:2px;}'+
+    '.stepper .gp-old{text-decoration:line-through;opacity:.6;font-weight:400;}'+
+    '.stepper .gp-note{display:block;margin-top:6px;}';
+    document.head.appendChild(cs);}
+  var R=cfg.rows, C=cfg.cols, M0=cfg.cells, M=M0, P=cfg.players||['Player 1','Player 2'];
+  var tracks=cfg.tracks||{'':cfg.steps}, names=Object.keys(tracks), cur=names[0];
+  var root=document.createElement('div'); root.className='stepper';
+  root.innerHTML=(names.length>1?'<div class="tabs"></div>':'')+'<div class="sbar"><span class="sround"></span><span>Still alive: <span class="alive"></span></span></div>'+
+    '<div class="tscroll"><table class="dtable"></table></div><div class="msg"></div>'+
+    '<div class="nav"><button class="bk">&larr; Back</button><button class="nx">Next &rarr;</button></div>';
+  if(cfg.noalive){root.querySelector('.sbar').lastChild.style.display='none';}
+  var tbl=root.querySelector('table'), msg=root.querySelector('.msg'), bk=root.querySelector('.bk'), nx=root.querySelector('.nx');
+  var step=0, CLS=['k1','k2','k3','k4','k1','k2','k3','k4'];
+  function allIdx(n){var a=[];for(var i=0;i<n;i++)a.push(i);return a;}
+  function val(i,j,k){return M[i][j][k];}
+  function withSwap(st){return M0.map(function(r,i){return r.map(function(c,j){return (i===st[1]&&j===st[2])?st[3].slice():c.slice();});});}
+  function cellName(i,j){return '('+R[i]+', '+C[j]+')';}
+  function pay(i,j){return fmt(val(i,j,0))+', '+fmt(val(i,j,1));}
+  function fmt(x){return x<0?'&minus;'+(-x):String(x);}
+  function sym(a,b){return a>b?' &gt; ':(a<b?' &lt; ':' = ');}
+  function beats(kind,g,r,ar,ac){
+    return kind==='row'?ac.every(function(c){return val(g,c,0)>val(r,c,0);}):ar.every(function(q){return val(q,g,1)>val(q,r,1);});
+  }
+  function bestSet(kind,idx,ar,ac){
+    var vals=kind==='col'?ar.map(function(i){return val(i,idx,0);}):ac.map(function(j){return val(idx,j,1);});
+    var lines=kind==='col'?ar:ac, m=Math.max.apply(null,vals); return lines.filter(function(z,t){return vals[t]===m;});
+  }
+  function isNE(i,j,ar,ac){
+    return ar.every(function(r){return val(i,j,0)>=val(r,j,0);})&&ac.every(function(c){return val(i,j,1)>=val(i,c,1);});
+  }
+  // replay state up to step s. Persistent marks (ul, swap, eq, both) count up to and including s; cuts apply after their step.
+  function stateAt(s,atEnd){
+    var steps=tracks[cur]; M=M0;
+    var S={ar:allIdx(R.length),ac:allIdx(C.length),cutRow:{},cutCol:{},ulC:{},ulR:{},eq:{},better:{},swap:null,n:0};
+    function reset(){S.ar=allIdx(R.length);S.ac=allIdx(C.length);S.cutRow={};S.cutCol={};S.ulC={};S.ulR={};S.eq={};S.better={};S.n=0;}
+    for(var t=0;t<steps.length;t++){
+      var st=steps[t], k=st[0], upto=atEnd?true:((k==='cut'||k==='cmp'||k==='hl')?t<s:t<=s);
+      if(!upto) continue;
+      if(k==='swap'){ M=withSwap(st); reset(); S.swap={i:st[1],j:st[2],old:M0[st[1]][st[2]],at:t}; }
+      if(k==='cut'){ if(st[1]==='row'){S.cutRow[st[2]]=S.n; S.ar=S.ar.filter(function(v){return v!==st[2];});} else {S.cutCol[st[2]]=S.n; S.ac=S.ac.filter(function(v){return v!==st[2];});} S.n++; }
+      if(k==='ul'){ var b=bestSet(st[1],st[2],S.ar,S.ac); if(st[1]==='col') S.ulC[st[2]]=b; else S.ulR[st[2]]=b; }
+      if(k==='eq'){ st[1].forEach(function(c){S.eq[c[0]+','+c[1]]=1;}); }
+      if(k==='both'){ if(val(st[1],st[2],0)>val(st[3],st[4],0)&&val(st[1],st[2],1)>val(st[3],st[4],1)) S.better[st[1]+','+st[2]]=1; }
+    }
+    return S;
+  }
+  // verify every authored cut and every claimed stable cell (throws early if the data is wrong)
+  Object.keys(tracks).forEach(function(nm){ var steps=tracks[nm], ar=allIdx(R.length), ac=allIdx(C.length); M=M0;
+    steps.forEach(function(st){
+      if(st[0]==='swap'){ M=withSwap(st); ar=allIdx(R.length); ac=allIdx(C.length); }
+      if(st[0]==='cut'){ if(!beats(st[1],st[3],st[2],ar,ac)) throw new Error('illegal cut '+st);
+        if(st[1]==='row') ar=ar.filter(function(v){return v!==st[2];}); else ac=ac.filter(function(v){return v!==st[2];}); }
+      if(st[0]==='eq'){ st[1].forEach(function(c){ if(!isNE(c[0],c[1],ar,ac)) throw new Error('not a stable cell '+c); }); }
+    });
+    M=M0;
+  });
+  function render(){
+    var steps=tracks[cur], atEnd=step>=steps.length, S=stateAt(step,atEnd), st=atEnd?null:steps[step];
+    var ar=S.ar, ac=S.ac, k=st?st[0]:null;
+    var isCmp=st&&(k==='cut'||k==='cmp');
+    var h='<tr><th>'+(cfg.corner||'')+'</th>'+C.map(function(c,j){var cl=S.cutCol[j]!==undefined?CLS[S.cutCol[j]]:'';
+      var cmp=(isCmp&&st[1]==='col')?(j===st[2]?' cmpA':(j===st[3]?' cmpB':'')):((k==='ul'&&st[1]==='col'&&j===st[2])?' cmpB':'');
+      return '<th class="'+cl+cmp+'">'+c+'</th>';}).join('')+'</tr>';
+    var survivor=(!cfg.stall&&!cfg.nash)&&ar.length===1&&ac.length===1&&(S.n>0);
+    R.forEach(function(r,i){
+      var rcl=S.cutRow[i]!==undefined?CLS[S.cutRow[i]]:'';
+      var rcmp=(isCmp&&st[1]==='row')?(i===st[2]?' cmpA':(i===st[3]?' cmpB':'')):((k==='ul'&&st[1]==='row'&&i===st[2])?' cmpB':'');
+      h+='<tr><td class="lab '+rcl+rcmp+'">'+r+'</td>';
+      C.forEach(function(c,j){
+        var a=S.cutRow[i], b=S.cutCol[j], cl='', key=i+','+j, tag='';
+        if(a!==undefined&&b!==undefined)cl=CLS[Math.min(a,b)]; else if(a!==undefined)cl=CLS[a]; else if(b!==undefined)cl=CLS[b];
+        var u1=S.ulC[j]&&S.ulC[j].indexOf(i)>-1, u2=S.ulR[i]&&S.ulR[i].indexOf(j)>-1;
+        if(cl===''){
+          if(S.eq[key]){cl='gp-keep';tag='stable';}
+          else if(S.better[key]){cl='gp-better';tag='better for both';}
+          else if(atEnd&&(survivor||(cfg.nash&&u1&&u2))){cl='gp-keep';tag='stable';}
+        }
+        var isSw=S.swap&&S.swap.i===i&&S.swap.j===j;
+        if(isSw&&cl===''&&st&&k==='swap'){cl='gp-swap';}
+        var t1=fmt(val(i,j,0)), t2=fmt(val(i,j,1)), cmp='', d1=false, d2=false;
+        if(st&&(cl===''||cl.indexOf('gp-')===0)){
+          if(isCmp&&st[1]==='row'&&(i===st[2]||i===st[3])){cmp=i===st[2]?' cmpA':' cmpB'; d2=true;}
+          if(isCmp&&st[1]==='col'&&(j===st[2]||j===st[3])){cmp=j===st[2]?' cmpA':' cmpB'; d1=true;}
+          if(k==='ul'&&st[1]==='col'&&j===st[2]){cmp=' cmpB'; d2=true;}
+          if(k==='ul'&&st[1]==='row'&&i===st[2]){cmp=' cmpB'; d1=true;}
+          if(k==='both'&&((i===st[1]&&j===st[2])||(i===st[3]&&j===st[4])))cmp=' cmpP';
+          if(k==='hl'&&st[1].some(function(q){return q[0]===i&&q[1]===j;}))cmp=' cmpP';
+        }
+        if(u1)t1='<u style="text-decoration-thickness:2px;text-underline-offset:3px">'+t1+'</u>';
+        if(u2)t2='<u style="text-decoration-thickness:2px;text-underline-offset:3px">'+t2+'</u>';
+        if(d1)t1='<span style="opacity:.4">'+t1+'</span>'; if(d2)t2='<span style="opacity:.4">'+t2+'</span>';
+        var body=t1+', '+t2;
+        if(isSw){ if(st&&k==='swap'){ body='<span class="gp-old">'+fmt(S.swap.old[0])+', '+fmt(S.swap.old[1])+'</span> &rarr; '+body; tag='the change'; } else { cl+=' gp-changed'; if(!tag)tag='changed'; } }
+        h+='<td class="'+cl+cmp+'">'+body+(tag?'<span class="gp-tag">'+tag+'</span>':'')+'</td>';
+      });
+      h+='</tr>';
+    });
+    tbl.innerHTML=h;
+    root.querySelector('.alive').textContent=R.filter(function(_,i){return ar.indexOf(i)>-1;}).concat(C.filter(function(_,j){return ac.indexOf(j)>-1;})).join(' · ');
+    root.querySelector('.sround').innerHTML=atEnd?'<b>Done</b>':'<b>Step '+(step+1)+' of '+steps.length+'</b>';
+    msg.className='msg';
+    if(atEnd){ msg.classList.add('good'); var fm=cfg.finalMsg; msg.innerHTML=(typeof fm==='object')?fm[cur]:fm; }
+    else { msg.innerHTML=stepText(st,ar,ac,S); }
+    bk.disabled=step===0; nx.disabled=atEnd;
+    nx.textContent=(step===steps.length-1)?'Finish →':'Next →';
+  }
+  function note(x){return x?'<span class="gp-note">'+x+'</span>':'';}
+  function stepText(st,ar,ac,S){
+    var k=st[0];
+    if(k==='hl') return st[2]||'';
+    if(k==='swap'){
+      var o=S.swap.old;
+      return 'Try the change: <b>'+cellName(st[1],st[2])+'</b> goes from <b>'+fmt(o[0])+', '+fmt(o[1])+'</b> to <b>'+fmt(st[3][0])+', '+fmt(st[3][1])+'</b>. Every other cell stays as printed.<br>The game is new, so both ticks start again.'+note(st[4]);
+    }
+    if(k==='eq'){
+      var cs=st[1], list=cs.map(function(c){return '<b>'+cellName(c[0],c[1])+'</b>, paying '+pay(c[0],c[1]);}).join(' and ');
+      return (cs.length===1?'One stable cell: ':(cs.length===2?'Two stable cells: ':cs.length+' stable cells: '))+list+'.<br>'+(cs.length===1?'Here nobody gains by moving alone. That is a <b>pure Nash equilibrium</b>.':'In each, nobody gains by moving alone. Each is a <b>pure Nash equilibrium</b>.')+note(st[2]);
+    }
+    if(k==='both'){
+      var i=st[1],j=st[2],ei=st[3],ej=st[4], a0=val(i,j,0),b0=val(ei,ej,0),a1=val(i,j,1),b1=val(ei,ej,1);
+      var up0=a0>b0, up1=a1>b1, verdict;
+      if(up0&&up1) verdict='Yes. Higher for both. This cell is <b>better for both</b>.';
+      else if(up0) verdict='No. Better for '+P[0]+' only.';
+      else if(up1) verdict='No. Better for '+P[1]+' only.';
+      else verdict='No. It is not better for either of them.';
+      return 'Is <b>'+cellName(i,j)+'</b> better for <b>both</b> players than <b>'+cellName(ei,ej)+'</b>?<br>'+
+        P[0]+' (first numbers): '+fmt(a0)+sym(a0,b0)+fmt(b0)+'. '+P[1]+' (second numbers): '+fmt(a1)+sym(a1,b1)+fmt(b1)+'.<br><b>'+verdict+'</b>'+note(st[5]);
+    }
+    var kind=st[1], row=kind==='row', L=row?R:C, num=row?'first':'second', who=row?P[0]:P[1], over=row?'column':'row';
+    if(k==='ul'){
+      var idx=st[2], vals, best=bestSet(kind,idx,ar,ac);
+      if(kind==='col'){ vals=ar.map(function(i){return fmt(val(i,idx,0));}); }
+      else { vals=ac.map(function(j){return fmt(val(idx,j,1));}); }
+      var tie=best.length>1;
+      var bestNames=kind==='col'?best.map(function(z){return R[z];}):best.map(function(z){return C[z];});
+      var asker=kind==='col'?P[0]:P[1], nn=kind==='col'?'first':'second';
+      return (kind==='col'?'Say '+P[1]+' plays <b>'+C[idx]+'</b>.':'Say '+P[0]+' plays <b>'+R[idx]+'</b>.')+'<br>'+asker+' looks at the <b>'+nn+'</b> numbers: '+
+        vals.join(', ')+'.<br><b>'+(tie?'A tie, so underline both: '+bestNames.join(' and ')+'.':'Best is '+bestNames[0]+'. Underline it.')+'</b>'+note(st[3]);
+    }
+    var x=L[st[2]], y=L[st[3]];
+    var nums=(row?ac:ar).map(function(z){var vx=row?val(st[2],z,0):val(z,st[2],1), vy=row?val(st[3],z,0):val(z,st[3],1); return fmt(vy)+sym(vy,vx)+fmt(vx);}).join(', ');
+    if(k==='cut') return '<b>'+who+'</b> only looks at the <b>'+num+'</b> numbers. Compare <b>'+x+'</b> (red) with <b>'+y+'</b> (green).<br>'+y+' is higher in every '+over+' still alive: '+nums+'.<br><b>So '+x+' is strictly dominated. Press Next to cut it.</b>'+note(st[4]);
+    var ok=beats(kind,st[3],st[2],ar,ac);
+    var tieOnly=!ok&&(row?ac:ar).every(function(z){var vx=row?val(st[2],z,0):val(z,st[2],1), vy=row?val(st[3],z,0):val(z,st[3],1); return vy>=vx;});
+    return '<b>'+who+'</b> only looks at the <b>'+num+'</b> numbers. Is <b>'+y+'</b> (green) better than <b>'+x+'</b> (red) in every '+over+'?<br>'+y+' vs '+x+': '+nums+'.<br><b>'+
+      (ok?'Yes. '+y+' beats '+x+' everywhere.'+(L.length===2?' So '+y+' is a strictly <i>dominant strategy</i> for '+who+'.':''):
+       (tieOnly?'No. In one '+over+' they tie. '+y+' is never worse, but not always better. That is only <i>weak</i> dominance.':
+        'No. '+y+' loses to '+x+' in at least one '+over+', so '+y+' is not dominant.'))+'</b>'+note(st[4]);
+  }
+  if(names.length>1){ var tabs=root.querySelector('.tabs'); names.forEach(function(nm){var b=document.createElement('button');b.textContent=nm;b.className=nm===cur?'on':'';b.onclick=function(){cur=nm;step=0;Array.prototype.forEach.call(tabs.children,function(x){x.className=x.textContent===nm?'on':'';});render();};tabs.appendChild(b);}); }
+  nx.onclick=function(){ if(step<tracks[cur].length){step++;render();} };
+  bk.onclick=function(){ if(step>0){step--;render();} };
+  render();
+  return root;
+}
+
+// ---- Game-tree stepper: backward induction, one node at a time ----
+// API: buildTreeStepper(cfg) returns a .stepper element (needs stepper.css). cfg = {players:[{name:'Player 1', short:'1', color?, shape?:'circle'|'square'}],
+//   root: node, intro?:html, finalMsg:html, ask?:payoffIndex, notes?:{nodeId:{cmp,pick}}, tracks?:{'Tab name':{root,intro,finalMsg,notes}}, split?:false}.
+// node = {id, p:playerIndex, moves:[{label:'Left', to:node}], x?, y?}; leaf = {pay:[p1,p2,...], x?, y?, below?:true, mark?:true}.
+// Payoff tuples follow the players array order. Without x/y the tree is laid out automatically (time left to right, leaves in a right-hand column).
+// Steps run post-order (last decision first); each node gets a compare step and a pick step. Ties throw unless node.pick names the chosen move index.
+function buildTreeStepper(cfg){
+  var NS='http://www.w3.org/2000/svg';
+  if(!document.getElementById('tree-stepper-css')){var cs=document.createElement('style');cs.id='tree-stepper-css';
+    cs.textContent='.tstree svg{width:100%;height:auto;display:block;margin:0 auto;}.tstree .tsv{background:#fff;border:1px solid var(--line);border-radius:12px;padding:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;}'+
+    '@keyframes tsCarry{from{transform:translate(var(--dx),var(--dy));opacity:.35}to{transform:translate(0,0);opacity:1}}.tstree .carry{animation:tsCarry .7s ease-out both;}';
+    document.head.appendChild(cs);}
+  var PAL=['#6b4ef0','#2f7fd0','#c04a7e','#1d8a6a','#c2820b'], ORD=['first','second','third','fourth','fifth','sixth'];
+  var GREEN='#1f9d63', RED='#d2453f', CHOSEN='#6b4ef0', FAINT='#c8c2dd', DASH='#9a93b4', INK='#211c33', MUTED='#a39dbb', AMBER='#b6791f';
+  var P=cfg.players.map(function(p,i){return {name:p.name, short:p.short, color:p.color||PAL[i%PAL.length], shape:p.shape||(i===0?'circle':'square')};});
+  var tracks=cfg.tracks||{'':{}}, names=Object.keys(tracks), cur=names[0], step=0;
+  function T(){var t=tracks[cur], o={}; for(var k in cfg)o[k]=cfg[k]; for(var k2 in t)o[k2]=t[k2]; return o;}
+  function isLeaf(n){return !!n.pay;}
+  function fmt(v){return '('+v.join(', ')+')';}
+  // ---------- prepare one track: ids, layout, solution, steps ----------
+  var prepared={};
+  function prepare(name){
+    if(prepared[name])return prepared[name];
+    var t=tracks[name], C={}; for(var k in cfg)C[k]=cfg[k]; for(var k2 in t)C[k2]=t[k2];
+    var root=C.root, all=[], internals=[], leaves=[], idc=0, maxD=0;
+    (function walk(n,d,par){n._d=d;n._par=par;if(n.id===undefined)n.id='n'+(idc++);all.push(n);if(d>maxD)maxD=d;
+      if(isLeaf(n)){leaves.push(n);return;} n.moves.forEach(function(m){walk(m.to,d+1,n);}); internals.push(n);})(root,0,null);
+    // layout
+    var manual=all.every(function(n){return n.x!==undefined&&n.y!==undefined;});
+    var pad=50, dx=C.dx||130, gap=C.gap||48, top=40;
+    if(!manual){
+      var slot=0;
+      (function lay(n){ if(isLeaf(n)){n.x=pad+maxD*dx; n.y=top+gap*(slot++); return n.y;}
+        var ys=n.moves.map(function(m){return lay(m.to);}); n.x=pad+n._d*dx; n.y=(ys[0]+ys[ys.length-1])/2; return n.y;})(root);
+    }
+    // solve (post-order, verify, record choices)
+    var order=[];
+    (function solve(n){ if(isLeaf(n)){n._v=n.pay;return n.pay;}
+      var vals=n.moves.map(function(m){return solve(m.to);}), mine=vals.map(function(v){return v[n.p];});
+      var best=Math.max.apply(null,mine), winners=mine.map(function(v,i){return v===best?i:-1;}).filter(function(i){return i>-1;});
+      var pick=winners[0];
+      if(winners.length>1){ if(n.pick===undefined||winners.indexOf(n.pick)<0) throw new Error('tie at node '+n.id+': set node.pick'); pick=n.pick; }
+      if(n.pick!==undefined&&n.pick!==pick) throw new Error('node '+n.id+': pick is not a best move');
+      n._pick=pick; n._v=vals[pick]; order.push(n); return n._v;})(root);
+    var steps=[]; if(C.intro)steps.push({k:'intro'});
+    order.forEach(function(n){ if(C.split===false)steps.push({k:'pick',n:n,both:true}); else {steps.push({k:'cmp',n:n});steps.push({k:'pick',n:n});} });
+    // equilibrium path
+    var path={}, n=root; path[n.id]=1; while(!isLeaf(n)){n=n.moves[n._pick].to; path[n.id]=1;}
+    var eqLeaf=n;
+    var xs=all.map(function(q){return q.x;}), ys=all.map(function(q){return q.y;});
+    var tw=Math.max.apply(null,leaves.map(function(l){return l.below?0:fmt(l.pay).length*8+52;}));
+    var vb=[Math.min.apply(null,xs)-pad+4, Math.min.apply(null,ys)-top+2, Math.max.apply(null,xs)-Math.min.apply(null,xs)+pad+tw+6, Math.max.apply(null,ys)-Math.min.apply(null,ys)+top+(leaves.some(function(l){return l.below;})?44:30)];
+    return prepared[name]={C:C,root:root,all:all,internals:internals,leaves:leaves,order:order,steps:steps,path:path,eqLeaf:eqLeaf,vb:vb};
+  }
+  names.forEach(prepare); // verify every track up front
+  // ---------- DOM ----------
+  var root=document.createElement('div'); root.className='stepper tstree';
+  root.innerHTML=(names.length>1?'<div class="tabs"></div>':'')+'<div class="sbar"><span class="sround"></span><span class="swho"></span></div>'+
+    '<div class="tsv"></div><div class="msg"></div><div class="nav"><button class="bk" type="button">&larr; Back</button><button class="nx" type="button">Next &rarr;</button></div>';
+  var box=root.querySelector('.tsv'), msg=root.querySelector('.msg'), bk=root.querySelector('.bk'), nx=root.querySelector('.nx');
+  function el(tag,attrs,parent,text){var e=document.createElementNS(NS,tag);for(var a in attrs)if(attrs[a]!==undefined)e.setAttribute(a,attrs[a]);if(text!==undefined)e.textContent=text;if(parent)parent.appendChild(e);return e;}
+  // payoff label: tuple with optional emphasis of one index, optional box (cmp | win | lose)
+  function payoff(g,v,x,y,o){
+    o=o||{}; var anchor=o.anchor||'start', s=fmt(v), w=s.length*7.6+(o.tick?16:0)+(o.emph!==undefined?6:0);
+    var x0=anchor==='middle'?x-w/2:x;
+    if(o.box){var col=o.box==='win'?GREEN:o.box==='lose'?RED:CHOSEN;
+      el('rect',{x:x0-6,y:y-15,width:w+12,height:22,rx:6,fill:o.box==='win'?'#e4f6ec':o.box==='lose'?'#fae5e4':'#ece7fd',stroke:col,'stroke-width':o.box==='cmp'?1.6:2.2},g);}
+    if(o.ring)el('rect',{x:x0-6,y:y-15,width:w+12,height:22,rx:6,fill:'none',stroke:AMBER,'stroke-width':1.8,'stroke-dasharray':'3 2'},g);
+    var t=el('text',{x:x0,y:y,'font-size':13,'font-weight':700,'font-family':'-apple-system,Segoe UI,Arial',fill:o.fill||INK},g);
+    if(o.dim)t.setAttribute('opacity','.55');
+    el('tspan',{},t,'(');
+    v.forEach(function(n,i){ var a={};
+      if(o.emph!==undefined){ if(i===o.emph){a['font-size']=15.5;a['font-weight']=800;a.fill=o.box==='lose'?RED:o.box==='win'?GREEN:P[i]?P[i].color:INK;a['text-decoration']='underline';} else a.fill=MUTED; }
+      el('tspan',a,t,String(n)); if(i<v.length-1)el('tspan',{fill:o.emph!==undefined?MUTED:undefined},t,', ');});
+    el('tspan',{},t,')'+(o.tick?' ✓':o.cross?' ✗':''));
+    return t;
+  }
+  function render(){
+    var S=prepare(cur), C=S.C, steps=S.steps, atEnd=step>=steps.length, st=atEnd?null:steps[step];
+    var curNode=st&&st.n, phase=st?st.k:'end';
+    // which nodes are solved (pick shown) at this step
+    var solved={}; for(var i=0;i<(atEnd?steps.length:step+1);i++){var q=steps[i]; if(q.k==='pick')solved[q.n.id]=1;}
+    var svg=el('svg',{viewBox:S.vb.join(' '),role:'img','aria-label':'Game tree, solved step by step from the last decision backwards.'});
+    svg.style.maxWidth=Math.round(S.vb[2]*1.45)+'px'; svg.style.minWidth=Math.round(S.vb[2]*0.8)+'px'; // stays readable on a phone; the box scrolls sideways
+    var gE=el('g',{},svg), gL=el('g',{},svg), gN=el('g',{},svg), gP=el('g',{},svg);
+    // edges + move labels
+    S.internals.forEach(function(n){
+      n.moves.forEach(function(m,mi){
+        var c=m.to, isChosen=solved[n.id]&&n._pick===mi, stroke=FAINT, w=1.8, dash=null, lab='#6f6886', bold=600, op=1;
+        if(atEnd){ if(S.path[n.id]&&isChosen){stroke=GREEN;w=3.6;lab=GREEN;bold=800;} else if(isChosen){stroke=DASH;dash='5 4';lab=DASH;} }
+        else if(curNode===n){ if(phase==='pick'){ if(isChosen){stroke=CHOSEN;w=3.6;lab=CHOSEN;bold=800;} else {op=.35;} } else {stroke='#8f88a8';w=2.4;lab=INK;bold=700;} }
+        else if(solved[n.id]){ if(isChosen){stroke=CHOSEN;w=3;lab=CHOSEN;bold=700;} else op=.35; }
+        var a={x1:n.x,y1:n.y,x2:c.x,y2:c.y,stroke:stroke,'stroke-width':w,opacity:op}; if(dash)a['stroke-dasharray']=dash; el('line',a,gE);
+        // label at midpoint, pushed off the line
+        var lt_=c.pay?0.5:0.38, mx=n.x+(c.x-n.x)*lt_, my=n.y+(c.y-n.y)*lt_, ddx=c.x-n.x, ddy=c.y-n.y, len=Math.sqrt(ddx*ddx+ddy*ddy)||1, nx_=-ddy/len, ny_=ddx/len;
+        if(ny_>0){nx_=-nx_;ny_=-ny_;} // always put the label on the upper side
+        var off=Math.abs(ddy)>Math.abs(ddx)*3?12:9, anc='middle';
+        var lx=mx+nx_*off, ly=my+ny_*off+4;
+        if(Math.abs(ddx)<2){lx=n.x+8;ly=(n.y+c.y)/2+4;anc='start';}
+        if(m.lx!==undefined){lx=m.lx;ly=m.ly;}
+        var lt=el('text',{x:lx,y:ly,'text-anchor':anc,'font-size':12,'font-weight':bold,'font-family':'-apple-system,Segoe UI,Arial',fill:lab,opacity:op},gL,m.label);
+      });
+    });
+    // leaves
+    S.leaves.forEach(function(l){
+      var par=l._par, mi=par.moves.map(function(m){return m.to;}).indexOf(l), o={};
+      var onPath=atEnd&&S.path[l.id];
+      el('circle',{cx:l.x,cy:l.y,r:onPath?6:4,fill:onPath?GREEN:'#8f88a8'},gN);
+      if(curNode===par){ o.emph=par.p; if(phase==='cmp') o.box='cmp'; if(phase==='pick'){o.box=par._pick===mi?'win':'lose';o.tick=par._pick===mi;o.cross=par._pick!==mi;} }
+      if(onPath){o.fill=GREEN;o.tick=true;o.box='win';if(C.ask!==undefined)o.emph=C.ask;}
+      if(l.mark&&!onPath&&curNode!==par)o.ring=true;
+      if(!atEnd&&!onPath&&curNode!==par&&solvedAbove(l,solved))o.dim=true;
+      var tx=l.below?l.x:l.x+12, ty=l.below?l.y+22:l.y+5;
+      payoff(gP,l.pay,tx,ty,Object.assign(o,{anchor:l.below?'middle':'start'}));
+    });
+    // internal nodes
+    S.internals.forEach(function(n){
+      var pl=P[n.p], isCur=curNode===n, r=14;
+      if(isCur)el('circle',{cx:n.x,cy:n.y,r:23,fill:'none',stroke:'#f2b33d','stroke-width':3.5},gN);
+      if(pl.shape==='circle')el('circle',{cx:n.x,cy:n.y,r:r,fill:pl.color},gN);
+      else el('rect',{x:n.x-r,y:n.y-r,width:2*r,height:2*r,rx:6,fill:pl.color},gN);
+      if(pl.short&&pl.short.length<=3)el('text',{x:n.x,y:n.y+4.5,'text-anchor':'middle','font-size':12.5,'font-weight':700,'font-family':'-apple-system,Segoe UI,Arial',fill:'#fff'},gN,pl.short);
+      else el('text',{x:n.x,y:n.y+r+15,'text-anchor':'middle','font-size':11.5,'font-weight':700,'font-family':'-apple-system,Segoe UI,Arial',fill:pl.color},gN,pl.name);
+    });
+    // carried values: a pill above every solved internal node; children of the current node take a compare box
+    S.internals.forEach(function(n){
+      if(!solved[n.id]||n===S.root&&atEnd)return;
+      var o={anchor:'middle'}, par=n._par;
+      if(curNode&&par===curNode){ o.emph=par.p; var mi=par.moves.map(function(m){return m.to;}).indexOf(n);
+        o.box=phase==='cmp'?'cmp':(par._pick===mi?'win':'lose'); if(phase==='pick'){o.tick=par._pick===mi;o.cross=par._pick!==mi;} }
+      else if(curNode===n&&phase==='pick'){o.box='cmp';o.emph=n.p;}
+      else if(atEnd&&!S.path[n.id])o.dim=true;
+      else if(!atEnd&&solvedAbove(n,solved))o.dim=true;
+      var g=el('g',{},gP);
+      if(curNode===n&&phase==='pick'){ // animate the winning payoff travelling back to the node
+        var w=n.moves[n._pick].to, wx=w.pay?(w.below?w.x:w.x+12+fmt(w.pay).length*3.8):w.x, wy=w.pay?(w.below?w.y+22:w.y+5):w.y-24;
+        g.setAttribute('class','carry'); g.setAttribute('style','--dx:'+(wx-n.x)+'px;--dy:'+(wy-(n.y-24))+'px');
+      }
+      payoff(g,n._v,n.x,n.y-24,o);
+    });
+    box.innerHTML=''; box.appendChild(svg);
+    if(box.scrollWidth>box.clientWidth){var fx=curNode?curNode.x:(atEnd?S.root.x:S.vb[0]); box.scrollLeft=Math.max(0,(fx-S.vb[0])/S.vb[2]*svg.getBoundingClientRect().width-box.clientWidth/2);} // keep the node in view on narrow screens
+    // text
+    root.querySelector('.sround').innerHTML=atEnd?'<b>Done</b>':'<b>Step '+(step+1)+' of '+steps.length+'</b>';
+    root.querySelector('.swho').innerHTML=curNode?'<span style="color:'+P[curNode.p].color+';font-weight:700">'+P[curNode.p].name+'</span> decides':(atEnd?'<span style="color:'+GREEN+';font-weight:700">Equilibrium path in green</span>':'');
+    msg.className='msg';
+    if(atEnd){msg.classList.add('good');msg.innerHTML=C.finalMsg;}
+    else msg.innerHTML=text(st,C);
+    bk.disabled=step===0; nx.disabled=atEnd; nx.innerHTML=step===steps.length-1?'Finish &rarr;':'Next &rarr;';
+  }
+  // a node or leaf sits under a node already solved but not on its chosen branch: grey it out
+  function solvedAbove(n,solved){ var c=n, p=n._par; while(p){ if(solved[p.id]&&p.moves[p._pick].to!==c)return true; c=p; p=p._par;} return false; }
+  function text(st,C){
+    if(st.k==='intro')return C.intro;
+    var n=st.n, pl=P[n.p], who='<b style="color:'+pl.color+'">'+pl.name+'</b>', note=(C.notes&&C.notes[n.id])||{};
+    var lines=n.moves.map(function(m){var c=m.to; return '<b>'+m.label+'</b> '+(c.pay?'ends at ':'now leads to ')+fmt(c._v)+', so '+pl.name+' gets <b>'+c._v[n.p]+'</b>.';});
+    var mine=n.moves.map(function(m){return m.to._v[n.p];}), best=mine[n._pick], others=mine.filter(function(v,i){return i!==n._pick;});
+    var cmpTxt=who+' moves here. '+pl.name+' only reads the <b>'+ORD[n.p]+'</b> number in each payoff.<br>'+lines.join('<br>')+(note.cmp?'<br><span style="color:var(--muted)">'+note.cmp+'</span>':'');
+    var tie=others.indexOf(best)>-1;
+    var pickTxt='<b>'+(tie?best+' ties with '+best+'. '+pl.name+' picks ':others.map(function(v){return best+' &gt; '+v;}).join(' and ')+', so '+pl.name+' plays ')+n.moves[n._pick].label+'.</b><br>'+
+      'Carry '+fmt(n._v)+' back to this node. From now on the whole branch is worth '+fmt(n._v)+'.'+(note.pick?'<br><span style="color:var(--muted)">'+note.pick+'</span>':'');
+    if(st.both)return cmpTxt+'<br>'+pickTxt;
+    return st.k==='cmp'?cmpTxt:pickTxt;
+  }
+  if(names.length>1){ var tabs=root.querySelector('.tabs'); names.forEach(function(nm){var b=document.createElement('button');b.type='button';b.textContent=nm;b.className=nm===cur?'on':'';
+    b.onclick=function(){cur=nm;step=0;Array.prototype.forEach.call(tabs.children,function(x){x.className=x.textContent===nm?'on':'';});render();};tabs.appendChild(b);}); }
+  nx.onclick=function(){ if(step<prepare(cur).steps.length){step++;render();} };
+  bk.onclick=function(){ if(step>0){step--;render();} };
+  render();
+  return root;
+}
+
+// ---- Mixed-strategy stepper: Back/Next walk-through of a 2x2 indifference problem ----
+// buildMixedStepper(cfg) returns a .stepper element. cfg: rows:[2 word labels], cols:[2 word labels],
+//   cells: [[a,b],[c,d]] (zero-sum, player 1's payoff) or [[[a1,a2],[b1,b2]],[[c1,c2],[d1,d2]]] (two numbers),
+//   ask: 'q' | 'p' | 'pq' | 'value' | {cell:[rowIdx,colIdx]},  expect: the answer as a number (0.4, 0.24, 6...); throws if the engine disagrees.
+//   Optional: finalMsg (html, or function(r) using r.p, r.q, r.V, r.ans, r.u1(i,j)), notes:{pure,q,p,result,check: html or function(r)},
+//   trap:true (pure games: show the parallel lines that never cross), p1/p2 (player names), tol (default 0.006).
+// q = how often player 2 plays the first column; p = how often player 1 plays the first row. Every number shown is computed here.
+function buildMixedStepper(cfg){
+  if(!document.getElementById('mx-css')){
+    var css=document.createElement('style'); css.id='mx-css';
+    css.textContent='.mx-top{display:flex;gap:14px;flex-wrap:wrap;align-items:flex-start;}'+
+    '.mx-top .tscroll{flex:1 1 250px;min-width:0;} .mx-top table.dtable{margin:0;font-size:15px;}'+
+    '.mx-top table.dtable td{font-size:16px;font-weight:600;}'+
+    '.mx-key{flex:1 1 210px;font-size:14px;line-height:1.45;background:#fbfaff;border:1px solid var(--line);border-radius:10px;padding:9px 12px;}'+
+    '.mx-key .kl{margin:2px 0 3px;} .mx-key .kl b{color:var(--brand-d);} .mx-key .kv{color:var(--muted);font-weight:700;}'+
+    '.mx-bar{display:flex;height:24px;border-radius:7px;overflow:hidden;margin:3px 0 2px;font-size:13px;font-weight:700;}'+
+    '.mx-bar span{display:flex;align-items:center;justify-content:center;color:#fff;white-space:nowrap;overflow:hidden;transition:flex-basis .45s;}'+
+    '.mx-bar .s1{background:#5238c4;} .mx-bar .s2{background:#2f6ba8;} .mx-bar.unk span{background:#ddd8ec;color:#5b5573;}'+
+    '.mx-barlab{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin-bottom:8px;}'+
+    '.mx-edge{display:block;font-size:13px;font-weight:700;color:#2f6ba8;margin-top:2px;}'+
+    '.stepper table.dtable .mx-hl{outline:3px solid var(--brand);outline-offset:-3px;background:var(--brand-soft);}'+
+    '.stepper table.dtable .mx-keep{background:var(--good-soft)!important;color:var(--good)!important;font-weight:800;outline:3px solid #15794a;outline-offset:-3px;}'+
+    '.mx-dim{opacity:.35;}'+
+    '.mx-work{font-family:"SF Mono",Menlo,Consolas,monospace;background:#f6f4fc;border:1px solid var(--line);border-radius:8px;padding:8px 12px;margin-top:10px;font-size:14.5px;line-height:1.7;}'+
+    '.mx-work .wt{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;font-size:13px;font-weight:700;color:var(--muted);}'+
+    '.mx-work .wl{color:#7a7491;} .mx-work .wl.cur{color:var(--brand-d);font-weight:700;}';
+    document.head.appendChild(css);
+  }
+  var R=cfg.rows, C=cfg.cols, two=Array.isArray(cfg.cells[0][0]), ask=cfg.ask;
+  var P1=cfg.p1||'player 1', P2=cfg.p2||'player 2';
+  function cap(s){return s.charAt(0).toUpperCase()+s.slice(1);}
+  function u1(i,j){return two?cfg.cells[i][j][0]:cfg.cells[i][j];}
+  function u2(i,j){return two?cfg.cells[i][j][1]:-cfg.cells[i][j];}
+  function clean(x){return Math.round(x*1e9)/1e9;}
+  function num(x){x=clean(x);var r=Math.round(x*1000)/1000;return (Math.abs(x-r)>1e-9?'≈ ':'')+(r<0?'−':'')+String(Math.abs(r));}
+  function pct(x){x=clean(x*100);var r=Math.round(x*10)/10;return (Math.abs(x-r)>1e-9?'≈ ':'')+String(r)+'%';}
+  function sg(x){return x<0?'(−'+Math.abs(x)+')':String(x);}
+  function coefv(b,v){var a=Math.abs(b);return (a===1?'':String(clean(a)))+v;}
+  function lin(e,v){ // e = {a, b} means a + b*v
+    var a=clean(e.a), b=clean(e.b), s='';
+    if(a!==0) s=(a<0?'−':'')+Math.abs(a);
+    if(b!==0) s+= s===''?(b<0?'−':'')+coefv(b,v):(b<0?' − ':' + ')+coefv(b,v);
+    return s===''?'0':s;
+  }
+  function at(e,x){return clean(e.a+e.b*x);}
+  function plug(e,x){ // "6 − 6 × 0.4 = 3.6"
+    var a=clean(e.a), b=clean(e.b), s;
+    if(b===0) return num(a);
+    var t=(Math.abs(b)===1?'':Math.abs(b)+' × ')+num(x);
+    s=a===0?(b<0?'−':'')+t:num(a)+(b<0?' − ':' + ')+t;
+    return s+' = '+num(at(e,x));
+  }
+  // payoff lines: row i against q (player 1's numbers); column j against p (player 2's numbers, or player 1's when zero-sum)
+  function rowE(i){return {a:u1(i,1),b:u1(i,0)-u1(i,1)};}
+  function rowRaw(i){return sg(u1(i,0))+'q + '+sg(u1(i,1))+'(1 − q)';}
+  function colU(i,j){return two?u2(i,j):u1(i,j);}
+  function colE(j){return {a:colU(1,j),b:colU(0,j)-colU(1,j)};}
+  function colRaw(j){return sg(colU(0,j))+'p + '+sg(colU(1,j))+'(1 − p)';}
+  // solve L = R for v, one algebra move per line
+  function solve(L,Rr,v,lab){
+    var out=[], A=L, B=Rr, flip=false;
+    if(clean(A.b)===clean(B.b)) throw new Error('mixed: lines are parallel, no indifference point');
+    if(A.b<B.b){A=Rr;B=L;flip=true;} // keep the unknown on the side with the bigger coefficient
+    function eq(x,y){return flip?lin(y,v)+' = '+lin(x,v):lin(x,v)+' = '+lin(y,v);}
+    if(clean(B.b)!==0){ var t=(B.b<0?'Add ':'Subtract ')+coefv(B.b,v)+(B.b<0?' to':' from')+' both sides. Now '+v+' is on one side only.';
+      A={a:A.a,b:A.b-B.b}; B={a:B.a,b:0}; out.push({t:t,line:eq(A,B)}); }
+    if(clean(A.a)!==0){ var t2=(A.a>0?'Subtract '+clean(A.a)+' from':'Add '+clean(-A.a)+' to')+' both sides. Now the plain numbers are on the other side.';
+      B={a:B.a-A.a,b:0}; A={a:0,b:A.b}; out.push({t:t2,line:eq(A,B)}); }
+    var k=clean(A.b), n=clean(B.a), val=clean(n/k);
+    out.push({t:k===1?'That is the answer.':'Divide both sides by '+k+'.',line:v+' = '+(k===1?'':n+' ÷ '+k+' = ')+num(val),val:val});
+    if(!(val>0&&val<1)) throw new Error('mixed: '+v+' = '+val+' is not a real mixture');
+    return out;
+  }
+  // ---------- pure check ----------
+  var stable=[];
+  for(var i=0;i<2;i++)for(var j=0;j<2;j++){
+    var ok=two?(u1(i,j)>=u1(1-i,j)&&u2(i,j)>=u2(i,1-j)):(u1(i,j)<=u1(i,1-j)&&u1(i,j)>=u1(1-i,j));
+    if(ok) stable.push([i,j]);
+  }
+  var pure=stable.length>0;
+  var needP=!pure&&(ask==='p'||ask==='pq'||(ask&&ask.cell)), needQ=!pure&&ask!=='p';
+  var r={pure:pure,u1:u1,u2:u2,rows:R,cols:C,pct:pct,num:num};
+  var S=[], st={hl:[],keep:[],work:[],wt:'',qOn:false,pOn:false,q:null,p:null,dim:0,phase:'Check first'};
+  function push(msg,ch){ for(var k in ch) st[k]=ch[k]; var c=JSON.parse(JSON.stringify(st)); c.msg=msg; S.push(c); }
+  function note(k){var n=cfg.notes&&cfg.notes[k]; if(!n) return ''; n=typeof n==='function'?n(r):n; return '<br><span style="color:var(--muted)">'+n+'</span>';}
+  function cellName(i,j){return '('+R[i]+', '+C[j]+')';}
+  function workAdd(line){var w=st.work.slice(); w.push(line); return w;}
+
+  if(pure){
+    var s0=stable[0], vi=s0[0], vj=s0[1];
+    r.V=u1(vi,vj);
+    if(!two){
+      var dom=-1; for(var d=0;d<2;d++){ if(u1(d,0)>u1(1-d,0)&&u1(d,1)>u1(1-d,1)) dom=d; }
+      if(dom>=0){
+        push('<b>First, look for a stable cell. Before any equation.</b><br>'+cap(P1)+' compares his two rows. '+R[dom]+' beats '+R[1-dom]+' in both columns: '+
+          u1(dom,0)+' &gt; '+u1(1-dom,0)+' and '+u1(dom,1)+' &gt; '+u1(1-dom,1)+'.<br><b>So '+R[dom]+' is a dominant strategy. '+cap(P1)+' always plays '+R[dom]+'.</b>'+note('pure'),
+          {hl:[[dom,0],[dom,1]],phase:'Check first'});
+        var lo=u1(dom,0)<=u1(dom,1)?0:1;
+        push(cap(P2)+' knows this. She wants the number <b>low</b>.<br>In the '+R[dom]+' row she picks '+u1(dom,lo)+' rather than '+u1(dom,1-lo)+'. That means <b>'+C[lo]+'</b>.',
+          {hl:[[dom,lo]]});
+      }
+      push('<b>Saddle point test</b> on '+cellName(vi,vj)+' = '+u1(vi,vj)+'.<br>Smallest in its row? The row is '+u1(vi,0)+' and '+u1(vi,1)+'. Yes.<br>Largest in its column? The column is '+u1(0,vj)+' and '+u1(1,vj)+'. Yes.<br><b>A stable cell. Nobody wants to move, so nobody mixes.</b>',
+        {hl:[],keep:[[vi,vj]]});
+    } else {
+      push('<b>First, look for a stable cell.</b> Check '+cellName(vi,vj)+' = '+u1(vi,vj)+', '+u2(vi,vj)+'.<br>'+cap(P1)+' (first numbers): '+u1(vi,vj)+' against '+u1(1-vi,vj)+'. He stays.<br>'+cap(P2)+' (second numbers): '+u2(vi,vj)+' against '+u2(vi,1-vj)+'. She stays.<br><b>A Nash equilibrium in pure strategies. No mixing needed.</b>'+note('pure'),
+        {keep:[[vi,vj]]});
+    }
+    if(cfg.trap){
+      var e0=rowE(0), e1=rowE(1), gap=clean(e0.a-e1.a);
+      push('<b>What if you try the mixing algebra anyway?</b> Call q how often '+P2+' plays '+C[0]+'.<br>'+R[0]+' gives '+lin(e0,'q')+'.',
+        {qOn:true,hl:[[0,0],[0,1]],wt:'Trying the indifference equation',work:[R[0]+': '+rowRaw(0)+' = '+lin(e0,'q')],phase:'The trap'});
+      push(R[1]+' gives '+lin(e1,'q')+'.',{hl:[[1,0],[1,1]],work:workAdd(R[1]+': '+rowRaw(1)+' = '+lin(e1,'q'))});
+      push('Both have the same '+(e0.b<0?'−':'')+coefv(e0.b,'q')+' part, so they move together, like two train rails. They are <b>parallel</b>. '+R[gap>0?0:1]+' is ahead by '+Math.abs(gap)+' whatever q is.<br><b>They never cross. There is no indifference point to find.</b>',
+        {hl:[],work:workAdd(R[0]+' − '+R[1]+' = '+num(gap)+'  for every q')});
+    }
+    if(ask==='value'){ r.ans=r.V; push('<b>The value of the game</b> is the number in the stable cell: <b>'+num(r.V)+'</b>.'+note('result'),{hl:[],keep:[[vi,vj]],qOn:false,work:[],phase:'Answer'}); }
+    else if(ask&&ask.cell){ var hit=stable.some(function(c){return c[0]===ask.cell[0]&&c[1]===ask.cell[1];}); r.ans=hit?1:0;
+      push('Players do not mix, so '+cellName(ask.cell[0],ask.cell[1])+' happens '+(hit?'every time: 100%.':'never: 0%.')+note('result'),{hl:[ask.cell],phase:'Answer'}); }
+    else throw new Error('mixed: a pure game only supports ask value or cell');
+  } else {
+    // ---------- check: no stable cell ----------
+    var lines=[], hl=[];
+    if(!two){
+      for(var a=0;a<2;a++){
+        var mn=Math.min(u1(a,0),u1(a,1)), jj=u1(a,0)<=u1(a,1)?0:1, big=Math.max(u1(0,jj),u1(1,jj));
+        hl.push([a,jj]);
+        lines.push(R[a]+' row: its smallest number is '+mn+' (under '+C[jj]+'). The largest in the '+C[jj]+' column? No, '+big+' is larger.');
+      }
+      push('<b>First, look for a stable cell</b> (a saddle point): smallest in its row <i>and</i> largest in its column.<br>'+lines.join('<br>')+'<br><b>No cell passes. Nobody can stand still, so the players must mix.</b>',{hl:hl});
+    } else {
+      for(var a2=0;a2<2;a2++)for(var b2=0;b2<2;b2++){
+        if(u1(a2,b2)<u1(1-a2,b2)) lines.push(cellName(a2,b2)+': '+P1+' moves to '+R[1-a2]+' ('+u1(1-a2,b2)+' beats '+u1(a2,b2)+').');
+        else lines.push(cellName(a2,b2)+': '+P2+' moves to '+C[1-b2]+' ('+u2(a2,1-b2)+' beats '+u2(a2,b2)+').');
+      }
+      push('<b>First, look for a stable cell</b> where nobody wants to move.<br>'+lines.join('<br>')+'<br><b>Every cell has someone who moves. So the players must mix.</b>',{});
+    }
+    // ---------- q ----------
+    function doQ(){
+      var e0=rowE(0), e1=rowE(1);
+      push('<b>Name the unknown.</b> <b>q = how often '+P2+' plays '+C[0]+'.</b> She plays '+C[1]+' the rest of the time: 1 − q.<br>We find q with the <b>indifference condition</b>: '+P2+'\'s mixture must leave '+P1+' with nothing to prefer between '+R[0]+' and '+R[1]+'.',
+        {qOn:true,hl:[],keep:[],wt:'Finding q, using '+P1+'\'s numbers',work:[],dim:two?2:0,phase:'Finding q'});
+      push(cap(P1)+'\'s average from <b>'+R[0]+'</b>. He gets '+u1(0,0)+' when she plays '+C[0]+' (a share q of the time) and '+u1(0,1)+' when she plays '+C[1]+' (1 − q).'+(two?'<br>'+cap(P1)+' only looks at the <b>first</b> numbers.':''),
+        {hl:[[0,0],[0,1]],work:workAdd(R[0]+': '+rowRaw(0)+' = '+lin(e0,'q'))});
+      push('Same for <b>'+R[1]+'</b>: '+u1(1,0)+' against '+C[0]+', '+u1(1,1)+' against '+C[1]+'.',
+        {hl:[[1,0],[1,1]],work:workAdd(R[1]+': '+rowRaw(1)+' = '+lin(e1,'q'))});
+      push('<b>The indifference condition: set the two equal.</b> At the right q, '+R[0]+' and '+R[1]+' pay '+P1+' the same.',
+        {hl:[],work:workAdd(lin(e0,'q')+' = '+lin(e1,'q'))});
+      var sol=solve(e0,e1,'q');
+      sol.forEach(function(m){ push(m.t,{work:workAdd(m.line)}); });
+      r.q=sol[sol.length-1].val;
+      push('<b>Write it on the grid.</b> '+cap(P2)+' plays '+C[0]+' '+pct(r.q)+' of the time and '+C[1]+' '+pct(1-r.q)+'.'+note('q'),{q:r.q});
+    }
+    function doP(){
+      var f0=colE(0), f1=colE(1);
+      push('<b>Now the other player.</b> <b>p = how often '+P1+' plays '+R[0]+'.</b> He plays '+R[1]+' the rest of the time: 1 − p.<br>His mixture must leave <b>'+P2+'</b> with nothing to prefer between '+C[0]+' and '+C[1]+'.'+
+        (two?'<br>So now read only the <b>second</b> numbers, '+P2+'\'s.':'<br>Her payoff is minus the number in the cell. So she is indifferent exactly when '+P1+'\'s number is the same in both columns.'),
+        {pOn:true,hl:[],wt:'Finding p, using '+(two?P2+'\'s numbers':'the same numbers, column by column'),work:[],dim:two?1:0,phase:'Finding p'});
+      push('Down the <b>'+C[0]+'</b> column: '+colU(0,0)+' when '+P1+' plays '+R[0]+' (a share p), '+colU(1,0)+' when he plays '+R[1]+' (1 − p).',
+        {hl:[[0,0],[1,0]],work:workAdd(C[0]+': '+colRaw(0)+' = '+lin(f0,'p'))});
+      push('Same down the <b>'+C[1]+'</b> column: '+colU(0,1)+' and '+colU(1,1)+'.',
+        {hl:[[0,1],[1,1]],work:workAdd(C[1]+': '+colRaw(1)+' = '+lin(f1,'p'))});
+      push('<b>The indifference condition again: set them equal.</b>',{hl:[],work:workAdd(lin(f0,'p')+' = '+lin(f1,'p'))});
+      var sol=solve(f0,f1,'p');
+      sol.forEach(function(m){ push(m.t,{work:workAdd(m.line)}); });
+      r.p=sol[sol.length-1].val;
+      var diff=(r.q!=null&&Math.abs(r.p-r.q)>1e-9)?'<br><b>Stop and look:</b> p = '+num(r.p)+' but q = '+num(r.q)+'. They are not equal. Never assume they are.':'';
+      push('<b>Write it on the grid.</b> '+cap(P1)+' plays '+R[0]+' '+pct(r.p)+' of the time and '+R[1]+' '+pct(1-r.p)+'.'+diff+note('p'),{p:r.p});
+    }
+    if(needQ) doQ();
+    if(needP) doP();
+    // ---------- result ----------
+    var e0=rowE(0), e1=rowE(1);
+    if(r.q!=null) r.V=at(e0,r.q);
+    if(ask==='q') r.ans=r.q;
+    else if(ask==='p') r.ans=r.p;
+    else if(ask==='pq') r.ans=r.p;
+    else if(ask==='value'){
+      r.ans=r.V;
+      push('<b>The value of the game.</b> Put q back into either row. Both give the same number, so take the easier one.<br>'+cap(P1)+'\'s expected payoff is <b>'+num(r.V)+'</b>.'+note('result'),
+        {hl:[[0,0],[0,1]],wt:'The value of the game',work:[R[0]+': '+plug(e0,r.q)],dim:two?2:0,phase:'Answer'});
+    } else if(ask&&ask.cell){
+      var ci=ask.cell[0], cj=ask.cell[1], pr=ci===0?r.p:1-r.p, qr=cj===0?r.q:1-r.q;
+      r.ans=clean(pr*qr);
+      push('<b>Multiply.</b> The two players mix separately, so the chance of one cell is (chance of its row) × (chance of its column).<br>'+cellName(ci,cj)+': '+(ci===0?'p':'(1 − p)')+' × '+(cj===0?'q':'(1 − q)')+' = '+num(pr)+' × '+num(qr)+' = '+num(r.ans)+' = <b>'+pct(r.ans)+'</b>.'+note('result'),
+        {hl:[],keep:[[ci,cj]],wt:'The chance of the cell '+cellName(ci,cj),work:[(ci===0?'p':'(1 − p)')+' × '+(cj===0?'q':'(1 − q)')+' = '+num(pr)+' × '+num(qr)+' = '+num(r.ans)],dim:0,phase:'Answer'});
+    } else throw new Error('mixed: unknown ask');
+    // ---------- check ----------
+    var chk=[], txt=[];
+    if(r.q!=null){ var v0=at(e0,r.q), v1=at(e1,r.q); if(Math.abs(v0-v1)>1e-9) throw new Error('mixed: q check failed');
+      chk.push(R[0]+': '+plug(e0,r.q)); chk.push(R[1]+': '+plug(e1,r.q));
+      txt.push('With q = '+num(r.q)+', '+R[0]+' and '+R[1]+' both pay '+P1+' an average of '+num(v0)+'. He really is indifferent.'); }
+    if(r.p!=null){ var f0=colE(0), f1=colE(1), w0=at(f0,r.p), w1=at(f1,r.p); if(Math.abs(w0-w1)>1e-9) throw new Error('mixed: p check failed');
+      chk.push(C[0]+': '+plug(f0,r.p)); chk.push(C[1]+': '+plug(f1,r.p));
+      txt.push('With p = '+num(r.p)+', '+C[0]+' and '+C[1]+' both give '+num(w0)+'. '+cap(P2)+' really is indifferent.'); }
+    push('<b>Check: plug the answer back in.</b><br>'+txt.join('<br>')+' ✓'+note('check'),{hl:[],wt:'Check',work:chk,dim:0,phase:'Check'});
+  }
+  // ---------- verify against the expected answer ----------
+  if(cfg.expect!==undefined){ var tol=cfg.tol||0.006;
+    if(!(Math.abs(r.ans-cfg.expect)<=tol)) throw new Error('mixed: computed '+r.ans+' but expected '+cfg.expect); }
+
+  // ---------- render ----------
+  var root=document.createElement('div'); root.className='stepper mx';
+  root.innerHTML='<div class="sbar"><span class="sround"></span><span class="sphase"></span></div>'+
+    '<div class="mx-top"><div class="tscroll"><table class="dtable"></table></div><div class="mx-key"></div></div>'+
+    '<div class="mx-work"></div><div class="msg"></div>'+
+    '<div class="nav"><button class="bk" type="button">&larr; Back</button><button class="nx" type="button">Next &rarr;</button></div>';
+  var tbl=root.querySelector('table'), key=root.querySelector('.mx-key'), work=root.querySelector('.mx-work'), msg=root.querySelector('.msg'),
+      bk=root.querySelector('.bk'), nx=root.querySelector('.nx'), step=0, N=S.length;
+  function has(list,i,j){return list.some(function(c){return c[0]===i&&c[1]===j;});}
+  function bar(val,l1,l2,on){
+    if(val==null) return '<div class="mx-bar unk"><span style="flex-basis:50%">'+(on?'?':'')+'</span><span style="flex-basis:50%">'+(on?'?':'')+'</span></div><div class="mx-barlab"><span>'+l1+'</span><span>'+l2+'</span></div>';
+    return '<div class="mx-bar"><span class="s1" style="flex-basis:'+(val*100)+'%">'+(val>=0.12?pct(val):'')+'</span><span class="s2" style="flex-basis:'+((1-val)*100)+'%">'+(1-val>=0.12?pct(1-val):'')+'</span></div>'+
+      '<div class="mx-barlab"><span>'+l1+' '+pct(val)+'</span><span>'+l2+' '+pct(1-val)+'</span></div>';
+  }
+  function render(){
+    var atEnd=step>=N, s=S[Math.min(step,N-1)];
+    var h='<tr><th></th>'+C.map(function(c,j){
+      var tag=s.qOn?'<span class="mx-edge">'+(s.q==null?(j===0?'q':'1 − q'):pct(j===0?s.q:1-s.q))+'</span>':'';
+      return '<th>'+c+tag+'</th>';}).join('')+'</tr>';
+    for(var i=0;i<2;i++){
+      var tag=s.pOn?'<span class="mx-edge">'+(s.p==null?(i===0?'p':'1 − p'):pct(i===0?s.p:1-s.p))+'</span>':'';
+      h+='<tr><td class="lab">'+R[i]+tag+'</td>';
+      for(var j=0;j<2;j++){
+        var cl=has(s.keep,i,j)?'mx-keep':(has(s.hl,i,j)?'mx-hl':'');
+        var t;
+        if(two){ var a=String(u1(i,j)), b=String(u2(i,j)); if(s.dim===2)b='<span class="mx-dim">'+b+'</span>'; if(s.dim===1)a='<span class="mx-dim">'+a+'</span>'; t=a+', '+b; }
+        else t=String(u1(i,j));
+        t=t.replace(/-/g,'−');
+        h+='<td class="'+cl+'">'+t+(cl==='mx-keep'?' ✓':'')+'</td>';
+      }
+      h+='</tr>';
+    }
+    tbl.innerHTML=h;
+    var k='<div class="kl"><b>q</b> = how often '+P2+' plays <b>'+C[0]+'</b>'+(s.q!=null?'':' <span class="kv">'+(s.qOn?'?':'')+'</span>')+'</div>'+bar(s.q,C[0],C[1],s.qOn);
+    if(needP) k+='<div class="kl"><b>p</b> = how often '+P1+' plays <b>'+R[0]+'</b>'+(s.p!=null?'':' <span class="kv">'+(s.pOn?'?':'')+'</span>')+'</div>'+bar(s.p,R[0],R[1],s.pOn);
+    if(!needP&&!needQ&&!s.qOn) k='<div class="kl">'+cap(P1)+' picks the row and wants the number <b>high</b>.</div><div class="kl">'+cap(P2)+' picks the column and wants it <b>low</b>.</div>';
+    if(!two&&(needP||needQ)) k+='<div class="kl" style="color:var(--muted);font-size:13px">One number per cell: '+P1+'\'s payoff. '+cap(P2)+' wants it low.</div>';
+    key.innerHTML=k;
+    if(s.work.length){ work.style.display=''; work.innerHTML='<div class="wt">'+s.wt+'</div>'+s.work.map(function(l,x){return '<div class="wl'+(x===s.work.length-1&&!atEnd?' cur':'')+'">'+l+'</div>';}).join(''); }
+    else work.style.display='none';
+    root.querySelector('.sround').innerHTML=atEnd?'<b>Done</b>':'<b>Step '+(step+1)+' of '+N+'</b>';
+    root.querySelector('.sphase').textContent=atEnd?'':s.phase;
+    msg.className='msg';
+    if(atEnd){ msg.classList.add('good'); var f=cfg.finalMsg; msg.innerHTML=typeof f==='function'?f(r):(f||'<b>Answer: '+(ask&&ask.cell||ask==='value'?'':'')+num(r.ans)+'</b>'); }
+    else msg.innerHTML=s.msg;
+    bk.disabled=step===0; nx.disabled=atEnd; nx.textContent=step===N-1?'Finish →':'Next →';
+  }
+  nx.onclick=function(){if(step<N){step++;render();}};
+  bk.onclick=function(){if(step>0){step--;render();}};
+  render();
+  root.result=r;
+  return root;
+}
+
+// ---- Rounds timeline stepper for repeated games (Back / Next) ----
+// buildRoundsStepper(cfg) returns a .stepper element. cfg: rounds (N), unit ('Week'|'Round'), show (columns: r or [a,b]; default first 3, a gap, last 3),
+//   words {C,D}, names [you,them], pay {CC,CD,DC,DD} (YOUR payoff, your move first; omit for moves only), finalMsg, and
+//   lines:[{label, me, her, expect, tags:{r:'note'}}] where me / her are 'CCD...' strings, arrays, or fn(r, otherPast) (the rule sees only past rounds).
+//   dir:'back' labels a backward walk (also per track). steps:[{reveal:[r|[a,b]], focus:[...], text}] reveal rounds cumulatively, forwards or backwards. tracks:{tab:{lines,steps,finalMsg}} adds tabs.
+// Totals are summed by the engine from per-round payoffs and must equal each line's expect (throws if not). Two lines: the gap is shown at the end.
+function buildRoundsStepper(cfg){
+  var N=cfg.rounds, unit=cfg.unit||'Round', W=cfg.words||{C:'Cooperate',D:'Defect'}, NM=cfg.names||['You','Them'], P=cfg.pay||null;
+  var tracks=cfg.tracks||{'':{lines:cfg.lines,steps:cfg.steps,finalMsg:cfg.finalMsg}}, names=Object.keys(tracks), cur=names[0], step=0;
+  function rng(x){return Array.isArray(x)?x:[x,x];}
+  function expand(list){var o=[];(list||[]).forEach(function(x){var a=rng(x);for(var r=a[0];r<=a[1];r++)o.push(r);});return o;}
+  var cols=cfg.show?cfg.show.map(rng):(N>12?[[1,1],[2,2],[3,3],[4,N-3],[N-2,N-2],[N-1,N-1],[N,N]]:expand([[1,N]]).map(rng));
+  function play(L){ // run both players round by round
+    var me=[],her=[],pay=[];
+    function mv(src,r,other){var v=typeof src==='function'?src(r,other.slice(0,r-1)):src[r-1]; if(v!=='C'&&v!=='D')throw new Error('bad move '+v+' in round '+r+' of '+L.label); return v;}
+    for(var r=1;r<=N;r++){var a=mv(L.me,r,her), b=mv(L.her,r,me); me.push(a); her.push(b); pay.push(P?P[a+b]:0);}
+    var tot=pay.reduce(function(s,x){return s+x;},0);
+    if(P&&L.expect!==undefined&&tot!==L.expect)throw new Error('total for "'+L.label+'" is '+tot+', expected '+L.expect);
+    return {me:me,her:her,pay:pay,tot:tot};
+  }
+  var runs={}; names.forEach(function(nm){runs[nm]=tracks[nm].lines.map(play);});
+  var root=document.createElement('div'); root.className='stepper rstep';
+  root.innerHTML=(names.length>1?'<div class="tabs"></div>':'')+'<div class="sbar"><span class="sround"></span><span class="sdir"></span></div>'+
+    '<div class="tscroll"><table class="rtable"></table></div><div class="rgap"></div><div class="msg"></div>'+
+    '<div class="nav"><button class="bk" type="button">&larr; Back</button><button class="nx" type="button">Next &rarr;</button></div>';
+  var tbl=root.querySelector('.rtable'), msg=root.querySelector('.msg'), gap=root.querySelector('.rgap'), bk=root.querySelector('.bk'), nx=root.querySelector('.nx');
+  function chip(m){return '<span class="mv '+m+'">'+W[m]+'</span>';}
+  function render(){
+    var T=tracks[cur], R=runs[cur], S=T.steps, atEnd=step>=S.length, st=atEnd?null:S[step], seen={}, fresh={}, foc={};
+    for(var t=0;t<(atEnd?S.length:step+1);t++)expand(S[t].reveal).forEach(function(r){seen[r]=1;});
+    if(atEnd)expand([[1,N]]).forEach(function(r){seen[r]=1;});
+    if(st){expand(st.reveal).forEach(function(r){fresh[r]=1;}); expand(st.focus).forEach(function(r){foc[r]=1;});}
+    var h='<tr><th></th>'+cols.map(function(c){var f=false;for(var r=c[0];r<=c[1];r++)if(foc[r])f=true;
+      return '<th class="'+(f?'foc':'')+'">'+(c[0]===c[1]?unit+' '+c[0]:unit+'s '+c[0]+'&ndash;'+c[1])+'</th>';}).join('')+(P?'<th>Total</th>':'')+'</tr>';
+    T.lines.forEach(function(L,li){
+      var run=R[li], so=0; for(var r=1;r<=N;r++)if(seen[r])so+=run.pay[r-1];
+      if(T.lines.length>1||L.label)h+='<tr class="lhead"><td colspan="'+(cols.length+2)+'"><span>'+L.label+'</span></td></tr>';
+      function cells(kind){return cols.map(function(c){
+        var all=true,any=false,nw=false,f=false,ms={},sum=0,ps={};
+        for(var r=c[0];r<=c[1];r++){if(seen[r])any=true;else all=false; if(fresh[r])nw=true; if(foc[r])f=true;
+          ms[kind==='me'?run.me[r-1]:run.her[r-1]]=1; sum+=run.pay[r-1]; ps[run.pay[r-1]]=1;}
+        var cl=(f?'foc ':'')+(nw?'nw ':''), n=c[1]-c[0]+1, k=Object.keys(ms), pk=Object.keys(ps);
+        if(!all)return '<td class="'+cl+'unk">?</td>';
+        if(kind==='pay')return '<td class="'+cl+'pay">'+(n===1?sum:(pk.length===1?n+' &times; '+pk[0]+' = '+sum:sum))+'</td>';
+        if(kind==='tag'){var tg=[];for(var q=c[0];q<=c[1];q++)if(L.tags&&L.tags[q])tg.push(L.tags[q]);return '<td class="'+cl+'tag">'+tg.join('<br>')+'</td>';}
+        return '<td class="'+cl+'">'+(k.length===1?chip(k[0]):'mixed')+'</td>';}).join('');}
+      h+='<tr><td class="lab">'+NM[0]+'</td>'+cells('me')+(P?'<td></td>':'')+'</tr>';
+      h+='<tr><td class="lab">'+NM[1]+'</td>'+cells('her')+(P?'<td></td>':'')+'</tr>';
+      if(P)h+='<tr class="earn"><td class="lab">'+NM[0]+' earn</td>'+cells('pay')+'<td class="tot">'+(atEnd?'<b>'+run.tot+'</b>':'so far<br><b>'+so+'</b>')+'</td></tr>';
+      if(L.tags)h+='<tr class="tagrow"><td class="lab"></td>'+cells('tag')+(P?'<td></td>':'')+'</tr>';
+    });
+    tbl.innerHTML=h;
+    if(atEnd&&P&&T.lines.length===2){var a=R[0].tot,b=R[1].tot,hi=a>=b?0:1;
+      gap.innerHTML='<b>'+T.lines[hi].label+'</b> '+R[hi].tot+' &minus; <b>'+T.lines[1-hi].label+'</b> '+R[1-hi].tot+' = a gap of <b>'+Math.abs(a-b)+'</b>';gap.style.display='';}
+    else{gap.innerHTML='';gap.style.display='none';}
+    var dr=T.dir||cfg.dir; root.querySelector('.sdir').innerHTML=(dr==='back'&&!atEnd)?'&larr; Working backwards from the last '+unit.toLowerCase():'';
+    root.querySelector('.sround').innerHTML=atEnd?'<b>Done</b>':'<b>Step '+(step+1)+' of '+S.length+'</b>';
+    msg.className='msg'+(atEnd?' good':''); msg.innerHTML=atEnd?T.finalMsg:st.text;
+    toFocus();
+    bk.disabled=step===0; nx.disabled=atEnd; nx.innerHTML=(step===S.length-1)?'Finish &rarr;':'Next &rarr;';
+  }
+  function toFocus(){ // keep the round being discussed in view when the table scrolls (phones)
+    var sc=root.querySelector('.tscroll'), f=tbl.querySelector('th.foc'); if(!sc||!sc.clientWidth)return;
+    sc.scrollLeft=f?Math.max(0,f.offsetLeft-(sc.clientWidth-f.offsetWidth)/2):0; }
+  if(window.ResizeObserver)new ResizeObserver(function(){toFocus();}).observe(root);
+  if(names.length>1){var tabs=root.querySelector('.tabs');names.forEach(function(nm){var b=document.createElement('button');b.type='button';b.textContent=nm;b.className=nm===cur?'on':'';
+    b.onclick=function(){cur=nm;step=0;Array.prototype.forEach.call(tabs.children,function(x){x.className=x.textContent===nm?'on':'';});render();};tabs.appendChild(b);});}
+  nx.onclick=function(){if(step<tracks[cur].steps.length){step++;render();}};
+  bk.onclick=function(){if(step>0){step--;render();}};
+  render(); return root;
+}
+
+// ---- Bid-line stepper: best reply in the 2/3-average contest against GIVEN opponent numbers ----
+// buildBidStepper(cfg) returns a .stepper element (needs stepper.css). cfg: others:[the opponents' numbers], bids:[bids to try, in order],
+//   frac:[2,3] (default), max:100, zoom:[lo,hi] close-up range (default [0,40]), expectWin:[bids that must win] (throws if the engine disagrees),
+//   intro?:html, notes?:{bid:html} (extra line on that bid's result step), finalMsg:html.
+// Your own bid counts in the average. Per bid: one step places it and finds the target, one step measures who is closest. A table keeps every result.
+function buildBidStepper(cfg){
+  var NS='http://www.w3.org/2000/svg';
+  if(!document.getElementById('bid-css')){var cs=document.createElement('style');cs.id='bid-css';cs.textContent=
+    '.bidst .bsv{background:#fff;border:1px solid var(--line);border-radius:12px;padding:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;}'+
+    '.bidst svg{width:100%;min-width:430px;height:auto;display:block;}'+
+    '.bidst table.dtable{margin:10px 0 0;font-size:14px;} .bidst table.dtable td.cur{outline:3px solid var(--brand);outline-offset:-3px;}'+
+    '.bidst td.win{background:var(--good-soft);color:var(--good);font-weight:800;} .bidst td.lose{background:var(--bad-soft);color:#b03a35;font-weight:700;}';
+    document.head.appendChild(cs);}
+  var O=cfg.others.slice(), fr=cfg.frac||[2,3], MX=cfg.max||100, Z=cfg.zoom||[0,40], n=O.length+1;
+  var sumO=O.reduce(function(s,x){return s+x;},0);
+  function r2(x){return String(Math.round(x*100)/100);} function r1(x){return String(Math.round(x*10)/10);}
+  var fracTxt=fr[0]===2&&fr[1]===3?'two-thirds':fr[0]+'/'+fr[1];
+  var R=cfg.bids.map(function(b){
+    var S=sumO+b, avg=S/n, t=avg*fr[0]/fr[1], me=Math.abs(b-t), near=O.reduce(function(a,o){return Math.abs(o-t)<Math.abs(a-t)?o:a;},O[0]), dn=Math.abs(near-t);
+    return {b:b,S:S,avg:avg,t:t,me:me,near:near,dn:dn,win:me<dn};
+  });
+  if(cfg.expectWin){ R.forEach(function(x){ var should=cfg.expectWin.indexOf(x.b)>-1; if(should!==x.win) throw new Error('bidline: bid '+x.b+(x.win?' wins':' loses')+' but expectWin says otherwise'); }); }
+  var steps=[{k:'intro'}]; R.forEach(function(x,i){steps.push({k:'place',i:i});steps.push({k:'measure',i:i});});
+  var root=document.createElement('div'); root.className='stepper bidst';
+  root.innerHTML='<div class="sbar"><span class="sround"></span><span class="swho"></span></div><div class="bsv"></div>'+
+    '<div class="tscroll"><table class="dtable"></table></div><div class="msg"></div>'+
+    '<div class="nav"><button class="bk" type="button">&larr; Back</button><button class="nx" type="button">Next &rarr;</button></div>';
+  var box=root.querySelector('.bsv'), tbl=root.querySelector('table'), msg=root.querySelector('.msg'), bk=root.querySelector('.bk'), nx=root.querySelector('.nx'), step=0;
+  var YOU='#6b4ef0', OPP='#2f7fd0', TGT='#b6791f', INK='#211c33', MUT='#6f6886', GOOD='#15794a', BAD='#d2453f';
+  function el(tag,a,p,txt){var e=document.createElementNS(NS,tag);for(var k in a)e.setAttribute(k,a[k]);if(txt!==undefined)e.textContent=txt;if(p)p.appendChild(e);return e;}
+  function T(x,s){return el('text',Object.assign({'font-family':'-apple-system,Segoe UI,Arial','font-size':13,fill:INK},x),s);}
+  function draw(cur,phase){
+    var W=600,H=250, x0=30,x1=570, sv=el('svg',{viewBox:'0 0 '+W+' '+H,role:'img','aria-label':'Number line with the opponents\' numbers, your bid and the target.'});
+    // top: whole line
+    var yA=52, sA=function(v){return x0+(x1-x0)*v/MX;};
+    T({x:x0,y:16,'font-weight':700,fill:MUT},sv).textContent='All ten numbers, 0 to '+MX;
+    el('rect',{x:sA(Z[0]),y:yA-20,width:sA(Z[1])-sA(Z[0]),height:40,rx:6,fill:'#fcf3e3',stroke:'#e2b65c','stroke-dasharray':'4 3'},sv);
+    el('line',{x1:x0,y1:yA,x2:x1,y2:yA,stroke:'#b9b2d0','stroke-width':2},sv);
+    for(var v=0;v<=MX;v+=20){el('line',{x1:sA(v),y1:yA-4,x2:sA(v),y2:yA+4,stroke:'#b9b2d0'},sv);T({x:sA(v),y:yA+20,'text-anchor':'middle','font-size':12,fill:MUT},sv).textContent=v;}
+    var seen={}; O.forEach(function(o){var k=seen[o]||0; seen[o]=k+1; el('circle',{cx:sA(o),cy:yA-7-k*9,r:4.5,fill:OPP},sv);});
+    // bottom: close-up
+    var yB=172, sB=function(v){return x0+(x1-x0)*(v-Z[0])/(Z[1]-Z[0]);};
+    T({x:x0,y:yB-62,'font-weight':700,fill:MUT},sv).textContent='Close-up: '+Z[0]+' to '+Z[1];
+    el('line',{x1:x0,y1:yB,x2:x1,y2:yB,stroke:'#b9b2d0','stroke-width':2},sv);
+    for(var w=Z[0];w<=Z[1];w+=5){el('line',{x1:sB(w),y1:yB-4,x2:sB(w),y2:yB+4,stroke:'#b9b2d0'},sv);T({x:sB(w),y:yB+20,'text-anchor':'middle','font-size':12,fill:MUT},sv).textContent=w;}
+    var x=cur!=null?R[cur]:null;
+    O.forEach(function(o){ if(o<Z[0]||o>Z[1])return; var isN=x&&phase==='measure'&&o===x.near;
+      el('circle',{cx:sB(o),cy:yB,r:isN?8:6,fill:OPP,stroke:isN?INK:'none','stroke-width':2},sv);
+      if(isN)T({x:sB(o),y:yB+30,'text-anchor':'middle','font-size':12.5,'font-weight':700,fill:OPP},sv).textContent='nearest: '+o; });
+    if(x){
+      // your bid on both lines
+      el('rect',{x:sA(x.b)-5,y:yA-5,width:10,height:10,rx:2,fill:YOU},sv);
+      el('rect',{x:sB(x.b)-7,y:yB-7,width:14,height:14,rx:3,fill:YOU},sv);
+      T({x:sB(x.b),y:yB-16,'text-anchor':'middle','font-weight':800,fill:YOU},sv).textContent='you: '+x.b;
+      // target
+      el('line',{x1:sA(x.t),y1:yA-22,x2:sA(x.t),y2:yA+8,stroke:TGT,'stroke-width':2.5},sv);
+      el('line',{x1:sB(x.t),y1:yB-46,x2:sB(x.t),y2:yB+10,stroke:TGT,'stroke-width':3},sv);
+      T({x:sB(x.t),y:yB-50,'text-anchor':'middle','font-weight':800,fill:TGT},sv).textContent='target '+r2(x.t);
+      if(phase==='measure'){
+        var yd=yB+52, yo=yB+68;
+        el('line',{x1:sB(x.t),y1:yd,x2:sB(x.b),y2:yd,stroke:YOU,'stroke-width':5,'stroke-linecap':'round'},sv);
+        T({x:Math.min(x1-90,Math.max(x0,(sB(x.t)+sB(x.b))/2-40)),y:yd-6,'font-weight':800,fill:YOU,'font-size':12.5},sv).textContent='you: '+r1(x.me)+' away';
+        el('line',{x1:sB(x.t),y1:yo,x2:sB(x.near),y2:yo,stroke:OPP,'stroke-width':5,'stroke-linecap':'round'},sv);
+        T({x:Math.min(x1-90,Math.max(x0,(sB(x.t)+sB(x.near))/2-40)),y:yo+16,'font-weight':800,fill:OPP,'font-size':12.5},sv).textContent=x.near+': '+r1(x.dn)+' away';
+      }
+    }
+    box.innerHTML=''; box.appendChild(sv);
+    if(x&&box.scrollWidth>box.clientWidth){var w0=sv.getBoundingClientRect().width; box.scrollLeft=Math.max(0,sB(Math.min(x.t,x.b))/W*w0-box.clientWidth/3);}
+  }
+  function table(upto,cur){
+    var h='<tr><th>Bid</th><th>Sum</th><th>Target</th><th>You: away</th><th>Nearest: away</th><th>Result</th></tr>';
+    R.forEach(function(x,i){ if(i>upto.i||(i===upto.i&&upto.k==='intro'))return; var done=i<upto.i||upto.k==='measure';
+      h+='<tr><td class="'+(i===cur?'cur':'')+'"><b>'+x.b+'</b></td><td>'+x.S+'</td><td>'+r2(x.t)+'</td><td>'+(done?r1(x.me):'?')+'</td><td>'+(done?x.near+': '+r1(x.dn):'?')+'</td>'+
+        (done?'<td class="'+(x.win?'win':'lose')+'">'+(x.win?'✓ win':'✗ lose')+'</td>':'<td>?</td>')+'</tr>'; });
+    tbl.innerHTML=h; tbl.parentNode.style.display=(upto.k==='intro')?'none':'';
+  }
+  function render(){
+    var N=steps.length, atEnd=step>=N, st=atEnd?{k:'measure',i:R.length-1}:steps[step];
+    if(atEnd){ draw(null,null); box.style.display='none'; table({k:'measure',i:R.length-1},-1); }
+    else { box.style.display=''; draw(st.k==='intro'?null:st.i,st.k); table(st.k==='intro'?{k:'intro',i:-1}:st,st.k==='intro'?-1:st.i); }
+    root.querySelector('.sround').innerHTML=atEnd?'<b>Done</b>':'<b>Step '+(step+1)+' of '+N+'</b>';
+    root.querySelector('.swho').innerHTML=atEnd?'':(st.k==='intro'?'The nine opponents':'Trying the bid <b>'+R[st.i].b+'</b>');
+    msg.className='msg';
+    if(atEnd){msg.classList.add('good');msg.innerHTML=cfg.finalMsg;}
+    else if(st.k==='intro'){msg.innerHTML=cfg.intro||('The nine opponents\' numbers are the blue dots. They add up to <b>'+sumO+'</b>.<br>Your own bid counts in the average too. So each try below adds your bid, divides by '+n+', and takes '+fracTxt+'.');}
+    else { var x=R[st.i];
+      if(st.k==='place') msg.innerHTML='Try <b>'+x.b+'</b> (the purple square).<br>Sum of all ten: '+sumO+' + '+x.b+' = <b>'+x.S+'</b>. Average: '+x.S+' ÷ '+n+' = <b>'+r2(x.avg)+'</b>.<br>Take '+fracTxt+': the <b>target is '+r2(x.t)+'</b> (the orange line).';
+      else msg.innerHTML='Who is closest to '+r2(x.t)+'?<br>You ('+x.b+') are <b>'+r1(x.me)+'</b> away. The nearest opponent ('+x.near+') is <b>'+r1(x.dn)+'</b> away.<br><b>'+(x.win?'You are closer. You win. ✓':'The opponent is closer. You lose. ✗')+'</b>'+(cfg.notes&&cfg.notes[x.b]?'<br><span style="color:var(--muted)">'+cfg.notes[x.b]+'</span>':''); }
+    bk.disabled=step===0; nx.disabled=atEnd; nx.innerHTML=step===N-1?'Finish &rarr;':'Next &rarr;';
+  }
+  nx.onclick=function(){if(step<steps.length){step++;render();}};
+  bk.onclick=function(){if(step>0){step--;render();}};
+  render(); root.result=R; return root;
+}
+
+/* D3ANIM: animated explanations for the mock. Built at page load INSIDE each hidden .exp div, so nothing shows before Submit or time-up. */
+(function(){
+var D3={};
+D3[1]={eng:'grid',head:'<b>c. Both players.</b>',cfg:{rows:['Up','Down'],cols:['Left','Right'],cells:[[[2,-1],[3,-2]],[[9,3],[3.1,-3]]],noalive:true,
+ steps:[
+  ['cmp','row',0,1,'A <b>dominant strategy</b> pays you more than your other move, whatever the other player does.'],
+  ['cmp','col',1,0,'Now player 2. She compares her two columns, one row at a time.'],
+  ['hl',[[0,1],[1,1]],'<b>Why is 3.1 in the question?</b> To catch a fast eye. In the Right column, Down beats Up only by 3.1 against 3.<br>If that 3.1 were 2.9, Down would lose there. Then player 1 would have <b>no</b> dominant strategy. One tenth of a point flips the answer.']],
+ finalMsg:'<b>c. Both players.</b> Down is strictly dominant for player 1. Left is strictly dominant for player 2.<br><b>The rule in one line:</b> a strategy is dominant only if it wins in <i>every</i> column (or row). Check each one, never just the big numbers.<br><b>The traps:</b> (a) and (b) come from checking only one player. (d) comes from a slip on 3.1 against 3.'}};
+D3[2]={eng:'grid',head:'<b>b. 1: the single strategy profile (Up, Left).</b>',cfg:{rows:['Up','Down'],cols:['Left','Right'],cells:[[[5,-1],[6,-2]],[[4,3],[7,-3]]],
+ steps:[
+  ['cut','col',1,0,'Start with player 2: her choice is the easy one. Left is <b>strictly dominant</b> for her.'],
+  ['cut','row',1,0,'Player 1 knows she plays Left. So he only faces the Left column.']],
+ finalMsg:'<b>One cell is left: (Up, Left). It is the only Nash equilibrium.</b> A <b>Nash equilibrium</b> is a pair of choices where neither player wants to move alone.<br><b>Why no mixed one is hiding:</b> cutting <i>strictly</i> dominated strategies never kills an equilibrium. When one cell survives, it is the only equilibrium there is, pure or mixed. So the count is 1, not 2 or 3.<br><b>Careful with player 1:</b> he has no dominant strategy of his own. Down beats Up against Right (7 against 6) but loses against Left (4 against 5). That does not matter, because Right is never played.'}};
+D3[3]={eng:'bid',head:'<b>Both b (22) and c (23) are correct. Either one is marked right here.</b> The professor says so in his solutions: <i>"Both 22 and 23 will win against these 9 numbers, so, accidentally, both are best replies."</i>',cfg:{
+ others:[5,10,20,30,40,40,50,50,89],bids:[1,22,23,33],expectWin:[22,23],
+ intro:'A <b>best reply</b> is the move that pays you most against what the others <i>really</i> play.<br>The nine opponents are the blue dots. Their numbers add up to <b>334</b>. Your own bid counts in the average too. So each try adds your bid, divides by 10, and takes two-thirds.',
+ notes:{1:'1 is the Nash equilibrium of this game. It is <i>not</i> the best reply to these nine real numbers.'},
+ finalMsg:'<b>22 and 23 both win. 1 and 33 lose.</b><br><b>The rule in one line:</b> add your own bid, divide by the number of players, take two-thirds, then see who is closest. Answer the opponents you were given, not the ones theory expects.<br><b>The trap is (a).</b> 1 is the equilibrium, the answer when everyone reasons all the way down. Against these nine numbers it loses badly.<br><b>Rule of thumb:</b> your bid pulls the average up, so the target sits a little above two-thirds of the opponents\' average (37.1, so about 24.7). Here every bid from 21 to 28 wins.'}};
+D3[5]={eng:'tree',head:'<b>d. 5.</b>',cfg:{players:[{name:'John'},{name:'Mary'}],ask:0,
+ root:{p:0,moves:[{label:'Up',to:{pay:[2,2]}},{label:'Down',to:{p:1,moves:[{label:'Left',to:{p:0,moves:[{label:'Go',to:{pay:[5,4]}},{label:'Stop',to:{pay:[3,6]}}]}},{label:'Right',to:{pay:[6,1]}}]}}]},
+ intro:'Solve from the <b>last</b> decision backwards, never from the front. The method is <b>backward induction</b>: work out what the last player does, treat it as settled, then step back one node.<br>Each pair is (John\'s payoff, Mary\'s payoff).',
+ finalMsg:'<b>John plays Down, then Go. Mary plays Left. John\'s payoff is 5.</b><br><b>The rule in one line:</b> start at the last node, carry the winning payoff back, and repeat until you reach the first node.<br><b>Every wrong option is a real number on the tree.</b> 4 is <i>Mary\'s</i> payoff in the cell you land on: the wrong half of the pair. 6 is the biggest number in sight, but Mary never hands it to John, because Right pays her only 1. 2 and 3 sit on branches that get cut.<br>Ask yourself twice: which player is the question about, and can that number be reached?'}};
+D3[7]={eng:'grid',head:'<b>b. Stag hunt.</b>',cfg:{rows:['Top','Bottom'],cols:['Left','Right'],cells:[[[4,4],[0,3]],[[3,0],[3,3]]],nash:true,noalive:true,
+ steps:[
+  ['ul','col',0,'First find the equilibria. Underline each player\'s <b>best reply</b>.'],
+  ['ul','col',1],
+  ['ul','row',0,'Now player 2. She is the mirror image.'],
+  ['ul','row',1],
+  ['eq',[[0,0],[1,1]],'Two pure equilibria. Now name the game by asking: do the players <b>agree</b> which one is better?'],
+  ['both',0,0,1,1,'Both players prefer the same equilibrium. They agree.'],
+  ['hl',[[1,0],[1,1]],'<b>The tension.</b> Bottom pays player 1 a sure 3, whatever player 2 does. It is safe.<br>Top pays 4 if she joins him, and 0 if she does not. Hunt the stag together and eat well, or catch a rabbit alone and eat something.']],
+ finalMsg:'<b>b. Stag hunt.</b> Two equilibria, and both players agree which is better: (Top, Left) at 4 each beats (Bottom, Right) at 3 each. One is rich but risky, the other is safe.<br><b>The rule in one line:</b> find the equilibria first, then ask who prefers which one.<br><b>Ruling out the others:</b><br>&bull; Battle of the sexes and chicken: two equilibria, but each player prefers a <i>different</i> one. Here they agree.<br>&bull; Prisoner\'s dilemma: needs a dominant strategy for each player. Here Top is best against Left, Bottom against Right, so there is none.<br>&bull; Dictator: not a matrix game at all.<br>The safe equilibrium is called <b>risk-dominant</b>. The rich one is <b>Pareto-dominant</b>: both players do better there.'}};
+var Q9RULE=function(r,p){return r%2===1?'C':p[r-2];};
+var Q9BEST={label:'a. Cooperate in odd rounds, defect in even rounds',me:'CDCDCDCDCD',her:Q9RULE,expect:15};
+D3[9]={eng:'rounds',head:'<b>a. Cooperate in odd rounds, defect in even rounds, worth 15.</b>',cfg:{rounds:10,unit:'Round',show:[1,2,3,4,[5,10]],words:{C:'Cooperate',D:'Defect'},names:['You','Opponent'],pay:{CC:1,CD:-1,DC:2,DD:0},
+ tracks:{
+  'Best reply against defect always':{lines:[Q9BEST,{label:'b. Defect in all rounds',me:'DDDDDDDDDD',her:Q9RULE,expect:10}],
+   steps:[
+    {reveal:[1],focus:[1],text:'<b>Read his rule slowly.</b> In odd rounds he cooperates, whatever you did. In even rounds he copies <i>your</i> move from the round before.<br>Round 1 is odd, so he cooperates. Cooperate: you get 1. Defect: you get 2.'},
+    {reveal:[2],focus:[2],text:'Round 2 is even, so he copies your round 1.<br>If you cooperated, he cooperates, and you defect on him for <b>2</b>. If you defected, he defects, and the best you get is <b>0</b>.'},
+    {reveal:[[1,2]],focus:[[1,2]],text:'<b>So each odd and even pair is a small game of its own.</b> Your odd-round move buys you, or costs you, the even round after it.<br>Cooperate first: 1 + 2 = <b>3</b> a pair. Defect first: 2 + 0 = <b>2</b> a pair.'},
+    {reveal:[[3,4]],focus:[[3,4]],text:'Rounds 3 and 4 work exactly the same: 3 against 2.'},
+    {reveal:[[5,10]],focus:[[5,10]],text:'Rounds 5 to 10 are three more pairs. Five pairs in all: 5 &times; 3 = <b>15</b> against 5 &times; 2 = <b>10</b>.'}],
+   finalMsg:'<b>Cooperating in odd rounds earns 15. Defecting always earns 10.</b><br><b>The rule in one line:</b> against a player who follows a fixed rule, find the moves he cannot punish, and use them. Here cooperating is not being nice. It buys a cheap defection next round.'},
+  'The other options':{lines:[{label:'c. Cooperate in all rounds except the last',me:'CCCCCCCCCD',her:Q9RULE,expect:11},{label:'e. Defect in odd rounds, cooperate in even rounds',me:'DCDCDCDCDC',her:Q9RULE,expect:5}],
+   steps:[
+    {reveal:[[1,4]],focus:[[1,4]],text:'<b>Option c</b> cooperates in every round, so he cooperates every round too: 1 each time.<br><b>Option e</b> defects in odd rounds (2 each), then he copies that defection in even rounds while you cooperate (&minus;1 each).'},
+    {reveal:[[5,10]],focus:[10],text:'In round 10, option c finally defects, while he copies your cooperation: 2.<br>Option e keeps losing every even round.'}],
+   finalMsg:'<b>c earns 11 and e earns 5.</b> Option d (cooperate always) earns ten 1s = 10. Every option is below 15.<br><b>Why e is the worst:</b> you defect in the rounds he will copy, and you cooperate in the rounds where he is already punishing you.<br>Note: the famous answer, tit-for-tat (copy your opponent\'s last move), is not even on the list.'}}}};
+D3[10]={eng:'grid',head:'<b>b. 1: the game is dominance solvable, and (40, 40) is the only equilibrium there is.</b>',cfg:{
+ rows:['30','35','40','50','60'],cols:['30','35','40','50','60'],corner:'Firm 1 \\ Firm 2',players:['Firm 1','Firm 2'],
+ cells:[[[1800,1800],[1650,1925],[1500,2000],[1200,2000],[900,1800]],[[1925,1650],[1750,1750],[1575,1800],[1225,1750],[875,1500]],[[2000,1500],[1800,1575],[1600,1600],[1200,1500],[800,1200]],[[2000,1200],[1750,1225],[1500,1200],[1000,1000],[500,600]],[[1800,900],[1500,875],[1200,800],[600,500],[0,0]]],
+ steps:[
+  ['cmp','row',4,0,'Never underline 25 cells. <b>Shrink the grid first</b> by cutting strictly dominated quantities. But careful: is 60 beaten by 30?'],
+  ['cut','row',4,3,'Not by 30. But 50 beats 60 everywhere.'],
+  ['cut','col',4,3,'The game is <b>symmetric</b>, so firm 2 drops 60 for the same reason.'],
+  ['cut','row',0,1,'In the 4 &times; 4 that is left, 35 beats 30.'],
+  ['cut','col',0,1],
+  ['cut','row',3,2,'In the 3 &times; 3 that is left, 40 beats 50.'],
+  ['cut','col',3,2],
+  ['cut','row',1,2,'In the 2 &times; 2 that is left, 40 beats 35.'],
+  ['cut','col',1,2]],
+ finalMsg:'<b>One cell survives: (40, 40), paying 1600 each.</b> The game is <b>dominance solvable</b>.<br><b>The rule in one line:</b> when cutting <i>strictly</i> dominated strategies leaves one cell, that cell is the unique Nash equilibrium, pure or mixed. So the count is 1.<br><b>Two things to notice.</b> 30 only <i>weakly</i> dominates 60 (they tie at 1800 against 30), and weak dominance is not allowed, because it can delete real equilibria. And the order of the cuts does not change where you end up, as long as every cut is strict.<br><b>Sanity check:</b> the smooth version of this game has best reply Q = (120 &minus; other Q) &divide; 2, which crosses itself at 40.'}};
+D3[11]={eng:'grid',head:'<b>d. 6, in the equilibrium (Bottom, Left).</b>',cfg:{rows:['Top','Middle','Bottom'],cols:['Left','Center','Right'],nash:true,noalive:true,
+ cells:[[[5,9],[3,5],[2,6]],[[3,4],[5,6],[4,7]],[[6,5],[2,5],[3,4]]],
+ steps:[
+  ['ul','col',0,'Underline player 1\'s <b>best reply</b> in each column. He compares the first numbers, going down.'],
+  ['ul','col',1],
+  ['ul','col',2],
+  ['ul','row',0,'Now player 2\'s best reply in each row. She compares the second numbers, going across.'],
+  ['ul','row',1],
+  ['ul','row',2,'A tie still counts. Both tied cells are best replies.'],
+  ['eq',[[2,0],[1,2]],'Player 1 gets 6 in one and 4 in the other. The highest is <b>6</b>.'],
+  ['hl',[[1,1]],'<b>The trap: (Middle, Center).</b> Middle really is player 1\'s best reply to Center. But in the Middle row, player 2 prefers Right (7) to Center (6). So she moves away. Only one underline: not an equilibrium.']],
+ finalMsg:'<b>d. 6, in the equilibrium (Bottom, Left).</b> Two pure equilibria: (Bottom, Left) paying (6, 5) and (Middle, Right) paying (4, 7).<br><b>The rule in one line:</b> a cell with <i>both</i> numbers underlined is a pure Nash equilibrium. Find them all first, then read the answer off them.<br><b>Watch the traps:</b> the question asks for the highest payoff <i>in an equilibrium</i>, not on the whole board. And the tie in the Bottom row breaks nothing: Left still counts as a best reply.'}};
+D3[12]={eng:'mixed',head:'<b>d. 64%.</b>',cfg:{rows:['Left','Right'],cols:['Left','Right'],cells:[[1,0],[0,4]],ask:{cell:[0,0]},expect:0.64,
+ notes:{q:'Each player mixes so that the <i>other</i> player is <b>indifferent</b>. That is the whole method.'},
+ finalMsg:'<b>d. 64%.</b> Each player plays Left 80% of the time, separately, so (Left, Left) happens 0.8 &times; 0.8 = 64% of the time.<br><b>The rule in one line:</b> the chance of one cell = the chance of its row &times; the chance of its column.<br><b>Every wrong option is a piece of this sum.</b> 80 is one player\'s chance alone: the answer if you miss the word <i>both</i>. 4% is 0.2 &times; 0.2, the opposite corner. 20% is 1 &minus; 0.8. 50% assumes a fair coin. Always read: does the question want one player\'s probability, or one cell\'s?'}};
+D3[13]={eng:'mixed',head:'<b>a. 0.8: the value of the game.</b>',cfg:{rows:['Left','Right'],cols:['Left','Right'],cells:[[1,0],[0,4]],ask:'value',expect:0.8,
+ finalMsg:'<b>a. 0.8: the value of the game.</b> In a zero-sum game, this is player 1\'s payoff in <i>every</i> Nash equilibrium.<br><b>The rule in one line:</b> after finding the mixture, put it back into either row. Both rows give the same number. That is what <b>indifferent</b> means.<br><b>Where the wrong options come from.</b> 3.2 is 4 &times; 0.8: the right multiplication with the wrong pairing. 1.6 doubles 0.8. 2.5 is the answer to question 14, sitting here to catch a slipped line.<br>Questions 12 and 13 share one matrix. One wrong indifference equation costs you both.'}};
+D3[14]={eng:'mixed',head:'<b>d. 2.5.</b>',cfg:{rows:['Top','Bottom'],cols:['Left','Right'],cells:[[4,1],[2,3]],ask:'value',expect:2.5,
+ finalMsg:'<b>d. 2.5.</b> Player 2 plays Left half the time, and both of player 1\'s rows then pay 2.5.<br><b>Why this one deserves care.</b> There is not a single zero in this matrix, so the quick shortcut for games with two zeros on one diagonal does not apply. Write the two rows, set them equal, solve. The method is the same every time.<br><b>Player 1\'s own mixture</b> comes from making player 2 indifferent: 2 + 2p = 3 &minus; 2p, so p = 0.25. He plays Top only a quarter of the time. The weaker-looking row is used <i>more</i>.'}};
+var B={grid:function(c){return buildGridStepper(c);},tree:function(c){return buildTreeStepper(c);},mixed:function(c){return buildMixedStepper(c);},rounds:function(c){return buildRoundsStepper(c);},bid:function(c){return buildBidStepper(c);}};
+Array.prototype.forEach.call(document.querySelectorAll('#paper .qblock'),function(b){
+  var a=D3[b.getAttribute('data-q')]; if(!a)return;
+  var exp=b.querySelector('.exp'); if(!exp)return;
+  try{ var s=B[a.eng](a.cfg); exp.innerHTML=a.head; exp.appendChild(s); }
+  catch(e){ if(window.console)console.error('D3ANIM q'+b.getAttribute('data-q'),e); }
+});
+})();
+</script>
+<script>
+/* TSTEP: shared step-by-step player for explanations */
+(function(){
+function trim(s){return s.trim();}
+function lab(h){var m=h.match(/^\s*(?:<span[^>]*>)?\s*<b>([^<]{1,60})<\/b>/i);return m?m[1].replace(/[.:\s]+$/,''):'';}
+function build(html){
+  var parts=html.split(/(?:<br\s*\/?>\s*){2,}/i).map(trim).filter(Boolean);
+  if(parts.length<3) parts=html.split(/<br\s*\/?>/i).map(trim).filter(Boolean);
+  if(parts.length<2) return null;
+  var head=parts[0], steps=parts.slice(1), cur=1, N=steps.length;
+  var root=document.createElement('div'); root.className='stepper tstep';
+  root.innerHTML='<div class="thead">'+head+'</div><div class="sbar"><span class="tlab"></span><span>Step <b class="tn">1</b> of '+N+'</span></div><div class="tblocks"></div><div class="nav"><button class="bk" type="button">← Back</button><button class="nx" type="button">Next →</button><button class="rs" type="button">Show all</button></div>';
+  var box=root.querySelector('.tblocks');
+  var els=steps.map(function(h){var d=document.createElement('div');d.className='tb';d.innerHTML=h;box.appendChild(d);return d;});
+  var bk=root.querySelector('.bk'),nx=root.querySelector('.nx'),rs=root.querySelector('.rs'),tn=root.querySelector('.tn'),tl=root.querySelector('.tlab');
+  function render(){
+    els.forEach(function(d,i){d.className='tb'+(i<cur?' on':'')+(i===cur-1?' cur':'');});
+    tn.textContent=cur; tl.textContent=lab(steps[cur-1])||'';
+    bk.disabled=cur<=1; nx.disabled=cur>=N; rs.style.display=cur>=N?'none':'';
+  }
+  bk.onclick=function(){if(cur>1){cur--;render();}};
+  nx.onclick=function(){if(cur<N){cur++;render();}};
+  rs.onclick=function(){cur=N;render();};
+  render(); return root;
+}
+window.buildTextStepper=build;
+window.addEventListener('load',function(){
+  Array.prototype.forEach.call(document.querySelectorAll('.exp'),function(e){
+    if(e.querySelector('.stepper')||e.getAttribute('data-ts'))return;
+    e.setAttribute('data-ts','1');
+    var s=build(e.innerHTML); if(s){e.innerHTML='';e.appendChild(s);}
+  });
+});
 })();
 </script>
 </body></html>

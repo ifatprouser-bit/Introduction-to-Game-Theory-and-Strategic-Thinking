@@ -84,13 +84,39 @@ span.p{display:inline-block;font-size:13px;font-weight:700;padding:2px 7px;borde
   .reveal,.exp{display:block!important;} .preq{border-color:#ccc;}
   .qblock{break-inside:avoid;} .panel{break-inside:avoid;}
 }
+.stepper{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px;margin:14px 0;}
+.stepper .sbar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px;font-size:14px;color:var(--muted);}
+.stepper .sbar b{color:var(--brand-d);}
+.stepper table.dtable td,.stepper table.dtable th{transition:background .25s,color .25s;}
+.stepper .cmpA{outline:3px solid #d2453f;outline-offset:-3px;}
+.stepper .cmpB{outline:3px solid #15794a;outline-offset:-3px;}
+.stepper .msg{border-radius:10px;padding:11px 14px;margin:10px 0 4px;font-size:15px;line-height:1.55;background:var(--brand-soft);min-height:48px;}
+.stepper .msg.good{background:var(--good-soft);} .stepper .msg.bad{background:var(--bad-soft);}
+.stepper .picks{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 2px;}
+.stepper .picks button{background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:9px 16px;font-size:16px;font-weight:700;cursor:pointer;color:var(--ink);}
+.stepper .picks button:hover{border-color:var(--brand);background:var(--brand-soft);}
+.stepper .picks button.no{border-color:var(--bad);background:var(--bad-soft);}
+.stepper .nav{display:flex;gap:10px;margin-top:12px;align-items:center;}
+.stepper .nav button{border:none;border-radius:9px;padding:9px 18px;font-weight:700;font-size:15px;cursor:pointer;}
+.stepper .nav .nx{background:var(--brand);color:#fff;} .stepper .nav .bk{background:var(--brand-soft);color:var(--brand-d);}
+.stepper .nav button:disabled{opacity:.4;cursor:default;}
+.stepper .nav .rs{background:none;color:var(--muted);font-weight:600;font-size:13.5px;margin-left:auto;text-decoration:underline;}
+.stepper .alive{font-weight:700;color:var(--brand-d);}
+.stepper .tabs{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;}
+.stepper .tabs button{border:1.5px solid var(--line);background:#fff;border-radius:9px;padding:7px 14px;font-weight:700;cursor:pointer;color:var(--ink);font-size:14px;}
+.stepper .tabs button.on{background:var(--brand);color:#fff;border-color:var(--brand);}
+.tstep .thead{font-size:15px;line-height:1.55;margin-bottom:6px;}
+.tstep .tb{display:none;padding:10px 13px;margin:8px 0;border-left:3px solid var(--line);border-radius:6px;font-size:15px;line-height:1.6;color:#555;}
+.tstep .tb.on{display:block;} .tstep .tb.cur{border-left-color:var(--brand);background:var(--brand-soft);color:var(--ink);}
+.tstep .tlab{font-weight:700;color:var(--brand-d);}
+@media print{.tstep .tb{display:block!important;color:#000;} .tstep .nav{display:none!important;}}
 </style>
 </head><body><div class="wrap">
 <a class="home" href="index.html">&larr; All 14 days</a>
-<div class="crumb">Day 11 of 14 &middot; Learn</div>
+<div class="crumb">Day 8 of 14 &middot; Learn</div>
 <h1>The two arithmetic questions you must not lose</h1>
 <div class="tags"><span class="p P5">P5</span><span class="p P1">P1</span><span class="p P4">P4</span></div>
-<p class="lede">Yesterday's mock was full of mixing. Today you do not learn the method again: you drill it and hunt the traps. Every paper puts two questions on one grid, worth 14 points together, and both rest on a single equation.</p>
+<p class="lede">Today you do not learn the method again: you drill it and hunt the traps. Every paper puts two questions on one grid, worth 14 points together, and both rest on a single equation.</p>
 
 <div class="preq"><span class="tag">&#9208; Guess first</span>
 <p>A <b>mixed strategy</b> means you do not always play the same action. You pick at random, with fixed chances. A mixed equilibrium is when both sides do that and neither one wants to change.<br><br>Here player 1 plays <b>Top</b> two times out of three. Player 2 plays <b>Left</b> two times out of three.<br><br>Quick, without a calculator: how often do the two of them land on the cell <b>(Top, Right)</b>? Is it about two out of three? One out of three? Or something smaller than both?</p>
@@ -461,7 +487,7 @@ The two halves are the same size, so a plain average of the two group averages i
 <p class="note">Pick an option; the answer and explanation appear only after you choose. One question carries a tag: a real past-final question, word for word, from a paper you never sit as a mock. The other five are new, with grids built for this page. Nothing here spoils a later mock or repeats the worked examples above.</p>
 <div id="quizBody"></div></div>
 
-<div class="navrow"><a class="navbtn" href="Day-10.html">&larr; Back</a><a class="navbtn primary" href="Day-12.html">Next &rarr;</a></div>
+<div class="navrow"><a class="navbtn" href="Day-09.html">&larr; Back</a><a class="navbtn primary" href="Day-03.html">Next &rarr;</a></div>
 </div>
 <script>
 function mat(rows, cols, cells){
@@ -475,14 +501,259 @@ var MDIAG = mat(["Top","Down"],["Left","Right"],[3,0,0,7]);
 var MANTI = mat(["Top","Down"],["Left","Right"],[0,9,18,0]);
 var MFULL = mat(["Top","Down"],["Left","Right"],[10,2,4,6]);
 
+// ---- Number-line stepper for 2/3-average (beauty contest) questions ----
+// buildNumberLineStepper({groups:[{kind:'range',lo,hi,share,name}|{kind:'point',value,share,name}|{kind:'reply',of:i,share,name}],
+//   expect:28, traps:[{opt:'42',at:'crowd'|'group:i'|'twoThirdsGroup:i'|'halfGroup:i'|'twice'|number, text}], finalMsg:'html'})
+// Steps: one per group (band or spike + its average), combine into the crowd average, take two-thirds once, round, then the traps.
+// Trap: short = line on the traps step, text = full note in the final summary. share = fraction of the crowd (equal shares give a plain average). 'reply' = two-thirds of group i's average, rounded.
+// Every number is computed here; it throws if the rounded target is not cfg.expect, or a trap sits more than 1.5 from its option.
+function buildNumberLineStepper(cfg){
+  function fmt(x){var r=Math.round(x*100)/100;return String(r);}
+  var G=cfg.groups.map(function(g){return Object.assign({},g);});
+  G.forEach(function(g,i){
+    if(g.kind==='range'){g.avg=(g.lo+g.hi)/2;}
+    else if(g.kind==='point'){g.avg=g.value;}
+    else if(g.kind==='reply'){g.raw=(2/3)*G[g.of].avg; g.avg=Math.round(g.raw);}
+    if(g.share===undefined) g.share=1/G.length;
+  });
+  var tot=G.reduce(function(s,g){return s+g.share;},0);
+  if(Math.abs(tot-1)>1e-9) throw new Error('numberline: shares must add to 1');
+  var crowd=G.reduce(function(s,g){return s+g.share*g.avg;},0);
+  var target=(2/3)*crowd, answer=Math.round(target);
+  if(cfg.expect!==undefined&&answer!==cfg.expect) throw new Error('numberline: got '+answer+' expected '+cfg.expect);
+  var traps=(cfg.traps||[]).map(function(t){
+    var a=t.at, v;
+    if(typeof a==='number') v=a;
+    else if(a==='crowd') v=crowd;
+    else if(a==='twice') v=(2/3)*answer;
+    else { var m=a.split(':'), g=G[+m[1]];
+      v=m[0]==='group'?g.avg:m[0]==='twoThirdsGroup'?(2/3)*g.avg:m[0]==='halfGroup'?g.avg/2:NaN; }
+    if(!(Math.abs(v-parseFloat(t.opt))<=1.5)) throw new Error('numberline: trap '+t.opt+' computed '+v);
+    return {opt:t.opt,v:v,text:t.text,short:t.short||t.text};
+  });
+  var equal=G.every(function(g){return Math.abs(g.share-G[0].share)<1e-9;});
+  var ord=['first','second','third','fourth'];
+  var VW=560; function X(v){return 30+(v-1)*((VW-60)/99);}
+  // ---- build the step list ----
+  var steps=[];
+  G.forEach(function(g,i){
+    var who=(G.length===1?'The whole crowd':'Group '+(i+1)+(g.name?' ('+g.name+')':''));
+    var t;
+    if(g.kind==='range') t='<b>'+who+'</b> picks evenly from <b>'+g.lo+' to '+g.hi+'</b>. The shaded band shows it.<br>The middle of an even spread is (smallest + largest) &divide; 2 = ('+g.lo+' + '+g.hi+') &divide; 2 = <b>'+fmt(g.avg)+'</b>.'+(g.lo!==1||g.hi!==100?'<br><span style="color:var(--muted)">Read the two ends they gave you, not the ends of the scale.</span>':'');
+    else if(g.kind==='point') t='<b>'+who+'</b> all choose <b>'+g.value+'</b>. Everyone on one spot, so their average is just <b>'+g.value+'</b>.';
+    else t='<b>'+who+'</b> best-replies to group '+(g.of+1)+'. A best reply is two-thirds of the average you face.<br>(2/3) &times; '+fmt(G[g.of].avg)+' = '+fmt(g.raw)+' &rarr; as a whole number <b>'+g.avg+'</b>. They all stand on that spot.';
+    steps.push({k:'g'+i,text:t});
+  });
+  var ctext;
+  if(G.length===1) ctext='<b>The crowd average.</b> There is only one group, so nothing to combine. The crowd sits on average at <b>'+fmt(crowd)+'</b> (red marker).<br><span style="color:var(--muted)">This is not the answer yet. Stopping here is the most common lost mark.</span>';
+  else if(equal) ctext='<b>Combine first.</b> The '+(G.length===2?'two halves are':'groups are')+' the same size, so a plain average of the group averages is enough:<br>('+G.map(function(g){return fmt(g.avg);}).join(' + ')+') &divide; '+G.length+' = <b>'+fmt(crowd)+'</b>. The red marker is the whole crowd.<br><span style="color:var(--muted)">Not the answer yet. You have not taken two-thirds.</span>';
+  else ctext='<b>Combine first.</b> Weight each group by its share:<br>'+G.map(function(g){return fmt(g.share)+' &times; '+fmt(g.avg);}).join(' + ')+' = <b>'+fmt(crowd)+'</b>. The red marker is the whole crowd.';
+  steps.push({k:'c',text:ctext});
+  steps.push({k:'t',text:'<b>Only now, take two-thirds. Once.</b> The green arrow moves left from the crowd average:<br>(2/3) &times; '+fmt(crowd)+' = <b>'+fmt(target)+'</b>.'});
+  steps.push({k:'r',text:'<b>Round.</b> Players choose whole numbers, so take the nearest one: '+fmt(target)+' &rarr; <b>'+answer+'</b>. That is your <b>best reply</b>: the choice that does best against this crowd.'});
+  if(traps.length) steps.push({k:'x',text:'<b>Where the wrong options sit.</b> Each amber dot is a half-finished version of the right answer:<br>'+traps.map(function(t){return '<b>'+t.opt+'</b>: '+t.short;}).join('<br>')});
+  var N=steps.length;
+  var root=document.createElement('div'); root.className='stepper nlstep';
+  root.innerHTML='<div class="sbar"><span class="sround"></span></div><div class="svg-wrap" style="margin:6px 0;padding:6px"></div><div class="msg"></div>'+
+    '<div class="nav"><button class="bk" type="button">&larr; Back</button><button class="nx" type="button">Next &rarr;</button></div>';
+  var box=root.querySelector('.svg-wrap'), msg=root.querySelector('.msg'), bk=root.querySelector('.bk'), nx=root.querySelector('.nx'), step=0;
+  var F='font-family="-apple-system,Segoe UI,Arial,sans-serif"';
+  function idx(k){for(var i=0;i<N;i++)if(steps[i].k===k)return i;return 99;}
+  function svg(s){
+    var gy0=24, gh=22, gap=12, rowsH=G.length*(gh+gap), ay=gy0+rowsH+18, cy=ay+30, ty=cy+34, xy=ty+38, H=(traps.length?xy+42:ty+28);
+    var narrow=(typeof window!=='undefined'&&window.innerWidth<560); VW=narrow?320:560; var FS=narrow?1.25:1;
+    var h='<svg viewBox="0 0 '+VW+' '+H+'" role="img" aria-label="A number line from 1 to 100 with the crowd groups, the crowd average and the two-thirds target." style="max-width:'+VW+'px">';
+    function op(k){if(s>=N)return 1;var i=idx(k);return i>s?0:(i===s?1:0.5);}
+    // axis
+    h+='<line x1="30" y1="'+ay+'" x2="'+(VW-30)+'" y2="'+ay+'" stroke="#c8c2dd" stroke-width="1.5"/>';
+    [1,25,50,75,100].forEach(function(v){h+='<line x1="'+X(v)+'" y1="'+ay+'" x2="'+X(v)+'" y2="'+(ay+5)+'" stroke="#c8c2dd"/><text x="'+X(v)+'" y="'+(ay+17)+'" text-anchor="middle" font-size="11" fill="#6f6886" '+F+'>'+v+'</text>';});
+    // groups
+    G.forEach(function(g,i){
+      var o=op('g'+i); if(!o) return; var y=gy0+i*(gh+gap), cur=o===1, col=i%2?'#1f9d63':'#6b4ef0', soft=i%2?'#e4f6ec':'#ece7fd';
+      h+='<g opacity="'+o+'">';
+      if(g.kind==='range'){
+        h+='<rect x="'+X(g.lo)+'" y="'+y+'" width="'+(X(g.hi)-X(g.lo))+'" height="'+gh+'" rx="5" fill="'+soft+'" stroke="'+col+'" stroke-width="'+(cur?2:1)+'"/>';
+        h+='<text x="'+(X(g.lo)+6)+'" y="'+(y+15)+'" font-size="11.5" fill="'+col+'" font-weight="700" '+F+'>'+g.lo+'</text><text x="'+(X(g.hi)-6)+'" y="'+(y+15)+'" text-anchor="end" font-size="11.5" fill="'+col+'" font-weight="700" '+F+'>'+g.hi+'</text>';
+      } else {
+        if(g.kind==='reply'){var fx=X(G[g.of].avg), tx=X(g.avg), ry=y+gh/2;
+          var sy=gy0+g.of*(gh+gap)+gh/2;
+          h+='<line x1="'+fx+'" y1="'+sy+'" x2="'+(tx+(tx<fx?8:-8))+'" y2="'+ry+'" stroke="'+col+'" stroke-width="1.5" stroke-dasharray="4 3"/>';}
+        h+='<rect x="'+(X(g.avg)-6)+'" y="'+y+'" width="12" height="'+gh+'" rx="3" fill="'+col+'"/>';
+      }
+      h+='<circle cx="'+X(g.avg)+'" cy="'+(y+gh/2)+'" r="'+(cur?5.5:4.5)+'" fill="'+col+'" stroke="#fff" stroke-width="1.5"/>';
+      h+='<line x1="'+X(g.avg)+'" y1="'+(y+gh)+'" x2="'+X(g.avg)+'" y2="'+ay+'" stroke="'+col+'" stroke-width="1" stroke-dasharray="3 3"/>';
+      var gn=G.length>1?'group '+(i+1)+': ':'', lx=X(g.avg), anchor='middle', lab=gn+'avg '+fmt(g.avg);
+      if(g.kind!=='range'){var rt=lx>VW/2; anchor=rt?'end':'start'; lx+=rt?-12:12; lab=gn+(g.kind==='reply'?'best reply ':'all on ')+fmt(g.avg);}
+      h+='<text x="'+lx+'" y="'+(g.kind==='range'?y-4:y+15)+'" text-anchor="'+anchor+'" font-size="12" font-weight="700" fill="'+col+'" '+F+'>'+lab+'</text>';
+      h+='</g>';
+    });
+    // crowd average
+    var oc=op('c');
+    if(oc){h+='<g opacity="'+oc+'"><line x1="'+X(crowd)+'" y1="'+ay+'" x2="'+X(crowd)+'" y2="'+cy+'" stroke="#d2453f" stroke-width="1.5"/><circle cx="'+X(crowd)+'" cy="'+cy+'" r="'+(oc===1?6:5)+'" fill="#d2453f"/>'+
+      '<text x="'+(X(crowd)>VW*0.55?X(crowd)-10:X(crowd)+10)+'" y="'+(cy+4)+'" text-anchor="'+(X(crowd)>VW*0.55?'end':'start')+'" font-size="12.5" font-weight="700" fill="#d2453f" '+F+'>crowd average '+fmt(crowd)+'</text></g>';}
+    // two-thirds arrow
+    var ot=op('t');
+    if(ot){var x0=X(crowd), x1=X(target);
+      h+='<g opacity="'+ot+'"><line x1="'+x0+'" y1="'+cy+'" x2="'+x0+'" y2="'+ty+'" stroke="#d2453f" stroke-width="1" stroke-dasharray="3 3"/>'+
+      '<line x1="'+x0+'" y1="'+ty+'" x2="'+(x1+8)+'" y2="'+ty+'" stroke="#15794a" stroke-width="2.2"/><path d="M'+x1+' '+ty+' L'+(x1+10)+' '+(ty-5)+' L'+(x1+10)+' '+(ty+5)+' Z" fill="#15794a"/>'+
+      '<text x="'+((x0+x1)/2)+'" y="'+(ty-7)+'" text-anchor="middle" font-size="12" font-weight="700" fill="#15794a" '+F+'>&#215; 2/3</text>'+
+      '<text x="'+(x0+10)+'" y="'+(ty+4)+'" font-size="12.5" font-weight="700" fill="#15794a" '+F+'>target '+fmt(target)+'</text></g>';}
+    // rounding
+    var orr=op('r');
+    if(orr){var xa=X(answer);
+      h+='<g opacity="'+orr+'"><line x1="'+xa+'" y1="'+ay+'" x2="'+xa+'" y2="'+ty+'" stroke="#15794a" stroke-width="2"/><circle cx="'+xa+'" cy="'+ty+'" r="'+(orr===1?8:6.5)+'" fill="#15794a"/>'+
+      '<text x="'+xa+'" y="'+(ty+4)+'" text-anchor="middle" font-size="10" font-weight="800" fill="#fff" '+F+'>&#10003;</text>'+
+      '<text x="'+(xa-12)+'" y="'+(ty+4)+'" text-anchor="end" font-size="13" font-weight="800" fill="#15794a" '+F+'>'+answer+'</text></g>';}
+    // traps
+    var ox=op('x');
+    if(ox&&traps.length){
+      var items=traps.map(function(t){return {v:t.v,lab:t.opt,ans:false};}).concat([{v:answer,lab:answer+' &#10003;',ans:true}]).sort(function(a,b){return a.v-b.v;});
+      items=items.reduce(function(acc,t){var pv=acc[acc.length-1]; if(pv&&!pv.ans&&!t.ans&&X(t.v)-X(pv.v)<9*FS){pv.lab+=' &middot; '+t.lab;} else acc.push(t); return acc;},[]);
+      var lastAt=[-999,-999,-999], LY=[xy-9,xy+20,xy+35];
+      h+='<g opacity="'+ox+'"><text x="2" y="'+(xy+4)+'" font-size="11" fill="#8f5c12" font-weight="700" '+F+'>traps</text>';
+      items.forEach(function(t){var x=X(t.v), w=(String(t.lab).replace(/&#10003;|&middot;/g,'v').length*7+8)*FS, lv=0;
+        while(lv<2&&x-lastAt[lv]<w) lv++; lastAt[lv]=x;
+        var col=t.ans?'#15794a':'#8f5c12';
+        h+='<circle cx="'+x+'" cy="'+xy+'" r="'+(t.ans?5.5:5)+'" fill="'+(t.ans?'#15794a':'#b6791f')+'"/><text x="'+x+'" y="'+LY[lv]+'" text-anchor="middle" font-size="12" font-weight="'+(t.ans?800:700)+'" fill="'+col+'" '+F+'>'+t.lab+'</text>';});
+      h+='</g>';}
+    h=h.replace(/font-size="([\d.]+)"/g,function(m,n){return 'font-size="'+(n*FS)+'"';});
+    return h+'</svg>';
+  }
+  function render(){
+    var atEnd=step>=N, s=atEnd?N-1:step;
+    box.innerHTML=svg(atEnd?N:s);
+    root.querySelector('.sround').innerHTML=atEnd?'<b>Done</b>':'<b>Step '+(step+1)+' of '+N+'</b>';
+    msg.className='msg'+(atEnd?' good':'');
+    msg.innerHTML=atEnd?(cfg.finalMsg||('<b>Best reply: '+answer+'.</b>'))+(traps.length?'<br><br><b>Where each wrong option comes from.</b><br>'+traps.map(function(t){return '<b>'+t.opt+'</b>: '+t.text;}).join('<br>'):''):steps[step].text;
+    bk.disabled=step===0; nx.disabled=atEnd; nx.innerHTML=(step===N-1)?'Finish &rarr;':'Next &rarr;';
+  }
+  nx.onclick=function(){if(step<N){step++;render();}};
+  bk.onclick=function(){if(step>0){step--;render();}};
+  render();
+  root._nl={crowd:crowd,target:target,answer:answer,groups:G,traps:traps};
+  return root;
+}
+
+// ---- Day 11 cell / value stepper for 2x2 zero-sum mixed equilibria (page-local) ----
+// buildCellStepper({cells:[[a,b],[c,d]] (player 1's payoff), ask:{type:'cell',row:i,col:j}|{type:'value'}, frac:bool,
+//   round:'pct'|'1dp', expect:number, traps:[{opt,text}], note:'extra html for the first step', finalMsg:'html'})
+// Solves both indifference equations, asserts the rounded answer equals expect, then steps: mixing needed? > q > p > answer > check > traps.
+function buildCellStepper(cfg){
+  var M=cfg.cells, a=M[0][0], b=M[0][1], c=M[1][0], d=M[1][1], R=['Top','Down'], C=['Left','Right'];
+  var k=a-b-c+d, q=(d-b)/k, p=(d-c)/k, v=a*q+b*(1-q);
+  if(!(q>0&&q<1&&p>0&&p<1)) throw new Error('cell stepper: no interior mix');
+  [c*q+d*(1-q),a*p+c*(1-p),b*p+d*(1-p)].forEach(function(z){if(Math.abs(z-v)>1e-9)throw new Error('cell stepper: value mismatch');});
+  var P=[[p*q,p*(1-q)],[(1-p)*q,(1-p)*(1-q)]];
+  var ask=cfg.ask, raw=ask.type==='cell'?P[ask.row][ask.col]:v;
+  var shown=cfg.round==='pct'?Math.round(raw*100):Math.round(raw*10)/10;
+  if(cfg.expect!==undefined&&shown!==cfg.expect) throw new Error('cell stepper: got '+shown+' expected '+cfg.expect);
+  function r4(x){return Math.round(x*10000)/10000;}
+  function fr(x){ if(cfg.frac){for(var den=2;den<=12;den++){var nu=Math.round(x*den);if(Math.abs(nu/den-x)<1e-9){var g=gcd(nu,den);return (nu/g)+'/'+(den/g);}}} return String(r4(x)); }
+  function gcd(x,y){return y?gcd(y,x%y):Math.abs(x);}
+  function pc(x){return String(Math.round(x*1000)/10)+'%';}
+  function lin(u,w,vr){return u+vr+' + '+w+'(1&minus;'+vr+')';}
+  // normalised equations
+  var kk=k, rq=d-b, rp=d-c; if(kk<0){kk=-kk;rq=-rq;rp=-rp;}
+  // pure-equilibrium (saddle) check
+  var rowMin=[0,1].map(function(i){return M[i][0]<=M[i][1]?0:1;});
+  var saddle=[0,1].some(function(i){var j=rowMin[i];return M[i][j]>=M[1-i][j];});
+  if(saddle) throw new Error('cell stepper: saddle point exists');
+  var steps=[];
+  steps.push({k:'s',hl:{min:true},text:'<b>Is mixing needed?</b> Each cell holds one number: <b>player 1\'s payoff</b>. Player 2 loses what player 1 wins, so she wants it low.<br>A pure equilibrium here would be a cell that is the smallest in its row and the biggest in its column.<br>'+
+    [0,1].map(function(i){var j=rowMin[i], o=M[1-i][j];return R[i]+'\'s smallest is '+M[i][j]+' (in the '+C[j]+' column). That column also holds '+o+', which is bigger.';}).join('<br>')+'<br><b>No such cell, so both players mix.</b>'+(cfg.note?'<br><span style="color:var(--muted)">'+cfg.note+'</span>':'')});
+  steps.push({k:'q',hl:{rows:true},text:'<b>Find q</b>, how often player 2 plays Left. It must make <b>player 1 indifferent</b>: Top (red) and Down (green) pay her the same.<br>Top: '+lin(a,b,'q')+'. Down: '+lin(c,d,'q')+'.<br>Set them equal: '+kk+'q = '+rq+', so <b>q = '+fr(q)+'</b>. Right gets 1 &minus; q = '+fr(1-q)+'.'});
+  steps.push({k:'p',hl:{cols:true},text:'<b>Find p</b>, how often player 1 plays Top. It must make <b>player 2 indifferent</b>: the Left column (red) and the Right column (green) give the same payoff.<br>Left: '+lin(a,c,'p')+'. Right: '+lin(b,d,'p')+'.<br>Set them equal: '+kk+'p = '+rp+', so <b>p = '+fr(p)+'</b>. Down gets 1 &minus; p = '+fr(1-p)+'.'+
+    (Math.abs(p-q)>1e-9?'<br><span style="color:var(--muted)">Look: p and q are different. Never assume they are equal.</span>':'')});
+  if(ask.type==='cell'){
+    var same=ask.row===ask.col, rn=R[ask.row], cn=C[ask.col], rp_=ask.row?'(1&minus;p)':'p', cp_=ask.col?'(1&minus;q)':'q';
+    var rv=ask.row?1-p:p, cv=ask.col?1-q:q;
+    steps.push({k:'m',hl:{cell:[ask.row,ask.col]},sq:true,text:'<b>A cell is a product.</b> Say the profile out loud: <b>('+rn+', '+cn+')</b>. '+(same?'Same side, a matching cell.':'Different sides, a <b>crossed</b> cell.')+'<br>P('+rn+', '+cn+') = P('+rn+') &times; P('+cn+') = '+rp_+' &times; '+cp_+' = '+fr(rv)+' &times; '+fr(cv)+' = '+fr(raw)+'.<br>The highlighted rectangle in the square has exactly that area: <b>'+(pc(raw)===shown+'%'?shown+'%':pc(raw)+' &rarr; '+shown+'%')+'</b>.'});
+    steps.push({k:'c',hl:{rows:true},sq:true,all:true,text:'<b>Check.</b> Put q back into both rows. Top: '+a+' &times; '+fr(q)+' + '+b+' &times; '+fr(1-q)+' = '+r4(v)+'. Down: '+c+' &times; '+fr(q)+' + '+d+' &times; '+fr(1-q)+' = '+r4(c*q+d*(1-q))+'.<br>Same number, so the mixtures are right. The four rectangles add to 100%.'});
+  } else {
+    steps.push({k:'v',hl:{row:0},text:'<b>Get the value of the game.</b> Put q into the Top row (the average payoff per play):<br>'+a+' &times; '+fr(q)+' + '+b+' &times; '+fr(1-q)+' = <b>'+r4(v)+'</b>.'});
+    steps.push({k:'c',hl:{rows:true,cols:true},text:'<b>Check.</b> Down row: '+c+' &times; '+fr(q)+' + '+d+' &times; '+fr(1-q)+' = '+r4(c*q+d*(1-q))+'. Left column with p: '+a+' &times; '+fr(p)+' + '+c+' &times; '+fr(1-p)+' = '+r4(a*p+c*(1-p))+'. Right column: '+b+' &times; '+fr(p)+' + '+d+' &times; '+fr(1-p)+' = '+r4(b*p+d*(1-p))+'.<br>All four agree: <b>'+r4(v)+'</b>.'});
+  }
+  if(cfg.traps&&cfg.traps.length) steps.push({k:'x',hl:ask.type==='cell'?{}:{bounds:true},sq:ask.type==='cell',all:true,text:'<b>Where the wrong options come from.</b><br>'+cfg.traps.map(function(t){return '<b>'+t.opt+'</b>: '+(t.short||t.text);}).join('<br>')});
+  var N=steps.length;
+  var root=document.createElement('div'); root.className='stepper cellstep';
+  root.innerHTML='<div class="sbar"><span class="sround"></span></div><div class="cs-vis" style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:center"><div class="tscroll" style="flex:1 1 260px;max-width:330px"><table class="dtable"></table></div><div class="cs-sq" style="flex:0 1 230px"></div></div><div class="msg"></div>'+
+    '<div class="nav"><button class="bk" type="button">&larr; Back</button><button class="nx" type="button">Next &rarr;</button></div>';
+  var tbl=root.querySelector('table'), sq=root.querySelector('.cs-sq'), msg=root.querySelector('.msg'), bk=root.querySelector('.bk'), nx=root.querySelector('.nx'), step=0;
+  function known(key,s){for(var i=0;i<steps.length;i++)if(steps[i].k===key)return s>i;return false;}
+  function table(s,st){
+    var hl=st?st.hl:{}, kq=known('q',s), kp=known('p',s);
+    var h='<tr><th class="mrg"></th>'+C.map(function(cn,j){var cl=(hl.cols?(j?' cmpB':' cmpA'):'');var m=kq?'<span class="mix">'+(j?'1&minus;q = ':'q = ')+fr(j?1-q:q)+'</span>':'<span class="mix">'+(j?'1&minus;q':'q')+'</span>';return '<th class="'+cl+'">'+cn+m+'</th>';}).join('')+'</tr>';
+    R.forEach(function(rn,i){
+      var rcl=(hl.rows?(i?' cmpB':' cmpA'):'')+(hl.row===i?' cmpB':'');
+      var m=kp?'<span class="mix">'+(i?'1&minus;p = ':'p = ')+fr(i?1-p:p)+'</span>':'<span class="mix">'+(i?'1&minus;p':'p')+'</span>';
+      h+='<tr><td class="lab'+rcl+'">'+rn+m+'</td>';
+      C.forEach(function(cn,j){
+        var cl='';
+        if(hl.rows) cl=i?' cmpB':' cmpA';
+        if(hl.cols&&!hl.rows) cl=j?' cmpB':' cmpA';
+        if(hl.row===i) cl=' cmpB';
+        if(hl.min&&rowMin[i]===j) cl=' cmpA';
+        if(hl.cell&&hl.cell[0]===i&&hl.cell[1]===j) cl=' hlcell cmpB';
+        if(hl.bounds&&(rowMin[i]===j||M[i][j]===Math.max(M[0][j],M[1][j]))) cl=' ask';
+        if(hl.rows&&hl.cols) cl=' cmpB';
+        h+='<td class="'+cl+(M[i][j]===0?' zero':'')+'">'+M[i][j]+'</td>';
+      });
+      h+='</tr>';
+    });
+    tbl.innerHTML=h;
+  }
+  function square(st){
+    if(!st||!st.sq){sq.innerHTML='';sq.style.display='none';return;}
+    sq.style.display='';
+    var W=200, x0=14, y0=26, wq=W*q, hp=W*p, F='font-family="-apple-system,Segoe UI,Arial,sans-serif"';
+    var h='<svg viewBox="0 0 230 240" style="width:100%;max-width:230px" role="img" aria-label="The probability square: one cut at q, one cut at p. Each rectangle area is the chance of that outcome.">';
+    h+='<text x="'+(x0+wq/2)+'" y="18" text-anchor="middle" font-size="11" font-weight="700" fill="#5238c4" '+F+'>Left '+fr(q)+'</text><text x="'+(x0+wq+(W-wq)/2)+'" y="18" text-anchor="middle" font-size="11" font-weight="700" fill="#5238c4" '+F+'>Right '+fr(1-q)+'</text>';
+    var rects=[[0,0,x0,y0,wq,hp],[0,1,x0+wq,y0,W-wq,hp],[1,0,x0,y0+hp,wq,W-hp],[1,1,x0+wq,y0+hp,W-wq,W-hp]];
+    rects.forEach(function(r){var on=st.hl.cell&&st.hl.cell[0]===r[0]&&st.hl.cell[1]===r[1];
+      h+='<rect x="'+r[2]+'" y="'+r[3]+'" width="'+r[4]+'" height="'+r[5]+'" fill="'+(on?'#e4f6ec':'#f6f4fc')+'" stroke="'+(on?'#15794a':'#c8c2dd')+'" stroke-width="'+(on?3:1)+'"/>';
+      if(on||st.all){h+='<text x="'+(r[2]+r[4]/2)+'" y="'+(r[3]+r[5]/2-2)+'" text-anchor="middle" font-size="10.5" font-weight="700" fill="'+(on?'#15794a':'#6f6886')+'" '+F+'>'+R[r[0]]+', '+C[r[1]]+'</text><text x="'+(r[2]+r[4]/2)+'" y="'+(r[3]+r[5]/2+12)+'" text-anchor="middle" font-size="11.5" font-weight="800" fill="'+(on?'#15794a':'#6f6886')+'" '+F+'>'+pc(P[r[0]][r[1]])+'</text>';}
+    });
+    h+='<text x="'+(x0+W+4)+'" y="'+(y0+hp/2)+'" font-size="10.5" font-weight="700" fill="#5238c4" transform="rotate(90 '+(x0+W+4)+','+(y0+hp/2)+')" text-anchor="middle" '+F+'>Top '+fr(p)+'</text>';
+    h+='<text x="'+(x0+W+4)+'" y="'+(y0+hp+(W-hp)/2)+'" font-size="10.5" font-weight="700" fill="#5238c4" transform="rotate(90 '+(x0+W+4)+','+(y0+hp+(W-hp)/2)+')" text-anchor="middle" '+F+'>Down '+fr(1-p)+'</text>';
+    sq.innerHTML=h+'</svg>';
+  }
+  function render(){
+    var atEnd=step>=N, st=atEnd?null:steps[step];
+    table(step,st);
+    square(atEnd?(ask.type==='cell'?{hl:{cell:[ask.row,ask.col]},sq:true,all:true}:null):st);
+    root.querySelector('.sround').innerHTML=atEnd?'<b>Done</b>':'<b>Step '+(step+1)+' of '+N+'</b>';
+    msg.className='msg'+(atEnd?' good':''); msg.innerHTML=atEnd?cfg.finalMsg+((cfg.traps&&cfg.traps.length)?'<br><br><b>Where each wrong option comes from.</b><br>'+cfg.traps.map(function(t){return '<b>'+t.opt+'</b>: '+t.text;}).join('<br>'):''):st.text;
+    bk.disabled=step===0; nx.disabled=atEnd; nx.innerHTML=(step===N-1)?'Finish &rarr;':'Next &rarr;';
+  }
+  nx.onclick=function(){if(step<N){step++;render();}};
+  bk.onclick=function(){if(step>0){step--;render();}};
+  render();
+  root._cs={p:p,q:q,v:v,raw:raw,shown:shown};
+  return root;
+}
+
 const QUIZ = [
 {"q":"You play the 2/3-average competition with 200 other players. Each player chooses a whole number between 1 and 100, and the players closest to two-thirds of the average of the numbers win. All 200 of the other players choose their numbers uniformly from {17, &hellip;, 93}. What would be your best reply?",
  "opts":["25","33","37","50","55"],"correct":2,
- "exp":"<b>37.</b><br><br><b>The rule.</b> For a group that picks evenly across a range, the group's average is (smallest + largest) &divide; 2. Your best reply is two-thirds of the crowd's average.<br><br><b>The inputs.</b> One group only, spread evenly from 17 to 93. There is nothing to combine here, so the whole question is whether you read the two ends correctly.<br><br><b>1.</b> Add the two ends: 17 + 93 = 110<br><b>2.</b> Halve it: 110 &divide; 2 = 55. That is the crowd's average.<br><b>3.</b> Take two-thirds, once: (2/3) &times; 55 = 36.67<br><b>4.</b> The choices are whole numbers, so round: <b>37</b><br><br><b>Check.</b> If the crowd averages 55, the winning target is 36.67. Your 37 sits 0.33 away from it. The nearest other option, 33, sits 3.67 away. Nothing on the list is closer than 37. &#10003;<br><br><b>Where each wrong option comes from.</b><br>55: the crowd average. You stopped one step early and never took the two-thirds.<br>50: the middle of the whole 1 to 100 scale. The crowd was not spread over the whole scale. Read the two ends the question actually gave you.<br>33: (2/3) &times; 50 = 33.33. That is the last mistake plus the right final step. It is the most tempting wrong answer here.<br>25: (2/3) &times; 37 = 24.67. You took two-thirds twice, one level too deep. Best-replying to your own best reply is not what was asked."},
+ "anim":{"type":"nl","expect":37,
+  "groups":[{"kind":"range","lo":17,"hi":93,"share":1}],
+  "traps":[
+   {"opt":"55","at":"crowd","short":"the crowd average, before two-thirds","text":"the crowd average. You stopped one step early and never took the two-thirds."},
+   {"opt":"50","at":50,"short":"the middle of the whole 1 to 100 scale","text":"the middle of the whole 1 to 100 scale. The crowd was not spread over the whole scale. Read the two ends the question actually gave you."},
+   {"opt":"33","at":100/3,"short":"two-thirds of 50, the wrong middle","text":"(2/3) &times; 50 = 33.33. The wrong middle, plus the right final step. It is the most tempting wrong answer here."},
+   {"opt":"25","at":"twice","short":"two-thirds of 37, taken twice","text":"(2/3) &times; 37 = 24.67. You took two-thirds twice, one level too deep. Best-replying to your own best reply is not what was asked."}],
+  "finalMsg":"<b>Best reply: 37.</b> One group, spread evenly from 17 to 93. Its middle is 55. Two-thirds of 55 is 36.67, which rounds to 37.<br><br><b>Check.</b> The target is 36.67. Your 37 sits 0.33 away. The nearest other option, 33, sits 3.67 away. &#10003;<br><br><b>The rule:</b> the middle of an even range is (smallest + largest) &divide; 2. Average the crowd, then take two-thirds once, then round."}},
 
 {"src":"2025 A final","q":"Assume that you play with 200 other players the 2/3-average competition (namely, each player chooses an integer number between 1 and 100; the players who chose the number closest to 2/3 of the average of the ten numbers win). What would be your best reply if: (1) half of the players choose their numbers uniformly in the domain {1,&hellip;,100}, and (2) the remaining half choose a number that is the best-reply to a uniform play in the domain {1,&hellip;,100}.",
  "opts":["25","28","33","35","42"],"correct":1,
- "exp":"<b>28.</b><br><br><b>The rule.</b> Average the whole crowd first. <i>Then</i> take two-thirds, once, at the very end.<br><br><b>The inputs.</b> Two groups of equal size. Group 1 picks evenly over 1 to 100. Group 2 best-replies to group 1.<br><br><b>1.</b> Group 1's average: (1 + 100) &divide; 2 = 50.5<br><b>2.</b> Group 2 best-replies to that, so each of them plays (2/3) &times; 50.5 = 33.67, which as a whole number is 34<br><b>3.</b> Combine. The two halves are the same size, so the crowd average is a plain average: (50.5 + 34) &divide; 2 = 42.25<br><b>4.</b> Only now take two-thirds: (2/3) &times; 42.25 = 28.17<br><b>5.</b> Round to a whole number: <b>28</b><br><br><b>Check.</b> Count heads instead of groups: (100 &times; 50.5 + 100 &times; 34) &divide; 200 = 8450 &divide; 200 = 42.25. The same crowd average, so the same answer. &#10003;<br><br><b>Where each wrong option comes from.</b><br>42: the crowd average, 42.25. You stopped before the last multiplication.<br>35: roughly group 2's number, 34. You answered with one group's choice instead of your own best reply.<br>33: (2/3) &times; 50.5 = 33.67. You best-replied to group 1 only and left group 2 out of the crowd. That only makes you a copy of group 2. You are playing against the whole crowd, not against group 2 alone.<br>25: 50.5 &divide; 2 = 25.25. It comes from halving group 1's average because \"half the players\" play uniformly, instead of averaging the two groups.<br><br><b>One oddity in the paper.</b> The stem says \"the average of the ten numbers\" while the question describes 201 players. That is a leftover from another version of the question. It changes nothing: use the crowd the question describes."},
+ "anim":{"type":"nl","expect":28,
+  "groups":[{"kind":"range","lo":1,"hi":100,"share":0.5},{"kind":"reply","of":0,"share":0.5}],
+  "traps":[
+   {"opt":"42","at":"crowd","short":"the crowd average, before two-thirds","text":"the crowd average, 42.25. 42 means you stopped one step early, before the last multiplication."},
+   {"opt":"35","at":"group:1","short":"about group 2's own number, 34","text":"roughly group 2's number, 34. You answered with one group's choice instead of your own best reply."},
+   {"opt":"33","at":"twoThirdsGroup:0","short":"two-thirds of group 1 alone","text":"(2/3) &times; 50.5 = 33.67. You best-replied to group 1 only and left group 2 out of the crowd. That only makes you a copy of group 2. You play against the whole crowd, not against group 2 alone."},
+   {"opt":"25","at":"halfGroup:0","short":"group 1's average halved","text":"50.5 &divide; 2 = 25.25. It comes from halving group 1's average because \"half the players\" play uniformly, instead of averaging the two groups."}],
+  "finalMsg":"<b>Best reply: 28.</b><br><br><b>Check.</b> Count heads instead of groups: (100 &times; 50.5 + 100 &times; 34) &divide; 200 = 8450 &divide; 200 = 42.25. The same crowd average, so the same answer. &#10003;<br><br><b>The rule:</b> average the whole crowd first. <i>Then</i> take two-thirds, once, at the very end.<br><br><b>One oddity in the paper.</b> The stem says \"the average of the ten numbers\" while the question describes 201 players. That is a leftover from another version of the question. It changes nothing: use the crowd the question describes."}},
 
 {"q":"In laboratory experiments of the 2/3-average contest, where do most players' choices actually land, and how many of them play the Nash equilibrium?",
  "opts":["Choices usually land in the 13 to 19 range, and about 10% of players choose the equilibrium","Choices usually land in the 13 to 19 range, and that range is the Nash equilibrium","Most players choose 1, and about 90% of them play the equilibrium","Choices are spread evenly over 1 to 100, so the average is about 50","Most players choose 50, and nobody plays the equilibrium"],"correct":0,
@@ -490,15 +761,35 @@ const QUIZ = [
 
 {"q":"A zero-sum game (one number per cell = player 1's payoff; player 1 chooses the row, player 2 chooses the column). What is the probability that the outcome is (Top, Right) in the mixed equilibrium? (Rounded to the nearest percentage point.)"+MDIAG,
  "opts":["9%","21%","30%","49%","70%"],"correct":1,
- "exp":"<b>21%.</b><br><br><b>The rule: the indifference condition, used twice, then P(row, column) = P(row) &times; P(column).</b><br><br><b>The inputs.</b> p is the chance of Top, q is the chance of Left. Top pays 3 against Left and 0 against Right. Down pays 0 against Left and 7 against Right.<br><br><b>Find q</b>, the mixture that makes player 1 indifferent:<br><b>1.</b> Top: 3q + 0(1&minus;q) = 3q<br><b>2.</b> Down: 0q + 7(1&minus;q) = 7 &minus; 7q<br><b>3.</b> Equal: 3q = 7 &minus; 7q<br><b>4.</b> Add 7q: 10q = 7<br><b>5.</b> q = 0.7, so Left is played 70% of the time and <b>Right 30%</b><br><br><b>Find p</b>, the mixture that makes player 2 indifferent:<br><b>1.</b> Left column: 3p + 0(1&minus;p) = 3p<br><b>2.</b> Right column: 0p + 7(1&minus;p) = 7 &minus; 7p<br><b>3.</b> Equal: 3p = 7 &minus; 7p<br><b>4.</b> Add 7p: 10p = 7<br><b>5.</b> p = 0.7, so <b>Top is played 70%</b><br><br><b>Multiply.</b> (Top, Right) is a crossed cell: P = p &times; (1 &minus; q) = 0.7 &times; 0.3 = 0.21 = <b>21%</b>.<br><br><b>Check.</b> Value from Top: 3 &times; 0.7 = 2.1. From Down: 7 &times; 0.3 = 2.1. The same, so both mixtures are right. The four cells also add to 1: 0.49 + 0.21 + 0.21 + 0.09 = 1. &#10003;<br><br><b>Where each wrong option comes from.</b><br>70%: p on its own, the row without the column.<br>30%: 1 &minus; q on its own, the column without the row.<br>49%: 0.7 &times; 0.7 = P(Top, Left), the matching cell. This is what you get if you multiply the two numbers you just solved for and never re-read the cell name in the question. On a grid like this one, that is the most common way to lose the mark.<br>9%: 0.3 &times; 0.3 = P(Down, Right), the matching cell in the other corner."},
+ "anim":{"type":"cell","cells":[[3,0],[0,7]],"ask":{"type":"cell","row":0,"col":1},"round":"pct","expect":21,
+  "traps":[
+   {"opt":"70%","short":"p alone","text":"p on its own, the row without the column."},
+   {"opt":"30%","short":"1 &minus; q alone","text":"1 &minus; q on its own, the column without the row."},
+   {"opt":"49%","short":"the matching cell (Top, Left)","text":"0.7 &times; 0.7 = P(Top, Left), the matching cell. You multiplied the two numbers you just solved for and never re-read the cell name in the question. On a grid like this one, that is the most common way to lose the mark."},
+   {"opt":"9%","short":"the other matching cell (Down, Right)","text":"0.3 &times; 0.3 = P(Down, Right), the matching cell in the other corner."}],
+  "finalMsg":"<b>21%.</b> (Top, Right) is a crossed cell: p &times; (1 &minus; q) = 0.7 &times; 0.3 = 0.21.<br><br><b>The rule:</b> the indifference condition, used twice, then P(row, column) = P(row) &times; P(column). Say the row name and the column name before you multiply."}},
 
 {"q":"A zero-sum game (one number per cell = player 1's payoff). What is the probability that the outcome is (Top, Right) in the mixed equilibrium? (Round up to the closest percentage point.)"+MANTI,
  "opts":["11%","22%","33%","44%","67%"],"correct":3,
- "exp":"<b>44%.</b><br><br><b>The rule: the indifference condition, used twice, then P(row, column) = P(row) &times; P(column).</b> Look at the zeros before anything else. They sit on the anti-diagonal, so the two mixtures will <i>not</i> be equal.<br><br><b>The inputs.</b> p is the chance of Top, q is the chance of Left. Top pays 0 against Left and 9 against Right. Down pays 18 against Left and 0 against Right.<br><br><b>Find q</b>, the mixture that makes player 1 indifferent:<br><b>1.</b> Top: 0q + 9(1&minus;q) = 9 &minus; 9q<br><b>2.</b> Down: 18q + 0(1&minus;q) = 18q<br><b>3.</b> Equal: 9 &minus; 9q = 18q<br><b>4.</b> Add 9q: 9 = 27q<br><b>5.</b> q = 1/3, so Left is played a third of the time and <b>Right two thirds</b><br><br><b>Find p</b>, the mixture that makes player 2 indifferent:<br><b>1.</b> Left column: 0p + 18(1&minus;p) = 18 &minus; 18p<br><b>2.</b> Right column: 9p + 0(1&minus;p) = 9p<br><b>3.</b> Equal: 18 &minus; 18p = 9p<br><b>4.</b> Add 18p: 18 = 27p<br><b>5.</b> p = 2/3, so <b>Top is played two thirds of the time</b><br><br><b>Stop and look.</b> p = 2/3 and q = 1/3. They are different, and they add to 1. That is the signature of the anti-diagonal shape.<br><br><b>Multiply.</b> (Top, Right) is crossed: P = p &times; (1 &minus; q) = (2/3) &times; (2/3) = 4/9 = 44.4% &rarr; <b>44%</b>.<br><br><b>Check.</b> Value from Top: 9 &times; (2/3) = 6. From Down: 18 &times; (1/3) = 6. The same. &#10003;<br><br><b>Where each wrong option comes from.</b><br>22%: the \"p equals q\" shortcut. Take the two visible numbers 9 and 18, feed them into the main-diagonal recipe, and you get 18 &divide; 27 = 2/3 for both players. Then (Top, Right) comes out as (2/3) &times; (1/3) = 2/9 = 22%. Five of the seven past grids reward that habit, and this shape punishes it. 22% is also the true P(Top, Left), so it looks familiar twice over.<br>67%: p on its own, the row without the column.<br>33%: q on its own, which is also 1 &minus; p. Either way it is a single mixture, not a cell.<br>11%: 1/9 = P(Down, Left), the other crossed pair.<br><br><b>And the value will not rescue you.</b> The wrong recipe still returns 9 &times; 18 &divide; 27 = 6, which is the correct value of the game. So the second question of the pair comes out right while the first one is already lost. That is why you write both equations instead of trusting a shape.<br><br><b>On the wording.</b> \"Round up to the closest percentage point\" would literally turn 44.4% into 45%. The published answers never do that, and 45% is not even on the list. It means ordinary rounding, to whichever whole number is nearer."},
+ "anim":{"type":"cell","cells":[[0,9],[18,0]],"ask":{"type":"cell","row":0,"col":1},"round":"pct","expect":44,"frac":true,
+  "note":"Look at the zeros before anything else. They sit on the anti-diagonal, so the two mixtures will <i>not</i> be equal.",
+  "traps":[
+   {"opt":"22%","short":"the &ldquo;p equals q&rdquo; shortcut","text":"the \"p equals q\" shortcut. Feed the two visible numbers 9 and 18 into the main-diagonal recipe and you get 18 &divide; 27 = 2/3 for both players. Then (Top, Right) comes out as (2/3) &times; (1/3) = 2/9 = 22%. Five of the seven past grids reward that habit, and this shape punishes it. 22% is also the true P(Top, Left), so it looks familiar twice over."},
+   {"opt":"67%","short":"p alone","text":"p on its own, the row without the column."},
+   {"opt":"33%","short":"q alone (also 1 &minus; p)","text":"q on its own, which is also 1 &minus; p. Either way it is a single mixture, not a cell."},
+   {"opt":"11%","short":"(Down, Left), the other crossed cell","text":"1/9 = P(Down, Left), the other crossed pair."}],
+  "finalMsg":"<b>44%.</b> p = 2/3 and q = 1/3. They are different, and they add to 1. That is the signature of the anti-diagonal shape. (Top, Right) is crossed: (2/3) &times; (2/3) = 4/9 = 44.4% &rarr; 44%.<br><br><b>And the value will not rescue you.</b> The wrong recipe still returns 9 &times; 18 &divide; 27 = 6, which is the correct value of the game. So the second question of the pair comes out right while the first one is already lost. That is why you write both equations instead of trusting a shape.<br><br><b>On the wording.</b> \"Round up to the closest percentage point\" would literally turn 44.4% into 45%. The published answers never do that, and 45% is not even on the list. It means ordinary rounding, to whichever whole number is nearer."}},
 
 {"q":"A zero-sum game (one number per cell = player 1's payoff). What is player 1's expected payoff in the Nash equilibrium? (Rounded to one decimal place.)"+MFULL,
  "opts":["3.6","4","5.2","5.5","6"],"correct":2,
- "exp":"<b>5.2.</b><br><br><b>The rule: the indifference condition, used twice, then put a mixture back into any row or column to get the value of the game.</b> No zeros anywhere here, so nothing cancels and there is no shape to lean on.<br><br><b>The inputs.</b> p is the chance of Top, q is the chance of Left. Top pays 10 against Left and 2 against Right. Down pays 4 against Left and 6 against Right.<br><br><b>First, is mixing needed?</b> Top's smallest number is 2, and 2 is not the biggest in the Right column (6 is). Down's smallest is 4, and 4 is not the biggest in the Left column (10 is). No saddle point (a cell that is smallest in its row and biggest in its column), so mix.<br><br><b>Find q</b>, the mixture that makes player 1 indifferent:<br><b>1.</b> Top: 10q + 2(1&minus;q) = 2 + 8q<br><b>2.</b> Down: 4q + 6(1&minus;q) = 6 &minus; 2q<br><b>3.</b> Equal: 2 + 8q = 6 &minus; 2q<br><b>4.</b> Add 2q: 2 + 10q = 6<br><b>5.</b> Subtract 2: 10q = 4<br><b>6.</b> q = 0.4<br><br><b>Find p</b>, the mixture that makes player 2 indifferent:<br><b>1.</b> Left column: 10p + 4(1&minus;p) = 4 + 6p<br><b>2.</b> Right column: 2p + 6(1&minus;p) = 6 &minus; 4p<br><b>3.</b> Equal: 4 + 6p = 6 &minus; 4p<br><b>4.</b> Add 4p: 4 + 10p = 6<br><b>5.</b> Subtract 4: 10p = 2<br><b>6.</b> p = 0.2<br><br><b>Get the value.</b> Put q = 0.4 into the Top row: 2 + 8(0.4) = 2 + 3.2 = <b>5.2</b>.<br><br><b>Check.</b> Down row: 6 &minus; 2(0.4) = 5.2. Left column with p = 0.2: 4 + 6(0.2) = 5.2. Right column: 6 &minus; 4(0.2) = 5.2. All four agree. Getting the same number twice is your free check and it costs ten seconds. &#10003;<br><br><b>Where each wrong option comes from.</b><br>4: the better of the two row minimums. Top's worst case is 2, Down's worst case is 4, so 4 is what player 1 can guarantee without mixing at all. Mixing is worth 1.2 more than that.<br>6: the better of the two column maximums. Left's worst case for player 2 is 10, Right's is 6, so 6 is what she can hold him to without mixing. The true value always sits between these two numbers, and here it does: 4 &lt; 5.2 &lt; 6.<br>5.5: the plain average of all four payoffs, (10 + 2 + 4 + 6) &divide; 4. The four cells are not equally likely, so this is never the value.<br>3.6: p and q swapped. Using 0.2 as the column mixture gives Top 10(0.2) + 2(0.8) = 3.6. Notice the built-in warning: Down would then give 4(0.2) + 6(0.8) = 5.6, and the two do not agree. When your two rows disagree, your mixture is wrong."}
+ "anim":{"type":"cell","cells":[[10,2],[4,6]],"ask":{"type":"value"},"round":"1dp","expect":5.2,
+  "note":"No zeros anywhere here, so nothing cancels and there is no shape to lean on.",
+  "traps":[
+   {"opt":"4","short":"the better row minimum (amber 2 and 4)","text":"the better of the two row minimums. Top's worst case is 2, Down's worst case is 4, so 4 is what player 1 can guarantee without mixing at all. Mixing is worth 1.2 more than that."},
+   {"opt":"6","short":"the better column maximum (amber 10 and 6)","text":"the better of the two column maximums. Left's worst case for player 2 is 10, Right's is 6, so 6 is what she can hold him to without mixing. The true value always sits between these two numbers, and here it does: 4 &lt; 5.2 &lt; 6."},
+   {"opt":"5.5","short":"the plain average of all four cells","text":"the plain average of all four payoffs, (10 + 2 + 4 + 6) &divide; 4. The four cells are not equally likely, so this is never the value."},
+   {"opt":"3.6","short":"p and q swapped","text":"p and q swapped. Using 0.2 as the column mixture gives Top 10(0.2) + 2(0.8) = 3.6. Notice the built-in warning: Down would then give 4(0.2) + 6(0.8) = 5.6, and the two do not agree. When your two rows disagree, your mixture is wrong."}],
+  "finalMsg":"<b>5.2.</b> q = 0.4 and p = 0.2. Put q into any row, or p into any column, and you get 5.2 every time.<br><br><b>The rule:</b> the indifference condition, used twice, then put a mixture back into any row or column to get the value of the game. Getting the same number twice is your free check, and it costs ten seconds."}}
 ];
 function shuffleItem(it){var c=it.opts[it.correct];for(var i=it.opts.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=it.opts[i];it.opts[i]=it.opts[j];it.opts[j]=t;}it.correct=it.opts.indexOf(c);}
 QUIZ.forEach(shuffleItem);
@@ -508,7 +799,7 @@ QUIZ.forEach((item,qi)=>{
   const block=document.createElement('div');block.className='qblock';
   const tag=item.src?`<span class="examtag">${item.src}</span>`:'';
   block.innerHTML=`<div class="qnum">Question ${qi+1}${tag}</div><div class="qtext">${item.q}</div>`;
-  const exp=document.createElement('div');exp.className='exp';exp.innerHTML=item.exp;
+  const exp=document.createElement('div');exp.className='exp';if(item.anim){exp.appendChild(item.anim.type==='nl'?buildNumberLineStepper(item.anim):buildCellStepper(item.anim));}else{exp.innerHTML=item.exp;}
   item.opts.forEach((opt,oi)=>{
     const btn=document.createElement('button');btn.className='opt';
     btn.innerHTML=`${String.fromCharCode(65+oi)}. ${opt}<span class="mark"></span>`;
@@ -583,6 +874,41 @@ QUIZ.forEach((item,qi)=>{
     });
     mo.observe(res, {attributes: true, attributeFilter: ['class']});
   }
+})();
+</script>
+<script>
+/* TSTEP: shared step-by-step player for explanations */
+(function(){
+function trim(s){return s.trim();}
+function lab(h){var m=h.match(/^\s*(?:<span[^>]*>)?\s*<b>([^<]{1,60})<\/b>/i);return m?m[1].replace(/[.:\s]+$/,''):'';}
+function build(html){
+  var parts=html.split(/(?:<br\s*\/?>\s*){2,}/i).map(trim).filter(Boolean);
+  if(parts.length<3) parts=html.split(/<br\s*\/?>/i).map(trim).filter(Boolean);
+  if(parts.length<2) return null;
+  var head=parts[0], steps=parts.slice(1), cur=1, N=steps.length;
+  var root=document.createElement('div'); root.className='stepper tstep';
+  root.innerHTML='<div class="thead">'+head+'</div><div class="sbar"><span class="tlab"></span><span>Step <b class="tn">1</b> of '+N+'</span></div><div class="tblocks"></div><div class="nav"><button class="bk" type="button">← Back</button><button class="nx" type="button">Next →</button><button class="rs" type="button">Show all</button></div>';
+  var box=root.querySelector('.tblocks');
+  var els=steps.map(function(h){var d=document.createElement('div');d.className='tb';d.innerHTML=h;box.appendChild(d);return d;});
+  var bk=root.querySelector('.bk'),nx=root.querySelector('.nx'),rs=root.querySelector('.rs'),tn=root.querySelector('.tn'),tl=root.querySelector('.tlab');
+  function render(){
+    els.forEach(function(d,i){d.className='tb'+(i<cur?' on':'')+(i===cur-1?' cur':'');});
+    tn.textContent=cur; tl.textContent=lab(steps[cur-1])||'';
+    bk.disabled=cur<=1; nx.disabled=cur>=N; rs.style.display=cur>=N?'none':'';
+  }
+  bk.onclick=function(){if(cur>1){cur--;render();}};
+  nx.onclick=function(){if(cur<N){cur++;render();}};
+  rs.onclick=function(){cur=N;render();};
+  render(); return root;
+}
+window.buildTextStepper=build;
+window.addEventListener('load',function(){
+  Array.prototype.forEach.call(document.querySelectorAll('.exp'),function(e){
+    if(e.querySelector('.stepper')||e.getAttribute('data-ts'))return;
+    e.setAttribute('data-ts','1');
+    var s=build(e.innerHTML); if(s){e.innerHTML='';e.appendChild(s);}
+  });
+});
 })();
 </script>
 </body></html>

@@ -72,6 +72,37 @@ audio{width:100%;margin-top:6px;}
   .reveal,.exp{display:block!important;} .preq{border-color:#ccc;}
   .qblock{break-inside:avoid;} .panel{break-inside:avoid;}
 }
+.stepper{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px;margin:14px 0;}
+.stepper .sbar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px;font-size:14px;color:var(--muted);}
+.stepper .sbar b{color:var(--brand-d);}
+.stepper table.dtable td,.stepper table.dtable th{transition:background .25s,color .25s;}
+.stepper .cmpA{outline:3px solid #d2453f;outline-offset:-3px;}
+.stepper .cmpB{outline:3px solid #15794a;outline-offset:-3px;}
+.stepper .msg{border-radius:10px;padding:11px 14px;margin:10px 0 4px;font-size:15px;line-height:1.55;background:var(--brand-soft);min-height:48px;}
+.stepper .msg.good{background:var(--good-soft);} .stepper .msg.bad{background:var(--bad-soft);}
+.stepper .picks{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 2px;}
+.stepper .picks button{background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:9px 16px;font-size:16px;font-weight:700;cursor:pointer;color:var(--ink);}
+.stepper .picks button:hover{border-color:var(--brand);background:var(--brand-soft);}
+.stepper .picks button.no{border-color:var(--bad);background:var(--bad-soft);}
+.stepper .nav{display:flex;gap:10px;margin-top:12px;align-items:center;}
+.stepper .nav button{border:none;border-radius:9px;padding:9px 18px;font-weight:700;font-size:15px;cursor:pointer;}
+.stepper .nav .nx{background:var(--brand);color:#fff;} .stepper .nav .bk{background:var(--brand-soft);color:var(--brand-d);}
+.stepper .nav button:disabled{opacity:.4;cursor:default;}
+.stepper .nav .rs{background:none;color:var(--muted);font-weight:600;font-size:13.5px;margin-left:auto;text-decoration:underline;}
+.stepper .alive{font-weight:700;color:var(--brand-d);}
+.stepper .tabs{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;}
+.stepper .tabs button{border:1.5px solid var(--line);background:#fff;border-radius:9px;padding:7px 14px;font-weight:700;cursor:pointer;color:var(--ink);font-size:14px;}
+.stepper .tabs button.on{background:var(--brand);color:#fff;border-color:var(--brand);}
+.tstep .thead{font-size:15px;line-height:1.55;margin-bottom:6px;}
+.tstep .tb{display:none;padding:10px 13px;margin:8px 0;border-left:3px solid var(--line);border-radius:6px;font-size:15px;line-height:1.6;color:#555;}
+.tstep .tb.on{display:block;} .tstep .tb.cur{border-left-color:var(--brand);background:var(--brand-soft);color:var(--ink);}
+.tstep .tlab{font-weight:700;color:var(--brand-d);}
+@media print{.tstep .tb{display:block!important;color:#000;} .tstep .nav{display:none!important;}}
+.dtable .k1{background:#fbeddd!important;color:#a8681a!important;text-decoration:line-through;font-weight:400!important;}
+.dtable .k2{background:#fae5e4!important;color:#b03a35!important;text-decoration:line-through;font-weight:400!important;}
+.dtable .k3{background:#e6eff9!important;color:#2f6ba8!important;text-decoration:line-through;font-weight:400!important;}
+.dtable .k4{background:#eee8fb!important;color:#5238c4!important;text-decoration:line-through;font-weight:400!important;}
+.dtable .keep{background:var(--good-soft)!important;color:var(--good)!important;font-weight:800!important;}
 </style>
 <style>
 /* presentation chips, copied from index.html */
@@ -90,7 +121,7 @@ span.p{display:inline-block;font-size:13px;font-weight:700;padding:2px 7px;borde
 </style>
 </head><body><div class="wrap">
 <a class="home" href="index.html">&larr; All 14 days</a>
-<div class="crumb">Day 4 of 14 &middot; Learn</div>
+<div class="crumb">Day 3 of 14 &middot; Learn</div>
 <h1>Pure Nash I: underline and count</h1>
 <div class="tagrow"><span class="p P4">P4</span></div>
 <p class="lede">The biggest topic on the paper: <b>27% of the marks</b>, about <b>3.8 questions per paper</b>, on every paper. Today's one job: make one routine so automatic it costs you no thinking.</p>
@@ -484,7 +515,7 @@ The cell holds (5, 4). Player 1's payoff is 5; <b>player 2's is 4</b>. The quest
 <p class="note">Pick an option. The answer and the explanation appear only after you choose. Five of these six games are fresh, built only for this quiz. None of them repeat a grid from the sections above. One question is tagged. It is a real past-final question from the August 2024 paper. That paper is held in reserve, so you never sit it as a timed mock.</p>
 <div id="quizBody"></div></div>
 
-<div class="navrow"><a class="navbtn" href="Day-03.html">&larr; Back</a><a class="navbtn primary" href="Day-05.html">Next &rarr;</a></div>
+<div class="navrow"><a class="navbtn" href="Day-02.html">&larr; Back</a><a class="navbtn primary" href="Day-05.html">Next &rarr;</a></div>
 </div>
 <script>
 function mat3(cols, rows, cells){
@@ -519,7 +550,7 @@ var M24B2 = mat3(LCR, UMD, [
 
 // Fresh matrices, built only for this quiz and checked with a solver.
 // MCOUNT: three pure equilibria, one of them created by a tie in column b1.
-var MCOUNT = mat4(["b1","b2","b3","b4"],["a1","a2","a3","a4"],[
+var MCOUNT = mat4(["Left","Left middle","Right middle","Right"],["Top","Upper middle","Lower middle","Bottom"],[
   [[3,3],[4,2],[9,4],[7,2]],
   [[7,9],[7,6],[3,7],[8,1]],
   [[5,9],[6,3],[6,2],[2,8]],
@@ -543,6 +574,110 @@ var MHIGH = mat3(LCR, UMD, [
   [[9,2],[4,4],[5,9]],
   [[6,6],[7,7],[2,1]]]);
 
+// ---- Step-by-step explanation player for quiz questions ----
+// steps: ['cut',kind,red,green] | ['cmp',kind,red,green] | ['ul',kind,idx]   kind: 'row' (player 1) or 'col' (player 2)
+function buildGridStepper(cfg){
+  var R=cfg.rows, C=cfg.cols, M=cfg.cells;
+  var tracks=cfg.tracks||{'':cfg.steps}, names=Object.keys(tracks), cur=names[0];
+  var root=document.createElement('div'); root.className='stepper';
+  root.innerHTML=(names.length>1?'<div class="tabs"></div>':'')+'<div class="sbar"><span class="sround"></span><span>Still alive: <span class="alive"></span></span></div>'+
+    '<div class="tscroll"><table class="dtable"></table></div><div class="msg"></div>'+
+    '<div class="nav"><button class="bk">&larr; Back</button><button class="nx">Next &rarr;</button></div>';
+  if(cfg.noalive){root.querySelector('.sbar').lastChild.style.display='none';}
+  var tbl=root.querySelector('table'), msg=root.querySelector('.msg'), bk=root.querySelector('.bk'), nx=root.querySelector('.nx');
+  var step=0, CLS=['k1','k2','k3','k4','k1','k2','k3','k4'];
+  function allIdx(n){var a=[];for(var i=0;i<n;i++)a.push(i);return a;}
+  function val(i,j,k){return M[i][j][k];}
+  function beats(kind,g,r,ar,ac){ // g beats r in every alive opposite line
+    return kind==='row'?ac.every(function(c){return val(g,c,0)>val(r,c,0);}):ar.every(function(q){return val(q,g,1)>val(q,r,1);});
+  }
+  function bestSet(kind,idx,ar,ac){ // best replies inside the alive grid
+    var vals=kind==='col'?ar.map(function(i){return val(i,idx,0);}):ac.map(function(j){return val(idx,j,1);});
+    var lines=kind==='col'?ar:ac, m=Math.max.apply(null,vals); return lines.filter(function(z,t){return vals[t]===m;});
+  }
+  // replay state up to step s (cuts applied from steps before s, underlines up to and including s)
+  function stateAt(s,atEnd){
+    var steps=tracks[cur], ar=allIdx(R.length), ac=allIdx(C.length), cutRow={}, cutCol={}, ulC={}, ulR={}, n=0;
+    for(var t=0;t<steps.length;t++){
+      var st=steps[t], upto=atEnd?true:(st[0]==='ul'?t<=s:t<s);
+      if(!upto) continue;
+      if(st[0]==='cut'){ if(st[1]==='row'){cutRow[st[2]]=n; ar=ar.filter(function(v){return v!==st[2];});} else {cutCol[st[2]]=n; ac=ac.filter(function(v){return v!==st[2];});} n++; }
+      if(st[0]==='ul'){ var b=bestSet(st[1],st[2],ar,ac); if(st[1]==='col') ulC[st[2]]=b; else ulR[st[2]]=b; }
+    }
+    return {ar:ar,ac:ac,cutRow:cutRow,cutCol:cutCol,ulC:ulC,ulR:ulR};
+  }
+  // verify every authored cut / comparison is true (throws early if the data is wrong)
+  Object.keys(tracks).forEach(function(nm){ var steps=tracks[nm], ar=allIdx(R.length), ac=allIdx(C.length);
+    steps.forEach(function(st){
+      if(st[0]==='cut'){ if(!beats(st[1],st[3],st[2],ar,ac)) throw new Error('illegal cut '+st);
+        if(st[1]==='row') ar=ar.filter(function(v){return v!==st[2];}); else ac=ac.filter(function(v){return v!==st[2];}); } });
+  });
+  function render(){
+    var steps=tracks[cur], atEnd=step>=steps.length, S=stateAt(step,atEnd), st=atEnd?null:steps[step];
+    var ar=S.ar, ac=S.ac;
+    var h='<tr><th></th>'+C.map(function(c,j){var cl=S.cutCol[j]!==undefined?CLS[S.cutCol[j]]:'';
+      var cmp=(st&&st[0]!=='ul'&&st[1]==='col')?(j===st[2]?' cmpA':(j===st[3]?' cmpB':'')):((st&&st[0]==='ul'&&st[1]==='col'&&j===st[2])?' cmpB':'');
+      return '<th class="'+cl+cmp+'">'+c+'</th>';}).join('')+'</tr>';
+    var nashCells=0, survivor=(!cfg.stall&&!cfg.nash)&&ar.length===1&&ac.length===1;
+    R.forEach(function(r,i){
+      var rcl=S.cutRow[i]!==undefined?CLS[S.cutRow[i]]:'';
+      var rcmp=(st&&st[0]!=='ul'&&st[1]==='row')?(i===st[2]?' cmpA':(i===st[3]?' cmpB':'')):((st&&st[0]==='ul'&&st[1]==='row'&&i===st[2])?' cmpB':'');
+      h+='<tr><td class="lab '+rcl+rcmp+'">'+r+'</td>';
+      C.forEach(function(c,j){
+        var a=S.cutRow[i], b=S.cutCol[j], cl='';
+        if(a!==undefined&&b!==undefined)cl=CLS[Math.min(a,b)]; else if(a!==undefined)cl=CLS[a]; else if(b!==undefined)cl=CLS[b];
+        var u1=S.ulC[j]&&S.ulC[j].indexOf(i)>-1, u2=S.ulR[i]&&S.ulR[i].indexOf(j)>-1;
+        if(atEnd&&cl===''&&((survivor)||(cfg.nash&&u1&&u2)))cl='keep';
+        var p1=val(i,j,0), p2=val(i,j,1), t1=String(p1), t2=String(p2);
+        var cmp='', d1=false, d2=false;
+        if(st&&cl===''){
+          if(st[0]!=='ul'&&st[1]==='row'&&(i===st[2]||i===st[3])){cmp=i===st[2]?' cmpA':' cmpB'; d2=true;}
+          if(st[0]!=='ul'&&st[1]==='col'&&(j===st[2]||j===st[3])){cmp=j===st[2]?' cmpA':' cmpB'; d1=true;}
+          if(st[0]==='ul'&&st[1]==='col'&&j===st[2]){cmp=' cmpB'; d2=true;}
+          if(st[0]==='ul'&&st[1]==='row'&&i===st[2]){cmp=' cmpB'; d1=true;}
+        }
+        if(u1)t1='<u style="text-decoration-thickness:2px;text-underline-offset:3px">'+t1+'</u>';
+        if(u2)t2='<u style="text-decoration-thickness:2px;text-underline-offset:3px">'+t2+'</u>';
+        if(d1)t1='<span style="opacity:.4">'+t1+'</span>'; if(d2)t2='<span style="opacity:.4">'+t2+'</span>';
+        if(cl==='keep'&&cfg.nash)nashCells++;
+        h+='<td class="'+cl+cmp+'">'+t1+', '+t2+'</td>';
+      });
+      h+='</tr>';
+    });
+    tbl.innerHTML=h;
+    root.querySelector('.alive').textContent=R.filter(function(_,i){return ar.indexOf(i)>-1;}).concat(C.filter(function(_,j){return ac.indexOf(j)>-1;})).join(' · ');
+    root.querySelector('.sround').innerHTML=atEnd?'<b>Done</b>':'<b>Step '+(step+1)+' of '+steps.length+'</b>';
+    msg.className='msg';
+    if(atEnd){ msg.classList.add('good'); msg.innerHTML=cfg.finalMsg; }
+    else { msg.innerHTML=stepText(st,ar,ac,step); }
+    bk.disabled=step===0; nx.disabled=atEnd;
+    nx.textContent=(step===steps.length-1)?'Finish →':'Next →';
+  }
+  function stepText(st,ar,ac,s){
+    var kind=st[1], row=kind==='row', L=row?R:C, num=row?'first':'second', who=row?'Player 1':'Player 2', over=row?'column':'row';
+    if(st[0]==='ul'){
+      var idx=st[2], vals, names, lines, best=bestSet(kind,idx,ar,ac);
+      if(kind==='col'){ lines=ar; vals=ar.map(function(i){return val(i,idx,0);}); names=ar.map(function(i){return R[i];}); }
+      else { lines=ac; vals=ac.map(function(j){return val(idx,j,1);}); names=ac.map(function(j){return C[j];}); }
+      var tie=best.length>1;
+      var bestNames=kind==='col'?best.map(function(z){return R[z];}):best.map(function(z){return C[z];});
+      var asker=kind==='col'?'Player 1':'Player 2', nn=kind==='col'?'first':'second';
+      return (kind==='col'?'Say player 2 plays <b>'+C[idx]+'</b>.':'Say player 1 plays <b>'+R[idx]+'</b>.')+'<br>'+asker+' looks at the <b>'+nn+'</b> numbers: '+
+        vals.join(', ')+'.<br><b>'+(tie?'A tie, so underline both: '+bestNames.join(' and ')+'.':'Best is '+bestNames[0]+'. Underline it.')+'</b>'+(st[3]?'<br><span style="color:var(--muted)">'+st[3]+'</span>':'');
+    }
+    var x=L[st[2]], y=L[st[3]];
+    var nums=(row?ac:ar).map(function(z){var vx=row?val(st[2],z,0):val(z,st[2],1), vy=row?val(st[3],z,0):val(z,st[3],1); return vy+(vy>vx?' &gt; ':' &lt; ')+vx;}).join(', ');
+    if(st[0]==='cut') return '<b>'+who+'</b> only looks at the <b>'+num+'</b> numbers. Compare <b>'+x+'</b> (red) with <b>'+y+'</b> (green).<br>'+y+' is higher in every '+over+' still alive: '+nums+'.<br><b>So '+x+' is strictly dominated. Press Next to cut it.</b>'+(st[4]?'<br><span style="color:var(--muted)">'+st[4]+'</span>':'');
+    var ok=beats(kind,st[3],st[2],ar,ac);
+    return '<b>'+who+'</b> only looks at the <b>'+num+'</b> numbers. Is <b>'+y+'</b> (green) better than <b>'+x+'</b> (red) in every '+over+'?<br>'+nums+'.<br><b>'+(ok?'Yes. '+y+' beats '+x+' everywhere.':'No. '+y+' loses to '+x+' in at least one '+over+', so '+y+' is not dominant.')+'</b>'+(st[4]?'<br><span style="color:var(--muted)">'+st[4]+'</span>':'');
+  }
+  if(names.length>1){ var tabs=root.querySelector('.tabs'); names.forEach(function(nm){var b=document.createElement('button');b.textContent=nm;b.className=nm===cur?'on':'';b.onclick=function(){cur=nm;step=0;Array.prototype.forEach.call(tabs.children,function(x){x.className=x.textContent===nm?'on':'';});render();};tabs.appendChild(b);}); }
+  nx.onclick=function(){ if(step<tracks[cur].length){step++;render();} };
+  bk.onclick=function(){ if(step>0){step--;render();} };
+  render();
+  return root;
+}
+
 const QUIZ = [
 {"q":"Player 2 has already chosen Left. Player 1 now looks down the Left column, finds her own biggest number in that column, and picks that row. What has player 1 just found?",
  "opts":["Her best reply to Left",
@@ -554,23 +689,23 @@ const QUIZ = [
 
 {"q":"How many pure Nash equilibria exist in the following game?"+CONV+MCOUNT,
  "opts":["0","1","2","3","4"],"correct":3,
- "exp":"<b>Three:</b> (a1, b3), (a2, b1) and (a4, b1).<br><br><b>The rule.</b> Mark player 1's best reply in every column. Mark player 2's best reply in every row. A cell holding both marks is a pure Nash equilibrium.<br><br><b>1. Columns. Read only player 1's numbers, downwards.</b><br>b1: 3, 7, 5, 7. The biggest is 7, and <b>two rows hold it</b>, a2 and a4. Mark both.<br>b2: 4, 7, 6, 5. Biggest 7 → a2.<br>b3: 9, 3, 6, 3. Biggest 9 → a1.<br>b4: 7, 8, 2, 2. Biggest 8 → a2.<br><br><b>2. Rows. Read only player 2's numbers, across.</b><br>a1: 3, 2, 4, 2. Biggest 4 → b3.<br>a2: 9, 6, 7, 1. Biggest 9 → b1.<br>a3: 9, 3, 2, 8. Biggest 9 → b1.<br>a4: 8, 4, 6, 1. Biggest 8 → b1.<br><br><b>3. Cells in both lists.</b><br>Player 1 marked: (a2,b1), (a4,b1), (a2,b2), (a1,b3), (a2,b4).<br>Player 2 marked: (a1,b3), (a2,b1), (a3,b1), (a4,b1).<br>In both: <b>(a1,b3), (a2,b1), (a4,b1)</b>. Count = 3.<br><br><b>Check one by hand.</b> Take (a4, b1), payoffs (7, 8). Hold b1: player 1's column is 3, 7, 5, 7, so her 7 ties the best and she has no reason to move. Hold a4: player 2's row is 8, 4, 6, 1, so b1 is his best and he stays. Nobody moves alone, so it passes.<br><br><b>Where each wrong count comes from.</b><br><b>2:</b> in column b1 you marked one row instead of two. A tie means the row player is equally happy with either. So <i>both</i> stay in the running, and here both turn into equilibria. That single habit is the whole gap between 2 and 3.<br><b>1:</b> you dropped the tie and also missed (a1, b3), the one equilibrium away from column b1.<br><b>4:</b> you counted (a3, b1) too. It carries player 2's mark, but in column b1 player 1 gets only 5 there and would move to a2 or a4. One mark is never enough.<br><b>0:</b> zero is a real answer in other games, but not here. (a1, b3) alone rules it out."},
+ "anim":{rows:["Top", "Upper middle", "Lower middle", "Bottom"],cols:["Left", "Left middle", "Right middle", "Right"],cells:[[[3,3],[4,2],[9,4],[7,2]],[[7,9],[7,6],[3,7],[8,1]],[[5,9],[6,3],[6,2],[2,8]],[[7,8],[5,4],[3,6],[2,1]]],nash:true,noalive:true,steps:[["ul", "col", 0, "Seven appears twice. Both rows are best replies."], ["ul", "col", 1], ["ul", "col", 2], ["ul", "col", 3], ["ul", "row", 0], ["ul", "row", 1], ["ul", "row", 2], ["ul", "row", 3, "The last row. Now look for cells with two underlines."]],finalMsg:"<b>Three equilibria:</b> (Top, Right middle), (Upper middle, Left) and (Bottom, Left). These are the cells with both underlines.<br><br><b>Check one by hand.</b> Take (Bottom, Left), payoffs (7, 8). Hold Left: player 1 gets 7 from Upper middle and 7 from Bottom, so she gains nothing by moving. Hold Bottom: player 2 gets 8 at Left, his biggest, so he stays.<br><br><b>The trap:</b> in the Left column, 7 appears twice. Underline both. If you underline only one, you count 2 instead of 3.<br><b>The habit:</b> a tie means both are best replies. Never skip one."}},
 
 {"q":"How many pure Nash equilibria exist in the following game?"+CONV+MZERO,
  "opts":["0","1","2","3","4"],"correct":0,
- "exp":"<b>Zero, and zero is a real answer.</b> Not every game has a pure equilibrium. The course's own matching-pennies game has none either: one player wants the two coins to match, the other wants them different.<br><br><b>1. Columns, player 1's numbers.</b><br>Left: 5, 3, 8 → Down.<br>Center: 2, 7, 4 → Middle.<br>Right: 6, 1, 3 → Up.<br><br><b>2. Rows, player 2's numbers.</b><br>Up: 4, 8, 2 → Center.<br>Middle: 6, 3, 5 → Left.<br>Down: 7, 1, 9 → Right.<br><br><b>3. Compare the two lists.</b><br>Player 1 marked: (Down, Left), (Middle, Center), (Up, Right).<br>Player 2 marked: (Up, Center), (Middle, Left), (Down, Right).<br>They share nothing. The marks chase each other round the grid and never meet.<br><br><b>Check one by hand.</b> Take (Down, Left), payoffs (8, 7), the cell that looks strongest for player 1. Hold Down: player 2's row is 7, 1, 9, so he moves to Right. It fails, and so does every other single cell.<br><br><b>Where each wrong count comes from.</b><br><b>1:</b> you accepted a cell carrying one mark. Six marks on the page make it feel like something must be there.<br><b>2 or 3:</b> you counted player 1's marks, or player 2's, as if each were an equilibrium on its own. There are three of each, which is exactly why 3 feels right.<br><b>4:</b> a mixture of both mistakes.<br><br><b>The wider point.</b> Every game has at least one Nash equilibrium, but it may be in <i>mixed</i> strategies only, where each player randomises. That is Day 6. Pure count zero is normal."},
+ "anim":{rows:["Up", "Middle", "Down"],cols:["Left", "Center", "Right"],cells:[[[5,4],[2,8],[6,2]],[[3,6],[7,3],[1,5]],[[8,7],[4,1],[3,9]]],nash:true,noalive:true,steps:[["ul", "col", 0], ["ul", "col", 1], ["ul", "col", 2], ["ul", "row", 0], ["ul", "row", 1], ["ul", "row", 2, "All six underlines are placed. Now look for a cell with two."]],finalMsg:"<b>Zero equilibria.</b> Player 1 underlined (Down, Left), (Middle, Center) and (Up, Right). Player 2 underlined (Up, Center), (Middle, Left) and (Down, Right). No cell has both.<br><br><b>Check one by hand.</b> Take (Down, Left), payoffs (8, 7). Hold Down: player 2 gets 7, 1 or 9 along that row, so he moves to Right. It fails, and so does every other cell.<br><br><b>The trap:</b> six underlines on the page feel like something must be there. One underline is never enough. Zero is a real answer. A game like this has an equilibrium only in <i>mixed</i> strategies, where players randomise."}},
 
 {"q":"What is the highest payoff that player 2 (the column player) can obtain in a pure Nash equilibrium of the following game?"+CONV+MP2,
  "opts":["3","5","6","7","The game does not admit a pure Nash equilibrium"],"correct":2,
- "exp":"<b>6</b>, at (Up, Center).<br><br><b>The order of work matters here: find every equilibrium first, then read a number inside those cells only.</b><br><br><b>1. Columns, player 1's numbers.</b><br>Left: 4, 5, 4 → Middle.<br>Center: 5, 1, 4 → Up.<br>Right: 3, 2, 5 → Down.<br><br><b>2. Rows, player 2's numbers.</b><br>Up: 1, 6, 1 → Center.<br>Middle: 3, 2, 2 → Left.<br>Down: 7, 4, 4 → Left.<br><br><b>3. Cells with both marks.</b> (Up, Center) and (Middle, Left). Two equilibria.<br><br><b>4. Read player 2's number in those two cells only.</b><br>(Up, Center) gives player 2 a 6.<br>(Middle, Left) gives player 2 a 3.<br>max(6, 3) = <b>6</b>.<br><br><b>Check.</b> Hold Up: player 2's row is 1, 6, 1, so Center is his best. Hold Center: player 1's column is 5, 1, 4, so Up is her best. Neither moves, so (Up, Center) really is an equilibrium and the 6 really is available.<br><br><b>Where each wrong option comes from.</b><br><b>7:</b> player 2's biggest number anywhere, at (Down, Left). Not an equilibrium: in the Left column player 1 gets 4 there and moves up to Middle for 5.<br><b>5:</b> player 1's payoff, not player 2's. Player 1 gets 5 in <i>both</i> equilibria. So this is the number you take home if you read the wrong half of the right cell. Check which player the question names before you read anything.<br><b>3:</b> player 2's payoff in the <i>other</i> equilibrium. You found both cells and then took the smaller number.<br><b>No pure equilibrium:</b> there are two."},
+ "anim":{rows:["Up", "Middle", "Down"],cols:["Left", "Center", "Right"],cells:[[[4,1],[5,6],[3,1]],[[5,3],[1,2],[2,2]],[[4,7],[4,4],[5,4]]],nash:true,noalive:true,steps:[["ul", "col", 0, "Player 1 reads down the column."], ["ul", "col", 1], ["ul", "col", 2], ["ul", "row", 0, "Player 2 now reads across each row."], ["ul", "row", 1], ["ul", "row", 2]],finalMsg:"<b>Two equilibria:</b> (Up, Center) and (Middle, Left). Now read <b>player 2's</b> number, the second one, only inside those two cells.<br>(Up, Center) gives player 2 a <b>6</b>. (Middle, Left) gives him a 3. The highest is <b>6</b>.<br><br><b>The traps:</b> 7 is player 2's biggest number anywhere, at (Down, Left), but that cell is not an equilibrium. 5 is player 1's number in the same cells. 3 is the smaller equilibrium. Find the equilibria first, then read a number. Never the other way."}},
 
 {"q":"What is the highest payoff that player 1 (the row player) can obtain in a pure Nash equilibrium of the following game?"+CONV+MHIGH,
  "opts":["5","6","7","9","The game does not admit a pure Nash equilibrium"],"correct":2,
- "exp":"<b>7</b>, at (Down, Center).<br><br><b>1. Columns, player 1's numbers.</b><br>Left: 3, 9, 6 → Middle.<br>Center: 2, 4, 7 → Down.<br>Right: 1, 5, 2 → Middle.<br><br><b>2. Rows, player 2's numbers.</b><br>Up: 5, 3, 8 → Right.<br>Middle: 2, 4, 9 → Right.<br>Down: 6, 7, 1 → Center.<br><br><b>3. Cells with both marks.</b> (Middle, Right) with payoffs (5, 9), and (Down, Center) with payoffs (7, 7).<br><br><b>4. Read player 1's number inside those two cells only.</b><br>(Middle, Right) gives her 5.<br>(Down, Center) gives her 7.<br>max(5, 7) = <b>7</b>.<br><br><b>Check.</b> Hold Center: player 1's column is 2, 4, 7, so Down is her best. Hold Down: player 2's row is 6, 7, 1, so Center is his best. It stands.<br><br><b>Where each wrong option comes from.</b><br><b>9:</b> player 1's biggest number anywhere, at (Middle, Left). It even carries her own mark, because Middle is her best reply to Left. But player 2 in row Middle wants Right, so nobody stays there. This is the option a tired reader grabs.<br><b>5:</b> player 1's payoff in the <i>other</i> equilibrium.<br><b>6:</b> player 1's number at (Down, Left), a cell with no marks at all. It looks fine because 6 is a decent number in her best row.<br><b>No pure equilibrium:</b> there are two.<br><br><b>Compare this with the question before it.</b> Same routine, different player named. Player 1's best equilibrium and player 2's best equilibrium are usually different cells. So you can never solve for one player and reuse the answer for the other."},
+ "anim":{rows:["Up", "Middle", "Down"],cols:["Left", "Center", "Right"],cells:[[[3,5],[2,3],[1,8]],[[9,2],[4,4],[5,9]],[[6,6],[7,7],[2,1]]],nash:true,noalive:true,steps:[["ul", "col", 0, "Player 1 reads down the column."], ["ul", "col", 1], ["ul", "col", 2], ["ul", "row", 0, "Player 2 now reads across each row."], ["ul", "row", 1], ["ul", "row", 2]],finalMsg:"<b>Two equilibria:</b> (Middle, Right) paying (5, 9) and (Down, Center) paying (7, 7). Now read <b>player 1's</b> number, the first one, only inside those two cells.<br>(Middle, Right) gives her 5. (Down, Center) gives her <b>7</b>. The highest is <b>7</b>.<br><br><b>The traps:</b> 9 is her biggest number anywhere, at (Middle, Left). It even has her underline, but player 2 in row Middle wants Right, so nobody stays there. 5 is her number in the other equilibrium. Same routine as the last question, but with the other player named. Check which player the question asks about before you read any number."}},
 
 {"src":"2024 B final","q":"Which of the following strategy profiles is a Nash equilibrium?"+CONV+M24B2,
  "opts":["(Up, Left)","(Middle, Center)","(Down, Left)","(Up, Right)","None of the other answers is correct"],"correct":1,
- "exp":"<b>(Middle, Center)</b>, with payoffs (3, 3).<br><br><b>1. Columns, player 1's numbers.</b><br>Left: 6, 5, 7 → Down.<br>Center: 2, 3, 2 → Middle.<br>Right: 7, 9, 3 → Middle.<br><br><b>2. Rows, player 2's numbers.</b><br>Up: 4, 6, 7 → Right.<br>Middle: 1, 3, 2 → Center.<br>Down: 4, 1, 5 → Right.<br><br><b>3. Cells with both marks.</b> Only (Middle, Center).<br><br><b>Check.</b> Hold Center: player 1's column is 2, 3, 2, so Middle is her best. Hold Middle: player 2's row is 1, 3, 2, so Center is his best. Neither moves alone.<br><br><b>Where each wrong option comes from.</b><br><b>(Up, Right):</b> the big one. It pays (7, 7), which is better for <b>both</b> players than the equilibrium's (3, 3), and it does carry player 2's mark. It still fails, because player 1 facing Right would rather play Middle and take 9. Best for both, and nobody can hold it.<br><b>(Down, Left):</b> carries player 1's mark only. Player 2 in row Down gets 4 at Left and 5 at Right, so he leaves.<br><b>(Up, Left):</b> carries neither mark. Player 1 prefers Down in that column, player 2 prefers Right in that row.<br><b>None of the other answers:</b> wrong, because (Middle, Center) is one.<br><br>This is the whole day inside one grid. The stable cell is the poor one, and the generous cell is the one nobody can hold."}
+ "anim":{rows:["Up", "Middle", "Down"],cols:["Left", "Center", "Right"],cells:[[[6,4],[2,6],[7,7]],[[5,1],[3,3],[9,2]],[[7,4],[2,1],[3,5]]],nash:true,noalive:true,steps:[["ul", "col", 0], ["ul", "col", 1], ["ul", "col", 2], ["ul", "row", 0, "Player 2 now reads across each row."], ["ul", "row", 1], ["ul", "row", 2]],finalMsg:"<b>One equilibrium:</b> (Middle, Center), payoffs (3, 3). It is the only cell with two underlines.<br><br><b>Check.</b> Hold Center: player 1 gets 2, 3 or 2, so Middle is her best. Hold Middle: player 2 gets 1, 3 or 2, so Center is his best. Nobody moves.<br><br><b>The trap:</b> (Up, Right) pays (7, 7), better for both players than (3, 3). Player 2 does underline it, but player 1 facing Right would move to Middle and take 9. The cell that is best for both is the one nobody can hold."}}
 ];
 function shuffleItem(it){var c=it.opts[it.correct];for(var i=it.opts.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=it.opts[i];it.opts[i]=it.opts[j];it.opts[j]=t;}it.correct=it.opts.indexOf(c);}
 QUIZ.forEach(shuffleItem);
@@ -580,7 +715,7 @@ QUIZ.forEach((item,qi)=>{
   const block=document.createElement('div');block.className='qblock';
   const tag=item.src?`<span class="examtag">${item.src}</span>`:'';
   block.innerHTML=`<div class="qnum">Question ${qi+1}${tag}</div><div class="qtext">${item.q}</div>`;
-  const exp=document.createElement('div');exp.className='exp';exp.innerHTML=item.exp;
+  const exp=document.createElement('div');exp.className='exp';if(item.anim){exp.appendChild(buildGridStepper(item.anim));}else{exp.innerHTML=item.exp;}
   item.opts.forEach((opt,oi)=>{
     const btn=document.createElement('button');btn.className='opt';
     btn.innerHTML=`${String.fromCharCode(65+oi)}. ${opt}<span class="mark"></span>`;
@@ -655,6 +790,41 @@ QUIZ.forEach((item,qi)=>{
     });
     mo.observe(res, {attributes: true, attributeFilter: ['class']});
   }
+})();
+</script>
+<script>
+/* TSTEP: shared step-by-step player for explanations */
+(function(){
+function trim(s){return s.trim();}
+function lab(h){var m=h.match(/^\s*(?:<span[^>]*>)?\s*<b>([^<]{1,60})<\/b>/i);return m?m[1].replace(/[.:\s]+$/,''):'';}
+function build(html){
+  var parts=html.split(/(?:<br\s*\/?>\s*){2,}/i).map(trim).filter(Boolean);
+  if(parts.length<3) parts=html.split(/<br\s*\/?>/i).map(trim).filter(Boolean);
+  if(parts.length<2) return null;
+  var head=parts[0], steps=parts.slice(1), cur=1, N=steps.length;
+  var root=document.createElement('div'); root.className='stepper tstep';
+  root.innerHTML='<div class="thead">'+head+'</div><div class="sbar"><span class="tlab"></span><span>Step <b class="tn">1</b> of '+N+'</span></div><div class="tblocks"></div><div class="nav"><button class="bk" type="button">← Back</button><button class="nx" type="button">Next →</button><button class="rs" type="button">Show all</button></div>';
+  var box=root.querySelector('.tblocks');
+  var els=steps.map(function(h){var d=document.createElement('div');d.className='tb';d.innerHTML=h;box.appendChild(d);return d;});
+  var bk=root.querySelector('.bk'),nx=root.querySelector('.nx'),rs=root.querySelector('.rs'),tn=root.querySelector('.tn'),tl=root.querySelector('.tlab');
+  function render(){
+    els.forEach(function(d,i){d.className='tb'+(i<cur?' on':'')+(i===cur-1?' cur':'');});
+    tn.textContent=cur; tl.textContent=lab(steps[cur-1])||'';
+    bk.disabled=cur<=1; nx.disabled=cur>=N; rs.style.display=cur>=N?'none':'';
+  }
+  bk.onclick=function(){if(cur>1){cur--;render();}};
+  nx.onclick=function(){if(cur<N){cur++;render();}};
+  rs.onclick=function(){cur=N;render();};
+  render(); return root;
+}
+window.buildTextStepper=build;
+window.addEventListener('load',function(){
+  Array.prototype.forEach.call(document.querySelectorAll('.exp'),function(e){
+    if(e.querySelector('.stepper')||e.getAttribute('data-ts'))return;
+    e.setAttribute('data-ts','1');
+    var s=build(e.innerHTML); if(s){e.innerHTML='';e.appendChild(s);}
+  });
+});
 })();
 </script>
 </body></html>

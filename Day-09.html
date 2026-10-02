@@ -72,6 +72,32 @@ audio{width:100%;margin-top:6px;}
   .reveal,.exp{display:block!important;} .preq{border-color:#ccc;}
   .qblock{break-inside:avoid;} .panel{break-inside:avoid;}
 }
+.stepper{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px;margin:14px 0;}
+.stepper .sbar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px;font-size:14px;color:var(--muted);}
+.stepper .sbar b{color:var(--brand-d);}
+.stepper table.dtable td,.stepper table.dtable th{transition:background .25s,color .25s;}
+.stepper .cmpA{outline:3px solid #d2453f;outline-offset:-3px;}
+.stepper .cmpB{outline:3px solid #15794a;outline-offset:-3px;}
+.stepper .msg{border-radius:10px;padding:11px 14px;margin:10px 0 4px;font-size:15px;line-height:1.55;background:var(--brand-soft);min-height:48px;}
+.stepper .msg.good{background:var(--good-soft);} .stepper .msg.bad{background:var(--bad-soft);}
+.stepper .picks{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 2px;}
+.stepper .picks button{background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:9px 16px;font-size:16px;font-weight:700;cursor:pointer;color:var(--ink);}
+.stepper .picks button:hover{border-color:var(--brand);background:var(--brand-soft);}
+.stepper .picks button.no{border-color:var(--bad);background:var(--bad-soft);}
+.stepper .nav{display:flex;gap:10px;margin-top:12px;align-items:center;}
+.stepper .nav button{border:none;border-radius:9px;padding:9px 18px;font-weight:700;font-size:15px;cursor:pointer;}
+.stepper .nav .nx{background:var(--brand);color:#fff;} .stepper .nav .bk{background:var(--brand-soft);color:var(--brand-d);}
+.stepper .nav button:disabled{opacity:.4;cursor:default;}
+.stepper .nav .rs{background:none;color:var(--muted);font-weight:600;font-size:13.5px;margin-left:auto;text-decoration:underline;}
+.stepper .alive{font-weight:700;color:var(--brand-d);}
+.stepper .tabs{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;}
+.stepper .tabs button{border:1.5px solid var(--line);background:#fff;border-radius:9px;padding:7px 14px;font-weight:700;cursor:pointer;color:var(--ink);font-size:14px;}
+.stepper .tabs button.on{background:var(--brand);color:#fff;border-color:var(--brand);}
+.tstep .thead{font-size:15px;line-height:1.55;margin-bottom:6px;}
+.tstep .tb{display:none;padding:10px 13px;margin:8px 0;border-left:3px solid var(--line);border-radius:6px;font-size:15px;line-height:1.6;color:#555;}
+.tstep .tb.on{display:block;} .tstep .tb.cur{border-left-color:var(--brand);background:var(--brand-soft);color:var(--ink);}
+.tstep .tlab{font-weight:700;color:var(--brand-d);}
+@media print{.tstep .tb{display:block!important;color:#000;} .tstep .nav{display:none!important;}}
 </style>
 <style>
 /* presentation chips, same look as the hub, scoped to spans so p.p paragraphs are untouched */
@@ -96,7 +122,7 @@ span.p{display:inline-block;font-size:13px;font-weight:700;padding:2px 7px;borde
 </style>
 </head><body><div class="wrap">
 <a class="home" href="index.html">&larr; All 14 days</a>
-<div class="crumb">Day 9 of 14 &middot; Learn</div>
+<div class="crumb">Day 7 of 14 &middot; Learn</div>
 <h1>Making strategies credible</h1>
 <div class="tags"><span class="p P6">P6</span></div>
 <p class="lede">No calculation anywhere today. This is a recall day: eight names, eight pictures. Commitment is worth at least one question out of 14, and sometimes two. It was first taught in 2025, so only the three 2025 papers carry these questions.</p>
@@ -593,7 +619,7 @@ Neither side ever has much at risk. If the builder disappears, the homeowner has
 Go to the <b>last</b> stage. After it there is nothing: no more payments, no more work, no future to lose. So the builder has no reason to do it well, and the homeowner has no reason to pay.</div></div>
 
 <div class="step"><div class="stepn">3</div><div class="stepbody"><div class="lab">Let the reasoning roll backwards.</div>
-Knowing the last stage will go badly, the second-to-last stage has nothing worth protecting either, and so on. The trust comes undone from the end backwards. This is the same unravelling as in the finitely repeated prisoner's dilemma from Day 8, the one played a known number of times.</div></div>
+Knowing the last stage will go badly, the second-to-last stage has nothing worth protecting either, and so on. The trust comes undone from the end backwards. This is the same unravelling as in the finitely repeated prisoner's dilemma from Day 6, the one played a known number of times.</div></div>
 
 <div class="step"><div class="stepn">4</div><div class="stepbody"><div class="lab">Apply the lecture's remedy.</div>
 The slides say small steps work best when there is <b>no clear final step</b>, and when there is a chance of future business.</div></div>
@@ -614,7 +640,7 @@ The slides say small steps work best when there is <b>no clear final step</b>, a
 <p class="note">Pick an option. The answer and the explanation appear only after you choose. One question here comes from a real past exam, and it is tagged. The other five are fresh. They come in three shapes: name the device from a story, find the story that matches a named device, and say which move would <i>not</i> work. None of them uses a story from the pages above. If you are working on paper, the printed page opens every explanation.</p>
 <div id="quizBody"></div></div>
 
-<div class="navrow"><a class="navbtn" href="Day-08.html">&larr; Back</a><a class="navbtn primary" href="Day-10.html">Next &rarr;</a></div>
+<div class="navrow"><a class="navbtn" href="Day-08.html">&larr; Back</a><a class="navbtn primary" href="Day-11.html">Next &rarr;</a></div>
 </div>
 <script>
 const QUIZ = [
@@ -725,6 +751,41 @@ QUIZ.forEach((item,qi)=>{
     });
     mo.observe(res, {attributes: true, attributeFilter: ['class']});
   }
+})();
+</script>
+<script>
+/* TSTEP: shared step-by-step player for explanations */
+(function(){
+function trim(s){return s.trim();}
+function lab(h){var m=h.match(/^\s*(?:<span[^>]*>)?\s*<b>([^<]{1,60})<\/b>/i);return m?m[1].replace(/[.:\s]+$/,''):'';}
+function build(html){
+  var parts=html.split(/(?:<br\s*\/?>\s*){2,}/i).map(trim).filter(Boolean);
+  if(parts.length<3) parts=html.split(/<br\s*\/?>/i).map(trim).filter(Boolean);
+  if(parts.length<2) return null;
+  var head=parts[0], steps=parts.slice(1), cur=1, N=steps.length;
+  var root=document.createElement('div'); root.className='stepper tstep';
+  root.innerHTML='<div class="thead">'+head+'</div><div class="sbar"><span class="tlab"></span><span>Step <b class="tn">1</b> of '+N+'</span></div><div class="tblocks"></div><div class="nav"><button class="bk" type="button">← Back</button><button class="nx" type="button">Next →</button><button class="rs" type="button">Show all</button></div>';
+  var box=root.querySelector('.tblocks');
+  var els=steps.map(function(h){var d=document.createElement('div');d.className='tb';d.innerHTML=h;box.appendChild(d);return d;});
+  var bk=root.querySelector('.bk'),nx=root.querySelector('.nx'),rs=root.querySelector('.rs'),tn=root.querySelector('.tn'),tl=root.querySelector('.tlab');
+  function render(){
+    els.forEach(function(d,i){d.className='tb'+(i<cur?' on':'')+(i===cur-1?' cur':'');});
+    tn.textContent=cur; tl.textContent=lab(steps[cur-1])||'';
+    bk.disabled=cur<=1; nx.disabled=cur>=N; rs.style.display=cur>=N?'none':'';
+  }
+  bk.onclick=function(){if(cur>1){cur--;render();}};
+  nx.onclick=function(){if(cur<N){cur++;render();}};
+  rs.onclick=function(){cur=N;render();};
+  render(); return root;
+}
+window.buildTextStepper=build;
+window.addEventListener('load',function(){
+  Array.prototype.forEach.call(document.querySelectorAll('.exp'),function(e){
+    if(e.querySelector('.stepper')||e.getAttribute('data-ts'))return;
+    e.setAttribute('data-ts','1');
+    var s=build(e.innerHTML); if(s){e.innerHTML='';e.appendChild(s);}
+  });
+});
 })();
 </script>
 </body></html>

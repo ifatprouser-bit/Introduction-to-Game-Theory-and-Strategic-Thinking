@@ -73,6 +73,37 @@ audio{width:100%;margin-top:6px;}
   .reveal,.exp{display:block!important;} .preq{border-color:#ccc;}
   .qblock{break-inside:avoid;} .panel{break-inside:avoid;}
 }
+.stepper{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px;margin:14px 0;}
+.stepper .sbar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px;font-size:14px;color:var(--muted);}
+.stepper .sbar b{color:var(--brand-d);}
+.stepper table.dtable td,.stepper table.dtable th{transition:background .25s,color .25s;}
+.stepper .cmpA{outline:3px solid #d2453f;outline-offset:-3px;}
+.stepper .cmpB{outline:3px solid #15794a;outline-offset:-3px;}
+.stepper .msg{border-radius:10px;padding:11px 14px;margin:10px 0 4px;font-size:15px;line-height:1.55;background:var(--brand-soft);min-height:48px;}
+.stepper .msg.good{background:var(--good-soft);} .stepper .msg.bad{background:var(--bad-soft);}
+.stepper .picks{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 2px;}
+.stepper .picks button{background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:9px 16px;font-size:16px;font-weight:700;cursor:pointer;color:var(--ink);}
+.stepper .picks button:hover{border-color:var(--brand);background:var(--brand-soft);}
+.stepper .picks button.no{border-color:var(--bad);background:var(--bad-soft);}
+.stepper .nav{display:flex;gap:10px;margin-top:12px;align-items:center;}
+.stepper .nav button{border:none;border-radius:9px;padding:9px 18px;font-weight:700;font-size:15px;cursor:pointer;}
+.stepper .nav .nx{background:var(--brand);color:#fff;} .stepper .nav .bk{background:var(--brand-soft);color:var(--brand-d);}
+.stepper .nav button:disabled{opacity:.4;cursor:default;}
+.stepper .nav .rs{background:none;color:var(--muted);font-weight:600;font-size:13.5px;margin-left:auto;text-decoration:underline;}
+.stepper .alive{font-weight:700;color:var(--brand-d);}
+.stepper .tabs{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;}
+.stepper .tabs button{border:1.5px solid var(--line);background:#fff;border-radius:9px;padding:7px 14px;font-weight:700;cursor:pointer;color:var(--ink);font-size:14px;}
+.stepper .tabs button.on{background:var(--brand);color:#fff;border-color:var(--brand);}
+.tstep .thead{font-size:15px;line-height:1.55;margin-bottom:6px;}
+.tstep .tb{display:none;padding:10px 13px;margin:8px 0;border-left:3px solid var(--line);border-radius:6px;font-size:15px;line-height:1.6;color:#555;}
+.tstep .tb.on{display:block;} .tstep .tb.cur{border-left-color:var(--brand);background:var(--brand-soft);color:var(--ink);}
+.tstep .tlab{font-weight:700;color:var(--brand-d);}
+@media print{.tstep .tb{display:block!important;color:#000;} .tstep .nav{display:none!important;}}
+.dtable .k1{background:#fbeddd!important;color:#a8681a!important;text-decoration:line-through;font-weight:400!important;}
+.dtable .k2{background:#fae5e4!important;color:#b03a35!important;text-decoration:line-through;font-weight:400!important;}
+.dtable .k3{background:#e6eff9!important;color:#2f6ba8!important;text-decoration:line-through;font-weight:400!important;}
+.dtable .k4{background:#eee8fb!important;color:#5238c4!important;text-decoration:line-through;font-weight:400!important;}
+.dtable .keep{background:var(--good-soft)!important;color:var(--good)!important;font-weight:800!important;}
 </style>
 <style>
 /* presentation chips: from index.html, scoped to spans so .p paragraphs are untouched */
@@ -261,7 +292,7 @@ Both answers are "no, I stay": the cell is <b>stable</b>. The course's name for 
 <li>Check <b>(Beach, Beach)</b> = 3, 4. Freeze Omer on Beach. Dana compares her numbers in that column: switching to North gives her 4, staying gives 3. She switches. One regret is enough: <b>not stable</b>.</li>
 <li>Check <b>(North, North)</b> = 2, 3. Freeze Omer on North: Dana has 2, switching gives her 1. She stays. Freeze Dana on North: Omer has 3, switching gives him 1. He stays. Nobody moves: <b>stable</b>.</li>
 </ul>
-<p class="p">That is the whole skill. Counting equilibria is this same test, run cell by cell, with patience. Day 4 trains it on bigger grids.</p>
+<p class="p">That is the whole skill. Counting equilibria is this same test, run cell by cell, with patience. Day 3 trains it on bigger grids.</p>
 </div>
 
 <!-- ============ SECTION 1 ============ -->
@@ -608,7 +639,7 @@ Player 1 wants to match. Player 2 wants to miss. Same endless chase, so no cell 
 <div class="howto"><b>How to read this table.</b> Rows: player 1's choice. Columns: player 2's choice. In each cell, player 1's payoff comes first and player 2's second. Every cell adds up to 0.</div>
 It has the win-lose look of matching pennies. Does it also have no pure equilibrium?</div>
 <button class="reveal-btn" onclick="this.nextElementSibling.classList.add('show');this.disabled=true;">Reveal answer</button>
-<div class="reveal"><b>No. It has exactly one pure equilibrium: (Top, Right).</b><br><br>Player 1 has a dominant strategy. Top beats Bottom in both columns: 2 &gt; &minus;3 and &minus;1 &gt; &minus;2. So he always plays Top.<br><br>Knowing that, player 2 compares her two payoffs in the top row: 1 beats &minus;2, so she plays Right. Neither wants to move from that cell.<br><br><b>The lesson:</b> "zero-sum and win-lose" does not mean "no pure equilibrium". Check dominance before you assume you are in a chase. The same trap appears again on Day 6, where students start solving mixed-strategy equations for a game that was already settled.</div></div>
+<div class="reveal"><b>No. It has exactly one pure equilibrium: (Top, Right).</b><br><br>Player 1 has a dominant strategy. Top beats Bottom in both columns: 2 &gt; &minus;3 and &minus;1 &gt; &minus;2. So he always plays Top.<br><br>Knowing that, player 2 compares her two payoffs in the top row: 1 beats &minus;2, so she plays Right. Neither wants to move from that cell.<br><br><b>The lesson:</b> "zero-sum and win-lose" does not mean "no pure equilibrium". Check dominance before you assume you are in a chase. The same trap appears again on Day 5, where students start solving mixed-strategy equations for a game that was already settled.</div></div>
 </div>
 
 <!-- ============ QUIZ ============ -->
@@ -616,7 +647,7 @@ It has the win-lose look of matching pennies. Does it also have no pure equilibr
 <p class="note">Pick an option. The answer and the explanation appear only after you choose. One question is tagged. That one is copied word for word from the 2024 B paper, and that paper is not one of your timed mocks. The other five are fresh matrices, not the ones taught above.</p>
 <div id="quizBody"></div></div>
 
-<div class="navrow"><a class="navbtn" href="Day-01.html">&larr; Back</a><a class="navbtn primary" href="Day-03.html">Next &rarr;</a></div>
+<div class="navrow"><a class="navbtn" href="Day-01.html">&larr; Back</a><a class="navbtn primary" href="Day-04.html">Next &rarr;</a></div>
 </div>
 <script>
 function mat(rows, cols, cells){
@@ -637,30 +668,206 @@ var MAIR = mat(["Join","Stay out"],["Join","Stay out"],
 var MWEAK = mat(["Top","Bottom"],["Left","Right"],
                  ["3,&nbsp; 2","5,&nbsp; 4","3,&nbsp; 5","2,&nbsp; 1"]);
 
+// grid-plus.js: grid.js plus 'swap' (try one cell change, shown old -> new), 'eq' (mark stable cells, verified), 'both' (is cell A better for BOTH players than cell B), 'hl' (point at cells with a note), tie-aware 'cmp' text, player names, corner label, per-track finalMsg.
+// ---- Step-by-step explanation player for payoff-matrix questions (extended copy of grid.js) ----
+// cfg: rows, cols, cells[i][j]=[p1,p2], steps | tracks:{name:[steps]}, finalMsg (string, or {trackName:html}),
+//      players:['Garage 1','Garage 2'] (optional), corner:'html' (optional top-left cell), nash, stall, noalive (as grid.js)
+// steps (kind 'row' = player 1 compares rows, 'col' = player 2 compares columns):
+//   ['cut',kind,red,green,note?]   cut a strictly dominated line (throws if not strict)
+//   ['cmp',kind,red,green,note?]   only compare; ties are printed as "=" and count as "not better"
+//   ['ul','col'|'row',idx,note?]   underline best replies
+//   ['swap',i,j,[p1,p2],note?]     try ONE change on the printed matrix: cell (i,j) becomes [p1,p2].
+//                                  A later swap replaces an earlier one. Every mark is cleared: the game is new.
+//   ['eq',[[i,j],...],note?]       mark stable cells (pure Nash equilibria). Throws if a listed cell is not stable.
+//   ['both',i,j,ei,ej,note?]       tick 2: is cell (i,j) better for BOTH players than cell (ei,ej)? Text is computed.
+//   ['hl',[[i,j],...],note]        outline cells; the note is the step text.
+function buildGridStepper(cfg){
+  if(!document.getElementById('gp-css')){var cs=document.createElement('style');cs.id='gp-css';cs.textContent=
+    '.stepper .dtable td.gp-keep{background:var(--good-soft)!important;color:var(--good)!important;font-weight:800!important;}'+
+    '.stepper .dtable td.gp-better{background:var(--brand-soft)!important;color:var(--brand-d)!important;font-weight:800!important;}'+
+    '.stepper .dtable td.gp-swap{background:var(--amber-soft,#fcf3e3)!important;color:var(--amber,#8f5c12)!important;font-weight:800!important;}'+
+    '.stepper .dtable td.gp-changed{box-shadow:inset 0 0 0 2px #e2b65c;}'+
+    '.stepper .cmpP{outline:3px solid var(--brand,#6b4ef0);outline-offset:-3px;}'+
+    '.stepper .gp-tag{display:block;font-size:13px;font-weight:700;margin-top:2px;}'+
+    '.stepper .gp-old{text-decoration:line-through;opacity:.6;font-weight:400;}'+
+    '.stepper .gp-note{display:block;margin-top:6px;}';
+    document.head.appendChild(cs);}
+  var R=cfg.rows, C=cfg.cols, M0=cfg.cells, M=M0, P=cfg.players||['Player 1','Player 2'];
+  var tracks=cfg.tracks||{'':cfg.steps}, names=Object.keys(tracks), cur=names[0];
+  var root=document.createElement('div'); root.className='stepper';
+  root.innerHTML=(names.length>1?'<div class="tabs"></div>':'')+'<div class="sbar"><span class="sround"></span><span>Still alive: <span class="alive"></span></span></div>'+
+    '<div class="tscroll"><table class="dtable"></table></div><div class="msg"></div>'+
+    '<div class="nav"><button class="bk">&larr; Back</button><button class="nx">Next &rarr;</button></div>';
+  if(cfg.noalive){root.querySelector('.sbar').lastChild.style.display='none';}
+  var tbl=root.querySelector('table'), msg=root.querySelector('.msg'), bk=root.querySelector('.bk'), nx=root.querySelector('.nx');
+  var step=0, CLS=['k1','k2','k3','k4','k1','k2','k3','k4'];
+  function allIdx(n){var a=[];for(var i=0;i<n;i++)a.push(i);return a;}
+  function val(i,j,k){return M[i][j][k];}
+  function withSwap(st){return M0.map(function(r,i){return r.map(function(c,j){return (i===st[1]&&j===st[2])?st[3].slice():c.slice();});});}
+  function cellName(i,j){return '('+R[i]+', '+C[j]+')';}
+  function pay(i,j){return fmt(val(i,j,0))+', '+fmt(val(i,j,1));}
+  function fmt(x){return x<0?'&minus;'+(-x):String(x);}
+  function sym(a,b){return a>b?' &gt; ':(a<b?' &lt; ':' = ');}
+  function beats(kind,g,r,ar,ac){
+    return kind==='row'?ac.every(function(c){return val(g,c,0)>val(r,c,0);}):ar.every(function(q){return val(q,g,1)>val(q,r,1);});
+  }
+  function bestSet(kind,idx,ar,ac){
+    var vals=kind==='col'?ar.map(function(i){return val(i,idx,0);}):ac.map(function(j){return val(idx,j,1);});
+    var lines=kind==='col'?ar:ac, m=Math.max.apply(null,vals); return lines.filter(function(z,t){return vals[t]===m;});
+  }
+  function isNE(i,j,ar,ac){
+    return ar.every(function(r){return val(i,j,0)>=val(r,j,0);})&&ac.every(function(c){return val(i,j,1)>=val(i,c,1);});
+  }
+  // replay state up to step s. Persistent marks (ul, swap, eq, both) count up to and including s; cuts apply after their step.
+  function stateAt(s,atEnd){
+    var steps=tracks[cur]; M=M0;
+    var S={ar:allIdx(R.length),ac:allIdx(C.length),cutRow:{},cutCol:{},ulC:{},ulR:{},eq:{},better:{},swap:null,n:0};
+    function reset(){S.ar=allIdx(R.length);S.ac=allIdx(C.length);S.cutRow={};S.cutCol={};S.ulC={};S.ulR={};S.eq={};S.better={};S.n=0;}
+    for(var t=0;t<steps.length;t++){
+      var st=steps[t], k=st[0], upto=atEnd?true:((k==='cut'||k==='cmp'||k==='hl')?t<s:t<=s);
+      if(!upto) continue;
+      if(k==='swap'){ M=withSwap(st); reset(); S.swap={i:st[1],j:st[2],old:M0[st[1]][st[2]],at:t}; }
+      if(k==='cut'){ if(st[1]==='row'){S.cutRow[st[2]]=S.n; S.ar=S.ar.filter(function(v){return v!==st[2];});} else {S.cutCol[st[2]]=S.n; S.ac=S.ac.filter(function(v){return v!==st[2];});} S.n++; }
+      if(k==='ul'){ var b=bestSet(st[1],st[2],S.ar,S.ac); if(st[1]==='col') S.ulC[st[2]]=b; else S.ulR[st[2]]=b; }
+      if(k==='eq'){ st[1].forEach(function(c){S.eq[c[0]+','+c[1]]=1;}); }
+      if(k==='both'){ if(val(st[1],st[2],0)>val(st[3],st[4],0)&&val(st[1],st[2],1)>val(st[3],st[4],1)) S.better[st[1]+','+st[2]]=1; }
+    }
+    return S;
+  }
+  // verify every authored cut and every claimed stable cell (throws early if the data is wrong)
+  Object.keys(tracks).forEach(function(nm){ var steps=tracks[nm], ar=allIdx(R.length), ac=allIdx(C.length); M=M0;
+    steps.forEach(function(st){
+      if(st[0]==='swap'){ M=withSwap(st); ar=allIdx(R.length); ac=allIdx(C.length); }
+      if(st[0]==='cut'){ if(!beats(st[1],st[3],st[2],ar,ac)) throw new Error('illegal cut '+st);
+        if(st[1]==='row') ar=ar.filter(function(v){return v!==st[2];}); else ac=ac.filter(function(v){return v!==st[2];}); }
+      if(st[0]==='eq'){ st[1].forEach(function(c){ if(!isNE(c[0],c[1],ar,ac)) throw new Error('not a stable cell '+c); }); }
+    });
+    M=M0;
+  });
+  function render(){
+    var steps=tracks[cur], atEnd=step>=steps.length, S=stateAt(step,atEnd), st=atEnd?null:steps[step];
+    var ar=S.ar, ac=S.ac, k=st?st[0]:null;
+    var isCmp=st&&(k==='cut'||k==='cmp');
+    var h='<tr><th>'+(cfg.corner||'')+'</th>'+C.map(function(c,j){var cl=S.cutCol[j]!==undefined?CLS[S.cutCol[j]]:'';
+      var cmp=(isCmp&&st[1]==='col')?(j===st[2]?' cmpA':(j===st[3]?' cmpB':'')):((k==='ul'&&st[1]==='col'&&j===st[2])?' cmpB':'');
+      return '<th class="'+cl+cmp+'">'+c+'</th>';}).join('')+'</tr>';
+    var survivor=(!cfg.stall&&!cfg.nash)&&ar.length===1&&ac.length===1&&(S.n>0);
+    R.forEach(function(r,i){
+      var rcl=S.cutRow[i]!==undefined?CLS[S.cutRow[i]]:'';
+      var rcmp=(isCmp&&st[1]==='row')?(i===st[2]?' cmpA':(i===st[3]?' cmpB':'')):((k==='ul'&&st[1]==='row'&&i===st[2])?' cmpB':'');
+      h+='<tr><td class="lab '+rcl+rcmp+'">'+r+'</td>';
+      C.forEach(function(c,j){
+        var a=S.cutRow[i], b=S.cutCol[j], cl='', key=i+','+j, tag='';
+        if(a!==undefined&&b!==undefined)cl=CLS[Math.min(a,b)]; else if(a!==undefined)cl=CLS[a]; else if(b!==undefined)cl=CLS[b];
+        var u1=S.ulC[j]&&S.ulC[j].indexOf(i)>-1, u2=S.ulR[i]&&S.ulR[i].indexOf(j)>-1;
+        if(cl===''){
+          if(S.eq[key]){cl='gp-keep';tag='stable';}
+          else if(S.better[key]){cl='gp-better';tag='better for both';}
+          else if(atEnd&&(survivor||(cfg.nash&&u1&&u2))){cl='gp-keep';tag='stable';}
+        }
+        var isSw=S.swap&&S.swap.i===i&&S.swap.j===j;
+        if(isSw&&cl===''&&st&&k==='swap'){cl='gp-swap';}
+        var t1=fmt(val(i,j,0)), t2=fmt(val(i,j,1)), cmp='', d1=false, d2=false;
+        if(st&&(cl===''||cl.indexOf('gp-')===0)){
+          if(isCmp&&st[1]==='row'&&(i===st[2]||i===st[3])){cmp=i===st[2]?' cmpA':' cmpB'; d2=true;}
+          if(isCmp&&st[1]==='col'&&(j===st[2]||j===st[3])){cmp=j===st[2]?' cmpA':' cmpB'; d1=true;}
+          if(k==='ul'&&st[1]==='col'&&j===st[2]){cmp=' cmpB'; d2=true;}
+          if(k==='ul'&&st[1]==='row'&&i===st[2]){cmp=' cmpB'; d1=true;}
+          if(k==='both'&&((i===st[1]&&j===st[2])||(i===st[3]&&j===st[4])))cmp=' cmpP';
+          if(k==='hl'&&st[1].some(function(q){return q[0]===i&&q[1]===j;}))cmp=' cmpP';
+        }
+        if(u1)t1='<u style="text-decoration-thickness:2px;text-underline-offset:3px">'+t1+'</u>';
+        if(u2)t2='<u style="text-decoration-thickness:2px;text-underline-offset:3px">'+t2+'</u>';
+        if(d1)t1='<span style="opacity:.4">'+t1+'</span>'; if(d2)t2='<span style="opacity:.4">'+t2+'</span>';
+        var body=t1+', '+t2;
+        if(isSw){ if(st&&k==='swap'){ body='<span class="gp-old">'+fmt(S.swap.old[0])+', '+fmt(S.swap.old[1])+'</span> &rarr; '+body; tag='the change'; } else { cl+=' gp-changed'; if(!tag)tag='changed'; } }
+        h+='<td class="'+cl+cmp+'">'+body+(tag?'<span class="gp-tag">'+tag+'</span>':'')+'</td>';
+      });
+      h+='</tr>';
+    });
+    tbl.innerHTML=h;
+    root.querySelector('.alive').textContent=R.filter(function(_,i){return ar.indexOf(i)>-1;}).concat(C.filter(function(_,j){return ac.indexOf(j)>-1;})).join(' · ');
+    root.querySelector('.sround').innerHTML=atEnd?'<b>Done</b>':'<b>Step '+(step+1)+' of '+steps.length+'</b>';
+    msg.className='msg';
+    if(atEnd){ msg.classList.add('good'); var fm=cfg.finalMsg; msg.innerHTML=(typeof fm==='object')?fm[cur]:fm; }
+    else { msg.innerHTML=stepText(st,ar,ac,S); }
+    bk.disabled=step===0; nx.disabled=atEnd;
+    nx.textContent=(step===steps.length-1)?'Finish →':'Next →';
+  }
+  function note(x){return x?'<span class="gp-note">'+x+'</span>':'';}
+  function stepText(st,ar,ac,S){
+    var k=st[0];
+    if(k==='hl') return st[2]||'';
+    if(k==='swap'){
+      var o=S.swap.old;
+      return 'Try the change: <b>'+cellName(st[1],st[2])+'</b> goes from <b>'+fmt(o[0])+', '+fmt(o[1])+'</b> to <b>'+fmt(st[3][0])+', '+fmt(st[3][1])+'</b>. Every other cell stays as printed.<br>The game is new, so both ticks start again.'+note(st[4]);
+    }
+    if(k==='eq'){
+      var cs=st[1], list=cs.map(function(c){return '<b>'+cellName(c[0],c[1])+'</b>, paying '+pay(c[0],c[1]);}).join(' and ');
+      return (cs.length===1?'One stable cell: ':(cs.length===2?'Two stable cells: ':cs.length+' stable cells: '))+list+'.<br>'+(cs.length===1?'Here nobody gains by moving alone. That is a <b>pure Nash equilibrium</b>.':'In each, nobody gains by moving alone. Each is a <b>pure Nash equilibrium</b>.')+note(st[2]);
+    }
+    if(k==='both'){
+      var i=st[1],j=st[2],ei=st[3],ej=st[4], a0=val(i,j,0),b0=val(ei,ej,0),a1=val(i,j,1),b1=val(ei,ej,1);
+      var up0=a0>b0, up1=a1>b1, verdict;
+      if(up0&&up1) verdict='Yes. Higher for both. This cell is <b>better for both</b>.';
+      else if(up0) verdict='No. Better for '+P[0]+' only.';
+      else if(up1) verdict='No. Better for '+P[1]+' only.';
+      else verdict='No. It is not better for either of them.';
+      return 'Is <b>'+cellName(i,j)+'</b> better for <b>both</b> players than <b>'+cellName(ei,ej)+'</b>?<br>'+
+        P[0]+' (first numbers): '+fmt(a0)+sym(a0,b0)+fmt(b0)+'. '+P[1]+' (second numbers): '+fmt(a1)+sym(a1,b1)+fmt(b1)+'.<br><b>'+verdict+'</b>'+note(st[5]);
+    }
+    var kind=st[1], row=kind==='row', L=row?R:C, num=row?'first':'second', who=row?P[0]:P[1], over=row?'column':'row';
+    if(k==='ul'){
+      var idx=st[2], vals, best=bestSet(kind,idx,ar,ac);
+      if(kind==='col'){ vals=ar.map(function(i){return fmt(val(i,idx,0));}); }
+      else { vals=ac.map(function(j){return fmt(val(idx,j,1));}); }
+      var tie=best.length>1;
+      var bestNames=kind==='col'?best.map(function(z){return R[z];}):best.map(function(z){return C[z];});
+      var asker=kind==='col'?P[0]:P[1], nn=kind==='col'?'first':'second';
+      return (kind==='col'?'Say '+P[1]+' plays <b>'+C[idx]+'</b>.':'Say '+P[0]+' plays <b>'+R[idx]+'</b>.')+'<br>'+asker+' looks at the <b>'+nn+'</b> numbers: '+
+        vals.join(', ')+'.<br><b>'+(tie?'A tie, so underline both: '+bestNames.join(' and ')+'.':'Best is '+bestNames[0]+'. Underline it.')+'</b>'+note(st[3]);
+    }
+    var x=L[st[2]], y=L[st[3]];
+    var nums=(row?ac:ar).map(function(z){var vx=row?val(st[2],z,0):val(z,st[2],1), vy=row?val(st[3],z,0):val(z,st[3],1); return fmt(vy)+sym(vy,vx)+fmt(vx);}).join(', ');
+    if(k==='cut') return '<b>'+who+'</b> only looks at the <b>'+num+'</b> numbers. Compare <b>'+x+'</b> (red) with <b>'+y+'</b> (green).<br>'+y+' is higher in every '+over+' still alive: '+nums+'.<br><b>So '+x+' is strictly dominated. Press Next to cut it.</b>'+note(st[4]);
+    var ok=beats(kind,st[3],st[2],ar,ac);
+    var tieOnly=!ok&&(row?ac:ar).every(function(z){var vx=row?val(st[2],z,0):val(z,st[2],1), vy=row?val(st[3],z,0):val(z,st[3],1); return vy>=vx;});
+    return '<b>'+who+'</b> only looks at the <b>'+num+'</b> numbers. Is <b>'+y+'</b> (green) better than <b>'+x+'</b> (red) in every '+over+'?<br>'+y+' vs '+x+': '+nums+'.<br><b>'+
+      (ok?'Yes. '+y+' beats '+x+' everywhere.'+(L.length===2?' So '+y+' is a strictly <i>dominant strategy</i> for '+who+'.':''):
+       (tieOnly?'No. In one '+over+' they tie. '+y+' is never worse, but not always better. That is only <i>weak</i> dominance.':
+        'No. '+y+' loses to '+x+' in at least one '+over+', so '+y+' is not dominant.'))+'</b>'+note(st[4]);
+  }
+  if(names.length>1){ var tabs=root.querySelector('.tabs'); names.forEach(function(nm){var b=document.createElement('button');b.textContent=nm;b.className=nm===cur?'on':'';b.onclick=function(){cur=nm;step=0;Array.prototype.forEach.call(tabs.children,function(x){x.className=x.textContent===nm?'on':'';});render();};tabs.appendChild(b);}); }
+  nx.onclick=function(){ if(step<tracks[cur].length){step++;render();} };
+  bk.onclick=function(){ if(step>0){step--;render();} };
+  render();
+  return root;
+}
+
 const QUIZ = [
 {"q":"Two garages on the same street each choose whether to keep their standard rate or undercut it. Payoffs, garage 1 first. Which <b>single</b> change to one cell would make this a prisoner's dilemma?"+MGARAGE,
  "opts":["Change (undercut, undercut) from 7, 7 to 3, 3","Change (keep, keep) from 6, 6 to 9, 9","Change (keep, undercut) from 1, 8 to 1, 5","Change (undercut, keep) from 8, 1 to 5, 1","Change (undercut, undercut) from 7, 7 to 7, 3"],"correct":0,
- "exp":"<b>Change (undercut, undercut) from 7, 7 to 3, 3.</b><br><br><b>The rule:</b> the two-tick test. A prisoner's dilemma needs both of these. <b>Tick 1:</b> every player has a strictly dominant strategy. <b>Tick 2:</b> the cell those dominant strategies produce is worse for <i>everybody</i> than some other cell.<br><br><b>The matrix as printed.</b><br><span class=\"math\">Garage 1, left column: undercut 8 &gt; keep 6</span><br><span class=\"math\">Garage 1, right column: undercut 7 &gt; keep 1</span><br>Undercut is dominant for garage 1, and by symmetry for garage 2. <b>Tick 1 passes.</b><br><span class=\"math\">Outcome (undercut, undercut) = 7, 7</span><br>Now tick 2. Is any cell better for both? (6, 6) is worse for both. (1, 8) and (8, 1) each help one and hurt the other. <b>Tick 2 fails.</b> So it is dominance with a happy ending, not a dilemma.<br><br><b>Testing the correct change: (undercut, undercut) becomes 3, 3.</b><br><span class=\"math\">Garage 1, left column: undercut 8 &gt; keep 6 &nbsp;&rarr;&nbsp; still dominant</span><br><span class=\"math\">Garage 1, right column: undercut 3 &gt; keep 1 &nbsp;&rarr;&nbsp; still dominant</span><br>Tick 1 still passes, for both garages.<br><span class=\"math\">Tick 2: 6 &gt; 3 for garage 1 AND 6 &gt; 3 for garage 2</span><br>Both would rather be at (keep, keep). <b>Tick 2 now passes.</b><br><br><b>Verification.</b> The new game has one equilibrium, (undercut, undercut) at 3, 3, and both garages prefer (keep, keep) at 6, 6. That is the prisoner's dilemma exactly.<br><br><b>The exact wrong calculation behind each distractor.</b><br>&bull; <b>(keep, keep) to 9, 9.</b> This looks right, because it creates a cell both garages prefer to 7, 7. But it breaks tick 1. Garage 1 now compares keep 9 against undercut 8 in the left column, and keep wins there. No dominant strategy. The game turns into a stag hunt with two equilibria, 9, 9 and 7, 7.<br>&bull; <b>(keep, undercut) to 1, 5.</b> Garage 2 now gets 6 from keeping and 5 from undercutting in the top row. Undercutting stops being dominant for garage 2. Tick 1 fails.<br>&bull; <b>(undercut, keep) to 5, 1.</b> The same failure, mirrored. Garage 1 now gets 6 from keeping and 5 from undercutting in the left column.<br>&bull; <b>(undercut, undercut) to 7, 3.</b> The closest miss. Both garages still have a dominant strategy, so tick 1 passes. But the outcome is 7, 3, and garage 1 already has its best number in that column. No cell pays both garages more. Tick 2 still fails. Lowering the equilibrium for one player is not enough. It has to fall below a cell that is better for <i>both</i>."},
+ "anim":{"rows": ["Keep the rate", "Undercut"], "cols": ["Keep the rate", "Undercut"], "cells": [[[6, 6], [1, 8]], [[8, 1], [7, 7]]], "players": ["Garage 1", "Garage 2"], "corner": "<span style=\"font-weight:600;font-size:13px\">Garage 1 &darr;<br>Garage 2 &rarr;</span>", "noalive": true, "tracks": {"The correct change": [["cmp", "row", 0, 1, "Tick 1: does every player have a dominant strategy? Garage 1 does."], ["cmp", "col", 0, 1, "Garage 2 does too. <b>Tick 1 passes.</b>"], ["eq", [[1, 1]], "This is where the two dominant strategies meet."], ["both", 0, 0, 1, 1, "Tick 2: is some cell better for both than 7, 7? Not this one. The other two cells each help only one garage. <b>Tick 2 fails.</b> As printed, this is not a prisoner's dilemma."], ["swap", 1, 1, [3, 3], "This is the change in the correct option."], ["cmp", "row", 0, 1, "Tick 1 again. Garage 1 still has a dominant strategy."], ["cmp", "col", 0, 1, "Garage 2 too. <b>Tick 1 still passes.</b>"], ["eq", [[1, 1]], "The dominant strategies still meet here. But now this cell pays only 3 each."], ["both", 0, 0, 1, 1, "<b>Tick 2 now passes.</b> Both garages would rather keep the rate."]], "Tempting wrong changes": [["swap", 0, 0, [9, 9], "This looks right. It makes a cell both garages like more than 7, 7."], ["cmp", "row", 0, 1, "<b>Tick 1 fails.</b> Against a garage that keeps the rate, keeping now pays more."], ["eq", [[0, 0], [1, 1]], "One is better for both. That is a stag hunt, not a prisoner's dilemma."], ["swap", 0, 1, [1, 5], "Now lower garage 2's number in one cell."], ["cmp", "col", 0, 1, "<b>Tick 1 fails</b> for garage 2. The mirror option, (Undercut, Keep the rate) to 5, 1, breaks garage 1 in the same way."], ["swap", 1, 1, [7, 3], "The closest miss. Only garage 2's number falls."], ["cmp", "row", 0, 1, "Garage 1 still has a dominant strategy."], ["cmp", "col", 0, 1, "Garage 2 too. <b>Tick 1 passes.</b>"], ["both", 0, 0, 1, 1, "<b>Tick 2 fails.</b> Garage 1 already gets 7 here. No cell beats that for both garages."]]}, "finalMsg": {"The correct change": "<b>Change (Undercut, Undercut) from 7, 7 to 3, 3.</b> Now both ticks pass, so it is a prisoner's dilemma.<br><br><b>The rule:</b> a prisoner's dilemma needs two ticks. Tick 1: every player has a strictly dominant strategy. Tick 2: the cell where they meet is worse for both than some other cell.<br><br><b>The habit:</b> after any change, run both ticks again. A change that fixes tick 2 can break tick 1. Open the other tab to see the tempting wrong changes.", "Tempting wrong changes": "<b>Every wrong option breaks one tick.</b><br>&bull; 9, 9 at (Keep the rate, Keep the rate) breaks tick 1. The game becomes a stag hunt.<br>&bull; 1, 5 and 5, 1 each take away one garage's dominant strategy. Tick 1 fails.<br>&bull; 7, 3 keeps tick 1 but fails tick 2. Lowering the result for one player is not enough. It must fall below a cell that is better for <i>both</i>.<br><br><b>The rule in one line:</b> both ticks, every time, after every change."}}},
 
 {"q":"Two airlines each decide whether to join a shared booking system. The system only pays off if both join. Payoffs, airline 1 first. This game has two pure Nash equilibria. What is <b>airline 2's</b> payoff in the one that <b>both</b> airlines prefer?"+MAIR,
  "opts":["9","7","5","4","0"],"correct":0,
- "exp":"<b>9.</b><br><br><b>The rule:</b> a pure Nash equilibrium is a cell where neither player wants to move. Find them by marking each player's best reply. Then rank the two, player by player.<br><br><b>Step 1. Airline 1's best reply in each column.</b> Read the first number.<br><span class=\"math\">Column join: 7 &gt; 5 &rarr; join</span><br><span class=\"math\">Column stay out: 4 &gt; 0 &rarr; stay out</span><br><br><b>Step 2. Airline 2's best reply in each row.</b> Read the second number.<br><span class=\"math\">Row join: 9 &gt; 5 &rarr; join</span><br><span class=\"math\">Row stay out: 4 &gt; 0 &rarr; stay out</span><br><br><b>Step 3. Which cells are marked twice?</b><br><span class=\"math\">(join, join) = 7, 9 &nbsp;and&nbsp; (stay out, stay out) = 4, 4</span><br><br><b>Step 4. Rank the two.</b><br><span class=\"math\">7 &gt; 4 for airline 1 AND 9 &gt; 4 for airline 2</span><br>Both prefer (join, join). The pair is Pareto-ranked, which makes this a stag hunt.<br><br><b>Verification.</b> Stand in the cell 7, 9. Airline 1 leaving gets 5, which is less than 7. Airline 2 leaving gets 5, which is less than 9. Neither moves, so the cell really is an equilibrium, and airline 2's payoff there is <b>9</b>.<br><br><b>The exact wrong calculation behind each distractor.</b><br>&bull; <b>7</b> is <i>airline 1's</i> payoff in the same cell. The right cell, the wrong half of the pair.<br>&bull; <b>4</b> is airline 2's payoff at the other equilibrium, (stay out, stay out). That cell is the safe one, not the preferred one. Staying out pays 4 or 5 whatever the other airline does, which is why it tempts you.<br>&bull; <b>5</b> is airline 2's payoff at (join, stay out). That cell is not an equilibrium: airline 2 gains by joining, because 9 beats 5.<br>&bull; <b>0</b> is airline 2's payoff at (stay out, join), the cell where it joins alone.<br><br><b>One thing to notice.</b> The taught stag hunt has the same number for both players in each equilibrium. This one does not. Ranking is still checked one player at a time: one cell must be better for <i>each</i> of them."},
+ "anim":{"rows": ["Join", "Stay out"], "cols": ["Join", "Stay out"], "cells": [[[7, 9], [0, 5]], [[5, 0], [4, 4]]], "players": ["Airline 1", "Airline 2"], "corner": "<span style=\"font-weight:600;font-size:13px\">Airline 1 &darr;<br>Airline 2 &rarr;</span>", "noalive": true, "steps": [["ul", "col", 0, "Airline 1 reads down each column."], ["ul", "col", 1], ["ul", "row", 0, "Airline 2 now reads across each row."], ["ul", "row", 1, "Now look for cells with two underlines."], ["eq", [[0, 0], [1, 1]], "Now rank them."], ["both", 0, 0, 1, 1, "Both prefer (Join, Join). The two stable cells are ranked the same way by both, so this is a <b>stag hunt</b>."]], "finalMsg": "<b>9.</b> The stable cell both airlines prefer is (Join, Join), paying 7, 9. Airline 2's number is the second one: <b>9</b>.<br><br><b>Check:</b> from 7, 9, airline 1 leaving gets 5, and airline 2 leaving gets 5. Nobody moves.<br><br><b>Why the other answers tempt:</b><br>&bull; 7 is airline 1's number in the right cell.<br>&bull; 4 is airline 2's number in the other stable cell, the safe one.<br>&bull; 5 is airline 2's number at (Join, Stay out). That cell is not stable: airline 2 would join, because 9 beats 5.<br>&bull; 0 is airline 2's number when it joins alone.<br><br><b>The rule:</b> find the stable cells first. Rank them player by player. Only then read the number of the player the question names."}},
 
 {"q":"Player 1 chooses a row and player 2 chooses a column, at the same moment. Player 1's payoff is written first. How many <b>pure</b> Nash equilibria does this game have?"+MWEAK,
  "opts":["0","1","2","3","4"],"correct":2,
- "exp":"<b>2.</b><br><br><b>The rule:</b> a pure Nash equilibrium is a cell where neither player wants to move. Mark best replies. Watch for ties, because a tie means <i>both</i> choices are best replies and both stay on the board.<br><br><b>Step 1. Player 1's best reply in the left column.</b><br><span class=\"math\">Top = 3, Bottom = 3 &rarr; equal, so both are best replies</span><br><br><b>Step 2. Player 1's best reply in the right column.</b><br><span class=\"math\">Top = 5, Bottom = 2 &rarr; 5 &gt; 2, top</span><br>So top is never worse than bottom and sometimes better. Top is <b>weakly dominant</b>, not strictly dominant. Bottom is not strictly dominated, so it cannot be deleted.<br><br><b>Step 3. Player 2's best reply in the top row.</b><br><span class=\"math\">Left = 2, Right = 4 &rarr; 4 &gt; 2, right</span><br><br><b>Step 4. Player 2's best reply in the bottom row.</b><br><span class=\"math\">Left = 5, Right = 1 &rarr; 5 &gt; 1, left</span><br><br><b>Step 5. Cells marked by both players.</b><br><span class=\"math\">(top, right) = 5, 4 &nbsp;and&nbsp; (bottom, left) = 3, 5</span><br>Count = <b>2</b>.<br><br><b>Verification.</b> At (top, right): player 1 moving to bottom gets 2, less than 5. Player 2 moving to left gets 2, less than 4. It holds. At (bottom, left): player 1 moving to top still gets 3, so he gains nothing and has no reason to move. Player 2 moving to right gets 1, less than 5. It holds too.<br><br><b>The exact wrong calculation behind each distractor.</b><br>&bull; <b>1</b> comes from reading the 3 against 3 tie as a win for top, deleting bottom as dominated, and being left with only (top, right). That deletion is the mistake. Only <i>strictly</i> dominated strategies can be deleted safely.<br>&bull; <b>0</b> comes from seeing that player 2 wants right against top and left against bottom, and calling it a matching-pennies chase. The chase does not close, because player 1's tie in the left column lets him sit still at (bottom, left).<br>&bull; <b>3</b> comes from also counting (top, left), where player 1 is content because of the tie but player 2 is not: she gets 2 there and 4 by moving to right.<br>&bull; <b>4</b> comes from counting every cell where either player is content, instead of both.<br><br><b>The line to carry.</b> Strict dominance means <i>always</i> better. Weak dominance means never worse and sometimes better. A weakly dominated strategy can still sit inside a Nash equilibrium, and that is exactly how a matrix hides an extra stable cell."},
+ "anim":{"rows": ["Top", "Bottom"], "cols": ["Left", "Right"], "cells": [[[3, 2], [5, 4]], [[3, 5], [2, 1]]], "noalive": true, "steps": [["cmp", "row", 1, 0, "So Bottom is not strictly dominated. You may not cross it out. It stays on the board."], ["ul", "col", 0, "This tie is the whole question."], ["ul", "col", 1], ["ul", "row", 0, "Player 2 now reads across each row."], ["ul", "row", 1, "Now look for cells with two underlines."], ["eq", [[0, 1], [1, 0]], "At (Bottom, Left) player 1 gains nothing by moving to Top: 3 = 3. So he has no reason to move."]], "finalMsg": "<b>2.</b> The stable cells are (Top, Right) and (Bottom, Left).<br><br><b>Why the other answers tempt:</b><br>&bull; 1: you read the 3 against 3 tie as a win for Top and deleted Bottom. Only <i>strictly</i> dominated strategies may be deleted.<br>&bull; 0: player 2's choices look like a matching pennies chase. But the tie lets player 1 sit still at (Bottom, Left).<br>&bull; 3: you also counted (Top, Left). Player 1 is content there, but player 2 would move to Right: 4 beats 2.<br>&bull; 4: you counted cells where <i>either</i> player is content, not both.<br><br><b>The rule:</b> strict dominance means always better. Weak dominance means never worse, sometimes better. A weakly dominated move can still sit inside a Nash equilibrium."}},
 
 {"src":"2024 B final","q":"Consider a two-player game where each player simultaneously chooses either action A or B. If both players choose A then both players get a payoff of 10. If both players choose B then both players get a payoff of 20. If one player chooses A and the opponent chooses B, then the player (who chose A) gets 25 and the opponent (who chose B) gets 7. What is true about this game?",
  "opts":["It is a zero-sum game","It is a sequential game","It is a chicken game","It is a prisoner's dilemma game","None of the other answers is correct"],"correct":3,
- "exp":"<b>It is a prisoner's dilemma game.</b> Build the matrix first. The question is only hard while it is words.<br><br><span class=\"math\">(A, A) = 10, 10 &nbsp;|&nbsp; (A, B) = 25, 7 &nbsp;|&nbsp; (B, A) = 7, 25 &nbsp;|&nbsp; (B, B) = 20, 20</span><br><br>Player 1 choosing A: gets 10 against A, 25 against B. Choosing B: gets 7 against A, 20 against B. So A beats B in both columns. <b>A is dominant</b>, for both players by symmetry.<br><br>Both play A and both get 10. Now the second check: (B, B) gives 20 to each. <b>Both would rather be there.</b> Two ticks, prisoner's dilemma.<br><br>Why the others fail. It is not zero-sum: the payoffs add to 20, 32, 32 and 40, so one player's gain is not the other's loss. It is not sequential: the stem says both choose simultaneously. It is not chicken: chicken has two pure equilibria off the diagonal, and this game has exactly one.<br><br><b>Naming trap:</b> here A is the tempting, selfish action even though it is listed first and sounds neutral. Do not let the letters do your thinking. The labels \"cooperate\" and \"defect\" will not always be handed to you."},
+ "anim":{"rows": ["Action A", "Action B"], "cols": ["Action A", "Action B"], "cells": [[[10, 10], [25, 7]], [[7, 25], [20, 20]]], "noalive": true, "steps": [["hl", [[0, 1], [1, 0]], "First turn the words into a matrix. Rows: player 1. Columns: player 2. Player 1's payoff comes first.<br>When the two choices differ, the one who picks A gets 25 and the one who picks B gets 7. These are the two outlined cells."], ["cmp", "row", 1, 0, "Tick 1: does every player have a dominant strategy? Player 1 does."], ["cmp", "col", 1, 0, "Player 2 too, by symmetry. <b>Tick 1 passes.</b>"], ["eq", [[0, 0]], "Both play A, and both get 10."], ["both", 1, 1, 0, 0, "<b>Tick 2 passes.</b> Two ticks: a prisoner's dilemma."]], "finalMsg": "<b>It is a prisoner's dilemma game.</b> A is dominant for both players. They land on 10, 10. But (B, B) would give both of them 20.<br><br><b>Why the others fail:</b><br>&bull; Zero-sum: the cells add up to 20, 32, 32 and 40. One player's gain is not the other's loss.<br>&bull; Sequential: the stem says both choose at the same time.<br>&bull; Chicken: chicken has two stable cells, off the diagonal. This game has one.<br><br><b>Naming trap:</b> here A is the selfish move, even though it is listed first and sounds neutral. The labels \"cooperate\" and \"defect\" will not always be handed to you. Run the two ticks. Do not let the letters do your thinking."}},
 
 {"q":"Two lorry drivers meet on a narrow mountain road. Each can push on or give way. Which type of game is this? (Driver 1's payoff first.)"+MCHICK,
  "opts":["Chicken (hawk&ndash;dove)","Stag hunt","Battle of the Sexes","Prisoner's dilemma","Matching pennies"],"correct":0,
- "exp":"<b>Chicken.</b> Work the ladder in order.<br><br><b>Dominance?</b> None. In the \"push on\" column driver 1 prefers &minus;1 to &minus;6 (give way); in the \"give way\" column he prefers 3 to 2 (push on). No row wins everywhere, so this is not a prisoner's dilemma.<br><br><b>Count.</b> Two pure equilibria: (push on, give way) and (give way, push on).<br><br><b>Ranked?</b> No. Driver 1 wants the first, driver 2 wants the second.<br><br><b>Diagonal?</b> No. The equilibria are the two cells where the drivers choose <i>different</i> actions. That is chicken, not battle of the sexes.<br><br><b>The confirming fingerprint:</b> (give way, give way) is not an equilibrium, but its total of 4 beats either equilibrium's total of 2. In chicken the highest joint payoff is a cell nobody can hold."},
+ "anim":{"rows": ["Push on", "Give way"], "cols": ["Push on", "Give way"], "cells": [[[-6, -6], [3, -1]], [[-1, 3], [2, 2]]], "players": ["Driver 1", "Driver 2"], "corner": "<span style=\"font-weight:600;font-size:13px\">Driver 1 &darr;<br>Driver 2 &rarr;</span>", "noalive": true, "steps": [["cmp", "row", 1, 0, "Ladder question 1, dominance: none here. So it is not a prisoner's dilemma."], ["ul", "col", 0, "Ladder question 2: count the stable cells. Underline best replies."], ["ul", "col", 1], ["ul", "row", 0, "Driver 2 now reads across each row."], ["ul", "row", 1], ["eq", [[0, 1], [1, 0]], "So it is a stag hunt, a battle of the sexes or chicken."], ["both", 0, 1, 1, 0, "Ladder question 3: the drivers disagree. Each wants the cell where he pushes on. Not ranked, so not a stag hunt."], ["hl", [[0, 1], [1, 0]], "Ladder question 4: where do the two stable cells sit? <b>Off the diagonal.</b> One driver pushes on and the other gives way: different actions. That is <b>chicken</b>. In battle of the sexes they would sit on the diagonal, both choosing the same action."], ["hl", [[1, 1]], "The fingerprint. (Give way, Give way) adds up to 2 + 2 = 4. Each stable cell adds up to 3 + (&minus;1) = 2. The best cell for the pair is one nobody can hold."]], "finalMsg": "<b>Chicken (hawk&ndash;dove).</b> No dominance, two stable cells, not ranked, off the diagonal.<br><br><b>Why the others tempt:</b><br>&bull; Stag hunt: also two stable cells, but there one is better for both. Here each driver wants a different one.<br>&bull; Battle of the sexes: also not ranked, but its stable cells sit on the diagonal.<br>&bull; Prisoner's dilemma: needs a dominant strategy. There is none.<br>&bull; Matching pennies: has no stable cell. This game has two.<br><br><b>The rule:</b> dominance, count, rank, diagonal. Ask in that order."}},
 
 {"q":"A night guard chooses which of two gates to watch; a thief chooses which gate to use. How many <b>pure</b> Nash equilibria does this game have? (Guard's payoff first.)"+MGUARD,
  "opts":["0","1","2","3","4"],"correct":0,
- "exp":"<b>Zero.</b> The guard is paid to match the thief. The thief is paid to miss the guard.<br><br>Guard's best reply: if the thief uses gate 1, watch gate 1 (3 &gt; 1). If the thief uses gate 2, watch gate 2. Thief's best reply: whichever gate the guard is <i>not</i> watching. So every cell has someone who wants to move. It is the same endless chase as matching pennies.<br><br><b>Two things to notice.</b> First, every cell here adds to the same total, four. By the rule from the try-it above, an exam would call that zero-sum, and it still has no pure equilibrium. The chase pattern, not the arithmetic, is what matters.<br><br>Second, if the stem had said \"how many Nash equilibria, pure or mixed\", the answer would be <b>1</b>, not 0. Nash proved every finite game has at least one. Zero is only ever a valid answer to a question with the word <i>pure</i> in it."}
+ "anim":{"rows": ["Watch gate 1", "Watch gate 2"], "cols": ["Use gate 1", "Use gate 2"], "cells": [[[3, 1], [1, 3]], [[1, 3], [3, 1]]], "players": ["Player 1 (the guard)", "Player 2 (the thief)"], "corner": "<span style=\"font-weight:600;font-size:13px\">Guard &darr;<br>Thief &rarr;</span>", "nash": true, "noalive": true, "steps": [["ul", "col", 0, "The guard wants to watch the gate the thief uses."], ["ul", "col", 1], ["ul", "row", 0, "The thief wants the gate the guard is <i>not</i> watching."], ["ul", "row", 1, "All four underlines are placed. Now look for a cell with two."]], "finalMsg": "<b>Zero.</b> No cell has two underlines. The guard wants to match the thief. The thief wants to miss the guard. Someone always wants to move: the same endless chase as matching pennies.<br><br><b>Two things to notice.</b> Every cell adds up to 4, so an exam would call this zero-sum. It still has no pure equilibrium. The chase pattern matters, not the sums.<br>If the stem had said \"pure or mixed\", the answer would be <b>1</b>. Every finite game has at least one equilibrium. Zero is only right when the question says <i>pure</i>.<br><br><b>Why 1 or 2 tempt:</b> they count cells with one underline. One underline is never enough."}}
 ];
 function shuffleItem(it){var c=it.opts[it.correct];for(var i=it.opts.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=it.opts[i];it.opts[i]=it.opts[j];it.opts[j]=t;}it.correct=it.opts.indexOf(c);}
 QUIZ.forEach(shuffleItem);
@@ -670,7 +877,7 @@ QUIZ.forEach((item,qi)=>{
   const block=document.createElement('div');block.className='qblock';
   const tag=item.src?`<span class="examtag">${item.src}</span>`:'';
   block.innerHTML=`<div class="qnum">Question ${qi+1}${tag}</div><div class="qtext">${item.q}</div>`;
-  const exp=document.createElement('div');exp.className='exp';exp.innerHTML=item.exp;
+  const exp=document.createElement('div');exp.className='exp';if(item.anim){exp.appendChild(buildGridStepper(item.anim));}else{exp.innerHTML=item.exp;}
   item.opts.forEach((opt,oi)=>{
     const btn=document.createElement('button');btn.className='opt';
     btn.innerHTML=`${String.fromCharCode(65+oi)}. ${opt}<span class="mark"></span>`;
@@ -745,6 +952,41 @@ QUIZ.forEach((item,qi)=>{
     });
     mo.observe(res, {attributes: true, attributeFilter: ['class']});
   }
+})();
+</script>
+<script>
+/* TSTEP: shared step-by-step player for explanations */
+(function(){
+function trim(s){return s.trim();}
+function lab(h){var m=h.match(/^\s*(?:<span[^>]*>)?\s*<b>([^<]{1,60})<\/b>/i);return m?m[1].replace(/[.:\s]+$/,''):'';}
+function build(html){
+  var parts=html.split(/(?:<br\s*\/?>\s*){2,}/i).map(trim).filter(Boolean);
+  if(parts.length<3) parts=html.split(/<br\s*\/?>/i).map(trim).filter(Boolean);
+  if(parts.length<2) return null;
+  var head=parts[0], steps=parts.slice(1), cur=1, N=steps.length;
+  var root=document.createElement('div'); root.className='stepper tstep';
+  root.innerHTML='<div class="thead">'+head+'</div><div class="sbar"><span class="tlab"></span><span>Step <b class="tn">1</b> of '+N+'</span></div><div class="tblocks"></div><div class="nav"><button class="bk" type="button">← Back</button><button class="nx" type="button">Next →</button><button class="rs" type="button">Show all</button></div>';
+  var box=root.querySelector('.tblocks');
+  var els=steps.map(function(h){var d=document.createElement('div');d.className='tb';d.innerHTML=h;box.appendChild(d);return d;});
+  var bk=root.querySelector('.bk'),nx=root.querySelector('.nx'),rs=root.querySelector('.rs'),tn=root.querySelector('.tn'),tl=root.querySelector('.tlab');
+  function render(){
+    els.forEach(function(d,i){d.className='tb'+(i<cur?' on':'')+(i===cur-1?' cur':'');});
+    tn.textContent=cur; tl.textContent=lab(steps[cur-1])||'';
+    bk.disabled=cur<=1; nx.disabled=cur>=N; rs.style.display=cur>=N?'none':'';
+  }
+  bk.onclick=function(){if(cur>1){cur--;render();}};
+  nx.onclick=function(){if(cur<N){cur++;render();}};
+  rs.onclick=function(){cur=N;render();};
+  render(); return root;
+}
+window.buildTextStepper=build;
+window.addEventListener('load',function(){
+  Array.prototype.forEach.call(document.querySelectorAll('.exp'),function(e){
+    if(e.querySelector('.stepper')||e.getAttribute('data-ts'))return;
+    e.setAttribute('data-ts','1');
+    var s=build(e.innerHTML); if(s){e.innerHTML='';e.appendChild(s);}
+  });
+});
 })();
 </script>
 </body></html>

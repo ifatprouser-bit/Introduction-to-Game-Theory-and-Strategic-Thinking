@@ -1,27 +1,13 @@
-Title: Day 5 — Dominance-solvable, and the counting trap
+Title: Day 5 — Dominance-solvable games: one cell left means one equilibrium
 Voices: NOA = Heart, TOM = Fenrir
 Output: Day-05-solvable.mp3
 
-NOA: Sometimes the cutting ends with exactly one cell left. The course has a name for that. Dominance-solvable.
-
-TOM: And that surviving cell is the equilibrium.
-
-NOA: That cell is the equilibrium. And here is the part the exam loves. It is the only one. Not the only pure one. The only one, full stop. There is no mixed equilibrium hiding somewhere else in the grid.
-
-TOM: Why not? I keep hearing that every game has one.
-
-NOA: Every game has at least one. That is Nash's theorem, and it is true. But a mixture has to be built out of moves you would actually use, and every other move here was thrown out for being hopeless. There is simply nothing left to mix.
-
-TOM: So when the question says how many equilibria, pure or mixed, the answer is just the one.
-
-NOA: Just the one. And that phrase, pure or mixed, is the trap itself. It whispers to you that a mixed one must be lurking somewhere, so people reach for a bigger answer.
-
-TOM: Where else does this same chain turn up?
-
-NOA: The guessing game you played in the first week, where everyone picks a number and you aim at a fraction of the average. The same reasoning runs there, and it walks all the way down to the smallest number allowed.
-
-TOM: Same idea, different clothes.
-
-NOA: And look at the two crossing lines on the page. That is the smooth version of the firms' story, where quantity can be anything at all. The point where those lines meet is the very same cell the cutting left behind.
-
-TOM: Different road, same destination.
+NOA: Let's talk about what it means when the cutting leaves you with a single cell. The course has a name for that kind of game. Dominance-solvable.
+TOM: So the grid shrinks all the way down to one cell.
+NOA: Down to one cell. And that cell is an equilibrium. But here is the part the exam loves. It is the only equilibrium. Not the only pure one. The only one at all.
+TOM: Wait. I keep hearing that every game has a mixed one hiding somewhere.
+NOA: Every game has at least one equilibrium, that is Nash's theorem, and here that one is the surviving cell. A mixed strategy is a recipe made out of moves you are willing to play. Think of a cook who can only use what is still in the kitchen. Every move we cut lost no matter what the other side did, so it is gone. There is nothing left to mix with.
+TOM: So an empty pantry means no recipe.
+NOA: Exactly. Now look at the warning box on the page, the one about the trap. When a question asks how many equilibria, pure or mixed, those two words whisper that a mixed one must be lurking somewhere. They are bait.
+TOM: So I check one thing first. Does the cutting end in a single cell? If yes, I answer one, and I stop.
+NOA: Answer one, and stop. Even if the words pure or mixed make you nervous.
