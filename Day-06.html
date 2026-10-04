@@ -28,6 +28,8 @@ audio{width:100%;margin-top:6px;}
 .takeaway .tk-gen{margin:10px 0 0;padding-top:10px;border-top:1px dashed var(--line);}
 .sub{font-size:15px;font-weight:800;color:var(--brand-d);margin:20px 0 6px;}
 .p{font-size:16px;margin:0 0 12px;}
+ul.pl,ol.pl{font-size:16px;margin:-4px 0 14px;padding-left:24px;} ul.pl li,ol.pl li{margin:5px 0;}
+.warnbox ul,.reveal ul,.rule ul,.rule ol,.cap ul{margin:8px 0 14px;padding-left:22px;text-align:left;} .warnbox li,.reveal li,.rule li,.cap li{margin:4px 0;}
 .partlab{font-size:15px;font-weight:800;color:var(--brand);margin:0 0 6px;}
 .rule{background:var(--brand-soft);border-radius:11px;padding:12px 16px;font-weight:600;color:var(--brand-d);margin:16px 0;}
 .question{background:#f6f4fc;border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:10px;padding:14px 16px;font-size:15.5px;}
@@ -125,10 +127,11 @@ NOA: You are mixing so you cannot be read. Hold onto that line and the rest of t
 -->
 <audio controls preload="none" src="Day-06-intro.mp3"></audio>
 <div class="takeaway"><ul>
-<li><b>Zero-sum game</b>: whatever one player gains, the other loses. It is written with <i>one</i> number per cell: player 1's payoff. Player 1 wants it high, player 2 wants it low.</li>
-<li><b>Mixed strategy</b>: you choose at random, with fixed proportions. The opposite is a <b>pure strategy</b>: you always pick the same action.</li>
-<li><b>The indifference rule</b>: your best mixture is the one that leaves your <i>opponent</i> <b>indifferent</b>. Indifferent means both of his choices pay him the same on average. He has no reason to prefer either one, so he has nothing to use against you.</li>
-<li><b>Nash equilibrium</b>: a pair of choices where neither player wants to change. <b>Value of the game</b>: the payoff that comes out of that equilibrium. In a zero-sum game the value is the same number in every Nash equilibrium.</li>
+<li><b>Zero-sum game</b>: what one player gains, the other loses.</li>
+<li><b>Mixed strategy</b>: you choose at random, in fixed proportions. (A <b>pure strategy</b> = always the same action.)</li>
+<li><b>The indifference rule</b>: your best mixture leaves your <i>opponent</i> <b>indifferent</b>.</li>
+<li><b>Nash equilibrium</b>: a pair of choices where neither player wants to change.</li>
+<li><b>Value of the game</b>: the payoff that equilibrium gives. In a zero-sum game it is the same in every Nash equilibrium.</li>
 </ul>
 <p class="tk-gen">One line to hold onto: <b>you don't mix to win. You mix so you can't be read.</b></p></div></div>
 
@@ -149,32 +152,30 @@ NOA: And that is the whole problem. There is no resting place. If your opponent 
 -->
 <div class="secaudio"><span class="salab">&#127911; Listen to this section</span><audio controls preload="none" src="Day-06-zerosum.mp3"></audio></div>
 
-<p class="p">Some games are pure conflict. There is a fixed pie. Every crumb you take is a crumb the other person loses. Poker between two players. A penalty kick. Rock-paper-scissors. The course calls these <b>zero-sum games</b>.</p>
-
-<p class="p">The two payoffs always add to zero, so writing both is a waste of ink. The course uses a shorthand instead: <b>one number per cell, and that number is player 1's payoff.</b> Player 2's payoff is that same number with a minus sign.</p>
-
-<p class="p">Every zero-sum question on every past exam uses this shorthand. If you see a matrix with a single number in each cell, this is what you're looking at.</p>
-
-<div class="rule">Player 1 (the rows) wants the number <b>high</b>. Player 2 (the columns) wants the same number <b>low</b>. One number, two opposite goals.</div>
+<p class="p">Pure conflict: a fixed pie. What you gain, the other player loses. For example:</p>
+<ul class="pl"><li>Poker between two players</li><li>A penalty kick</li><li>Rock-paper-scissors</li></ul>
+<p class="p">How the course writes these <b>zero-sum games</b>:</p>
+<ul class="pl"><li>One number per cell: <b>player 1's payoff</b></li><li>Player 2's payoff: the same number with a minus sign</li><li>Player 1 (rows) wants it <b>high</b>. Player 2 (columns) wants it <b>low</b></li><li>Every past exam uses this form</li></ul>
 
 <p class="partlab">The two forms, side by side</p>
-<p class="p">Vizzini's battle of wits from <i>The Princess Bride</i>. Westley secretly poisons one goblet. Vizzini then picks a goblet to drink. Vizzini wants to guess right. Westley wants him to guess wrong. Here is the game written the long way:</p>
+<p class="p">Vizzini's battle of wits (<i>The Princess Bride</i>):</p>
+<ul class="pl"><li>Westley secretly poisons one goblet</li><li>Vizzini picks a goblet to drink</li><li>Vizzini wants to guess right. Westley wants him to guess wrong</li></ul>
+<p class="p">The long form:</p>
 <div class="tscroll">
 <table class="dtable">
 <tr><th></th><th>Westley poisons<br>his own goblet</th><th>Westley poisons<br>Vizzini's goblet</th></tr>
 <tr><td class="lab">Vizzini drinks<br>from his own</td><td>1, &nbsp;&minus;1</td><td>&minus;1, &nbsp;1</td></tr>
 <tr><td class="lab">Vizzini drinks<br>from Westley's</td><td>&minus;1, &nbsp;1</td><td>1, &nbsp;&minus;1</td></tr>
 </table></div>
-<p class="p">And the same game in one-number form, with only Vizzini's payoff:</p>
+<p class="p">The short form, Vizzini's payoff only:</p>
 <div class="tscroll">
 <table class="dtable">
 <tr><th></th><th>Poisons his own</th><th>Poisons Vizzini's</th></tr>
 <tr><td class="lab">Drinks from his own</td><td>1</td><td>&minus;1</td></tr>
 <tr><td class="lab">Drinks from Westley's</td><td>&minus;1</td><td>1</td></tr>
 </table></div>
-<div class="cap">The second number never told you anything new. It was always the first one with a minus sign.</div>
 
-<p class="p">Now look for a stable pair of choices, a Nash equilibrium. There isn't one. Whatever cell you point at, one of the two players wants to move. That's the "endless circle of logic" Vizzini talks himself into. The only way out is to stop being predictable.</p>
+<p class="p">Is there a Nash equilibrium? No. Whatever cell you point at, one player wants to move: Vizzini's "endless circle of logic". The only way out is to stop being predictable.</p>
 
 <div class="rule">You need randomness exactly when <b>it hurts you if your opponent sees your choice before he answers.</b></div>
 </div>
@@ -202,21 +203,21 @@ NOA: The try-it problem. Getting better at defending one side can make the goali
 -->
 <div class="secaudio"><span class="salab">&#127911; Listen to this section</span><audio controls preload="none" src="Day-06-indifference.mp3"></audio></div>
 
-<p class="p">So you must mix. But in what proportions? Half and half? That feels fair, and it is usually wrong.</p>
+<p class="p">So you must mix. In what proportions? Half and half feels fair, and it is usually wrong. Why:</p>
 
-<p class="p">Here is the idea. Suppose your mixture pays your opponent more when he goes left than when he goes right. Then he will always go left. You have handed him a free advantage, and he keeps it for the rest of the game. The only mixture he cannot use against you is the one where <b>he gets exactly the same average payoff whichever action he picks</b>. He is then indifferent. He has no reason to prefer anything, and no way to read you.</p>
+<ul class="pl"><li>If your mixture pays your opponent more on one side, he always goes there</li><li>That is a free advantage for him, for the rest of the game</li><li>Only one mixture gives him nothing to use: both his choices pay him the <b>same on average</b>. He is <b>indifferent</b></li></ul>
 
-<div class="rule">You find <i>your own</i> mixture by making the <b>opponent</b> indifferent. Set his two <b>expected payoffs</b> (his two average payoffs) equal to each other. Then solve for your proportions.</div>
+<div class="rule">The method: set the <b>opponent's</b> two <b>expected payoffs</b> (average payoffs) equal. Then solve for <i>your own</i> proportions.</div>
 
 <p class="partlab">The exam's data</p>
-<p class="p">The penalty-kick game from Presentation 5. Each number is the kicker's chance of scoring, in percent. The kicker picks the row and wants it high. The goalie picks the column and wants it low. The right side is this kicker's stronger side.</p>
+<p class="p">The penalty-kick game from Presentation 5:</p>
+<ul class="pl"><li>Each number = the kicker's chance of scoring, in %</li><li>Kicker = rows (wants it high). Goalie = columns (wants it low)</li><li>Right is the kicker's stronger side</li></ul>
 <div class="tscroll">
 <table class="dtable">
 <tr><th></th><th>Goalie dives Left</th><th>Goalie dives Right</th></tr>
 <tr><td class="lab">Kicker goes Left</td><td>58</td><td>95</td></tr>
 <tr><td class="lab">Kicker goes Right</td><td>93</td><td>70</td></tr>
 </table></div>
-<p class="given">First check that no pair of pure strategies is stable. Whatever cell you pick, one player wants to move. So mixing is needed.</p>
 
 <div class="svg-wrap">
 <svg viewBox="0 0 560 250" role="img" aria-label="Two straight lines crossing. One line shows the kicker's scoring chance when the goalie dives left, falling from ninety-three down to fifty-eight. The other shows the chance when the goalie dives right, rising from seventy up to ninety-five. They cross a little before forty percent, at a height of about eighty.">
@@ -259,20 +260,20 @@ NOA: The try-it problem. Getting better at defending one side can make the goali
     <text x="290" y="245" text-anchor="middle">how often the kicker aims left</text>
   </g>
 </svg>
-<div class="cap">Two straight lines: the kicker's scoring chance against each of the goalie's two choices. Anywhere except the crossing, one line sits below the other. The goalie just picks that one. Only where they meet does the goalie's choice stop mattering.</div>
+<div class="cap"><ul><li>Each line = the kicker's scoring chance against one goalie choice</li><li>Away from the crossing, the goalie picks the lower line</li><li>At the crossing, his choice stops mattering</li></ul></div>
 </div>
 
 <p class="partlab">Worked example</p>
 <div class="question">Use the penalty-kick table above. How often should the kicker aim left, and how often should the goalie dive left? What scoring rate does the kicker get?</div>
 <div id="pkStepper"></div>
 
-<div class="warnbox"><b>Notice what just happened.</b> The kicker's left foot is his <i>weaker</i> side: 58 against 93 when the goalie dives left. And he still uses it more than a third of the time. Not because it is good, but because never using it would make him easy to read.</div>
+<div class="warnbox"><b>Notice what just happened.</b> The kicker's left foot is his <i>weaker</i> side (58 against 93), and he still uses it more than a third of the time. Not because it is good: never using it would make him easy to read.</div>
 
-<div class="tryq"><div class="q">Suppose the goalie trains hard and gets better at defending his right. The bottom-right number falls from 70 to 60. The kicker now scores less often when they both go right. Everything else stays the same.<br><br>Will the goalie now dive <b>right</b> more often, since he's better at it?</div>
+<div class="tryq"><div class="q">The goalie gets better at defending his right: the bottom-right number falls from 70 to 60. Everything else stays the same.<br><br>Will the goalie now dive <b>right</b> more often, since he's better at it?</div>
 <button class="reveal-btn" onclick="this.nextElementSibling.classList.add('show');this.disabled=true;">Reveal answer</button>
-<div class="reveal"><b>No, the opposite.</b> The goalie dives <b>left</b> more often, going from 41.7% to 50%.<br><br>Why: getting better at the right side makes the kicker avoid the right. The kicker shifts left, from 38.3% up to 47.1%. The goalie follows him there. The value of the game drops from 79.6 to 76.5, so the goalie is really better off. He just gets there by using his improved side <i>less</i>.<br><br>The slides put it in one line: <i>becoming better at something may make you use it less often.</i> This is the surprising result of the whole lecture. It is exactly the kind of thing a concept question likes to ask.</div></div>
+<div class="reveal"><b>No, the opposite.</b><ul><li>Better at the right, so the kicker avoids the right: he aims left 38.3% &rarr; 47.1%</li><li>The goalie follows him: dives left 41.7% &rarr; 50%</li><li>The value drops 79.6 &rarr; 76.5, so the goalie <i>is</i> better off. He just uses his improved side <i>less</i></li></ul><br>The slides: <i>becoming better at something may make you use it less often.</i> A favourite concept question.</div></div>
 
-<div class="warnbox"><b>One exception: when you should NOT mix.</b> Mixing protects you from being read. But it cannot punish your opponent's mistake. So if you <i>know</i> your opponent has a habit (say, this kicker goes left too often), drop the mix. Just dive left, every time.<br><br>The risk: a clever opponent can fake a habit when the stakes are low, then switch when they are high. On the exam, the default is still to mix. Exploit only when the question tells you about a real, known bias.</div>
+<div class="warnbox"><b>One exception: when not to mix</b><ul><li>Mixing protects you from being read. It can't punish your opponent's mistake</li><li>If you <i>know</i> he has a habit (say, the kicker goes left too often), drop the mix: dive left every time</li><li>Risk: a clever opponent fakes a habit when stakes are low, then switches when they are high</li><li>On the exam: mix by default. Exploit only when the question names a real, known bias</li></ul></div>
 </div>
 
 <!-- ============ SECTION 3 ============ -->
@@ -292,20 +293,19 @@ NOA: And more than the minute. It is a wrong answer avoided, because a mixture c
 -->
 <div class="secaudio"><span class="salab">&#127911; Listen to this section</span><audio controls preload="none" src="Day-06-pure.mp3"></audio></div>
 
-<p class="p">Here is the trap. Once you know the indifference method, it is tempting to see the words "zero-sum" and start writing equations at once. Sometimes there is nothing to solve.</p>
-
-<p class="p">Take the same penalty story, but now the kicker's left foot is really bad. Not just weaker: bad. One number changes the whole game:</p>
+<p class="p">The trap: you see "zero-sum" and start writing equations. Sometimes there is nothing to solve. Same penalty story, but now the kicker's left foot is <i>bad</i>, not just weaker:</p>
 <div class="tscroll">
 <table class="dtable">
 <tr><th></th><th>Goalie dives Left</th><th>Goalie dives Right</th></tr>
 <tr><td class="lab">Kicker goes Left</td><td class="dim">38</td><td class="dim">65</td></tr>
 <tr><td class="lab">Kicker goes Right</td><td>93</td><td class="hlcell">70 &nbsp;&#10003;</td></tr>
 </table></div>
-<div class="cap">Kicking right beats kicking left in <i>both</i> columns: 93 &gt; 38 and 70 &gt; 65. So the kicker always kicks right. Knowing that, the goalie picks the smaller number in that row: 70. The green cell is a stable pair, and no mixing is needed.</div>
+<div class="cap"><ul><li>Right beats left in <i>both</i> columns (93 &gt; 38, 70 &gt; 65), so the kicker always kicks right</li><li>The goalie picks the smaller number in that row: 70</li><li>The green cell is stable. No mixing</li></ul></div>
 
-<p class="p">The test is quick. Look at the highlighted number: it is the <b>smallest in its row</b> and the <b>largest in its column</b>. A cell that does both is called a <b>saddle point</b>. When one exists, that cell is the equilibrium and the value of the game is just that number. When no such cell exists, as in the 58/95/93/70 version, you must mix.</p>
-
-<div class="rule">Before you write a single equation, look for a <b>dominant strategy</b>: a row that beats the other row in every column. If you find one, the game is already solved.</div>
+<p class="p">The 70 is a <b>saddle point</b>: a cell that is both</p>
+<ul class="pl"><li>the <b>smallest in its row</b>, and</li><li>the <b>largest in its column</b></li></ul>
+<p class="p">If a saddle point exists, it is the equilibrium, and its number is the value of the game.</p>
+<div class="rule">Before you write a single equation:<ol><li>Look for a <b>dominant strategy</b> (a row that wins in every column)</li><li>Look for a <b>saddle point</b></li><li>Neither? Then mix</li></ol></div>
 
 <div class="tryq"><div class="q">A zero-sum game, one number per cell = player 1's payoff:<br><br>
 <table class="dtable" style="max-width:340px;margin:10px 0"><tr><th></th><th>Left</th><th>Right</th></tr>
@@ -318,7 +318,7 @@ Does this game need a mixed strategy? What is player 1's payoff in equilibrium?<
 
 <!-- ============ QUIZ ============ -->
 <div class="panel"><h3>&#128221; Quiz yourself <span class="scorechip" id="scoreChip">0 / 6</span></h3>
-<p class="note">Pick an option. The answer and the explanation appear only after you choose. One question carries a tag. That one is a real past-final question, word for word, from a paper you never sit as a mock. The other five are new. Their grids were built for this page. They copy no exam you will sit later and do not repeat the examples above.</p>
+<p class="note">Pick an option; the answer appears after you choose.</p><ul class="pl note"><li>One question (tagged) is a real past-final question, from a paper you never sit as a mock</li><li>The other five are new, built for this page</li></ul>
 <div id="quizBody"></div></div>
 
 <div class="navrow"><a class="navbtn" href="Day-05.html">&larr; Back</a><a class="navbtn primary" href="Day-08.html">Next &rarr;</a></div>
