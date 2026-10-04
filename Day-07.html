@@ -1584,7 +1584,7 @@ updateAnswered();
       if(msent || !res.classList.contains('show')) return;
       msent = true; mo.disconnect();
       var el = document.getElementById('resScore');
-      var raw = el ? el.textContent.trim() : '';
+      var raw = el ? el.textContent.trim() : ''; var mm = raw.match(/\d+\s*\/\s*\d+/); if(mm) raw = mm[0];
       var slug = raw.replace(/\s*\/\s*/, '-of-') || 'unknown';
       ev('mock-done/' + page + '/' + slug, 'Mock submitted: ' + page + ' ' + raw);
     });

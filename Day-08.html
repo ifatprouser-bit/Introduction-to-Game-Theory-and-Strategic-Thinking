@@ -440,11 +440,36 @@ NOA: That is the sentence to remember. And you should be able to find the crossi
 
 <div class="rule">Most likely to be tested, and it feels wrong: <b>punishment must not be <i>too</i> severe</b>. Honest mistakes happen. A threat that ends the relationship over one late delivery kills the relationship.</div>
 
-<p class="partlab">The discounting, in one picture</p>
+<p class="partlab">Worked example</p>
+<div class="question">The two mail-order firms play the pricing game <b>every year, forever</b>, with no end date. Payoffs as before: both at $80 gives 75 each per year; undercutting a co-operator gives you 120 that year; both at $70 gives 70 each. Your rival is a conditional co-operator. She holds $80 as long as you do, and she switches to $70 forever if you ever undercut her.<br><br>Above what annual interest rate <i>r</i> does undercutting become your best reply?</div>
+
+<div class="step"><div class="stepn">1</div><div class="stepbody"><div class="lab">What do you gain, and when?</div>
+This year's 75 becomes 120. Once, now.
+<br><span class="math">immediate gain = 120 − 75 = 45</span></div></div>
+
+<div class="step"><div class="stepn">2</div><div class="stepbody"><div class="lab">What do you lose, and when?</div>
+She charges $70 forever: 70 instead of 75 every future year.
+<br><span class="math">loss = 75 − 70 = 5, every year, starting next year</span></div></div>
+
+<div class="step"><div class="stepn">3</div><div class="stepbody"><div class="lab">Put the future stream into today's money.</div>
+A payment of <i>x</i> every year forever, starting next year (a <b>perpetuity</b>), is worth <span class="math">x / r</span> today. The only formula on this page.
+<br><span class="math">value today of the losses = 5 / r</span></div></div>
+
+<div class="step"><div class="stepn">4</div><div class="stepbody"><div class="lab">Set the two equal and solve for the tipping point.</div>
+<span class="math">45 = 5 / r &nbsp;→&nbsp; 45r = 5 &nbsp;→&nbsp; r = 5/45 = 1/9</span>
+<br><span class="math">1/9 = 0.1111… = 11.1%</span></div></div>
+
+<div class="ans">&#10003; <b>r = 1/9 ≈ 11.1%.</b><ul>
+<li>Below it: the stream is worth more. <b>Always cooperating is the best reply</b></li>
+<li>Above it: take the 45 and defect forever</li>
+<li>Check: at 5% the stream is worth 5/0.05 = 100 (above 45). At 20% only 25 (below 45)</li>
+</ul></div>
+
+<p class="partlab">The same example, in one picture</p>
 <ul class="pl">
-<li><b>Prize for cheating:</b> one lump sum, today</li>
-<li><b>Cost of cheating:</b> a small loss every round, forever</li>
-<li>A payment of <i>x</i> every year forever, starting next year (a <b>perpetuity</b>), is worth <span class="math">x / r</span> today. The only formula on this page</li>
+<li><b>Green line: the prize for cheating.</b> 45, once, today. It does not care about <i>r</i></li>
+<li><b>Purple curve: the cost of cheating.</b> 5 every year forever, worth 5/<i>r</i> today. It falls as <i>r</i> rises</li>
+<li>Where they cross is the 11.1% you just found</li>
 </ul>
 
 <div class="svg-wrap">
@@ -489,32 +514,9 @@ NOA: That is the sentence to remember. And you should be able to find the crossi
   </g>
   </g>
 </svg>
-<div class="cap"><ul><li>Green line: the prize for cheating. Fixed, whatever <i>r</i> is</li><li>Purple curve: the lost stream. Falls as <i>r</i> rises</li><li>The crossing is the tipping point</li></ul></div>
+<div class="cap">Left of the crossing the future is worth more: cooperate. Right of it: take the 45 and defect.</div>
 </div>
 
-<p class="partlab">Worked example</p>
-<div class="question">The two mail-order firms play the pricing game <b>every year, forever</b>, with no end date. Payoffs as before: both at $80 gives 75 each per year; undercutting a co-operator gives you 120 that year; both at $70 gives 70 each. Your rival is a conditional co-operator. She holds $80 as long as you do, and she switches to $70 forever if you ever undercut her.<br><br>Above what annual interest rate <i>r</i> does undercutting become your best reply?</div>
-
-<div class="step"><div class="stepn">1</div><div class="stepbody"><div class="lab">What do you gain, and when?</div>
-This year's 75 becomes 120. Once, now.
-<br><span class="math">immediate gain = 120 − 75 = 45</span></div></div>
-
-<div class="step"><div class="stepn">2</div><div class="stepbody"><div class="lab">What do you lose, and when?</div>
-She charges $70 forever: 70 instead of 75 every future year.
-<br><span class="math">loss = 75 − 70 = 5, every year, starting next year</span></div></div>
-
-<div class="step"><div class="stepn">3</div><div class="stepbody"><div class="lab">Put the future stream into today's money.</div>
-<span class="math">value today of the losses = 5 / r</span></div></div>
-
-<div class="step"><div class="stepn">4</div><div class="stepbody"><div class="lab">Set the two equal and solve for the tipping point.</div>
-<span class="math">45 = 5 / r &nbsp;→&nbsp; 45r = 5 &nbsp;→&nbsp; r = 5/45 = 1/9</span>
-<br><span class="math">1/9 = 0.1111… = 11.1%</span></div></div>
-
-<div class="ans">&#10003; <b>r = 1/9 ≈ 11.1%.</b><ul>
-<li>Below it: the stream is worth more. <b>Always cooperating is the best reply</b></li>
-<li>Above it: take the 45 and defect forever</li>
-<li>Check: at 5% the stream is worth 5/0.05 = 100 (above 45). At 20% only 25 (below 45)</li>
-</ul></div>
 
 <div class="tryq"><div class="q">A different pair of firms. Holding the agreed price gives each 100 per year; undercutting a co-operator gives 130 that year; if both cut, each gets 90 per year. Same conditional co-operator, and again the game never ends.<br><br>What is the highest interest rate at which cooperation is still your best reply?</div>
 <button class="reveal-btn" onclick="this.nextElementSibling.classList.add('show');this.disabled=true;">Reveal answer</button>
@@ -539,8 +541,8 @@ She charges $70 forever: 70 instead of 75 every future year.
 <div class="tscroll"><table class="dtable">
 <tr><th>Factor</th><th>Plain words</th><th>Effect</th></tr>
 <tr><td class="lab">1. Waste</td><td>How much both lose if both defect. Measure: (R &minus; P) / R</td><td>Big waste &rarr; <b>more</b> cooperation</td></tr>
-<tr><td class="lab">2. Risk</td><td>How much worse it is to cooperate alone (S) than to defect too (P)</td><td>Big risk &rarr; <b>less</b> cooperation</td></tr>
-<tr><td class="lab">3. Temptation</td><td>How much you gain by cheating (T &minus; R)</td><td>Tiny effect only</td></tr>
+<tr><td class="lab">2. Risk</td><td>How much you lose by cooperating alone (S) instead of defecting too (P). Measure: (P &minus; S) / P</td><td>Big risk &rarr; <b>less</b> cooperation</td></tr>
+<tr><td class="lab">3. Temptation</td><td>How much you gain by cheating. Measure: (T &minus; R) / T</td><td>Tiny effect only</td></tr>
 </table></div>
 <div class="cap">R = both cooperate &middot; P = both defect &middot; S = you cooperate alone (the &ldquo;sucker&rdquo;) &middot; T = you cheat alone.</div>
 
@@ -555,17 +557,27 @@ She charges $70 forever: 70 instead of 75 every future year.
 <tr><td class="lab">Defect</td><td>90, 12</td><td>15, 15</td></tr></table>
 In which game would you expect more cooperation in the lab? Check both factors before you answer.</div>
 <button class="reveal-btn" onclick="this.nextElementSibling.classList.add('show');this.disabled=true;">Reveal answer</button>
-<div class="reveal"><b>Game B.</b> Both factors point the same way.<ul>
-<li><b>Waste:</b> A loses (60 &minus; 55)/60 &asymp; 8%. B loses (60 &minus; 15)/60 = 75%. Big waste in B &rarr; more cooperation</li>
-<li><b>Risk:</b> cooperating alone drops you 55 &rarr; 10 in A (very risky), 15 &rarr; 12 in B (almost none). Low risk in B &rarr; more cooperation</li>
-<li><b>Temptation:</b> the same in both (90 &minus; 60 = 30), so it decides nothing</li>
-</ul><b>Watch out:</b> if the two factors point in <i>opposite</i> directions, you cannot say which game wins. The professor said so when he went over the homework.</div></div>
+<div class="reveal"><b>Game B.</b> Both factors point the same way.
+<p style="margin:10px 0 4px"><b>Step 1. Read the four letters from each matrix</b> (row player&rsquo;s payoff)</p>
+<table class="dtable" style="max-width:420px;margin:4px 0 12px">
+<tr><th></th><th>R<br><span style="font-weight:400">both cooperate</span></th><th>T<br><span style="font-weight:400">you cheat alone</span></th><th>S<br><span style="font-weight:400">you cooperate alone</span></th><th>P<br><span style="font-weight:400">both defect</span></th></tr>
+<tr><td class="lab">Game A</td><td>60</td><td>90</td><td>10</td><td>55</td></tr>
+<tr><td class="lab">Game B</td><td>60</td><td>90</td><td>12</td><td>15</td></tr>
+</table>
+<p style="margin:10px 0 4px"><b>Step 2. Formula &rarr; numbers &rarr; result</b></p>
+<div class="tscroll"><table class="dtable" style="margin:4px 0 12px">
+<tr><th>Factor</th><th>Formula</th><th>Game A</th><th>Game B</th><th>So&hellip;</th></tr>
+<tr><td class="lab">Waste</td><td><span class="math">(R &minus; P) / R</span></td><td>(60 &minus; 55) / 60<br>&asymp; <b>8%</b></td><td>(60 &minus; 15) / 60<br>= <b>75%</b></td><td>Big waste in B &rarr; <b>more</b> cooperation in B</td></tr>
+<tr><td class="lab">Risk</td><td><span class="math">(P &minus; S) / P</span></td><td>(55 &minus; 10) / 55<br>&asymp; <b>82%</b></td><td>(15 &minus; 12) / 15<br>= <b>20%</b></td><td>Low risk in B &rarr; <b>more</b> cooperation in B</td></tr>
+<tr><td class="lab">Temptation</td><td><span class="math">(T &minus; R) / T</span></td><td>(90 &minus; 60) / 90<br>&asymp; <b>33%</b></td><td>(90 &minus; 60) / 90<br>&asymp; <b>33%</b></td><td>Same in both. Decides nothing</td></tr>
+</table></div>
+<b>Watch out:</b> if waste and risk point in <i>opposite</i> directions, you cannot say which game wins. The professor said so when he went over the homework.</div></div>
 </div>
 
 <!-- ============ QUIZ ============ -->
 <div class="panel"><h3>&#128221; Quiz yourself <span class="scorechip" id="scoreChip">0 / 6</span></h3>
 <p class="note">Pick an option. The answer appears after you choose.</p>
-<ul class="pl"><li>One question is from a real past final (a paper you never sit as a mock). Five are fresh</li><li>No scenario or round count repeats the examples above</li><li>Each is a calculation in words: add the rounds up, don't match the wording to a shape you remember</li></ul>
+<ul class="pl"><li>All six are fresh. Real past-final questions stay on the mock-exam pages, so you meet them cold</li><li>No scenario or round count repeats the examples above</li><li>Each is a calculation in words: add the rounds up, don't match the wording to a shape you remember</li></ul>
 <div id="quizBody"></div></div>
 
 <div class="navrow"><a class="navbtn" href="Day-06.html">&larr; Back</a><a class="navbtn primary" href="Day-09.html">Next &rarr;</a></div>
@@ -647,15 +659,14 @@ function buildRoundsStepper(cfg){
 var TFT=function(r,o){return r===1?'C':o[r-2];};
 var MAIL={CC:75,DC:120,CD:20,DD:70};
 var CD_WORDS={C:'Cooperate',D:'Defect'};
-var ANIM_Q1={rounds:100,unit:'Round',words:CD_WORDS,names:['Player 1','Player 2'],dir:'back',
- lines:[{label:'',me:'D'.repeat(100),her:'D'.repeat(100)}],
+var ANIM_Q1={rounds:20,unit:'Round',words:CD_WORDS,names:['Player 1','Player 2'],dir:'back',
+ lines:[{label:'',me:'D'.repeat(20),her:'D'.repeat(20)}],
  steps:[
-  {reveal:[100],focus:[100],text:"Start at the <b>last</b> round, round 100. There is no round 101, so nothing you do here can be punished later.<br>Round 100 is a one-shot prisoner's dilemma. Defect <b>strictly dominates</b>: it pays more whatever the other player does. <b>Both defect.</b>"},
-  {reveal:[99],focus:[99],text:"Step back to round 99. Round 100 is already decided: both defect, whatever happens now.<br>So cooperating in round 99 buys you nothing later. Round 99 is a one-shot dilemma too. <b>Both defect.</b>"},
-  {reveal:[98],focus:[98],text:"Round 98. Ask the same question: can my move here change anything later?<br>No. Rounds 99 and 100 are already fixed. <b>Both defect.</b>"},
-  {reveal:[[4,97]],focus:[[4,97]],text:"The same step repeats, one round at a time: 97, then 96, then 95, and on down to round 4.<br>Each time the future is already fixed, so each round is a one-shot dilemma. <b>Both defect.</b>"},
-  {reveal:[[1,3]],focus:[[1,3]],text:"Rounds 3, 2 and 1 fall the same way. The argument has reached the very first round. <b>Every round says defect.</b>"}],
- finalMsg:"<b>Defect in all rounds.</b> This is the unique backward-induction answer.<br><b>The rule in one line:</b> with a known last round, solve the last round first, then step back. Every round becomes a one-shot dilemma.<br><br><b>Why the others fail:</b><br>&bull; \"Defect in the final round only\" is where the reasoning <i>starts</i>, not where it stops.<br>&bull; \"Cooperate every round\" is not stable (not a Nash equilibrium). Either player gains by defecting in round 100.<br>&bull; Randomising never helps, because defect strictly dominates in every round.<br>&bull; The interest rate only matters in a game that <i>never ends</i>. With a known end date it changes nothing.<br><br><i>The stem and the options are printed exactly as on the paper. The answer matches the published 2025 A solution. You never sit 2025 A as a mock, so meeting it now costs you nothing.</i>"};
+  {reveal:[20],focus:[20],text:"The question asks about round 1, but you cannot start there. Start at the <b>last</b> round, round 20. There is no round 21, so nothing you do here can be punished later.<br>Round 20 is a one-shot prisoner's dilemma. Defect <b>strictly dominates</b>. <b>Both defect.</b>"},
+  {reveal:[19],focus:[19],text:"Step back to round 19. Round 20 is already decided: both defect, whatever happens now.<br>So cooperating in round 19 buys you nothing later. <b>Both defect.</b>"},
+  {reveal:[[3,18]],focus:[[3,18]],text:"The same step repeats, one round at a time: 18, then 17, and on down to round 3.<br>Each time the future is already fixed, so each round is a one-shot dilemma. <b>Both defect.</b>"},
+  {reveal:[[1,2]],focus:[[1,2]],text:"Rounds 2 and 1 fall the same way. The argument has reached round 1, the round you were asked about. <b>Both defect.</b>"}],
+ finalMsg:"<b>Both defect in round 1.</b> Backward induction says defect in every round, and round 1 is no exception.<br><b>The rule in one line:</b> with a known last round, solve the last round first, then step back. Every round becomes a one-shot dilemma.<br><br><b>Why the others fail:</b><br>&bull; \"Nineteen rounds are left, so cooperate\" feels right, and lab players often do it. But the theory asks what rational players do, and the future is already fixed at defect.<br>&bull; \"Cooperate until round 19\" stops the reasoning one step in. Round 19 unravels just like round 20.<br>&bull; Randomising never helps, because defect strictly dominates in every round.<br>&bull; The interest rate only matters in a game that <i>never ends</i>. With a known end date it changes nothing."};
 
 var VAN_RULE=function(r,p){return p.filter(function(m){return m==='D';}).length>=2?'D':'C';};
 var ANIM_Q2={rounds:12,unit:'Week',show:[1,2,[3,10],11,12],words:{C:'High',D:'Undercut'},names:['You','Her'],pay:{CC:50,DC:85,CD:10,DD:30},
@@ -668,7 +679,7 @@ var ANIM_Q2={rounds:12,unit:'Week',show:[1,2,[3,10],11,12],words:{C:'High',D:'Un
   {reveal:[[3,10]],focus:[[3,10]],text:"Weeks 3 to 10. Nothing happens. Everyone stays high in both timelines: 8 &times; 50 = 400.<br>Tit-for-tat never moves first, so nothing ever starts a defection."},
   {reveal:[11],focus:[11],text:"Week 11. Still high everywhere: 50 each. The best reply is saving its second undercut for the very end."},
   {reveal:[12],focus:[12],text:"Week 12, the last week. Tit-for-tat copies her week-11 high price, so it stays high: 50.<br>The best reply undercuts again: 85. This is undercut number two, so her war would start in week 13. <b>There is no week 13. That undercut is free too.</b>"}],
- finalMsg:"<b>Tit-for-tat earns 600. The most you could earn is 670.</b> Tit-for-tat leaves 70 on the table: two free undercuts, each worth 85 instead of 50.<br><b>The rule in one line:</b> a defection is free when it cannot change what she does next. Count every free one her rule leaves.<br><br><b>The other options:</b><br>&bull; \"600 is already the most\": no. 600 is never undercutting at all.<br>&bull; \"Tit-for-tat earns 670\": 670 is the best reply's total. Tit-for-tat only copies her, and she was high in week 11.<br>&bull; \"635\": that is high in weeks 1 to 11, undercut in week 12: 11 &times; 50 + 85 = 635. The one-short answer, and not what tit-for-tat does either.<br>&bull; \"470\": that is undercutting every week: 85 + 85 + 10 &times; 30 = 470. She stays high in weeks 1 and 2, then undercuts from week 3.<br><br>Week 1 is not special. All 4,096 plans were checked: any one early undercut in weeks 1 to 11, plus week 12, reaches 670."};
+ finalMsg:"<b>Tit-for-tat earns 600. The most you could earn is 670.</b> Tit-for-tat leaves 70 on the table: two free undercuts, each worth 85 instead of 50.<br><b>The rule in one line:</b> a defection is free when it cannot change what she does next. Count every free one her rule leaves.<br><br><b>Read her rule carefully.</b> &ldquo;Undercut me twice&rdquo; means two undercuts <i>in total</i>, not two weeks in a row. So the first undercut can go in <i>any</i> week from 1 to 11: she forgives it. Only the second must wait for week 12, where no week 13 is left for her to punish you. Weeks 1 and 12 give 670. Weeks 11 and 12 give 670 too.<br><br><b>The other options:</b><br>&bull; \"600 is already the most\": no. 600 is never undercutting at all.<br>&bull; \"Tit-for-tat earns 670\": 670 is the best reply's total. Tit-for-tat only copies her, and she was high in week 11.<br>&bull; \"635\": that is high in weeks 1 to 11, undercut in week 12: 11 &times; 50 + 85 = 635. The one-short answer, and not what tit-for-tat does either.<br>&bull; \"470\": that is undercutting every week: 85 + 85 + 10 &times; 30 = 470. She stays high in weeks 1 and 2, then undercuts from week 3.<br><br><i>All 4,096 possible plans were checked: 670 is the most any plan can earn.</i>"};
 
 var PETROL_RULE=function(r,p){return r===1?'C':(r<=9?p[r-2]:'D');};
 var PETROL_BEST={label:'Best reply: undercut in weeks 9 to 12',me:'CCCCCCCCDDDD',her:PETROL_RULE,expect:510,tags:{9:'free: she copies your week-8 hold'}};
@@ -722,8 +733,8 @@ var ANIM_Q5={rounds:10,unit:'Round',show:[1,[2,9],10],words:CD_WORDS,names:['You
  finalMsg:"<b>Cooperate in rounds 1 to 9, defect in round 10: 795.</b> \"Defect in round 1 and round 10\" gives only 350. The round-1 defection buys 45 once, then costs eight rounds of war.<br><b>The rule in one line:</b> grim trigger forgives nothing, so only the last round is free.<br><br><b>The other three options all tie on 750:</b> cooperate every round is 10 &times; 75. Defect every round is 120 + 9 &times; 70. Tit-for-tat never defects here, so it is the same as cooperating. Do not memorise \"defect first and last\". Count the free defections the rule leaves."};
 
 const QUIZ = [
-{"src":"2025 A final","q":"In the finitely repeated Prisoner's Dilemma, which is played for 100 rounds, the backward induction solution suggests:",
- "opts":["Cooperate every round","Defect in the final round only","Defect in all rounds","Randomize between cooperation and defection","The answer depends on the interest rate"],"correct":2,
+{"q":"Two players play a prisoner's dilemma exactly 20 times, and both know when it ends. Both are rational, and each knows the other is rational. According to backward induction, what happens in <b>round 1</b>?",
+ "opts":["Both cooperate, because 19 rounds are still to come","Both cooperate until round 19, then defect","Each player randomises between cooperating and defecting","Both defect","It depends on the interest rate"],"correct":3,
  "anim":ANIM_Q1},
 
 {"q":"Two ice-cream vans work the same beach for <b>12 weeks</b>, and both know it is 12. Each week each van sets a high price (cooperate) or undercuts (defect). Your profit that week: both high = <b>50</b>; you undercut a high-price rival = <b>85</b>; you stay high while she undercuts = <b>10</b>; both undercut = <b>30</b>.<br><br>Her rule: <i>\"I keep my price high, and I forgive one week of undercutting. Once you have undercut me twice, I undercut for the rest of the game.\"</i><br><br>You decide to play <b>tit-for-tat</b>: high price in week 1, then copy whatever she did the week before. What does that earn you over the 12 weeks, and what was the most you could have earned?",
@@ -866,4 +877,94 @@ window.addEventListener('load',function(){
 });
 })();
 </script>
+<!-- ============ FORMULA SHEET (learn days only, not on mocks) ============ -->
+<style>
+#fsBtn{position:fixed;right:16px;bottom:16px;z-index:9998;background:#6b4ef0;color:#fff;border:0;border-radius:999px;padding:11px 18px;font:700 15px -apple-system,Segoe UI,Arial,sans-serif;box-shadow:0 4px 14px rgba(60,40,140,.28);cursor:pointer}
+#fsBtn:hover{background:#5638d8}
+#fsOv{position:fixed;inset:0;z-index:9999;background:rgba(25,20,45,.45);display:none;align-items:flex-start;justify-content:center;padding:16px;overflow-y:auto}
+#fsOv.open{display:flex}
+#fsPanel{background:#fff;color:#211c33;border-radius:14px;max-width:760px;width:100%;margin:8px auto 70px;padding:20px 22px 24px;font:15px/1.55 -apple-system,Segoe UI,Arial,sans-serif;box-shadow:0 10px 40px rgba(0,0,0,.25)}
+#fsPanel h2{margin:0;font-size:21px;color:#211c33}
+#fsPanel .fs-sub{color:#6f6886;font-size:13.5px;margin:4px 0 10px}
+#fsPanel h3{font-size:15px;color:#6b4ef0;margin:16px 0 5px;padding-top:10px;border-top:1px solid #ebe7f6}
+#fsPanel ul{margin:0;padding-left:20px}#fsPanel li{margin:3px 0}
+#fsPanel .fs-m{font-family:Consolas,Menlo,monospace;background:#f3f0fd;border:1px solid #e2dcf8;border-radius:6px;padding:1px 6px;white-space:nowrap;font-size:14px}
+#fsPanel .fs-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+#fsClose{background:#f1eff8;border:0;border-radius:8px;padding:6px 12px;font:700 14px -apple-system,Segoe UI,Arial,sans-serif;cursor:pointer;color:#211c33}
+#fsPanel .fs-warn{background:#fdf4e7;border:1px solid #f2dcb5;border-radius:8px;padding:8px 12px;font-size:13.5px;margin-top:10px}
+@media (max-width:600px){#fsPanel{padding:16px}#fsPanel .fs-m{white-space:normal}}
+@media print{#fsBtn,#fsOv{display:none!important}}
+</style>
+<button id="fsBtn" type="button" aria-haspopup="dialog" aria-controls="fsOv">&#931; Formulas</button>
+<div id="fsOv" role="dialog" aria-modal="true" aria-labelledby="fsTitle"><div id="fsPanel">
+<div class="fs-top"><div><h2 id="fsTitle">Formula sheet</h2><p class="fs-sub">The whole course on one page. A study aid only: the exam is closed book, so learn these by heart.</p></div><button id="fsClose" type="button">Close &#10005;</button></div>
+
+<h3>1. Sequential games (P2)</h3>
+<ul>
+<li><b>Backward induction:</b> solve the last node first. Replace it with its payoff pair. Walk back to the start</li>
+<li><b>Strategy</b> = a plan for <i>every</i> node you could reach, not just one move</li>
+<li>A tree that looks like a centipede is not always one. Only the payoffs decide</li>
+</ul>
+
+<h3>2. Prisoner's dilemma (P3)</h3>
+<ul>
+<li><b>R</b> both cooperate &middot; <b>T</b> you cheat alone &middot; <b>S</b> you cooperate alone &middot; <b>P</b> both defect. In a dilemma: <span class="fs-m">T &gt; R &gt; P &gt; S</span></li>
+<li><b>Two-tick test:</b> (1) both players have a dominant strategy, and (2) where they land is worse for both than another cell</li>
+<li><b>Known last round:</b> defect in every round (backward induction)</li>
+<li><b>No end date:</b> a payment of x every year forever is worth <span class="fs-m">x / r</span> today</li>
+<li><b>Tipping point:</b> <span class="fs-m">r* = (R &minus; P) / (T &minus; R)</span>. Below r*: cooperate. Above: defect</li>
+<li><b>Lab (Mengel 2018):</b> waste <span class="fs-m">(R &minus; P) / R</span> big &rarr; more cooperation &middot; risk <span class="fs-m">(P &minus; S) / P</span> big &rarr; less cooperation &middot; temptation <span class="fs-m">(T &minus; R) / T</span> small effect</li>
+<li>About 45% cooperate in round 1, falling about 2% per round</li>
+</ul>
+
+<h3>3. Nash equilibrium (P4)</h3>
+<ul>
+<li><b>Underline:</b> columns down for player 1 (first number), rows across for player 2 (second number). Two marks = pure Nash equilibrium</li>
+<li>Test is stability, not quality: &ldquo;would anyone move alone?&rdquo;</li>
+<li>&ldquo;Pure&rdquo; &rarr; zero is possible. &ldquo;Pure or mixed&rdquo; &rarr; every finite game has at least one</li>
+<li><b>Strictly dominated</b> = always worse. <b>Weakly</b> = never better, sometimes worse. Dominance-solvable &rarr; one unique equilibrium</li>
+<li><b>Cournot:</b> <span class="fs-m">P = a &minus; Q&#8321; &minus; Q&#8322;</span> &middot; profit <span class="fs-m">(P &minus; c) &times; Q</span></li>
+</ul>
+
+<h3>4. Mixed strategies and zero-sum (P5)</h3>
+<ul>
+<li>First check: a dominant strategy? A saddle point? Neither &rarr; mix</li>
+<li><b>Indifference:</b> make the <i>opponent's</i> two expected payoffs equal. Solve for <i>your</i> p</li>
+<li><b>Expected payoff</b> of a row: <span class="fs-m">q &times; (left) + (1 &minus; q) &times; (right)</span></li>
+<li><b>Chance of one cell:</b> <span class="fs-m">p &times; q</span>, or <span class="fs-m">p &times; (1 &minus; q)</span> when crossed</li>
+<li><b>Value</b> (player 1's payoff) = expected payoff of either of her rows</li>
+<li>Zero-sum: one number per cell. Player 2 gets minus that</li>
+</ul>
+
+<h3>5. The 2/3-average game (P1, P4)</h3>
+<ul>
+<li>Average of a uniform range: <span class="fs-m">(min + max) / 2</span></li>
+<li>Mixed crowd: <span class="fs-m">share&#8321; &times; avg&#8321; + share&#8322; &times; avg&#8322;</span>, then <span class="fs-m">&times; 2/3</span> once, at the end</li>
+<li>Nash equilibrium = <b>1</b></li>
+</ul>
+
+<h3>6. Credible strategies (P6)</h3>
+<ul>
+<li><b>Threat test:</b> &ldquo;would I really carry it out when the moment came?&rdquo;</li>
+<li>A move works only if made <b>before</b> the other side chooses, and <b>visible</b> to them</li>
+<li><b>8 devices:</b> contracts &middot; reputation &middot; cutting off communication &middot; burning bridges &middot; leaving the outcome beyond your control &middot; moving in small steps &middot; teamwork &middot; mandated negotiating agents</li>
+</ul>
+
+<h3>7. Lab numbers</h3>
+<ul>
+<li>Ultimatum: median offer about 40% (most common 50%; offers under 20% often rejected)</li>
+<li>Dictator: median about 25% &middot; Golden Balls: about 50% split</li>
+</ul>
+
+<div class="fs-warn"><b>Exam:</b> closed book, calculator allowed. This sheet is not on the mock days, so each mock tests your memory, like the real exam.</div>
+</div></div>
+<script>
+(function(){var b=document.getElementById('fsBtn'),o=document.getElementById('fsOv'),c=document.getElementById('fsClose');
+function op(){o.classList.add('open');c.focus();}function cl(){o.classList.remove('open');b.focus();}
+b.addEventListener('click',op);c.addEventListener('click',cl);
+o.addEventListener('click',function(e){if(e.target===o)cl();});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&o.classList.contains('open'))cl();});})();
+</script>
+<!-- ============ /FORMULA SHEET ============ -->
+
 </body></html>

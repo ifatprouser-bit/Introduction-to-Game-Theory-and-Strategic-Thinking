@@ -644,7 +644,7 @@ It has the win-lose look of matching pennies. Does it also have no pure equilibr
 
 <!-- ============ QUIZ ============ -->
 <div class="panel"><h3>&#128221; Quiz yourself <span class="scorechip" id="scoreChip">0 / 6</span></h3>
-<p class="note">Pick an option. The answer and the explanation appear only after you choose. One question is tagged. That one is copied word for word from the 2024 B paper, and that paper is not one of your timed mocks. The other five are fresh matrices, not the ones taught above.</p>
+<p class="note">Pick an option. The answer and the explanation appear only after you choose. All six are fresh, built only for this page. Real past-final questions stay on the mock-exam pages, so you meet them cold.</p>
 <div id="quizBody"></div></div>
 
 <div class="navrow"><a class="navbtn" href="Day-01.html">&larr; Back</a><a class="navbtn primary" href="Day-04.html">Next &rarr;</a></div>
@@ -857,9 +857,9 @@ const QUIZ = [
  "opts":["0","1","2","3","4"],"correct":2,
  "anim":{"rows": ["Top", "Bottom"], "cols": ["Left", "Right"], "cells": [[[3, 2], [5, 4]], [[3, 5], [2, 1]]], "noalive": true, "steps": [["cmp", "row", 1, 0, "So Bottom is not strictly dominated. You may not cross it out. It stays on the board."], ["ul", "col", 0, "This tie is the whole question."], ["ul", "col", 1], ["ul", "row", 0, "Player 2 now reads across each row."], ["ul", "row", 1, "Now look for cells with two underlines."], ["eq", [[0, 1], [1, 0]], "At (Bottom, Left) player 1 gains nothing by moving to Top: 3 = 3. So he has no reason to move."]], "finalMsg": "<b>2.</b> The stable cells are (Top, Right) and (Bottom, Left).<br><br><b>Why the other answers tempt:</b><br>&bull; 1: you read the 3 against 3 tie as a win for Top and deleted Bottom. Only <i>strictly</i> dominated strategies may be deleted.<br>&bull; 0: player 2's choices look like a matching pennies chase. But the tie lets player 1 sit still at (Bottom, Left).<br>&bull; 3: you also counted (Top, Left). Player 1 is content there, but player 2 would move to Right: 4 beats 2.<br>&bull; 4: you counted cells where <i>either</i> player is content, not both.<br><br><b>The rule:</b> strict dominance means always better. Weak dominance means never worse, sometimes better. A weakly dominated move can still sit inside a Nash equilibrium."}},
 
-{"src":"2024 B final","q":"Consider a two-player game where each player simultaneously chooses either action A or B. If both players choose A then both players get a payoff of 10. If both players choose B then both players get a payoff of 20. If one player chooses A and the opponent chooses B, then the player (who chose A) gets 25 and the opponent (who chose B) gets 7. What is true about this game?",
- "opts":["It is a zero-sum game","It is a sequential game","It is a chicken game","It is a prisoner's dilemma game","None of the other answers is correct"],"correct":3,
- "anim":{"rows": ["Action A", "Action B"], "cols": ["Action A", "Action B"], "cells": [[[10, 10], [25, 7]], [[7, 25], [20, 20]]], "noalive": true, "steps": [["hl", [[0, 1], [1, 0]], "First turn the words into a matrix. Rows: player 1. Columns: player 2. Player 1's payoff comes first.<br>When the two choices differ, the one who picks A gets 25 and the one who picks B gets 7. These are the two outlined cells."], ["cmp", "row", 1, 0, "Tick 1: does every player have a dominant strategy? Player 1 does."], ["cmp", "col", 1, 0, "Player 2 too, by symmetry. <b>Tick 1 passes.</b>"], ["eq", [[0, 0]], "Both play A, and both get 10."], ["both", 1, 1, 0, 0, "<b>Tick 2 passes.</b> Two ticks: a prisoner's dilemma."]], "finalMsg": "<b>It is a prisoner's dilemma game.</b> A is dominant for both players. They land on 10, 10. But (B, B) would give both of them 20.<br><br><b>Why the others fail:</b><br>&bull; Zero-sum: the cells add up to 20, 32, 32 and 40. One player's gain is not the other's loss.<br>&bull; Sequential: the stem says both choose at the same time.<br>&bull; Chicken: chicken has two stable cells, off the diagonal. This game has one.<br><br><b>Naming trap:</b> here A is the selfish move, even though it is listed first and sounds neutral. The labels \"cooperate\" and \"defect\" will not always be handed to you. Run the two ticks. Do not let the letters do your thinking."}},
+{"q":"Two fishing boats share a bay. Each season, at the same moment, each captain chooses <b>small nets</b> or <b>large nets</b>. If both use small nets, each earns 6. If both use large nets, the fish run out and each earns 3. If one uses large nets and the other small, the one with large nets earns 8 and the one with small nets earns 1. What is true about this game?",
+ "opts":["It is a zero-sum game","It is a chicken game","It is a prisoner's dilemma game","It is a sequential game","None of the other answers is correct"],"correct":2,
+ "anim":{"rows": ["Small nets", "Large nets"], "cols": ["Small nets", "Large nets"], "cells": [[[6, 6], [1, 8]], [[8, 1], [3, 3]]], "noalive": true, "steps": [["hl", [[0, 1], [1, 0]], "First turn the words into a matrix. Rows: captain 1. Columns: captain 2. Captain 1's payoff comes first.<br>When the choices differ, large nets get 8 and small nets get 1. These are the two outlined cells."], ["cmp", "row", 0, 1, "Tick 1: does every player have a dominant strategy? Captain 1 does: large nets pay more against both columns (8 &gt; 6 and 3 &gt; 1)."], ["cmp", "col", 0, 1, "Captain 2 too, by symmetry. <b>Tick 1 passes.</b>"], ["eq", [[1, 1]], "Both use large nets, and both get 3."], ["both", 0, 0, 1, 1, "But both small nets would give both of them 6. <b>Tick 2 passes.</b> Two ticks: a prisoner's dilemma."]], "finalMsg": "<b>It is a prisoner's dilemma game.</b> Large nets are dominant for both captains. They land on 3, 3. But small nets for both would give each of them 6.<br><br><b>Why the others fail:</b><br>&bull; Zero-sum: the cells add up to 12, 9, 9 and 6. One captain's gain is not the other's loss.<br>&bull; Chicken: chicken has two stable cells, off the diagonal. This game has one.<br>&bull; Sequential: the stem says both choose at the same moment.<br><br><b>Naming trap:</b> nobody called anything \"cooperate\" or \"defect\". Small nets is the cooperative move here. Run the two ticks. Do not wait for the labels."}},
 
 {"q":"Two lorry drivers meet on a narrow mountain road. Each can push on or give way. Which type of game is this? (Driver 1's payoff first.)"+MCHICK,
  "opts":["Chicken (hawk&ndash;dove)","Stag hunt","Battle of the Sexes","Prisoner's dilemma","Matching pennies"],"correct":0,
@@ -989,4 +989,94 @@ window.addEventListener('load',function(){
 });
 })();
 </script>
+<!-- ============ FORMULA SHEET (learn days only, not on mocks) ============ -->
+<style>
+#fsBtn{position:fixed;right:16px;bottom:16px;z-index:9998;background:#6b4ef0;color:#fff;border:0;border-radius:999px;padding:11px 18px;font:700 15px -apple-system,Segoe UI,Arial,sans-serif;box-shadow:0 4px 14px rgba(60,40,140,.28);cursor:pointer}
+#fsBtn:hover{background:#5638d8}
+#fsOv{position:fixed;inset:0;z-index:9999;background:rgba(25,20,45,.45);display:none;align-items:flex-start;justify-content:center;padding:16px;overflow-y:auto}
+#fsOv.open{display:flex}
+#fsPanel{background:#fff;color:#211c33;border-radius:14px;max-width:760px;width:100%;margin:8px auto 70px;padding:20px 22px 24px;font:15px/1.55 -apple-system,Segoe UI,Arial,sans-serif;box-shadow:0 10px 40px rgba(0,0,0,.25)}
+#fsPanel h2{margin:0;font-size:21px;color:#211c33}
+#fsPanel .fs-sub{color:#6f6886;font-size:13.5px;margin:4px 0 10px}
+#fsPanel h3{font-size:15px;color:#6b4ef0;margin:16px 0 5px;padding-top:10px;border-top:1px solid #ebe7f6}
+#fsPanel ul{margin:0;padding-left:20px}#fsPanel li{margin:3px 0}
+#fsPanel .fs-m{font-family:Consolas,Menlo,monospace;background:#f3f0fd;border:1px solid #e2dcf8;border-radius:6px;padding:1px 6px;white-space:nowrap;font-size:14px}
+#fsPanel .fs-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+#fsClose{background:#f1eff8;border:0;border-radius:8px;padding:6px 12px;font:700 14px -apple-system,Segoe UI,Arial,sans-serif;cursor:pointer;color:#211c33}
+#fsPanel .fs-warn{background:#fdf4e7;border:1px solid #f2dcb5;border-radius:8px;padding:8px 12px;font-size:13.5px;margin-top:10px}
+@media (max-width:600px){#fsPanel{padding:16px}#fsPanel .fs-m{white-space:normal}}
+@media print{#fsBtn,#fsOv{display:none!important}}
+</style>
+<button id="fsBtn" type="button" aria-haspopup="dialog" aria-controls="fsOv">&#931; Formulas</button>
+<div id="fsOv" role="dialog" aria-modal="true" aria-labelledby="fsTitle"><div id="fsPanel">
+<div class="fs-top"><div><h2 id="fsTitle">Formula sheet</h2><p class="fs-sub">The whole course on one page. A study aid only: the exam is closed book, so learn these by heart.</p></div><button id="fsClose" type="button">Close &#10005;</button></div>
+
+<h3>1. Sequential games (P2)</h3>
+<ul>
+<li><b>Backward induction:</b> solve the last node first. Replace it with its payoff pair. Walk back to the start</li>
+<li><b>Strategy</b> = a plan for <i>every</i> node you could reach, not just one move</li>
+<li>A tree that looks like a centipede is not always one. Only the payoffs decide</li>
+</ul>
+
+<h3>2. Prisoner's dilemma (P3)</h3>
+<ul>
+<li><b>R</b> both cooperate &middot; <b>T</b> you cheat alone &middot; <b>S</b> you cooperate alone &middot; <b>P</b> both defect. In a dilemma: <span class="fs-m">T &gt; R &gt; P &gt; S</span></li>
+<li><b>Two-tick test:</b> (1) both players have a dominant strategy, and (2) where they land is worse for both than another cell</li>
+<li><b>Known last round:</b> defect in every round (backward induction)</li>
+<li><b>No end date:</b> a payment of x every year forever is worth <span class="fs-m">x / r</span> today</li>
+<li><b>Tipping point:</b> <span class="fs-m">r* = (R &minus; P) / (T &minus; R)</span>. Below r*: cooperate. Above: defect</li>
+<li><b>Lab (Mengel 2018):</b> waste <span class="fs-m">(R &minus; P) / R</span> big &rarr; more cooperation &middot; risk <span class="fs-m">(P &minus; S) / P</span> big &rarr; less cooperation &middot; temptation <span class="fs-m">(T &minus; R) / T</span> small effect</li>
+<li>About 45% cooperate in round 1, falling about 2% per round</li>
+</ul>
+
+<h3>3. Nash equilibrium (P4)</h3>
+<ul>
+<li><b>Underline:</b> columns down for player 1 (first number), rows across for player 2 (second number). Two marks = pure Nash equilibrium</li>
+<li>Test is stability, not quality: &ldquo;would anyone move alone?&rdquo;</li>
+<li>&ldquo;Pure&rdquo; &rarr; zero is possible. &ldquo;Pure or mixed&rdquo; &rarr; every finite game has at least one</li>
+<li><b>Strictly dominated</b> = always worse. <b>Weakly</b> = never better, sometimes worse. Dominance-solvable &rarr; one unique equilibrium</li>
+<li><b>Cournot:</b> <span class="fs-m">P = a &minus; Q&#8321; &minus; Q&#8322;</span> &middot; profit <span class="fs-m">(P &minus; c) &times; Q</span></li>
+</ul>
+
+<h3>4. Mixed strategies and zero-sum (P5)</h3>
+<ul>
+<li>First check: a dominant strategy? A saddle point? Neither &rarr; mix</li>
+<li><b>Indifference:</b> make the <i>opponent's</i> two expected payoffs equal. Solve for <i>your</i> p</li>
+<li><b>Expected payoff</b> of a row: <span class="fs-m">q &times; (left) + (1 &minus; q) &times; (right)</span></li>
+<li><b>Chance of one cell:</b> <span class="fs-m">p &times; q</span>, or <span class="fs-m">p &times; (1 &minus; q)</span> when crossed</li>
+<li><b>Value</b> (player 1's payoff) = expected payoff of either of her rows</li>
+<li>Zero-sum: one number per cell. Player 2 gets minus that</li>
+</ul>
+
+<h3>5. The 2/3-average game (P1, P4)</h3>
+<ul>
+<li>Average of a uniform range: <span class="fs-m">(min + max) / 2</span></li>
+<li>Mixed crowd: <span class="fs-m">share&#8321; &times; avg&#8321; + share&#8322; &times; avg&#8322;</span>, then <span class="fs-m">&times; 2/3</span> once, at the end</li>
+<li>Nash equilibrium = <b>1</b></li>
+</ul>
+
+<h3>6. Credible strategies (P6)</h3>
+<ul>
+<li><b>Threat test:</b> &ldquo;would I really carry it out when the moment came?&rdquo;</li>
+<li>A move works only if made <b>before</b> the other side chooses, and <b>visible</b> to them</li>
+<li><b>8 devices:</b> contracts &middot; reputation &middot; cutting off communication &middot; burning bridges &middot; leaving the outcome beyond your control &middot; moving in small steps &middot; teamwork &middot; mandated negotiating agents</li>
+</ul>
+
+<h3>7. Lab numbers</h3>
+<ul>
+<li>Ultimatum: median offer about 40% (most common 50%; offers under 20% often rejected)</li>
+<li>Dictator: median about 25% &middot; Golden Balls: about 50% split</li>
+</ul>
+
+<div class="fs-warn"><b>Exam:</b> closed book, calculator allowed. This sheet is not on the mock days, so each mock tests your memory, like the real exam.</div>
+</div></div>
+<script>
+(function(){var b=document.getElementById('fsBtn'),o=document.getElementById('fsOv'),c=document.getElementById('fsClose');
+function op(){o.classList.add('open');c.focus();}function cl(){o.classList.remove('open');b.focus();}
+b.addEventListener('click',op);c.addEventListener('click',cl);
+o.addEventListener('click',function(e){if(e.target===o)cl();});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&o.classList.contains('open'))cl();});})();
+</script>
+<!-- ============ /FORMULA SHEET ============ -->
+
 </body></html>

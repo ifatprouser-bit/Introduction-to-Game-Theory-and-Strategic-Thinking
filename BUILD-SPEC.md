@@ -67,6 +67,21 @@ Copy `Day-06.html` and follow it exactly:
 7. **Quiz** — `📝 Quiz yourself` panel, 5–6 questions, rendered by the JS at the bottom of Day-06.html. Copy that script.
 8. **Nav row** — back / next.
 
+### Typography and accessibility (added 29 Sep 2026, Ifat's request)
+
+`Day-02.html` carries the current type style — for CSS tokens, copy it, not Day-06. When touching an older page, bring it up to this standard.
+
+- **No all-caps anywhere.** Labels (`.partlab`, `.crumb`, `.salab`, `.qnum`, tags, chips) are sentence case. Hierarchy comes from size, weight and the brand purple — never from `text-transform:uppercase` or letter-spacing.
+- **Body text 16px** (`.p`), line-height 1.62. Steps, walk lists and the question box at 15.5–16px.
+- **Labels 14–15px bold**, small tags and chips never below 13px. Nothing on a page below 13px.
+- **Space signals structure**: 26px between panels, 24px padding inside, 12px after each paragraph. A lean page has air, not small type.
+- **Contrast floor 4.5:1** for normal text. Two current tokens fail on their soft backgrounds and must be darkened wherever they carry text: green `--good` #1f9d63 on `--good-soft` is 3.1:1 (use ~#15794a for text), amber `--amber` #b6791f on `--amber-soft` is 3.3:1 (use ~#8f5c12 for text). Backgrounds/borders may keep the brighter values.
+- **Never color alone.** Anything said with green/red also carries a mark (✓ / ✗) or a word, as the quiz already does.
+
+### Animated worked example (pattern, first used on Day-02)
+
+The prisoner's-dilemma worked example on `Day-02.html` is a click-through walkthrough (scoped `pdw-` CSS/JS): the payoff table stays put and each step dims everything except the two numbers being compared, with one "your turn — predict before you click" step, and the original numbered `.step` blocks kept in a print-only block. Reuse the pattern for any worked example whose logic is a sequence of comparisons on one table. Keep: table markup unchanged apart from ids, all wording identical to the static steps, print fallback, and a teach-back pause before the symmetric half.
+
 ### Presentation tags
 Put the day's tags right under the `h1` and on each concept panel where a different lecture is in play. Chip classes `.p .P1` … `.p .P6` — copy the CSS from the hub, `index.html`. Ifat asked for these explicitly: without them a learner cannot tell whether the course is fully covered and starts to feel they have missed something.
 
@@ -329,7 +344,9 @@ Two papers are held in reserve and are **never sat as a mock**:
 - **2024 B**
 - **2025 A**
 
-**So: a learn-day quiz may carry a `src` tag ONLY for 2024 B or 2025 A. Every other item must be a fresh variant with no tag.** Aim for at most one tagged item per learn day, and 5 of 6 fresh.
+**Rule (Ifat, 4 Oct 2026): learn days carry NO real past-final questions at all, from any paper, reserve papers included.** Real exam questions live only on test pages. Every learn-day quiz item, worked example and try-it is a fresh variant with no `src` tag. Teaching text may still describe what past papers do (a trap, a wording pattern), but must not reproduce a real question or its grid.
+
+**No question repeats across learn pages and test pages.** A learn-day item may share the exam's generic wording ("How many pure Nash equilibria exist…") but never the same game, numbers or scenario as any test question. Check this before publishing.
 
 The mock pages are unaffected. They stay 100% the real paper.
 
@@ -377,3 +394,11 @@ Concept items may keep a short `exp`, but must still say why each distractor is 
 - **Verify every numeric answer in code.** Make the quiz match the script, never the other way round.
 - One concept per line in takeaways and definition lists.
 - Abbreviation and full name together on first use: "IESDS (iterated elimination of strictly dominated strategies)".
+
+## 13. Formula sheet (added 4 Oct 2026)
+
+Every **learn day** (1, 2, 4, 5, 6, 8, 9, 11, 13, 14) carries one identical full-course formula sheet, opened by a floating "Σ Formulas" button (bottom right) as a dialog. The block sits just before `</body>`, between the `FORMULA SHEET` comment markers, so it can be found and replaced as one unit. Edit it once and copy it to all ten pages.
+
+**Mock days (3, 7, 10, 12) never carry it.** The exam is closed book with no formula sheet (Presentation 6), so a mock must test memory.
+
+Only formulas and rules the course itself teaches go on it. Unsourced numbers (such as the "13 to 19" lab range) stay off.

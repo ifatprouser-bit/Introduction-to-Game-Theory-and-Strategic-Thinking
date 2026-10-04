@@ -141,7 +141,7 @@ NOA: Being very polite. Because it is the number you get when you stop one step 
 <li><b>A cell is a product</b>: the probability of an outcome is a row chance <i>times</i> a column chance. Matching cell: p&nbsp;&times;&nbsp;q. Mismatched cell: p&nbsp;&times;&nbsp;(1&minus;q).</li>
 <li><b>The shape trap</b>: most past grids have zeros on the main diagonal, and there the two mixtures come out equal. Two past grids have a different shape. On those, equal mixtures are simply wrong.</li>
 <li><b>Average first</b>: in the 2/3-average contest, combine the whole crowd into one average, <i>then</i> take two-thirds. Once, at the end.</li>
-<li><b>Equilibrium is not experiment</b>: the equilibrium of the contest is 1. The 13–19 you see in labs is what people do, not what the theory says.</li>
+<li><b>Equilibrium is not experiment</b>: the equilibrium of the contest is 1. In the lab, most people stop after one or two steps of reasoning. That is what people do, not what the theory says.</li>
 </ul>
 <p class="tk-gen">One line to hold onto: <b>both halves fail the same way. You stop one step too early, and that half-finished number is on the option list.</b></p></div></div>
 
@@ -466,12 +466,12 @@ The two halves are the same size, so a plain average of the two group averages i
 
 <div class="ans">&#10003; <b>27.</b><br>Look at what the other options are. <b>40</b> is the crowd average, so you forgot the last step. <b>33</b> is two-thirds of 50. You took two-thirds of one group and left the other half of the crowd out. <b>30</b> is one of the groups. <b>20</b> is two-thirds of 30. Every wrong option is a half-finished version of the right answer. That is exactly how they are built.</div>
 
-<p class="partlab">Thing 3: equilibrium is 1, and 13 to 19 is what humans do</p>
+<p class="partlab">Thing 3: equilibrium is 1, and humans stop early</p>
 <p class="p">Sometimes the question does not describe a crowd at all. It asks for the <b>Nash equilibrium of the contest</b>. That is a different question, and the answer never changes. Nobody should pick above 67, because two-thirds of any average cannot go above 66.67. With everything above 67 gone, nobody should pick above 45. Then 30, then 20, then 14 … each round strips the top away, and the only survivor is <b>1</b>.</p>
 
-<p class="p">Every time this is asked, one of the options is "typically in the range between 13 and 19". That range is real: it is what people actually pick in laboratories, and only about 10% play the equilibrium. But what people do is not the equilibrium.</p>
+<p class="p">In laboratories, people do something else (Presentation 4). Most of them run one or two steps of this reasoning and then stop. The course calls them level-1 and level-2 players. If they think everyone else picks at random, level 1 picks about 34 and level 2 about 22. Only about 10% play the equilibrium. An option may give you a range of numbers and call it the equilibrium. The equilibrium is always just 1.</p>
 
-<div class="rule">Two different questions, two different answers. <b>"What is the Nash equilibrium?" → 1.</b> &nbsp; <b>"What do people actually choose?" → around 13 to 19.</b></div>
+<div class="rule">Two different questions, two different answers. <b>"What is the Nash equilibrium?" → 1.</b> &nbsp; <b>"What do people actually choose?" → they stop after one or two steps; only about 10% choose 1.</b></div>
 
 <div class="tryq"><div class="q">Ten players in total play the 2/3-average competition. The nine others play 5, 15, 25, 35, 45, 45, 55, 65 and 75. What is a best reply?<br><br><i>Options: (a) 1 &nbsp; (b) 26 &nbsp; (c) 27 &nbsp; (d) 33</i></div>
 <button class="reveal-btn" onclick="this.nextElementSibling.classList.add('show');this.disabled=true;">Reveal answer</button>
@@ -484,7 +484,7 @@ The two halves are the same size, so a plain average of the two group averages i
 
 <!-- ============ QUIZ ============ -->
 <div class="panel"><h3>&#128221; Quiz yourself <span class="scorechip" id="scoreChip">0 / 6</span></h3>
-<p class="note">Pick an option; the answer and explanation appear only after you choose. One question carries a tag: a real past-final question, word for word, from a paper you never sit as a mock. The other five are new, with grids built for this page. Nothing here spoils a later mock or repeats the worked examples above.</p>
+<p class="note">Pick an option; the answer and explanation appear only after you choose. All six are new, built for this page. Real past-final questions stay on the mock-exam pages, so you meet them cold. Nothing here spoils a later mock or repeats the worked examples above.</p>
 <div id="quizBody"></div></div>
 
 <div class="navrow"><a class="navbtn" href="Day-09.html">&larr; Back</a><a class="navbtn primary" href="Day-03.html">Next &rarr;</a></div>
@@ -744,20 +744,20 @@ const QUIZ = [
    {"opt":"25","at":"twice","short":"two-thirds of 37, taken twice","text":"(2/3) &times; 37 = 24.67. You took two-thirds twice, one level too deep. Best-replying to your own best reply is not what was asked."}],
   "finalMsg":"<b>Best reply: 37.</b> One group, spread evenly from 17 to 93. Its middle is 55. Two-thirds of 55 is 36.67, which rounds to 37.<br><br><b>Check.</b> The target is 36.67. Your 37 sits 0.33 away. The nearest other option, 33, sits 3.67 away. &#10003;<br><br><b>The rule:</b> the middle of an even range is (smallest + largest) &divide; 2. Average the crowd, then take two-thirds once, then round."}},
 
-{"src":"2025 A final","q":"Assume that you play with 200 other players the 2/3-average competition (namely, each player chooses an integer number between 1 and 100; the players who chose the number closest to 2/3 of the average of the ten numbers win). What would be your best reply if: (1) half of the players choose their numbers uniformly in the domain {1,&hellip;,100}, and (2) the remaining half choose a number that is the best-reply to a uniform play in the domain {1,&hellip;,100}.",
- "opts":["25","28","33","35","42"],"correct":1,
- "anim":{"type":"nl","expect":28,
-  "groups":[{"kind":"range","lo":1,"hi":100,"share":0.5},{"kind":"reply","of":0,"share":0.5}],
+{"q":"You play the 2/3-average competition with 100 other players. Each player chooses a whole number between 1 and 100, and the players closest to two-thirds of the average win. <b>Three quarters</b> of the other players choose uniformly in {1,&hellip;,100}. The remaining <b>quarter</b> choose the best reply to uniform play in {1,&hellip;,100}. What is your best reply?",
+ "opts":["28","31","34","46","51"],"correct":1,
+ "anim":{"type":"nl","expect":31,
+  "groups":[{"kind":"range","lo":1,"hi":100,"share":0.75},{"kind":"reply","of":0,"share":0.25}],
   "traps":[
-   {"opt":"42","at":"crowd","short":"the crowd average, before two-thirds","text":"the crowd average, 42.25. 42 means you stopped one step early, before the last multiplication."},
-   {"opt":"35","at":"group:1","short":"about group 2's own number, 34","text":"roughly group 2's number, 34. You answered with one group's choice instead of your own best reply."},
-   {"opt":"33","at":"twoThirdsGroup:0","short":"two-thirds of group 1 alone","text":"(2/3) &times; 50.5 = 33.67. You best-replied to group 1 only and left group 2 out of the crowd. That only makes you a copy of group 2. You play against the whole crowd, not against group 2 alone."},
-   {"opt":"25","at":"halfGroup:0","short":"group 1's average halved","text":"50.5 &divide; 2 = 25.25. It comes from halving group 1's average because \"half the players\" play uniformly, instead of averaging the two groups."}],
-  "finalMsg":"<b>Best reply: 28.</b><br><br><b>Check.</b> Count heads instead of groups: (100 &times; 50.5 + 100 &times; 34) &divide; 200 = 8450 &divide; 200 = 42.25. The same crowd average, so the same answer. &#10003;<br><br><b>The rule:</b> average the whole crowd first. <i>Then</i> take two-thirds, once, at the very end.<br><br><b>One oddity in the paper.</b> The stem says \"the average of the ten numbers\" while the question describes 201 players. That is a leftover from another version of the question. It changes nothing: use the crowd the question describes."}},
+   {"opt":"51","at":"group:0","short":"the uniform group's average","text":"the average of the uniform group alone, 50.5. You stopped before mixing in the other group and before taking two-thirds."},
+   {"opt":"46","at":"crowd","short":"the crowd average, before two-thirds","text":"the crowd average, 46.3. You stopped one step early, before the last multiplication."},
+   {"opt":"34","at":"group:1","short":"the second group's own number","text":"the second group's number, 33.7. You answered with one group's choice instead of your own best reply."},
+   {"opt":"28","at":28.06,"short":"the two groups weighted half and half","text":"(50.5 + 33.7) &divide; 2 &times; 2/3 = 28. You gave the two groups equal weight. But three quarters is not a half: the uniform group counts three times as much."}],
+  "finalMsg":"<b>Best reply: 31.</b><br><br><b>Check.</b> Count heads instead of shares: (75 &times; 50.5 + 25 &times; 33.67) &divide; 100 = 46.29. Two-thirds of that is 30.86, so 31. &#10003;<br><br><b>The rule:</b> average the whole crowd first, <i>with the right weights</i>. <i>Then</i> take two-thirds, once, at the very end."}},
 
-{"q":"In laboratory experiments of the 2/3-average contest, where do most players' choices actually land, and how many of them play the Nash equilibrium?",
- "opts":["Choices usually land in the 13 to 19 range, and about 10% of players choose the equilibrium","Choices usually land in the 13 to 19 range, and that range is the Nash equilibrium","Most players choose 1, and about 90% of them play the equilibrium","Choices are spread evenly over 1 to 100, so the average is about 50","Most players choose 50, and nobody plays the equilibrium"],"correct":0,
- "exp":"<b>Choices land around 13 to 19, and only about one player in ten picks the equilibrium.</b><br><br>Most people run one or two rounds of the elimination and then stop. They assume others are naive, best-reply to that assumption, and go no further. The course calls them level-1 and level-2 players. That is why the crowd sits well below 50 but well above 1.<br><br><b>Keep the two questions apart.</b> \"What is the Nash equilibrium?\" has the answer <b>1</b>, every time. \"What do people actually choose?\" has the answer 13 to 19. The exam offers you the wrong one of the pair on purpose.<br><br><b>Why each other option is wrong.</b><br>\"...and that range is the Nash equilibrium\": right numbers, wrong label. The equilibrium is 1, reached by stripping the top away round after round. This is the sharpest distractor on the list, and a version of it sits on a real past paper.<br>\"Most players choose 1, and about 90% play the equilibrium\": the 90% is the true figure turned upside down. It is about 10%, and it has stayed near that in experiment after experiment.<br>\"Choices are spread evenly over 1 to 100\": that describes level-0 players, the few who are not reasoning at all. Most people clearly are reasoning, which is why the crowd sits below the middle of the scale.<br>\"Most players choose 50, and nobody plays the equilibrium\": 50 is roughly what you would pick if you thought everyone else chose at random and then forgot the two-thirds step. And some people do play the equilibrium, about one in ten of them."},
+{"q":"In laboratory experiments of the 2/3-average contest, how do most players choose, and how many of them play the Nash equilibrium?",
+ "opts":["Most stop after one or two steps of reasoning, and about 10% of players choose the equilibrium","Most stop after one or two steps of reasoning, and the numbers they pick are the Nash equilibrium","Most players choose 1, and about 90% of them play the equilibrium","Choices are spread evenly over 1 to 100, so the average is about 50","Most players choose 50, and nobody plays the equilibrium"],"correct":0,
+ "exp":"<b>Most stop after one or two steps, and only about one player in ten picks the equilibrium.</b> This is what Presentation 4 reports.<br><br>Most people run one or two rounds of the elimination and then stop. They assume others are naive, best-reply to that assumption, and go no further. The course calls them level-1 and level-2 players. That is why the crowd sits well below 50 but well above 1.<br><br><b>Keep the two questions apart.</b> \"What is the Nash equilibrium?\" has the answer <b>1</b>, every time. \"What do people actually choose?\" is a question about behaviour, and the answer is a few steps of reasoning, not 1.<br><br><b>Why each other option is wrong.</b><br>\"...and the numbers they pick are the Nash equilibrium\": right behaviour, wrong label. The equilibrium is 1, reached by stripping the top away round after round. This is the sharpest distractor on the list.<br>\"Most players choose 1, and about 90% play the equilibrium\": the 90% is the true figure turned upside down. It is about 10%.<br>\"Choices are spread evenly over 1 to 100\": that describes level-0 players, the few who are not reasoning at all. Most people clearly are reasoning, which is why the crowd sits below the middle of the scale.<br>\"Most players choose 50, and nobody plays the equilibrium\": 50 is roughly what you would pick if you thought everyone else chose at random and then forgot the two-thirds step. And some people do play the equilibrium, about one in ten of them."},
 
 {"q":"A zero-sum game (one number per cell = player 1's payoff; player 1 chooses the row, player 2 chooses the column). What is the probability that the outcome is (Top, Right) in the mixed equilibrium? (Rounded to the nearest percentage point.)"+MDIAG,
  "opts":["9%","21%","30%","49%","70%"],"correct":1,
@@ -911,4 +911,94 @@ window.addEventListener('load',function(){
 });
 })();
 </script>
+<!-- ============ FORMULA SHEET (learn days only, not on mocks) ============ -->
+<style>
+#fsBtn{position:fixed;right:16px;bottom:16px;z-index:9998;background:#6b4ef0;color:#fff;border:0;border-radius:999px;padding:11px 18px;font:700 15px -apple-system,Segoe UI,Arial,sans-serif;box-shadow:0 4px 14px rgba(60,40,140,.28);cursor:pointer}
+#fsBtn:hover{background:#5638d8}
+#fsOv{position:fixed;inset:0;z-index:9999;background:rgba(25,20,45,.45);display:none;align-items:flex-start;justify-content:center;padding:16px;overflow-y:auto}
+#fsOv.open{display:flex}
+#fsPanel{background:#fff;color:#211c33;border-radius:14px;max-width:760px;width:100%;margin:8px auto 70px;padding:20px 22px 24px;font:15px/1.55 -apple-system,Segoe UI,Arial,sans-serif;box-shadow:0 10px 40px rgba(0,0,0,.25)}
+#fsPanel h2{margin:0;font-size:21px;color:#211c33}
+#fsPanel .fs-sub{color:#6f6886;font-size:13.5px;margin:4px 0 10px}
+#fsPanel h3{font-size:15px;color:#6b4ef0;margin:16px 0 5px;padding-top:10px;border-top:1px solid #ebe7f6}
+#fsPanel ul{margin:0;padding-left:20px}#fsPanel li{margin:3px 0}
+#fsPanel .fs-m{font-family:Consolas,Menlo,monospace;background:#f3f0fd;border:1px solid #e2dcf8;border-radius:6px;padding:1px 6px;white-space:nowrap;font-size:14px}
+#fsPanel .fs-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+#fsClose{background:#f1eff8;border:0;border-radius:8px;padding:6px 12px;font:700 14px -apple-system,Segoe UI,Arial,sans-serif;cursor:pointer;color:#211c33}
+#fsPanel .fs-warn{background:#fdf4e7;border:1px solid #f2dcb5;border-radius:8px;padding:8px 12px;font-size:13.5px;margin-top:10px}
+@media (max-width:600px){#fsPanel{padding:16px}#fsPanel .fs-m{white-space:normal}}
+@media print{#fsBtn,#fsOv{display:none!important}}
+</style>
+<button id="fsBtn" type="button" aria-haspopup="dialog" aria-controls="fsOv">&#931; Formulas</button>
+<div id="fsOv" role="dialog" aria-modal="true" aria-labelledby="fsTitle"><div id="fsPanel">
+<div class="fs-top"><div><h2 id="fsTitle">Formula sheet</h2><p class="fs-sub">The whole course on one page. A study aid only: the exam is closed book, so learn these by heart.</p></div><button id="fsClose" type="button">Close &#10005;</button></div>
+
+<h3>1. Sequential games (P2)</h3>
+<ul>
+<li><b>Backward induction:</b> solve the last node first. Replace it with its payoff pair. Walk back to the start</li>
+<li><b>Strategy</b> = a plan for <i>every</i> node you could reach, not just one move</li>
+<li>A tree that looks like a centipede is not always one. Only the payoffs decide</li>
+</ul>
+
+<h3>2. Prisoner's dilemma (P3)</h3>
+<ul>
+<li><b>R</b> both cooperate &middot; <b>T</b> you cheat alone &middot; <b>S</b> you cooperate alone &middot; <b>P</b> both defect. In a dilemma: <span class="fs-m">T &gt; R &gt; P &gt; S</span></li>
+<li><b>Two-tick test:</b> (1) both players have a dominant strategy, and (2) where they land is worse for both than another cell</li>
+<li><b>Known last round:</b> defect in every round (backward induction)</li>
+<li><b>No end date:</b> a payment of x every year forever is worth <span class="fs-m">x / r</span> today</li>
+<li><b>Tipping point:</b> <span class="fs-m">r* = (R &minus; P) / (T &minus; R)</span>. Below r*: cooperate. Above: defect</li>
+<li><b>Lab (Mengel 2018):</b> waste <span class="fs-m">(R &minus; P) / R</span> big &rarr; more cooperation &middot; risk <span class="fs-m">(P &minus; S) / P</span> big &rarr; less cooperation &middot; temptation <span class="fs-m">(T &minus; R) / T</span> small effect</li>
+<li>About 45% cooperate in round 1, falling about 2% per round</li>
+</ul>
+
+<h3>3. Nash equilibrium (P4)</h3>
+<ul>
+<li><b>Underline:</b> columns down for player 1 (first number), rows across for player 2 (second number). Two marks = pure Nash equilibrium</li>
+<li>Test is stability, not quality: &ldquo;would anyone move alone?&rdquo;</li>
+<li>&ldquo;Pure&rdquo; &rarr; zero is possible. &ldquo;Pure or mixed&rdquo; &rarr; every finite game has at least one</li>
+<li><b>Strictly dominated</b> = always worse. <b>Weakly</b> = never better, sometimes worse. Dominance-solvable &rarr; one unique equilibrium</li>
+<li><b>Cournot:</b> <span class="fs-m">P = a &minus; Q&#8321; &minus; Q&#8322;</span> &middot; profit <span class="fs-m">(P &minus; c) &times; Q</span></li>
+</ul>
+
+<h3>4. Mixed strategies and zero-sum (P5)</h3>
+<ul>
+<li>First check: a dominant strategy? A saddle point? Neither &rarr; mix</li>
+<li><b>Indifference:</b> make the <i>opponent's</i> two expected payoffs equal. Solve for <i>your</i> p</li>
+<li><b>Expected payoff</b> of a row: <span class="fs-m">q &times; (left) + (1 &minus; q) &times; (right)</span></li>
+<li><b>Chance of one cell:</b> <span class="fs-m">p &times; q</span>, or <span class="fs-m">p &times; (1 &minus; q)</span> when crossed</li>
+<li><b>Value</b> (player 1's payoff) = expected payoff of either of her rows</li>
+<li>Zero-sum: one number per cell. Player 2 gets minus that</li>
+</ul>
+
+<h3>5. The 2/3-average game (P1, P4)</h3>
+<ul>
+<li>Average of a uniform range: <span class="fs-m">(min + max) / 2</span></li>
+<li>Mixed crowd: <span class="fs-m">share&#8321; &times; avg&#8321; + share&#8322; &times; avg&#8322;</span>, then <span class="fs-m">&times; 2/3</span> once, at the end</li>
+<li>Nash equilibrium = <b>1</b></li>
+</ul>
+
+<h3>6. Credible strategies (P6)</h3>
+<ul>
+<li><b>Threat test:</b> &ldquo;would I really carry it out when the moment came?&rdquo;</li>
+<li>A move works only if made <b>before</b> the other side chooses, and <b>visible</b> to them</li>
+<li><b>8 devices:</b> contracts &middot; reputation &middot; cutting off communication &middot; burning bridges &middot; leaving the outcome beyond your control &middot; moving in small steps &middot; teamwork &middot; mandated negotiating agents</li>
+</ul>
+
+<h3>7. Lab numbers</h3>
+<ul>
+<li>Ultimatum: median offer about 40% (most common 50%; offers under 20% often rejected)</li>
+<li>Dictator: median about 25% &middot; Golden Balls: about 50% split</li>
+</ul>
+
+<div class="fs-warn"><b>Exam:</b> closed book, calculator allowed. This sheet is not on the mock days, so each mock tests your memory, like the real exam.</div>
+</div></div>
+<script>
+(function(){var b=document.getElementById('fsBtn'),o=document.getElementById('fsOv'),c=document.getElementById('fsClose');
+function op(){o.classList.add('open');c.focus();}function cl(){o.classList.remove('open');b.focus();}
+b.addEventListener('click',op);c.addEventListener('click',cl);
+o.addEventListener('click',function(e){if(e.target===o)cl();});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&o.classList.contains('open'))cl();});})();
+</script>
+<!-- ============ /FORMULA SHEET ============ -->
+
 </body></html>

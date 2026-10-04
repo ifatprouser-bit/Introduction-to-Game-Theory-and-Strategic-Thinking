@@ -318,7 +318,7 @@ Does this game need a mixed strategy? What is player 1's payoff in equilibrium?<
 
 <!-- ============ QUIZ ============ -->
 <div class="panel"><h3>&#128221; Quiz yourself <span class="scorechip" id="scoreChip">0 / 6</span></h3>
-<p class="note">Pick an option; the answer appears after you choose.</p><ul class="pl note"><li>One question (tagged) is a real past-final question, from a paper you never sit as a mock</li><li>The other five are new, built for this page</li></ul>
+<p class="note">Pick an option; the answer appears after you choose.</p><ul class="pl note"><li>All six are new, built for this page</li><li>Real past-final questions stay on the mock-exam pages, so you meet them cold</li></ul>
 <div id="quizBody"></div></div>
 
 <div class="navrow"><a class="navbtn" href="Day-05.html">&larr; Back</a><a class="navbtn primary" href="Day-08.html">Next &rarr;</a></div>
@@ -620,9 +620,9 @@ const QUIZ = [
    pc(r.p)+": how often Top is played. The wrong row, and no multiplication either.<br>"+
    pc(r.p*(1-r.q))+": "+n(r.p)+" &times; "+n(1-r.q)+", the chance of (Top, Right).";}}},
 
-{"src":"2025 A final","q":"What is the main difference between a zero-sum game and a general (non-zero-sum) game?",
- "opts":["In zero-sum games, one player's gain is the other's loss","General games have no Nash equilibria","Zero-sum games require cooperation","General games are strictly competitive","None of the other answers is correct"],"correct":0,
- "exp":"<b>In zero-sum games, one player's gain is the other's loss.</b> That is the definition, and it is why one number per cell is enough. Player 2's payoff is always player 1's payoff with a minus sign in front.<br><br><b>Why each other option is wrong.</b><br>\"General games have no Nash equilibria\": false. Nash proved that every finite game has at least one equilibrium, pure or mixed.<br>\"Zero-sum games require cooperation\": backwards. Zero-sum is the one setting where cooperation buys nothing, because no cell is better for both players.<br>\"General games are strictly competitive\": also backwards. \"Strictly competitive\" is another name for zero-sum.<br>\"None of the other answers is correct\": the first option is correct, so this one cannot be. Across six solved past papers this option has never once been the right answer. So it is unlikely, but it is not impossible."},
+{"q":"A two-player game has one cell where both players get 5, and another cell where both players get 1. Can this game be zero-sum?",
+ "opts":["Yes, as long as the game has a mixed equilibrium","Yes, because both players get the same payoff inside each of those cells","No: moving from (1, 1) to (5, 5) makes both players better off, and that cannot happen in a zero-sum game","No, because a zero-sum game never has a pure equilibrium","None of the other answers is correct"],"correct":2,
+ "exp":"<b>No.</b> In a zero-sum game, one player's gain is the other's loss. Player 2's payoff is always player 1's payoff with a minus sign in front. So no cell can be better for <i>both</i> players than another cell. Here (5, 5) beats (1, 1) for both of them, so the game cannot be zero-sum.<br><br><b>Quick test:</b> add the two numbers in each cell. In a zero-sum game every cell adds up to 0. Here the cells add up to 10 and 2.<br><br><b>Why each other option is wrong.</b><br>\"A mixed equilibrium\": every finite game has an equilibrium, pure or mixed. That says nothing about zero-sum.<br>\"The same payoff inside each cell\": that is the opposite of zero-sum. In zero-sum the two numbers are mirror images, like 5 and &minus;5.<br>\"Never has a pure equilibrium\": false. Some zero-sum games have a pure equilibrium, and then nobody needs to mix.<br>\"None of the other answers\": one option is correct, so this one cannot be."},
 
 {"q":"You are solving a 2&times;2 zero-sum game that has no stable pure pair. You want p, the probability that player 1 plays Top. Which equation gives it?",
  "opts":["Make player 2 indifferent: set player 1's payoff in the Left column equal to his payoff in the Right column","Make player 1 indifferent: set his payoff from Top equal to his payoff from Down","Set the two numbers on the main diagonal equal to each other","p is always 1/2, because a mixed strategy has to be unpredictable","Divide player 1's largest payoff by the sum of all four payoffs"],"correct":0,
@@ -768,4 +768,94 @@ window.addEventListener('load',function(){
 });
 })();
 </script>
+<!-- ============ FORMULA SHEET (learn days only, not on mocks) ============ -->
+<style>
+#fsBtn{position:fixed;right:16px;bottom:16px;z-index:9998;background:#6b4ef0;color:#fff;border:0;border-radius:999px;padding:11px 18px;font:700 15px -apple-system,Segoe UI,Arial,sans-serif;box-shadow:0 4px 14px rgba(60,40,140,.28);cursor:pointer}
+#fsBtn:hover{background:#5638d8}
+#fsOv{position:fixed;inset:0;z-index:9999;background:rgba(25,20,45,.45);display:none;align-items:flex-start;justify-content:center;padding:16px;overflow-y:auto}
+#fsOv.open{display:flex}
+#fsPanel{background:#fff;color:#211c33;border-radius:14px;max-width:760px;width:100%;margin:8px auto 70px;padding:20px 22px 24px;font:15px/1.55 -apple-system,Segoe UI,Arial,sans-serif;box-shadow:0 10px 40px rgba(0,0,0,.25)}
+#fsPanel h2{margin:0;font-size:21px;color:#211c33}
+#fsPanel .fs-sub{color:#6f6886;font-size:13.5px;margin:4px 0 10px}
+#fsPanel h3{font-size:15px;color:#6b4ef0;margin:16px 0 5px;padding-top:10px;border-top:1px solid #ebe7f6}
+#fsPanel ul{margin:0;padding-left:20px}#fsPanel li{margin:3px 0}
+#fsPanel .fs-m{font-family:Consolas,Menlo,monospace;background:#f3f0fd;border:1px solid #e2dcf8;border-radius:6px;padding:1px 6px;white-space:nowrap;font-size:14px}
+#fsPanel .fs-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+#fsClose{background:#f1eff8;border:0;border-radius:8px;padding:6px 12px;font:700 14px -apple-system,Segoe UI,Arial,sans-serif;cursor:pointer;color:#211c33}
+#fsPanel .fs-warn{background:#fdf4e7;border:1px solid #f2dcb5;border-radius:8px;padding:8px 12px;font-size:13.5px;margin-top:10px}
+@media (max-width:600px){#fsPanel{padding:16px}#fsPanel .fs-m{white-space:normal}}
+@media print{#fsBtn,#fsOv{display:none!important}}
+</style>
+<button id="fsBtn" type="button" aria-haspopup="dialog" aria-controls="fsOv">&#931; Formulas</button>
+<div id="fsOv" role="dialog" aria-modal="true" aria-labelledby="fsTitle"><div id="fsPanel">
+<div class="fs-top"><div><h2 id="fsTitle">Formula sheet</h2><p class="fs-sub">The whole course on one page. A study aid only: the exam is closed book, so learn these by heart.</p></div><button id="fsClose" type="button">Close &#10005;</button></div>
+
+<h3>1. Sequential games (P2)</h3>
+<ul>
+<li><b>Backward induction:</b> solve the last node first. Replace it with its payoff pair. Walk back to the start</li>
+<li><b>Strategy</b> = a plan for <i>every</i> node you could reach, not just one move</li>
+<li>A tree that looks like a centipede is not always one. Only the payoffs decide</li>
+</ul>
+
+<h3>2. Prisoner's dilemma (P3)</h3>
+<ul>
+<li><b>R</b> both cooperate &middot; <b>T</b> you cheat alone &middot; <b>S</b> you cooperate alone &middot; <b>P</b> both defect. In a dilemma: <span class="fs-m">T &gt; R &gt; P &gt; S</span></li>
+<li><b>Two-tick test:</b> (1) both players have a dominant strategy, and (2) where they land is worse for both than another cell</li>
+<li><b>Known last round:</b> defect in every round (backward induction)</li>
+<li><b>No end date:</b> a payment of x every year forever is worth <span class="fs-m">x / r</span> today</li>
+<li><b>Tipping point:</b> <span class="fs-m">r* = (R &minus; P) / (T &minus; R)</span>. Below r*: cooperate. Above: defect</li>
+<li><b>Lab (Mengel 2018):</b> waste <span class="fs-m">(R &minus; P) / R</span> big &rarr; more cooperation &middot; risk <span class="fs-m">(P &minus; S) / P</span> big &rarr; less cooperation &middot; temptation <span class="fs-m">(T &minus; R) / T</span> small effect</li>
+<li>About 45% cooperate in round 1, falling about 2% per round</li>
+</ul>
+
+<h3>3. Nash equilibrium (P4)</h3>
+<ul>
+<li><b>Underline:</b> columns down for player 1 (first number), rows across for player 2 (second number). Two marks = pure Nash equilibrium</li>
+<li>Test is stability, not quality: &ldquo;would anyone move alone?&rdquo;</li>
+<li>&ldquo;Pure&rdquo; &rarr; zero is possible. &ldquo;Pure or mixed&rdquo; &rarr; every finite game has at least one</li>
+<li><b>Strictly dominated</b> = always worse. <b>Weakly</b> = never better, sometimes worse. Dominance-solvable &rarr; one unique equilibrium</li>
+<li><b>Cournot:</b> <span class="fs-m">P = a &minus; Q&#8321; &minus; Q&#8322;</span> &middot; profit <span class="fs-m">(P &minus; c) &times; Q</span></li>
+</ul>
+
+<h3>4. Mixed strategies and zero-sum (P5)</h3>
+<ul>
+<li>First check: a dominant strategy? A saddle point? Neither &rarr; mix</li>
+<li><b>Indifference:</b> make the <i>opponent's</i> two expected payoffs equal. Solve for <i>your</i> p</li>
+<li><b>Expected payoff</b> of a row: <span class="fs-m">q &times; (left) + (1 &minus; q) &times; (right)</span></li>
+<li><b>Chance of one cell:</b> <span class="fs-m">p &times; q</span>, or <span class="fs-m">p &times; (1 &minus; q)</span> when crossed</li>
+<li><b>Value</b> (player 1's payoff) = expected payoff of either of her rows</li>
+<li>Zero-sum: one number per cell. Player 2 gets minus that</li>
+</ul>
+
+<h3>5. The 2/3-average game (P1, P4)</h3>
+<ul>
+<li>Average of a uniform range: <span class="fs-m">(min + max) / 2</span></li>
+<li>Mixed crowd: <span class="fs-m">share&#8321; &times; avg&#8321; + share&#8322; &times; avg&#8322;</span>, then <span class="fs-m">&times; 2/3</span> once, at the end</li>
+<li>Nash equilibrium = <b>1</b></li>
+</ul>
+
+<h3>6. Credible strategies (P6)</h3>
+<ul>
+<li><b>Threat test:</b> &ldquo;would I really carry it out when the moment came?&rdquo;</li>
+<li>A move works only if made <b>before</b> the other side chooses, and <b>visible</b> to them</li>
+<li><b>8 devices:</b> contracts &middot; reputation &middot; cutting off communication &middot; burning bridges &middot; leaving the outcome beyond your control &middot; moving in small steps &middot; teamwork &middot; mandated negotiating agents</li>
+</ul>
+
+<h3>7. Lab numbers</h3>
+<ul>
+<li>Ultimatum: median offer about 40% (most common 50%; offers under 20% often rejected)</li>
+<li>Dictator: median about 25% &middot; Golden Balls: about 50% split</li>
+</ul>
+
+<div class="fs-warn"><b>Exam:</b> closed book, calculator allowed. This sheet is not on the mock days, so each mock tests your memory, like the real exam.</div>
+</div></div>
+<script>
+(function(){var b=document.getElementById('fsBtn'),o=document.getElementById('fsOv'),c=document.getElementById('fsClose');
+function op(){o.classList.add('open');c.focus();}function cl(){o.classList.remove('open');b.focus();}
+b.addEventListener('click',op);c.addEventListener('click',cl);
+o.addEventListener('click',function(e){if(e.target===o)cl();});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&o.classList.contains('open'))cl();});})();
+</script>
+<!-- ============ /FORMULA SHEET ============ -->
+
 </body></html>
